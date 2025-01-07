@@ -1,0 +1,41 @@
+.confirm {
+  border-radius: 5px;
+  width: 600px;
+  padding: 20px;
+}
+
+.confirm .swal2-title {
+  color: whitesmoke;
+  font-weight: bold;
+  text-transform: capitalize;
+  font-size: calc(1.3rem);
+}
+
+.confirm .swal2-html-container {
+  color: whitesmoke;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.confirm .swal2-confirm {
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  text-transform: capitalize;
+  color: whitesmoke;
+}
+
+.confirm .swal2-cancel {
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  text-transform: capitalize;
+  color: whitesmoke;
+}
+
+/*icon */
+.confirm .swal2-question {
+  border-color: #ffff00;
+  color: #ffff00;
+  margin: 20px auto 0px auto;
+}

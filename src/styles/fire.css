@@ -1,0 +1,39 @@
+/*container */
+.fire {
+  border-radius: 5px;
+  width: 600px;
+  padding: 20px;
+}
+
+/*title text */
+.fire .swal2-title {
+  color: whitesmoke;
+  font-weight: bold;
+  text-transform: capitalize;
+  font-size: calc(1.3rem);
+}
+
+/*the second text */
+.fire .swal2-html-container {
+  color: whitesmoke;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/*confirm button text colour */
+.fire .swal2-confirm {
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  text-transform: capitalize;
+  color: whitesmoke;
+}
+
+/*cancel button text colour */
+.fire .swal2-cancel {
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  text-transform: capitalize;
+  color: whitesmoke;
+}

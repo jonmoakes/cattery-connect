@@ -1,0 +1,8 @@
+export const gentleGrey = "#D6D6D6";
+export const softBlack = "#222222;";
+export const warmBeige = "#FCD19C";
+export const teal = "#317773";
+export const customYellow = "#ffff00";
+export const navy = "#002F6C";
+export const rustRed = "#A64B2A";
+export const dustyBlue = "#C4D8E2";
