@@ -1,9 +1,12 @@
-import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 
 import useGetPasswordIsVisibleSelectors from "../../hooks/selectors/use-get-password-is-visible-selectors";
 import useGetSignUpFormSelectors from "../../hooks/selectors/use-get-sign-up-form-selectors";
-import useSignUpFormFunctions from "./sign-up-form-hooks/use-sign-up-form-functions";
+import {
+  toggleSignUpPasswordIsVisible,
+  toggleSignUpConfirmPasswordIsVisible,
+} from "../../store/password-is-visible/password-is-visible.slice";
 
 import { RelativePositionDiv } from "../../styles/div/div.styles";
 import { Label, PasswordInput } from "../../styles/form/form.styles";
@@ -18,31 +21,12 @@ import {
   confirmYourPassword,
 } from "../../strings/placeholders";
 
-const SignUpPasswords = ({ dispatchHandleSignUpFormChange }) => {
+const SignUpPasswords = ({ handleSignUpFormChange }) => {
   const { signUpPasswordIsVisible, signUpConfirmPasswordIsVisible } =
     useGetPasswordIsVisibleSelectors();
   const { password, confirmPassword } = useGetSignUpFormSelectors();
-  const {
-    dispatchHideSignUpPasswordIsVisible,
-    dispatchHideSignUpConfirmPasswordIsVisible,
-    dispatchToggleSignUpPasswordIsVisible,
-    dispatchToggleSignUpConfirmPasswordIsVisible,
-  } = useSignUpFormFunctions();
 
-  useEffect(() => {
-    if (signUpPasswordIsVisible && !password.length) {
-      dispatchHideSignUpPasswordIsVisible();
-    } else if (signUpConfirmPasswordIsVisible && !confirmPassword.length) {
-      dispatchHideSignUpConfirmPasswordIsVisible();
-    }
-  }, [
-    password,
-    confirmPassword,
-    signUpPasswordIsVisible,
-    signUpConfirmPasswordIsVisible,
-    dispatchHideSignUpPasswordIsVisible,
-    dispatchHideSignUpConfirmPasswordIsVisible,
-  ]);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -52,7 +36,8 @@ const SignUpPasswords = ({ dispatchHandleSignUpFormChange }) => {
       <RelativePositionDiv>
         <PasswordInput
           name="password"
-          onChange={dispatchHandleSignUpFormChange}
+          value={password || ""}
+          onChange={handleSignUpFormChange}
           placeholder={minEightCharacters}
           minLength="8"
           required
@@ -62,7 +47,7 @@ const SignUpPasswords = ({ dispatchHandleSignUpFormChange }) => {
         {password.length ? (
           <SignUpPasswordEye
             {...{ signUpPasswordIsVisible }}
-            onClick={dispatchToggleSignUpPasswordIsVisible}
+            onClick={() => dispatch(toggleSignUpPasswordIsVisible())}
           />
         ) : null}
       </RelativePositionDiv>
@@ -72,18 +57,19 @@ const SignUpPasswords = ({ dispatchHandleSignUpFormChange }) => {
       </Label>
       <RelativePositionDiv>
         <PasswordInput
-          type={signUpConfirmPasswordIsVisible ? "text" : "password"}
           name="confirmPassword"
-          onChange={dispatchHandleSignUpFormChange}
+          value={confirmPassword || ""}
+          onChange={handleSignUpFormChange}
           placeholder={confirmYourPassword}
           minLength="8"
           required
+          type={signUpConfirmPasswordIsVisible ? "text" : "password"}
         />
 
         {confirmPassword.length ? (
           <SignUpConfirmPasswordEye
             {...{ signUpConfirmPasswordIsVisible }}
-            onClick={dispatchToggleSignUpConfirmPasswordIsVisible}
+            onClick={() => dispatch(toggleSignUpConfirmPasswordIsVisible())}
           />
         ) : null}
       </RelativePositionDiv>
@@ -92,7 +78,7 @@ const SignUpPasswords = ({ dispatchHandleSignUpFormChange }) => {
 };
 
 SignUpPasswords.propTypes = {
-  dispatchHandleSignUpFormChange: PropTypes.func.isRequired,
+  handleSignUpFormChange: PropTypes.func.isRequired,
 };
 
 export default SignUpPasswords;

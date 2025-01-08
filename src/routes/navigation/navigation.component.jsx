@@ -3,6 +3,7 @@ import useGetHamburgerMenuSelectors from "../../hooks/selectors/use-get-hamburge
 import NavLogo from "./nav-logo.component";
 import NavHamburger from "./nav-hamburger.component";
 import NavNoUser from "./nav-no-user.component";
+import NavSignOut from "./nav-sign-out.component";
 
 import { Nav, Menu } from "../../styles/div/div.styles";
 
@@ -16,6 +17,7 @@ const Navigation = () => {
         <NavHamburger />
         <Menu {...{ showHamburgerMenu }}>
           <NavNoUser />
+          <NavSignOut />
         </Menu>
       </Nav>
     </>

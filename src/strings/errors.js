@@ -31,3 +31,6 @@ export const emailAddressNotInDatabase =
 export const passwordErrorMessage = "password error";
 export const passwordErrorInstructions =
   "please check your password and try again";
+export const enterPhoneNumberMessage = "please enter a phone number.";
+export const phoneLengthErrorMessage =
+  "the phone number should be 11 digits long.";

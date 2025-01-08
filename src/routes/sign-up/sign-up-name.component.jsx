@@ -1,9 +1,13 @@
 import PropTypes from "prop-types";
 
+import useGetSignUpFormSelectors from "../../hooks/selectors/use-get-sign-up-form-selectors";
+
 import { CapitalizedInput, Label } from "../../styles/form/form.styles";
 import { RedSpan } from "../../styles/span/span.styles";
 
-const SignUpName = ({ dispatchHandleSignUpFormChange }) => {
+const SignUpName = ({ handleSignUpFormChange }) => {
+  const { name } = useGetSignUpFormSelectors();
+
   return (
     <>
       <Label>
@@ -12,7 +16,8 @@ const SignUpName = ({ dispatchHandleSignUpFormChange }) => {
       <CapitalizedInput
         type="text"
         name="name"
-        onChange={dispatchHandleSignUpFormChange}
+        value={name || ""}
+        onChange={handleSignUpFormChange}
         required
       />
     </>
@@ -20,7 +25,7 @@ const SignUpName = ({ dispatchHandleSignUpFormChange }) => {
 };
 
 SignUpName.propTypes = {
-  dispatchHandleSignUpFormChange: PropTypes.func.isRequired,
+  handleSignUpFormChange: PropTypes.func.isRequired,
 };
 
 export default SignUpName;

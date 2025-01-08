@@ -1,9 +1,13 @@
 import PropTypes from "prop-types";
 
+import useGetSignUpFormSelectors from "../../hooks/selectors/use-get-sign-up-form-selectors";
+
 import { Label, StyledInput } from "../../styles/form/form.styles";
 import { RedSpan } from "../../styles/span/span.styles";
 
-const SignUpEmail = ({ dispatchHandleSignUpFormChange }) => {
+const SignUpEmail = ({ handleSignUpFormChange }) => {
+  const { email } = useGetSignUpFormSelectors();
+
   return (
     <>
       <Label>
@@ -12,7 +16,8 @@ const SignUpEmail = ({ dispatchHandleSignUpFormChange }) => {
       <StyledInput
         type="email"
         name="email"
-        onChange={dispatchHandleSignUpFormChange}
+        value={email || ""}
+        onChange={handleSignUpFormChange}
         required
       />
     </>
@@ -20,7 +25,7 @@ const SignUpEmail = ({ dispatchHandleSignUpFormChange }) => {
 };
 
 SignUpEmail.propTypes = {
-  dispatchHandleSignUpFormChange: PropTypes.func.isRequired,
+  handleSignUpFormChange: PropTypes.func.isRequired,
 };
 
 export default SignUpEmail;

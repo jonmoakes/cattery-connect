@@ -1,9 +1,13 @@
 import PropTypes from "prop-types";
 
+import useGetSignUpFormSelectors from "../../hooks/selectors/use-get-sign-up-form-selectors";
+
 import { CapitalizedInput, Label } from "../../styles/form/form.styles";
 import { RedSpan } from "../../styles/span/span.styles";
 
-const SignUpPhone = ({ dispatchHandleSignUpFormChange }) => {
+const SignUpPhone = ({ handleSignUpFormChange }) => {
+  const { phoneNumber } = useGetSignUpFormSelectors();
+
   return (
     <>
       <Label>
@@ -11,18 +15,16 @@ const SignUpPhone = ({ dispatchHandleSignUpFormChange }) => {
       </Label>
       <CapitalizedInput
         type="tel"
-        onChange={dispatchHandleSignUpFormChange}
+        onChange={handleSignUpFormChange}
         name="phoneNumber"
-        pattern="\d{11}"
-        required
-        title="Phone number must be 11 digits long."
+        value={phoneNumber || ""}
       />
     </>
   );
 };
 
 SignUpPhone.propTypes = {
-  dispatchHandleSignUpFormChange: PropTypes.func.isRequired,
+  handleSignUpFormChange: PropTypes.func.isRequired,
 };
 
 export default SignUpPhone;

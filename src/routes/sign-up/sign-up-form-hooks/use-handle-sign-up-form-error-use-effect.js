@@ -1,7 +1,9 @@
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 import useGetCurrentUserSelectors from "../../../hooks/selectors/use-get-current-user-selectors";
-import useSignUpFormFunctions from "./use-sign-up-form-functions";
+import { resetCurrentUserErrorMessage } from "../../../store/user/user.slice";
+
 import useFireSwal from "../../../hooks/use-fire-swal";
 
 import {
@@ -9,10 +11,11 @@ import {
   errorReceivedMessage,
 } from "../../../strings/errors";
 
-const useHandleSignUpFormError = () => {
+const useHandleSignUpFormErrorUseEffect = () => {
   const { currentUserError } = useGetCurrentUserSelectors();
-  const { resetSignUpError } = useSignUpFormFunctions();
+
   const { fireSwal } = useFireSwal();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (
@@ -36,10 +39,10 @@ const useHandleSignUpFormError = () => {
       false
     ).then((isConfirmed) => {
       if (isConfirmed) {
-        resetSignUpError();
+        dispatch(resetCurrentUserErrorMessage());
       }
     });
-  }, [fireSwal, currentUserError, resetSignUpError]);
+  }, [fireSwal, currentUserError, dispatch]);
 };
 
-export default useHandleSignUpFormError;
+export default useHandleSignUpFormErrorUseEffect;
