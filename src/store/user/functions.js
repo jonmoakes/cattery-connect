@@ -11,13 +11,13 @@ export const getRetrievedUserFromDocument = async () => {
   const user = await account.get();
 
   const queryIndex = "$id";
-  const queryValue = user.$id;
+  const id = user.$id;
 
   const userDocument = await listDocumentsByQueryOrSearch(
     databaseId,
     collectionId,
     queryIndex,
-    queryValue,
+    id,
     false,
     null
   );
@@ -28,14 +28,13 @@ export const getRetrievedUserFromDocument = async () => {
 
   if (total && documents.length) {
     const {
-      id,
       name,
       email,
       phoneNumber,
       role,
       address,
       isCatteryOwner,
-      createdAt,
+      catteryId,
       provider,
     } = documents[0];
 
@@ -47,8 +46,9 @@ export const getRetrievedUserFromDocument = async () => {
       role,
       address,
       isCatteryOwner,
-      createdAt,
+      catteryId,
       provider,
+      createdAt: user.$createdAt,
     };
   } else {
     return;
@@ -83,6 +83,7 @@ export const createDocumentAndSetUser = async (phoneNumber) => {
       role: "user",
       address: "",
       isCatteryOwner: false,
+      catteryId: "",
       provider: session.provider,
     };
 
