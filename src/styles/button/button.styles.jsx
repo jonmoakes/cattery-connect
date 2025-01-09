@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { rustRed, softBlack, warmBeige } from "../colours";
+import { rustRed, softBlack, teal, warmBeige } from "../colours";
 
 export const Button = styled.button`
   width: 250px;
@@ -16,6 +16,12 @@ export const Button = styled.button`
   transition: all 0.2s ease-in-out;
   outline: none;
   margin: 20px auto;
+
+  &.teal {
+    background-color: ${teal};
+    color: whitesmoke;
+    text-shadow: 0.5px 0.5px 0.5px ${softBlack};
+  }
 
   &:hover {
     transform: scale(1.05);
@@ -47,25 +53,4 @@ export const DisabledButton = styled(Button)`
   cursor: not-allowed;
   opacity: 0.5;
   pointer-events: none;
-`;
-
-export const YellowGreenButton = styled(Button)`
-  &.disabled {
-    margin: 0px auto 40px auto;
-    box-shadow: none;
-    cursor: not-allowed;
-    opacity: 0.5;
-    pointer-events: none;
-  }
-
-  &:hover {
-    background-color: lightgreen;
-    color: ${softBlack};
-    text-shadow: none;
-
-    @media screen and (max-width: 1366px) {
-      background-color: unset;
-      color: unset;
-    }
-  }
 `;

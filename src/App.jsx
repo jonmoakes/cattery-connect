@@ -12,7 +12,13 @@ import SkeletonBox from "./components/skeleton-box/skeleton-box.component";
 import PrivateRoutes from "./components/private-routes/private-routes.component";
 import "react-loading-skeleton/dist/skeleton.css";
 
-import { accountRoute, signInRoute, signUpRoute } from "./strings/routes";
+import {
+  accountRoute,
+  signInRoute,
+  signUpRoute,
+  uploadDatesAndPensDataRoute,
+} from "./strings/routes";
+import useGetCurrentUserSelectors from "./hooks/selectors/use-get-current-user-selectors";
 
 const Navigation = lazy(() =>
   import("./routes/navigation/navigation.component")
@@ -21,9 +27,14 @@ const Home = lazy(() => import("./routes/home/home.component"));
 const SignIn = lazy(() => import("./routes/sign-in/sign-in.component"));
 const SignUp = lazy(() => import("./routes/sign-up/sign-up.component"));
 const Account = lazy(() => import("./routes/account/account.component"));
-
+const UploadDatesAndPensData = lazy(() =>
+  import(
+    "./routes/db-management/upload-dates/upload-dates-and-pens-data.component"
+  )
+);
 function App() {
   useGetUserOnLoadThunkUseEffect();
+  const { currentUser, role } = useGetCurrentUserSelectors();
   useScrollToTop();
 
   return (
@@ -39,6 +50,14 @@ function App() {
             <Route path={signUpRoute} element={<SignUp />} />
             <Route element={<PrivateRoutes />}>
               <Route path={accountRoute} element={<Account />} />
+              <Route
+                path={uploadDatesAndPensDataRoute}
+                element={
+                  currentUser && role === "admin" ? (
+                    <UploadDatesAndPensData />
+                  ) : null
+                }
+              />
             </Route>
           </Routes>
         </Suspense>

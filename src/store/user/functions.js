@@ -27,16 +27,8 @@ export const getRetrievedUserFromDocument = async () => {
   const { total, documents } = userDocument;
 
   if (total && documents.length) {
-    const {
-      name,
-      email,
-      phoneNumber,
-      role,
-      address,
-      isCatteryOwner,
-      catteryId,
-      provider,
-    } = documents[0];
+    const { name, email, phoneNumber, role, address, catteryId, provider } =
+      documents[0];
 
     return {
       id,
@@ -45,7 +37,6 @@ export const getRetrievedUserFromDocument = async () => {
       phoneNumber,
       role,
       address,
-      isCatteryOwner,
       catteryId,
       provider,
       createdAt: user.$createdAt,
@@ -82,7 +73,6 @@ export const createDocumentAndSetUser = async (phoneNumber) => {
       phoneNumber,
       role: "user",
       address: "",
-      isCatteryOwner: false,
       catteryId: "",
       provider: session.provider,
     };

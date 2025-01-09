@@ -164,3 +164,15 @@ export const ErrorDiv = styled.div`
     width: 90%;
   }
 `;
+
+export const ColumnDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+
+  @media screen and (max-width: 800px) {
+    width: 100%;
+  }
+`;
