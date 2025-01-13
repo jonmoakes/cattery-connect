@@ -1,12 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { manageDatabaseDocument } from "../../utils/appwrite/appwrite-functions";
-
-const databaseId = import.meta.env.VITE_DATABASE_ID;
-const collectionId = import.meta.env.VITE_CATTERY_OWNERS_COLLECTION_ID;
+import {
+  catteryOwnersCollectionId,
+  databaseId,
+} from "../../constants/constants";
 
 export const uploadDatesAndPensAsync = createAsyncThunk(
-  " uploadDatesAndPens",
+  "uploadDatesAndPens",
   async ({ datesAndPensInfo, attributeKey, documentId }, thunkAPI) => {
     try {
       const jsonString = JSON.stringify(datesAndPensInfo);
@@ -18,7 +19,7 @@ export const uploadDatesAndPensAsync = createAsyncThunk(
       await manageDatabaseDocument(
         "update",
         databaseId,
-        collectionId,
+        catteryOwnersCollectionId,
         documentId,
         dataToUpdate
       );

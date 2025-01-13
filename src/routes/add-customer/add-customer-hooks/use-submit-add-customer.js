@@ -1,17 +1,25 @@
-import { isValidEmail } from "../../../functions/validate-email";
+import { useDispatch } from "react-redux";
+
 import useGetCustomerDetailsSelectors from "../../../hooks/selectors/use-get-customer-details-selectors";
+import { addCustomerAsync } from "../../../store/customer/customer.thunks";
 
 import useFireSwal from "../../../hooks/use-fire-swal";
+import useConfirmSwal from "../../../hooks/use-confirm-swal";
 
 import {
   enterPhoneNumberMessage,
   phoneLengthErrorMessage,
 } from "../../../strings/errors";
 
+import { isValidEmail } from "../../../functions/validate-email";
+
 const useSubmitAddCustomer = () => {
-  const { email, phoneNumber } = useGetCustomerDetailsSelectors();
+  const { email, phoneNumber, customerDetails } =
+    useGetCustomerDetailsSelectors();
 
   const { fireSwal } = useFireSwal();
+  const { confirmSwal } = useConfirmSwal();
+  const dispatch = useDispatch();
 
   const submitAddCustomer = (e) => {
     e.preventDefault();
@@ -23,7 +31,14 @@ const useSubmitAddCustomer = () => {
     } else if (phoneNumber && phoneNumber.length !== 11) {
       fireSwal("error", phoneLengthErrorMessage, "", 0, "", false, "", false);
     } else {
-      alert("customer added!");
+      confirmSwal(
+        "add this customer?",
+        "",
+        "yes",
+        "",
+        () => dispatch(addCustomerAsync({ customerDetails })),
+        null
+      );
     }
   };
 
