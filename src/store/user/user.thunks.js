@@ -1,11 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { account } from "../../utils/appwrite/appwrite-config";
-import { ID } from "appwrite";
 
-import {
-  getRetrievedUserFromDocument,
-  createDocumentAndSetUser,
-} from "./functions";
+import { getRetrievedUserFromDocument } from "./functions";
 
 export const getUserOnLoadAsync = createAsyncThunk(
   "user/getUserOnLoad",
@@ -18,13 +14,9 @@ export const getUserOnLoadAsync = createAsyncThunk(
 
       const retrievedUser = await getRetrievedUserFromDocument();
 
-      const createdUser = await createDocumentAndSetUser();
-
       if (retrievedUser) {
         return retrievedUser;
-      } else if (createdUser) {
-        return createdUser;
-      } else if (!retrievedUser && !createdUser) {
+      } else {
         return null;
       }
     } catch (error) {
@@ -40,21 +32,6 @@ export const signInAsync = createAsyncThunk(
       email = email.toLowerCase();
       await account.createEmailPasswordSession(email, password);
       return await getRetrievedUserFromDocument();
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
-export const signUpAsync = createAsyncThunk(
-  "user/signUp",
-  async ({ email, name, password, phoneNumber }, thunkAPI) => {
-    try {
-      email = email.toLowerCase();
-      name = name.toLowerCase();
-      await account.create(ID.unique(), email, password, name);
-      await account.createEmailPasswordSession(email, password);
-      return await createDocumentAndSetUser(phoneNumber);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

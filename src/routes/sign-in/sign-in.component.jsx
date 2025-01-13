@@ -4,7 +4,6 @@ import useHandleSignInFormChange from "./sign-in-form-hooks/use-handle-sign-in-f
 import useSignInPasswordIsVisibleUseEffect from "./sign-in-form-hooks/use-sign-in-password-is-visible-use-effect";
 
 import AuthNavAndLoader from "../../components/auth-nav-and-loader/auth-nav-and-loader.component";
-import TitleAndSignUpLink from "./title-and-sign-up-link.component";
 import SignInEmail from "./sign-in-email.component";
 import SignInPassword from "./sign-in-password.component";
 import SignInButtons from "./sign-in-buttons.component";
@@ -22,7 +21,9 @@ const SignIn = () => {
   return (
     <Container>
       <AuthNavAndLoader />
-      <TitleAndSignUpLink />
+      <ParentDiv>
+        <h1>sign in</h1>
+      </ParentDiv>
 
       <ParentDiv>
         <Form onSubmit={signInFormSubmit}>

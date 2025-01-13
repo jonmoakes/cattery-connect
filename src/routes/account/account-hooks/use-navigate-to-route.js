@@ -3,6 +3,8 @@ import useHamburgerHandlerNavigate from "../../../hooks/use-hamburger-handler-na
 import {
   uploadDatesAndPensDataRoute,
   addBookingRoute,
+  addCustomerRoute,
+  addCatRoute,
 } from "../../../strings/routes";
 
 const useNavigateToRoute = () => {
@@ -21,6 +23,16 @@ const useNavigateToRoute = () => {
       id: 2,
       text: "add booking",
       onClick: () => hamburgerHandlerNavigate(addBookingRoute),
+    },
+    {
+      id: 3,
+      text: "add a customer",
+      onClick: () => hamburgerHandlerNavigate(addCustomerRoute),
+    },
+    {
+      id: 4,
+      text: "add a cat",
+      onClick: () => hamburgerHandlerNavigate(addCatRoute),
     },
   ];
 

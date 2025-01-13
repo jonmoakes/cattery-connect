@@ -28,6 +28,10 @@ export const RedSpan = styled.span`
   color: red;
 `;
 
+export const LowercasedSpan = styled.span`
+  text-transform: lowercase;
+`;
+
 export const SignInPasswordEye = styled.span.withConfig({
   shouldForwardProp: (prop) => prop !== "signInPasswordIsVisible",
 })`
@@ -50,20 +54,4 @@ export const SignInPasswordEye = styled.span.withConfig({
   @media screen and (max-width: 450px) {
     right: 20px;
   }
-`;
-
-export const SignUpPasswordEye = styled(SignInPasswordEye).withConfig({
-  shouldForwardProp: (prop) => prop !== "signUpPasswordIsVisible",
-})`
-  background-image: ${(props) =>
-    `url(${props.signUpPasswordIsVisible ? eyeIconHide : eyeIcon})`};
-`;
-
-export const SignUpConfirmPasswordEye = styled(SignInPasswordEye).withConfig({
-  shouldForwardProp: (prop) => prop !== "signUpConfirmPasswordIsVisible",
-})`
-  background-image: ${(props) =>
-    `url(${props.signUpConfirmPasswordIsVisible ? eyeIconHide : eyeIcon})`};
-  width: ${(props) =>
-    `url(${props.signUpConfirmPasswordIsVisible ? "25px" : "30px"})`};
 `;

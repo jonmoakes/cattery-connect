@@ -1,11 +1,6 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
 
-import {
-  getUserOnLoadAsync,
-  signInAsync,
-  signUpAsync,
-  signOutAsync,
-} from "./user.thunks";
+import { getUserOnLoadAsync, signInAsync, signOutAsync } from "./user.thunks";
 
 const initialState = {
   currentUser: null,
@@ -60,19 +55,6 @@ const userSlice = createSlice({
         state.currentUserError = null;
       })
       .addCase(signInAsync.rejected, (state, action) => {
-        state.currentUserIsLoading = false;
-        state.currentUser = null;
-        state.currentUserError = action.payload;
-      })
-      .addCase(signUpAsync.pending, (state) => {
-        state.currentUserIsLoading = true;
-      })
-      .addCase(signUpAsync.fulfilled, (state, action) => {
-        state.currentUserIsLoading = false;
-        state.currentUser = action.payload;
-        state.currentUserError = null;
-      })
-      .addCase(signUpAsync.rejected, (state, action) => {
         state.currentUserIsLoading = false;
         state.currentUser = null;
         state.currentUserError = action.payload;

@@ -6,6 +6,7 @@ import NavNoUser from "./nav-no-user.component";
 import NavSignOut from "./nav-sign-out.component";
 
 import { Nav, Menu } from "../../styles/div/div.styles";
+import NavUserSignedIn from "./nav-user-signed-in.component";
 
 const Navigation = () => {
   const { showHamburgerMenu } = useGetHamburgerMenuSelectors();
@@ -17,6 +18,7 @@ const Navigation = () => {
         <NavHamburger />
         <Menu {...{ showHamburgerMenu }}>
           <NavNoUser />
+          <NavUserSignedIn />
           <NavSignOut />
         </Menu>
       </Nav>

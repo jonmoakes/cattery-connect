@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { gentleGrey, softBlack } from "./styles/colours";
+import { customYellow, gentleGrey, softBlack } from "./styles/colours";
 
 const GlobalStyles = createGlobalStyle`
 
@@ -40,6 +40,11 @@ const GlobalStyles = createGlobalStyle`
 
   p {
     color: ${softBlack};
+
+    &.yellow {
+      color: ${customYellow};
+      text-shadow: 1px 1px 1px ${softBlack};
+    }
   }
 `;
 

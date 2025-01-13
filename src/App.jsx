@@ -1,7 +1,9 @@
 import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
+import "react-loading-skeleton/dist/skeleton.css";
 
+import useGetCurrentUserSelectors from "./hooks/selectors/use-get-current-user-selectors";
 import useGetUserOnLoadThunkUseEffect from "./hooks/use-get-user-on-load-thunk-use-effect";
 import useScrollToTop from "./hooks/use-scroll-to-top";
 
@@ -10,29 +12,32 @@ import "./App.css";
 import ErrorFallback from "./components/errors/error-fallback.component";
 import SkeletonBox from "./components/skeleton-box/skeleton-box.component";
 import PrivateRoutes from "./components/private-routes/private-routes.component";
-import "react-loading-skeleton/dist/skeleton.css";
 
 import {
   accountRoute,
+  addCatRoute,
+  addCustomerRoute,
   signInRoute,
-  signUpRoute,
   uploadDatesAndPensDataRoute,
 } from "./strings/routes";
-import useGetCurrentUserSelectors from "./hooks/selectors/use-get-current-user-selectors";
 
 const Navigation = lazy(() =>
   import("./routes/navigation/navigation.component")
 );
 const Home = lazy(() => import("./routes/home/home.component"));
 const SignIn = lazy(() => import("./routes/sign-in/sign-in.component"));
-const SignUp = lazy(() => import("./routes/sign-up/sign-up.component"));
 const Account = lazy(() => import("./routes/account/account.component"));
 const UploadDatesAndPensData = lazy(() =>
   import(
     "./routes/db-management/upload-dates/upload-dates-and-pens-data.component"
   )
 );
-function App() {
+const AddCat = lazy(() => import("./routes/add-cat/add-cat.component"));
+const AddCustomer = lazy(() =>
+  import("./routes/add-customer/add-customer.component")
+);
+
+const App = () => {
   useGetUserOnLoadThunkUseEffect();
   const { currentUser, role } = useGetCurrentUserSelectors();
   useScrollToTop();
@@ -47,7 +52,6 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path={signInRoute} element={<SignIn />} />
-            <Route path={signUpRoute} element={<SignUp />} />
             <Route element={<PrivateRoutes />}>
               <Route path={accountRoute} element={<Account />} />
               <Route
@@ -58,12 +62,22 @@ function App() {
                   ) : null
                 }
               />
+              <Route
+                path={addCatRoute}
+                element={currentUser && role === "owner" ? <AddCat /> : null}
+              />
+              <Route
+                path={addCustomerRoute}
+                element={
+                  currentUser && role === "owner" ? <AddCustomer /> : null
+                }
+              />
             </Route>
           </Routes>
         </Suspense>
       </ErrorBoundary>
     </>
   );
-}
+};
 
 export default App;

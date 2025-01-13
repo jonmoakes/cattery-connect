@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { rustRed, softBlack, teal, warmBeige } from "../colours";
+import { customYellow, rustRed, softBlack, teal, warmBeige } from "../colours";
 
 export const Button = styled.button`
   width: 250px;
@@ -21,6 +21,25 @@ export const Button = styled.button`
     background-color: ${teal};
     color: whitesmoke;
     text-shadow: 0.5px 0.5px 0.5px ${softBlack};
+  }
+
+  &.add-booking {
+    background-color: ${customYellow};
+    color: ${softBlack};
+
+    &:hover {
+      background-color: orange;
+      color: ${softBlack};
+
+      @media screen and (max-width: 1366px) {
+        transition: none;
+
+        &:hover {
+          background-color: ${customYellow};
+          color: ${softBlack};
+        }
+      }
+    }
   }
 
   &:hover {

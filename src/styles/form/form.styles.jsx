@@ -44,7 +44,7 @@ export const StyledInput = styled.input`
   font-size: 18px;
   font-family: inherit;
   outline: none;
-  background-color: whitesmoke;
+  background-color: ${gentleGrey};
   appearance: none;
   color: ${softBlack};
 
@@ -144,13 +144,13 @@ export const StyledTextArea = styled.textarea`
   border: 2px solid ${softBlack};
   border-radius: 5px;
   box-sizing: border-box;
-  margin: 10px auto 30px auto;
+  margin: 10px auto;
   font-size: 18px;
   height: 200px;
   font-family: inherit;
   outline: none;
   text-transform: capitalize;
-  background-color: whitesmoke;
+  background-color: ${gentleGrey};
   color: ${softBlack};
 
   &:focus {
@@ -367,7 +367,7 @@ export const StyledCheckbox = styled.input`
   /* Remove most all native input styles */
   appearance: none;
   /* For iOS < 15 */
-  background-color: whitesmoke;
+  background-color: ${gentleGrey};
   /* Not removed via appearance */
   margin: 10px auto 0px auto;
   font-family: inherit;

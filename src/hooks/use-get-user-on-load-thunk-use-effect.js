@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import useGetCurrentUserSelectors from "./selectors/use-get-current-user-selectors";
 import { getUserOnLoadAsync } from "../store/user/user.thunks";
 
-import { signInRoute, signUpRoute } from "../strings/routes";
+import { signInRoute } from "../strings/routes";
 import { appwriteNoUserError } from "../strings/errors";
 
 const useGetUserOnLoadThunkUseEffect = () => {
@@ -19,7 +19,6 @@ const useGetUserOnLoadThunkUseEffect = () => {
     if (
       currentUser ||
       path === signInRoute ||
-      path === signUpRoute ||
       currentUserError === appwriteNoUserError
     )
       return;
