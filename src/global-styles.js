@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { customYellow, gentleGrey, softBlack } from "./styles/colours";
+import { gentleGrey, softBlack, teal } from "./styles/colours";
 
 const GlobalStyles = createGlobalStyle`
 
@@ -31,7 +31,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h1 {
-    color: #006D6A;
+    color: ${teal};
 
     @media screen and (max-width: 600px) {
     font-size: 24px;
@@ -40,11 +40,6 @@ const GlobalStyles = createGlobalStyle`
 
   p {
     color: ${softBlack};
-
-    &.yellow {
-      color: ${customYellow};
-      text-shadow: 1px 1px 1px ${softBlack};
-    }
   }
 `;
 

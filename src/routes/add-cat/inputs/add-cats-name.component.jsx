@@ -1,6 +1,3 @@
-import Balancer from "react-wrap-balancer";
-import PropTypes from "prop-types";
-
 import useGetCatsDetailsSelectors from "../../../hooks/selectors/use-get-cats-details-selectors";
 
 import { StyledInput, Label } from "../../../styles/form/form.styles";
@@ -12,10 +9,8 @@ const AddCatsName = ({ handleAddCatsDetailsChange }) => {
   return (
     <>
       <Label>
-        <Balancer>
-          <RedSpan>* </RedSpan>
-          cats name:
-        </Balancer>
+        <RedSpan>* </RedSpan>
+        cats name:
       </Label>
 
       <StyledInput
@@ -27,10 +22,6 @@ const AddCatsName = ({ handleAddCatsDetailsChange }) => {
       />
     </>
   );
-};
-
-AddCatsName.propTypes = {
-  handleAddCatsDetailsChange: PropTypes.func.isRequired,
 };
 
 export default AddCatsName;

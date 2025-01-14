@@ -1,5 +1,3 @@
-import PropTypes from "prop-types";
-
 import useGetUploadDatesAndPensDataSelectors from "../../../hooks/selectors/use-get-upload-dates-and-pens-data-selectors";
 
 import { Label, StyledInput } from "../../../styles/form/form.styles";
@@ -24,7 +22,4 @@ const UploadDatesAndPensDataAmPens = ({ handleDatesAndPensChange }) => {
   );
 };
 
-UploadDatesAndPensDataAmPens.propTypes = {
-  handleDatesAndPensChange: PropTypes.func.isRequired,
-};
 export default UploadDatesAndPensDataAmPens;

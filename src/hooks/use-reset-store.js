@@ -9,7 +9,7 @@ import {
   signInRoute,
   uploadDatesAndPensDataRoute,
 } from "../strings/routes";
-import { resetCustomerState } from "../store/customer/customer.slice";
+import { resetAddCustomerState } from "../store/add-customer/add-customer.slice";
 
 const useResetStore = () => {
   const location = useLocation();
@@ -25,7 +25,7 @@ const useResetStore = () => {
         dispatch(resetUploadDatesAndPensDataState());
         break;
       case addCustomerRoute:
-        dispatch(resetCustomerState());
+        dispatch(resetAddCustomerState());
         break;
       default:
         return;

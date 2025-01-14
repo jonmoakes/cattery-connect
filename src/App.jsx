@@ -17,6 +17,7 @@ import {
   accountRoute,
   addCatRoute,
   addCustomerRoute,
+  allCustomersRoute,
   signInRoute,
   uploadDatesAndPensDataRoute,
 } from "./strings/routes";
@@ -35,6 +36,9 @@ const UploadDatesAndPensData = lazy(() =>
 const AddCat = lazy(() => import("./routes/add-cat/add-cat.component"));
 const AddCustomer = lazy(() =>
   import("./routes/add-customer/add-customer.component")
+);
+const AllCustomers = lazy(() =>
+  import("./routes/all-customers/all-customers.component")
 );
 
 const App = () => {
@@ -70,6 +74,13 @@ const App = () => {
                 path={addCustomerRoute}
                 element={
                   currentUser && role === "owner" ? <AddCustomer /> : null
+                }
+              />
+
+              <Route
+                path={allCustomersRoute}
+                element={
+                  currentUser && role === "owner" ? <AllCustomers /> : null
                 }
               />
             </Route>

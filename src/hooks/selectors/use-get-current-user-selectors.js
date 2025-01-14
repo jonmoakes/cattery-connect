@@ -6,17 +6,7 @@ const useGetCurrentUserSelectors = () => {
     selectCurrentUserSelectors
   );
 
-  const {
-    email,
-    id,
-    name,
-    phoneNumber,
-    provider,
-    role,
-    catteryId,
-    address,
-    createdAt,
-  } = currentUser ?? {};
+  const { email, id, name, role, catteryId } = currentUser ?? {};
 
   return {
     currentUser,
@@ -25,12 +15,8 @@ const useGetCurrentUserSelectors = () => {
     email,
     id,
     name,
-    phoneNumber,
-    provider,
     role,
     catteryId,
-    address,
-    createdAt,
   };
 };
 

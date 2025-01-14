@@ -4,7 +4,7 @@ import {
   uploadDatesAndPensDataRoute,
   addBookingRoute,
   addCustomerRoute,
-  addCatRoute,
+  allCustomersRoute,
 } from "../../../strings/routes";
 
 const useNavigateToRoute = () => {
@@ -26,13 +26,13 @@ const useNavigateToRoute = () => {
     },
     {
       id: 3,
-      text: "add a customer",
-      onClick: () => hamburgerHandlerNavigate(addCustomerRoute),
+      text: "view customers",
+      onClick: () => hamburgerHandlerNavigate(allCustomersRoute),
     },
     {
       id: 4,
-      text: "add a cat",
-      onClick: () => hamburgerHandlerNavigate(addCatRoute),
+      text: "add a customer",
+      onClick: () => hamburgerHandlerNavigate(addCustomerRoute),
     },
   ];
 

@@ -6,7 +6,8 @@ import { signInFormReducer } from "./sign-in-form/sign-in-form.slice";
 import { userReducer } from "./user/user.slice";
 import { uploadDatesAndPensDataReducer } from "./upload-dates-and-pens-data/upload-dates-and-pens-data.slice";
 import { catsReducer } from "./cats/cats.slice";
-import { customerReducer } from "./customer/customer.slice";
+import { addCustomerReducer } from "./add-customer/add-customer.slice";
+import { getAllCustomersReducer } from "./get-all-customers/get-all-customers.slice";
 
 export const rootReducer = combineReducers({
   hamburgerMenu: hamburgerMenuReducer,
@@ -15,5 +16,6 @@ export const rootReducer = combineReducers({
   user: userReducer,
   uploadDatesAndPensData: uploadDatesAndPensDataReducer,
   cats: catsReducer,
-  customer: customerReducer,
+  addCustomer: addCustomerReducer,
+  getAllCustomers: getAllCustomersReducer,
 });

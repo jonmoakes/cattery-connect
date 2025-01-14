@@ -10,10 +10,15 @@ import AddCatButton from "./add-cat-button.component";
 import { Container } from "../../styles/container/container.styles";
 import { ParentDiv } from "../../styles/div/div.styles";
 import { Form } from "../../styles/form/form.styles";
+import { useLocation } from "react-router-dom";
 
 const AddCat = () => {
   const { submitAddCat } = useSubmitAddCat();
   const { handleAddCatsDetailsChange } = useHandleAddCatsDetailsChange();
+  const location = useLocation();
+  const customerId = location.state;
+
+  console.log(customerId);
 
   return (
     <Container>

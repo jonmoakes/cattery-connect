@@ -1,16 +1,16 @@
 import { useDispatch } from "react-redux";
 
-import useGetCustomerDetailsSelectors from "../../../hooks/selectors/use-get-customer-details-selectors";
+import useGetAddCustomerDetailsSelectors from "../../../hooks/selectors/use-get-add-customer-details-selectors";
 
-import { setCustomerDetails } from "../../../store/customer/customer.slice";
+import { setAddCustomerDetails } from "../../../store/add-customer/add-customer.slice";
 
 const useHandleAddCustomerDetailsChange = () => {
-  const { customerDetails } = useGetCustomerDetailsSelectors();
+  const { addCustomerDetails } = useGetAddCustomerDetailsSelectors();
   const dispatch = useDispatch();
 
   const handleAddCustomerDetailsChange = (event) => {
     const { value, name } = event.target;
-    dispatch(setCustomerDetails({ ...customerDetails, [name]: value }));
+    dispatch(setAddCustomerDetails({ ...addCustomerDetails, [name]: value }));
   };
 
   return { handleAddCustomerDetailsChange };

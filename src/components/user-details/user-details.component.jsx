@@ -17,10 +17,8 @@ const UserDetails = () => {
             return (
               <div style={{ width: "100%" }} key={key}>
                 <h3>{key}</h3>
-                {key === "email" || key === "catteryId" ? (
+                {key === "email" ? (
                   <p style={{ textTransform: "lowerCase" }}>{value}</p>
-                ) : key === "address" && !value ? (
-                  <p>not given</p>
                 ) : key === "createdAt" ? (
                   <p>{format(value, "EEEE dd MMMM yyyy")}</p>
                 ) : (

@@ -1,5 +1,3 @@
-import PropTypes from "prop-types";
-
 import useGetSignInFormSelectors from "../../hooks/selectors/use-get-sign-in-form-selectors";
 
 import { StyledInput, Label } from "../../styles/form/form.styles";
@@ -22,10 +20,6 @@ const SignInEmail = ({ handleSignInFormChange }) => {
       />
     </>
   );
-};
-
-SignInEmail.propTypes = {
-  handleSignInFormChange: PropTypes.func.isRequired,
 };
 
 export default SignInEmail;

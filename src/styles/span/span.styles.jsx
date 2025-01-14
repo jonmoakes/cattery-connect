@@ -1,9 +1,12 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+import { zoomInLeft } from "react-animations";
 
 import eyeIcon from "../../assets/eye.png";
 import eyeIconHide from "../../assets/hide-eye.png";
 
-import { teal, softBlack } from "../colours";
+import { teal, softBlack, customYellow } from "../colours";
+
+const zoomInLeftAnimation = keyframes`${zoomInLeft}`;
 
 export const BorderLink = styled.span`
   color: ${teal};
@@ -28,8 +31,20 @@ export const RedSpan = styled.span`
   color: red;
 `;
 
+export const YellowSpan = styled.span`
+  color: ${customYellow};
+`;
+
 export const LowercasedSpan = styled.span`
   text-transform: lowercase;
+
+  &.right-margin {
+    margin-right: 10px;
+  }
+
+  &.animate {
+    animation: 0.5s ${zoomInLeftAnimation};
+  }
 `;
 
 export const SignInPasswordEye = styled.span.withConfig({
@@ -54,4 +69,33 @@ export const SignInPasswordEye = styled.span.withConfig({
   @media screen and (max-width: 450px) {
     right: 20px;
   }
+`;
+
+export const ClearButtonExampleSpan = styled.span`
+  background-color: tomato;
+  color: ${softBlack};
+  padding: 5px 10px;
+  border: 1px solid ${softBlack};
+  border-radius: 5px;
+  text-transform: lowercase;
+`;
+
+export const SpanWithBackground = styled.span`
+  color: tomato;
+  background-color: ${softBlack};
+  padding: 5px;
+  border-radius: 5px;
+  text-transform: capitalize;
+`;
+
+export const RightMarginSpan = styled.span`
+  margin-right: 10px;
+
+  &.animate {
+    animation: 0.5s ${zoomInLeftAnimation};
+  }
+`;
+
+export const EmergencyDetailsSpan = styled.span`
+  margin-left: 10px;
 `;

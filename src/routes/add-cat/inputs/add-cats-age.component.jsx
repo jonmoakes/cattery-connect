@@ -1,5 +1,3 @@
-import PropTypes from "prop-types";
-
 import useGetCatsDetailsSelectors from "../../../hooks/selectors/use-get-cats-details-selectors";
 
 import { StyledInput, Label } from "../../../styles/form/form.styles";
@@ -19,10 +17,6 @@ const AddCatsAge = ({ handleAddCatsDetailsChange }) => {
       />
     </>
   );
-};
-
-AddCatsAge.propTypes = {
-  handleAddCatsDetailsChange: PropTypes.func.isRequired,
 };
 
 export default AddCatsAge;

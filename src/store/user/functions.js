@@ -24,19 +24,14 @@ export const getRetrievedUserFromDocument = async () => {
   const { total, documents } = userDocument;
 
   if (total && documents.length) {
-    const { customerId, name, email, phoneNumber, role, address, catteryId } =
-      documents[0];
+    const { name, email, role, catteryId } = documents[0];
 
     return {
       id,
-      customerId,
       name,
       email,
-      phoneNumber,
       role,
-      address,
       catteryId,
-      createdAt: user.$createdAt,
     };
   } else {
     return;

@@ -1,12 +1,10 @@
-import PropTypes from "prop-types";
-
-import useGetCustomerDetailsSelectors from "../../../hooks/selectors/use-get-customer-details-selectors";
+import useGetAddCustomerDetailsSelectors from "../../../hooks/selectors/use-get-add-customer-details-selectors";
 
 import { StyledInput, Label } from "../../../styles/form/form.styles";
 import { RedSpan } from "../../../styles/span/span.styles";
 
 const AddCustomerName = ({ handleAddCustomerDetailsChange }) => {
-  const { name } = useGetCustomerDetailsSelectors();
+  const { name } = useGetAddCustomerDetailsSelectors();
 
   return (
     <>
@@ -24,10 +22,6 @@ const AddCustomerName = ({ handleAddCustomerDetailsChange }) => {
       />
     </>
   );
-};
-
-AddCustomerName.propTypes = {
-  handleAddCustomerDetailsChange: PropTypes.func.isRequired,
 };
 
 export default AddCustomerName;

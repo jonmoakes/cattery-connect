@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { gentleGrey, rustRed, softBlack, teal } from "../colours";
+import { dustyBlue, gentleGrey, rustRed, softBlack, teal } from "../colours";
 
 export const Form = styled.form`
   width: 75%;
@@ -45,7 +45,6 @@ export const StyledInput = styled.input`
   font-family: inherit;
   outline: none;
   background-color: ${gentleGrey};
-  appearance: none;
   color: ${softBlack};
 
   &:focus {
@@ -57,22 +56,6 @@ export const StyledInput = styled.input`
     text-transform: capitalize;
   }
 
-  &::-webkit-input-placeholder {
-    text-transform: capitalize;
-  }
-
-  &::-moz-placeholder {
-    text-transform: capitalize;
-  }
-
-  &:-ms-input-placeholder {
-    text-transform: capitalize;
-  }
-
-  &::-ms-input-placeholder {
-    text-transform: capitalize;
-  }
-
   @media screen and (max-width: 1366px) {
     &:focus {
       box-shadow: none;
@@ -81,44 +64,10 @@ export const StyledInput = styled.input`
 
   @media screen and (max-width: 450px) {
     font-size: 16px;
-
-    &::-webkit-input-placeholder {
-      font-size: 16px;
-    }
-
-    &::-moz-placeholder {
-      font-size: 16px;
-    }
-
-    &:-ms-input-placeholder {
-      font-size: 16px;
-    }
-
-    &::-ms-input-placeholder {
-      font-size: 16px;
-    }
   }
 
   @media screen and (max-width: 320px) {
     height: 40px;
-  }
-
-  @media screen and (max-width: 280px) {
-    &::-webkit-input-placeholder {
-      font-size: 14px;
-    }
-
-    &::-moz-placeholder {
-      font-size: 14px;
-    }
-
-    &:-ms-input-placeholder {
-      font-size: 14px;
-    }
-
-    &::-ms-input-placeholder {
-      font-size: 14px;
-    }
   }
 `;
 
@@ -165,39 +114,11 @@ export const StyledTextArea = styled.textarea`
   }
 
   @media screen and (max-width: 600px) {
-    &::-webkit-input-placeholder {
-      font-size: 16px;
-    }
-
-    &::-moz-placeholder {
-      font-size: 16px;
-    }
-
-    &:-ms-input-placeholder {
-      font-size: 16px;
-    }
-
-    &::-ms-input-placeholder {
-      font-size: 16px;
-    }
+    font-size: 16px;
   }
 
   @media screen and (max-width: 400px) {
-    &::-webkit-input-placeholder {
-      font-size: 14px;
-    }
-
-    &::-moz-placeholder {
-      font-size: 14px;
-    }
-
-    &:-ms-input-placeholder {
-      font-size: 14px;
-    }
-
-    &::-ms-input-placeholder {
-      font-size: 14px;
-    }
+    font-size: 14px;
   }
 `;
 
@@ -288,8 +209,7 @@ export const SearchInput = styled.input`
   outline: none;
   height: 50px;
   border-radius: 5px;
-  background: radial-gradient(circle, whitesmoke, ${gentleGrey});
-  outline: none;
+  background-color: whitesmoke;
   border: 2px solid ${softBlack};
   padding-left: 20px;
   font-family: inherit;
@@ -300,58 +220,14 @@ export const SearchInput = styled.input`
     border-color: ${rustRed};
   }
 
-  /* clears the ‘X’ from Internet Explorer */
-  ::-ms-clear {
-    display: none;
-    width: 0;
-    height: 0;
-  }
-  ::-ms-reveal {
-    display: none;
-    width: 0;
-    height: 0;
-  }
-  /* clears the ‘X’ from Chrome */
-  ::-webkit-search-decoration,
-  ::-webkit-search-cancel-button,
-  ::-webkit-search-results-button,
-  ::-webkit-search-results-decoration {
-    display: none;
-  }
-
-  :-webkit-input-placeholder {
-    font-size: 16px;
-
-    @media screen and (max-width: 280px) {
-      font-size: 14px;
-    }
-  }
-
-  ::-moz-placeholder {
-    font-size: 16px;
-
-    @media screen and (max-width: 280px) {
-      font-size: 14px;
-    }
-  }
-  :-ms-input-placeholder {
-    font-size: 16px;
-
-    @media screen and (max-width: 280px) {
-      font-size: 14px;
-    }
-  }
   ::placeholder {
     font-size: 16px;
-
-    @media screen and (max-width: 280px) {
-      font-size: 14px;
-    }
   }
 
   @media screen and (max-width: 850px) {
     margin: 0px auto 0px auto;
   }
+
   @media screen and (max-width: 450px) {
     height: 40px;
   }
@@ -362,13 +238,8 @@ export const SearchInput = styled.input`
 `;
 
 export const StyledCheckbox = styled.input`
-  /* Add if not using autoprefixer */
-  -webkit-appearance: none;
-  /* Remove most all native input styles */
   appearance: none;
-  /* For iOS < 15 */
   background-color: ${gentleGrey};
-  /* Not removed via appearance */
   margin: 10px auto 0px auto;
   font-family: inherit;
 
@@ -392,7 +263,6 @@ export const StyledCheckbox = styled.input`
     transform: scale(0);
     transform-origin: bottom left;
     transition: 120ms transform ease-in-out;
-    /* Windows High Contrast Mode */
     background-color: ${teal};
   }
 

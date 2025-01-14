@@ -2,8 +2,6 @@ import { ColumnDiv } from "../../styles/div/div.styles";
 import { Button } from "../../styles/button/button.styles";
 import { BlackHr } from "../../styles/hr/hr.styles";
 
-import PropTypes from "prop-types";
-
 const RenderButtonsList = ({ buttons }) => (
   <>
     {buttons.map((button) => {
@@ -20,9 +18,5 @@ const RenderButtonsList = ({ buttons }) => (
     })}
   </>
 );
-
-RenderButtonsList.propTypes = {
-  buttons: PropTypes.array.isRequired,
-};
 
 export default RenderButtonsList;

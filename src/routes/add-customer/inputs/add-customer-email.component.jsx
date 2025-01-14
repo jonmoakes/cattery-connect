@@ -1,11 +1,9 @@
-import PropTypes from "prop-types";
-
-import useGetCustomerDetailsSelectors from "../../../hooks/selectors/use-get-customer-details-selectors";
+import useGetAddCustomerDetailsSelectors from "../../../hooks/selectors/use-get-add-customer-details-selectors";
 
 import { StyledInput, Label } from "../../../styles/form/form.styles";
 
 const AddCustomerEmail = ({ handleAddCustomerDetailsChange }) => {
-  const { email } = useGetCustomerDetailsSelectors();
+  const { email } = useGetAddCustomerDetailsSelectors();
 
   return (
     <>
@@ -19,10 +17,6 @@ const AddCustomerEmail = ({ handleAddCustomerDetailsChange }) => {
       />
     </>
   );
-};
-
-AddCustomerEmail.propTypes = {
-  handleAddCustomerDetailsChange: PropTypes.func.isRequired,
 };
 
 export default AddCustomerEmail;

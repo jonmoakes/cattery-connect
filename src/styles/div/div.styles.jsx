@@ -1,5 +1,10 @@
-import styled from "styled-components";
-import { softBlack, warmBeige } from "../colours";
+import styled, { keyframes } from "styled-components";
+import { gentleGrey, softBlack, teal, warmBeige } from "../colours";
+
+import { bounceInDown, slideInLeft } from "react-animations";
+
+const bounceInDownAnimation = keyframes`${bounceInDown}`;
+const slideInLeftAnimation = keyframes`${slideInLeft}`;
 
 export const Nav = styled.div`
   background-color: ${warmBeige};
@@ -138,7 +143,7 @@ export const TopMarginDiv = styled.div`
 `;
 
 export const ErrorDiv = styled.div`
-  background-color: lightPink;
+  background-color: ${teal};
   padding: 10px 10px 30px 10px;
   border: 2px solid ${softBlack};
   border-radius: 5px;
@@ -147,6 +152,11 @@ export const ErrorDiv = styled.div`
   height: auto;
   box-shadow: 6px 6px 15px ${softBlack};
   padding: 0px 10px;
+
+  p {
+    color: whitesmoke;
+    text-shadow: 1px 1px 1px ${softBlack};
+  }
 
   &.fetch-error {
     margin: 20px auto;
@@ -175,4 +185,117 @@ export const ColumnDiv = styled.div`
   @media screen and (max-width: 800px) {
     width: 100%;
   }
+`;
+
+export const NoSearchResultDiv = styled.div`
+  width: 50%;
+  height: auto;
+  margin: 0px auto 50px auto;
+  background-color: ${warmBeige};
+  padding: 20px;
+  border-radius: 15px;
+  animation: 0.5s ${bounceInDownAnimation};
+  border: 2px solid ${softBlack};
+
+  &.no-search {
+    margin: -10px auto 40px auto;
+
+    @media screen and (max-width: 850px) {
+      margin: 40px auto;
+    }
+  }
+
+  @media screen and (max-width: 1366px) {
+    width: 80%;
+  }
+
+  @media screen and (max-width: 850px) {
+    margin: 50px auto 50px auto;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 90%;
+  }
+`;
+
+export const TableDiv = styled.div`
+  margin: 0px auto 100px auto;
+  width: 75%;
+  height: auto;
+
+  @media screen and (max-width: 1366px) {
+    width: 95%;
+    overflow: auto;
+    box-shadow: none;
+    margin: 20px auto 100px auto;
+  }
+`;
+
+export const PaginationDiv = styled(ParentDiv)`
+  margin: -150px auto 0px auto;
+  width: 50%;
+  border: 2px solid ${softBlack};
+  box-shadow: none;
+  background-color: ${gentleGrey};
+  padding-bottom: 20px;
+
+  @media screen and (max-width: 1366px) {
+    margin: -50px auto 0px auto;
+  }
+  @media screen and (max-width: 600px) {
+    width: 90%;
+  }
+`;
+
+export const PaginationTextDiv = styled.div`
+  margin-bottom: 20px;
+`;
+
+export const TableSearchDiv = styled.div`
+  width: 50%;
+  position: relative;
+  margin: 0px auto -30px auto;
+  animation: 0.5s ${slideInLeftAnimation};
+
+  &.no-checkbox {
+    margin: 0px auto 0px auto;
+
+    @media screen and (max-width: 450px) {
+      margin: 0px auto 40px auto;
+    }
+  }
+
+  @media screen and (max-width: 1366px) {
+    width: 70%;
+  }
+
+  @media screen and (max-width: 450px) {
+    width: 80%;
+    margin: 0px auto 0px auto;
+  }
+`;
+
+export const InLineDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.wrap-text {
+    white-space: "pre-wrap";
+  }
+`;
+
+export const EmergencyDetailsDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const ErrorFallbackImageDiv = styled.div`
+  width: 90%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px auto -30px auto;
 `;

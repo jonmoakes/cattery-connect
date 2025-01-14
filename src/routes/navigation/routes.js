@@ -4,9 +4,10 @@ import {
   pricingRoute,
   contactRoute,
   accountRoute,
+  allCustomersRoute,
 } from "../../strings/routes";
 
-export const signedInRoutes = [accountRoute, contactRoute];
+export const signedInRoutes = [allCustomersRoute, accountRoute, contactRoute];
 
 export const signedOutRoutes = [
   signInRoute,

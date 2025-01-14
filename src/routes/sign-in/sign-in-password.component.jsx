@@ -1,5 +1,4 @@
 import { useDispatch } from "react-redux";
-import PropTypes from "prop-types";
 
 import useGetSignInFormSelectors from "../../hooks/selectors/use-get-sign-in-form-selectors.js";
 import useGetPasswordIsVisibleSelectors from "../../hooks/selectors/use-get-password-is-visible-selectors";
@@ -38,10 +37,6 @@ const SignInPassword = ({ handleSignInFormChange }) => {
       </RelativePositionDiv>
     </>
   );
-};
-
-SignInPassword.propTypes = {
-  handleSignInFormChange: PropTypes.func.isRequired,
 };
 
 export default SignInPassword;

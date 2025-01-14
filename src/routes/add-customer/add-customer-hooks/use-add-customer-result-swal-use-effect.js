@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import useGetCustomerDetailsSelectors from "../../../hooks/selectors/use-get-customer-details-selectors";
+import useGetAddCustomerDetailsSelectors from "../../../hooks/selectors/use-get-add-customer-details-selectors";
 import {
-  resetCustomerResult,
-  resetCustomerError,
-} from "../../../store/customer/customer.slice";
+  resetAddCustomerResult,
+  resetAddCustomerError,
+} from "../../../store/add-customer/add-customer.slice";
 
 import useFireSwal from "../../../hooks/use-fire-swal";
 import useHamburgerHandlerNavigate from "../../../hooks/use-hamburger-handler-navigate";
@@ -14,16 +14,17 @@ import { errorReceivedMessage } from "../../../strings/errors";
 import { accountRoute } from "../../../strings/routes";
 
 const useAddCustomerResultSwalUseEffect = () => {
-  const { customerResult, customerError } = useGetCustomerDetailsSelectors();
+  const { addCustomerResult, addCustomerError } =
+    useGetAddCustomerDetailsSelectors();
 
   const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
   const dispatch = useDispatch();
   const { fireSwal } = useFireSwal();
 
   useEffect(() => {
-    if (!customerResult && !customerError) return;
+    if (!addCustomerResult && !addCustomerError) return;
 
-    if (customerResult === "fulfilled") {
+    if (addCustomerResult === "fulfilled") {
       fireSwal("success", "customer added!", "", 0, "", false, "", false).then(
         (isConfirmed) => {
           if (isConfirmed) {
@@ -32,7 +33,7 @@ const useAddCustomerResultSwalUseEffect = () => {
         }
       );
     } else {
-      const error = customerError;
+      const error = addCustomerError;
       fireSwal(
         "error",
         errorReceivedMessage("error adding customer..", error),
@@ -44,15 +45,15 @@ const useAddCustomerResultSwalUseEffect = () => {
         false
       ).then((isConfirmed) => {
         if (isConfirmed) {
-          dispatch(resetCustomerResult());
-          dispatch(resetCustomerError());
+          dispatch(resetAddCustomerResult());
+          dispatch(resetAddCustomerError());
         }
       });
     }
   }, [
     fireSwal,
-    customerError,
-    customerResult,
+    addCustomerError,
+    addCustomerResult,
     dispatch,
     hamburgerHandlerNavigate,
   ]);

@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 import {
@@ -25,9 +24,5 @@ const SkeletonBox = ({ loadingText }) => (
     </SkeletonTheme>
   </SkeletonDiv>
 );
-
-SkeletonBox.propTypes = {
-  loadingText: PropTypes.string.isRequired,
-};
 
 export default SkeletonBox;

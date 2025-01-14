@@ -1,7 +1,8 @@
 import { useDispatch } from "react-redux";
 
-import useGetCustomerDetailsSelectors from "../../../hooks/selectors/use-get-customer-details-selectors";
-import { addCustomerAsync } from "../../../store/customer/customer.thunks";
+import useGetAddCustomerDetailsSelectors from "../../../hooks/selectors/use-get-add-customer-details-selectors";
+import useGetCurrentUserSelectors from "../../../hooks/selectors/use-get-current-user-selectors";
+import { addCustomerToDbAsync } from "../../../store/add-customer/add-customer.thunks";
 
 import useFireSwal from "../../../hooks/use-fire-swal";
 import useConfirmSwal from "../../../hooks/use-confirm-swal";
@@ -14,8 +15,9 @@ import {
 import { isValidEmail } from "../../../functions/validate-email";
 
 const useSubmitAddCustomer = () => {
-  const { email, phoneNumber, customerDetails } =
-    useGetCustomerDetailsSelectors();
+  const { email, phoneNumber, addCustomerDetails } =
+    useGetAddCustomerDetailsSelectors();
+  const { catteryId } = useGetCurrentUserSelectors();
 
   const { fireSwal } = useFireSwal();
   const { confirmSwal } = useConfirmSwal();
@@ -36,7 +38,7 @@ const useSubmitAddCustomer = () => {
         "",
         "yes",
         "",
-        () => dispatch(addCustomerAsync({ customerDetails })),
+        () => dispatch(addCustomerToDbAsync({ addCustomerDetails, catteryId })),
         null
       );
     }
