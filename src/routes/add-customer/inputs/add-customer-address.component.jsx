@@ -18,6 +18,11 @@ const AddCustomerAddress = ({ handleAddCustomerDetailsChange }) => {
         name="address"
         value={address || ""}
         onChange={handleAddCustomerDetailsChange}
+        placeholder={`Separate into lines for easier viewing in the table - ie:
+
+56 Maple Lane
+Faketown
+FA1 9XY`}
         required
       />
     </>

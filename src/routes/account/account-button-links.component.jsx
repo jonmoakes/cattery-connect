@@ -7,7 +7,8 @@ import { ParentDiv } from "../../styles/div/div.styles";
 
 const AccountButtonLinks = () => {
   const { role } = useGetCurrentUserSelectors();
-  const { adminButtons, catteryOwnerButtons } = useNavigateToRoute();
+  const { adminButtons, catteryOwnerButtons, catteryOwnerCustomerDataButtons } =
+    useNavigateToRoute();
 
   return (
     <>
@@ -16,9 +17,19 @@ const AccountButtonLinks = () => {
           <RenderButtonsList {...{ buttons: adminButtons }} />
         </ParentDiv>
       ) : role === "owner" ? (
-        <ParentDiv>
-          <RenderButtonsList {...{ buttons: catteryOwnerButtons }} />
-        </ParentDiv>
+        <>
+          <ParentDiv>
+            <h3>bookings & customer info</h3>
+            <RenderButtonsList {...{ buttons: catteryOwnerButtons }} />
+          </ParentDiv>
+
+          <ParentDiv>
+            <h3>other options</h3>
+            <RenderButtonsList
+              {...{ buttons: catteryOwnerCustomerDataButtons }}
+            />
+          </ParentDiv>
+        </>
       ) : (
         <ParentDiv>
           <p>customer account buttons go here.</p>

@@ -167,7 +167,7 @@ export const MinimalButton = styled.button`
   padding: 5px;
   text-transform: capitalize;
   height: auto;
-  width: 75px;
+  min-width: 100px;
   display: flex;
   align-items: center;
   justify-content: center;

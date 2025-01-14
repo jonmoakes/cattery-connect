@@ -8,3 +8,4 @@ export const addBookingRoute = "/add-booking";
 export const addCustomerRoute = "/add-customer";
 export const addCatRoute = "/add-cat";
 export const allCustomersRoute = "/customers";
+export const allCatsRoute = "/cats";

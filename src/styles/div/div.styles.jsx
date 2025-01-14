@@ -282,6 +282,7 @@ export const InLineDiv = styled.div`
 
   &.wrap-text {
     white-space: "pre-wrap";
+    min-width: 300px;
   }
 `;
 

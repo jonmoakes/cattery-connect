@@ -26,9 +26,12 @@ const useNavigateToRoute = () => {
     },
     {
       id: 3,
-      text: "view customers",
+      text: "customers & cats",
       onClick: () => hamburgerHandlerNavigate(allCustomersRoute),
     },
+  ];
+
+  const catteryOwnerCustomerDataButtons = [
     {
       id: 4,
       text: "add a customer",
@@ -39,6 +42,7 @@ const useNavigateToRoute = () => {
   return {
     adminButtons,
     catteryOwnerButtons,
+    catteryOwnerCustomerDataButtons,
   };
 };
 

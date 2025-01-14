@@ -4,6 +4,7 @@ import { BlackHr } from "../../styles/hr/hr.styles";
 
 const RenderButtonsList = ({ buttons }) => (
   <>
+    <BlackHr />
     {buttons.map((button) => {
       const { id, text, onClick } = button;
 
@@ -12,10 +13,10 @@ const RenderButtonsList = ({ buttons }) => (
           <Button className="teal" onClick={onClick}>
             {text}
           </Button>
-          <BlackHr />
         </ColumnDiv>
       );
     })}
+    <BlackHr />
   </>
 );
 

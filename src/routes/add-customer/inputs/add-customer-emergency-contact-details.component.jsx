@@ -20,7 +20,12 @@ const AddCustomerEmergencyContactDetails = ({
         name="emergencyContactDetails"
         value={emergencyContactDetails || ""}
         onChange={handleAddCustomerDetailsChange}
-        placeholder="please provide a name, phone number and address"
+        placeholder={`Please provide a name, relationship & phone number.
+Separate into lines for easier viewing in the table - ie:
+
+jane bloggs
+mother
+07512345678`}
         required
       />
     </>
