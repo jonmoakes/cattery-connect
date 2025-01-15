@@ -1,6 +1,6 @@
 import useGetSignInFormSelectors from "../../hooks/selectors/use-get-sign-in-form-selectors";
 
-import { StyledInput, Label } from "../../styles/form/form.styles";
+import { Label, LowercasedInput } from "../../styles/form/form.styles";
 import { RedSpan } from "../../styles/span/span.styles";
 
 const SignInEmail = ({ handleSignInFormChange }) => {
@@ -11,7 +11,7 @@ const SignInEmail = ({ handleSignInFormChange }) => {
       <Label>
         <RedSpan>* </RedSpan>email:
       </Label>
-      <StyledInput
+      <LowercasedInput
         type="email"
         name="email"
         value={email || ""}

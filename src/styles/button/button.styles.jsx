@@ -177,8 +177,14 @@ export const MinimalButton = styled.button`
   border: 1px solid ${softBlack};
   border-radius: 2px;
   color: ${softBlack};
+  transition: all 0.2s ease-in-out;
 
   &:hover {
     cursor: pointer;
+    transform: scale(1.05);
+
+    @media screen and (max-width: 1366px) {
+      transition: none;
+    }
   }
 `;
