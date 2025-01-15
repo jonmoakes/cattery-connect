@@ -1,16 +1,16 @@
 import { useDispatch } from "react-redux";
 
-import useGetCatsDetailsSelectors from "../../../hooks/selectors/use-get-cats-details-selectors";
+import useGetAddCatDetailsSelectors from "../../../hooks/selectors/use-get-add-cat-details-selectors";
 
-import { setCatsDetails } from "../../../store/cats/cats.slice";
+import { setAddCatDetails } from "../../../store/add-cat/add-cat.slice";
 
 const useHandleAddCatsDetailsChange = () => {
-  const { catsDetails } = useGetCatsDetailsSelectors();
+  const { addCatDetails } = useGetAddCatDetailsSelectors();
   const dispatch = useDispatch();
 
   const handleAddCatsDetailsChange = (event) => {
     const { value, name } = event.target;
-    dispatch(setCatsDetails({ ...catsDetails, [name]: value }));
+    dispatch(setAddCatDetails({ ...addCatDetails, [name]: value }));
   };
 
   return { handleAddCatsDetailsChange };

@@ -1,15 +1,15 @@
-import useGetCatsDetailsSelectors from "../../../hooks/selectors/use-get-cats-details-selectors";
+import useGetAddCatDetailsSelectors from "../../../hooks/selectors/use-get-add-cat-details-selectors";
 
 import { StyledInput, Label } from "../../../styles/form/form.styles";
 import { BlackHr } from "../../../styles/hr/hr.styles";
 
 const AddCatsBreed = ({ handleAddCatsDetailsChange }) => {
-  const { catsBreed } = useGetCatsDetailsSelectors();
+  const { catsBreed } = useGetAddCatDetailsSelectors();
 
   return (
     <>
       <BlackHr />
-      <Label>cats breed:</Label>
+      <Label>breed:</Label>
 
       <StyledInput
         type="text"

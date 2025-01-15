@@ -35,10 +35,10 @@ const ALL_CUSTOMERS_TABLE_COLUMNS = [
     Header: "cat details",
     accessor: "catDetails",
     Cell: ({ row }) => {
-      const customerId = row.original.customerId;
+      const idToBePassed = row.original.customerId;
       return (
         <>
-          <NavigateToRouteCell route={allCatsRoute} customerId={customerId} />
+          <NavigateToRouteCell route={allCatsRoute} {...{ idToBePassed }} />
         </>
       );
     },
@@ -46,10 +46,8 @@ const ALL_CUSTOMERS_TABLE_COLUMNS = [
   {
     Header: "Add Cat",
     Cell: ({ row }) => {
-      const customerId = row.original.customerId;
-      return (
-        <NavigateToRouteCell route={addCatRoute} customerId={customerId} />
-      );
+      const idToBePassed = row.original.$id;
+      return <NavigateToRouteCell route={addCatRoute} {...{ idToBePassed }} />;
     },
   },
   {

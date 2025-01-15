@@ -1,18 +1,13 @@
 import { allCatsRoute } from "../../strings/routes";
 import { MinimalButton } from "../../styles/button/button.styles";
 
-import usePassCusIdandGoToAddCatRoute from "./table-hooks/use-pass-cus-id-and-go-to-add-cat-route";
+import usePassIdAndGoToRoute from "./table-hooks/use-pass-id-and-go-to-route";
 
-const NavigateToRouteCell = ({ route, customerId }) => {
-  const { passCusIdandGoToAddCatRoute } = usePassCusIdandGoToAddCatRoute(
-    route,
-    customerId
-  );
-
-  console.log(route);
+const NavigateToRouteCell = ({ route, idToBePassed }) => {
+  const { passIdAndGoToRoute } = usePassIdAndGoToRoute(route, idToBePassed);
 
   return (
-    <MinimalButton type="button" onClick={passCusIdandGoToAddCatRoute}>
+    <MinimalButton type="button" onClick={passIdAndGoToRoute}>
       {route === allCatsRoute ? "view cats" : "add cat"}
     </MinimalButton>
   );

@@ -2,19 +2,19 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { resetGetAllCustomersState } from "../../../store/get-all-customers/get-all-customers.slice";
 
-const usePassCusIdandGoToAddCatRoute = (route, customerId) => {
+const usePassIdandGoToRoute = (route, idToBePassed) => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
-  const passCusIdandGoToAddCatRoute = () => {
+  const passIdAndGoToRoute = () => {
     dispatch(resetGetAllCustomersState());
     navigate(route, {
-      state: customerId,
+      state: idToBePassed,
     });
   };
 
-  return { passCusIdandGoToAddCatRoute };
+  return { passIdAndGoToRoute };
 };
 
-export default usePassCusIdandGoToAddCatRoute;
+export default usePassIdandGoToRoute;

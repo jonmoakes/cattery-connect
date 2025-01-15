@@ -11,7 +11,7 @@ const useGetAddCustomerDetailsSelectors = () => {
   } = useSelector(selectAddCustomerDetailsSelectors);
 
   const { name, email, phoneNumber, address, emergencyContactDetails } =
-    addCustomerDetails;
+    addCustomerDetails ?? {};
 
   return {
     addCustomerDetails,

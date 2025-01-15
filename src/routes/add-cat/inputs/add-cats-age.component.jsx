@@ -1,16 +1,19 @@
-import useGetCatsDetailsSelectors from "../../../hooks/selectors/use-get-cats-details-selectors";
+import useGetAddCatDetailsSelectors from "../../../hooks/selectors/use-get-add-cat-details-selectors";
 
 import { StyledInput, Label } from "../../../styles/form/form.styles";
+import { BlackHr } from "../../../styles/hr/hr.styles";
 
 const AddCatsAge = ({ handleAddCatsDetailsChange }) => {
-  const { catsAge } = useGetCatsDetailsSelectors();
+  const { catsAge } = useGetAddCatDetailsSelectors();
 
   return (
     <>
-      <Label>cats age:</Label>
+      <BlackHr />
+      <Label>age:</Label>
 
       <StyledInput
-        type="text"
+        type="number"
+        onWheel={(e) => e.target.blur()}
         name="catsAge"
         value={catsAge || ""}
         onChange={handleAddCatsDetailsChange}

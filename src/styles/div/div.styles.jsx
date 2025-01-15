@@ -300,3 +300,14 @@ export const ErrorFallbackImageDiv = styled.div`
   align-items: center;
   margin: 0px auto -30px auto;
 `;
+
+export const InnerFormDiv = styled.div`
+  width: 90%;
+  display: flex;
+  margin: 40px auto;
+  background-color: ${gentleGrey};
+  flex-direction: column;
+  padding: 10px 0px;
+  border: 2px solid ${softBlack};
+  border-radius: 5px;
+`;

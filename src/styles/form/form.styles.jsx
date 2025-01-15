@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { dustyBlue, gentleGrey, rustRed, softBlack, teal } from "../colours";
+import { gentleGrey, rustRed, softBlack, teal } from "../colours";
 
 export const Form = styled.form`
   width: 75%;
@@ -10,16 +10,21 @@ export const Form = styled.form`
   border-radius: 5px;
   box-shadow: 6px 6px 15px ${softBlack};
 
+  &.small-top-margin {
+    margin: 20px auto 70px auto;
+  }
+
   input {
     accent-color: ${teal};
   }
 
   input[type="radio"] {
     display: flex;
-    margin: 10px auto;
+    margin: 15px auto 0px auto;
     justify-content: center;
     width: 30px;
     height: 30px;
+    accent-color: red;
   }
 
   @media screen and (max-width: 1366px) {
@@ -30,6 +35,39 @@ export const Form = styled.form`
   @media screen and (max-width: 450px) {
     width: 95%;
     padding: 20px 0px;
+  }
+`;
+
+export const Label = styled.label`
+  font-size: 18px;
+  color: whitesmoke;
+  text-shadow: 1px 1px 1px ${softBlack};
+  float: left;
+  padding-left: 20px;
+  margin-top: 15px;
+
+  &.margin {
+    margin-bottom: 20px;
+  }
+
+  &.no-padding {
+    margin-top: 10px;
+    float: unset;
+    padding-left: 0px;
+    text-shadow: none;
+    color: ${softBlack};
+  }
+
+  @media screen and (max-width: 1000px) {
+    padding-left: 15px;
+  }
+
+  @media screen and (max-width: 600px) {
+    padding-left: 10px;
+  }
+
+  @media screen and (max-width: 450px) {
+    font-size: 16px;
   }
 `;
 
@@ -46,6 +84,7 @@ export const StyledInput = styled.input`
   outline: none;
   background-color: ${gentleGrey};
   color: ${softBlack};
+  text-transform: capitalize;
 
   &:focus {
     border: 2px solid ${rustRed};
@@ -73,10 +112,6 @@ export const StyledInput = styled.input`
 
 export const PasswordInput = styled(StyledInput)`
   padding-right: 36px;
-`;
-
-export const CapitalizedInput = styled(StyledInput)`
-  text-transform: capitalize;
 `;
 
 export const LowercasedInput = styled(StyledInput)`
@@ -170,27 +205,6 @@ export const PaginationSelect = styled.select`
   border: 2px solid ${softBlack};
   outline: none;
   font-size: 16px;
-`;
-
-export const Label = styled.label`
-  font-size: 18px;
-  color: whitesmoke;
-  text-shadow: 1px 1px 1px ${softBlack};
-  float: left;
-  padding-left: 20px;
-  margin-top: 20px;
-
-  @media screen and (max-width: 1000px) {
-    padding-left: 15px;
-  }
-
-  @media screen and (max-width: 600px) {
-    padding-left: 10px;
-  }
-
-  @media screen and (max-width: 450px) {
-    font-size: 16px;
-  }
 `;
 
 export const PaginationInput = styled.input`

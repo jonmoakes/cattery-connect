@@ -103,6 +103,7 @@ const TablePagination = ({
               <p>Or Go To Page: </p>
               <PaginationInput
                 type="number"
+                onWheel={(e) => e.target.blur()}
                 defaultValue={pageIndex + 1}
                 onChange={(e) => {
                   const pageNumber = e.target.value
