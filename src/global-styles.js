@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { gentleGrey, softBlack, teal } from "./styles/colours";
+import { softBlack, teal } from "./styles/colours";
 
 import BackgroundImage from "./assets/cat-background-house.webp";
 
@@ -17,7 +17,6 @@ const GlobalStyles = createGlobalStyle`
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color:${gentleGrey};
    
   }
 
@@ -43,9 +42,6 @@ const GlobalStyles = createGlobalStyle`
             z-index: -10;
             background: 
               url(${BackgroundImage}) repeat center center;
-              -webkit-background-size: center;
-              -moz-background-size: center;
-              -o-background-size: center;
               background-size: contain;
               opacity:0.4;
         }
