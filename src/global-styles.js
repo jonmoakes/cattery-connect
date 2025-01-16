@@ -1,6 +1,8 @@
 import { createGlobalStyle } from "styled-components";
 import { gentleGrey, softBlack, teal } from "./styles/colours";
 
+import BackgroundImage from "./assets/cat-background-house.webp";
+
 const GlobalStyles = createGlobalStyle`
 
   :root {
@@ -28,6 +30,25 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     min-width: 320px;
     min-height: 100vh;
+    position: relative;
+        &:before {
+            content: "";
+            display: block;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            z-index: -10;
+            background: 
+              url(${BackgroundImage}) repeat center center;
+              -webkit-background-size: center;
+              -moz-background-size: center;
+              -o-background-size: center;
+              background-size: contain;
+              opacity:0.4;
+        }
   }
 
   h1 {

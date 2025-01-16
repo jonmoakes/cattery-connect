@@ -180,6 +180,13 @@ export const MinimalButton = styled.button`
   color: ${softBlack};
   transition: all 0.2s ease-in-out;
 
+  &.margin-bottom {
+    background-color: ${teal};
+    color: whitesmoke;
+    text-shadow: 0.5px 0.5px 0.5px ${softBlack};
+    margin: 0px auto 20px auto;
+  }
+
   &.accordion {
     background-color: ${teal};
     color: whitesmoke;

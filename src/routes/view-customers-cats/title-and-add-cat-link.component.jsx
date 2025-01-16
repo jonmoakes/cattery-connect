@@ -21,6 +21,7 @@ const TitleAndAddCatLink = ({
 
       {customerDocumentId && catDetails.length ? (
         <MinimalButton
+          className="margin-bottom"
           onClick={() => hamburgerHandlerNavigate(addCatRoute, dataToBePassed)}
         >
           add another cat
