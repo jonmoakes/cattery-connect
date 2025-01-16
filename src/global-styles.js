@@ -34,8 +34,8 @@ const GlobalStyles = createGlobalStyle`
     color: ${teal};
 
     @media screen and (max-width: 600px) {
-    font-size: 24px;
-  }
+      font-size: 24px;
+    }
   }
 
   p {

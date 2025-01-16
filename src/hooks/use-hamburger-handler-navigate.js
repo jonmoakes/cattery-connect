@@ -14,13 +14,15 @@ const useHamburgerHandlerNavigate = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const hamburgerHandlerNavigate = (route) => {
+  const hamburgerHandlerNavigate = (route, state) => {
     if (showHamburgerMenu) {
       dispatch(hideHamburgerMenu());
-      navigate(route);
-    } else if (!showHamburgerMenu) {
-      navigate(route);
     }
+
+    //if we want to pass state in some instances we can.
+    // if no state is passed, it is undefined and the state object wont exist.
+    navigate(route, state ? { state } : undefined);
+
     resetStore();
   };
 

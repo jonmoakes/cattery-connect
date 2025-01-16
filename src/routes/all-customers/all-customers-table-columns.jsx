@@ -4,7 +4,7 @@ import EmergencyContactsCell from "../../components/tables/emergency-contacts-ce
 import NavigateToRouteCell from "../../components/tables/navigate-to-route-cell.component";
 import WrapTextCell from "../../components/tables/wrap-text-cell.component";
 
-import { addCatRoute, allCatsRoute } from "../../strings/routes";
+import { addCatRoute, viewCustomersCatsRoute } from "../../strings/routes";
 
 const ALL_CUSTOMERS_TABLE_COLUMNS = [
   {
@@ -35,10 +35,17 @@ const ALL_CUSTOMERS_TABLE_COLUMNS = [
     Header: "cat details",
     accessor: "catDetails",
     Cell: ({ row }) => {
-      const idToBePassed = row.original.customerId;
+      const dataToBePassed = {
+        customerDocumentId: row.original.$id,
+        customerName: row.original.name,
+        catDetails: row.original.catDetails,
+      };
       return (
         <>
-          <NavigateToRouteCell route={allCatsRoute} {...{ idToBePassed }} />
+          <NavigateToRouteCell
+            route={viewCustomersCatsRoute}
+            {...{ dataToBePassed }}
+          />
         </>
       );
     },
@@ -46,8 +53,10 @@ const ALL_CUSTOMERS_TABLE_COLUMNS = [
   {
     Header: "Add Cat",
     Cell: ({ row }) => {
-      const idToBePassed = row.original.$id;
-      return <NavigateToRouteCell route={addCatRoute} {...{ idToBePassed }} />;
+      const dataToBePassed = { customerDocumentId: row.original.$id };
+      return (
+        <NavigateToRouteCell route={addCatRoute} {...{ dataToBePassed }} />
+      );
     },
   },
   {

@@ -20,6 +20,7 @@ import {
   allCustomersRoute,
   signInRoute,
   uploadDatesAndPensDataRoute,
+  viewCustomersCatsRoute,
 } from "./strings/routes";
 
 const Navigation = lazy(() =>
@@ -39,6 +40,9 @@ const AddCustomer = lazy(() =>
 );
 const AllCustomers = lazy(() =>
   import("./routes/all-customers/all-customers.component")
+);
+const ViewCustomersCats = lazy(() =>
+  import("./routes/view-customers-cats/view-customers-cats.component")
 );
 
 const App = () => {
@@ -81,6 +85,12 @@ const App = () => {
                 path={allCustomersRoute}
                 element={
                   currentUser && role === "owner" ? <AllCustomers /> : null
+                }
+              />
+              <Route
+                path={viewCustomersCatsRoute}
+                element={
+                  currentUser && role === "owner" ? <ViewCustomersCats /> : null
                 }
               />
             </Route>

@@ -5,7 +5,7 @@ import { addCatToDbAsync } from "../../../store/add-cat/add-cat.thunks";
 
 import useConfirmSwal from "../../../hooks/use-confirm-swal";
 
-const useSubmitAddCat = (customerDocumentId) => {
+const useSubmitAddCat = (documentId) => {
   const { catsName, addCatDetails } = useGetAddCatDetailsSelectors();
 
   const { confirmSwal } = useConfirmSwal();
@@ -19,7 +19,7 @@ const useSubmitAddCat = (customerDocumentId) => {
       "",
       "yes",
       "",
-      () => dispatch(addCatToDbAsync({ addCatDetails, customerDocumentId })),
+      () => dispatch(addCatToDbAsync({ addCatDetails, documentId })),
       null
     );
   };

@@ -3,17 +3,26 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { manageDatabaseDocument } from "../../utils/appwrite/appwrite-functions";
 import { customersCollectionId, databaseId } from "../../constants/constants";
 import { lowercaseObjectValues } from "../../functions/lowercase-object-vaules";
+import { generateShortId } from "../../functions/generate-short-id";
 
 export const addCatToDbAsync = createAsyncThunk(
   "addCatToDb",
-  async ({ addCatDetails, customerDocumentId }, thunkAPI) => {
+  async ({ addCatDetails, documentId }, thunkAPI) => {
     try {
-      const lowercasedObject = lowercaseObjectValues(addCatDetails);
+      const lowercasedCat = lowercaseObjectValues(addCatDetails);
+
+      const catsId = generateShortId(lowercasedCat.catsName);
+
+      const data = {
+        catsId,
+        ...lowercasedCat,
+      };
+
       const customerDoc = await manageDatabaseDocument(
         "get",
         databaseId,
         customersCollectionId,
-        customerDocumentId
+        documentId
       );
 
       const { catDetails } = customerDoc;
@@ -37,7 +46,7 @@ export const addCatToDbAsync = createAsyncThunk(
         }
       }
 
-      existingCatDetails.push(lowercasedObject);
+      existingCatDetails.push(data);
 
       // Convert the updated cat details array back into a string for storage
       const updatedCatDetailsString = JSON.stringify(existingCatDetails);
@@ -50,7 +59,7 @@ export const addCatToDbAsync = createAsyncThunk(
         "update",
         databaseId,
         customersCollectionId,
-        customerDocumentId,
+        documentId,
         dataToUpdate
       );
     } catch (error) {

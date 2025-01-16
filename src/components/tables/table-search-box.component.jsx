@@ -9,7 +9,7 @@ import { ClearSearchButton } from "../../styles/button/button.styles";
 import { TableSearchDiv } from "../../styles/div/div.styles";
 import { SearchInput } from "../../styles/form/form.styles";
 
-import { allCustomersRoute } from "../../strings/routes";
+import { getTablePlaceholderTail } from "../../functions/get-table-placeholder-tail";
 
 // This search box takes the value and setValue state from the tables that use it
 // incomeDataTable needs it this way to display the total amount when searchbox has length.
@@ -37,9 +37,7 @@ const TableSearchBox = ({ rows, data, setGlobalFilter, value, setValue }) => {
         <TableSearchDiv className="no-checkbox">
           <SearchInput
             type="search"
-            placeholder={`Search ${
-              path === allCustomersRoute ? "Customers" : "..."
-            }...`}
+            placeholder={`Search ${getTablePlaceholderTail(path)}...`}
             onChange={(e) => {
               setIsSearching(true);
               setValue(e.target.value);

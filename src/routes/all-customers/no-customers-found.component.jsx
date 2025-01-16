@@ -1,16 +1,16 @@
-import useNoDataFound from "../../hooks/use-no-data-found";
+import Balancer from "react-wrap-balancer";
 
 import { ParentDiv } from "../../styles/div/div.styles";
 
 const NoCustomersFound = ({ data }) => {
-  const { noDataFound, allUsersIsUndefined } = useNoDataFound();
-
   return (
     <>
-      {noDataFound(data) || allUsersIsUndefined ? (
+      {!data.length ? (
         <ParentDiv>
           <h2>no customers found.</h2>
-          <p>no customers have been created yet.</p>
+          <p>
+            <Balancer>no customers have been created yet.</Balancer>
+          </p>
         </ParentDiv>
       ) : null}
     </>

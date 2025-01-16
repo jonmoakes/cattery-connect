@@ -1,6 +1,6 @@
 import { customAlphabet } from "nanoid";
 
-export const generateCustomerId = (name) => {
+export const generateShortId = (name) => {
   const charactersAvailable =
     "ABCDEFGHJKMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789";
 

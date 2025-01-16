@@ -4,6 +4,7 @@ import { resetSignInFormState } from "../../../store/sign-in-form/sign-in-form.s
 import { resetUploadDatesAndPensDataState } from "../../../store/upload-dates-and-pens-data/upload-dates-and-pens-data.slice";
 import { resetAddCustomerState } from "../../../store/add-customer/add-customer.slice";
 import { resetAddCatState } from "../../../store/add-cat/add-cat.slice";
+import { resetGetAllCustomersState } from "../../../store/get-all-customers/get-all-customers.slice";
 
 const useResetAllStoreOnSignOut = () => {
   const dispatch = useDispatch();
@@ -13,6 +14,7 @@ const useResetAllStoreOnSignOut = () => {
     dispatch(resetUploadDatesAndPensDataState());
     dispatch(resetAddCustomerState());
     dispatch(resetAddCatState());
+    dispatch(resetGetAllCustomersState());
   };
 
   return { resetAllStoreOnSignOut };

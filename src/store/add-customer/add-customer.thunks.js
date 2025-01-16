@@ -5,14 +5,14 @@ import { customersCollectionId, databaseId } from "../../constants/constants";
 import { ID } from "appwrite";
 
 import { lowercaseObjectValues } from "../../functions/lowercase-object-vaules";
-import { generateCustomerId } from "../../functions/generate-customer-id";
+import { generateShortId } from "../../functions/generate-short-id";
 
 export const addCustomerToDbAsync = createAsyncThunk(
   "addCustomerToDb",
   async ({ addCustomerDetails, catteryId }, thunkAPI) => {
     try {
       const lowercasedCustomer = lowercaseObjectValues(addCustomerDetails);
-      const customerId = generateCustomerId(lowercasedCustomer.name);
+      const customerId = generateShortId(lowercasedCustomer.name);
 
       const data = {
         customerId,

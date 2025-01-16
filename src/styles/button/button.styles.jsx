@@ -164,20 +164,27 @@ export const ToggleShowPhoneNumberButton = styled(
 
 export const MinimalButton = styled.button`
   margin: 0px auto;
-  padding: 5px;
+  padding: 10px;
   text-transform: capitalize;
   height: auto;
-  min-width: 100px;
+  min-width: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: ${customYellow};
   font-family: inherit;
+  font-weight: 700;
   outline: none;
   border: 1px solid ${softBlack};
   border-radius: 2px;
   color: ${softBlack};
   transition: all 0.2s ease-in-out;
+
+  &.accordion {
+    background-color: ${teal};
+    color: whitesmoke;
+    text-shadow: 0.5px 0.5px 0.5px ${softBlack};
+  }
 
   &:hover {
     cursor: pointer;

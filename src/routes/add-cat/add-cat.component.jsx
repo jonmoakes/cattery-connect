@@ -4,6 +4,8 @@ import useAddCatResultSwalUseEffect from "./add-cat-hooks/use-add-cat-result-swa
 import useSubmitAddCat from "./add-cat-hooks/use-submit-add-cat";
 import useHandleAddCatsDetailsChange from "./add-cat-hooks/use-handle-add-cats-details-change";
 
+import AddCatTitleAndLoader from "./add-cat-title-and-loader.component";
+import AddCatInstructions from "./add-cat-instructions.component";
 import AddCatsName from "./inputs/add-cats-name.component";
 import AddCatsBreed from "./inputs/add-cats-breed.component";
 import AddCatsAge from "./inputs/add-cats-age.component";
@@ -17,43 +19,30 @@ import AddCatButton from "./add-cat-button.component";
 import { Container } from "../../styles/container/container.styles";
 import { ParentDiv } from "../../styles/div/div.styles";
 import { Form } from "../../styles/form/form.styles";
-import { RedSpan } from "../../styles/span/span.styles";
-import Balancer from "react-wrap-balancer";
 
 const AddCat = () => {
-  const location = useLocation();
-  const customerDocumentId = location.state;
+  const { state: customerDocumentId } = useLocation();
+  const { customerDocumentId: documentId } = customerDocumentId ?? {};
+
   useAddCatResultSwalUseEffect();
-  const { submitAddCat } = useSubmitAddCat(customerDocumentId);
+  const { submitAddCat } = useSubmitAddCat(documentId);
   const { handleAddCatsDetailsChange } = useHandleAddCatsDetailsChange();
 
   return (
     <Container>
-      <ParentDiv>
-        <h1>add a cat</h1>
-      </ParentDiv>
+      <AddCatTitleAndLoader />
 
       <ParentDiv>
-        <p>
-          <Balancer>
-            please enter the details about the cat that you want to add.
-          </Balancer>
-        </p>
-        <p>
-          <Balancer>
-            inputs marked with a <RedSpan>*</RedSpan> next to their name are
-            required.
-          </Balancer>
-        </p>
+        <AddCatInstructions />
 
         <Form className="small-top-margin" onSubmit={submitAddCat}>
           <AddCatsName {...{ handleAddCatsDetailsChange }} />
+          <AddCatsVaccinationStatus {...{ handleAddCatsDetailsChange }} />
+          <AddCatsFeedingInfo {...{ handleAddCatsDetailsChange }} />
           <AddCatsBreed {...{ handleAddCatsDetailsChange }} />
           <AddCatsAge {...{ handleAddCatsDetailsChange }} />
           <AddCatsGender {...{ handleAddCatsDetailsChange }} />
           <AddCatsMedicalInfo {...{ handleAddCatsDetailsChange }} />
-          <AddCatsVaccinationStatus {...{ handleAddCatsDetailsChange }} />
-          <AddCatsFeedingInfo {...{ handleAddCatsDetailsChange }} />
           <AddCatsBehaviourInfo {...{ handleAddCatsDetailsChange }} />
           <AddCatButton />
         </Form>

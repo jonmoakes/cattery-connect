@@ -1,10 +1,18 @@
 import styled, { keyframes } from "styled-components";
-import { gentleGrey, softBlack, teal, warmBeige } from "../colours";
+import {
+  dustyBlue,
+  gentleGrey,
+  rustRed,
+  softBlack,
+  teal,
+  warmBeige,
+} from "../colours";
 
-import { bounceInDown, slideInLeft } from "react-animations";
+import { bounceInDown, rollIn, slideInLeft } from "react-animations";
 
 const bounceInDownAnimation = keyframes`${bounceInDown}`;
 const slideInLeftAnimation = keyframes`${slideInLeft}`;
+const rollInAnimation = keyframes`${rollIn}`;
 
 export const Nav = styled.div`
   background-color: ${warmBeige};
@@ -310,4 +318,52 @@ export const InnerFormDiv = styled.div`
   padding: 10px 0px;
   border: 2px solid ${softBlack};
   border-radius: 5px;
+`;
+
+export const Accordion = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== "showHelp",
+})`
+  width: ${({ showHelp }) => (showHelp ? "70%" : "30%")};
+  margin: 2rem auto;
+  border: 2px solid ${softBlack};
+  border-radius: 5px;
+
+  @media screen and (max-width: 1366px) {
+    width: ${({ showHelp }) => (showHelp ? "90%" : "50%")};
+  }
+
+  @media screen and (max-width: 450px) {
+    width: ${({ showHelp }) => (showHelp ? "90%" : "70%")};
+  }
+`;
+
+export const AccordionTitle = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== "showHelp",
+})`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: pointer;
+  background-color: ${({ showHelp }) => (showHelp ? rustRed : dustyBlue)};
+  color: ${({ showHelp }) => (showHelp ? "whitesmoke" : softBlack)};
+  padding: 5px;
+  border-bottom: ${({ showHelp }) =>
+    showHelp ? `2px solid ${softBlack}` : "none"};
+
+  @media screen and (max-width: 450px) {
+    font-size: 14px;
+  }
+`;
+
+export const AccordionContent = styled.div`
+  padding: 1rem;
+  background-color: ${gentleGrey};
+  border-radius: 0px 0px 15px 15px;
+  animation: 0.5s ${rollInAnimation};
+`;
+
+export const AccordionDetails = styled.div`
+  width: 100%;
+  height: auto;
+  white-space: pre-line;
 `;

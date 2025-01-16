@@ -1,14 +1,28 @@
-import { allCatsRoute } from "../../strings/routes";
+import Balancer from "react-wrap-balancer";
+
+import useHamburgerHandlerNavigate from "../../hooks/use-hamburger-handler-navigate";
+
 import { MinimalButton } from "../../styles/button/button.styles";
 
-import usePassIdAndGoToRoute from "./table-hooks/use-pass-id-and-go-to-route";
+import { viewCustomersCatsRoute } from "../../strings/routes";
 
-const NavigateToRouteCell = ({ route, idToBePassed }) => {
-  const { passIdAndGoToRoute } = usePassIdAndGoToRoute(route, idToBePassed);
+import { getFirstNameFromString } from "../../functions/get-first-name-from-string";
+
+const NavigateToRouteCell = ({ route, dataToBePassed }) => {
+  const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
+
+  const { customerName } = dataToBePassed ?? {};
 
   return (
-    <MinimalButton type="button" onClick={passIdAndGoToRoute}>
-      {route === allCatsRoute ? "view cats" : "add cat"}
+    <MinimalButton
+      type="button"
+      onClick={() => hamburgerHandlerNavigate(route, dataToBePassed)}
+    >
+      <Balancer>
+        {route === viewCustomersCatsRoute
+          ? `view ${getFirstNameFromString(customerName)}'s cats`
+          : "add cat"}
+      </Balancer>
     </MinimalButton>
   );
 };
