@@ -19,23 +19,23 @@ const VIEW_CUSTOMERS_CATS_TABLE_COLUMNS = [
     Cell: ({ value }) => <CellWithPotentiallyNoValue value={value} />,
   },
   {
-    Header: "age",
-    accessor: "catsAge",
-    Cell: ({ value }) => <CellWithPotentiallyNoValue value={value} />,
-  },
-  {
     Header: "behaviour info",
     accessor: "catsBehaviourInfo",
     Cell: ({ value }) => <CellWithPotentiallyNoValue value={value} />,
   },
   {
-    Header: "breed",
-    accessor: "catsBreed",
+    Header: "age",
+    accessor: "catsAge",
     Cell: ({ value }) => <CellWithPotentiallyNoValue value={value} />,
   },
   {
     Header: "gender",
     accessor: "catsGender",
+    Cell: ({ value }) => <CellWithPotentiallyNoValue value={value} />,
+  },
+  {
+    Header: "breed",
+    accessor: "catsBreed",
     Cell: ({ value }) => <CellWithPotentiallyNoValue value={value} />,
   },
   {

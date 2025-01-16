@@ -19,8 +19,10 @@ const RenderTable = ({
               <tr key={key} {...restHeaderGroupProps}>
                 {headerGroup.headers.map((column) => {
                   const { key, ...restColumn } = column.getHeaderProps();
+                  const columnClass = `column-${column.id}`;
+
                   return (
-                    <th key={key} {...restColumn}>
+                    <th key={key} className={columnClass} {...restColumn}>
                       {column.render("Header")}
                       <span>
                         {column.isSorted

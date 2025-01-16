@@ -227,29 +227,19 @@ export const NoSearchResultDiv = styled.div`
 `;
 
 export const TableDiv = styled.div`
-  margin: 0px auto 100px auto;
-  width: 75%;
-  height: auto;
-
-  @media screen and (max-width: 1366px) {
-    width: 95%;
-    overflow: auto;
-    box-shadow: none;
-    margin: 20px auto 100px auto;
-  }
+  width: 95%;
+  margin: 0 auto;
+  overflow-x: auto;
 `;
 
 export const PaginationDiv = styled(ParentDiv)`
-  margin: -150px auto 0px auto;
+  margin: 50px auto 0px auto;
   width: 50%;
   border: 2px solid ${softBlack};
   box-shadow: none;
   background-color: ${gentleGrey};
   padding-bottom: 20px;
 
-  @media screen and (max-width: 1366px) {
-    margin: -50px auto 0px auto;
-  }
   @media screen and (max-width: 600px) {
     width: 90%;
   }

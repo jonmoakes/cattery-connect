@@ -6,7 +6,6 @@ import {
   PaginationInput,
   PaginationSelect,
 } from "../../styles/form/form.styles";
-import { SpanWithBackground } from "../../styles/span/span.styles";
 
 import { defaultTableSize } from "../../constants/constants";
 import { allCustomersRoute } from "../../strings/routes";
@@ -59,9 +58,7 @@ const TablePagination = ({
         <PaginationDiv>
           <div>
             <p>
-              showing Page{" "}
-              <SpanWithBackground>{pageIndex + 1}</SpanWithBackground> Of{" "}
-              <SpanWithBackground>{pageOptions.length}</SpanWithBackground>
+              showing Page {pageIndex + 1} Of {pageOptions.length}
             </p>
 
             <PaginationPageButton

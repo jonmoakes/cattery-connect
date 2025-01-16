@@ -22,7 +22,7 @@ const ALL_CUSTOMERS_TABLE_COLUMNS = [
     Cell: ({ value }) => <EmailCell value={value} />,
   },
   {
-    Header: "🚨 Contact",
+    Header: "emergency Contact",
     accessor: "emergencyContactDetails",
     Cell: ({ value }) => <EmergencyContactsCell {...{ value }} />,
   },

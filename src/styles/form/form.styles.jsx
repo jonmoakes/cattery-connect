@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { gentleGrey, rustRed, softBlack, teal } from "../colours";
+import { gentleGrey, rustRed, softBlack, teal, warmBeige } from "../colours";
 
 export const Form = styled.form`
   width: 75%;
@@ -198,7 +198,7 @@ export const StyledSelect = styled.select`
 export const PaginationSelect = styled.select`
   width: 200px;
   height: 40px;
-  background: radial-gradient(circle, whitesmoke, ${gentleGrey});
+  background-color: ${warmBeige};
   color: ${softBlack};
   padding: 10px;
   border-radius: 5px;
@@ -212,7 +212,7 @@ export const PaginationInput = styled.input`
   height: 40px;
   border-radius: 5px;
   border: 2px solid ${softBlack};
-  background: radial-gradient(circle, whitesmoke, ${gentleGrey});
+  background-color: ${warmBeige};
   text-align: center;
 `;
 

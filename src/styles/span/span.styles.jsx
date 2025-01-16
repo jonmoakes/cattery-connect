@@ -80,14 +80,6 @@ export const ClearButtonExampleSpan = styled.span`
   text-transform: lowercase;
 `;
 
-export const SpanWithBackground = styled.span`
-  color: tomato;
-  background-color: ${softBlack};
-  padding: 5px;
-  border-radius: 5px;
-  text-transform: capitalize;
-`;
-
 export const RightMarginSpan = styled.span`
   margin-right: 10px;
 
