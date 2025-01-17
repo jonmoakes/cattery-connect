@@ -11,7 +11,7 @@ import useFireSwal from "../../../hooks/use-fire-swal";
 import useHamburgerHandlerNavigate from "../../../hooks/use-hamburger-handler-navigate";
 
 import { errorReceivedMessage } from "../../../strings/errors";
-import { accountRoute } from "../../../strings/routes";
+import { allCustomersRoute } from "../../../strings/routes";
 
 const useAddCustomerResultSwalUseEffect = () => {
   const { addCustomerResult, addCustomerError } =
@@ -28,7 +28,7 @@ const useAddCustomerResultSwalUseEffect = () => {
       fireSwal("success", "customer added!", "", 0, "", false, "", false).then(
         (isConfirmed) => {
           if (isConfirmed) {
-            hamburgerHandlerNavigate(accountRoute);
+            hamburgerHandlerNavigate(allCustomersRoute);
           }
         }
       );

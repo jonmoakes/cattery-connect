@@ -256,7 +256,6 @@ export const StyledCheckbox = styled.input`
   background-color: ${gentleGrey};
   margin: 10px auto 0px auto;
   font-family: inherit;
-
   width: 1.9rem;
   height: 1.9rem;
   border: 2px solid black;
@@ -277,7 +276,7 @@ export const StyledCheckbox = styled.input`
     transform: scale(0);
     transform-origin: bottom left;
     transition: 120ms transform ease-in-out;
-    background-color: ${teal};
+    background-color: red;
   }
 
   &:checked::before {

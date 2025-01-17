@@ -9,6 +9,7 @@ import { addCustomerReducer } from "./add-customer/add-customer.slice";
 import { getAllCustomersReducer } from "./get-all-customers/get-all-customers.slice";
 import { addCatReducer } from "./add-cat/add-cat.slice";
 import { deleteCustomerReducer } from "./delete-customer/delete-customer.slice";
+import { deleteCatReducer } from "./delete-cat/delete-cat.slice";
 
 export const rootReducer = combineReducers({
   hamburgerMenu: hamburgerMenuReducer,
@@ -20,4 +21,5 @@ export const rootReducer = combineReducers({
   getAllCustomers: getAllCustomersReducer,
   addCat: addCatReducer,
   deleteCustomer: deleteCustomerReducer,
+  deleteCat: deleteCatReducer,
 });

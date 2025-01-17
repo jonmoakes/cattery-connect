@@ -6,6 +6,6 @@ export const confirmSignOutMessage = "are you sure you want to sign out?";
 export const yesSignOutMessage = "yes, sign out";
 export const confirmUploadDatesAndPensDataMessage =
   "upload these dates and pens data?";
-export const confirmDeleteCustomerMessage = (name) => {
+export const confirmDeleteMessage = (name) => {
   return `<span style="font-size:20px";>are you sure that you want to delete<br/><span style="color:${customYellow}";>${name}</span><br/>from the database?<br/><br/>this action cannot be undone.</span>`;
 };

@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { deleteCustomerFromDbAsync } from "../../../store/delete-customer/delete-customer.thunks";
 
 import useConfirmSwal from "../../../hooks/use-confirm-swal";
-import { confirmDeleteCustomerMessage } from "../../../strings/confirms";
+import { confirmDeleteMessage } from "../../../strings/confirms";
 
 const useDeleteCustomer = () => {
   const dispatch = useDispatch();
@@ -11,7 +11,7 @@ const useDeleteCustomer = () => {
 
   const deleteCustomer = (name, documentId) => {
     confirmSwal(
-      confirmDeleteCustomerMessage(name),
+      confirmDeleteMessage(name),
       "",
       "yes, delete",
       "don't delete",

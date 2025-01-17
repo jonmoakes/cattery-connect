@@ -13,8 +13,10 @@ import {
   allCustomersRoute,
   signInRoute,
   uploadDatesAndPensDataRoute,
+  viewCustomersCatsRoute,
 } from "../strings/routes";
 import { resetDeleteCustomerState } from "../store/delete-customer/delete-customer.slice";
+import { resetDeleteCatState } from "../store/delete-cat/delete-cat.slice";
 
 const useResetStore = () => {
   const location = useLocation();
@@ -38,6 +40,9 @@ const useResetStore = () => {
       case allCustomersRoute:
         dispatch(resetGetAllCustomersState());
         dispatch(resetDeleteCustomerState());
+        break;
+      case viewCustomersCatsRoute:
+        dispatch(resetDeleteCatState());
         break;
       default:
         return;

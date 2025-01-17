@@ -228,7 +228,7 @@ export const NoSearchResultDiv = styled.div`
 
 export const TableDiv = styled.div`
   width: 95%;
-  margin: 0 auto;
+  margin: 0px auto;
   overflow-x: auto;
 `;
 

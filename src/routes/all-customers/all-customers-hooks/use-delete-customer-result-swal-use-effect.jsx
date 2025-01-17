@@ -21,7 +21,7 @@ const useDeleteCustomerResultSwalUseEffect = () => {
     if (deleteCustomerResult === "fulfilled") {
       fireSwal(
         "success",
-        "customer deleted!",
+        "the customer was deleted!",
         "",
         0,
         "",

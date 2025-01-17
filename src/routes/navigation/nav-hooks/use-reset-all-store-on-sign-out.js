@@ -6,6 +6,7 @@ import { resetAddCustomerState } from "../../../store/add-customer/add-customer.
 import { resetAddCatState } from "../../../store/add-cat/add-cat.slice";
 import { resetGetAllCustomersState } from "../../../store/get-all-customers/get-all-customers.slice";
 import { resetDeleteCustomerState } from "../../../store/delete-customer/delete-customer.slice";
+import { resetDeleteCatState } from "../../../store/delete-cat/delete-cat.slice";
 
 const useResetAllStoreOnSignOut = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,8 @@ const useResetAllStoreOnSignOut = () => {
     dispatch(resetAddCatState());
     dispatch(resetGetAllCustomersState());
     dispatch(resetDeleteCustomerState());
+    dispatch(resetDeleteCatState());
+    localStorage.clear();
   };
 
   return { resetAllStoreOnSignOut };

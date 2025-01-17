@@ -9,16 +9,19 @@ import {
 } from "react-table";
 
 import useViewCustomersCatsTableVariables from "./view-customers-cats-hooks.js/view-customers-cats-table-variables";
+import useHandleClickTableCheckbox from "../../components/tables/table-hooks/use-handle-click-table-checkbox";
 
 import NoCatsFound from "./no-cats-found.component";
 import RenderTable from "../../components/tables/render-table.component";
-
 import TablePagination from "../../components/tables/table-pagination.component";
 import TableSearchBox from "../../components/tables/table-search-box.component";
+import TableCheckBox from "../../components/tables/table-checkbox";
+import EditAndDeleteCatButtons from "./edit-and-delete-cat-buttons.component";
 
 const ViewCustomersCatsTable = ({ cats, customerDocumentId, customerName }) => {
   const { columns, data, initialState } =
     useViewCustomersCatsTableVariables(cats);
+  const { handleClickTableCheckbox } = useHandleClickTableCheckbox();
 
   const {
     getTableProps,
@@ -37,6 +40,7 @@ const ViewCustomersCatsTable = ({ cats, customerDocumentId, customerName }) => {
     prepareRow,
     state,
     setGlobalFilter,
+    selectedFlatRows,
   } = useTable(
     {
       columns,
@@ -50,7 +54,21 @@ const ViewCustomersCatsTable = ({ cats, customerDocumentId, customerName }) => {
     useColumnOrder,
     (hooks) => {
       hooks.visibleColumns.push((columns) => {
-        return [...columns];
+        return [
+          {
+            Cell: ({ row, selectedFlatRows }) => {
+              return (
+                <TableCheckBox
+                  onClick={() =>
+                    handleClickTableCheckbox(row, selectedFlatRows)
+                  }
+                  {...row.getToggleRowSelectedProps()}
+                />
+              );
+            },
+          },
+          ...columns,
+        ];
       });
     }
   );
@@ -59,11 +77,12 @@ const ViewCustomersCatsTable = ({ cats, customerDocumentId, customerName }) => {
   const [value, setValue] = useState(globalFilter);
 
   const shouldHideHeaders = !rows.length;
+  const checkedEntry = selectedFlatRows.map((row) => row.original);
+  const chosenEntry = checkedEntry[0];
 
   return (
     <>
       <NoCatsFound {...{ customerDocumentId, data, customerName }} />
-
       <TableSearchBox
         {...{
           rows,
@@ -74,6 +93,8 @@ const ViewCustomersCatsTable = ({ cats, customerDocumentId, customerName }) => {
           setValue,
         }}
       />
+
+      <EditAndDeleteCatButtons {...{ data, chosenEntry, customerDocumentId }} />
 
       {data.length ? (
         <>

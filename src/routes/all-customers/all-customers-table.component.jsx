@@ -10,8 +10,8 @@ import {
 
 import useGetAllCustomersSelectors from "../../hooks/selectors/use-get-all-customers-selectors";
 import useAllCustomersTableVariables from "./all-customers-hooks/all-customers-table-variables";
-import useDeleteCustomerResultSwalUseEffect from "./all-customers-hooks/use-delete-customer-result-swal-use-effect";
 import useIsOnline from "../../hooks/use-is-online";
+import useHandleClickTableCheckbox from "../../components/tables/table-hooks/use-handle-click-table-checkbox";
 
 import ShowFetchErrors from "../../components/errors/show-fetch-errors.component";
 import NoCustomersFound from "./no-customers-found.component";
@@ -25,7 +25,7 @@ import EditAndDeleteCustomerButtons from "./edit-and-delete-customer-buttons.com
 const AllCustomersTable = () => {
   const { getAllCustomersError } = useGetAllCustomersSelectors();
   const { columns, data, initialState } = useAllCustomersTableVariables();
-  useDeleteCustomerResultSwalUseEffect();
+  const { handleClickTableCheckbox } = useHandleClickTableCheckbox();
 
   const { isOnline } = useIsOnline();
 
@@ -63,27 +63,11 @@ const AllCustomersTable = () => {
         return [
           {
             Cell: ({ row, selectedFlatRows }) => {
-              const scrollToTop = () => {
-                document.body.scrollTop = 0;
-                document.documentElement.scrollTop = 0;
-              };
-
-              const handleCheck = () => {
-                if (!row.isSelected) {
-                  selectedFlatRows.forEach((selectedRow) => {
-                    selectedRow.toggleRowSelected(false);
-                  });
-                  row.toggleRowSelected(true);
-
-                  scrollToTop();
-                } else {
-                  row.toggleRowSelected(false);
-                }
-              };
-
               return (
                 <TableCheckBox
-                  onClick={handleCheck}
+                  onClick={() =>
+                    handleClickTableCheckbox(row, selectedFlatRows)
+                  }
                   {...row.getToggleRowSelectedProps()}
                 />
               );
@@ -124,25 +108,6 @@ const AllCustomersTable = () => {
           />
 
           <EditAndDeleteCustomerButtons {...{ chosenEntry }} />
-          {/* 
-          {chosenEntry ? (
-            <TableOptionsButtonDiv>
-              <EntryOptionsButton
-                className="edit"
-                type="button"
-                onClick={deleteCustomer}
-              >
-                edit customer
-              </EntryOptionsButton>
-              <EntryOptionsButton
-                className="delete"
-                type="button"
-                onClick={deleteCustomer}
-              >
-                delete customer
-              </EntryOptionsButton>
-            </TableOptionsButtonDiv>
-          ) : null} */}
 
           {data.length ? (
             <>
