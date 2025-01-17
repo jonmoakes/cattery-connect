@@ -5,21 +5,17 @@ import { ParentDiv } from "../../styles/div/div.styles";
 
 import { addCatRoute } from "../../strings/routes";
 
-const TitleAndAddCatLink = ({
-  customerName,
-  customerDocumentId,
-  catDetails,
-}) => {
+const TitleAndAddCatLink = ({ customerName, customerDocumentId, cats }) => {
   const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
 
-  //hamburger navigate expects an object.
+  //hamburger navigate expects an object even though this is just a simple string.
   const dataToBePassed = { ...{ customerDocumentId } };
 
   return (
     <ParentDiv>
       {customerName ? <h1>{customerName}'s cats</h1> : <h1>no cats found</h1>}
 
-      {customerDocumentId && catDetails.length ? (
+      {customerDocumentId && cats.length ? (
         <MinimalButton
           className="margin-bottom"
           onClick={() => hamburgerHandlerNavigate(addCatRoute, dataToBePassed)}

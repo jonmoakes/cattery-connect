@@ -1,12 +1,21 @@
 import styled, { keyframes } from "styled-components";
-import { bounceInDown, pulse } from "react-animations";
+import { bounceInDown, pulse, zoomInLeft, zoomInRight } from "react-animations";
 
-import { customYellow, rustRed, softBlack, teal, warmBeige } from "../colours";
+import {
+  customGreen,
+  customYellow,
+  rustRed,
+  softBlack,
+  teal,
+  warmBeige,
+} from "../colours";
 import eyeIcon from "../../assets/eye.png";
 import eyeIconHide from "../../assets/hide-eye.png";
 
 const PulseAnimation = keyframes`${pulse}`;
 const bounceInDownAnimation = keyframes`${bounceInDown}`;
+const zoomInLeftAnimation = keyframes`${zoomInLeft}`;
+const zoomInRightAnimation = keyframes`${zoomInRight}`;
 
 export const Button = styled.button`
   width: 250px;
@@ -200,5 +209,45 @@ export const MinimalButton = styled.button`
     @media screen and (max-width: 1366px) {
       transition: none;
     }
+  }
+`;
+
+export const EntryOptionsButton = styled(Button)`
+  background-color: ${customGreen};
+  animation: 1s ${zoomInLeftAnimation};
+  width: 200px;
+  height: 50px;
+  font-size: 18px;
+  line-height: 10px;
+  color: ${softBlack};
+  text-shadow: none;
+
+  &.delete {
+    background-color: ${rustRed};
+    color: whitesmoke;
+    text-shadow: 1px 1px 1px ${softBlack};
+    animation: 1s ${zoomInRightAnimation};
+
+    &:hover {
+      background-color: ${rustRed};
+      color: whitesmoke;
+    }
+  }
+
+  &:hover {
+    background-color: ${customGreen};
+    color: ${softBlack};
+  }
+
+  @media screen and (max-width: 850px) {
+    font-size: 16px;
+  }
+
+  @media screen and (max-width: 539px) {
+    margin: 10px auto;
+  }
+
+  @media screen and (max-width: 320px) {
+    width: 90%;
   }
 `;

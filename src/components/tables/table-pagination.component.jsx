@@ -35,7 +35,6 @@ const TablePagination = ({
           selectedPageSize
         );
         break;
-
       default:
         return;
     }

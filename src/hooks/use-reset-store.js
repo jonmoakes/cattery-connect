@@ -14,6 +14,7 @@ import {
   signInRoute,
   uploadDatesAndPensDataRoute,
 } from "../strings/routes";
+import { resetDeleteCustomerState } from "../store/delete-customer/delete-customer.slice";
 
 const useResetStore = () => {
   const location = useLocation();
@@ -36,6 +37,7 @@ const useResetStore = () => {
         break;
       case allCustomersRoute:
         dispatch(resetGetAllCustomersState());
+        dispatch(resetDeleteCustomerState());
         break;
       default:
         return;

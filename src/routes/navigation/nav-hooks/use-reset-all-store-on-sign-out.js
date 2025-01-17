@@ -5,6 +5,7 @@ import { resetUploadDatesAndPensDataState } from "../../../store/upload-dates-an
 import { resetAddCustomerState } from "../../../store/add-customer/add-customer.slice";
 import { resetAddCatState } from "../../../store/add-cat/add-cat.slice";
 import { resetGetAllCustomersState } from "../../../store/get-all-customers/get-all-customers.slice";
+import { resetDeleteCustomerState } from "../../../store/delete-customer/delete-customer.slice";
 
 const useResetAllStoreOnSignOut = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const useResetAllStoreOnSignOut = () => {
     dispatch(resetAddCustomerState());
     dispatch(resetAddCatState());
     dispatch(resetGetAllCustomersState());
+    dispatch(resetDeleteCustomerState());
   };
 
   return { resetAllStoreOnSignOut };

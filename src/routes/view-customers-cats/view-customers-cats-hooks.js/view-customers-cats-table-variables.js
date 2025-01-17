@@ -5,7 +5,7 @@ import VIEW_CUSTOMERS_CATS_TABLE_COLUMNS from "../view-customers-cats-table-colu
 
 const useViewCustomersCatsTableVariables = (cats) => {
   const columns = useMemo(() => VIEW_CUSTOMERS_CATS_TABLE_COLUMNS, []);
-  const data = useMemo(() => (cats ? cats : []), [cats]);
+  const data = useMemo(() => cats, [cats]);
 
   const initialState = useMemo(
     () => ({

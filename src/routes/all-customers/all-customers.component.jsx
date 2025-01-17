@@ -1,4 +1,5 @@
 import useGetAllCustomersSelectors from "../../hooks/selectors/use-get-all-customers-selectors";
+import useGetDeleteCustomerSelectors from "../../hooks/selectors/use-get-delete-customer-selectors";
 import useAllCustomersListener from "./all-customers-hooks/use-all-customers-listener";
 import useGetAllCustomersThunkUseEffect from "./all-customers-hooks/use-get-all-customers-thunk-use-effect";
 
@@ -10,6 +11,7 @@ import { ParentDiv } from "../../styles/div/div.styles";
 
 const AllCustomers = () => {
   const { getAllCustomersIsLoading } = useGetAllCustomersSelectors();
+  const { deleteCustomerIsLoading } = useGetDeleteCustomerSelectors();
   useAllCustomersListener();
   useGetAllCustomersThunkUseEffect();
 
@@ -18,8 +20,14 @@ const AllCustomers = () => {
       <ParentDiv>
         <h1>your customers</h1>
       </ParentDiv>
-      {getAllCustomersIsLoading ? (
-        <SkeletonBox loadingText="Fetching Customers..." />
+      {getAllCustomersIsLoading || deleteCustomerIsLoading ? (
+        <SkeletonBox
+          loadingText={
+            getAllCustomersIsLoading
+              ? "Fetching Customers..."
+              : "Deleting Customer..."
+          }
+        />
       ) : (
         <AllCustomersTable />
       )}

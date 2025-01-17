@@ -23,8 +23,13 @@ const NavSignOut = () => {
   const { isOnline } = useIsOnline();
 
   const confirmSignOut = () => {
-    confirmSwal(confirmSignOutMessage, "", yesSignOutMessage, "", () =>
-      signOutSubmitThunk()
+    confirmSwal(
+      confirmSignOutMessage,
+      "",
+      yesSignOutMessage,
+      "",
+      () => signOutSubmitThunk(),
+      null
     );
   };
 

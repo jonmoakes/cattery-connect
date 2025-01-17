@@ -10,13 +10,12 @@ const ViewCustomersCats = () => {
 
   const { customerDocumentId, customerName, catDetails } =
     customersIdNameAndCatDetails ?? {};
-  const cats = catDetails ? JSON.parse(catDetails) : "";
+
+  const cats = catDetails ? JSON.parse(catDetails) : [];
 
   return (
     <Container>
-      <TitleAndAddCatLink
-        {...{ customerName, customerDocumentId, catDetails }}
-      />
+      <TitleAndAddCatLink {...{ customerName, customerDocumentId, cats }} />
       <ViewCustomersCatsTable {...{ cats, customerDocumentId, customerName }} />
     </Container>
   );

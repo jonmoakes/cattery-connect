@@ -7,3 +7,4 @@ export const navy = "#002F6C";
 export const rustRed = "#A64B2A";
 export const dustyBlue = "#C4D8E2";
 export const steelBlue = "#7fa4b5";
+export const customGreen = "#00ff83";

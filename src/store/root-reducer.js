@@ -8,6 +8,7 @@ import { uploadDatesAndPensDataReducer } from "./upload-dates-and-pens-data/uplo
 import { addCustomerReducer } from "./add-customer/add-customer.slice";
 import { getAllCustomersReducer } from "./get-all-customers/get-all-customers.slice";
 import { addCatReducer } from "./add-cat/add-cat.slice";
+import { deleteCustomerReducer } from "./delete-customer/delete-customer.slice";
 
 export const rootReducer = combineReducers({
   hamburgerMenu: hamburgerMenuReducer,
@@ -18,4 +19,5 @@ export const rootReducer = combineReducers({
   addCustomer: addCustomerReducer,
   getAllCustomers: getAllCustomersReducer,
   addCat: addCatReducer,
+  deleteCustomer: deleteCustomerReducer,
 });
