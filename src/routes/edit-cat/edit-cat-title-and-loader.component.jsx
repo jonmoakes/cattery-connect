@@ -4,21 +4,21 @@ import SkeletonBox from "../../components/skeleton-box/skeleton-box.component";
 
 import { ParentDiv } from "../../styles/div/div.styles";
 
-const AddCatTitleAndLoader = () => {
+const EditCatTitleAndLoader = ({ cat }) => {
   const { catDetailManagementIsLoading } =
     useGetCatDetailsManagementSelectors();
 
   return (
     <>
       {catDetailManagementIsLoading ? (
-        <SkeletonBox loadingText="adding cat..." />
+        <SkeletonBox loadingText="editing cat..." />
       ) : null}
 
       <ParentDiv>
-        <h1>add a cat</h1>
+        <h1>edit {cat.catsName}</h1>
       </ParentDiv>
     </>
   );
 };
 
-export default AddCatTitleAndLoader;
+export default EditCatTitleAndLoader;

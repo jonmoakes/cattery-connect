@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 
-import useGetDeleteCatSelectors from "../../hooks/selectors/use-get-delete-cat-selectors";
-import useDeleteCatResultSwalUseEffect from "./view-customers-cats-hooks.js/use-delete-cat-result-swal-use-effect";
+import useGetCatDetailsManagementSelectors from "../../hooks/selectors/use-get-cat-details-management-selectors";
+import useDeleteCatResultSwalUseEffect from "./view-customers-cats-hooks/use-delete-cat-result-swal-use-effect";
 
 import SkeletonBox from "../../components/skeleton-box/skeleton-box.component";
 import TitleAndAddCatLink from "./title-and-add-cat-link.component";
@@ -11,8 +11,8 @@ import { Container } from "../../styles/container/container.styles";
 
 const ViewCustomersCats = () => {
   const { state: customersIdNameAndCatDetails } = useLocation();
-  const { deleteCatIsLoading } = useGetDeleteCatSelectors();
-
+  const { catDetailManagementIsLoading } =
+    useGetCatDetailsManagementSelectors();
   useDeleteCatResultSwalUseEffect();
 
   const { customerDocumentId, customerName, catDetails } =
@@ -22,7 +22,7 @@ const ViewCustomersCats = () => {
 
   return (
     <Container>
-      {deleteCatIsLoading ? (
+      {catDetailManagementIsLoading ? (
         <SkeletonBox loadingText="deleting cat..." />
       ) : (
         <>

@@ -1,0 +1,39 @@
+import useGetCatDetailsManagementSelectors from "../../hooks/selectors/use-get-cat-details-management-selectors";
+import useAddCatResultSwalUseEffect from "./cat-details-hooks/use-upload-cat-result-swal-use-effect";
+import useHandleCatDetailsChange from "./cat-details-hooks/use-handle-cat-details-change";
+import useSubmitUploadCat from "./cat-details-hooks/use-submit-upload-cat";
+
+import CatsName from "./inputs/cats-name-input.component";
+import CatsVaccinationStatusInput from "./inputs/cats-vaccination-status-input.component";
+import UploadCatDetailsButton from "./upload-cat-details-button.component";
+import CatsFeedingInfoInput from "./inputs/cats-feeding-info-input.component";
+import CatsBreedInput from "./inputs/cats-breed-input.component";
+import CatsAgeInput from "./inputs/cats-age-input.component";
+import CatsGenderInput from "./inputs/cats-gender-input.component";
+import CatsMedicalInfoInput from "./inputs/cats-medical-info-input.component";
+import CatsBehaviourInfoInput from "./inputs/cats-behaviour-info-input.component";
+
+import { Form } from "../../styles/form/form.styles";
+
+const CatDetailsForm = ({ docId }) => {
+  const { catDetails } = useGetCatDetailsManagementSelectors();
+  useAddCatResultSwalUseEffect();
+  const { submitUploadCat } = useSubmitUploadCat(catDetails, docId);
+  const { handleCatDetailsChange } = useHandleCatDetailsChange();
+
+  return (
+    <Form className="small-top-margin" onSubmit={submitUploadCat}>
+      <CatsName {...{ handleCatDetailsChange }} />
+      <CatsVaccinationStatusInput {...{ handleCatDetailsChange }} />
+      <CatsFeedingInfoInput {...{ handleCatDetailsChange }} />
+      <CatsBreedInput {...{ handleCatDetailsChange }} />
+      <CatsAgeInput {...{ handleCatDetailsChange }} />
+      <CatsGenderInput {...{ handleCatDetailsChange }} />
+      <CatsMedicalInfoInput {...{ handleCatDetailsChange }} />
+      <CatsBehaviourInfoInput {...{ handleCatDetailsChange }} />
+      <UploadCatDetailsButton />
+    </Form>
+  );
+};
+
+export default CatDetailsForm;

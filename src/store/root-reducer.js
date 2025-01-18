@@ -7,9 +7,9 @@ import { userReducer } from "./user/user.slice";
 import { uploadDatesAndPensDataReducer } from "./upload-dates-and-pens-data/upload-dates-and-pens-data.slice";
 import { addCustomerReducer } from "./add-customer/add-customer.slice";
 import { getAllCustomersReducer } from "./get-all-customers/get-all-customers.slice";
-import { addCatReducer } from "./add-cat/add-cat.slice";
 import { deleteCustomerReducer } from "./delete-customer/delete-customer.slice";
-import { deleteCatReducer } from "./delete-cat/delete-cat.slice";
+
+import { catDetailsManagementReducer } from "./cat-details-management/cat-details-management.slice";
 
 export const rootReducer = combineReducers({
   hamburgerMenu: hamburgerMenuReducer,
@@ -19,7 +19,6 @@ export const rootReducer = combineReducers({
   uploadDatesAndPensData: uploadDatesAndPensDataReducer,
   addCustomer: addCustomerReducer,
   getAllCustomers: getAllCustomersReducer,
-  addCat: addCatReducer,
   deleteCustomer: deleteCustomerReducer,
-  deleteCat: deleteCatReducer,
+  catDetailsManagement: catDetailsManagementReducer,
 });

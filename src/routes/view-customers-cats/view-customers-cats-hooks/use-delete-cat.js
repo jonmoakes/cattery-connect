@@ -1,8 +1,9 @@
 import { useDispatch } from "react-redux";
 
-import { deleteCatFromDbAsync } from "../../../store/delete-cat/delete-cat.thunks";
+import { deleteCatFromDbAsync } from "../../../store/cat-details-management/cat-details-management.thunks";
 
 import useConfirmSwal from "../../../hooks/use-confirm-swal";
+
 import { confirmDeleteMessage } from "../../../strings/confirms";
 
 const useDeleteCat = () => {

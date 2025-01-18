@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import useGetDeleteCatSelectors from "../../../hooks/selectors/use-get-delete-cat-selectors";
+import useGetCatDetailsManagementSelectors from "../../../hooks/selectors/use-get-cat-details-management-selectors";
 import useHamburgerHandlerNavigate from "../../../hooks/use-hamburger-handler-navigate";
-import { resetDeleteCatState } from "../../../store/delete-cat/delete-cat.slice";
+import { resetCatDetailsManagementState } from "../../../store/cat-details-management/cat-details-management.slice";
 
 import useFireSwal from "../../../hooks/use-fire-swal";
 
@@ -11,16 +11,17 @@ import { errorReceivedMessage } from "../../../strings/errors";
 import { allCustomersRoute } from "../../../strings/routes";
 
 const useDeleteCatResultSwalUseEffect = () => {
-  const { deleteCatResult, deleteCatError } = useGetDeleteCatSelectors();
+  const { catDetailsManagementResult, catDetailsManagementError } =
+    useGetCatDetailsManagementSelectors();
 
-  const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
   const dispatch = useDispatch();
   const { fireSwal } = useFireSwal();
+  const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
 
   useEffect(() => {
-    if (!deleteCatResult && !deleteCatError) return;
+    if (!catDetailsManagementResult && !catDetailsManagementError) return;
 
-    if (deleteCatResult === "fulfilled") {
+    if (catDetailsManagementResult === "fulfilled") {
       fireSwal(
         "success",
         "the cat was deleted!",
@@ -36,7 +37,7 @@ const useDeleteCatResultSwalUseEffect = () => {
         }
       });
     } else {
-      const error = deleteCatError;
+      const error = catDetailsManagementError;
       fireSwal(
         "error",
         errorReceivedMessage("error deleting cat..", error),
@@ -48,14 +49,14 @@ const useDeleteCatResultSwalUseEffect = () => {
         false
       ).then((isConfirmed) => {
         if (isConfirmed) {
-          dispatch(resetDeleteCatState());
+          dispatch(resetCatDetailsManagementState());
         }
       });
     }
   }, [
     fireSwal,
-    deleteCatError,
-    deleteCatResult,
+    catDetailsManagementResult,
+    catDetailsManagementError,
     dispatch,
     hamburgerHandlerNavigate,
   ]);

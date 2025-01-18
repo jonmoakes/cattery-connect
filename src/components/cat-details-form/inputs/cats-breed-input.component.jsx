@@ -1,10 +1,10 @@
-import useGetAddCatDetailsSelectors from "../../../hooks/selectors/use-get-add-cat-details-selectors";
+import useGetCatDetailsManagementSelectors from "../../../hooks/selectors/use-get-cat-details-management-selectors";
 
 import { StyledInput, Label } from "../../../styles/form/form.styles";
 import { BlackHr } from "../../../styles/hr/hr.styles";
 
-const AddCatsBreed = ({ handleAddCatsDetailsChange }) => {
-  const { catsBreed } = useGetAddCatDetailsSelectors();
+const CatsBreedInput = ({ handleCatDetailsChange }) => {
+  const { catsBreed } = useGetCatDetailsManagementSelectors();
 
   return (
     <>
@@ -15,10 +15,10 @@ const AddCatsBreed = ({ handleAddCatsDetailsChange }) => {
         type="text"
         name="catsBreed"
         value={catsBreed || ""}
-        onChange={handleAddCatsDetailsChange}
+        onChange={handleCatDetailsChange}
       />
     </>
   );
 };
 
-export default AddCatsBreed;
+export default CatsBreedInput;

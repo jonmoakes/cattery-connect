@@ -1,11 +1,11 @@
-import useGetAddCatDetailsSelectors from "../../../hooks/selectors/use-get-add-cat-details-selectors";
+import useGetCatDetailsManagementSelectors from "../../../hooks/selectors/use-get-cat-details-management-selectors";
 
 import { Label, StyledTextArea } from "../../../styles/form/form.styles";
 import { BlackHr } from "../../../styles/hr/hr.styles";
 import { RedSpan } from "../../../styles/span/span.styles";
 
-const AddCatsFeedingInfo = ({ handleAddCatsDetailsChange }) => {
-  const { catsFeedingInfo } = useGetAddCatDetailsSelectors();
+const CatsFeedingInfoInput = ({ handleCatDetailsChange }) => {
+  const { catsFeedingInfo } = useGetCatDetailsManagementSelectors();
 
   return (
     <>
@@ -18,7 +18,7 @@ const AddCatsFeedingInfo = ({ handleAddCatsDetailsChange }) => {
         type="text"
         name="catsFeedingInfo"
         value={catsFeedingInfo || ""}
-        onChange={handleAddCatsDetailsChange}
+        onChange={handleCatDetailsChange}
         required
         placeholder={
           "Information about diet, brand of food, feeding schedule, or special dietary requirements."
@@ -28,4 +28,4 @@ const AddCatsFeedingInfo = ({ handleAddCatsDetailsChange }) => {
   );
 };
 
-export default AddCatsFeedingInfo;
+export default CatsFeedingInfoInput;

@@ -8,7 +8,7 @@ import {
   useColumnOrder,
 } from "react-table";
 
-import useViewCustomersCatsTableVariables from "./view-customers-cats-hooks.js/view-customers-cats-table-variables";
+import useViewCustomersCatsTableVariables from "./view-customers-cats-hooks/view-customers-cats-table-variables";
 import useHandleClickTableCheckbox from "../../components/tables/table-hooks/use-handle-click-table-checkbox";
 
 import NoCatsFound from "./no-cats-found.component";
@@ -83,6 +83,7 @@ const ViewCustomersCatsTable = ({ cats, customerDocumentId, customerName }) => {
   return (
     <>
       <NoCatsFound {...{ customerDocumentId, data, customerName }} />
+
       <TableSearchBox
         {...{
           rows,

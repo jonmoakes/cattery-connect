@@ -1,10 +1,10 @@
-import useGetAddCatDetailsSelectors from "../../../hooks/selectors/use-get-add-cat-details-selectors";
+import useGetCatDetailsManagementSelectors from "../../../hooks/selectors/use-get-cat-details-management-selectors";
 
 import { StyledInput, Label } from "../../../styles/form/form.styles";
 import { BlackHr } from "../../../styles/hr/hr.styles";
 
-const AddCatsGender = ({ handleAddCatsDetailsChange }) => {
-  const { catsGender } = useGetAddCatDetailsSelectors();
+const CatsGenderInput = ({ handleCatDetailsChange }) => {
+  const { catsGender } = useGetCatDetailsManagementSelectors();
 
   return (
     <>
@@ -15,10 +15,10 @@ const AddCatsGender = ({ handleAddCatsDetailsChange }) => {
         type="text"
         name="catsGender"
         value={catsGender || ""}
-        onChange={handleAddCatsDetailsChange}
+        onChange={handleCatDetailsChange}
       />
     </>
   );
 };
 
-export default AddCatsGender;
+export default CatsGenderInput;

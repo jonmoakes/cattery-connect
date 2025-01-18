@@ -1,4 +1,4 @@
-import useGoToAddCatRoute from "./view-customers-cats-hooks.js/use-go-to-add-cat-route";
+import useGoToAddCatRoute from "./view-customers-cats-hooks/use-go-to-add-cat-route";
 
 import { Button } from "../../styles/button/button.styles";
 

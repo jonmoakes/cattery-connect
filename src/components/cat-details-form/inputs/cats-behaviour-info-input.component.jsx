@@ -1,10 +1,10 @@
-import useGetAddCatDetailsSelectors from "../../../hooks/selectors/use-get-add-cat-details-selectors";
+import useGetCatDetailsManagementSelectors from "../../../hooks/selectors/use-get-cat-details-management-selectors";
 
 import { Label, StyledTextArea } from "../../../styles/form/form.styles";
 import { BlackHr } from "../../../styles/hr/hr.styles";
 
-const AddCatsBehaviourInfo = ({ handleAddCatsDetailsChange }) => {
-  const { catsBehaviourInfo } = useGetAddCatDetailsSelectors();
+const CatsBehaviourInfoInput = ({ handleCatDetailsChange }) => {
+  const { catsBehaviourInfo } = useGetCatDetailsManagementSelectors();
 
   return (
     <>
@@ -15,11 +15,11 @@ const AddCatsBehaviourInfo = ({ handleAddCatsDetailsChange }) => {
         type="text"
         name="catsBehaviourInfo"
         value={catsBehaviourInfo || ""}
-        onChange={handleAddCatsDetailsChange}
+        onChange={handleCatDetailsChange}
         placeholder={"Information about temperament, preferences, or dislikes."}
       />
     </>
   );
 };
 
-export default AddCatsBehaviourInfo;
+export default CatsBehaviourInfoInput;

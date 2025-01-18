@@ -21,6 +21,7 @@ import {
   signInRoute,
   uploadDatesAndPensDataRoute,
   viewCustomersCatsRoute,
+  editCatRoute,
 } from "./strings/routes";
 
 const Navigation = lazy(() =>
@@ -44,6 +45,7 @@ const AllCustomers = lazy(() =>
 const ViewCustomersCats = lazy(() =>
   import("./routes/view-customers-cats/view-customers-cats.component")
 );
+const EditCat = lazy(() => import("./routes/edit-cat/edit-cat.component"));
 
 const App = () => {
   useGetUserOnLoadThunkUseEffect();
@@ -92,6 +94,11 @@ const App = () => {
                 element={
                   currentUser && role === "owner" ? <ViewCustomersCats /> : null
                 }
+              />
+
+              <Route
+                path={editCatRoute}
+                element={currentUser && role === "owner" ? <EditCat /> : null}
               />
             </Route>
           </Routes>

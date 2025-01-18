@@ -374,3 +374,10 @@ export const TableOptionsButtonDiv = styled.div`
     margin: -20px auto 20px auto;
   }
 `;
+
+export const VaxStatusDiv = styled.div`
+  width: 100%;
+  height: auto;
+  text-align: center;
+  margin-top: 80px;
+`;

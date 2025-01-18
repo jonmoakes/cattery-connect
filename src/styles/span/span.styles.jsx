@@ -31,6 +31,10 @@ export const RedSpan = styled.span`
   color: red;
 `;
 
+export const WhiteSpan = styled.span`
+  color: whitesmoke;
+  text-shadow: 1px 1px 1px ${softBlack};
+`;
 export const YellowSpan = styled.span`
   color: ${customYellow};
 `;

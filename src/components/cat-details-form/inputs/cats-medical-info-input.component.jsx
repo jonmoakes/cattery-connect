@@ -1,10 +1,10 @@
-import useGetAddCatDetailsSelectors from "../../../hooks/selectors/use-get-add-cat-details-selectors";
+import useGetCatDetailsManagementSelectors from "../../../hooks/selectors/use-get-cat-details-management-selectors";
 
 import { Label, StyledTextArea } from "../../../styles/form/form.styles";
 import { BlackHr } from "../../../styles/hr/hr.styles";
 
-const AddCatsMedicalInfo = ({ handleAddCatsDetailsChange }) => {
-  const { catsMedicalInfo } = useGetAddCatDetailsSelectors();
+const CatsMedicalInfoInput = ({ handleCatDetailsChange }) => {
+  const { catsMedicalInfo } = useGetCatDetailsManagementSelectors();
 
   return (
     <>
@@ -15,7 +15,7 @@ const AddCatsMedicalInfo = ({ handleAddCatsDetailsChange }) => {
         type="text"
         name="catsMedicalInfo"
         value={catsMedicalInfo || ""}
-        onChange={handleAddCatsDetailsChange}
+        onChange={handleCatDetailsChange}
         placeholder={
           "Details of any medical issues, allergies, or other needs."
         }
@@ -24,4 +24,4 @@ const AddCatsMedicalInfo = ({ handleAddCatsDetailsChange }) => {
   );
 };
 
-export default AddCatsMedicalInfo;
+export default CatsMedicalInfoInput;

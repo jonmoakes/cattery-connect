@@ -1,7 +1,8 @@
 import { useMemo } from "react";
 
-import { defaultTableSize } from "../../../constants/constants";
 import VIEW_CUSTOMERS_CATS_TABLE_COLUMNS from "../view-customers-cats-table-columns";
+
+import { defaultTableSize } from "../../../constants/constants";
 
 const useViewCustomersCatsTableVariables = (cats) => {
   const columns = useMemo(() => VIEW_CUSTOMERS_CATS_TABLE_COLUMNS, []);

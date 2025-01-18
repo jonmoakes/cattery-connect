@@ -1,11 +1,11 @@
-import useGetAddCatDetailsSelectors from "../../../hooks/selectors/use-get-add-cat-details-selectors";
+import useGetCatDetailsManagementSelectors from "../../../hooks/selectors/use-get-cat-details-management-selectors";
 
 import { StyledInput, Label } from "../../../styles/form/form.styles";
 import { BlackHr } from "../../../styles/hr/hr.styles";
 import { RedSpan } from "../../../styles/span/span.styles";
 
-const AddCatsName = ({ handleAddCatsDetailsChange }) => {
-  const { catsName } = useGetAddCatDetailsSelectors();
+const CatsNameInput = ({ handleCatDetailsChange }) => {
+  const { catsName } = useGetCatDetailsManagementSelectors();
 
   return (
     <>
@@ -19,11 +19,11 @@ const AddCatsName = ({ handleAddCatsDetailsChange }) => {
         type="text"
         name="catsName"
         value={catsName || ""}
-        onChange={handleAddCatsDetailsChange}
+        onChange={handleCatDetailsChange}
         required
       />
     </>
   );
 };
 
-export default AddCatsName;
+export default CatsNameInput;
