@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 
 import useGetCustomerDetailsManagementSelectors from "../../../hooks/selectors/use-get-customer-details-management-selectors";
 import {
-  resetAddCustomerResult,
-  resetAddCustomerError,
+  resetEditCustomerResult,
+  resetEditCustomerError,
 } from "../../../store/customer-details-management/customer-details-management.slice";
 
 import useFireSwal from "../../../hooks/use-fire-swal";
@@ -13,8 +13,8 @@ import useHamburgerHandlerNavigate from "../../../hooks/use-hamburger-handler-na
 import { errorReceivedMessage } from "../../../strings/errors";
 import { allCustomersRoute } from "../../../strings/routes";
 
-const useAddCustomerResultSwalUseEffect = () => {
-  const { addCustomerResult, addCustomerError } =
+const useEditCustomerResultSwalUseEffect = () => {
+  const { editCustomerResult, editCustomerError } =
     useGetCustomerDetailsManagementSelectors();
 
   const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
@@ -22,18 +22,25 @@ const useAddCustomerResultSwalUseEffect = () => {
   const { fireSwal } = useFireSwal();
 
   useEffect(() => {
-    if (!addCustomerResult && !addCustomerError) return;
+    if (!editCustomerResult && !editCustomerError) return;
 
-    if (addCustomerResult === "fulfilled") {
-      fireSwal("success", "customer added!", "", 0, "", false, "", false).then(
-        (isConfirmed) => {
-          if (isConfirmed) {
-            hamburgerHandlerNavigate(allCustomersRoute);
-          }
+    if (editCustomerResult === "fulfilled") {
+      fireSwal(
+        "success",
+        "customer updated!",
+        "",
+        0,
+        "",
+        false,
+        "",
+        false
+      ).then((isConfirmed) => {
+        if (isConfirmed) {
+          hamburgerHandlerNavigate(allCustomersRoute);
         }
-      );
+      });
     } else {
-      const error = addCustomerError;
+      const error = editCustomerError;
       fireSwal(
         "error",
         errorReceivedMessage("error adding customer..", error),
@@ -45,18 +52,18 @@ const useAddCustomerResultSwalUseEffect = () => {
         false
       ).then((isConfirmed) => {
         if (isConfirmed) {
-          dispatch(resetAddCustomerResult());
-          dispatch(resetAddCustomerError());
+          dispatch(resetEditCustomerResult());
+          dispatch(resetEditCustomerError());
         }
       });
     }
   }, [
     fireSwal,
-    addCustomerResult,
-    addCustomerError,
+    editCustomerResult,
+    editCustomerError,
     dispatch,
     hamburgerHandlerNavigate,
   ]);
 };
 
-export default useAddCustomerResultSwalUseEffect;
+export default useEditCustomerResultSwalUseEffect;

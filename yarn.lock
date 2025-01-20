@@ -1825,6 +1825,11 @@ redux-logger@^3.0.6:
   dependencies:
     deep-diff "^0.3.5"
 
+redux-remember@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/redux-remember/-/redux-remember-5.2.0.tgz#d291191895687c178af6a637d09a1d70acdd3f7f"
+  integrity sha512-HqXx9V+DKzgBzpiIT5dyiXZgiiSB6zaMs4sIscwQ+Z0zVwUvJh20mqPEQWo4wbthuo5+5jGrS7Yfvv4HyOuAFw==
+
 redux-thunk@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-3.1.0.tgz#94aa6e04977c30e14e892eae84978c1af6058ff3"

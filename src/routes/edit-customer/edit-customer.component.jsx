@@ -1,12 +1,13 @@
-import useAddCustomerResultSwalUseEffect from "./add-customer-hooks/use-add-customer-result-swal-use-effect";
+import useEditCustomerResultSwalUseEffect from "./edit-customer-hooks/use-edit-customer-result-swal-use-effect";
 
 import CustomerDetailsTitleAndLoader from "../../components/customer-details-form/customer-details-title-and-loader.component";
 import CustomerDetailsForm from "../../components/customer-details-form/customer-details-form.component";
 
 import { Container } from "../../styles/container/container.styles";
 
-const AddCustomer = () => {
-  useAddCustomerResultSwalUseEffect();
+const EditCustomer = () => {
+  useEditCustomerResultSwalUseEffect();
+
   return (
     <Container>
       <CustomerDetailsTitleAndLoader />
@@ -15,4 +16,4 @@ const AddCustomer = () => {
   );
 };
 
-export default AddCustomer;
+export default EditCustomer;

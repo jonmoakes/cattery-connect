@@ -1,10 +1,10 @@
-import useGetAddCustomerDetailsSelectors from "../../../hooks/selectors/use-get-add-customer-details-selectors";
+import useGetCustomerDetailsManagementSelectors from "../../../hooks/selectors/use-get-customer-details-management-selectors";
 
 import { StyledInput, Label } from "../../../styles/form/form.styles";
 import { RedSpan } from "../../../styles/span/span.styles";
 
-const AddCustomerPhoneNumber = ({ handleAddCustomerDetailsChange }) => {
-  const { phoneNumber } = useGetAddCustomerDetailsSelectors();
+const CustomerPhoneNumberInput = ({ handleCustomerDetailsChange }) => {
+  const { phoneNumber } = useGetCustomerDetailsManagementSelectors();
 
   return (
     <>
@@ -17,10 +17,10 @@ const AddCustomerPhoneNumber = ({ handleAddCustomerDetailsChange }) => {
         type="tel"
         name="phoneNumber"
         value={phoneNumber || ""}
-        onChange={handleAddCustomerDetailsChange}
+        onChange={handleCustomerDetailsChange}
       />
     </>
   );
 };
 
-export default AddCustomerPhoneNumber;
+export default CustomerPhoneNumberInput;

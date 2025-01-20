@@ -1,21 +1,26 @@
 import { useDispatch } from "react-redux";
 
-import { deleteCustomerFromDbAsync } from "../../../store/delete-customer/delete-customer.thunks";
+import useGetDataToBePassedSelectors from "../../../hooks/selectors/use-get-data-to-be-passed-selectors";
+import { deleteCustomerAsync } from "../../../store/customer-details-management/customer-details-management.thunks";
 
 import useConfirmSwal from "../../../hooks/use-confirm-swal";
 import { confirmDeleteMessage } from "../../../strings/confirms";
 
 const useDeleteCustomer = () => {
+  const { dataToBePassed } = useGetDataToBePassedSelectors();
+
+  const { $id, name } = dataToBePassed ?? {};
+
   const dispatch = useDispatch();
   const { confirmSwal } = useConfirmSwal();
 
-  const deleteCustomer = (name, documentId) => {
+  const deleteCustomer = () => {
     confirmSwal(
       confirmDeleteMessage(name),
       "",
       "yes, delete",
       "don't delete",
-      () => dispatch(deleteCustomerFromDbAsync({ documentId })),
+      () => dispatch(deleteCustomerAsync({ $id })),
       null
     );
   };

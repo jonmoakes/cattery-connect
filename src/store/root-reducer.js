@@ -5,10 +5,9 @@ import { passwordIsVisibleReducer } from "./password-is-visible/password-is-visi
 import { signInFormReducer } from "./sign-in-form/sign-in-form.slice";
 import { userReducer } from "./user/user.slice";
 import { uploadDatesAndPensDataReducer } from "./upload-dates-and-pens-data/upload-dates-and-pens-data.slice";
-import { addCustomerReducer } from "./add-customer/add-customer.slice";
 import { getAllCustomersReducer } from "./get-all-customers/get-all-customers.slice";
-import { deleteCustomerReducer } from "./delete-customer/delete-customer.slice";
-
+import { dataToBePassedReducer } from "./data-to-be-passed/data-to-be-passed.slice";
+import { customerDetailsManagementReducer } from "./customer-details-management/customer-details-management.slice";
 import { catDetailsManagementReducer } from "./cat-details-management/cat-details-management.slice";
 
 export const rootReducer = combineReducers({
@@ -17,8 +16,8 @@ export const rootReducer = combineReducers({
   signInForm: signInFormReducer,
   user: userReducer,
   uploadDatesAndPensData: uploadDatesAndPensDataReducer,
-  addCustomer: addCustomerReducer,
   getAllCustomers: getAllCustomersReducer,
-  deleteCustomer: deleteCustomerReducer,
+  dataToBePassed: dataToBePassedReducer,
+  customerDetailsManagement: customerDetailsManagementReducer,
   catDetailsManagement: catDetailsManagementReducer,
 });

@@ -6,6 +6,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import useGetCurrentUserSelectors from "./hooks/selectors/use-get-current-user-selectors";
 import useGetUserOnLoadThunkUseEffect from "./hooks/use-get-user-on-load-thunk-use-effect";
 import useScrollToTop from "./hooks/use-scroll-to-top";
+import useResetStoreOnRouteChangeUseEffect from "./hooks/use-reset-store-on-route-change-use-effect";
 
 import GlobalStyles from "./global-styles";
 import "./App.css";
@@ -22,6 +23,7 @@ import {
   uploadDatesAndPensDataRoute,
   viewCustomersCatsRoute,
   editCatRoute,
+  editCustomerRoute,
 } from "./strings/routes";
 
 const Navigation = lazy(() =>
@@ -46,10 +48,14 @@ const ViewCustomersCats = lazy(() =>
   import("./routes/view-customers-cats/view-customers-cats.component")
 );
 const EditCat = lazy(() => import("./routes/edit-cat/edit-cat.component"));
+const EditCustomer = lazy(() =>
+  import("./routes/edit-customer/edit-customer.component")
+);
 
 const App = () => {
-  useGetUserOnLoadThunkUseEffect();
   const { currentUser, role } = useGetCurrentUserSelectors();
+  useGetUserOnLoadThunkUseEffect();
+  useResetStoreOnRouteChangeUseEffect();
   useScrollToTop();
 
   return (
@@ -99,6 +105,13 @@ const App = () => {
               <Route
                 path={editCatRoute}
                 element={currentUser && role === "owner" ? <EditCat /> : null}
+              />
+
+              <Route
+                path={editCustomerRoute}
+                element={
+                  currentUser && role === "owner" ? <EditCustomer /> : null
+                }
               />
             </Route>
           </Routes>

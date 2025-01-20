@@ -1,15 +1,13 @@
 import useGetAllCustomersSelectors from "../../hooks/selectors/use-get-all-customers-selectors";
-
-import useHamburgerHandlerNavigate from "../../hooks/use-hamburger-handler-navigate";
+import useConditionallyClearDataPassedStateAndNavigate from "./all-customers-hooks/use-conditionally-clear-data-passed-state-and-navigate";
 
 import { MinimalButton } from "../../styles/button/button.styles";
 import { ParentDiv } from "../../styles/div/div.styles";
 
-import { addCustomerRoute } from "../../strings/routes";
-
 const TitleAndAddCustomerLink = () => {
   const { allCustomers } = useGetAllCustomersSelectors();
-  const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
+  const { conditionallyClearDataPassedStateAndNavigate } =
+    useConditionallyClearDataPassedStateAndNavigate();
 
   return (
     <ParentDiv>
@@ -18,7 +16,7 @@ const TitleAndAddCustomerLink = () => {
       {allCustomers && allCustomers.length ? (
         <MinimalButton
           className="margin-bottom"
-          onClick={() => hamburgerHandlerNavigate(addCustomerRoute)}
+          onClick={conditionallyClearDataPassedStateAndNavigate}
         >
           add another customer
         </MinimalButton>

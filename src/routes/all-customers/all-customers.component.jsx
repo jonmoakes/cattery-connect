@@ -1,5 +1,5 @@
 import useGetAllCustomersSelectors from "../../hooks/selectors/use-get-all-customers-selectors";
-import useGetDeleteCustomerSelectors from "../../hooks/selectors/use-get-delete-customer-selectors";
+import useGetCustomerDetailsManagementSelectors from "../../hooks/selectors/use-get-customer-details-management-selectors";
 
 import useAllCustomersListener from "./all-customers-hooks/use-all-customers-listener";
 import useGetAllCustomersThunkUseEffect from "./all-customers-hooks/use-get-all-customers-thunk-use-effect";
@@ -13,14 +13,15 @@ import { Container } from "../../styles/container/container.styles";
 
 const AllCustomers = () => {
   const { getAllCustomersIsLoading } = useGetAllCustomersSelectors();
-  const { deleteCustomerIsLoading } = useGetDeleteCustomerSelectors();
+  const { customerDetailsManagementIsLoading } =
+    useGetCustomerDetailsManagementSelectors();
   useAllCustomersListener();
   useGetAllCustomersThunkUseEffect();
   useDeleteCustomerResultSwalUseEffect();
 
   return (
     <Container>
-      {getAllCustomersIsLoading || deleteCustomerIsLoading ? (
+      {getAllCustomersIsLoading || customerDetailsManagementIsLoading ? (
         <SkeletonBox
           loadingText={
             getAllCustomersIsLoading

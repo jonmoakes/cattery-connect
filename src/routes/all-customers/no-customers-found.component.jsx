@@ -10,6 +10,7 @@ import { addCustomerRoute } from "../../strings/routes";
 const NoCustomersFound = ({ data }) => {
   const { allCustomers } = useGetAddCustomerDetailsSelectors();
   const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
+
   return (
     <>
       {!data.length ? (

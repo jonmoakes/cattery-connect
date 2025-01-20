@@ -34,3 +34,5 @@ export const passwordErrorInstructions =
 export const enterPhoneNumberMessage = "please enter a phone number.";
 export const phoneLengthErrorMessage =
   "the phone number should be 11 digits long.";
+export const couldntFindDocIdMessage =
+  "couldn't find details needed for deletion. pleasd reload the page and try again.";

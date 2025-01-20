@@ -1,10 +1,10 @@
-import useGetAddCustomerDetailsSelectors from "../../../hooks/selectors/use-get-add-customer-details-selectors";
+import useGetCustomerDetailsManagementSelectors from "../../../hooks/selectors/use-get-customer-details-management-selectors";
 
 import { Label, StyledTextArea } from "../../../styles/form/form.styles";
 import { RedSpan } from "../../../styles/span/span.styles";
 
-const AddCustomerAddress = ({ handleAddCustomerDetailsChange }) => {
-  const { address } = useGetAddCustomerDetailsSelectors();
+const CustomerAddressInput = ({ handleCustomerDetailsChange }) => {
+  const { address } = useGetCustomerDetailsManagementSelectors();
 
   return (
     <>
@@ -17,7 +17,7 @@ const AddCustomerAddress = ({ handleAddCustomerDetailsChange }) => {
         type="text"
         name="address"
         value={address || ""}
-        onChange={handleAddCustomerDetailsChange}
+        onChange={handleCustomerDetailsChange}
         placeholder={`Separate into lines for easier viewing in the table - ie:
 
 56 Maple Lane
@@ -29,4 +29,4 @@ FA1 9XY`}
   );
 };
 
-export default AddCustomerAddress;
+export default CustomerAddressInput;

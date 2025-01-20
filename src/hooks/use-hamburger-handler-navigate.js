@@ -4,12 +4,8 @@ import { useNavigate } from "react-router-dom";
 import useGetHamburgerMenuSelectors from "./selectors/use-get-hamburger-menu-selectors";
 import { hideHamburgerMenu } from "../store/hamburger-menu/hamburger-menu.slice";
 
-import useResetStore from "./use-reset-store";
-
 const useHamburgerHandlerNavigate = () => {
   const { showHamburgerMenu } = useGetHamburgerMenuSelectors();
-
-  const { resetStore } = useResetStore();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -22,8 +18,6 @@ const useHamburgerHandlerNavigate = () => {
     //if we want to pass state in some instances we can.
     // if no state is passed, it is undefined and the state object wont exist.
     navigate(route, state ? { state } : undefined);
-
-    resetStore();
   };
 
   return { hamburgerHandlerNavigate };

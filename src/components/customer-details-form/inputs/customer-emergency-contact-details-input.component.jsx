@@ -1,12 +1,13 @@
-import useGetAddCustomerDetailsSelectors from "../../../hooks/selectors/use-get-add-customer-details-selectors";
+import useGetCustomerDetailsManagementSelectors from "../../../hooks/selectors/use-get-customer-details-management-selectors";
 
 import { Label, StyledTextArea } from "../../../styles/form/form.styles";
 import { RedSpan } from "../../../styles/span/span.styles";
 
-const AddCustomerEmergencyContactDetails = ({
-  handleAddCustomerDetailsChange,
+const CustomerEmergencyContactDetailsInput = ({
+  handleCustomerDetailsChange,
 }) => {
-  const { emergencyContactDetails } = useGetAddCustomerDetailsSelectors();
+  const { emergencyContactDetails } =
+    useGetCustomerDetailsManagementSelectors();
 
   return (
     <>
@@ -19,7 +20,7 @@ const AddCustomerEmergencyContactDetails = ({
         type="text"
         name="emergencyContactDetails"
         value={emergencyContactDetails || ""}
-        onChange={handleAddCustomerDetailsChange}
+        onChange={handleCustomerDetailsChange}
         placeholder={`Please provide a name, relationship & phone number.
 Separate into lines for easier viewing in the table - ie:
 
@@ -32,4 +33,4 @@ mother
   );
 };
 
-export default AddCustomerEmergencyContactDetails;
+export default CustomerEmergencyContactDetailsInput;
