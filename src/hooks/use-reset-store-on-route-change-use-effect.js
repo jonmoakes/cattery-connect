@@ -44,6 +44,7 @@ const useResetStoreOnRouteChangeUseEffect = () => {
         case addCatRoute:
         case editCatRoute:
         case viewCustomersCatsRoute:
+          dispatch(resetDataToBePassedState());
           dispatch(resetCatDetailsManagementState());
           break;
         case allCustomersRoute:

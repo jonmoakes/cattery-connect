@@ -11,17 +11,24 @@ import {
   confirmEditCatMessage,
   imSureMessage,
 } from "../../../strings/confirms";
+import useGetCatDetailsManagementSelectors from "../../../hooks/selectors/use-get-cat-details-management-selectors";
+import useGetDataToBePassedSelectors from "../../../hooks/selectors/use-get-data-to-be-passed-selectors";
 
-const useSubmitUploadCat = (catDetails, docId) => {
+const useSubmitCat = () => {
+  const { catsName, catDetails: catObject } =
+    useGetCatDetailsManagementSelectors();
+  const { dataToBePassed } = useGetDataToBePassedSelectors();
+  const { customerDocumentId } = dataToBePassed ?? {};
   const dispatch = useDispatch();
   const location = useLocation();
   const path = location.pathname;
 
   const { confirmSwal } = useConfirmSwal();
 
-  const submitUploadCat = (e) => {
+  const submitCat = (e) => {
     e.preventDefault();
-    const catsName = catDetails.catsName;
+    console.log(customerDocumentId);
+
     const title =
       path === addCatRoute
         ? confirmAddCatMessage(catsName)
@@ -32,12 +39,18 @@ const useSubmitUploadCat = (catDetails, docId) => {
       "",
       imSureMessage,
       "",
-      () => dispatch(uploadCatToDbAsync({ catObject: catDetails, docId })),
+      () =>
+        dispatch(
+          uploadCatToDbAsync({
+            catObject,
+            customerDocumentId,
+          })
+        ),
       null
     );
   };
 
-  return { submitUploadCat };
+  return { submitCat };
 };
 
-export default useSubmitUploadCat;
+export default useSubmitCat;

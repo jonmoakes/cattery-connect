@@ -43,8 +43,8 @@ const ALL_CUSTOMERS_TABLE_COLUMNS = [
       return (
         <>
           <NavigateToRouteCell
-            route={viewCustomersCatsRoute}
             {...{ dataToBePassed }}
+            route={viewCustomersCatsRoute}
           />
         </>
       );
@@ -53,9 +53,11 @@ const ALL_CUSTOMERS_TABLE_COLUMNS = [
   {
     Header: "Add Cat",
     Cell: ({ row }) => {
-      const dataToBePassed = { customerDocumentId: row.original.$id };
+      const dataToBePassed = {
+        customerDocumentId: row.original.$id,
+      };
       return (
-        <NavigateToRouteCell route={addCatRoute} {...{ dataToBePassed }} />
+        <NavigateToRouteCell {...{ dataToBePassed }} route={addCatRoute} />
       );
     },
   },

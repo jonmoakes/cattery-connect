@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import useUploadCatResultSwalUseEffect from "../../components/cat-details-form/cat-details-hooks/use-upload-cat-result-swal-use-effect";
 
 import AddCatTitleAndLoader from "./add-cat-title-and-loader.component";
 import AddCatInstructions from "./add-cat-instructions.component";
@@ -8,8 +8,7 @@ import { Container } from "../../styles/container/container.styles";
 import { ParentDiv } from "../../styles/div/div.styles";
 
 const AddCat = () => {
-  const { state: customerDocumentId } = useLocation();
-  const { customerDocumentId: docId } = customerDocumentId ?? {};
+  useUploadCatResultSwalUseEffect();
 
   return (
     <Container>
@@ -17,7 +16,7 @@ const AddCat = () => {
 
       <ParentDiv>
         <AddCatInstructions />
-        <CatDetailsForm {...{ docId }} />
+        <CatDetailsForm />
       </ParentDiv>
     </Container>
   );

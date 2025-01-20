@@ -2,7 +2,10 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import useGetCatDetailsManagementSelectors from "../../../hooks/selectors/use-get-cat-details-management-selectors";
-import { resetCatDetailsManagementState } from "../../../store/cat-details-management/cat-details-management.slice";
+import {
+  resetCatDetailsManagementError,
+  resetCatDetailsManagementResult,
+} from "../../../store/cat-details-management/cat-details-management.slice";
 
 import useFireSwal from "../../../hooks/use-fire-swal";
 import useHamburgerHandlerNavigate from "../../../hooks/use-hamburger-handler-navigate";
@@ -11,7 +14,7 @@ import { errorReceivedMessage } from "../../../strings/errors";
 import { addCatRoute, allCustomersRoute } from "../../../strings/routes";
 import { useLocation } from "react-router-dom";
 
-const useAddCatResultSwalUseEffect = () => {
+const useUploadCatResultSwalUseEffect = () => {
   const { catDetailsManagementResult, catDetailsManagementError } =
     useGetCatDetailsManagementSelectors();
 
@@ -47,7 +50,8 @@ const useAddCatResultSwalUseEffect = () => {
         false
       ).then((isConfirmed) => {
         if (isConfirmed) {
-          dispatch(resetCatDetailsManagementState());
+          dispatch(resetCatDetailsManagementResult());
+          dispatch(resetCatDetailsManagementError());
         }
       });
     }
@@ -61,4 +65,4 @@ const useAddCatResultSwalUseEffect = () => {
   ]);
 };
 
-export default useAddCatResultSwalUseEffect;
+export default useUploadCatResultSwalUseEffect;

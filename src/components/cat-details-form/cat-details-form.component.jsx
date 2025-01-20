@@ -1,7 +1,7 @@
-import useGetCatDetailsManagementSelectors from "../../hooks/selectors/use-get-cat-details-management-selectors";
-import useAddCatResultSwalUseEffect from "./cat-details-hooks/use-upload-cat-result-swal-use-effect";
+// import useGetCatDetailsManagementSelectors from "../../hooks/selectors/use-get-cat-details-management-selectors";
+// import useAddCatResultSwalUseEffect from "./cat-details-hooks/use-upload-cat-result-swal-use-effect";
 import useHandleCatDetailsChange from "./cat-details-hooks/use-handle-cat-details-change";
-import useSubmitUploadCat from "./cat-details-hooks/use-submit-upload-cat";
+import useSubmitCat from "./cat-details-hooks/use-submit-cat";
 
 import CatsName from "./inputs/cats-name-input.component";
 import CatsVaccinationStatusInput from "./inputs/cats-vaccination-status-input.component";
@@ -14,15 +14,17 @@ import CatsMedicalInfoInput from "./inputs/cats-medical-info-input.component";
 import CatsBehaviourInfoInput from "./inputs/cats-behaviour-info-input.component";
 
 import { Form } from "../../styles/form/form.styles";
+import useSetCatDetailsFormValuesUseEffect from "./cat-details-hooks/use-set-cat-details-form-values-use-effect";
 
-const CatDetailsForm = ({ docId }) => {
-  const { catDetails } = useGetCatDetailsManagementSelectors();
-  useAddCatResultSwalUseEffect();
-  const { submitUploadCat } = useSubmitUploadCat(catDetails, docId);
+const CatDetailsForm = () => {
+  useSetCatDetailsFormValuesUseEffect();
+  // const { catDetails } = useGetCatDetailsManagementSelectors();
+  // useAddCatResultSwalUseEffect();
+  const { submitCat } = useSubmitCat();
   const { handleCatDetailsChange } = useHandleCatDetailsChange();
 
   return (
-    <Form className="small-top-margin" onSubmit={submitUploadCat}>
+    <Form className="small-top-margin" onSubmit={submitCat}>
       <CatsName {...{ handleCatDetailsChange }} />
       <CatsVaccinationStatusInput {...{ handleCatDetailsChange }} />
       <CatsFeedingInfoInput {...{ handleCatDetailsChange }} />

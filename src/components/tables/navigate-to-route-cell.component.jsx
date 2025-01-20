@@ -1,22 +1,21 @@
 import Balancer from "react-wrap-balancer";
 
-import useHamburgerHandlerNavigate from "../../hooks/use-hamburger-handler-navigate";
+import useSetDataToBePassedAndNavigate from "./table-hooks/use-set-data-to-be-passed-and-navigate";
 
 import { MinimalButton } from "../../styles/button/button.styles";
 
 import { viewCustomersCatsRoute } from "../../strings/routes";
-
 import { getFirstNameFromString } from "../../functions/get-first-name-from-string";
 
-const NavigateToRouteCell = ({ route, dataToBePassed }) => {
-  const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
+const NavigateToRouteCell = ({ dataToBePassed, route }) => {
+  const { setDataToBePassedAndNavigate } = useSetDataToBePassedAndNavigate();
 
-  const { customerName } = dataToBePassed ?? {};
+  const { customerName } = dataToBePassed ?? "customer's";
 
   return (
     <MinimalButton
       type="button"
-      onClick={() => hamburgerHandlerNavigate(route, dataToBePassed)}
+      onClick={() => setDataToBePassedAndNavigate(dataToBePassed, route)}
     >
       <Balancer>
         {route === viewCustomersCatsRoute
