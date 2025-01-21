@@ -9,7 +9,7 @@ import { Button } from "../../styles/button/button.styles";
 import { getFirstNameFromString } from "../../functions/get-first-name-from-string";
 
 const NoCatsFound = () => {
-  const { data, customerName, goToAddCatRoute } =
+  const { data, customerName, goToAddCatRoutePassingNoExtraData } =
     useCatsTableDataAndFunctions();
 
   return (
@@ -26,7 +26,7 @@ const NoCatsFound = () => {
             you can add a cat for {getFirstNameFromString(customerName)} by
             tapping on the button below.
           </p>
-          <Button className="teal" onClick={goToAddCatRoute}>
+          <Button className="teal" onClick={goToAddCatRoutePassingNoExtraData}>
             add a cat
           </Button>
 

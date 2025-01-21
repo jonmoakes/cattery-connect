@@ -5,7 +5,6 @@ import { resetUploadDatesAndPensDataState } from "../../../store/upload-dates-an
 import { resetCustomerDetailsManagementState } from "../../../store/customer-details-management/customer-details-management.slice";
 import { resetCatDetailsManagementState } from "../../../store/cat-details-management/cat-details-management.slice";
 import { resetGetAllCustomersState } from "../../../store/get-all-customers/get-all-customers.slice";
-import { resetDataToBePassedState } from "../../../store/data-to-be-passed/data-to-be-passed.slice";
 
 const useResetAllStoreOnSignOut = () => {
   const dispatch = useDispatch();
@@ -16,7 +15,6 @@ const useResetAllStoreOnSignOut = () => {
     dispatch(resetCustomerDetailsManagementState());
     dispatch(resetCatDetailsManagementState());
     dispatch(resetGetAllCustomersState());
-    dispatch(resetDataToBePassedState());
     localStorage.clear();
   };
 

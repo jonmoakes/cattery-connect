@@ -12,13 +12,15 @@ import {
   imSureMessage,
 } from "../../../strings/confirms";
 import useGetCatDetailsManagementSelectors from "../../../hooks/selectors/use-get-cat-details-management-selectors";
-import useGetDataToBePassedSelectors from "../../../hooks/selectors/use-get-data-to-be-passed-selectors";
 
 const useSubmitCat = () => {
-  const { catsName, catDetails: catObject } =
-    useGetCatDetailsManagementSelectors();
-  const { dataToBePassed } = useGetDataToBePassedSelectors();
-  const { customerDocumentId } = dataToBePassed ?? {};
+  const {
+    detailsRequiredForCatManagement,
+    catsName,
+    catDetails: catObject,
+  } = useGetCatDetailsManagementSelectors();
+
+  const { customerDocumentId } = detailsRequiredForCatManagement ?? "";
   const dispatch = useDispatch();
   const location = useLocation();
   const path = location.pathname;

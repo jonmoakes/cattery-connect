@@ -1,8 +1,6 @@
 import { useMemo } from "react";
-import { useDispatch } from "react-redux";
 
-import useGetDataToBePassedSelectors from "../../../hooks/selectors/use-get-data-to-be-passed-selectors";
-import { setDataToBePassed } from "../../../store/data-to-be-passed/data-to-be-passed.slice";
+import useGetCatDetailsManagementSelectors from "../../../hooks/selectors/use-get-cat-details-management-selectors";
 
 import useHamburgerHandlerNavigate from "../../../hooks/use-hamburger-handler-navigate";
 
@@ -13,11 +11,12 @@ import VIEW_CUSTOMERS_CATS_TABLE_COLUMNS from "../view-customers-cats-table-colu
 import { defaultTableSize } from "../../../constants/constants";
 
 const useCatsTableDataAndFunctions = () => {
-  const { dataToBePassed } = useGetDataToBePassedSelectors();
-  const { customerName, catDetails, customerDocumentId } = dataToBePassed ?? {};
+  const { detailsRequiredForCatManagement } =
+    useGetCatDetailsManagementSelectors();
+  const { customerName, catDetails, customerDocumentId } =
+    detailsRequiredForCatManagement ?? {};
 
   const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
-  const dispatch = useDispatch();
 
   // table
   const columns = useMemo(() => VIEW_CUSTOMERS_CATS_TABLE_COLUMNS, []);
@@ -33,16 +32,9 @@ const useCatsTableDataAndFunctions = () => {
     []
   );
 
-  // title and add cat link
+  // title and add cat link & no cats found
   const hasCustomerIDAndAtLeastOneCat = customerDocumentId && data.length;
-  const passCustomerIdToAddCatRoute = () => {
-    dispatch(setDataToBePassed({ customerDocumentId }));
-    hamburgerHandlerNavigate(addCatRoute);
-  };
-
-  // no cats found
-  const goToAddCatRoute = () => {
-    dispatch(setDataToBePassed({ customerDocumentId }));
+  const goToAddCatRoutePassingNoExtraData = () => {
     hamburgerHandlerNavigate(addCatRoute);
   };
 
@@ -50,11 +42,10 @@ const useCatsTableDataAndFunctions = () => {
     customerName,
     customerDocumentId,
     hasCustomerIDAndAtLeastOneCat,
-    passCustomerIdToAddCatRoute,
+    goToAddCatRoutePassingNoExtraData,
     columns,
     data,
     initialState,
-    goToAddCatRoute,
   };
 };
 

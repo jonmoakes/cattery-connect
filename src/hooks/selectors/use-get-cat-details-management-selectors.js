@@ -4,6 +4,7 @@ import { selectCatDetailsManagementSelectors } from "../../store/cat-details-man
 
 const useGetCatDetailsManagementSelectors = () => {
   const {
+    detailsRequiredForCatManagement,
     catDetailManagementIsLoading,
     catDetails,
     catDetailsManagementResult,
@@ -22,6 +23,7 @@ const useGetCatDetailsManagementSelectors = () => {
   } = catDetails ?? {};
 
   return {
+    detailsRequiredForCatManagement,
     catDetailManagementIsLoading,
     catDetails,
     catDetailsManagementResult,

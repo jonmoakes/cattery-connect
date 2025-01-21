@@ -1,10 +1,12 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 import useGetCatDetailsManagementSelectors from "../../../hooks/selectors/use-get-cat-details-management-selectors";
 import {
   resetCatDetailsManagementError,
   resetCatDetailsManagementResult,
+  resetCatDetailsManagementState,
 } from "../../../store/cat-details-management/cat-details-management.slice";
 
 import useFireSwal from "../../../hooks/use-fire-swal";
@@ -12,7 +14,6 @@ import useHamburgerHandlerNavigate from "../../../hooks/use-hamburger-handler-na
 
 import { errorReceivedMessage } from "../../../strings/errors";
 import { addCatRoute, allCustomersRoute } from "../../../strings/routes";
-import { useLocation } from "react-router-dom";
 
 const useUploadCatResultSwalUseEffect = () => {
   const { catDetailsManagementResult, catDetailsManagementError } =
@@ -32,6 +33,7 @@ const useUploadCatResultSwalUseEffect = () => {
       fireSwal("success", `cat ${action}!`, "", 0, "", false, "", false).then(
         (isConfirmed) => {
           if (isConfirmed) {
+            dispatch(resetCatDetailsManagementState());
             hamburgerHandlerNavigate(allCustomersRoute);
           }
         }

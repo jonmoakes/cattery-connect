@@ -4,19 +4,12 @@ import { useDispatch } from "react-redux";
 
 import { resetSignInFormState } from "../store/sign-in-form/sign-in-form.slice";
 import { resetUploadDatesAndPensDataState } from "../store/upload-dates-and-pens-data/upload-dates-and-pens-data.slice";
-import { resetCustomerDetailsManagementState } from "../store/customer-details-management/customer-details-management.slice";
 import { resetGetAllCustomersState } from "../store/get-all-customers/get-all-customers.slice";
-import { resetCatDetailsManagementState } from "../store/cat-details-management/cat-details-management.slice";
-import { resetDataToBePassedState } from "../store/data-to-be-passed/data-to-be-passed.slice";
 
 import {
-  addCatRoute,
-  addCustomerRoute,
   allCustomersRoute,
-  editCatRoute,
   signInRoute,
   uploadDatesAndPensDataRoute,
-  viewCustomersCatsRoute,
 } from "../strings/routes";
 
 const useResetStoreOnRouteChangeUseEffect = () => {
@@ -32,17 +25,6 @@ const useResetStoreOnRouteChangeUseEffect = () => {
           break;
         case uploadDatesAndPensDataRoute:
           dispatch(resetUploadDatesAndPensDataState());
-          break;
-        case addCustomerRoute:
-          dispatch(resetCustomerDetailsManagementState());
-          break;
-        case addCatRoute:
-        case editCatRoute:
-          dispatch(resetDataToBePassedState());
-          dispatch(resetCatDetailsManagementState());
-          break;
-        case viewCustomersCatsRoute:
-          dispatch(resetCatDetailsManagementState());
           break;
         case allCustomersRoute:
           dispatch(resetGetAllCustomersState());

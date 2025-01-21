@@ -5,6 +5,7 @@ import useGetCustomerDetailsManagementSelectors from "../../../hooks/selectors/u
 import {
   resetAddCustomerResult,
   resetAddCustomerError,
+  resetCustomerDetailsManagementState,
 } from "../../../store/customer-details-management/customer-details-management.slice";
 
 import useFireSwal from "../../../hooks/use-fire-swal";
@@ -28,6 +29,7 @@ const useAddCustomerResultSwalUseEffect = () => {
       fireSwal("success", "customer added!", "", 0, "", false, "", false).then(
         (isConfirmed) => {
           if (isConfirmed) {
+            dispatch(resetCustomerDetailsManagementState());
             hamburgerHandlerNavigate(allCustomersRoute);
           }
         }

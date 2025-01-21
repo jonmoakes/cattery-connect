@@ -1,13 +1,15 @@
 import { useDispatch } from "react-redux";
 
-import { setDataToBePassed } from "../../store/data-to-be-passed/data-to-be-passed.slice";
-
 import useHamburgerHandlerNavigate from "../../hooks/use-hamburger-handler-navigate";
 import useCatsTableDataAndFunctions from "./view-customers-cats-hooks/use-cats-table-data-and-functions";
 
 import { EntryOptionsButton } from "../../styles/button/button.styles";
 
 import { editCatRoute } from "../../strings/routes";
+import {
+  setCatDetails,
+  setDetailsRequiredForCatManagement,
+} from "../../store/cat-details-management/cat-details-management.slice";
 
 const EditCatButton = ({ chosenEntry }) => {
   const { customerDocumentId } = useCatsTableDataAndFunctions();
@@ -15,7 +17,8 @@ const EditCatButton = ({ chosenEntry }) => {
   const dispatch = useDispatch();
 
   const setDataAndNavigate = () => {
-    dispatch(setDataToBePassed({ customerDocumentId, catToEdit: chosenEntry }));
+    dispatch(setCatDetails(chosenEntry));
+    dispatch(setDetailsRequiredForCatManagement({ customerDocumentId }));
     hamburgerHandlerNavigate(editCatRoute);
   };
 

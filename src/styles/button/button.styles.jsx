@@ -18,6 +18,7 @@ const zoomInLeftAnimation = keyframes`${zoomInLeft}`;
 const zoomInRightAnimation = keyframes`${zoomInRight}`;
 
 export const Button = styled.button`
+  /* General styles */
   width: 250px;
   height: 50px;
   font-size: 18px;
@@ -33,42 +34,22 @@ export const Button = styled.button`
   outline: none;
   margin: 20px auto;
 
-  &.teal {
-    background-color: ${teal};
-    color: whitesmoke;
-    text-shadow: 0.5px 0.5px 0.5px ${softBlack};
-  }
-
-  &.add-booking {
-    background-color: ${customYellow};
-    color: ${softBlack};
-
-    &:hover {
-      background-color: orange;
-      color: ${softBlack};
-
-      @media screen and (max-width: 1366px) {
-        transition: none;
-
-        &:hover {
-          background-color: ${customYellow};
-          color: ${softBlack};
-        }
-      }
-    }
-  }
-
   &:hover {
     transform: scale(1.05);
     background-color: ${rustRed};
     color: whitesmoke;
+  }
+
+  &.teal {
+    background-color: ${teal};
+    color: whitesmoke;
+    text-shadow: 0.5px 0.5px 0.5px ${softBlack};
 
     @media screen and (max-width: 1366px) {
-      transition: none;
-
       &:hover {
-        background-color: ${warmBeige};
-        color: ${softBlack};
+        background-color: ${teal};
+        color: whitesmoke;
+        text-shadow: 0.5px 0.5px 0.5px ${softBlack};
       }
     }
   }

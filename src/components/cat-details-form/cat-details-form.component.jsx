@@ -1,5 +1,4 @@
-// import useAddCatResultSwalUseEffect from "./cat-details-hooks/use-upload-cat-result-swal-use-effect";
-import useSetEditCatDetailsFormValuesUseEffect from "./cat-details-hooks/use-set-edit-cat-details-form-values-use-effect";
+import useUploadCatResultSwalUseEffect from "./cat-details-hooks/use-upload-cat-result-swal-use-effect";
 import useHandleCatDetailsChange from "./cat-details-hooks/use-handle-cat-details-change";
 import useSubmitCat from "./cat-details-hooks/use-submit-cat";
 
@@ -16,9 +15,7 @@ import CatsBehaviourInfoInput from "./inputs/cats-behaviour-info-input.component
 import { Form } from "../../styles/form/form.styles";
 
 const CatDetailsForm = () => {
-  useSetEditCatDetailsFormValuesUseEffect();
-
-  // useAddCatResultSwalUseEffect();
+  useUploadCatResultSwalUseEffect();
   const { submitCat } = useSubmitCat();
   const { handleCatDetailsChange } = useHandleCatDetailsChange();
 

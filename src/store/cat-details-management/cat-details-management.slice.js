@@ -16,6 +16,7 @@ const defaultCatDetails = {
 };
 
 const INITIAL_STATE = {
+  detailsRequiredForCatManagement: {},
   catDetailManagementIsLoading: false,
   catDetails: defaultCatDetails,
   catDetailsManagementResult: "",
@@ -26,8 +27,17 @@ export const catDetailsManagementSlice = createSlice({
   name: "catDetailsManagement",
   initialState: INITIAL_STATE,
   reducers: {
+    setDetailsRequiredForCatManagement(state, action) {
+      state.detailsRequiredForCatManagement = action.payload;
+    },
+    resetDetailsRequiredForCatManagement(state) {
+      state.detailsRequiredForCatManagement = {};
+    },
     setCatDetails(state, action) {
       state.catDetails = action.payload;
+    },
+    resetCatDetails(state) {
+      state.catDetails = defaultCatDetails;
     },
     resetCatDetailsManagementResult(state) {
       state.catDetailsManagementResult = "";
@@ -70,17 +80,20 @@ export const catDetailsManagementSlice = createSlice({
   },
   selectors: {
     selectCatDetailsManagementSelectors: createSelector(
+      (state) => state.detailsRequiredForCatManagement,
       (state) => state.catDetailManagementIsLoading,
       (state) => state.catDetails,
       (state) => state.catDetailsManagementResult,
       (state) => state.catDetailsManagementResult,
       (
+        detailsRequiredForCatManagement,
         catDetailManagementIsLoading,
         catDetails,
         catDetailsManagementResult,
         catDetailsManagementError
       ) => {
         return {
+          detailsRequiredForCatManagement,
           catDetailManagementIsLoading,
           catDetails,
           catDetailsManagementResult,
@@ -92,7 +105,10 @@ export const catDetailsManagementSlice = createSlice({
 });
 
 export const {
+  setDetailsRequiredForCatManagement,
+  resetDetailsRequiredForCatManagement,
   setCatDetails,
+  resetCatDetails,
   resetCatDetailsManagementResult,
   resetCatDetailsManagementError,
   resetCatDetailsManagementState,
