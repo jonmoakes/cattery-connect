@@ -1,5 +1,5 @@
-// import useGetCatDetailsManagementSelectors from "../../hooks/selectors/use-get-cat-details-management-selectors";
 // import useAddCatResultSwalUseEffect from "./cat-details-hooks/use-upload-cat-result-swal-use-effect";
+import useSetEditCatDetailsFormValuesUseEffect from "./cat-details-hooks/use-set-edit-cat-details-form-values-use-effect";
 import useHandleCatDetailsChange from "./cat-details-hooks/use-handle-cat-details-change";
 import useSubmitCat from "./cat-details-hooks/use-submit-cat";
 
@@ -14,11 +14,10 @@ import CatsMedicalInfoInput from "./inputs/cats-medical-info-input.component";
 import CatsBehaviourInfoInput from "./inputs/cats-behaviour-info-input.component";
 
 import { Form } from "../../styles/form/form.styles";
-import useSetCatDetailsFormValuesUseEffect from "./cat-details-hooks/use-set-cat-details-form-values-use-effect";
 
 const CatDetailsForm = () => {
-  useSetCatDetailsFormValuesUseEffect();
-  // const { catDetails } = useGetCatDetailsManagementSelectors();
+  useSetEditCatDetailsFormValuesUseEffect();
+
   // useAddCatResultSwalUseEffect();
   const { submitCat } = useSubmitCat();
   const { handleCatDetailsChange } = useHandleCatDetailsChange();

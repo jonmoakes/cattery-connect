@@ -8,19 +8,21 @@ import {
   useColumnOrder,
 } from "react-table";
 
-import useViewCustomersCatsTableVariables from "./view-customers-cats-hooks/view-customers-cats-table-variables";
 import useHandleClickTableCheckbox from "../../components/tables/table-hooks/use-handle-click-table-checkbox";
+import useCatsTableDataAndFunctions from "./view-customers-cats-hooks/use-cats-table-data-and-functions";
 
 import NoCatsFound from "./no-cats-found.component";
 import RenderTable from "../../components/tables/render-table.component";
 import TablePagination from "../../components/tables/table-pagination.component";
 import TableSearchBox from "../../components/tables/table-search-box.component";
 import TableCheckBox from "../../components/tables/table-checkbox";
-import EditAndDeleteCatButtons from "./edit-and-delete-cat-buttons.component";
+import EditCatButton from "./edit-cat-button.component";
+import DeleteCatButton from "./delete-cat-button.component";
 
-const ViewCustomersCatsTable = ({ cats, customerDocumentId, customerName }) => {
-  const { columns, data, initialState } =
-    useViewCustomersCatsTableVariables(cats);
+import { TableOptionsButtonDiv } from "../../styles/div/div.styles";
+
+const ViewCustomersCatsTable = () => {
+  const { columns, data, initialState } = useCatsTableDataAndFunctions();
   const { handleClickTableCheckbox } = useHandleClickTableCheckbox();
 
   const {
@@ -82,7 +84,7 @@ const ViewCustomersCatsTable = ({ cats, customerDocumentId, customerName }) => {
 
   return (
     <>
-      <NoCatsFound {...{ customerDocumentId, data, customerName }} />
+      <NoCatsFound />
 
       <TableSearchBox
         {...{
@@ -95,7 +97,10 @@ const ViewCustomersCatsTable = ({ cats, customerDocumentId, customerName }) => {
         }}
       />
 
-      <EditAndDeleteCatButtons {...{ data, chosenEntry, customerDocumentId }} />
+      <TableOptionsButtonDiv>
+        <EditCatButton {...{ chosenEntry }} />
+        <DeleteCatButton {...{ chosenEntry }} />
+      </TableOptionsButtonDiv>
 
       {data.length ? (
         <>

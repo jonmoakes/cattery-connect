@@ -27,7 +27,6 @@ const useSubmitCat = () => {
 
   const submitCat = (e) => {
     e.preventDefault();
-    console.log(customerDocumentId);
 
     const title =
       path === addCatRoute

@@ -1,24 +1,23 @@
-import useHamburgerHandlerNavigate from "../../hooks/use-hamburger-handler-navigate";
+import useCatsTableDataAndFunctions from "./view-customers-cats-hooks/use-cats-table-data-and-functions";
 
 import { MinimalButton } from "../../styles/button/button.styles";
 import { ParentDiv } from "../../styles/div/div.styles";
 
-import { addCatRoute } from "../../strings/routes";
-
-const TitleAndAddCatLink = ({ customerName, customerDocumentId, cats }) => {
-  const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
-
-  //hamburger navigate expects an object even though this is just a simple string.
-  const dataToBePassed = { ...{ customerDocumentId } };
+const TitleAndAddCatLink = () => {
+  const {
+    customerName,
+    hasCustomerIDAndAtLeastOneCat,
+    passCustomerIdToAddCatRoute,
+  } = useCatsTableDataAndFunctions();
 
   return (
     <ParentDiv>
       {customerName ? <h1>{customerName}'s cats</h1> : <h1>no cats found</h1>}
 
-      {customerDocumentId && cats.length ? (
+      {hasCustomerIDAndAtLeastOneCat ? (
         <MinimalButton
           className="margin-bottom"
-          onClick={() => hamburgerHandlerNavigate(addCatRoute, dataToBePassed)}
+          onClick={passCustomerIdToAddCatRoute}
         >
           add another cat
         </MinimalButton>

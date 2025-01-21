@@ -7,18 +7,18 @@ import { setCatDetails } from "../../../store/cat-details-management/cat-details
 import { editCatRoute } from "../../../strings/routes";
 import { useLocation } from "react-router-dom";
 
-const useSetCatDetailsFormValuesUseEffect = () => {
+const useSetEditCatDetailsFormValuesUseEffect = () => {
   const { dataToBePassed } = useGetDataToBePassedSelectors();
+  const { catToEdit } = dataToBePassed ?? {};
 
   const dispatch = useDispatch();
   const location = useLocation();
   const path = location.pathname;
 
   useEffect(() => {
-    if (path !== editCatRoute) return;
-
-    dispatch(setCatDetails(dataToBePassed));
-  }, [dataToBePassed, dispatch, path]);
+    if (path !== editCatRoute || !catToEdit) return;
+    dispatch(setCatDetails(catToEdit));
+  }, [dataToBePassed, dispatch, path, catToEdit]);
 };
 
-export default useSetCatDetailsFormValuesUseEffect;
+export default useSetEditCatDetailsFormValuesUseEffect;

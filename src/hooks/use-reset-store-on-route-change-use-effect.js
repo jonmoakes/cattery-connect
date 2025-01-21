@@ -7,6 +7,7 @@ import { resetUploadDatesAndPensDataState } from "../store/upload-dates-and-pens
 import { resetCustomerDetailsManagementState } from "../store/customer-details-management/customer-details-management.slice";
 import { resetGetAllCustomersState } from "../store/get-all-customers/get-all-customers.slice";
 import { resetCatDetailsManagementState } from "../store/cat-details-management/cat-details-management.slice";
+import { resetDataToBePassedState } from "../store/data-to-be-passed/data-to-be-passed.slice";
 
 import {
   addCatRoute,
@@ -18,7 +19,6 @@ import {
   uploadDatesAndPensDataRoute,
   viewCustomersCatsRoute,
 } from "../strings/routes";
-import { resetDataToBePassedState } from "../store/data-to-be-passed/data-to-be-passed.slice";
 
 const useResetStoreOnRouteChangeUseEffect = () => {
   const location = useLocation();
@@ -38,13 +38,14 @@ const useResetStoreOnRouteChangeUseEffect = () => {
           dispatch(resetCustomerDetailsManagementState());
           break;
         case editCustomerRoute:
-          dispatch(resetDataToBePassedState());
           dispatch(resetCustomerDetailsManagementState());
           break;
         case addCatRoute:
         case editCatRoute:
-        case viewCustomersCatsRoute:
           dispatch(resetDataToBePassedState());
+          dispatch(resetCatDetailsManagementState());
+          break;
+        case viewCustomersCatsRoute:
           dispatch(resetCatDetailsManagementState());
           break;
         case allCustomersRoute:

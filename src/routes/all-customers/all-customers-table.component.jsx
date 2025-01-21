@@ -85,7 +85,6 @@ const AllCustomersTable = () => {
   const shouldHideHeaders = !rows.length;
   const checkedEntry = selectedFlatRows.map((row) => row.original);
   const chosenEntry = checkedEntry[0];
-
   return (
     <>
       {!isOnline ? (

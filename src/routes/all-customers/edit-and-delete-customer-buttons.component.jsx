@@ -1,36 +1,19 @@
-import useSetDataToBePassedUseEffect from "./all-customers-hooks/use-set-data-to-be-passed-use-effect";
-import useDeleteCustomer from "./all-customers-hooks/use-delete-customer";
-import useHamburgerHandlerNavigate from "../../hooks/use-hamburger-handler-navigate";
+import useSetCustomerDataToBePassedForEditingUseEffect from "./all-customers-hooks/use-set-customer-data-to-be-passed-for-editing-use-effect";
 
-import { EntryOptionsButton } from "../../styles/button/button.styles";
+import EditCustomerButton from "./edit-customer-button.component";
+import DeleteCustomerButton from "./delete-customer-button.component";
+
 import { TableOptionsButtonDiv } from "../../styles/div/div.styles";
 
-import { editCustomerRoute } from "../../strings/routes";
-
 const EditAndDeleteCustomerButtons = ({ chosenEntry }) => {
-  useSetDataToBePassedUseEffect(chosenEntry);
-  const { deleteCustomer } = useDeleteCustomer();
-  const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
+  useSetCustomerDataToBePassedForEditingUseEffect(chosenEntry);
 
   return (
     <>
       {chosenEntry ? (
         <TableOptionsButtonDiv>
-          <EntryOptionsButton
-            className="edit"
-            type="button"
-            onClick={() => hamburgerHandlerNavigate(editCustomerRoute)}
-          >
-            edit customer
-          </EntryOptionsButton>
-
-          <EntryOptionsButton
-            className="delete"
-            type="button"
-            onClick={deleteCustomer}
-          >
-            delete customer
-          </EntryOptionsButton>
+          <EditCustomerButton />
+          <DeleteCustomerButton />
         </TableOptionsButtonDiv>
       ) : null}
     </>

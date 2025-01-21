@@ -1,12 +1,11 @@
-import useGetCatDetailsManagementSelectors from "../../hooks/selectors/use-get-cat-details-management-selectors";
+import useEditCatVariables from "./edit-cat-hooks/use-edit-cat-variables";
 
 import SkeletonBox from "../../components/skeleton-box/skeleton-box.component";
 
 import { ParentDiv } from "../../styles/div/div.styles";
 
-const EditCatTitleAndLoader = ({ cat }) => {
-  const { catDetailManagementIsLoading } =
-    useGetCatDetailsManagementSelectors();
+const EditCatTitleAndLoader = () => {
+  const { catDetailManagementIsLoading, catsName } = useEditCatVariables();
 
   return (
     <>
@@ -15,7 +14,7 @@ const EditCatTitleAndLoader = ({ cat }) => {
       ) : null}
 
       <ParentDiv>
-        <h1>edit {cat.catsName}</h1>
+        <h1>edit {catsName}</h1>
       </ParentDiv>
     </>
   );

@@ -9,6 +9,7 @@ import useFireSwal from "../../../hooks/use-fire-swal";
 
 import { errorReceivedMessage } from "../../../strings/errors";
 import { allCustomersRoute } from "../../../strings/routes";
+import { resetDataToBePassedState } from "../../../store/data-to-be-passed/data-to-be-passed.slice";
 
 const useDeleteCatResultSwalUseEffect = () => {
   const { catDetailsManagementResult, catDetailsManagementError } =
@@ -33,6 +34,7 @@ const useDeleteCatResultSwalUseEffect = () => {
         false
       ).then((isConfirmed) => {
         if (isConfirmed) {
+          dispatch(resetDataToBePassedState());
           hamburgerHandlerNavigate(allCustomersRoute);
         }
       });

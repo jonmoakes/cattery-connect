@@ -1,30 +1,40 @@
 import Balancer from "react-wrap-balancer";
 
-import ViewCustomersAddCat from "./view-customers-add-cat.component";
-import HelpAccordion from "../../components/help-accordion/help-accordion.component";
+import useCatsTableDataAndFunctions from "./view-customers-cats-hooks/use-cats-table-data-and-functions";
 
 import { ParentDiv } from "../../styles/div/div.styles";
 import { BlackHr } from "../../styles/hr/hr.styles";
+import { Button } from "../../styles/button/button.styles";
 
-import { viewCatsAccordionData } from "./view-cats-accordion-data/view-cats-accordion-data";
+import { getFirstNameFromString } from "../../functions/get-first-name-from-string";
 
-const NoCatsFound = ({ customerDocumentId, data, customerName }) => (
-  <>
-    {!data.length ? (
-      <ParentDiv>
-        <p>
-          <Balancer>no cats have been created for this customer yet.</Balancer>
-        </p>
+const NoCatsFound = () => {
+  const { data, customerName, goToAddCatRoute } =
+    useCatsTableDataAndFunctions();
 
-        <ViewCustomersAddCat {...{ customerDocumentId, customerName }} />
+  return (
+    <>
+      {!data.length ? (
+        <ParentDiv>
+          <p>
+            <Balancer>
+              no cats have been created for this customer yet.
+            </Balancer>
+          </p>
 
-        <BlackHr />
+          <p>
+            you can add a cat for {getFirstNameFromString(customerName)} by
+            tapping on the button below.
+          </p>
+          <Button className="teal" onClick={goToAddCatRoute}>
+            add a cat
+          </Button>
 
-        <HelpAccordion openText="missing data?" data={viewCatsAccordionData} />
-        <BlackHr />
-      </ParentDiv>
-    ) : null}
-  </>
-);
+          <BlackHr />
+        </ParentDiv>
+      ) : null}
+    </>
+  );
+};
 
 export default NoCatsFound;

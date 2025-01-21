@@ -11,7 +11,7 @@ import useFireSwal from "../../../hooks/use-fire-swal";
 import useHamburgerHandlerNavigate from "../../../hooks/use-hamburger-handler-navigate";
 
 import { errorReceivedMessage } from "../../../strings/errors";
-import { resetDataToBePassedState } from "../../../store/data-to-be-passed/data-to-be-passed.slice";
+import { resetCustomerToEditDetails } from "../../../store/data-to-be-passed/data-to-be-passed.slice";
 
 const useDeleteCustomerResultSwalUseEffect = () => {
   const { deleteCustomerResult, deleteCustomerError } =
@@ -43,7 +43,7 @@ const useDeleteCustomerResultSwalUseEffect = () => {
         if (isConfirmed) {
           setDeleteSwalWasConfirmed(true);
           dispatch(resetDeleteCustomerResult());
-          dispatch(resetDataToBePassedState());
+          dispatch(resetCustomerToEditDetails());
         }
       });
     } else {
@@ -61,7 +61,7 @@ const useDeleteCustomerResultSwalUseEffect = () => {
         if (isConfirmed) {
           dispatch(resetDeleteCustomerResult());
           dispatch(resetDeleteCustomerError());
-          dispatch(resetDataToBePassedState());
+          dispatch(resetCustomerToEditDetails());
         }
       });
     }
