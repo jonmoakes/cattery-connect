@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 
-import useGetDataToBePassedSelectors from "../../hooks/selectors/use-get-data-to-be-passed-selectors";
+import useGetCustomerDetailsManagementSelectors from "../../hooks/selectors/use-get-customer-details-management-selectors";
 import { deleteCustomerAsync } from "../../store/customer-details-management/customer-details-management.thunks";
 import useConfirmSwal from "../../hooks/use-confirm-swal";
 
@@ -9,9 +9,9 @@ import { EntryOptionsButton } from "../../styles/button/button.styles";
 import { confirmDeleteMessage } from "../../strings/confirms";
 
 const DeleteCustomerButton = () => {
-  const { customerToEditDetails } = useGetDataToBePassedSelectors();
+  const { customerDetails } = useGetCustomerDetailsManagementSelectors();
 
-  const { $id, name } = customerToEditDetails ?? {};
+  const { $id, name } = customerDetails ?? {};
 
   const dispatch = useDispatch();
   const { confirmSwal } = useConfirmSwal();

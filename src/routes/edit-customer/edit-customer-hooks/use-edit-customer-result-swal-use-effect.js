@@ -5,6 +5,7 @@ import useGetCustomerDetailsManagementSelectors from "../../../hooks/selectors/u
 import {
   resetEditCustomerResult,
   resetEditCustomerError,
+  resetCustomerDetailsManagementState,
 } from "../../../store/customer-details-management/customer-details-management.slice";
 
 import useFireSwal from "../../../hooks/use-fire-swal";
@@ -36,6 +37,7 @@ const useEditCustomerResultSwalUseEffect = () => {
         false
       ).then((isConfirmed) => {
         if (isConfirmed) {
+          dispatch(resetCustomerDetailsManagementState());
           hamburgerHandlerNavigate(allCustomersRoute);
         }
       });

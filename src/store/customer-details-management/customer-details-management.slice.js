@@ -31,6 +31,9 @@ export const customerDetailsManagementSlice = createSlice({
     setCustomerDetails(state, action) {
       state.customerDetails = action.payload;
     },
+    resetCustomerDetails(state) {
+      state.customerDetails = defaultCustomerDetails;
+    },
     resetAddCustomerResult(state) {
       state.addCustomerResult = "";
     },
@@ -132,6 +135,7 @@ export const customerDetailsManagementSlice = createSlice({
 
 export const {
   setCustomerDetails,
+  resetCustomerDetails,
   resetAddCustomerResult,
   resetAddCustomerError,
   resetEditCustomerResult,

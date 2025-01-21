@@ -14,7 +14,6 @@ import {
   addCustomerRoute,
   allCustomersRoute,
   editCatRoute,
-  editCustomerRoute,
   signInRoute,
   uploadDatesAndPensDataRoute,
   viewCustomersCatsRoute,
@@ -35,9 +34,6 @@ const useResetStoreOnRouteChangeUseEffect = () => {
           dispatch(resetUploadDatesAndPensDataState());
           break;
         case addCustomerRoute:
-          dispatch(resetCustomerDetailsManagementState());
-          break;
-        case editCustomerRoute:
           dispatch(resetCustomerDetailsManagementState());
           break;
         case addCatRoute:

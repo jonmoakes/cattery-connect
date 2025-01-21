@@ -1,4 +1,3 @@
-import useSetCustomerDetailsFormValuesUseEffect from "./customer-details-form-hooks/use-set-customer-details-form-values-use-effect";
 import useHandleCustomerDetailsChange from "./customer-details-form-hooks/use-handle-customer-details-change";
 import useSubmitCustomer from "./customer-details-form-hooks/use-submit-customer";
 
@@ -13,9 +12,7 @@ import { Form } from "../../styles/form/form.styles";
 import { ParentDiv } from "../../styles/div/div.styles";
 
 const CustomerDetailsForm = () => {
-  useSetCustomerDetailsFormValuesUseEffect();
   const { submitCustomer } = useSubmitCustomer();
-
   const { handleCustomerDetailsChange } = useHandleCustomerDetailsChange();
 
   return (

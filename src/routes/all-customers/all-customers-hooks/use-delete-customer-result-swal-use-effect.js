@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 
 import useGetCustomerDetailsManagementSelectors from "../../../hooks/selectors/use-get-customer-details-management-selectors";
 import {
+  resetCustomerDetails,
   resetDeleteCustomerResult,
   resetDeleteCustomerError,
 } from "../../../store/customer-details-management/customer-details-management.slice";
@@ -11,7 +12,6 @@ import useFireSwal from "../../../hooks/use-fire-swal";
 import useHamburgerHandlerNavigate from "../../../hooks/use-hamburger-handler-navigate";
 
 import { errorReceivedMessage } from "../../../strings/errors";
-import { resetCustomerToEditDetails } from "../../../store/data-to-be-passed/data-to-be-passed.slice";
 
 const useDeleteCustomerResultSwalUseEffect = () => {
   const { deleteCustomerResult, deleteCustomerError } =
@@ -43,7 +43,7 @@ const useDeleteCustomerResultSwalUseEffect = () => {
         if (isConfirmed) {
           setDeleteSwalWasConfirmed(true);
           dispatch(resetDeleteCustomerResult());
-          dispatch(resetCustomerToEditDetails());
+          dispatch(resetCustomerDetails());
         }
       });
     } else {
@@ -61,7 +61,7 @@ const useDeleteCustomerResultSwalUseEffect = () => {
         if (isConfirmed) {
           dispatch(resetDeleteCustomerResult());
           dispatch(resetDeleteCustomerError());
-          dispatch(resetCustomerToEditDetails());
+          dispatch(resetCustomerDetails());
         }
       });
     }

@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import { setCustomerToEditDetails } from "../../../store/data-to-be-passed/data-to-be-passed.slice";
+import { setCustomerDetails } from "../../../store/customer-details-management/customer-details-management.slice";
 
 const useSetCustomerDataToBePassedForEditingUseEffect = (chosenEntry) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (!chosenEntry) return;
-    dispatch(setCustomerToEditDetails(chosenEntry));
+    dispatch(setCustomerDetails(chosenEntry));
   }, [chosenEntry, dispatch]);
 };
 
