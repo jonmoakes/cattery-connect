@@ -1,7 +1,7 @@
 import useAllCatsTableVariables from "./all-cats-hooks/use-all-cats-table-variables";
 import useFetchAllCatsThunkUseEffect from "./all-cats-hooks/use-fetch-all-cats-thunk-use-effect";
 import useFetchCatsOwnerDetailsThunkUseEffect from "./all-cats-hooks/use-fetch-cats-owner-details-thunk-use-effect";
-
+// import useDeleteCatResultSwalUseEffect from "../view-customers-cats/view-customers-cats-hooks/use-delete-cat-result-swal-use-effect";
 import SkeletonBox from "../../components/skeleton-box/skeleton-box.component";
 import AllCatsTable from "./all-cats-table.component";
 
@@ -18,6 +18,7 @@ const AllCats = () => {
   } = useAllCatsTableVariables();
   useFetchAllCatsThunkUseEffect();
   useFetchCatsOwnerDetailsThunkUseEffect();
+  // useDeleteCatResultSwalUseEffect();
 
   return (
     <Container>

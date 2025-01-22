@@ -37,12 +37,12 @@ const useAllCatsTableVariables = () => {
 
   const initialState = useMemo(
     () => ({
-      sortBy: [{ id: !hasCatsOwnerDetails ? "catsName" : "name", desc: false }],
+      sortBy: [{ id: "customerName", desc: false }],
       pageSize: allCatsPageSizeFromLocalStorage
         ? Number(allCatsPageSizeFromLocalStorage)
         : defaultTableSize,
     }),
-    [allCatsPageSizeFromLocalStorage, hasCatsOwnerDetails]
+    [allCatsPageSizeFromLocalStorage]
   );
 
   return {

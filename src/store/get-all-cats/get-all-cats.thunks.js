@@ -34,7 +34,7 @@ export const fetchAllCatsAsync = createAsyncThunk(
           const parsedDetails = JSON.parse(doc.catDetails);
 
           // Ensure parsedDetails is an array, then add customerId and name to each object
-          const enrichedDetails = Array.isArray(parsedDetails)
+          const catWithAddedDetails = Array.isArray(parsedDetails)
             ? parsedDetails.map((cat) => ({
                 ...cat,
                 customerId: doc.customerId,
@@ -49,7 +49,7 @@ export const fetchAllCatsAsync = createAsyncThunk(
                 },
               ];
 
-          return enrichedDetails;
+          return catWithAddedDetails;
         } catch (error) {
           console.error(
             `Failed to parse catDetails for document ID ${doc.$id}`,

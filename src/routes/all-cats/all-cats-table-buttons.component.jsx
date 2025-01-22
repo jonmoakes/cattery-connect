@@ -1,8 +1,12 @@
 import useAllCatsTableFunctions from "./all-cats-hooks/use-all-cats-table-functions";
 import useAllCatsTableVariables from "./all-cats-hooks/use-all-cats-table-variables";
+// import useConfirmSwal from "../../hooks/use-confirm-swal";
 
 import { EntryOptionsButton } from "../../styles/button/button.styles";
 import { TableOptionsButtonDiv } from "../../styles/div/div.styles";
+// import { confirmDeleteMessage } from "../../strings/confirms";
+// import { useDispatch } from "react-redux";
+// import { deleteCatFromDbAsync } from "../../store/cat-details-management/cat-details-management.thunks";
 
 const AllCatsTableButtons = ({
   chosenEntry,
@@ -16,6 +20,8 @@ const AllCatsTableButtons = ({
     resetGetAllCatStateAndRefetchAllCats,
   } = useAllCatsTableFunctions();
   const { hasCatsOwnerDetails } = useAllCatsTableVariables();
+  // const { confirmSwal } = useConfirmSwal();
+  // const dispatch = useDispatch();
 
   return (
     <>
@@ -46,6 +52,14 @@ const AllCatsTableButtons = ({
           >
             edit cat
           </EntryOptionsButton>
+
+          {/* <EntryOptionsButton
+            className="delete"
+            type="button"
+            onClick={() => deleteCat(catsName)}
+          >
+            delete cat
+          </EntryOptionsButton> */}
         </TableOptionsButtonDiv>
       ) : hasCatsOwnerDetails ? (
         <TableOptionsButtonDiv>
