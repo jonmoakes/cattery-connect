@@ -2,6 +2,7 @@ import Balancer from "react-wrap-balancer";
 
 import useCatsTableDataAndFunctions from "./view-customers-cats-hooks/use-cats-table-data-and-functions";
 
+import ViewCatsNoRequiredObject from "./view-cats-no-required-details-object.component";
 import { ParentDiv } from "../../styles/div/div.styles";
 import { BlackHr } from "../../styles/hr/hr.styles";
 import { Button } from "../../styles/button/button.styles";
@@ -9,12 +10,14 @@ import { Button } from "../../styles/button/button.styles";
 import { getFirstNameFromString } from "../../functions/get-first-name-from-string";
 
 const NoCatsFound = () => {
-  const { data, customerName, goToAddCatRoutePassingNoExtraData } =
+  const { catDetails, data, customerName, goToAddCatRoutePassingNoExtraData } =
     useCatsTableDataAndFunctions();
 
   return (
     <>
-      {!data.length ? (
+      {catDetails === undefined ? (
+        <ViewCatsNoRequiredObject />
+      ) : !data.length ? (
         <ParentDiv>
           <p>
             <Balancer>

@@ -36,7 +36,6 @@ export const editCustomerAsync = createAsyncThunk(
   "editCustomer",
   async ({ customerDetails }, thunkAPI) => {
     try {
-      // Destructure $id and the rest of the required properties
       const { $id, ...rest } = customerDetails;
 
       const {

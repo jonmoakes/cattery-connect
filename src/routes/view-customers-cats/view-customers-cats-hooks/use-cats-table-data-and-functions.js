@@ -34,6 +34,7 @@ const useCatsTableDataAndFunctions = () => {
 
   // title and add cat link & no cats found
   const hasCustomerIDAndAtLeastOneCat = customerDocumentId && data.length;
+
   const goToAddCatRoutePassingNoExtraData = () => {
     hamburgerHandlerNavigate(addCatRoute);
   };
@@ -46,6 +47,7 @@ const useCatsTableDataAndFunctions = () => {
     columns,
     data,
     initialState,
+    catDetails,
   };
 };
 

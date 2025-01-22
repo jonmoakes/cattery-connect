@@ -7,10 +7,12 @@ import { resetUploadDatesAndPensDataState } from "../store/upload-dates-and-pens
 import { resetGetAllCustomersState } from "../store/get-all-customers/get-all-customers.slice";
 
 import {
+  addCatRoute,
   allCustomersRoute,
   signInRoute,
   uploadDatesAndPensDataRoute,
 } from "../strings/routes";
+import { resetCatDetailsManagementState } from "../store/cat-details-management/cat-details-management.slice";
 
 const useResetStoreOnRouteChangeUseEffect = () => {
   const location = useLocation();
@@ -29,11 +31,13 @@ const useResetStoreOnRouteChangeUseEffect = () => {
         case allCustomersRoute:
           dispatch(resetGetAllCustomersState());
           break;
+        case addCatRoute:
+          dispatch(resetCatDetailsManagementState());
+          break;
         default:
           break;
       }
 
-      // Update the ref to the current location
       prevLocation.current = location.pathname;
     }
   }, [location, dispatch]);
