@@ -8,11 +8,14 @@ import { resetGetAllCustomersState } from "../store/get-all-customers/get-all-cu
 
 import {
   addCatRoute,
+  allCatsRoute,
   allCustomersRoute,
+  editCatRoute,
   signInRoute,
   uploadDatesAndPensDataRoute,
 } from "../strings/routes";
 import { resetCatDetailsManagementState } from "../store/cat-details-management/cat-details-management.slice";
+import { resetGetAllCatsState } from "../store/get-all-cats/get-all-cats.slice";
 
 const useResetStoreOnRouteChangeUseEffect = () => {
   const location = useLocation();
@@ -32,7 +35,11 @@ const useResetStoreOnRouteChangeUseEffect = () => {
           dispatch(resetGetAllCustomersState());
           break;
         case addCatRoute:
+        case editCatRoute:
           dispatch(resetCatDetailsManagementState());
+          break;
+        case allCatsRoute:
+          dispatch(resetGetAllCatsState());
           break;
         default:
           break;

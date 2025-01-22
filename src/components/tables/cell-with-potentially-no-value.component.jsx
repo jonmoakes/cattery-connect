@@ -1,5 +1,5 @@
 const CellWithPotentiallyNoValue = ({ value }) => {
-  return <>{!value ? "not provided" : value}</>;
+  return <>{!value ? "-" : value}</>;
 };
 
 export default CellWithPotentiallyNoValue;

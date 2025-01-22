@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 
 import { selectGetAllCustomersSelectors } from "../../store/get-all-customers/get-all-customers.slice";
 
-const useGetAddCustomerDetailsSelectors = () => {
+const useGetAllCustomerSelectors = () => {
   const { getAllCustomersIsLoading, allCustomers, getAllCustomersError } =
     useSelector(selectGetAllCustomersSelectors);
 
@@ -13,4 +13,4 @@ const useGetAddCustomerDetailsSelectors = () => {
   };
 };
 
-export default useGetAddCustomerDetailsSelectors;
+export default useGetAllCustomerSelectors;

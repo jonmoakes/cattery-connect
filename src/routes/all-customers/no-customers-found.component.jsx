@@ -1,6 +1,6 @@
 import Balancer from "react-wrap-balancer";
 
-import useGetAddCustomerDetailsSelectors from "../../hooks/selectors/use-get-all-customers-selectors";
+import useGetAllCustomersSelectors from "../../hooks/selectors/use-get-all-customers-selectors";
 
 import { ParentDiv } from "../../styles/div/div.styles";
 import { MinimalButton } from "../../styles/button/button.styles";
@@ -8,7 +8,7 @@ import useHamburgerHandlerNavigate from "../../hooks/use-hamburger-handler-navig
 import { addCustomerRoute } from "../../strings/routes";
 
 const NoCustomersFound = ({ data }) => {
-  const { allCustomers } = useGetAddCustomerDetailsSelectors();
+  const { allCustomers } = useGetAllCustomersSelectors();
   const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
 
   return (

@@ -196,7 +196,7 @@ export const MinimalButton = styled.button`
 export const EntryOptionsButton = styled(Button)`
   background-color: ${customGreen};
   animation: 1s ${zoomInLeftAnimation};
-  width: 200px;
+  width: 250px;
   height: 50px;
   font-size: 18px;
   line-height: 10px;
@@ -212,6 +212,14 @@ export const EntryOptionsButton = styled(Button)`
     &:hover {
       background-color: ${rustRed};
       color: whitesmoke;
+    }
+  }
+
+  &.showOwner {
+    background-color: ${customYellow};
+
+    &:hover {
+      background-color: ${customYellow};
     }
   }
 

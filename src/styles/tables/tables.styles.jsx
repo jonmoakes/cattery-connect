@@ -24,9 +24,14 @@ export const TableWithStyle = styled.table`
     background-color: ${warmBeige};
     animation: 0.5s ${fadeInLeftAnimation};
   }
+  .column-catsName {
+    min-width: 150px;
+    max-width: 400px;
+  }
   .column-catsFeedingInfo,
   .column-catsMedicalInfo,
-  .column-catsBehaviourInfo {
+  .column-catsBehaviourInfo,
+  .column-vaccinationStatus {
     min-width: 250px;
     max-width: 400px;
   }

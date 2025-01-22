@@ -8,6 +8,7 @@ import { uploadDatesAndPensDataReducer } from "./upload-dates-and-pens-data/uplo
 import { getAllCustomersReducer } from "./get-all-customers/get-all-customers.slice";
 import { customerDetailsManagementReducer } from "./customer-details-management/customer-details-management.slice";
 import { catDetailsManagementReducer } from "./cat-details-management/cat-details-management.slice";
+import { getAllCatsReducer } from "./get-all-cats/get-all-cats.slice";
 
 export const rootReducer = combineReducers({
   hamburgerMenu: hamburgerMenuReducer,
@@ -18,4 +19,5 @@ export const rootReducer = combineReducers({
   getAllCustomers: getAllCustomersReducer,
   customerDetailsManagement: customerDetailsManagementReducer,
   catDetailsManagement: catDetailsManagementReducer,
+  getAllCats: getAllCatsReducer,
 });

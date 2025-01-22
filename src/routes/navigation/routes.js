@@ -5,9 +5,15 @@ import {
   contactRoute,
   accountRoute,
   allCustomersRoute,
+  allCatsRoute,
 } from "../../strings/routes";
 
-export const signedInRoutes = [allCustomersRoute, accountRoute, contactRoute];
+export const signedInRoutes = [
+  allCustomersRoute,
+  allCatsRoute,
+  accountRoute,
+  contactRoute,
+];
 
 export const signedOutRoutes = [
   signInRoute,

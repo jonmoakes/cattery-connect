@@ -25,7 +25,7 @@ const NavigateToCatRouteCell = ({ detailsRequiredForCatManagement, route }) => {
     >
       <Balancer>
         {route === viewCustomersCatsRoute
-          ? `view ${getFirstNameFromString(customerName)}'s cats`
+          ? `${getFirstNameFromString(customerName)}'s cats`
           : "add cat"}
       </Balancer>
     </MinimalButton>
