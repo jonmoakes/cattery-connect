@@ -1,15 +1,13 @@
-import useCatsTableDataAndFunctions from "./view-customers-cats-hooks/use-cats-table-data-and-functions";
-
+import useViewCustomersCatsVariables from "./view-customers-cats-hooks/use-view-customers-cats-variables";
+import useViewCustomersCatsFunctions from "./view-customers-cats-hooks/use-view-customers-cats-functions";
 import { MinimalButton } from "../../styles/button/button.styles";
 import { ParentDiv } from "../../styles/div/div.styles";
 import { getFirstNameFromString } from "../../functions/get-first-name-from-string";
 
 const TitleAndAddCatLink = () => {
-  const {
-    customerName,
-    hasCustomerIDAndAtLeastOneCat,
-    goToAddCatRoutePassingNoExtraData,
-  } = useCatsTableDataAndFunctions();
+  const { customerName, hasCustomerIDAndAtLeastOneCat } =
+    useViewCustomersCatsVariables();
+  const { goToAddCatRoutePassingNoExtraData } = useViewCustomersCatsFunctions();
 
   return (
     <ParentDiv>

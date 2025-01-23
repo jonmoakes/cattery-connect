@@ -1,5 +1,5 @@
 import useTableWithCustomColumns from "../../components/tables/table-hooks/use-table-with-custom-columns";
-import useCatsTableDataAndFunctions from "./view-customers-cats-hooks/use-cats-table-data-and-functions";
+import useViewCustomersCatsVariables from "./view-customers-cats-hooks/use-view-customers-cats-variables";
 
 import NoCatsFound from "./no-cats-found.component";
 import RenderTable from "../../components/tables/render-table.component";
@@ -11,7 +11,7 @@ import ViewCustomersCatsDeleteCatButton from "./view-customers-cats-delete-cat-b
 import { TableOptionsButtonDiv } from "../../styles/div/div.styles";
 
 const ViewCustomersCatsTable = () => {
-  const { columns, data, initialState } = useCatsTableDataAndFunctions();
+  const { columns, data, initialState } = useViewCustomersCatsVariables();
 
   const {
     getTableProps,

@@ -1,14 +1,13 @@
-import useCatsTableDataAndFunctions from "./view-customers-cats-hooks/use-cats-table-data-and-functions";
+import useViewCustomersCatsVariables from "./view-customers-cats-hooks/use-view-customers-cats-variables";
+import useDeleteCat from "../../hooks/use-delete-cat";
 
 import { EntryOptionsButton } from "../../styles/button/button.styles";
-
-import useDeleteCat from "../../hooks/use-delete-cat";
 
 const ViewCustomersCatsDeleteCatButton = ({ chosenEntry }) => {
   const { catsName } = chosenEntry ?? "this cat";
   const { deleteCat } = useDeleteCat();
   const { customerDocumentId, catDetailsAfterRemovingCatForDeletion } =
-    useCatsTableDataAndFunctions(chosenEntry);
+    useViewCustomersCatsVariables(chosenEntry);
 
   return (
     <>

@@ -1,5 +1,5 @@
 import useTableWithCustomColumns from "../../components/tables/table-hooks/use-table-with-custom-columns";
-import useAllCustomersTableVariables from "./all-customers-hooks/all-customers-table-variables";
+import useAllCustomersTableVariables from "./all-customers-hooks/use-all-customers-table-variables";
 import useIsOnline from "../../hooks/use-is-online";
 
 import ShowFetchErrors from "../../components/errors/show-fetch-errors.component";

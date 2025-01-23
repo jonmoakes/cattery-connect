@@ -1,16 +1,18 @@
 import Balancer from "react-wrap-balancer";
 
-import useCatsTableDataAndFunctions from "./view-customers-cats-hooks/use-cats-table-data-and-functions";
+import useViewCustomersCatsFunctions from "./view-customers-cats-hooks/use-view-customers-cats-functions";
+import useViewCustomersCatsVariables from "./view-customers-cats-hooks/use-view-customers-cats-variables";
 
-import ViewCatsNoRequiredObject from "./view-cats-no-required-details-object.component";
+import ViewCatsNoRequiredObject from "./view-cats-no-required-object.component";
+
 import { ParentDiv } from "../../styles/div/div.styles";
 import { Button } from "../../styles/button/button.styles";
 
 import { getFirstNameFromString } from "../../functions/get-first-name-from-string";
 
 const NoCatsFound = () => {
-  const { catDetails, data, customerName, goToAddCatRoutePassingNoExtraData } =
-    useCatsTableDataAndFunctions();
+  const { catDetails, data, customerName } = useViewCustomersCatsVariables();
+  const { goToAddCatRoutePassingNoExtraData } = useViewCustomersCatsFunctions();
 
   return (
     <>

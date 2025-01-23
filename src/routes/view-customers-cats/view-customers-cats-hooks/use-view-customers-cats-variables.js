@@ -2,21 +2,15 @@ import { useMemo } from "react";
 
 import useGetCatDetailsManagementSelectors from "../../../hooks/selectors/use-get-cat-details-management-selectors";
 
-import useHamburgerHandlerNavigate from "../../../hooks/use-hamburger-handler-navigate";
-
-import { addCatRoute } from "../../../strings/routes";
-
 import VIEW_CUSTOMERS_CATS_TABLE_COLUMNS from "../view-customers-cats-table-columns";
 
 import { defaultTableSize } from "../../../constants/constants";
 
-const useCatsTableDataAndFunctions = (chosenEntry) => {
+const useViewCustomersCatsVariables = (chosenEntry) => {
   const { detailsRequiredForCatManagement } =
     useGetCatDetailsManagementSelectors();
   const { customerName, catDetails, customerDocumentId } =
     detailsRequiredForCatManagement ?? {};
-
-  const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
 
   // table
   const columns = useMemo(() => VIEW_CUSTOMERS_CATS_TABLE_COLUMNS, []);
@@ -32,28 +26,24 @@ const useCatsTableDataAndFunctions = (chosenEntry) => {
     []
   );
 
-  // title and add cat link & no cats found
+  // title-and-add-cat-link
   const hasCustomerIDAndAtLeastOneCat = customerDocumentId && data.length;
 
+  // view-customers-cats-delete-cat-button
   const catDetailsAfterRemovingCatForDeletion = data
     ? data.filter((cat) => cat.catsId !== (chosenEntry && chosenEntry.catsId))
     : [];
 
-  const goToAddCatRoutePassingNoExtraData = () => {
-    hamburgerHandlerNavigate(addCatRoute);
-  };
-
   return {
-    customerName,
-    customerDocumentId,
-    hasCustomerIDAndAtLeastOneCat,
-    goToAddCatRoutePassingNoExtraData,
     columns,
     data,
     initialState,
+    customerName,
+    customerDocumentId,
+    hasCustomerIDAndAtLeastOneCat,
     catDetails,
     catDetailsAfterRemovingCatForDeletion,
   };
 };
 
-export default useCatsTableDataAndFunctions;
+export default useViewCustomersCatsVariables;
