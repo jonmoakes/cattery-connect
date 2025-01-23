@@ -7,7 +7,7 @@ import { ParentDiv } from "../../styles/div/div.styles";
 import { addCustomerRoute } from "../../strings/routes";
 
 const CustomerDetailsTitleAndLoader = () => {
-  const { customerDetailsManagementIsLoading } =
+  const { customerDetailsManagementIsLoading, name } =
     useGetCustomerDetailsManagementSelectors();
 
   const location = useLocation();
@@ -19,13 +19,21 @@ const CustomerDetailsTitleAndLoader = () => {
         <SkeletonBox
           loadingText={
             path === addCustomerRoute
-              ? "creating customer"
-              : "updating customer"
+              ? `adding ${name}...`
+              : `updating ${name}...`
           }
         />
       ) : null}
       <ParentDiv>
-        <h1>{path === addCustomerRoute ? "add" : "edit"} customer</h1>
+        <h1>
+          {path === addCustomerRoute
+            ? name
+              ? `Add ${name}`
+              : "Add Customer"
+            : name
+            ? `Edit ${name}`
+            : "Edit Customer"}
+        </h1>
       </ParentDiv>
     </>
   );

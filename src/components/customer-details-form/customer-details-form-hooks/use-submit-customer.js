@@ -15,15 +15,23 @@ import {
   enterPhoneNumberMessage,
   phoneLengthErrorMessage,
 } from "../../../strings/errors";
-import { addCustomerRoute } from "../../../strings/routes";
+import { addCustomerRoute, editCustomerRoute } from "../../../strings/routes";
 import { isValidEmail } from "../../../functions/validate-email";
+import { formFieldsHaveNotChanged } from "../../../functions/form-fields-have-not-changed";
+import { formDetailsAreTheSameMessage } from "../../../strings/info";
+import {
+  confirmAddDataMessage,
+  confirmEditDataMessage,
+} from "../../../strings/confirms";
 
 const useSubmitCustomer = () => {
   const {
+    name,
     email,
     phoneNumber,
     customerDetails,
     catteryId: currentCatteryId,
+    customerDetailsForFormComparison,
   } = useGetCustomerDetailsManagementSelectors();
   const { catteryId } = useGetCurrentUserSelectors();
 
@@ -33,8 +41,11 @@ const useSubmitCustomer = () => {
   const location = useLocation();
   const path = location.pathname;
 
-  const submitCustomer = (e) => {
-    e.preventDefault();
+  const handleSubmission = () => {
+    const title =
+      path === addCustomerRoute
+        ? confirmAddDataMessage(name)
+        : confirmEditDataMessage(name);
 
     const confirmResult = () => {
       if (currentCatteryId === undefined) {
@@ -53,19 +64,36 @@ const useSubmitCustomer = () => {
     } else if (phoneNumber && phoneNumber.length !== 11) {
       fireSwal("error", phoneLengthErrorMessage, "", 0, "", false, "", false);
     } else {
-      confirmSwal(
-        path === addCustomerRoute
-          ? "add this customer?"
-          : "update this customer?",
-        "",
-        "yes",
-        "",
-        confirmResult,
-        null
-      );
+      confirmSwal(title, "", "yes", "", confirmResult, null);
     }
   };
 
+  const submitCustomer = (e) => {
+    e.preventDefault();
+
+    if (path === editCustomerRoute) {
+      if (
+        formFieldsHaveNotChanged(
+          customerDetails,
+          customerDetailsForFormComparison
+        )
+      ) {
+        fireSwal(
+          "info",
+          formDetailsAreTheSameMessage(name),
+          "",
+          0,
+          "",
+          false,
+          "",
+          false
+        );
+        return;
+      }
+    }
+
+    handleSubmission();
+  };
   return { submitCustomer };
 };
 

@@ -15,7 +15,7 @@ import { errorReceivedMessage } from "../../../strings/errors";
 import { allCustomersRoute } from "../../../strings/routes";
 
 const useEditCustomerResultSwalUseEffect = () => {
-  const { editCustomerResult, editCustomerError } =
+  const { editCustomerResult, editCustomerError, name } =
     useGetCustomerDetailsManagementSelectors();
 
   const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
@@ -26,21 +26,14 @@ const useEditCustomerResultSwalUseEffect = () => {
     if (!editCustomerResult && !editCustomerError) return;
 
     if (editCustomerResult === "fulfilled") {
-      fireSwal(
-        "success",
-        "customer updated!",
-        "",
-        0,
-        "",
-        false,
-        "",
-        false
-      ).then((isConfirmed) => {
-        if (isConfirmed) {
-          dispatch(resetCustomerDetailsManagementState());
-          hamburgerHandlerNavigate(allCustomersRoute);
+      fireSwal("success", `${name} updated!`, "", 0, "", false, "", false).then(
+        (isConfirmed) => {
+          if (isConfirmed) {
+            dispatch(resetCustomerDetailsManagementState());
+            hamburgerHandlerNavigate(allCustomersRoute);
+          }
         }
-      });
+      );
     } else {
       const error = editCustomerError;
       fireSwal(
@@ -65,6 +58,7 @@ const useEditCustomerResultSwalUseEffect = () => {
     editCustomerError,
     dispatch,
     hamburgerHandlerNavigate,
+    name,
   ]);
 };
 

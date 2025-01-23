@@ -7,6 +7,65 @@ import {
   standardRateLimit,
 } from "../../constants/constants";
 
+// export const fetchAllCatsAsync = createAsyncThunk(
+//   "fetchAllCats",
+//   async ({ catteryId }, thunkAPI) => {
+//     try {
+//       const queryIndex = "catteryId";
+//       const queryValue = catteryId;
+
+//       const usersCustomers = await listDocumentsByQueryOrSearch(
+//         databaseId,
+//         customersCollectionId,
+//         queryIndex,
+//         queryValue,
+//         false,
+//         standardRateLimit
+//       );
+
+//       const { documents } = usersCustomers;
+
+//       console.log("doc ", documents);
+//       if (!documents.length) {
+//         return [];
+//       }
+//       const allCatsDetails = documents.flatMap((doc) => {
+//         try {
+//           const parsedDetails = JSON.parse(doc.catDetails);
+
+//           // Ensure parsedDetails is an array, then add customerId and name to each object
+//           const catWithAddedDetails = Array.isArray(parsedDetails)
+//             ? parsedDetails.map((cat) => ({
+//                 ...cat,
+//                 customerId: doc.customerId,
+//                 customerName: doc.name,
+//                 customerDocumentId: doc.$id,
+//               }))
+//             : [
+//                 {
+//                   ...parsedDetails,
+//                   customerId: doc.customerId,
+//                   customerName: doc.name,
+//                 },
+//               ];
+
+//           return catWithAddedDetails;
+//         } catch (error) {
+//           console.error(
+//             `Failed to parse catDetails for document ID ${doc.$id}`,
+//             error
+//           );
+//           return []; // Return an empty array for failed parses
+//         }
+//       });
+
+//       return allCatsDetails;
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );
+
 export const fetchAllCatsAsync = createAsyncThunk(
   "fetchAllCats",
   async ({ catteryId }, thunkAPI) => {
@@ -29,35 +88,37 @@ export const fetchAllCatsAsync = createAsyncThunk(
         return [];
       }
 
-      const allCatsDetails = documents.flatMap((doc) => {
-        try {
-          const parsedDetails = JSON.parse(doc.catDetails);
+      const allCatsDetails = documents
+        .filter((doc) => doc.catDetails) // Exclude documents where customer has no cats
+        .flatMap((doc) => {
+          try {
+            const parsedDetails = JSON.parse(doc.catDetails);
 
-          // Ensure parsedDetails is an array, then add customerId and name to each object
-          const catWithAddedDetails = Array.isArray(parsedDetails)
-            ? parsedDetails.map((cat) => ({
-                ...cat,
-                customerId: doc.customerId,
-                customerName: doc.name,
-                customerDocumentId: doc.$id,
-              }))
-            : [
-                {
-                  ...parsedDetails,
+            // Ensure parsedDetails is an array, then add customerId and name to each object
+            const catWithAddedDetails = Array.isArray(parsedDetails)
+              ? parsedDetails.map((cat) => ({
+                  ...cat,
                   customerId: doc.customerId,
                   customerName: doc.name,
-                },
-              ];
+                  customerDocumentId: doc.$id,
+                }))
+              : [
+                  {
+                    ...parsedDetails,
+                    customerId: doc.customerId,
+                    customerName: doc.name,
+                  },
+                ];
 
-          return catWithAddedDetails;
-        } catch (error) {
-          console.error(
-            `Failed to parse catDetails for document ID ${doc.$id}`,
-            error
-          );
-          return []; // Return an empty array for failed parses
-        }
-      });
+            return catWithAddedDetails;
+          } catch (error) {
+            console.error(
+              `Failed to parse catDetails for document ID ${doc.$id}`,
+              error
+            );
+            return []; // Return an empty array for failed parses
+          }
+        });
 
       return allCatsDetails;
     } catch (error) {

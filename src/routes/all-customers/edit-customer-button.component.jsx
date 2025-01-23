@@ -1,18 +1,17 @@
-import useHamburgerHandlerNavigate from "../../hooks/use-hamburger-handler-navigate";
+import useAllCustomersFunctions from "./all-customers-hooks/use-all-customers-functions";
 
 import { EntryOptionsButton } from "../../styles/button/button.styles";
 
-import { editCustomerRoute } from "../../strings/routes";
-
-const EditCustomerButton = () => {
-  const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
+const EditCustomerButton = ({ chosenEntry }) => {
+  const { passCustomerDetailsAndGoToEditCustomer } =
+    useAllCustomersFunctions(chosenEntry);
 
   return (
     <>
       <EntryOptionsButton
         className="edit"
         type="button"
-        onClick={() => hamburgerHandlerNavigate(editCustomerRoute)}
+        onClick={passCustomerDetailsAndGoToEditCustomer}
       >
         edit customer
       </EntryOptionsButton>

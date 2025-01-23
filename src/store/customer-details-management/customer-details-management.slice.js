@@ -16,6 +16,7 @@ const defaultCustomerDetails = {
 const INITIAL_STATE = {
   customerDetailsManagementIsLoading: false,
   customerDetails: defaultCustomerDetails,
+  customerDetailsForFormComparison: {},
   addCustomerResult: "",
   addCustomerError: null,
   editCustomerResult: "",
@@ -33,6 +34,9 @@ export const customerDetailsManagementSlice = createSlice({
     },
     resetCustomerDetails(state) {
       state.customerDetails = defaultCustomerDetails;
+    },
+    setCustomerDetailForFormComparison(state, action) {
+      state.customerDetailsForFormComparison = action.payload;
     },
     resetAddCustomerResult(state) {
       state.addCustomerResult = "";
@@ -101,6 +105,7 @@ export const customerDetailsManagementSlice = createSlice({
   selectors: {
     selectCustomerDetailsManagementSelectors: createSelector(
       (state) => state.customerDetails,
+      (state) => state.customerDetailsForFormComparison,
       (state) => state.customerDetailsManagementIsLoading,
       (state) => state.addCustomerResult,
       (state) => state.addCustomerError,
@@ -110,6 +115,7 @@ export const customerDetailsManagementSlice = createSlice({
       (state) => state.deleteCustomerError,
       (
         customerDetails,
+        customerDetailsForFormComparison,
         customerDetailsManagementIsLoading,
         addCustomerResult,
         addCustomerError,
@@ -120,6 +126,7 @@ export const customerDetailsManagementSlice = createSlice({
       ) => {
         return {
           customerDetails,
+          customerDetailsForFormComparison,
           customerDetailsManagementIsLoading,
           addCustomerResult,
           addCustomerError,
@@ -135,6 +142,7 @@ export const customerDetailsManagementSlice = createSlice({
 
 export const {
   setCustomerDetails,
+  setCustomerDetailForFormComparison,
   resetCustomerDetails,
   resetAddCustomerResult,
   resetAddCustomerError,

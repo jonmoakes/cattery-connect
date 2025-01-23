@@ -1,13 +1,14 @@
 import { useDispatch } from "react-redux";
 
-import useHamburgerHandlerNavigate from "../../../hooks/use-hamburger-handler-navigate";
+import useGetCatDetailsManagementSelectors from "../../../hooks/selectors/use-get-cat-details-management-selectors";
+import useGetCustomerDetailsManagementSelectors from "../../../hooks/selectors/use-get-customer-details-management-selectors";
+import { resetCustomerDetails } from "../../../store/customer-details-management/customer-details-management.slice";
 import {
   resetCatDetails,
   setDetailsRequiredForCatManagement,
 } from "../../../store/cat-details-management/cat-details-management.slice";
-import useGetCustomerDetailsManagementSelectors from "../../../hooks/selectors/use-get-customer-details-management-selectors";
-import { resetCustomerDetails } from "../../../store/customer-details-management/customer-details-management.slice";
-import useGetCatDetailsManagementSelectors from "../../../hooks/selectors/use-get-cat-details-management-selectors";
+
+import useHamburgerHandlerNavigate from "../../../hooks/use-hamburger-handler-navigate";
 
 const useSetDetailsRequiredForCatManagementAndNavigate = () => {
   const { customerDetails } = useGetCustomerDetailsManagementSelectors();

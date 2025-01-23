@@ -5,6 +5,7 @@ import { selectCustomerDetailsManagementSelectors } from "../../store/customer-d
 const useGetCustomerDetailsManagementSelectors = () => {
   const {
     customerDetails,
+    customerDetailsForFormComparison,
     customerDetailsManagementIsLoading,
     addCustomerResult,
     addCustomerError,
@@ -28,6 +29,7 @@ const useGetCustomerDetailsManagementSelectors = () => {
 
   return {
     customerDetails,
+    customerDetailsForFormComparison,
     customerDetailsManagementIsLoading,
     addCustomerResult,
     addCustomerError,

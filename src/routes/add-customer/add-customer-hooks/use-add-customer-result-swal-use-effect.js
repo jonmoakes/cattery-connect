@@ -15,7 +15,7 @@ import { errorReceivedMessage } from "../../../strings/errors";
 import { allCustomersRoute } from "../../../strings/routes";
 
 const useAddCustomerResultSwalUseEffect = () => {
-  const { addCustomerResult, addCustomerError } =
+  const { addCustomerResult, addCustomerError, name } =
     useGetCustomerDetailsManagementSelectors();
 
   const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
@@ -26,7 +26,7 @@ const useAddCustomerResultSwalUseEffect = () => {
     if (!addCustomerResult && !addCustomerError) return;
 
     if (addCustomerResult === "fulfilled") {
-      fireSwal("success", "customer added!", "", 0, "", false, "", false).then(
+      fireSwal("success", `${name} added!`, "", 0, "", false, "", false).then(
         (isConfirmed) => {
           if (isConfirmed) {
             dispatch(resetCustomerDetailsManagementState());
@@ -58,6 +58,7 @@ const useAddCustomerResultSwalUseEffect = () => {
     addCustomerError,
     dispatch,
     hamburgerHandlerNavigate,
+    name,
   ]);
 };
 

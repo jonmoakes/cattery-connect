@@ -9,8 +9,8 @@ import useFireSwal from "../../../hooks/use-fire-swal";
 
 import { addCatRoute, editCatRoute } from "../../../strings/routes";
 import {
-  confirmAddCatMessage,
-  confirmEditCatMessage,
+  confirmAddDataMessage,
+  confirmEditDataMessage,
   imSureMessage,
 } from "../../../strings/confirms";
 import { formDetailsAreTheSameMessage } from "../../../strings/info";
@@ -35,8 +35,8 @@ const useSubmitCat = () => {
   const handleSubmission = () => {
     const title =
       path === addCatRoute
-        ? confirmAddCatMessage(catsName)
-        : confirmEditCatMessage(catsName);
+        ? confirmAddDataMessage(catsName)
+        : confirmEditDataMessage(catsName);
 
     confirmSwal(
       title,

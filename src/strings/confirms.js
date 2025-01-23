@@ -9,9 +9,9 @@ export const confirmUploadDatesAndPensDataMessage =
 export const confirmDeleteMessage = (name) => {
   return `<span style="font-size:20px";>are you sure that you want to delete<br/><span style="color:${customYellow}";>${name}</span><br/>from the database?<br/><br/>this action cannot be undone.</span>`;
 };
-export const confirmAddCatMessage = (catsName) => {
-  return `<span style="font-size:20px";>are you sure that you want to add<br/><span style="color:${customYellow}";>${catsName}</span><br/>to the database?</span>`;
+export const confirmAddDataMessage = (name) => {
+  return `<span style="font-size:20px";>are you sure that you want to add<br/><span style="color:${customYellow}";>${name}</span><br/>to the database?</span>`;
 };
-export const confirmEditCatMessage = (catsName) => {
-  return `<span style="font-size:20px";>are you sure you want to update<br/><span style="color:${customYellow}";>${catsName}</span><br/>with these new details?</span>`;
+export const confirmEditDataMessage = (name) => {
+  return `<span style="font-size:20px";>are you sure you want to update<br/><span style="color:${customYellow}";>${name}</span><br/>with these new details?</span>`;
 };

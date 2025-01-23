@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import useGetCustomerDetailsManagementSelectors from "../../../hooks/selectors/use-get-customer-details-management-selectors";
@@ -20,14 +20,9 @@ const useDeleteCustomerResultSwalUseEffect = () => {
   const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
   const dispatch = useDispatch();
   const { fireSwal } = useFireSwal();
-  const [deleteSwalWasConfirmed, setDeleteSwalWasConfirmed] = useState(false);
 
   useEffect(() => {
-    if (
-      (!deleteCustomerResult && !deleteCustomerError) ||
-      deleteSwalWasConfirmed
-    )
-      return;
+    if (!deleteCustomerResult && !deleteCustomerError) return;
 
     if (deleteCustomerResult === "fulfilled") {
       fireSwal(
@@ -41,7 +36,6 @@ const useDeleteCustomerResultSwalUseEffect = () => {
         false
       ).then((isConfirmed) => {
         if (isConfirmed) {
-          setDeleteSwalWasConfirmed(true);
           dispatch(resetDeleteCustomerResult());
           dispatch(resetCustomerDetails());
         }
@@ -71,7 +65,6 @@ const useDeleteCustomerResultSwalUseEffect = () => {
     deleteCustomerError,
     dispatch,
     hamburgerHandlerNavigate,
-    deleteSwalWasConfirmed,
   ]);
 };
 

@@ -73,8 +73,8 @@ const AllCustomersTable = () => {
 
           {chosenEntry ? (
             <TableOptionsButtonDiv>
-              <EditCustomerButton />
-              <DeleteCustomerButton />
+              <EditCustomerButton {...{ chosenEntry }} />
+              <DeleteCustomerButton {...{ chosenEntry }} />
             </TableOptionsButtonDiv>
           ) : null}
 
