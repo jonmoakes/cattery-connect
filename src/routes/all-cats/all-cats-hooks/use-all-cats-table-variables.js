@@ -48,8 +48,6 @@ const useAllCatsTableVariables = () => {
     [allCatsPageSizeFromLocalStorage]
   );
 
-  console.log(data);
-
   return {
     columns,
     data,
