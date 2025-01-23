@@ -19,8 +19,11 @@ const INITIAL_STATE = {
   detailsRequiredForCatManagement: {},
   catDetailManagementIsLoading: false,
   catDetails: defaultCatDetails,
+  catDetailsForFormComparison: {},
   catDetailsManagementResult: "",
   catDetailsManagementError: null,
+  deleteCatResult: "",
+  deleteCatError: "",
 };
 
 export const catDetailsManagementSlice = createSlice({
@@ -39,11 +42,20 @@ export const catDetailsManagementSlice = createSlice({
     resetCatDetails(state) {
       state.catDetails = defaultCatDetails;
     },
+    setCatDetailForFormComparison(state, action) {
+      state.catDetailsForFormComparison = action.payload;
+    },
     resetCatDetailsManagementResult(state) {
       state.catDetailsManagementResult = "";
     },
     resetCatDetailsManagementError(state) {
       state.catDetailsManagementError = null;
+    },
+    resetDeleteCatResult(state) {
+      state.deleteCatResult = "";
+    },
+    resetDeleteCatError(state) {
+      state.deleteCatError = null;
     },
     resetCatDetailsManagementState: () => {
       return INITIAL_STATE;
@@ -69,13 +81,13 @@ export const catDetailsManagementSlice = createSlice({
       })
       .addCase(deleteCatFromDbAsync.fulfilled, (state) => {
         state.catDetailManagementIsLoading = false;
-        state.catDetailsManagementResult = "fulfilled";
-        state.catDetailsManagementError = null;
+        state.deleteCatResult = "fulfilled";
+        state.deleteCatError = null;
       })
       .addCase(deleteCatFromDbAsync.rejected, (state, action) => {
         state.catDetailManagementIsLoading = false;
-        state.catDetailsManagementResult = "rejected";
-        state.catDetailsManagementError = action.payload;
+        state.deleteCatResult = "rejected";
+        state.deleteCatError = action.payload;
       });
   },
   selectors: {
@@ -83,21 +95,30 @@ export const catDetailsManagementSlice = createSlice({
       (state) => state.detailsRequiredForCatManagement,
       (state) => state.catDetailManagementIsLoading,
       (state) => state.catDetails,
+      (state) => state.catDetailsForFormComparison,
       (state) => state.catDetailsManagementResult,
       (state) => state.catDetailsManagementResult,
+      (state) => state.deleteCatResult,
+      (state) => state.deleteCatError,
       (
         detailsRequiredForCatManagement,
         catDetailManagementIsLoading,
         catDetails,
+        catDetailsForFormComparison,
         catDetailsManagementResult,
-        catDetailsManagementError
+        catDetailsManagementError,
+        deleteCatResult,
+        deleteCatError
       ) => {
         return {
           detailsRequiredForCatManagement,
           catDetailManagementIsLoading,
           catDetails,
+          catDetailsForFormComparison,
           catDetailsManagementResult,
           catDetailsManagementError,
+          deleteCatResult,
+          deleteCatError,
         };
       }
     ),
@@ -109,8 +130,11 @@ export const {
   resetDetailsRequiredForCatManagement,
   setCatDetails,
   resetCatDetails,
+  setCatDetailForFormComparison,
   resetCatDetailsManagementResult,
   resetCatDetailsManagementError,
+  resetDeleteCatResult,
+  resetDeleteCatError,
   resetCatDetailsManagementState,
 } = catDetailsManagementSlice.actions;
 export const { selectCatDetailsManagementSelectors } =

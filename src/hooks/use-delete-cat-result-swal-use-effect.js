@@ -12,10 +12,14 @@ import { fetchAllCatsAsync } from "../store/get-all-cats/get-all-cats.thunks";
 import useFireSwal from "./use-fire-swal";
 
 import { errorReceivedMessage } from "../strings/errors";
-import { allCustomersRoute, viewCustomersCatsRoute } from "../strings/routes";
+import {
+  allCatsRoute,
+  allCustomersRoute,
+  viewCustomersCatsRoute,
+} from "../strings/routes";
 
 const useDeleteCatResultSwalUseEffect = () => {
-  const { catDetailsManagementResult, catDetailsManagementError } =
+  const { deleteCatResult, deleteCatError } =
     useGetCatDetailsManagementSelectors();
   const { catteryId } = useGetCurrentUserSelectors();
 
@@ -26,9 +30,9 @@ const useDeleteCatResultSwalUseEffect = () => {
   const path = location.pathname;
 
   useEffect(() => {
-    if (!catDetailsManagementResult && !catDetailsManagementError) return;
+    if (!deleteCatResult && !deleteCatError) return;
 
-    if (catDetailsManagementResult === "fulfilled") {
+    if (deleteCatResult === "fulfilled") {
       fireSwal(
         "success",
         "the cat was deleted!",
@@ -43,14 +47,14 @@ const useDeleteCatResultSwalUseEffect = () => {
           dispatch(resetCatDetailsManagementState());
           if (path === viewCustomersCatsRoute) {
             hamburgerHandlerNavigate(allCustomersRoute);
-          } else {
+          } else if (path === allCatsRoute) {
             dispatch(resetGetAllCatsState());
             dispatch(fetchAllCatsAsync({ catteryId }));
           }
         }
       });
     } else {
-      const error = catDetailsManagementError;
+      const error = deleteCatError;
       fireSwal(
         "error",
         errorReceivedMessage("error deleting cat..", error),
@@ -68,8 +72,8 @@ const useDeleteCatResultSwalUseEffect = () => {
     }
   }, [
     fireSwal,
-    catDetailsManagementResult,
-    catDetailsManagementError,
+    deleteCatResult,
+    deleteCatError,
     dispatch,
     hamburgerHandlerNavigate,
     path,

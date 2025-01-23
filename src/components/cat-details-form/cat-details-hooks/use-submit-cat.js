@@ -4,20 +4,24 @@ import { useLocation } from "react-router-dom";
 import { uploadCatToDbAsync } from "../../../store/cat-details-management/cat-details-management.thunks";
 
 import useConfirmSwal from "../../../hooks/use-confirm-swal";
+import useGetCatDetailsManagementSelectors from "../../../hooks/selectors/use-get-cat-details-management-selectors";
+import useFireSwal from "../../../hooks/use-fire-swal";
 
-import { addCatRoute } from "../../../strings/routes";
+import { addCatRoute, editCatRoute } from "../../../strings/routes";
 import {
   confirmAddCatMessage,
   confirmEditCatMessage,
   imSureMessage,
 } from "../../../strings/confirms";
-import useGetCatDetailsManagementSelectors from "../../../hooks/selectors/use-get-cat-details-management-selectors";
+import { formDetailsAreTheSameMessage } from "../../../strings/info";
+import { formFieldsHaveNotChanged } from "../../../functions/form-fields-have-not-changed";
 
 const useSubmitCat = () => {
   const {
     detailsRequiredForCatManagement,
     catsName,
     catDetails: catObject,
+    catDetailsForFormComparison,
   } = useGetCatDetailsManagementSelectors();
 
   const { customerDocumentId } = detailsRequiredForCatManagement ?? "";
@@ -25,11 +29,10 @@ const useSubmitCat = () => {
   const location = useLocation();
   const path = location.pathname;
 
+  const { fireSwal } = useFireSwal();
   const { confirmSwal } = useConfirmSwal();
 
-  const submitCat = (e) => {
-    e.preventDefault();
-
+  const handleSubmission = () => {
     const title =
       path === addCatRoute
         ? confirmAddCatMessage(catsName)
@@ -49,6 +52,28 @@ const useSubmitCat = () => {
         ),
       null
     );
+  };
+
+  const submitCat = (e) => {
+    e.preventDefault();
+
+    if (path === editCatRoute) {
+      if (formFieldsHaveNotChanged(catObject, catDetailsForFormComparison)) {
+        fireSwal(
+          "info",
+          formDetailsAreTheSameMessage(catsName),
+          "",
+          0,
+          "",
+          false,
+          "",
+          false
+        );
+        return;
+      }
+    }
+
+    handleSubmission();
   };
 
   return { submitCat };

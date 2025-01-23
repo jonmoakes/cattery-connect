@@ -7,8 +7,11 @@ const useGetCatDetailsManagementSelectors = () => {
     detailsRequiredForCatManagement,
     catDetailManagementIsLoading,
     catDetails,
+    catDetailsForFormComparison,
     catDetailsManagementResult,
     catDetailsManagementError,
+    deleteCatResult,
+    deleteCatError,
   } = useSelector(selectCatDetailsManagementSelectors);
 
   const {
@@ -26,8 +29,11 @@ const useGetCatDetailsManagementSelectors = () => {
     detailsRequiredForCatManagement,
     catDetailManagementIsLoading,
     catDetails,
+    catDetailsForFormComparison,
     catDetailsManagementResult,
     catDetailsManagementError,
+    deleteCatResult,
+    deleteCatError,
     catsName,
     catsBreed,
     catsAge,

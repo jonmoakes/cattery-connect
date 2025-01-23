@@ -5,8 +5,9 @@ import useCatsTableDataAndFunctions from "./view-customers-cats-hooks/use-cats-t
 
 import { EntryOptionsButton } from "../../styles/button/button.styles";
 
-import { editCatRoute } from "../../strings/routes";
+import { editCatRoute, viewCustomersCatsRoute } from "../../strings/routes";
 import {
+  setCatDetailForFormComparison,
   setCatDetails,
   setDetailsRequiredForCatManagement,
 } from "../../store/cat-details-management/cat-details-management.slice";
@@ -18,8 +19,11 @@ const EditCatButton = ({ chosenEntry }) => {
 
   const setDataAndNavigate = () => {
     dispatch(setCatDetails(chosenEntry));
+    dispatch(setCatDetailForFormComparison(chosenEntry));
     dispatch(setDetailsRequiredForCatManagement({ customerDocumentId }));
-    hamburgerHandlerNavigate(editCatRoute);
+    hamburgerHandlerNavigate(editCatRoute, {
+      fromRoute: viewCustomersCatsRoute,
+    });
   };
 
   return (

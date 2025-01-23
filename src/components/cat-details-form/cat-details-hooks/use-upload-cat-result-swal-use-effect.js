@@ -12,9 +12,14 @@ import useFireSwal from "../../../hooks/use-fire-swal";
 import useHamburgerHandlerNavigate from "../../../hooks/use-hamburger-handler-navigate";
 
 import { errorReceivedMessage } from "../../../strings/errors";
-import { addCatRoute, allCustomersRoute } from "../../../strings/routes";
+import {
+  addCatRoute,
+  allCatsRoute,
+  allCustomersRoute,
+  viewCustomersCatsRoute,
+} from "../../../strings/routes";
 
-const useUploadCatResultSwalUseEffect = () => {
+const useUploadCatResultSwalUseEffect = (fromRoute) => {
   const { catDetailsManagementResult, catDetailsManagementError, catsName } =
     useGetCatDetailsManagementSelectors();
 
@@ -27,8 +32,17 @@ const useUploadCatResultSwalUseEffect = () => {
   useEffect(() => {
     if (!catDetailsManagementResult && !catDetailsManagementError) return;
 
-    if (catDetailsManagementResult === "fulfilled") {
-      const action = path === addCatRoute ? "added" : "updated";
+    const action =
+      path === addCatRoute
+        ? catDetailsManagementResult === "fulfilled"
+          ? "added"
+          : "adding"
+        : catDetailsManagementResult === "fulfilled"
+        ? "updated"
+        : "updating";
+    const isSuccess = catDetailsManagementResult === "fulfilled";
+
+    if (isSuccess) {
       fireSwal(
         "success",
         `${catsName} ${action}!`,
@@ -40,15 +54,20 @@ const useUploadCatResultSwalUseEffect = () => {
         false
       ).then((isConfirmed) => {
         if (isConfirmed) {
-          hamburgerHandlerNavigate(allCustomersRoute);
+          if (fromRoute === viewCustomersCatsRoute || path === addCatRoute) {
+            hamburgerHandlerNavigate(allCustomersRoute);
+          } else if (fromRoute === allCatsRoute) {
+            hamburgerHandlerNavigate(allCatsRoute);
+          }
         }
       });
     } else {
-      const action = path === addCatRoute ? "adding" : "updating";
-      const error = catDetailsManagementError;
       fireSwal(
         "error",
-        errorReceivedMessage(`error ${action} cat..`, error),
+        errorReceivedMessage(
+          `error ${action} cat..`,
+          catDetailsManagementError
+        ),
         "",
         0,
         "",
@@ -70,6 +89,7 @@ const useUploadCatResultSwalUseEffect = () => {
     dispatch,
     hamburgerHandlerNavigate,
     catsName,
+    fromRoute,
   ]);
 };
 

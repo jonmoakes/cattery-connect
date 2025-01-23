@@ -13,9 +13,12 @@ import CatsMedicalInfoInput from "./inputs/cats-medical-info-input.component";
 import CatsBehaviourInfoInput from "./inputs/cats-behaviour-info-input.component";
 
 import { Form } from "../../styles/form/form.styles";
+import { useLocation } from "react-router-dom";
 
 const CatDetailsForm = () => {
-  useUploadCatResultSwalUseEffect();
+  const location = useLocation();
+  const fromRoute = location.state?.fromRoute;
+  useUploadCatResultSwalUseEffect(fromRoute);
   const { submitCat } = useSubmitCat();
   const { handleCatDetailsChange } = useHandleCatDetailsChange();
 

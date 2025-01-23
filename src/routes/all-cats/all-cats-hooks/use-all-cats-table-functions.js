@@ -8,12 +8,13 @@ import {
 } from "../../../store/get-all-cats/get-all-cats.slice";
 import { fetchAllCatsAsync } from "../../../store/get-all-cats/get-all-cats.thunks";
 import {
+  setCatDetailForFormComparison,
   setCatDetails,
   setDetailsRequiredForCatManagement,
 } from "../../../store/cat-details-management/cat-details-management.slice";
 import useHamburgerHandlerNavigate from "../../../hooks/use-hamburger-handler-navigate";
 
-import { editCatRoute } from "../../../strings/routes";
+import { allCatsRoute, editCatRoute } from "../../../strings/routes";
 
 const useAllCatsTableFunctions = () => {
   const { catteryId } = useGetCurrentUserSelectors();
@@ -25,8 +26,9 @@ const useAllCatsTableFunctions = () => {
     customerDocumentId
   ) => {
     dispatch(setCatDetails(chosenEntry));
+    dispatch(setCatDetailForFormComparison(chosenEntry));
     dispatch(setDetailsRequiredForCatManagement({ customerDocumentId }));
-    hamburgerHandlerNavigate(editCatRoute);
+    hamburgerHandlerNavigate(editCatRoute, { fromRoute: allCatsRoute });
   };
 
   // triggers useEffect fetch of cats owner details
