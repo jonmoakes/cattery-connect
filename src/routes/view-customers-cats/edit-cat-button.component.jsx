@@ -30,7 +30,7 @@ const EditCatButton = ({ chosenEntry }) => {
           type="button"
           onClick={setDataAndNavigate}
         >
-          edit cat
+          edit {chosenEntry.catsName}
         </EntryOptionsButton>
       ) : null}
     </>

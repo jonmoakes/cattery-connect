@@ -77,18 +77,23 @@ export const uploadCatToDbAsync = createAsyncThunk(
 
 export const deleteCatFromDbAsync = createAsyncThunk(
   " deleteCatFromDb",
-  async ({ updatedCats, customerDocumentId }, thunkAPI) => {
+  async (
+    { catDetailsAfterRemovingCatForDeletion, customerDocumentId },
+    thunkAPI
+  ) => {
     try {
-      const lowercasedCats = updatedCats.map((cat) =>
+      const lowercasedCats = catDetailsAfterRemovingCatForDeletion.map((cat) =>
         lowercaseObjectValues(cat)
       );
 
       const attributeKey = "catDetails";
-      const updatedCatDetailsString = JSON.stringify(lowercasedCats);
+      const catDetailsAfterRemovingCatForDeletionString =
+        JSON.stringify(lowercasedCats);
 
       const dataToUpdate = {
-        [attributeKey]: updatedCatDetailsString,
+        [attributeKey]: catDetailsAfterRemovingCatForDeletionString,
       };
+
       await manageDatabaseDocument(
         "update",
         databaseId,

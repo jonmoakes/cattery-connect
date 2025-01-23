@@ -5,13 +5,13 @@ import SkeletonBox from "../../components/skeleton-box/skeleton-box.component";
 import { ParentDiv } from "../../styles/div/div.styles";
 
 const AddCatTitleAndLoader = () => {
-  const { catDetailManagementIsLoading } =
+  const { catDetailManagementIsLoading, catsName } =
     useGetCatDetailsManagementSelectors();
 
   return (
     <>
       {catDetailManagementIsLoading ? (
-        <SkeletonBox loadingText="adding cat..." />
+        <SkeletonBox loadingText={`adding ${catsName}...`} />
       ) : null}
 
       <ParentDiv>

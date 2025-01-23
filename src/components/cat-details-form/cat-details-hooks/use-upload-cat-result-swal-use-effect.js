@@ -15,7 +15,7 @@ import { errorReceivedMessage } from "../../../strings/errors";
 import { addCatRoute, allCustomersRoute } from "../../../strings/routes";
 
 const useUploadCatResultSwalUseEffect = () => {
-  const { catDetailsManagementResult, catDetailsManagementError } =
+  const { catDetailsManagementResult, catDetailsManagementError, catsName } =
     useGetCatDetailsManagementSelectors();
 
   const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
@@ -29,13 +29,20 @@ const useUploadCatResultSwalUseEffect = () => {
 
     if (catDetailsManagementResult === "fulfilled") {
       const action = path === addCatRoute ? "added" : "updated";
-      fireSwal("success", `cat ${action}!`, "", 0, "", false, "", false).then(
-        (isConfirmed) => {
-          if (isConfirmed) {
-            hamburgerHandlerNavigate(allCustomersRoute);
-          }
+      fireSwal(
+        "success",
+        `${catsName} ${action}!`,
+        "",
+        0,
+        "",
+        false,
+        "",
+        false
+      ).then((isConfirmed) => {
+        if (isConfirmed) {
+          hamburgerHandlerNavigate(allCustomersRoute);
         }
-      );
+      });
     } else {
       const action = path === addCatRoute ? "adding" : "updating";
       const error = catDetailsManagementError;
@@ -62,6 +69,7 @@ const useUploadCatResultSwalUseEffect = () => {
     path,
     dispatch,
     hamburgerHandlerNavigate,
+    catsName,
   ]);
 };
 

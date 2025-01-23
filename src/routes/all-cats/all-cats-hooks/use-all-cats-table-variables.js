@@ -5,6 +5,7 @@ import useGetAllCatsSelectors from "../../../hooks/selectors/use-get-all-cats-se
 import { defaultTableSize } from "../../../constants/constants";
 import ALL_CATS_TABLE_COLUMNS from "../all-cats-columns/all-cats-table-columns";
 import CAT_OWNER_TABLE_COLUMNS from "../all-cats-columns/cat-owner-table-columns";
+import useGetCatDetailsManagementSelectors from "../../../hooks/selectors/use-get-cat-details-management-selectors";
 
 const useAllCatsTableVariables = () => {
   const {
@@ -18,6 +19,8 @@ const useAllCatsTableVariables = () => {
     getAllCatsError,
     getCatsOwnerDetailsError,
   } = useGetAllCatsSelectors();
+  const { catDetailManagementIsLoading } =
+    useGetCatDetailsManagementSelectors();
 
   const allCatsPageSizeFromLocalStorage = localStorage.getItem(
     "allCatsChosenTablePageSize"
@@ -51,6 +54,7 @@ const useAllCatsTableVariables = () => {
     initialState,
     getAllCatsIsLoading,
     fetchOwnerDetailsIsLoading,
+    catDetailManagementIsLoading,
     allCats,
     selectedCatsName,
     selectedCatsOwnerCustomerDocumentId,

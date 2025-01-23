@@ -10,7 +10,7 @@ import VIEW_CUSTOMERS_CATS_TABLE_COLUMNS from "../view-customers-cats-table-colu
 
 import { defaultTableSize } from "../../../constants/constants";
 
-const useCatsTableDataAndFunctions = () => {
+const useCatsTableDataAndFunctions = (chosenEntry) => {
   const { detailsRequiredForCatManagement } =
     useGetCatDetailsManagementSelectors();
   const { customerName, catDetails, customerDocumentId } =
@@ -35,6 +35,10 @@ const useCatsTableDataAndFunctions = () => {
   // title and add cat link & no cats found
   const hasCustomerIDAndAtLeastOneCat = customerDocumentId && data.length;
 
+  const catDetailsAfterRemovingCatForDeletion = data
+    ? data.filter((cat) => cat.catsId !== (chosenEntry && chosenEntry.catsId))
+    : [];
+
   const goToAddCatRoutePassingNoExtraData = () => {
     hamburgerHandlerNavigate(addCatRoute);
   };
@@ -48,6 +52,7 @@ const useCatsTableDataAndFunctions = () => {
     data,
     initialState,
     catDetails,
+    catDetailsAfterRemovingCatForDeletion,
   };
 };
 

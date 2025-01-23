@@ -1,22 +1,29 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
 
-import useGetCatDetailsManagementSelectors from "../../../hooks/selectors/use-get-cat-details-management-selectors";
-import useHamburgerHandlerNavigate from "../../../hooks/use-hamburger-handler-navigate";
-import { resetCatDetailsManagementState } from "../../../store/cat-details-management/cat-details-management.slice";
+import useGetCatDetailsManagementSelectors from "./selectors/use-get-cat-details-management-selectors";
+import useGetCurrentUserSelectors from "./selectors/use-get-current-user-selectors";
+import useHamburgerHandlerNavigate from "./use-hamburger-handler-navigate";
+import { resetCatDetailsManagementState } from "../store/cat-details-management/cat-details-management.slice";
+import { resetGetAllCatsState } from "../store/get-all-cats/get-all-cats.slice";
+import { fetchAllCatsAsync } from "../store/get-all-cats/get-all-cats.thunks";
 
-import useFireSwal from "../../../hooks/use-fire-swal";
+import useFireSwal from "./use-fire-swal";
 
-import { errorReceivedMessage } from "../../../strings/errors";
-import { allCustomersRoute } from "../../../strings/routes";
+import { errorReceivedMessage } from "../strings/errors";
+import { allCustomersRoute, viewCustomersCatsRoute } from "../strings/routes";
 
 const useDeleteCatResultSwalUseEffect = () => {
   const { catDetailsManagementResult, catDetailsManagementError } =
     useGetCatDetailsManagementSelectors();
+  const { catteryId } = useGetCurrentUserSelectors();
 
-  const dispatch = useDispatch();
   const { fireSwal } = useFireSwal();
   const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const path = location.pathname;
 
   useEffect(() => {
     if (!catDetailsManagementResult && !catDetailsManagementError) return;
@@ -34,7 +41,12 @@ const useDeleteCatResultSwalUseEffect = () => {
       ).then((isConfirmed) => {
         if (isConfirmed) {
           dispatch(resetCatDetailsManagementState());
-          hamburgerHandlerNavigate(allCustomersRoute);
+          if (path === viewCustomersCatsRoute) {
+            hamburgerHandlerNavigate(allCustomersRoute);
+          } else {
+            dispatch(resetGetAllCatsState());
+            dispatch(fetchAllCatsAsync({ catteryId }));
+          }
         }
       });
     } else {
@@ -60,6 +72,8 @@ const useDeleteCatResultSwalUseEffect = () => {
     catDetailsManagementError,
     dispatch,
     hamburgerHandlerNavigate,
+    path,
+    catteryId,
   ]);
 };
 

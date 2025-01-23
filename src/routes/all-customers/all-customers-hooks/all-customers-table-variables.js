@@ -6,7 +6,7 @@ import { defaultTableSize } from "../../../constants/constants";
 import ALL_CUSTOMERS_TABLE_COLUMNS from "../all-customers-table-columns";
 
 const useAllCustomersTableVariables = () => {
-  const { allCustomers } = useGetAllCustomersSelectors();
+  const { allCustomers, getAllCustomersError } = useGetAllCustomersSelectors();
 
   const allCustomersPageSizeFromLocalStorage = localStorage.getItem(
     "allCustomersChosenTablePageSize"
@@ -28,7 +28,7 @@ const useAllCustomersTableVariables = () => {
     [allCustomersPageSizeFromLocalStorage]
   );
 
-  return { columns, data, initialState };
+  return { getAllCustomersError, columns, data, initialState };
 };
 
 export default useAllCustomersTableVariables;

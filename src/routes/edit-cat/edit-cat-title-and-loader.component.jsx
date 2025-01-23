@@ -10,7 +10,7 @@ const EditCatTitleAndLoader = () => {
   return (
     <>
       {catDetailManagementIsLoading ? (
-        <SkeletonBox loadingText="editing cat..." />
+        <SkeletonBox loadingText={`updating ${catsName}...`} />
       ) : null}
 
       <ParentDiv>

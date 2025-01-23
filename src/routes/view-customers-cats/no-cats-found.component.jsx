@@ -4,7 +4,6 @@ import useCatsTableDataAndFunctions from "./view-customers-cats-hooks/use-cats-t
 
 import ViewCatsNoRequiredObject from "./view-cats-no-required-details-object.component";
 import { ParentDiv } from "../../styles/div/div.styles";
-import { BlackHr } from "../../styles/hr/hr.styles";
 import { Button } from "../../styles/button/button.styles";
 
 import { getFirstNameFromString } from "../../functions/get-first-name-from-string";
@@ -32,8 +31,6 @@ const NoCatsFound = () => {
           <Button className="teal" onClick={goToAddCatRoutePassingNoExtraData}>
             add a cat
           </Button>
-
-          <BlackHr />
         </ParentDiv>
       ) : null}
     </>

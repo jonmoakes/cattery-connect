@@ -33,7 +33,7 @@ const useSubmitCat = () => {
     const title =
       path === addCatRoute
         ? confirmAddCatMessage(catsName)
-        : confirmEditCatMessage;
+        : confirmEditCatMessage(catsName);
 
     confirmSwal(
       title,

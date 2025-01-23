@@ -12,5 +12,6 @@ export const confirmDeleteMessage = (name) => {
 export const confirmAddCatMessage = (catsName) => {
   return `<span style="font-size:20px";>are you sure that you want to add<br/><span style="color:${customYellow}";>${catsName}</span><br/>to the database?</span>`;
 };
-export const confirmEditCatMessage =
-  "are you sure you want to edit this cat with the new details?";
+export const confirmEditCatMessage = (catsName) => {
+  return `<span style="font-size:20px";>are you sure you want to update<br/><span style="color:${customYellow}";>${catsName}</span><br/>with these new details?</span>`;
+};

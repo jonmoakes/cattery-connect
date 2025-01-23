@@ -362,16 +362,20 @@ export const TableOptionsButtonDiv = styled.div`
   display: flex;
   gap: 3px;
   margin: 0px auto 40px auto;
-  max-width: 600px;
+  max-width: 700px;
 
   @media screen and (max-width: 850px) {
     margin: 20px auto;
   }
 
   @media screen and (max-width: 539px) {
-    display: flex;
     flex-direction: column;
     margin: -20px auto 20px auto;
+  }
+
+  &:has(> button:nth-of-type(3)) {
+    gap: 15px;
+    flex-direction: column;
   }
 `;
 

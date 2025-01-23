@@ -2,10 +2,6 @@ import CellWithPotentiallyNoValue from "../../../components/tables/cell-with-pot
 
 const ALL_CATS_TABLE_COLUMNS = [
   {
-    Header: "Owners name",
-    accessor: "customerName",
-  },
-  {
     Header: "cat name",
     accessor: "catsName",
   },
@@ -45,6 +41,10 @@ const ALL_CATS_TABLE_COLUMNS = [
   {
     Header: "cat ID",
     accessor: "catsId",
+  },
+  {
+    Header: "Owners name",
+    accessor: "customerName",
   },
 ];
 
