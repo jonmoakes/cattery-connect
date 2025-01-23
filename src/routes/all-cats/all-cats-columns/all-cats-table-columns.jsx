@@ -5,6 +5,11 @@ const ALL_CATS_TABLE_COLUMNS = [
     Header: "cat name",
     accessor: "catsName",
   },
+
+  {
+    Header: "Owners name",
+    accessor: "customerName",
+  },
   {
     Header: "feeding info",
     accessor: "catsFeedingInfo",
@@ -41,10 +46,6 @@ const ALL_CATS_TABLE_COLUMNS = [
   {
     Header: "cat ID",
     accessor: "catsId",
-  },
-  {
-    Header: "Owners name",
-    accessor: "customerName",
   },
 ];
 

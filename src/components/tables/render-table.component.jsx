@@ -22,7 +22,12 @@ const RenderTable = ({
                   const columnClass = `column-${column.id}`;
 
                   return (
-                    <th key={key} className={columnClass} {...restColumn}>
+                    <th
+                      {...column.getHeaderProps(column.getSortByToggleProps())}
+                      key={key}
+                      className={columnClass}
+                      {...restColumn}
+                    >
                       {column.render("Header")}
                       <span>
                         {column.isSorted
