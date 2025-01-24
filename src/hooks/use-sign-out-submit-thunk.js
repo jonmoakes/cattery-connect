@@ -1,12 +1,12 @@
 import { useDispatch } from "react-redux";
 
-import useFireSwal from "../../../hooks/use-fire-swal";
+import useFireSwal from "./use-fire-swal";
 import useResetAllStoreOnSignOut from "./use-reset-all-store-on-sign-out";
-import useHamburgerHandlerNavigate from "../../../hooks/use-hamburger-handler-navigate";
-import { signOutAsync } from "../../../store/user/user.thunks";
+import useHamburgerHandlerNavigate from "./use-hamburger-handler-navigate";
+import { signOutAsync } from "../store/user/user.thunks";
 
-import { errorReceivedMessage } from "../../../strings/errors";
-import { signInRoute } from "../../../strings/routes";
+import { errorReceivedMessage } from "../strings/errors";
+import { signInRoute } from "../strings/routes";
 
 const useSignOutSubmitThunk = () => {
   const { fireSwal } = useFireSwal();

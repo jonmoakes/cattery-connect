@@ -146,6 +146,10 @@ export const AuthButtonDiv = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  &.new-password {
+    margin: 20px auto;
+  }
 `;
 
 export const ErrorDiv = styled.div`

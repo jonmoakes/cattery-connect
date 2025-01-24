@@ -10,12 +10,12 @@ export const generateNewPasswordRequestAsync = createAsyncThunk(
       if (import.meta.env.MODE === "development") {
         await account.createRecovery(
           generateNewPasswordRequestEmail,
-          `http://localhost:8888${chooseNewPasswordRoute}`
+          `http://localhost:5173${chooseNewPasswordRoute}`
         );
       } else if (import.meta.env.MODE === "production") {
         await account.createRecovery(
           generateNewPasswordRequestEmail,
-          `https://fishnfry-hub.netlify.app${chooseNewPasswordRoute}`
+          `https://cattery-connect.netlify.app${chooseNewPasswordRoute}`
         );
       }
     } catch (error) {

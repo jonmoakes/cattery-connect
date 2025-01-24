@@ -19,3 +19,5 @@ export const confirmEditDataMessage = (name) => {
 export const confirmSendPasswordResetRequestMessage = (email) => {
   return `<span style="font-size:20px;">Are you sure that you wish to send the password reset request to<br/><span style="color:${customYellow}; text-transform:lowercase;">${email}</span>?</span>`;
 };
+export const sureResetPasswordMessage =
+  "are you sure you wish to reset your password?";

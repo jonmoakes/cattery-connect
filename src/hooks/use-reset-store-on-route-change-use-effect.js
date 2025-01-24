@@ -11,6 +11,7 @@ import {
   addCatRoute,
   allCatsRoute,
   allCustomersRoute,
+  chooseNewPasswordRoute,
   editCatRoute,
   forgotPasswordRequestRoute,
   signInRoute,
@@ -19,6 +20,7 @@ import {
 import { resetCatDetailsManagementState } from "../store/cat-details-management/cat-details-management.slice";
 import { resetGetAllCatsState } from "../store/get-all-cats/get-all-cats.slice";
 import { resetGenerateNewPasswordRequestState } from "../store/generate-new-password-request/generate-new-password-request.slice";
+import { resetChooseNewPasswordState } from "../store/choose-new-password/choose-new-password.slice";
 
 const useResetStoreOnRouteChangeUseEffect = () => {
   const location = useLocation();
@@ -33,6 +35,9 @@ const useResetStoreOnRouteChangeUseEffect = () => {
           break;
         case forgotPasswordRequestRoute:
           dispatch(resetGenerateNewPasswordRequestState());
+          break;
+        case chooseNewPasswordRoute:
+          dispatch(resetChooseNewPasswordState());
           break;
         case uploadDatesAndPensDataRoute:
           dispatch(resetUploadDatesAndPensDataState());
