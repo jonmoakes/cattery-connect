@@ -2,7 +2,7 @@ import useGetAllCustomersSelectors from "../../hooks/selectors/use-get-all-custo
 import useGetCustomerDetailsManagementSelectors from "../../hooks/selectors/use-get-customer-details-management-selectors";
 
 import useAllCustomersListener from "./all-customers-hooks/use-all-customers-listener";
-import useGetAllCustomersThunkUseEffect from "./all-customers-hooks/use-get-all-customers-thunk-use-effect";
+import useGetAllCustomersThunkUseEffect from "../../hooks/use-get-all-customers-thunk-use-effect";
 import useDeleteCustomerResultSwalUseEffect from "./all-customers-hooks/use-delete-customer-result-swal-use-effect";
 
 import SkeletonBox from "../../components/skeleton-box/skeleton-box.component";

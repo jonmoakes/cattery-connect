@@ -12,3 +12,4 @@ export const viewCustomersCatsRoute = "/customers-cats";
 export const editCatRoute = "/edit-cat";
 export const editCustomerRoute = "/edit-customer";
 export const allCatsRoute = "/cats";
+export const addCatChooseOwnerRoute = "/add-cat-choose-owner";

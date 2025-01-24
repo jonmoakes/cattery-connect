@@ -20,7 +20,7 @@ const ViewCatsNoRequiredObject = () => {
           <Balancer>
             this data is passed through when you tap the
             <br />
-            'view [customer names] cats'
+            '[customer names] cats'
             <br /> button in the customers table.
           </Balancer>
         </p>
@@ -34,7 +34,7 @@ const ViewCatsNoRequiredObject = () => {
           <Balancer>
             please make sure to access this page only by pressing the
             <br />
-            'view [customer names] cats'
+            '[customer names] cats'
             <br /> button in either the customers table, ( not by using the
             browsers forward or back buttons ).
           </Balancer>

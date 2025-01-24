@@ -7,6 +7,7 @@ import { resetUploadDatesAndPensDataState } from "../store/upload-dates-and-pens
 import { resetGetAllCustomersState } from "../store/get-all-customers/get-all-customers.slice";
 
 import {
+  addCatChooseOwnerRoute,
   addCatRoute,
   allCatsRoute,
   allCustomersRoute,
@@ -40,6 +41,9 @@ const useResetStoreOnRouteChangeUseEffect = () => {
           break;
         case allCatsRoute:
           dispatch(resetGetAllCatsState());
+          break;
+        case addCatChooseOwnerRoute:
+          dispatch(resetGetAllCustomersState());
           break;
         default:
           break;

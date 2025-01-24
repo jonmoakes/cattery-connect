@@ -1,5 +1,6 @@
 import useAllCatsTableVariables from "./all-cats-hooks/use-all-cats-table-variables";
 import useFetchAllCatsThunkUseEffect from "./all-cats-hooks/use-fetch-all-cats-thunk-use-effect";
+import useGetAllCustomersThunkUseEffect from "../../hooks/use-get-all-customers-thunk-use-effect";
 import useFetchCatsOwnerDetailsThunkUseEffect from "./all-cats-hooks/use-fetch-cats-owner-details-thunk-use-effect";
 import useDeleteCatResultSwalUseEffect from "../../hooks/use-delete-cat-result-swal-use-effect";
 
@@ -15,6 +16,8 @@ const AllCats = () => {
     fetchOwnerDetailsIsLoading,
     catDetailManagementIsLoading,
   } = useAllCatsTableVariables();
+
+  useGetAllCustomersThunkUseEffect();
   useFetchAllCatsThunkUseEffect();
   useFetchCatsOwnerDetailsThunkUseEffect();
   useDeleteCatResultSwalUseEffect();

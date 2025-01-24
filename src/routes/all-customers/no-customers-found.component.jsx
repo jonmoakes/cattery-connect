@@ -1,14 +1,15 @@
 import Balancer from "react-wrap-balancer";
 
-import useGetAllCustomersSelectors from "../../hooks/selectors/use-get-all-customers-selectors";
+import useAllCatsTableVariables from "../all-cats/all-cats-hooks/use-all-cats-table-variables";
+import useHamburgerHandlerNavigate from "../../hooks/use-hamburger-handler-navigate";
 
 import { ParentDiv } from "../../styles/div/div.styles";
 import { MinimalButton } from "../../styles/button/button.styles";
-import useHamburgerHandlerNavigate from "../../hooks/use-hamburger-handler-navigate";
+
 import { addCustomerRoute } from "../../strings/routes";
 
 const NoCustomersFound = ({ data }) => {
-  const { allCustomers } = useGetAllCustomersSelectors();
+  const { atLeastOneCustomerExists } = useAllCatsTableVariables();
   const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
 
   return (
@@ -20,7 +21,7 @@ const NoCustomersFound = ({ data }) => {
             <Balancer>no customers have been created yet.</Balancer>
           </p>
 
-          {!allCustomers.length ? (
+          {!atLeastOneCustomerExists ? (
             <MinimalButton
               className="margin-bottom"
               onClick={() => hamburgerHandlerNavigate(addCustomerRoute)}

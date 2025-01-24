@@ -13,6 +13,7 @@ import useHamburgerHandlerNavigate from "../../../hooks/use-hamburger-handler-na
 
 import { errorReceivedMessage } from "../../../strings/errors";
 import {
+  addCatChooseOwnerRoute,
   addCatRoute,
   allCatsRoute,
   allCustomersRoute,
@@ -54,9 +55,14 @@ const useUploadCatResultSwalUseEffect = (fromRoute) => {
         false
       ).then((isConfirmed) => {
         if (isConfirmed) {
-          if (fromRoute === viewCustomersCatsRoute || path === addCatRoute) {
+          if (fromRoute === viewCustomersCatsRoute) {
             hamburgerHandlerNavigate(allCustomersRoute);
-          } else if (fromRoute === allCatsRoute) {
+          } else if (
+            fromRoute === allCatsRoute ||
+            fromRoute === addCatChooseOwnerRoute
+          ) {
+            hamburgerHandlerNavigate(allCatsRoute);
+          } else {
             hamburgerHandlerNavigate(allCatsRoute);
           }
         }

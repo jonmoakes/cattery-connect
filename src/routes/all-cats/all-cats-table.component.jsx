@@ -23,6 +23,7 @@ const AllCatsTable = () => {
     hasCatsOwnerDetails,
     getAllCatsError,
     getCatsOwnerDetailsError,
+    getAllCustomersError,
   } = useAllCatsTableVariables();
 
   const { isOnline } = useIsOnline();
@@ -67,7 +68,9 @@ const AllCatsTable = () => {
     <>
       {!isOnline ? (
         <NetworkError />
-      ) : getAllCatsError || getCatsOwnerDetailsError ? (
+      ) : getAllCatsError ||
+        getCatsOwnerDetailsError ||
+        getAllCustomersError ? (
         <ShowFetchErrors />
       ) : (
         <>

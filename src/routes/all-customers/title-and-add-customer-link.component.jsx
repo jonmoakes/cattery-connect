@@ -1,12 +1,11 @@
-import useGetAllCustomersSelectors from "../../hooks/selectors/use-get-all-customers-selectors";
-
+import useAllCatsTableVariables from "../all-cats/all-cats-hooks/use-all-cats-table-variables";
 import useResetCustomerDetailsIfApplicableAndGoToAddCustomerRoute from "./all-customers-hooks/use-reset-customer-details-if-applicable-and-go-to-add-customer-route";
 
 import { MinimalButton } from "../../styles/button/button.styles";
 import { ParentDiv } from "../../styles/div/div.styles";
 
 const TitleAndAddCustomerLink = () => {
-  const { allCustomers } = useGetAllCustomersSelectors();
+  const { atLeastOneCustomerExists } = useAllCatsTableVariables();
   const { resetCustomerDetailsIfApplicableAndGoToAddCustomerRoute } =
     useResetCustomerDetailsIfApplicableAndGoToAddCustomerRoute();
 
@@ -14,7 +13,7 @@ const TitleAndAddCustomerLink = () => {
     <ParentDiv>
       <h1>your customers</h1>
 
-      {allCustomers && allCustomers.length ? (
+      {atLeastOneCustomerExists ? (
         <MinimalButton
           className="margin-bottom"
           onClick={resetCustomerDetailsIfApplicableAndGoToAddCustomerRoute}

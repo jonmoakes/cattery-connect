@@ -14,6 +14,10 @@ export const Form = styled.form`
     margin: 20px auto 70px auto;
   }
 
+  &.select {
+    margin: 0px auto 20px auto;
+  }
+
   input {
     accent-color: ${teal};
   }
@@ -163,7 +167,7 @@ export const StyledSelect = styled.select`
   padding: 12px;
   border: 2px solid ${softBlack};
   border-radius: 5px;
-  box-shadow: 6px 6px 6px ${softBlack};
+  box-shadow: 4px 4px 4px ${softBlack};
   box-sizing: border-box;
   margin-top: 15px;
   margin-bottom: 20px;
@@ -238,7 +242,7 @@ export const SearchInput = styled.input`
   }
 
   ::placeholder {
-    font-size: 16px;
+    font-size: 160px;
   }
 
   @media screen and (max-width: 850px) {

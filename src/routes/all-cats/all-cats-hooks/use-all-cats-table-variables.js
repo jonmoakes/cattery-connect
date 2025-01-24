@@ -6,6 +6,7 @@ import { defaultTableSize } from "../../../constants/constants";
 import ALL_CATS_TABLE_COLUMNS from "../all-cats-columns/all-cats-table-columns";
 import CAT_OWNER_TABLE_COLUMNS from "../all-cats-columns/cat-owner-table-columns";
 import useGetCatDetailsManagementSelectors from "../../../hooks/selectors/use-get-cat-details-management-selectors";
+import useGetAllCustomerSelectors from "../../../hooks/selectors/use-get-all-customers-selectors";
 
 const useAllCatsTableVariables = () => {
   const {
@@ -21,12 +22,14 @@ const useAllCatsTableVariables = () => {
   } = useGetAllCatsSelectors();
   const { catDetailManagementIsLoading } =
     useGetCatDetailsManagementSelectors();
+  const { allCustomers, getAllCustomersError } = useGetAllCustomerSelectors();
 
   const allCatsPageSizeFromLocalStorage = localStorage.getItem(
     "allCatsChosenTablePageSize"
   );
 
   const hasCatsOwnerDetails = Object.keys(selectedCatsOwnerDetails).length > 0;
+  const atLeastOneCustomerExists = allCustomers && allCustomers.length > 0;
 
   const columns = useMemo(
     () =>
@@ -63,6 +66,8 @@ const useAllCatsTableVariables = () => {
     getAllCatsError,
     getCatsOwnerDetailsError,
     hasCatsOwnerDetails,
+    getAllCustomersError,
+    atLeastOneCustomerExists,
   };
 };
 

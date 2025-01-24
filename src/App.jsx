@@ -25,6 +25,7 @@ import {
   editCatRoute,
   editCustomerRoute,
   allCatsRoute,
+  addCatChooseOwnerRoute,
 } from "./strings/routes";
 
 const Navigation = lazy(() =>
@@ -53,6 +54,9 @@ const EditCustomer = lazy(() =>
   import("./routes/edit-customer/edit-customer.component")
 );
 const AllCats = lazy(() => import("./routes/all-cats/all-cats.component"));
+const AddCatChooseOwner = lazy(() =>
+  import("./routes/add-cat-choose-owner/add-cat-choose-owner.component")
+);
 
 const App = () => {
   const { currentUser, role } = useGetCurrentUserSelectors();
@@ -120,6 +124,13 @@ const App = () => {
               <Route
                 path={allCatsRoute}
                 element={currentUser && role === "owner" ? <AllCats /> : null}
+              />
+
+              <Route
+                path={addCatChooseOwnerRoute}
+                element={
+                  currentUser && role === "owner" ? <AddCatChooseOwner /> : null
+                }
               />
             </Route>
           </Routes>
