@@ -124,6 +124,7 @@ export const ParentDiv = styled.div`
   border: 1px solid ${softBlack};
   box-shadow: 6px 6px 15px ${softBlack};
   padding: 10px;
+
   @media screen and (max-width: 1366px) {
     box-shadow: none;
   }

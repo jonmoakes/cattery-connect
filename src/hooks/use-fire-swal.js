@@ -3,7 +3,7 @@ import withReactContent from "sweetalert2-react-content";
 
 import "../styles/fire.css";
 
-import { warmBeige, teal } from "../styles/colours";
+import { rustRed, teal } from "../styles/colours";
 
 const useFireSwal = () => {
   const swal = withReactContent(Swal);
@@ -30,9 +30,9 @@ const useFireSwal = () => {
         cancelButtonText: cancelButtonText ? cancelButtonText : "cancel",
         allowOutsideClick,
         confirmButtonColor: `${teal}`,
-        cancelButtonColor: `${warmBeige}`,
+        cancelButtonColor: `${rustRed}`,
         background: "rgba(34,34,24, 1)",
-        backdrop: `rgba(37,94,168, 0.8)`,
+        backdrop: `rgba(252, 209, 156, 0.5)`,
         customClass: "fire",
         reverseButtons: true,
       })

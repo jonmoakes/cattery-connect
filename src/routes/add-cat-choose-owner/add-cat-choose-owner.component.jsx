@@ -8,9 +8,10 @@ import ConfirmCustomerChoice from "./confirm-customer-choice.component";
 
 import { Container } from "../../styles/container/container.styles";
 import { ParentDiv } from "../../styles/div/div.styles";
+import AllCatsNoCatsFound from "../all-cats/all-cats-no-cats-found.component";
 
 const AddCatChooseOwner = () => {
-  const { getAllCustomersError } = useGetAllCustomerSelectors();
+  const { getAllCustomersError, allCustomers } = useGetAllCustomerSelectors();
   useGetAllCustomersThunkUseEffect();
   const { handleCustomerSelectionChange, selectedCustomer } =
     useHandleCustomerSelectionChange();
@@ -23,7 +24,7 @@ const AddCatChooseOwner = () => {
 
       {getAllCustomersError ? (
         <ShowFetchErrors />
-      ) : (
+      ) : allCustomers && allCustomers.length ? (
         <>
           <ParentDiv>
             <CustomerSelectionForm
@@ -32,6 +33,8 @@ const AddCatChooseOwner = () => {
             <ConfirmCustomerChoice {...{ selectedCustomer }} />
           </ParentDiv>
         </>
+      ) : (
+        <AllCatsNoCatsFound />
       )}
     </Container>
   );

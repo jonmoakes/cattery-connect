@@ -6,7 +6,7 @@ import useViewCustomersCatsVariables from "./view-customers-cats-hooks/use-view-
 import ViewCatsNoRequiredObject from "./view-cats-no-required-object.component";
 
 import { ParentDiv } from "../../styles/div/div.styles";
-import { Button } from "../../styles/button/button.styles";
+import { RadialTealButton } from "../../styles/button/button.styles";
 
 import { getFirstNameFromString } from "../../functions/get-first-name-from-string";
 
@@ -30,9 +30,9 @@ const NoCatsFound = () => {
             you can add a cat for {getFirstNameFromString(customerName)} by
             tapping on the button below.
           </p>
-          <Button className="teal" onClick={goToAddCatRoutePassingNoExtraData}>
+          <RadialTealButton onClick={goToAddCatRoutePassingNoExtraData}>
             add a cat
-          </Button>
+          </RadialTealButton>
         </ParentDiv>
       ) : null}
     </>

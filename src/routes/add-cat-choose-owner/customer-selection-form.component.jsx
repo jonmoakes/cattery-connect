@@ -17,7 +17,7 @@ const CustomerSelectionForm = ({
         </Balancer>
       </p>
 
-      <Form className="no-margin-top">
+      <Form className="select-form">
         <StyledSelect
           value={selectedCustomer}
           onChange={handleCustomerSelectionChange}

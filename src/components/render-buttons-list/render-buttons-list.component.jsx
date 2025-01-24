@@ -1,5 +1,5 @@
 import { ColumnDiv } from "../../styles/div/div.styles";
-import { Button } from "../../styles/button/button.styles";
+import { RadialTealButton } from "../../styles/button/button.styles";
 import { BlackHr } from "../../styles/hr/hr.styles";
 
 const RenderButtonsList = ({ buttons }) => (
@@ -10,9 +10,7 @@ const RenderButtonsList = ({ buttons }) => (
 
       return (
         <ColumnDiv key={id}>
-          <Button className="teal" onClick={onClick}>
-            {text}
-          </Button>
+          <RadialTealButton onClick={onClick}>{text}</RadialTealButton>
         </ColumnDiv>
       );
     })}

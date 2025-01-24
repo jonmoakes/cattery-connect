@@ -4,7 +4,7 @@ import { zoomInLeft } from "react-animations";
 import eyeIcon from "../../assets/eye.png";
 import eyeIconHide from "../../assets/hide-eye.png";
 
-import { teal, softBlack, customYellow } from "../colours";
+import { teal, softBlack, customYellow, gentleGrey } from "../colours";
 
 const zoomInLeftAnimation = keyframes`${zoomInLeft}`;
 
@@ -29,6 +29,17 @@ export const HamburgerSpanCloseMenu = styled(HamburgerSpan)`
 
 export const RedSpan = styled.span`
   color: red;
+`;
+
+export const BackgroundSpan = styled.span`
+  background-color: ${gentleGrey};
+  color: ${softBlack};
+  border: 1px solid ${softBlack};
+  border-radius: 5px;
+  padding: 10px 0px;
+  min-width: 200px;
+  display: flex;
+  justify-content: center;
 `;
 
 export const WhiteSpan = styled.span`

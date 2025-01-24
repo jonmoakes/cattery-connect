@@ -18,15 +18,14 @@ const zoomInLeftAnimation = keyframes`${zoomInLeft}`;
 const zoomInRightAnimation = keyframes`${zoomInRight}`;
 
 export const Button = styled.button`
-  /* General styles */
   width: 250px;
   height: 50px;
   font-size: 18px;
   font-family: inherit;
   font-weight: bold;
   text-transform: capitalize;
-  color: ${softBlack};
   background: ${radialBeige};
+  color: ${softBlack};
   cursor: pointer;
   border-radius: 5px;
   border: 2px solid ${softBlack};
@@ -34,32 +33,97 @@ export const Button = styled.button`
   outline: none;
   margin: 20px auto;
 
-  &:hover {
-    transform: scale(1.05);
-    color: ${softBlack};
-  }
-
-  &.teal {
-    background: ${radialGreen};
-    color: whitesmoke;
-    text-shadow: 0.5px 0.5px 0.5px ${softBlack};
-
-    @media screen and (max-width: 1366px) {
-      &:hover {
-        background: ${radialGreen};
-        color: whitesmoke;
-        text-shadow: 0.5px 0.5px 0.5px ${softBlack};
-      }
-    }
-  }
-
   :active {
     transform: translate(0, 0.5rem);
     box-shadow: 0 0.1rem ${softBlack};
   }
 
+  &:hover {
+    transform: scale(1.05);
+    color: ${softBlack};
+
+    @media screen and (max-width: 1366px) {
+      transition: none;
+      transform: none;
+    }
+  }
+
   @media screen and (max-width: 320px) {
     width: 200px;
+  }
+`;
+
+export const MinimalButton = styled.button`
+  margin: 0px auto;
+  padding: 10px;
+  text-transform: capitalize;
+  height: auto;
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: ${radialYellow};
+  font-family: inherit;
+  font-weight: 700;
+  outline: none;
+  border: 1px solid ${softBlack};
+  border-radius: 2px;
+  color: ${softBlack};
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+    color: ${softBlack};
+    cursor: pointer;
+
+    @media screen and (max-width: 1366px) {
+      transition: none;
+      transform: none;
+    }
+  }
+
+  &.margin-bottom {
+    background: ${radialGreen};
+    color: whitesmoke;
+    text-shadow: 0.5px 0.5px 0.5px ${softBlack};
+    margin: 0px auto 20px auto;
+
+    &:hover {
+      color: whitesmoke;
+      text-shadow: 0.5px 0.5px 0.5px ${softBlack};
+    }
+  }
+
+  &.accordion {
+    background: ${radialGreen};
+    color: whitesmoke;
+    text-shadow: 0.5px 0.5px 0.5px ${softBlack};
+
+    &:hover {
+      color: whitesmoke;
+      text-shadow: 0.5px 0.5px 0.5px ${softBlack};
+    }
+  }
+`;
+
+export const RadialTealButton = styled(Button)`
+  background: ${radialGreen};
+  color: whitesmoke;
+  text-shadow: 0.5px 0.5px 0.5px ${softBlack};
+
+  &:hover {
+    color: whitesmoke;
+  }
+`;
+
+export const SelectCustomerButton = styled(Button)`
+  background: ${radialGreen};
+  color: whitesmoke;
+  text-shadow: 0.5px 0.5px 0.5px ${softBlack};
+  margin-bottom: 50px;
+
+  &:hover {
+    color: whitesmoke;
   }
 `;
 
@@ -157,47 +221,6 @@ export const ToggleShowPhoneNumberButton = styled(
     `url(${props.showPhone ? eyeIconHide : eyeIcon})`};
 `;
 
-export const MinimalButton = styled.button`
-  margin: 0px auto;
-  padding: 10px;
-  text-transform: capitalize;
-  height: auto;
-  min-width: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: ${radialYellow};
-  font-family: inherit;
-  font-weight: 700;
-  outline: none;
-  border: 1px solid ${softBlack};
-  border-radius: 2px;
-  color: ${softBlack};
-  transition: all 0.2s ease-in-out;
-
-  &.margin-bottom {
-    background: ${radialGreen};
-    color: whitesmoke;
-    text-shadow: 0.5px 0.5px 0.5px ${softBlack};
-    margin: 0px auto 20px auto;
-  }
-
-  &.accordion {
-    background: ${radialGreen};
-    color: whitesmoke;
-    text-shadow: 0.5px 0.5px 0.5px ${softBlack};
-  }
-
-  &:hover {
-    cursor: pointer;
-    transform: scale(1.05);
-
-    @media screen and (max-width: 1366px) {
-      transition: none;
-    }
-  }
-`;
-
 export const EntryOptionsButton = styled(Button)`
   animation: 1s ${zoomInLeftAnimation};
   width: 250px;
@@ -206,6 +229,18 @@ export const EntryOptionsButton = styled(Button)`
   line-height: 10px;
   color: ${softBlack};
   text-shadow: none;
+
+  @media screen and (max-width: 850px) {
+    font-size: 16px;
+  }
+
+  @media screen and (max-width: 539px) {
+    margin: 10px auto;
+  }
+
+  @media screen and (max-width: 320px) {
+    width: 90%;
+  }
 
   &.showOwner,
   &.showAllCats {
@@ -221,16 +256,5 @@ export const EntryOptionsButton = styled(Button)`
     color: whitesmoke;
     text-shadow: 1px 1px 1px ${softBlack};
     animation: 1s ${zoomInRightAnimation};
-  }
-  @media screen and (max-width: 850px) {
-    font-size: 16px;
-  }
-
-  @media screen and (max-width: 539px) {
-    margin: 10px auto;
-  }
-
-  @media screen and (max-width: 320px) {
-    width: 90%;
   }
 `;

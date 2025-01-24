@@ -2,7 +2,7 @@ import Balancer from "react-wrap-balancer";
 import useHandleShowError from "./errors-hooks/use-handle-show-error";
 
 import { ErrorDiv, ParentDiv } from "../../styles/div/div.styles";
-import { Button } from "../../styles/button/button.styles";
+import { RadialTealButton } from "../../styles/button/button.styles";
 import { StyledLink } from "../../styles/link/link.styles";
 
 import { contactRoute } from "../../strings/routes";
@@ -38,9 +38,9 @@ const ShowFetchErrors = () => {
           </p>
           <p>we apologise for the inconvenience!</p>
 
-          <Button className="teal" onClick={() => window.location.reload()}>
+          <RadialTealButton onClick={() => window.location.reload()}>
             reload
-          </Button>
+          </RadialTealButton>
         </ParentDiv>
       ) : null}
     </>

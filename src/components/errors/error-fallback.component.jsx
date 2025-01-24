@@ -4,7 +4,7 @@ import ProgressiveImage from "../progressive-image/progressive-image.component";
 
 import { Container } from "../../styles/container/container.styles";
 import { ErrorFallbackImageDiv, ParentDiv } from "../../styles/div/div.styles";
-import { Button } from "../../styles/button/button.styles";
+import { RadialTealButton } from "../../styles/button/button.styles";
 
 import image from "../../assets/sad-cat.webp";
 
@@ -28,9 +28,9 @@ const ErrorFallback = () => (
         if you're sure you're online, please try reloading the page by tapping
         the button below.
       </p>
-      <Button className="teal" onClick={() => window.location.reload()}>
+      <RadialTealButton onClick={() => window.location.reload()}>
         reload the page
-      </Button>
+      </RadialTealButton>
     </ParentDiv>
   </Container>
 );

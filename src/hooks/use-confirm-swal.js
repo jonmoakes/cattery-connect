@@ -23,7 +23,7 @@ const useConfirmSwal = () => {
         title,
         html: textHtml,
         background: "rgba(34,34,24, 1)",
-        backdrop: `rgba(37,94,168, 0.8)`,
+        backdrop: `rgba(252, 209, 156, 0.5)`,
         icon: "question",
         showCancelButton: true,
         confirmButtonColor: `${teal}`,

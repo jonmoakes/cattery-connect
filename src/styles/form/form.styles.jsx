@@ -10,14 +10,6 @@ export const Form = styled.form`
   border-radius: 5px;
   box-shadow: 6px 6px 15px ${softBlack};
 
-  &.small-top-margin {
-    margin: 20px auto 70px auto;
-  }
-
-  &.no-margin-top {
-    margin: 0px auto 70px auto;
-  }
-
   input {
     accent-color: ${teal};
   }
@@ -40,6 +32,18 @@ export const Form = styled.form`
     width: 95%;
     padding: 20px 0px;
   }
+
+  &.small-top-margin {
+    margin: 20px auto 70px auto;
+  }
+
+  &.no-margin-top {
+    margin: 0px auto 70px auto;
+  }
+
+  &.select-form {
+    margin: 0px auto 30px auto;
+  }
 `;
 
 export const Label = styled.label`
@@ -49,18 +53,6 @@ export const Label = styled.label`
   float: left;
   padding-left: 20px;
   margin-top: 15px;
-
-  &.margin {
-    margin-bottom: 20px;
-  }
-
-  &.no-padding {
-    margin-top: 10px;
-    float: unset;
-    padding-left: 0px;
-    text-shadow: none;
-    color: ${softBlack};
-  }
 
   @media screen and (max-width: 1000px) {
     padding-left: 15px;
@@ -72,6 +64,18 @@ export const Label = styled.label`
 
   @media screen and (max-width: 450px) {
     font-size: 16px;
+  }
+
+  &.margin {
+    margin-bottom: 20px;
+  }
+
+  &.no-padding {
+    margin-top: 10px;
+    float: unset;
+    padding-left: 0px;
+    text-shadow: none;
+    color: ${softBlack};
   }
 `;
 
@@ -271,10 +275,6 @@ export const StyledCheckbox = styled.input`
   display: grid;
   place-content: center;
 
-  &.multiple {
-    margin: 10px auto 15px auto;
-  }
-
   &::before {
     content: "";
     width: 1.3rem;
@@ -288,5 +288,9 @@ export const StyledCheckbox = styled.input`
 
   &:checked::before {
     transform: scale(1);
+  }
+
+  &.multiple {
+    margin: 10px auto 15px auto;
   }
 `;
