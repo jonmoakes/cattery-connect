@@ -3,17 +3,22 @@ import useGetSignInFormSelectors from "../../../hooks/selectors/use-get-sign-in-
 import useFireSwal from "../../../hooks/use-fire-swal";
 import { passwordCantContainSpaceMessage } from "../../../strings/errors";
 import { signInAsync } from "../../../store/user/user.thunks";
+import { isValidEmail } from "../../../functions/is-valid-email";
+import useShowInvalidEmailMessageSwal from "../../../hooks/use-show-invalid-email-message-swal";
 
 const useSignInFormSubmit = () => {
   const { email, password } = useGetSignInFormSelectors();
   const { fireSwal } = useFireSwal();
+  const { showInvalidEmailMessageSwal } = useShowInvalidEmailMessageSwal();
 
   const dispatch = useDispatch();
 
   const signInFormSubmit = (e) => {
     e.preventDefault();
 
-    if (password.includes(" ")) {
+    if (!isValidEmail(email)) {
+      showInvalidEmailMessageSwal();
+    } else if (password.includes(" ")) {
       fireSwal(
         "error",
         passwordCantContainSpaceMessage,

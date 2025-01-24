@@ -76,6 +76,26 @@ export const SignInPasswordEye = styled.span.withConfig({
   }
 `;
 
+export const ToggleResetPassword = styled(SignInPasswordEye).withConfig({
+  shouldForwardProp: (prop) => prop !== "resetPasswordIsVisible",
+})`
+  background-image: ${(props) =>
+    `url(${props.resetPasswordIsVisible ? eyeIconHide : eyeIcon})`};
+`;
+
+export const ToggleResetPasswordConfirmPassword = styled(
+  SignInPasswordEye
+).withConfig({
+  shouldForwardProp: (prop) => prop !== "resetPasswordConfirmPasswordIsVisible",
+})`
+  background-image: ${(props) =>
+    `url(${
+      props.resetPasswordConfirmPasswordIsVisible ? eyeIconHide : eyeIcon
+    })`};
+  width: ${(props) =>
+    `url(${props.resetPasswordConfirmPasswordIsVisible ? "25px" : "30px"})`};
+`;
+
 export const ClearButtonExampleSpan = styled.span`
   background-color: tomato;
   color: ${softBlack};

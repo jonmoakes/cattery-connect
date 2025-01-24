@@ -14,8 +14,8 @@ export const Form = styled.form`
     margin: 20px auto 70px auto;
   }
 
-  &.select {
-    margin: 0px auto 20px auto;
+  &.no-margin-top {
+    margin: 0px auto 70px auto;
   }
 
   input {

@@ -13,3 +13,5 @@ export const editCatRoute = "/edit-cat";
 export const editCustomerRoute = "/edit-customer";
 export const allCatsRoute = "/cats";
 export const addCatChooseOwnerRoute = "/add-cat-choose-owner";
+export const forgotPasswordRequestRoute = "/forgot-password-request";
+export const chooseNewPasswordRoute = "/choose-new-password";

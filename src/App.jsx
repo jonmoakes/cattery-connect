@@ -20,6 +20,7 @@ import {
   addCustomerRoute,
   allCustomersRoute,
   signInRoute,
+  forgotPasswordRequestRoute,
   uploadDatesAndPensDataRoute,
   viewCustomersCatsRoute,
   editCatRoute,
@@ -33,6 +34,9 @@ const Navigation = lazy(() =>
 );
 const Home = lazy(() => import("./routes/home/home.component"));
 const SignIn = lazy(() => import("./routes/sign-in/sign-in.component"));
+const ForgotPasswordRequest = lazy(() =>
+  import("./routes/forgot-password-request/forgot-password-request.component")
+);
 const Account = lazy(() => import("./routes/account/account.component"));
 const UploadDatesAndPensData = lazy(() =>
   import(
@@ -74,6 +78,11 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path={signInRoute} element={<SignIn />} />
+            <Route
+              path={forgotPasswordRequestRoute}
+              element={<ForgotPasswordRequest />}
+            />
+
             <Route element={<PrivateRoutes />}>
               <Route path={accountRoute} element={<Account />} />
               <Route

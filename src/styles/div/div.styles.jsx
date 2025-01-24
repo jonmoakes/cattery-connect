@@ -1,9 +1,8 @@
 import styled, { keyframes } from "styled-components";
 import {
-  dustyBlue,
   radialBeige,
   radialGrey,
-  rustRed,
+  radialRustRed,
   softBlack,
   teal,
 } from "../colours";
@@ -139,10 +138,10 @@ export const RelativePositionDiv = styled.div`
   width: 100%;
 `;
 
-export const TopMarginDiv = styled.div`
+export const AuthButtonDiv = styled.div`
   width: 100%;
   height: auto;
-  margin-top: 30px;
+  margin: 0px auto 20px auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -333,8 +332,9 @@ export const AccordionTitle = styled.div.withConfig({
   flex-direction: row;
   justify-content: space-between;
   cursor: pointer;
-  background-color: ${({ showHelp }) => (showHelp ? rustRed : dustyBlue)};
+  background: ${({ showHelp }) => (showHelp ? radialRustRed : radialGrey)};
   color: ${({ showHelp }) => (showHelp ? "whitesmoke" : softBlack)};
+  font-size: 16px;
   padding: 5px;
   border-bottom: ${({ showHelp }) =>
     showHelp ? `2px solid ${softBlack}` : "none"};
@@ -347,7 +347,7 @@ export const AccordionTitle = styled.div.withConfig({
 export const AccordionContent = styled.div`
   padding: 1rem;
   background: ${radialGrey};
-  border-radius: 0px 0px 15px 15px;
+  border-radius: 0px 0px 5px 5px;
   animation: 0.5s ${rollInAnimation};
 `;
 
@@ -383,4 +383,8 @@ export const VaxStatusDiv = styled.div`
   height: auto;
   text-align: center;
   margin-top: 80px;
+`;
+
+export const ForgotPasswordDiv = styled.div`
+  margin: 20px auto 20px auto;
 `;

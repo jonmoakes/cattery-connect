@@ -3,6 +3,7 @@ import { combineReducers } from "@reduxjs/toolkit";
 import { hamburgerMenuReducer } from "./hamburger-menu/hamburger-menu.slice";
 import { passwordIsVisibleReducer } from "./password-is-visible/password-is-visible.slice";
 import { signInFormReducer } from "./sign-in-form/sign-in-form.slice";
+import { generateNewPasswordRequestReducer } from "./generate-new-password-request/generate-new-password-request.slice";
 import { userReducer } from "./user/user.slice";
 import { uploadDatesAndPensDataReducer } from "./upload-dates-and-pens-data/upload-dates-and-pens-data.slice";
 import { getAllCustomersReducer } from "./get-all-customers/get-all-customers.slice";
@@ -14,6 +15,7 @@ export const rootReducer = combineReducers({
   hamburgerMenu: hamburgerMenuReducer,
   passwordIsVisible: passwordIsVisibleReducer,
   signInForm: signInFormReducer,
+  generateNewPasswordRequest: generateNewPasswordRequestReducer,
   user: userReducer,
   uploadDatesAndPensData: uploadDatesAndPensDataReducer,
   getAllCustomers: getAllCustomersReducer,

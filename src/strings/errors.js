@@ -3,6 +3,8 @@ import { warmBeige } from "../styles/colours";
 export const noNetworkMessage =
   "you don't seem to be connected to the internet. Please check your connection";
 
+export const invalidEmailErrorMessage =
+  "the email that you have entered is an invalid email address.";
 export const missingFieldsMessage = `<span style="font-size:20px";>please make sure that you have completed all fields that are marked with a '<span style="color:red";>*</span>'.</span>`;
 
 export const passwordsDontMatchMessage =

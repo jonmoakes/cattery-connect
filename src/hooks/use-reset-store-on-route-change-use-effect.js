@@ -12,11 +12,13 @@ import {
   allCatsRoute,
   allCustomersRoute,
   editCatRoute,
+  forgotPasswordRequestRoute,
   signInRoute,
   uploadDatesAndPensDataRoute,
 } from "../strings/routes";
 import { resetCatDetailsManagementState } from "../store/cat-details-management/cat-details-management.slice";
 import { resetGetAllCatsState } from "../store/get-all-cats/get-all-cats.slice";
+import { resetGenerateNewPasswordRequestState } from "../store/generate-new-password-request/generate-new-password-request.slice";
 
 const useResetStoreOnRouteChangeUseEffect = () => {
   const location = useLocation();
@@ -28,6 +30,9 @@ const useResetStoreOnRouteChangeUseEffect = () => {
       switch (prevLocation.current) {
         case signInRoute:
           dispatch(resetSignInFormState());
+          break;
+        case forgotPasswordRequestRoute:
+          dispatch(resetGenerateNewPasswordRequestState());
           break;
         case uploadDatesAndPensDataRoute:
           dispatch(resetUploadDatesAndPensDataState());

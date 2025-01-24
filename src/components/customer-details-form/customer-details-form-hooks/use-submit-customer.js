@@ -16,7 +16,7 @@ import {
   phoneLengthErrorMessage,
 } from "../../../strings/errors";
 import { addCustomerRoute, editCustomerRoute } from "../../../strings/routes";
-import { isValidEmail } from "../../../functions/validate-email";
+import { isValidEmail } from "../../../functions/is-valid-email";
 import { formFieldsHaveNotChanged } from "../../../functions/form-fields-have-not-changed";
 import { formDetailsAreTheSameMessage } from "../../../strings/info";
 import {
