@@ -9,7 +9,7 @@ const AllCatsShowAllCatsButton = () => {
   return (
     <TableOptionsButtonDiv>
       <EntryOptionsButton
-        className="edit"
+        className="showAllCats"
         type="button"
         onClick={resetGetAllCatStateAndRefetchAllCats}
       >

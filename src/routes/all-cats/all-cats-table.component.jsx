@@ -89,11 +89,13 @@ const AllCatsTable = () => {
           {chosenEntry ? (
             <TableOptionsButtonDiv>
               <AllCatsShowCatsOwnerDetailsButton
-                {...{ chosenEntry, selectedCatsOwnerCustomerId, catsName }}
+                {...{ selectedCatsOwnerCustomerId, catsName }}
               />
-              <AllCatsEditCatButton {...{ chosenEntry, customerDocumentId }} />
+              <AllCatsEditCatButton
+                {...{ chosenEntry, customerDocumentId, catsName }}
+              />
               <AllCatsDeleteCatButton
-                {...{ catsName, chosenEntry, customerDocumentId }}
+                {...{ chosenEntry, catsName, customerDocumentId }}
               />
             </TableOptionsButtonDiv>
           ) : hasCatsOwnerDetails ? (

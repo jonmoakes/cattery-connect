@@ -1,6 +1,11 @@
 import styled, { keyframes } from "styled-components";
 import { fadeInLeft, fadeInRight } from "react-animations";
-import { dustyBlue, softBlack, steelBlue, warmBeige } from "../colours";
+import {
+  radialBeige,
+  radialDustyBlue,
+  radialSteelBlue,
+  softBlack,
+} from "../colours";
 
 const fadeInLeftAnimation = keyframes`${fadeInLeft}`;
 const fadeInRightAnimation = keyframes`${fadeInRight}`;
@@ -21,7 +26,7 @@ export const TableWithStyle = styled.table`
   }
 
   th {
-    background-color: ${warmBeige};
+    background: ${radialBeige};
     animation: 0.5s ${fadeInLeftAnimation};
   }
   .column-catsName {
@@ -37,12 +42,12 @@ export const TableWithStyle = styled.table`
   }
 
   tr {
-    background-color: ${steelBlue};
+    background: ${radialDustyBlue};
     color: ${softBlack};
     animation: 0.5s ${fadeInRightAnimation};
 
     &:nth-child(even) {
-      background-color: ${dustyBlue};
+      background: ${radialSteelBlue};
       color: ${softBlack};
       animation: 0.5s ${fadeInLeftAnimation};
     }

@@ -1,11 +1,11 @@
 import styled, { keyframes } from "styled-components";
 import {
   dustyBlue,
-  gentleGrey,
+  radialBeige,
+  radialGrey,
   rustRed,
   softBlack,
   teal,
-  warmBeige,
 } from "../colours";
 
 import { bounceInDown, rollIn, slideInLeft } from "react-animations";
@@ -15,7 +15,7 @@ const slideInLeftAnimation = keyframes`${slideInLeft}`;
 const rollInAnimation = keyframes`${rollIn}`;
 
 export const Nav = styled.div`
-  background-color: ${warmBeige};
+  background: ${radialBeige};
   height: 90px;
   width: 100%;
   display: flex;
@@ -55,7 +55,7 @@ export const Menu = styled.div.withConfig({
     transition: ${(props) =>
       props.showHamburgerMenu ? "max-height 0.5s linear" : "none"};
     overflow: scroll;
-    background-color: ${warmBeige};
+    background: ${radialBeige};
   }
 `;
 
@@ -117,7 +117,7 @@ export const ParentDiv = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: ${warmBeige};
+  background: ${radialBeige};
   margin: 50px auto;
   width: 75%;
   height: auto;
@@ -125,7 +125,6 @@ export const ParentDiv = styled.div`
   border: 1px solid ${softBlack};
   box-shadow: 6px 6px 15px ${softBlack};
   padding: 10px;
-
   @media screen and (max-width: 1366px) {
     box-shadow: none;
   }
@@ -199,7 +198,7 @@ export const NoSearchResultDiv = styled.div`
   width: 50%;
   height: auto;
   margin: 0px auto 50px auto;
-  background-color: ${warmBeige};
+  background: ${radialBeige};
   padding: 20px;
   border-radius: 15px;
   animation: 0.5s ${bounceInDownAnimation};
@@ -237,7 +236,7 @@ export const PaginationDiv = styled(ParentDiv)`
   width: 50%;
   border: 2px solid ${softBlack};
   box-shadow: none;
-  background-color: ${gentleGrey};
+  background: ${radialGrey};
   padding-bottom: 20px;
 
   @media screen and (max-width: 600px) {
@@ -303,7 +302,7 @@ export const InnerFormDiv = styled.div`
   width: 90%;
   display: flex;
   margin: 40px auto;
-  background-color: ${gentleGrey};
+  background: ${radialGrey};
   flex-direction: column;
   padding: 10px 0px;
   border: 2px solid ${softBlack};
@@ -347,7 +346,7 @@ export const AccordionTitle = styled.div.withConfig({
 
 export const AccordionContent = styled.div`
   padding: 1rem;
-  background-color: ${gentleGrey};
+  background: ${radialGrey};
   border-radius: 0px 0px 15px 15px;
   animation: 0.5s ${rollInAnimation};
 `;

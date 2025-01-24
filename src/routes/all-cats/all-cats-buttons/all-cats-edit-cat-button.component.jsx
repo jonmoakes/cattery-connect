@@ -2,7 +2,11 @@ import useAllCatsTableFunctions from "../all-cats-hooks/use-all-cats-table-funct
 
 import { EntryOptionsButton } from "../../../styles/button/button.styles";
 
-const AllCatsEditCatButton = ({ chosenEntry, customerDocumentId }) => {
+const AllCatsEditCatButton = ({
+  chosenEntry,
+  customerDocumentId,
+  catsName,
+}) => {
   const { setDataForCatEditingAndGoToEditCatRoute } =
     useAllCatsTableFunctions();
 
@@ -18,7 +22,7 @@ const AllCatsEditCatButton = ({ chosenEntry, customerDocumentId }) => {
           )
         }
       >
-        edit cat
+        edit {catsName}
       </EntryOptionsButton>
     </>
   );

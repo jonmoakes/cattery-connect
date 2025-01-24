@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import { gentleGrey, rustRed, softBlack, teal, warmBeige } from "../colours";
+import { radialGreen, radialGrey, rustRed, softBlack, teal } from "../colours";
 
 export const Form = styled.form`
   width: 75%;
   padding: 30px 0px;
   margin: 50px auto 70px auto;
-  background-color: ${teal};
+  background: ${radialGreen};
   border: 2px solid ${softBlack};
   border-radius: 5px;
   box-shadow: 6px 6px 15px ${softBlack};
@@ -82,7 +82,7 @@ export const StyledInput = styled.input`
   font-size: 18px;
   font-family: inherit;
   outline: none;
-  background-color: ${gentleGrey};
+  background: ${radialGrey};
   color: ${softBlack};
   text-transform: capitalize;
 
@@ -134,7 +134,7 @@ export const StyledTextArea = styled.textarea`
   font-family: inherit;
   outline: none;
   text-transform: capitalize;
-  background-color: ${gentleGrey};
+  background: ${radialGrey};
   color: ${softBlack};
 
   &:focus {
@@ -169,7 +169,7 @@ export const StyledSelect = styled.select`
   margin-bottom: 20px;
   font-size: 18px;
   outline: none;
-  background: radial-gradient(circle, whitesmoke, ${gentleGrey});
+  background: ${radialGrey};
   color: ${softBlack};
   text-transform: capitalize;
 
@@ -198,8 +198,9 @@ export const StyledSelect = styled.select`
 export const PaginationSelect = styled.select`
   width: 200px;
   height: 40px;
-  background-color: ${warmBeige};
-  color: ${softBlack};
+  background: ${radialGreen};
+  color: whitesmoke;
+  text-shadow: 1px 1px 1px ${softBlack};
   padding: 10px;
   border-radius: 5px;
   border: 2px solid ${softBlack};
@@ -212,8 +213,10 @@ export const PaginationInput = styled.input`
   height: 40px;
   border-radius: 5px;
   border: 2px solid ${softBlack};
-  background-color: ${warmBeige};
+  background: ${radialGreen};
   text-align: center;
+  color: whitesmoke;
+  text-shadow: 1px 1px 1px ${softBlack};
 `;
 
 export const SearchInput = styled.input`
@@ -223,7 +226,7 @@ export const SearchInput = styled.input`
   outline: none;
   height: 50px;
   border-radius: 5px;
-  background-color: whitesmoke;
+  background: ${radialGrey};
   border: 2px solid ${softBlack};
   padding-left: 20px;
   font-family: inherit;
@@ -253,7 +256,7 @@ export const SearchInput = styled.input`
 
 export const StyledCheckbox = styled.input`
   appearance: none;
-  background-color: ${gentleGrey};
+  background: ${radialGrey};
   margin: 10px auto 0px auto;
   font-family: inherit;
   width: 1.9rem;

@@ -2,12 +2,12 @@ import styled, { keyframes } from "styled-components";
 import { bounceInDown, pulse, zoomInLeft, zoomInRight } from "react-animations";
 
 import {
-  customGreen,
-  customYellow,
-  rustRed,
+  radialBeige,
+  radialGreen,
+  radialLightGreen,
+  radialRustRed,
+  radialYellow,
   softBlack,
-  teal,
-  warmBeige,
 } from "../colours";
 import eyeIcon from "../../assets/eye.png";
 import eyeIconHide from "../../assets/hide-eye.png";
@@ -26,7 +26,7 @@ export const Button = styled.button`
   font-weight: bold;
   text-transform: capitalize;
   color: ${softBlack};
-  background-color: ${warmBeige};
+  background: ${radialBeige};
   cursor: pointer;
   border-radius: 5px;
   border: 2px solid ${softBlack};
@@ -36,18 +36,17 @@ export const Button = styled.button`
 
   &:hover {
     transform: scale(1.05);
-    background-color: ${rustRed};
-    color: whitesmoke;
+    color: ${softBlack};
   }
 
   &.teal {
-    background-color: ${teal};
+    background: ${radialGreen};
     color: whitesmoke;
     text-shadow: 0.5px 0.5px 0.5px ${softBlack};
 
     @media screen and (max-width: 1366px) {
       &:hover {
-        background-color: ${teal};
+        background: ${radialGreen};
         color: whitesmoke;
         text-shadow: 0.5px 0.5px 0.5px ${softBlack};
       }
@@ -80,9 +79,15 @@ export const PaginationPageButton = styled(Button)`
   font-size: 16px;
   text-shadow: none;
   padding: 10px 5px;
-  background-color: lightgreen;
-  color: ${softBlack};
+  background: ${radialGreen};
+  color: whitesmoke;
+  text-shadow: 1px 1px 1px ${softBlack};
   font-family: inherit;
+
+  &:hover {
+    color: whitesmoke;
+    text-shadow: 1px 1px 1px ${softBlack};
+  }
 
   @media screen and (max-width: 1024px) {
     margin: 0px 5px 20px 5px;
@@ -161,7 +166,7 @@ export const MinimalButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${customYellow};
+  background: ${radialYellow};
   font-family: inherit;
   font-weight: 700;
   outline: none;
@@ -171,14 +176,14 @@ export const MinimalButton = styled.button`
   transition: all 0.2s ease-in-out;
 
   &.margin-bottom {
-    background-color: ${teal};
+    background: ${radialGreen};
     color: whitesmoke;
     text-shadow: 0.5px 0.5px 0.5px ${softBlack};
     margin: 0px auto 20px auto;
   }
 
   &.accordion {
-    background-color: ${teal};
+    background: ${radialGreen};
     color: whitesmoke;
     text-shadow: 0.5px 0.5px 0.5px ${softBlack};
   }
@@ -194,7 +199,6 @@ export const MinimalButton = styled.button`
 `;
 
 export const EntryOptionsButton = styled(Button)`
-  background-color: ${customGreen};
   animation: 1s ${zoomInLeftAnimation};
   width: 250px;
   height: 50px;
@@ -203,31 +207,21 @@ export const EntryOptionsButton = styled(Button)`
   color: ${softBlack};
   text-shadow: none;
 
+  &.showOwner,
+  &.showAllCats {
+    background: ${radialYellow};
+  }
+
+  &.edit {
+    background: ${radialLightGreen};
+  }
+
   &.delete {
-    background-color: ${rustRed};
+    background: ${radialRustRed};
     color: whitesmoke;
     text-shadow: 1px 1px 1px ${softBlack};
     animation: 1s ${zoomInRightAnimation};
-
-    &:hover {
-      background-color: ${rustRed};
-      color: whitesmoke;
-    }
   }
-
-  &.showOwner {
-    background-color: ${customYellow};
-
-    &:hover {
-      background-color: ${customYellow};
-    }
-  }
-
-  &:hover {
-    background-color: ${customGreen};
-    color: ${softBlack};
-  }
-
   @media screen and (max-width: 850px) {
     font-size: 16px;
   }

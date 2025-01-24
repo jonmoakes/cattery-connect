@@ -37,6 +37,7 @@ export const WhiteSpan = styled.span`
 `;
 export const YellowSpan = styled.span`
   color: ${customYellow};
+  text-shadow: 1px 1px 1px ${softBlack};
 `;
 
 export const LowercasedSpan = styled.span`

@@ -3,7 +3,6 @@ import useAllCatsTableFunctions from "../all-cats-hooks/use-all-cats-table-funct
 import { EntryOptionsButton } from "../../../styles/button/button.styles";
 
 const AllCatsShowCatsOwnerDetailsButton = ({
-  chosenEntry,
   selectedCatsOwnerCustomerId,
   catsName,
 }) => {
@@ -12,20 +11,18 @@ const AllCatsShowCatsOwnerDetailsButton = ({
 
   return (
     <>
-      {chosenEntry ? (
-        <EntryOptionsButton
-          className="showOwner"
-          type="button"
-          onClick={() =>
-            setSelectedCatsOwnersCustomerIdAndCatsName(
-              selectedCatsOwnerCustomerId,
-              catsName
-            )
-          }
-        >
-          show owner details
-        </EntryOptionsButton>
-      ) : null}
+      <EntryOptionsButton
+        className="showOwner"
+        type="button"
+        onClick={() =>
+          setSelectedCatsOwnersCustomerIdAndCatsName(
+            selectedCatsOwnerCustomerId,
+            catsName
+          )
+        }
+      >
+        show owner details
+      </EntryOptionsButton>
     </>
   );
 };

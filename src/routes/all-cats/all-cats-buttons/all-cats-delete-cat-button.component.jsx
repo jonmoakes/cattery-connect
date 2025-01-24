@@ -4,8 +4,8 @@ import { EntryOptionsButton } from "../../../styles/button/button.styles";
 import useAllCatsTableVariables from "../all-cats-hooks/use-all-cats-table-variables";
 
 const AllCatsDeleteCatButton = ({
-  catsName,
   chosenEntry,
+  catsName,
   customerDocumentId,
 }) => {
   const { data } = useAllCatsTableVariables();
@@ -35,7 +35,7 @@ const AllCatsDeleteCatButton = ({
         )
       }
     >
-      delete cat
+      delete {catsName}
     </EntryOptionsButton>
   );
 };
