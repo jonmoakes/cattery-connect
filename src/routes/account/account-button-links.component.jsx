@@ -19,7 +19,7 @@ const AccountButtonLinks = () => {
       ) : role === "owner" ? (
         <>
           <ParentDiv>
-            <h3>bookings & customer info</h3>
+            <h3>customer & cat info</h3>
             <RenderButtonsList {...{ buttons: catteryOwnerButtons }} />
           </ParentDiv>
 
