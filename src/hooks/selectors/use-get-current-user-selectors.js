@@ -2,9 +2,13 @@ import { useSelector } from "react-redux";
 import { selectCurrentUserSelectors } from "../../store/user/user.slice";
 
 const useGetCurrentUserSelectors = () => {
-  const { currentUser, currentUserIsLoading, currentUserError } = useSelector(
-    selectCurrentUserSelectors
-  );
+  const {
+    currentUser,
+    currentUserIsLoading,
+    currentUserError,
+    allUsers,
+    allUsersError,
+  } = useSelector(selectCurrentUserSelectors);
 
   const { email, id, name, role, catteryId } = currentUser ?? {};
 
@@ -17,6 +21,8 @@ const useGetCurrentUserSelectors = () => {
     name,
     role,
     catteryId,
+    allUsers,
+    allUsersError,
   };
 };
 

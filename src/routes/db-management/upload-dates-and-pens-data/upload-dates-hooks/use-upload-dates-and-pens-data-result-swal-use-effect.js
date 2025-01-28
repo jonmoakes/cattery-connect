@@ -5,13 +5,13 @@ import useGetUploadDatesAndPensDataSelectors from "../../../../hooks/selectors/u
 import {
   resetUploadDatesAndPensDataResult,
   resetUploadDatesAndPensDataError,
+  resetUploadDatesAndPensDataState,
 } from "../../../../store/upload-dates-and-pens-data/upload-dates-and-pens-data.slice";
 
 import useFireSwal from "../../../../hooks/use-fire-swal";
 import useHamburgerHandlerNavigate from "../../../../hooks/use-hamburger-handler-navigate";
 
 import { errorReceivedMessage } from "../../../../strings/errors";
-import { accountRoute } from "../../../../strings/routes";
 
 const useUploadDatesAndPensDataResultSwalUseEffect = () => {
   const { uploadDatesAndPensDataResult, uploadDatesAndPensDataError } =
@@ -25,10 +25,10 @@ const useUploadDatesAndPensDataResultSwalUseEffect = () => {
     if (!uploadDatesAndPensDataResult && !uploadDatesAndPensDataError) return;
 
     if (uploadDatesAndPensDataResult === "fulfilled") {
-      fireSwal("success", "done!", "", 0, "", false, "", false).then(
+      fireSwal("success", "dates uploaded!", "", 0, "", false, "", false).then(
         (isConfirmed) => {
           if (isConfirmed) {
-            hamburgerHandlerNavigate(accountRoute);
+            dispatch(resetUploadDatesAndPensDataState());
           }
         }
       );

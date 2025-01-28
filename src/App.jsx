@@ -44,7 +44,7 @@ const ChooseNewPassword = lazy(() =>
 const Account = lazy(() => import("./routes/account/account.component"));
 const UploadDatesAndPensData = lazy(() =>
   import(
-    "./routes/db-management/upload-dates/upload-dates-and-pens-data.component"
+    "./routes/db-management/upload-dates-and-pens-data/upload-dates-and-pens-data.component"
   )
 );
 const AddCat = lazy(() => import("./routes/add-cat/add-cat.component"));

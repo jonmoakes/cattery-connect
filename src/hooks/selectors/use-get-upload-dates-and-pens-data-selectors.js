@@ -5,22 +5,38 @@ const useGetUploadDatesAndPensDataSelectors = () => {
   const {
     uploadDatesAndPensDataIsLoading,
     datesAndPensData,
+    datesIncludeDaysClosed,
+    dateClosedToAdd,
+    datesClosedArray,
     uploadDatesAndPensDataResult,
     uploadDatesAndPensDataError,
   } = useSelector(selectUploadDatesAndPensDataSelectors);
 
-  const { documentId, year, numberofAmPensAvailable, numberofPmPensAvailable } =
-    datesAndPensData ?? {};
+  const {
+    catteryId,
+    startDate,
+    endDate,
+    penSpacesForMaxTwoCats,
+    penSpacesForMaxThreeCats,
+    penSpacesForMaxFourCats,
+    penSpacesForMaxFiveCats,
+  } = datesAndPensData ?? {};
 
   return {
     uploadDatesAndPensDataIsLoading,
     datesAndPensData,
     uploadDatesAndPensDataResult,
     uploadDatesAndPensDataError,
-    documentId,
-    year,
-    numberofAmPensAvailable,
-    numberofPmPensAvailable,
+    catteryId,
+    datesIncludeDaysClosed,
+    dateClosedToAdd,
+    datesClosedArray,
+    startDate,
+    endDate,
+    penSpacesForMaxTwoCats,
+    penSpacesForMaxThreeCats,
+    penSpacesForMaxFourCats,
+    penSpacesForMaxFiveCats,
   };
 };
 

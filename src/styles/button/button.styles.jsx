@@ -3,6 +3,7 @@ import { bounceInDown, pulse, zoomInLeft, zoomInRight } from "react-animations";
 
 import {
   radialBeige,
+  radialDustyBlue,
   radialGreen,
   radialLightGreen,
   radialRustRed,
@@ -103,6 +104,18 @@ export const MinimalButton = styled.button`
       color: whitesmoke;
       text-shadow: 0.5px 0.5px 0.5px ${softBlack};
     }
+  }
+
+  &.margin {
+    margin: 20px auto;
+  }
+
+  &.animate {
+    animation: 1s ${zoomInLeftAnimation};
+  }
+
+  &.selected {
+    background: ${radialDustyBlue};
   }
 `;
 

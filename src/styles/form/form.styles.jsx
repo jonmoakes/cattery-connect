@@ -116,6 +116,14 @@ export const StyledInput = styled.input`
   @media screen and (max-width: 320px) {
     height: 40px;
   }
+
+  &.untransformed {
+    text-transform: none;
+
+    &::placeholder {
+      text-transform: none;
+    }
+  }
 `;
 
 export const PasswordInput = styled(StyledInput)`
@@ -200,6 +208,10 @@ export const StyledSelect = styled.select`
   @media screen and (max-width: 320px) {
     height: 40px;
     font-size: 12px;
+  }
+
+  &.lowercase {
+    text-transform: lowercase;
   }
 `;
 

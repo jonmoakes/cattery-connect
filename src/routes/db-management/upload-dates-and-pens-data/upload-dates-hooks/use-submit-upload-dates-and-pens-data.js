@@ -1,15 +1,14 @@
 import { useDispatch } from "react-redux";
 
 import useGetUploadDatesAndPensDataSelectors from "../../../../hooks/selectors/use-get-upload-dates-and-pens-data-selectors";
-import { uploadDatesAndPensAsync } from "../../../../store/upload-dates-and-pens-data/upload-dates-and-pens-data.thunks";
+import { uploadDatesAndPensAvailabilityDocumentAsync } from "../../../../store/upload-dates-and-pens-data/upload-dates-and-pens-data.thunks";
 
 import useConfirmSwal from "../../../../hooks/use-confirm-swal";
 
 import { confirmUploadDatesAndPensDataMessage } from "../../../../strings/confirms";
-import { generateDatesAndPensInfo } from "../../../../functions/generate-dates-and-pens-info";
 
 const useSubmitUploadDatesAndPensData = () => {
-  const { year, numberofAmPensAvailable, numberofPmPensAvailable, documentId } =
+  const { datesAndPensData, datesClosedArray } =
     useGetUploadDatesAndPensDataSelectors();
 
   const { confirmSwal } = useConfirmSwal();
@@ -18,14 +17,6 @@ const useSubmitUploadDatesAndPensData = () => {
   const submitUploadDatesAndPensData = (e) => {
     e.preventDefault();
 
-    const datesAndPensInfo = generateDatesAndPensInfo(
-      year,
-      numberofAmPensAvailable,
-      numberofPmPensAvailable
-    );
-
-    const attributeKey = "datesAndPensInfo";
-
     confirmSwal(
       confirmUploadDatesAndPensDataMessage,
       "",
@@ -33,10 +24,9 @@ const useSubmitUploadDatesAndPensData = () => {
       "",
       () =>
         dispatch(
-          uploadDatesAndPensAsync({
-            datesAndPensInfo,
-            attributeKey,
-            documentId,
+          uploadDatesAndPensAvailabilityDocumentAsync({
+            datesAndPensData,
+            datesClosedArray,
           })
         ),
       null

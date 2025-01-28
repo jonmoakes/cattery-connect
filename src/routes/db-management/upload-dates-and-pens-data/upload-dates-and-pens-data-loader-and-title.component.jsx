@@ -3,16 +3,23 @@ import useGetUploadDatesAndPensDataSelectors from "../../../hooks/selectors/use-
 import SkeletonBox from "../../../components/skeleton-box/skeleton-box.component";
 
 import { ParentDiv } from "../../../styles/div/div.styles";
+import useGetCurrentUserSelectors from "../../../hooks/selectors/use-get-current-user-selectors";
 
 const UploadDatesAndPensDataLoaderAndTitle = () => {
+  const { currentUserIsLoading } = useGetCurrentUserSelectors();
   const { uploadDatesAndPensDataIsLoading } =
     useGetUploadDatesAndPensDataSelectors();
 
   return (
     <>
-      {uploadDatesAndPensDataIsLoading ? (
-        <SkeletonBox loadingText="uploading dates" />
+      {currentUserIsLoading || uploadDatesAndPensDataIsLoading ? (
+        <SkeletonBox
+          loadingText={
+            currentUserIsLoading ? "Fetching Users..." : "uploading dates..."
+          }
+        />
       ) : null}
+
       <ParentDiv>
         <h1>upload dates</h1>
       </ParentDiv>

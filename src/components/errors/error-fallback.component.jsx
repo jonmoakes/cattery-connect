@@ -15,7 +15,7 @@ const ErrorFallback = () => (
         <Balancer>
           Sorry, there was an error,
           <br />
-          most likely on our end...
+          'meowst' likely on our end...
         </Balancer>
       </h1>
       <ErrorFallbackImageDiv>

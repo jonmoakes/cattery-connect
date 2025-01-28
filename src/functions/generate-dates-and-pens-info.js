@@ -1,19 +1,29 @@
-// when creating date and pen info for a year
-export const generateDatesAndPensInfo = (year, amPens, pmPens) => {
-  const datesAndPensInfo = [];
-  for (let month = 0; month < 12; month++) {
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-    for (let day = 1; day <= daysInMonth; day++) {
-      const formattedDate = `${year}-${String(month + 1).padStart(
-        2,
-        "0"
-      )}-${String(day).padStart(2, "0")}`;
-      datesAndPensInfo.push({
-        date: formattedDate,
-        morningPensAvailable: amPens,
-        afternoonPensAvailable: pmPens,
-      });
-    }
-  }
-  return datesAndPensInfo;
+export const generateCatteryAvailabilityForDate = (
+  date,
+  catteryId,
+  penSpacesForMaxTwoCats,
+  penSpacesForMaxThreeCats,
+  penSpacesForMaxFourCats,
+  penSpacesForMaxFiveCats
+) => {
+  const morningPensData = JSON.stringify([
+    { maxCatCapacity: 2, available: penSpacesForMaxTwoCats },
+    { maxCatCapacity: 3, available: penSpacesForMaxThreeCats },
+    { maxCatCapacity: 4, available: penSpacesForMaxFourCats },
+    { maxCatCapacity: 5, available: penSpacesForMaxFiveCats },
+  ]);
+
+  const afternoonPensData = JSON.stringify([
+    { maxCatCapacity: 2, available: penSpacesForMaxTwoCats },
+    { maxCatCapacity: 3, available: penSpacesForMaxThreeCats },
+    { maxCatCapacity: 4, available: penSpacesForMaxFourCats },
+    { maxCatCapacity: 5, available: penSpacesForMaxFiveCats },
+  ]);
+
+  return {
+    date,
+    catteryId,
+    morningPensData,
+    afternoonPensData,
+  };
 };

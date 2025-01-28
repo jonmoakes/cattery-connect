@@ -11,6 +11,7 @@ import { getAllCustomersReducer } from "./get-all-customers/get-all-customers.sl
 import { customerDetailsManagementReducer } from "./customer-details-management/customer-details-management.slice";
 import { catDetailsManagementReducer } from "./cat-details-management/cat-details-management.slice";
 import { getAllCatsReducer } from "./get-all-cats/get-all-cats.slice";
+import { getAllUsersReducer } from "./get-all-users/get-all-users.slice";
 
 export const rootReducer = combineReducers({
   hamburgerMenu: hamburgerMenuReducer,
@@ -24,4 +25,5 @@ export const rootReducer = combineReducers({
   customerDetailsManagement: customerDetailsManagementReducer,
   catDetailsManagement: catDetailsManagementReducer,
   getAllCats: getAllCatsReducer,
+  getAllUsers: getAllUsersReducer,
 });

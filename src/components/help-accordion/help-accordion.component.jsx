@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import useGetCurrentUserSelectors from "../../hooks/selectors/use-get-current-user-selectors";
 import HelpAccordionContent from "./help-accordion-content.component";
 
 import {
@@ -13,6 +14,8 @@ import { StyledLink } from "../../styles/link/link.styles";
 import { contactRoute } from "../../strings/routes";
 
 const HelpAccordion = ({ openText, data }) => {
+  const { role } = useGetCurrentUserSelectors();
+
   const [showHelp, setShowHelp] = useState(false);
 
   return (
@@ -31,16 +34,20 @@ const HelpAccordion = ({ openText, data }) => {
             <AccordionContent>
               <HelpAccordionContent {...{ data }} />
 
-              <p>
-                please <StyledLink to={contactRoute}>contact us</StyledLink> if
-                you need any help!
-              </p>
-              <MinimalButton
-                className="accordion"
-                onClick={() => setShowHelp(false)}
-              >
-                Ok, Close
-              </MinimalButton>
+              {role !== "admin" ? (
+                <>
+                  <p>
+                    please <StyledLink to={contactRoute}>contact us</StyledLink>{" "}
+                    if you need any help!
+                  </p>
+                  <MinimalButton
+                    className="accordion"
+                    onClick={() => setShowHelp(false)}
+                  >
+                    Ok, Close
+                  </MinimalButton>
+                </>
+              ) : null}
             </AccordionContent>
           ) : null}
         </>
