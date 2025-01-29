@@ -33,6 +33,7 @@ export const TableWithStyle = styled.table`
     min-width: 150px;
     max-width: 400px;
   }
+  .column-emergencyContactDetails,
   .column-catsFeedingInfo,
   .column-catsMedicalInfo,
   .column-catsBehaviourInfo,

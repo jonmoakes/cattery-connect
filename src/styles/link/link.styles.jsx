@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-import { customYellow, softBlack, teal } from "../colours";
+import { customYellow, rustRed, softBlack, teal } from "../colours";
 
 export const StyledLink = styled(Link)`
-  color: red;
+  color: ${rustRed};
   text-decoration: none;
   text-transform: capitalize;
 
@@ -30,4 +30,10 @@ export const WhiteLink = styled(Link)`
       color: whitesmoke;
     }
   }
+`;
+
+export const OrangeLink = styled(Link)`
+  color: orange;
+  text-transform: capitalize;
+  text-decoration: none;
 `;

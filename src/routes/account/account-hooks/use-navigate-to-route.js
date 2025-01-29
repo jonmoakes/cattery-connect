@@ -2,11 +2,11 @@ import useHamburgerHandlerNavigate from "../../../hooks/use-hamburger-handler-na
 
 import {
   uploadDatesAndPensDataRoute,
-  addBookingRoute,
   addCustomerRoute,
   allCustomersRoute,
   allCatsRoute,
   addCatChooseOwnerRoute,
+  dbManageAddBookingRoute,
 } from "../../../strings/routes";
 
 const useNavigateToRoute = () => {
@@ -37,7 +37,7 @@ const useNavigateToRoute = () => {
     {
       id: 3,
       text: "add booking",
-      onClick: () => hamburgerHandlerNavigate(addBookingRoute),
+      onClick: () => hamburgerHandlerNavigate(dbManageAddBookingRoute),
     },
     {
       id: 4,

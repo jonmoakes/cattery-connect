@@ -28,6 +28,7 @@ import {
   editCustomerRoute,
   allCatsRoute,
   addCatChooseOwnerRoute,
+  dbManageAddBookingRoute,
 } from "./strings/routes";
 
 const Navigation = lazy(() =>
@@ -64,6 +65,11 @@ const EditCustomer = lazy(() =>
 const AllCats = lazy(() => import("./routes/all-cats/all-cats.component"));
 const AddCatChooseOwner = lazy(() =>
   import("./routes/add-cat-choose-owner/add-cat-choose-owner.component")
+);
+const DbManageAddBooking = lazy(() =>
+  import(
+    "./routes/db-management/db-manage-add-booking/db-manage-add-booking.component"
+  )
 );
 
 const App = () => {
@@ -147,6 +153,15 @@ const App = () => {
                 path={addCatChooseOwnerRoute}
                 element={
                   currentUser && role === "owner" ? <AddCatChooseOwner /> : null
+                }
+              />
+
+              <Route
+                path={dbManageAddBookingRoute}
+                element={
+                  currentUser && role === "owner" ? (
+                    <DbManageAddBooking />
+                  ) : null
                 }
               />
             </Route>

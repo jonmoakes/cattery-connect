@@ -6,6 +6,7 @@ import { Button } from "../../styles/button/button.styles";
 import { BlackHr } from "../../styles/hr/hr.styles";
 
 import { addCustomerRoute } from "../../strings/routes";
+import { getFirstNameFromString } from "../../functions/get-first-name-from-string";
 
 const UploadCustomerDetailsButton = () => {
   const { name } = useGetCustomerDetailsManagementSelectors();
@@ -17,7 +18,7 @@ const UploadCustomerDetailsButton = () => {
       <BlackHr />
       <Button type="submit" className="submit">
         {path === addCustomerRoute ? "add" : "update"}{" "}
-        {name ? name : "customer"}
+        {name ? getFirstNameFromString(name) : "customer"}
       </Button>
     </>
   );

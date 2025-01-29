@@ -177,6 +177,15 @@ export const ErrorDiv = styled.div`
     margin: 50px auto;
   }
 
+  &.parse-error {
+    background-color: ${radialRustRed};
+    margin: 20px auto;
+
+    p {
+      color: whitesmoke;
+    }
+  }
+
   @media screen and (max-width: 1366px) {
     box-shadow: none;
   }

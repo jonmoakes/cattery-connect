@@ -12,6 +12,7 @@ import { customerDetailsManagementReducer } from "./customer-details-management/
 import { catDetailsManagementReducer } from "./cat-details-management/cat-details-management.slice";
 import { getAllCatsReducer } from "./get-all-cats/get-all-cats.slice";
 import { getAllUsersReducer } from "./get-all-users/get-all-users.slice";
+import { dbManageAddBookingReducer } from "./db-manage-add-booking/db-manage-add-booking.slice";
 
 export const rootReducer = combineReducers({
   hamburgerMenu: hamburgerMenuReducer,
@@ -26,4 +27,5 @@ export const rootReducer = combineReducers({
   catDetailsManagement: catDetailsManagementReducer,
   getAllCats: getAllCatsReducer,
   getAllUsers: getAllUsersReducer,
+  dbManageAddBooking: dbManageAddBookingReducer,
 });

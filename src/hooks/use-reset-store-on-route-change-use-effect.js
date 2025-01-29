@@ -14,6 +14,7 @@ import {
   resetAllUsersCatteryIdsAndOwnerName,
   resetAllUsersCatteryIdsAndOwnerNameError,
 } from "../store/get-all-users/get-all-users.slice";
+import { resetDbManageAddBookingState } from "../store/db-manage-add-booking/db-manage-add-booking.slice";
 
 import {
   addCatChooseOwnerRoute,
@@ -21,6 +22,7 @@ import {
   allCatsRoute,
   allCustomersRoute,
   chooseNewPasswordRoute,
+  dbManageAddBookingRoute,
   editCatRoute,
   forgotPasswordRequestRoute,
   signInRoute,
@@ -64,6 +66,9 @@ const useResetStoreOnRouteChangeUseEffect = () => {
           break;
         case addCatChooseOwnerRoute:
           dispatch(resetGetAllCustomersState());
+          break;
+        case dbManageAddBookingRoute:
+          dispatch(resetDbManageAddBookingState());
           break;
         default:
           break;
