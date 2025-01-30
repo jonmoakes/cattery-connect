@@ -4,7 +4,13 @@ import { zoomInLeft } from "react-animations";
 import eyeIcon from "../../assets/eye.png";
 import eyeIconHide from "../../assets/hide-eye.png";
 
-import { teal, softBlack, customYellow, gentleGrey } from "../colours";
+import {
+  teal,
+  softBlack,
+  customYellow,
+  gentleGrey,
+  customGreen,
+} from "../colours";
 
 const zoomInLeftAnimation = keyframes`${zoomInLeft}`;
 
@@ -50,6 +56,10 @@ export const WhiteSpan = styled.span`
 export const YellowSpan = styled.span`
   color: ${customYellow};
   text-shadow: 1px 1px 1px ${softBlack};
+`;
+
+export const GreenSpan = styled.span`
+  color: ${customGreen};
 `;
 
 export const LowercasedSpan = styled.span`

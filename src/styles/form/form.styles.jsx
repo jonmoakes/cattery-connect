@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import {
   customGreen,
+  customYellow,
   radialGreen,
   radialGrey,
   rustRed,
@@ -291,7 +292,8 @@ export const SearchInput = styled.input`
 
 export const StyledCheckbox = styled.input`
   appearance: none;
-  background: ${softBlack};
+  background: ${customYellow};
+  border: 2px solid ${softBlack};
   margin: 10px auto 0px auto;
   font-family: inherit;
   width: 1.9rem;
@@ -309,7 +311,7 @@ export const StyledCheckbox = styled.input`
     transform: scale(0);
     transform-origin: bottom left;
     transition: 120ms transform ease-in-out;
-    background-color: ${customGreen};
+    background-color: ${softBlack};
   }
 
   &:checked::before {

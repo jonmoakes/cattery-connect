@@ -4,7 +4,7 @@ import { BlackHr } from "../../../../styles/hr/hr.styles";
 import {
   RedSpan,
   WhiteSpan,
-  YellowSpan,
+  GreenSpan,
 } from "../../../../styles/span/span.styles";
 
 const LabelAndCurrentChoice = ({ vaccinationStatus }) => (
@@ -18,8 +18,7 @@ const LabelAndCurrentChoice = ({ vaccinationStatus }) => (
       <VaxStatusDiv>
         <WhiteSpan>your current selection is:</WhiteSpan>
         <br />
-        <YellowSpan>{vaccinationStatus}</YellowSpan>
-        {/* <BlackHr /> */}
+        <GreenSpan>{vaccinationStatus}</GreenSpan>
       </VaxStatusDiv>
     ) : null}
   </>
