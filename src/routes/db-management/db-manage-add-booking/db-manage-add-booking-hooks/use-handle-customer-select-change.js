@@ -8,7 +8,6 @@ import { setDbManageAddBookingData } from "../../../../store/db-manage-add-booki
 const useHandleCustomerSelectChange = () => {
   const { dbManageAddBookingData } = useGetDbManageAddBookingSelectors();
   const { allCustomers } = useGetAllCustomerSelectors();
-
   const [customerName, setCustomerName] = useState("");
 
   const dispatch = useDispatch();
@@ -26,6 +25,9 @@ const useHandleCustomerSelectChange = () => {
         customerDocumentId: selectedCustomer?.$id || "",
         customerName: selectedCustomer?.name || "",
         catDetails: selectedCustomer?.catDetails ?? "",
+        catsInBooking: [],
+        checkInDate: "",
+        checkOutDate: "",
       })
     );
   };

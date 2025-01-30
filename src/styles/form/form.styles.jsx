@@ -77,6 +77,12 @@ export const Label = styled.label`
     text-shadow: none;
     color: ${softBlack};
   }
+
+  &.date-picker {
+    margin-top: 10px;
+    float: unset;
+    padding-left: 0px;
+  }
 `;
 
 export const StyledInput = styled.input`

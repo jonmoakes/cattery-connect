@@ -1,8 +1,11 @@
 import styled, { keyframes } from "styled-components";
 import {
+  customGreen,
   radialBeige,
+  radialDustyBlue,
   radialGrey,
   radialRustRed,
+  rustRed,
   softBlack,
   teal,
 } from "../colours";
@@ -320,6 +323,20 @@ export const InnerFormDiv = styled.div`
   padding: 10px 0px;
   border: 2px solid ${softBlack};
   border-radius: 5px;
+
+  &.cat-choice {
+    animation: 1s ${rollInAnimation};
+    background: ${radialDustyBlue};
+    width: 30%;
+
+    @media screen and (max-width: 950px) {
+      width: 50%;
+    }
+
+    @media screen and (max-width: 600px) {
+      width: 70%;
+    }
+  }
 `;
 
 export const Accordion = styled.div.withConfig({
@@ -401,4 +418,74 @@ export const VaxStatusDiv = styled.div`
 
 export const ForgotPasswordDiv = styled.div`
   margin: 20px auto 20px auto;
+`;
+
+export const DateInputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 20px;
+  width: 100%;
+  margin: 20px auto 35px auto;
+
+  @media screen and (max-width: 600px) {
+    padding: 0 10px;
+  }
+`;
+
+export const StyledDatePickerWrapper = styled.div`
+  width: 50%;
+
+  .react-datepicker {
+    border: 5px solid ${softBlack};
+    border-radius: 5px;
+  }
+
+  .react-datepicker__header {
+    background: ${radialDustyBlue};
+    border-radius: 0px;
+    border-bottom: 5px solid ${softBlack};
+  }
+
+  .react-datepicker__navigation-icon::before {
+    border-color: ${rustRed};
+  }
+
+  .react-datepicker__day--selected {
+    border: 2px solid black !important;
+    background-color: ${customGreen} !important;
+    color: ${softBlack} !important;
+  }
+
+  .react-datepicker__month-container {
+    background: ${radialGrey};
+  }
+
+  .react-datepicker__day--disabled {
+    color: ${rustRed};
+  }
+
+  .react-datepicker-wrapper {
+    width: 100%;
+  }
+
+  .react-datepicker__input-container {
+    width: 100%;
+  }
+
+  input {
+    width: 100%;
+    background: ${radialDustyBlue};
+    border: 2px solid ${softBlack};
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 0.9rem;
+    font-weight: 900;
+    font-family: inherit;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 90%;
+  }
 `;

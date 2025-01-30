@@ -1,7 +1,8 @@
 import useGetDbManageAddBookingSelectors from "../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
 
 const useCustomersCatsLogic = () => {
-  const { customerName, catDetails } = useGetDbManageAddBookingSelectors();
+  const { customerName, catDetails, catsInBooking } =
+    useGetDbManageAddBookingSelectors();
 
   let parsedCatDetails = [];
   let error = null;
@@ -33,7 +34,14 @@ const useCustomersCatsLogic = () => {
     !!customerName && !!catDetails && catsToRender.length > 0;
 
   const customerHasOneCat = catsToRender && catsToRender.length === 1;
+
   const customerHasMoreThanOneCat = catsToRender && catsToRender.length > 1;
+
+  const customerHasOneCatOrMoreThanOneCatAndAtLeastOneHasBeenSelected =
+    customerHasOneCat ||
+    (customerHasMoreThanOneCat &&
+      Array.isArray(catsInBooking) &&
+      catsInBooking.length > 0);
 
   return {
     catsToRender,
@@ -45,6 +53,7 @@ const useCustomersCatsLogic = () => {
     customerHasBeenSelectedAndHasAtLeastOneCat,
     customerHasOneCat,
     customerHasMoreThanOneCat,
+    customerHasOneCatOrMoreThanOneCatAndAtLeastOneHasBeenSelected,
   };
 };
 

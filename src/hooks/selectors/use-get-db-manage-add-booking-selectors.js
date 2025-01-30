@@ -10,8 +10,14 @@ const useGetDbManageAddBookingSelectors = () => {
     dbManageAddBookingError,
   } = useSelector(selectDbManageAddBookingSelectors);
 
-  const { customerDocumentId, customerName, catDetails } =
-    dbManageAddBookingData ?? {};
+  const {
+    customerDocumentId,
+    customerName,
+    catDetails,
+    catsInBooking,
+    checkInDate,
+    checkOutDate,
+  } = dbManageAddBookingData ?? {};
 
   return {
     dbManageAddBookingIsLoading,
@@ -21,6 +27,9 @@ const useGetDbManageAddBookingSelectors = () => {
     customerDocumentId,
     customerName,
     catDetails,
+    catsInBooking,
+    checkInDate,
+    checkOutDate,
   };
 };
 

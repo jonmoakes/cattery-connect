@@ -31,3 +31,12 @@ export const YellowText = styled.p`
   color: ${customYellow};
   text-shadow: 1px 1px 1px ${softBlack};
 `;
+
+export const OptionsLabel = styled.p`
+  color: ${softBlack};
+  margin: 10px auto 10px auto;
+
+  &.wrap {
+    white-space: pre-wrap;
+  }
+`;
