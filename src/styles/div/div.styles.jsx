@@ -332,7 +332,7 @@ export const InnerFormDiv = styled.div`
 
   &.cat-choice,
   &.slot-choice {
-    width: 30%;
+    width: 50%;
     position: relative;
     animation: 1s ${slideInrightAnimation} forwards; /* Prevents reset */
 
@@ -355,7 +355,7 @@ export const InnerFormDiv = styled.div`
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      opacity: 0.3;
+      opacity: 0.5;
       z-index: -1;
       pointer-events: none;
     }
