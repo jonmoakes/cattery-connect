@@ -187,7 +187,7 @@ export const ErrorDiv = styled.div`
   }
 
   &.parse-error {
-    background-color: ${radialRustRed};
+    background: ${radialRustRed};
     margin: 20px auto;
 
     p {

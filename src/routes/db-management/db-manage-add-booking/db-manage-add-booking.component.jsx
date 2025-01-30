@@ -3,6 +3,7 @@ import useGetDbManageAddBookingSelectors from "../../../hooks/selectors/use-get-
 import useAddBookingVariables from "./db-manage-add-booking-hooks/use-add-booking-variables";
 import useGetAllCustomersThunkUseEffect from "../../../hooks/use-get-all-customers-thunk-use-effect";
 import useCheckInAndOutDateValidityUseEffect from "./db-manage-add-booking-hooks/use-check-in-and-out-date-validity-use-effect";
+import useConfirmAddBooking from "./db-manage-add-booking-hooks/use-confirm-add-booking.component";
 
 import DbManageAddBookingTitleAndLoader from "./db-manage-add-booking-title-and-loader.component";
 import ChooseCustomerSelectInput from "./inputs/choose-customer-select-input.component";
@@ -13,13 +14,14 @@ import CheckInAndOutTimeSlotSelectInput from "./inputs/check-in-out-and-time-slo
 import { Container } from "../../../styles/container/container.styles";
 import { ParentDiv } from "../../../styles/div/div.styles";
 import { Form } from "../../../styles/form/form.styles";
+import { Button } from "../../../styles/button/button.styles";
 
 const DbManageAddBooking = () => {
   const { checkInDate, checkInSlot, checkOutDate } =
     useGetDbManageAddBookingSelectors();
   const { customerHasOneCatOrMoreThanOneCatAndAtLeastOneHasBeenSelected } =
     useAddBookingVariables();
-
+  const { shouldShowBookingButton, confirmAddBooking } = useConfirmAddBooking();
   useGetAllCustomersThunkUseEffect();
   useCheckInAndOutDateValidityUseEffect();
 
@@ -28,7 +30,7 @@ const DbManageAddBooking = () => {
       <DbManageAddBookingTitleAndLoader />
 
       <ParentDiv>
-        <Form>
+        <Form onSubmit={confirmAddBooking}>
           <ChooseCustomerSelectInput />
           <ChooseCatsInput />
 
@@ -60,6 +62,10 @@ const DbManageAddBooking = () => {
             slotType="checkOutSlot"
             showHr={checkOutDate}
           />
+
+          {shouldShowBookingButton ? (
+            <Button type="submit">add booking</Button>
+          ) : null}
         </Form>
       </ParentDiv>
     </Container>

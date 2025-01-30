@@ -10,7 +10,7 @@ const useAddBookingVariables = () => {
   try {
     parsedCatDetails = catDetails ? JSON.parse(catDetails) : [];
   } catch (err) {
-    error = `Invalid JSON format in catDetails: ${err}`;
+    error = `Invalid JSON format in catDetails: ${err.message}`;
   }
 
   const catsToRender =

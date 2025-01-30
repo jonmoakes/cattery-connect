@@ -19,13 +19,20 @@ const useHandleCustomerSelectChange = () => {
 
     setCustomerName(selectedCustomer?.name || "");
 
+    const parsedCustomerCatDetails = JSON.parse(
+      selectedCustomer?.catDetails || []
+    );
+
     dispatch(
       setDbManageAddBookingData({
         ...dbManageAddBookingData,
         customerDocumentId: selectedCustomer?.$id || "",
         customerName: selectedCustomer?.name || "",
         catDetails: selectedCustomer?.catDetails ?? "",
-        catsInBooking: [],
+        catsInBooking:
+          parsedCustomerCatDetails && parsedCustomerCatDetails.length === 1
+            ? parsedCustomerCatDetails[0].catsName
+            : [],
         checkInDate: "",
         checkInSlot: "",
         checkOutDate: "",

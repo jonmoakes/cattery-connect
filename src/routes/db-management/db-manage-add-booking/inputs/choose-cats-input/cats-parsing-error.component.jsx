@@ -4,6 +4,7 @@ import useAddBookingVariables from "../../db-manage-add-booking-hooks/use-add-bo
 
 import { ErrorDiv } from "../../../../../styles/div/div.styles";
 import { BlackHr } from "../../../../../styles/hr/hr.styles";
+import { MinimalButton } from "../../../../../styles/button/button.styles";
 
 const CatsParsingError = () => {
   const { error } = useAddBookingVariables();
@@ -20,8 +21,18 @@ const CatsParsingError = () => {
       <p>{error}</p>
       <BlackHr />
       <p>
-        <Balancer>if the error persists, please contact jonathan</Balancer>
+        <Balancer>
+          tap the button below to relaod the page and if the error persists,
+          please contact jonathan
+        </Balancer>
       </p>
+      <MinimalButton
+        className="margin-bottom"
+        type="button"
+        onClick={() => window.location.reload()}
+      >
+        reload
+      </MinimalButton>
     </ErrorDiv>
   );
 };

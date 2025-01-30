@@ -35,6 +35,7 @@ const useCheckInAndOutDateValidityUseEffect = () => {
             setDbManageAddBookingData({
               ...dbManageAddBookingData,
               checkOutDate: "",
+              checkOutSlot: "",
             })
           );
         }
