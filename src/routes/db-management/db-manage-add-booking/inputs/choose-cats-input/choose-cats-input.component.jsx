@@ -1,4 +1,4 @@
-import useCustomersCatsLogic from "../../db-manage-add-booking-hooks/use-customers-cats-logic";
+import useAddBookingVariables from "../../db-manage-add-booking-hooks/use-add-booking-variables";
 
 import CatsParsingError from "./cats-parsing-error.component";
 import NoSelectedCustomersCatsHaveBeenAddedYet from "./no-selected-customers-cats-have-been-added-yet.component";
@@ -11,7 +11,7 @@ const ChooseCatsInput = () => {
     customerHasBeenSelectedAndErrorParsingCats,
     customerHasBeenSelectedAndHasNoCats,
     customerHasBeenSelectedAndHasAtLeastOneCat,
-  } = useCustomersCatsLogic();
+  } = useAddBookingVariables();
 
   return (
     <>

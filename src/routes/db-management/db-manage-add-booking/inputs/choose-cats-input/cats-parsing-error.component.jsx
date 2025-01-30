@@ -1,12 +1,12 @@
 import Balancer from "react-wrap-balancer";
 
-import useCustomersCatsLogic from "../../db-manage-add-booking-hooks/use-customers-cats-logic";
+import useAddBookingVariables from "../../db-manage-add-booking-hooks/use-add-booking-variables";
 
 import { ErrorDiv } from "../../../../../styles/div/div.styles";
 import { BlackHr } from "../../../../../styles/hr/hr.styles";
 
 const CatsParsingError = () => {
-  const { error } = useCustomersCatsLogic();
+  const { error } = useAddBookingVariables();
 
   return (
     <ErrorDiv className="parse-error">

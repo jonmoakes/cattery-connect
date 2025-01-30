@@ -1,5 +1,12 @@
 import styled from "styled-components";
-import { radialGreen, radialGrey, rustRed, softBlack, teal } from "../colours";
+import {
+  customGreen,
+  radialGreen,
+  radialGrey,
+  rustRed,
+  softBlack,
+  teal,
+} from "../colours";
 
 export const Form = styled.form`
   width: 75%;
@@ -20,7 +27,15 @@ export const Form = styled.form`
     justify-content: center;
     width: 30px;
     height: 30px;
-    accent-color: red;
+    background-color: ${softBlack};
+    border-radius: 50%;
+    appearance: none;
+    border: 3px solid ${softBlack};
+    transition: background-color 0.5s ease;
+  }
+
+  input[type="radio"]:checked {
+    background-color: ${customGreen};
   }
 
   @media screen and (max-width: 1366px) {
@@ -76,12 +91,6 @@ export const Label = styled.label`
     padding-left: 0px;
     text-shadow: none;
     color: ${softBlack};
-  }
-
-  &.date-picker {
-    margin-top: 10px;
-    float: unset;
-    padding-left: 0px;
   }
 `;
 
@@ -282,12 +291,11 @@ export const SearchInput = styled.input`
 
 export const StyledCheckbox = styled.input`
   appearance: none;
-  background: ${radialGrey};
+  background: ${softBlack};
   margin: 10px auto 0px auto;
   font-family: inherit;
   width: 1.9rem;
   height: 1.9rem;
-  border: 2px solid black;
   border-radius: 0.15em;
   transform: translateY(-0.075em);
   display: grid;
@@ -301,7 +309,7 @@ export const StyledCheckbox = styled.input`
     transform: scale(0);
     transform-origin: bottom left;
     transition: 120ms transform ease-in-out;
-    background-color: red;
+    background-color: ${customGreen};
   }
 
   &:checked::before {

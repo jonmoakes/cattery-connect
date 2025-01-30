@@ -16,10 +16,10 @@ const LabelAndCurrentChoice = ({ vaccinationStatus }) => (
 
     {vaccinationStatus ? (
       <VaxStatusDiv>
-        <WhiteSpan>current selection:</WhiteSpan>
+        <WhiteSpan>your current selection is:</WhiteSpan>
         <br />
         <YellowSpan>{vaccinationStatus}</YellowSpan>
-        <BlackHr />
+        {/* <BlackHr /> */}
       </VaxStatusDiv>
     ) : null}
   </>

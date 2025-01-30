@@ -10,10 +10,16 @@ import {
   teal,
 } from "../colours";
 
-import { bounceInDown, rollIn, slideInLeft } from "react-animations";
-
+import {
+  bounceInDown,
+  rollIn,
+  slideInLeft,
+  slideInRight,
+} from "react-animations";
+import BackgroundImage from "../../assets/cat-in-basket.webp";
 const bounceInDownAnimation = keyframes`${bounceInDown}`;
 const slideInLeftAnimation = keyframes`${slideInLeft}`;
+const slideInrightAnimation = keyframes`${slideInRight}`;
 const rollInAnimation = keyframes`${rollIn}`;
 
 export const Nav = styled.div`
@@ -324,10 +330,11 @@ export const InnerFormDiv = styled.div`
   border: 2px solid ${softBlack};
   border-radius: 5px;
 
-  &.cat-choice {
-    animation: 1s ${rollInAnimation};
-    background: ${radialDustyBlue};
+  &.cat-choice,
+  &.slot-choice {
     width: 30%;
+    position: relative;
+    animation: 1s ${slideInrightAnimation} forwards; /* Prevents reset */
 
     @media screen and (max-width: 950px) {
       width: 50%;
@@ -335,6 +342,22 @@ export const InnerFormDiv = styled.div`
 
     @media screen and (max-width: 600px) {
       width: 70%;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url(${BackgroundImage});
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.3;
+      z-index: -1;
+      pointer-events: none;
     }
   }
 `;
@@ -410,10 +433,17 @@ export const TableOptionsButtonDiv = styled.div`
 `;
 
 export const VaxStatusDiv = styled.div`
-  width: 100%;
+  width: 50%;
   height: auto;
   text-align: center;
-  margin-top: 80px;
+  margin: 80px auto 0px auto;
+  border-radius: 5px;
+  background: ${softBlack};
+  padding: 10px 0px;
+
+  @media screen and (max-width: 850px) {
+    width: 90%;
+  }
 `;
 
 export const ForgotPasswordDiv = styled.div`
@@ -427,6 +457,7 @@ export const DateInputContainer = styled.div`
   padding: 0px 20px;
   width: 100%;
   margin: 20px auto 35px auto;
+  animation: 0.5s ${slideInLeftAnimation};
 
   @media screen and (max-width: 600px) {
     padding: 0 10px;
@@ -488,4 +519,8 @@ export const StyledDatePickerWrapper = styled.div`
   @media screen and (max-width: 600px) {
     width: 90%;
   }
+`;
+
+export const RadioLabelDiv = styled.div`
+  margin: 30px auto -10px auto;
 `;

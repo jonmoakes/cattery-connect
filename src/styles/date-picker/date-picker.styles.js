@@ -1,5 +1,6 @@
 import DatePicker from "react-datepicker";
 import styled from "styled-components";
+
 import { rustRed, softBlack } from "../colours";
 
 export const StyledDatePicker = styled(DatePicker)`

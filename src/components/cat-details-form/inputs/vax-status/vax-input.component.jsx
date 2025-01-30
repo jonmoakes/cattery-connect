@@ -3,26 +3,24 @@ import { Label } from "../../../../styles/form/form.styles";
 
 import { vaccinationRadioChoices } from "../vaccination-radio-choices";
 
-const VaxInput = ({ vaccinationStatus, handleCatDetailsChange }) => (
+const VaxInput = ({ handleCatDetailsChange }) => (
   <>
-    {vaccinationRadioChoices
-      .filter((choice) => choice.value !== vaccinationStatus)
-      .map((choice) => {
-        const { id, label, value } = choice;
-        return (
-          <InnerFormDiv key={id}>
-            <Label className="no-padding">{label}</Label>
-            <input
-              type="radio"
-              name="vaccinationStatus"
-              value={value}
-              onChange={handleCatDetailsChange}
-              required
-            />
-            <hr />
-          </InnerFormDiv>
-        );
-      })}
+    {vaccinationRadioChoices.map((choice) => {
+      const { id, label, value } = choice;
+      return (
+        <InnerFormDiv key={id}>
+          <Label className="no-padding">{label}</Label>
+          <input
+            type="radio"
+            name="vaccinationStatus"
+            value={value}
+            onChange={handleCatDetailsChange}
+            required
+          />
+          <hr />
+        </InnerFormDiv>
+      );
+    })}
   </>
 );
 export default VaxInput;

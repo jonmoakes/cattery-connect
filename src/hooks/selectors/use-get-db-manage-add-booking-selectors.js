@@ -16,7 +16,9 @@ const useGetDbManageAddBookingSelectors = () => {
     catDetails,
     catsInBooking,
     checkInDate,
+    checkInSlot,
     checkOutDate,
+    checkOutSlot,
   } = dbManageAddBookingData ?? {};
 
   return {
@@ -29,7 +31,9 @@ const useGetDbManageAddBookingSelectors = () => {
     catDetails,
     catsInBooking,
     checkInDate,
+    checkInSlot,
     checkOutDate,
+    checkOutSlot,
   };
 };
 

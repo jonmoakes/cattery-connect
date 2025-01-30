@@ -1,7 +1,7 @@
 import Balancer from "react-wrap-balancer";
 
 import useGetDbManageAddBookingSelectors from "../../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
-import useCustomersCatsLogic from "../../db-manage-add-booking-hooks/use-customers-cats-logic";
+import useAddBookingVariables from "../../db-manage-add-booking-hooks/use-add-booking-variables";
 import useHandleChooseCatsChange from "./choose-cats-input-hooks/use-handle-choose-cats-change";
 
 import OneCatInfo from "./one-cat-info.component";
@@ -14,7 +14,7 @@ import { BlackHr } from "../../../../../styles/hr/hr.styles";
 const ChooseCatCheckboxes = () => {
   const { dbManageAddBookingData } = useGetDbManageAddBookingSelectors();
   const { customerHasOneCat, catsToRender, customerHasMoreThanOneCat } =
-    useCustomersCatsLogic();
+    useAddBookingVariables();
   const { handleChooseCatsChange } = useHandleChooseCatsChange();
 
   return (
@@ -25,7 +25,8 @@ const ChooseCatCheckboxes = () => {
         <>
           <WhiteText>
             <Balancer>
-              please select which cats are going to be in the booking:
+              please tap the square boxes to select which cats are going to be
+              in the booking:
             </Balancer>
           </WhiteText>
           <BlackHr />
@@ -35,7 +36,7 @@ const ChooseCatCheckboxes = () => {
 
             return (
               <InnerFormDiv key={catsId} className="cat-choice">
-                <OptionsLabel>{catsName}</OptionsLabel>
+                <OptionsLabel className="over-bg">{catsName}</OptionsLabel>
                 <StyledCheckbox
                   onChange={handleChooseCatsChange}
                   className="multiple"

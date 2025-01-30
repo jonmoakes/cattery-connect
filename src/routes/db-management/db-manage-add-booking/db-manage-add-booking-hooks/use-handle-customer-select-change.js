@@ -27,7 +27,9 @@ const useHandleCustomerSelectChange = () => {
         catDetails: selectedCustomer?.catDetails ?? "",
         catsInBooking: [],
         checkInDate: "",
+        checkInSlot: "",
         checkOutDate: "",
+        checkOutSlot: "",
       })
     );
   };

@@ -3,7 +3,6 @@ import useGetAllCustomerSelectors from "../../../../hooks/selectors/use-get-all-
 import useHandleCustomerSelectChange from "../db-manage-add-booking-hooks/use-handle-customer-select-change";
 
 import { Label, StyledSelect } from "../../../../styles/form/form.styles";
-import { RedSpan } from "../../../../styles/span/span.styles";
 
 const ChooseCustomerSelectInput = () => {
   const { customerName, handleCustomerSelectChange } =
@@ -12,9 +11,7 @@ const ChooseCustomerSelectInput = () => {
 
   return (
     <>
-      <Label>
-        <RedSpan>* </RedSpan>choose customer:
-      </Label>
+      <Label>choose customer:</Label>
 
       <StyledSelect value={customerName} onChange={handleCustomerSelectChange}>
         <option value="">-- Select a Customer --</option>

@@ -1,6 +1,6 @@
 import useGetDbManageAddBookingSelectors from "../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
 
-const useCustomersCatsLogic = () => {
+const useAddBookingVariables = () => {
   const { customerName, catDetails, catsInBooking } =
     useGetDbManageAddBookingSelectors();
 
@@ -57,4 +57,4 @@ const useCustomersCatsLogic = () => {
   };
 };
 
-export default useCustomersCatsLogic;
+export default useAddBookingVariables;
