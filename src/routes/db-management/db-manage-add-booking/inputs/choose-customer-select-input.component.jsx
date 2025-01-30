@@ -11,10 +11,10 @@ const ChooseCustomerSelectInput = () => {
 
   return (
     <>
-      <Label>choose customer:</Label>
+      <Label>choose a customer:</Label>
 
       <StyledSelect value={customerName} onChange={handleCustomerSelectChange}>
-        <option value="">-- Select a Customer --</option>
+        <option value="">-- Tap to select --</option>
         {allCustomers.map((customer) => {
           const { customerId, name } = customer;
           return (

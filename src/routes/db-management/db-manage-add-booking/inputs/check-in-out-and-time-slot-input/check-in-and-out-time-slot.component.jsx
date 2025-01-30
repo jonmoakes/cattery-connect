@@ -7,12 +7,15 @@ import {
 import { BlackHr } from "../../../../../styles/hr/hr.styles";
 import { OptionsLabel } from "../../../../../styles/p/p.styles";
 import { timeSlotRadioChoices } from "./time-slot-radio-choices";
+import { YellowSpan } from "../../../../../styles/span/span.styles";
+import Balancer from "react-wrap-balancer";
 
 const CheckInAndOutTimeSlot = ({ condition, slotType, showHr }) => {
   const { handleChooseCheckInAndOutTimeSlotChange } =
     useHandleCheckInAndOutTimeSlotChange();
 
-  const highlightedText = slotType === "checkInSlot" ? "check in" : "check out";
+  const highlightedText =
+    slotType === "checkInSlot" ? "check in slot time:" : "check out slot time:";
 
   return (
     <>
@@ -21,11 +24,10 @@ const CheckInAndOutTimeSlot = ({ condition, slotType, showHr }) => {
           {showHr ? <BlackHr /> : null}
           <RadioLabelDiv>
             <OptionsLabel className="white">
-              {`tap a circle to choose a `}
-              {highlightedText && (
-                <span style={{ color: "yellow" }}>{highlightedText}</span>
-              )}
-              {` slot time:`}
+              <Balancer>
+                {`tap a circle to choose a `}
+                {highlightedText && <YellowSpan>{highlightedText}</YellowSpan>}
+              </Balancer>
             </OptionsLabel>
           </RadioLabelDiv>
 

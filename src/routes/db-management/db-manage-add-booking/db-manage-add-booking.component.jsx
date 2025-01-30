@@ -37,7 +37,6 @@ const DbManageAddBooking = () => {
               customerHasOneCatOrMoreThanOneCatAndAtLeastOneHasBeenSelected
             }
             dateType="checkInDate"
-            label="tap the date to choose a check in date:"
             selectedDate={checkInDate}
           />
 
@@ -53,7 +52,6 @@ const DbManageAddBooking = () => {
               checkInSlot
             }
             dateType="checkOutDate"
-            label="tap the date to choose a check out date:"
             selectedDate={checkOutDate}
           />
 

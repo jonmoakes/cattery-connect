@@ -13,18 +13,12 @@ import { BlackHr } from "../../../../../styles/hr/hr.styles";
 import { OptionsLabel } from "../../../../../styles/p/p.styles";
 import { YellowSpan } from "../../../../../styles/span/span.styles";
 
-const CheckInAndOutDateInput = ({
-  condition,
-  dateType,
-  label,
-  selectedDate,
-}) => {
+const CheckInAndOutDateInput = ({ condition, dateType, selectedDate }) => {
   const { handleCheckInAndOutDatesChange } =
     useHandleCheckInAndOutDatesChange();
 
   const highlightedText =
     dateType === "checkInDate" ? "check in date" : "check out date";
-
   return (
     <>
       {condition ? (
@@ -34,14 +28,10 @@ const CheckInAndOutDateInput = ({
             <StyledDatePickerWrapper>
               <OptionsLabel className="white">
                 <Balancer>
-                  {label.split(highlightedText).map((part, index) => (
-                    <>
-                      {part}
-                      {index === 0 && (
-                        <YellowSpan>{highlightedText}</YellowSpan>
-                      )}
-                    </>
-                  ))}
+                  {`tap the date to choose a `}
+                  {highlightedText && (
+                    <YellowSpan>{highlightedText}</YellowSpan>
+                  )}
                 </Balancer>
               </OptionsLabel>
 
