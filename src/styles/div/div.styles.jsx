@@ -5,6 +5,7 @@ import {
   radialDustyBlue,
   radialGrey,
   radialRustRed,
+  radialSteelBlue,
   rustRed,
   softBlack,
   teal,
@@ -322,6 +323,7 @@ export const ErrorFallbackImageDiv = styled.div`
 
 export const InnerFormDiv = styled.div`
   width: 90%;
+  height: auto;
   display: flex;
   margin: 40px auto;
   background: ${radialGrey};
@@ -523,4 +525,21 @@ export const StyledDatePickerWrapper = styled.div`
 
 export const RadioLabelDiv = styled.div`
   margin: 30px auto -10px auto;
+`;
+
+export const DataDiv = styled.div`
+  background: ${radialSteelBlue};
+  width: 90%;
+  height: auto;
+  border: 1px solid ${softBlack};
+  border-radius: 5px;
+  margin: 0px auto 40px auto;
+  padding: 20px 0px;
+  animation: 0.5s ${bounceInDownAnimation};
+
+  &.error {
+    background: ${radialRustRed};
+    width: 90%;
+    margin: 10px auto 0px auto;
+  }
 `;

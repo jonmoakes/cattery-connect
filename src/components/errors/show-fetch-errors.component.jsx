@@ -34,7 +34,7 @@ const ShowFetchErrors = () => {
           <p>
             if you continue to see this error, please{" "}
             <StyledLink to={contactRoute}>contact us</StyledLink> and quote the
-            error in yellow text above.
+            error in green box above.
           </p>
           <p>we apologise for the inconvenience!</p>
 

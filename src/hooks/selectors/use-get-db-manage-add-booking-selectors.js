@@ -5,7 +5,14 @@ import { selectDbManageAddBookingSelectors } from "../../store/db-manage-add-boo
 const useGetDbManageAddBookingSelectors = () => {
   const {
     dbManageAddBookingIsLoading,
+    catteryAllowsLargerPensBool,
+    catteryAllowsLargerPensResult,
+    catteryAllowsLargerPensError,
+    dbManageAddBookingCheckAvailabilityIsLoading,
     dbManageAddBookingData,
+    dbManageIsBookingAvailableIsLoading,
+    dbManageIsBookingAvailableResult,
+    dbManageIsBookingAvailableError,
     dbManageAddBookingResult,
     dbManageAddBookingError,
   } = useSelector(selectDbManageAddBookingSelectors);
@@ -21,9 +28,18 @@ const useGetDbManageAddBookingSelectors = () => {
     checkOutSlot,
   } = dbManageAddBookingData ?? {};
 
+  const { status, failingDates } = dbManageIsBookingAvailableResult ?? {};
+
   return {
     dbManageAddBookingIsLoading,
+    catteryAllowsLargerPensBool,
+    catteryAllowsLargerPensResult,
+    catteryAllowsLargerPensError,
+    dbManageAddBookingCheckAvailabilityIsLoading,
     dbManageAddBookingData,
+    dbManageIsBookingAvailableIsLoading,
+    dbManageIsBookingAvailableResult,
+    dbManageIsBookingAvailableError,
     dbManageAddBookingResult,
     dbManageAddBookingError,
     customerDocumentId,
@@ -34,6 +50,8 @@ const useGetDbManageAddBookingSelectors = () => {
     checkInSlot,
     checkOutDate,
     checkOutSlot,
+    status,
+    failingDates,
   };
 };
 

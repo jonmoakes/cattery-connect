@@ -3,10 +3,18 @@ import { useDispatch } from "react-redux";
 
 import useGetAllCustomerSelectors from "../../../../hooks/selectors/use-get-all-customers-selectors";
 import useGetDbManageAddBookingSelectors from "../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
-import { setDbManageAddBookingData } from "../../../../store/db-manage-add-booking/db-manage-add-booking.slice";
+import {
+  resetDbManageIsBookingAvailableError,
+  resetDbManageIsBookingAvailableResult,
+  setDbManageAddBookingData,
+} from "../../../../store/db-manage-add-booking/db-manage-add-booking.slice";
 
 const useHandleCustomerSelectChange = () => {
-  const { dbManageAddBookingData } = useGetDbManageAddBookingSelectors();
+  const {
+    dbManageAddBookingData,
+    dbManageIsBookingAvailableResult,
+    dbManageIsBookingAvailableError,
+  } = useGetDbManageAddBookingSelectors();
   const { allCustomers } = useGetAllCustomerSelectors();
   const [customerName, setCustomerName] = useState("");
 
@@ -27,11 +35,12 @@ const useHandleCustomerSelectChange = () => {
       setDbManageAddBookingData({
         ...dbManageAddBookingData,
         customerDocumentId: selectedCustomer?.$id || "",
+        customerId: selectedCustomer?.customerId || "",
         customerName: selectedCustomer?.name || "",
         catDetails: selectedCustomer?.catDetails ?? "",
         catsInBooking:
           parsedCustomerCatDetails && parsedCustomerCatDetails.length === 1
-            ? parsedCustomerCatDetails[0].catsName
+            ? [parsedCustomerCatDetails[0].catsName]
             : [],
         checkInDate: "",
         checkInSlot: "",
@@ -39,6 +48,12 @@ const useHandleCustomerSelectChange = () => {
         checkOutSlot: "",
       })
     );
+    if (dbManageIsBookingAvailableResult) {
+      dispatch(resetDbManageIsBookingAvailableResult());
+    }
+    if (dbManageIsBookingAvailableError) {
+      dispatch(resetDbManageIsBookingAvailableError());
+    }
   };
 
   return { customerName, handleCustomerSelectChange };

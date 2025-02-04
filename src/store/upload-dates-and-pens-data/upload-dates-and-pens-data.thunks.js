@@ -89,7 +89,8 @@ export const uploadDatesAndPensAvailabilityDocumentAsync = createAsyncThunk(
           penSpacesForMaxFiveCats
         );
 
-        // Adjust the date for the specific day in the loop
+        // Adjust the date for the specific day in the loop and add the catteryId
+        availability.catteryId = catteryId;
         availability.date = date;
 
         await manageDatabaseDocument(

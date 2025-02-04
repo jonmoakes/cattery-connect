@@ -33,6 +33,10 @@ export const HamburgerSpanCloseMenu = styled(HamburgerSpan)`
   background-color: ${softBlack};
 `;
 
+export const BlackSpan = styled.span`
+  color: ${softBlack};
+`;
+
 export const RedSpan = styled.span`
   color: red;
 `;
@@ -71,6 +75,16 @@ export const LowercasedSpan = styled.span`
 
   &.animate {
     animation: 0.5s ${zoomInLeftAnimation};
+  }
+`;
+
+export const UppercaseSpan = styled.span`
+  color: whitesmoke;
+  text-shadow: 1px 1px 1px ${softBlack};
+  text-transform: uppercase;
+
+  &.yellow {
+    color: ${customYellow};
   }
 `;
 

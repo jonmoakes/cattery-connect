@@ -55,9 +55,35 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
+  h3 {
+    color: ${softBlack};
+
+    &.white {
+      color: whitesmoke;
+      text-shadow: 1px 1px 1px ${softBlack};
+    }
+  }
+
   p {
     color: ${softBlack};
   }
+
+  ul {
+  padding-left: unset;
+  display: table;
+  margin: 10px auto;
+  list-style-type: none;
+  width:90%;
+  }
+
+  li {
+    font-size: calc(1rem);
+  margin-bottom: 10px;
+  color: ${softBlack};
+  }
+
+
+
 `;
 
 export default GlobalStyles;
