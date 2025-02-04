@@ -106,6 +106,7 @@ export const checkBookingAvailabilityAsync = createAsyncThunk(
 
       const failingDates = [];
 
+      // error if pend data not correct - first day pm not being added to array.
       const firstDay = parsedAvailabilityData[0];
       const firstDayMorningFail =
         checkInSlot === "am" &&
