@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import {
   customGreen,
   radialBeige,
@@ -18,10 +18,14 @@ import {
   slideInRight,
 } from "react-animations";
 import BackgroundImage from "../../assets/cat-in-basket.webp";
+import AsleepImage from "../../assets/cat-asleep-in-basket.webp";
+import PlayingWithToyImage from "../../assets/cat-playing-with-toy.webp";
 const bounceInDownAnimation = keyframes`${bounceInDown}`;
 const slideInLeftAnimation = keyframes`${slideInLeft}`;
 const slideInrightAnimation = keyframes`${slideInRight}`;
 const rollInAnimation = keyframes`${rollIn}`;
+
+const backgroundImages = [AsleepImage, PlayingWithToyImage, BackgroundImage];
 
 export const Nav = styled.div`
   background: ${radialBeige};
@@ -321,7 +325,9 @@ export const ErrorFallbackImageDiv = styled.div`
   margin: 0px auto -30px auto;
 `;
 
-export const InnerFormDiv = styled.div`
+export const InnerFormDiv = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== "index",
+})`
   width: 90%;
   height: auto;
   display: flex;
@@ -336,7 +342,7 @@ export const InnerFormDiv = styled.div`
   &.slot-choice {
     width: 50%;
     position: relative;
-    animation: 1s ${slideInrightAnimation} forwards; /* Prevents reset */
+    animation: 1s ${slideInrightAnimation} forwards;
 
     @media screen and (max-width: 950px) {
       width: 50%;
@@ -353,7 +359,11 @@ export const InnerFormDiv = styled.div`
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: url(${BackgroundImage});
+      ${({ index }) => css`
+        background-image: url(${backgroundImages[
+          index % backgroundImages.length
+        ]});
+      `}
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -363,7 +373,6 @@ export const InnerFormDiv = styled.div`
     }
   }
 `;
-
 export const Accordion = styled.div.withConfig({
   shouldForwardProp: (prop) => prop !== "showHelp",
 })`

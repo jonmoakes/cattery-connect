@@ -27,11 +27,11 @@ const ChooseCatCheckboxes = () => {
           </CustomBalancedText>
           <BlackHr />
 
-          {catsToRender.map((cat) => {
+          {catsToRender.map((cat, index) => {
             const { catsId, catsName } = cat;
 
             return (
-              <InnerFormDiv key={catsId} className="cat-choice">
+              <InnerFormDiv key={catsId} {...{ index }} className="cat-choice">
                 <CustomBalancedText type="optionsLabel" className="over-bg">
                   {catsName}
                 </CustomBalancedText>

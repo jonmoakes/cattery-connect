@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { customYellow, softBlack } from "../colours";
+import { customYellow, darkGold, softBlack } from "../colours";
 
 export const LoadingText = styled.p`
   margin-top: 1rem;
@@ -39,7 +39,11 @@ export const OptionsLabel = styled.p`
 
   &.over-bg {
     margin: 10px auto 10px auto;
-    background-color: ${softBlack};
+    background-color: ${darkGold};
+    border: 1px solid ${softBlack};
+    border-radius: 5px;
+    color: ${softBlack};
+    text-shadow: none;
     border-radius: 5px;
     padding: 10px 20px;
     opacity: 0.9;

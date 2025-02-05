@@ -40,10 +40,10 @@ const CheckInAndOutTimeSlot = ({
           </RadioLabelDiv>
 
           {condition
-            ? timeSlotRadioChoices.map((choice) => {
+            ? timeSlotRadioChoices.map((choice, index) => {
                 const { id, label, value } = choice;
                 return (
-                  <InnerFormDiv key={id} className="slot-choice">
+                  <InnerFormDiv key={id} {...{ index }} className="slot-choice">
                     <CustomBalancedText type="optionsLabel" className="over-bg">
                       {label}
                     </CustomBalancedText>

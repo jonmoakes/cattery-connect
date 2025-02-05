@@ -8,6 +8,7 @@ export const rustRed = "#A64B2A";
 export const dustyBlue = "#C4D8E2";
 export const steelBlue = "#7fa4b5";
 export const customGreen = "#00ff83";
+export const darkGold = "#b8860b";
 export const radialGreen = `radial-gradient(circle, #317773, #3c7c6c, #3a6e5a)`;
 export const radialLightGreen = `radial-gradient(circle, #00ff83, #33cc66, #2a9f55);`;
 export const radialBeige = `radial-gradient(circle, #fcd19c, #e3b77f, #c6975a)`;
