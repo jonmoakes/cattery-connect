@@ -11,10 +11,17 @@ import { BlackHr } from "../../../../../styles/hr/hr.styles";
 
 import { timeSlotRadioChoices } from "./time-slot-radio-choices";
 
-const CheckInAndOutTimeSlot = ({ condition, slotType, showHr }) => {
+const CheckInAndOutTimeSlot = ({
+  slotType,
+  checkInSlot,
+  checkOutSlot,
+  condition,
+  showHr,
+}) => {
   const { handleChooseCheckInAndOutTimeSlotChange } =
     useHandleCheckInAndOutTimeSlotChange();
 
+  const selectedValue = slotType === "checkInSlot" ? checkInSlot : checkOutSlot;
   const highlightedText =
     slotType === "checkInSlot" ? "check in slot time:" : "check out slot time:";
 
@@ -45,6 +52,7 @@ const CheckInAndOutTimeSlot = ({ condition, slotType, showHr }) => {
                       type="radio"
                       name={slotType}
                       value={value}
+                      checked={selectedValue === value}
                       onChange={(event) =>
                         handleChooseCheckInAndOutTimeSlotChange(event, slotType)
                       }

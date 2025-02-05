@@ -4,7 +4,7 @@ import useGetDbManageAddBookingSelectors from "../../../hooks/selectors/use-get-
 
 import CustomSpan from "../../../components/custom-span/custom-span.component";
 
-import { DataDiv } from "../../../styles/div/div.styles";
+import { BookingWrapper, DataDiv } from "../../../styles/div/div.styles";
 import { BlackHr } from "../../../styles/hr/hr.styles";
 
 const ShowBookingDataBeforeBooking = () => {
@@ -18,62 +18,64 @@ const ShowBookingDataBeforeBooking = () => {
   } = useGetDbManageAddBookingSelectors();
 
   return (
-    <DataDiv>
-      <h3>booking details:</h3>
-      <ul>
-        <li>
-          customer name:
-          <br />
-          <CustomSpan color="yellow">{customerName}</CustomSpan>
-        </li>
-        <BlackHr />
-        <li>
-          cats in the booking:
-          <br />
-          <CustomSpan color="yellow">
-            {catsInBooking &&
-              catsInBooking.map((str) => str.split(" ")).join(", ")}
-          </CustomSpan>
-        </li>
-        <BlackHr />
-        <li>
-          check in date:
-          <br />
-          <CustomSpan color="yellow">
-            {format(checkInDate, "EEEE dd MMMM yyyy")}
-          </CustomSpan>
-        </li>
-        <BlackHr />
-        <li>
-          check in slot:
-          <br />
-          <CustomSpan type="uppercase">{checkInSlot}</CustomSpan>
-        </li>
-        <BlackHr />
-        <li>
-          check out date:
-          <br />
-          <CustomSpan color="yellow">
-            {format(checkOutDate, "EEEE dd MMMM yyyy")}
-          </CustomSpan>
-        </li>
-        <BlackHr />
-        <li>
-          check out slot:
-          <br />
-          <CustomSpan type="uppercase">{checkOutSlot}</CustomSpan>
-        </li>
-        <BlackHr />
-      </ul>
-      <p>
-        if you are happy with these details, tap the 'add booking' button below
-        to check for availability.
-      </p>
-      <p>
-        if availability is confirmed, you will have chance to confirm again
-        before making the booking.
-      </p>
-    </DataDiv>
+    <BookingWrapper>
+      <DataDiv>
+        <h3>booking details:</h3>
+        <ul>
+          <li>
+            customer name:
+            <br />
+            <CustomSpan color="yellow">{customerName}</CustomSpan>
+          </li>
+          <BlackHr />
+          <li>
+            cats in the booking:
+            <br />
+            <CustomSpan color="yellow">
+              {catsInBooking &&
+                catsInBooking.map((str) => str.split(" ")).join(", ")}
+            </CustomSpan>
+          </li>
+          <BlackHr />
+          <li>
+            check in date:
+            <br />
+            <CustomSpan color="yellow">
+              {format(checkInDate, "EEEE dd MMMM yyyy")}
+            </CustomSpan>
+          </li>
+          <BlackHr />
+          <li>
+            check in slot:
+            <br />
+            <CustomSpan type="uppercase">{checkInSlot}</CustomSpan>
+          </li>
+          <BlackHr />
+          <li>
+            check out date:
+            <br />
+            <CustomSpan color="yellow">
+              {format(checkOutDate, "EEEE dd MMMM yyyy")}
+            </CustomSpan>
+          </li>
+          <BlackHr />
+          <li>
+            check out slot:
+            <br />
+            <CustomSpan type="uppercase">{checkOutSlot}</CustomSpan>
+          </li>
+          <BlackHr />
+        </ul>
+        <p>
+          if you are happy with these details, tap the 'check availability'
+          button below.
+        </p>
+        <p>
+          if availability is confirmed, you will have chance to confirm again
+          before making the booking.
+        </p>
+      </DataDiv>
+    </BookingWrapper>
   );
 };
 

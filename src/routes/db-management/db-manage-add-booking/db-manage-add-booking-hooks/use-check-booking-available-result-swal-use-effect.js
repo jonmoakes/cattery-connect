@@ -28,8 +28,9 @@ const useCheckBookingAvailableResultSwalUseEffect = () => {
       return;
 
     if (status === "bookingAvailable") {
-      dispatch(resetDbManageIsBookingAvailableResult());
-      console.log("booked");
+      // dispatch(resetDbManageIsBookingAvailableResult());
+      // console.log("booked");
+      return;
       // confirmSwal(
       //   "are yousure you want to place this booking?",
       //   "",

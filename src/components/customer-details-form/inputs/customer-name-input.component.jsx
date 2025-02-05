@@ -12,7 +12,7 @@ const CustomerNameInput = ({ handleCustomerDetailsChange }) => {
     <>
       <BlackHr />
       <Label>
-        <CustomSpan>* </CustomSpan>
+        <CustomSpan color="red">* </CustomSpan>
         name:
       </Label>
 

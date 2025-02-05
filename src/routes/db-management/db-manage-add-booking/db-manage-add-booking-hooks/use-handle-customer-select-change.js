@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import useGetAllCustomerSelectors from "../../../../hooks/selectors/use-get-all-customers-selectors";
@@ -18,7 +17,6 @@ const useHandleCustomerSelectChange = () => {
     showIneligibleDates,
   } = useGetDbManageAddBookingSelectors();
   const { allCustomers } = useGetAllCustomerSelectors();
-  const [customerName, setCustomerName] = useState("");
 
   const dispatch = useDispatch();
 
@@ -26,8 +24,6 @@ const useHandleCustomerSelectChange = () => {
     const selectedCustomer = allCustomers.find(
       (customer) => customer.name === e.target.value
     );
-
-    setCustomerName(selectedCustomer?.name || "");
 
     const parsedCustomerCatDetails = JSON.parse(
       selectedCustomer?.catDetails || []
@@ -50,6 +46,7 @@ const useHandleCustomerSelectChange = () => {
         checkOutSlot: "",
       })
     );
+
     if (dbManageIsBookingAvailableResult) {
       dispatch(resetDbManageIsBookingAvailableResult());
     }
@@ -61,7 +58,7 @@ const useHandleCustomerSelectChange = () => {
     }
   };
 
-  return { customerName, handleCustomerSelectChange };
+  return { handleCustomerSelectChange };
 };
 
 export default useHandleCustomerSelectChange;

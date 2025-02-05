@@ -21,7 +21,7 @@ const useConfirmAddBooking = () => {
 
   const dispatch = useDispatch();
 
-  const shouldShowAvailabilityCheckButton =
+  const shouldShowFormSubmissionButtons =
     customerDocumentId &&
     customerName &&
     catsInBooking &&
@@ -45,7 +45,7 @@ const useConfirmAddBooking = () => {
     );
   };
 
-  return { shouldShowAvailabilityCheckButton, checkBookingAvailability };
+  return { shouldShowFormSubmissionButtons, checkBookingAvailability };
 };
 
 export default useConfirmAddBooking;

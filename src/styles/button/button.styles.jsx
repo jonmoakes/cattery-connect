@@ -49,6 +49,16 @@ export const Button = styled.button`
     }
   }
 
+  &.margin {
+    margin: 50px auto 30px auto;
+  }
+
+  &.red {
+    background: ${radialRustRed};
+    color: whitesmoke;
+    text-shadow: 1px 1px 1px ${softBlack};
+  }
+
   @media screen and (max-width: 320px) {
     width: 200px;
   }

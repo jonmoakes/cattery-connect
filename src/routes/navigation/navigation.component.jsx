@@ -14,7 +14,6 @@ const Navigation = () => {
   const { signOutIsLoading } = useGetCurrentUserSelectors();
   const { showHamburgerMenu } = useGetHamburgerMenuSelectors();
 
-  console.log(signOutIsLoading);
   return (
     <>
       {signOutIsLoading ? (

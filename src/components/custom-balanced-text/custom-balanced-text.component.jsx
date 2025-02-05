@@ -14,9 +14,9 @@ const CustomBalancedText = ({ type, color, className, children }) => {
 
   return (
     <TextDiv>
-      <Balancer>
-        <Component className={className}>{children}</Component>
-      </Balancer>
+      <Component className={className}>
+        <Balancer>{children} </Balancer>
+      </Component>
     </TextDiv>
   );
 };

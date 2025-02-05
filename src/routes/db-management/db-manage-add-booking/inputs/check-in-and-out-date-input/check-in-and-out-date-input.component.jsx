@@ -13,7 +13,7 @@ import {
 } from "../../../../../styles/div/div.styles";
 import { BlackHr } from "../../../../../styles/hr/hr.styles";
 
-const CheckInAndOutDateInput = ({ condition, dateType, selectedDate }) => {
+const CheckInAndOutDateInput = ({ dateType, condition, selectedDate }) => {
   const { handleCheckInAndOutDatesChange } =
     useHandleCheckInAndOutDatesChange();
 

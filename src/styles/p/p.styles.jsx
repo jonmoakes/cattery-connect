@@ -43,6 +43,11 @@ export const OptionsLabel = styled.p`
     border-radius: 5px;
     padding: 10px 20px;
     opacity: 0.9;
+    width: 70%;
+
+    @media screen and (max-width: 600px) {
+      width: 90%;
+    }
   }
 
   &.wrap {

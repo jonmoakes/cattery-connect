@@ -8,6 +8,7 @@ import CustomSpan from "../../components/custom-span/custom-span.component";
 
 import { RelativePositionDiv } from "../../styles/div/div.styles";
 import { Label, PasswordInput } from "../../styles/form/form.styles";
+import { SignInPasswordEye } from "../../styles/span/span.styles.jsx";
 
 const SignInPassword = ({ handleSignInFormChange }) => {
   const { password } = useGetSignInFormSelectors();
@@ -30,8 +31,7 @@ const SignInPassword = ({ handleSignInFormChange }) => {
         />
 
         {password.length ? (
-          <CustomSpan
-            type="signInPassword"
+          <SignInPasswordEye
             {...{ signInPasswordIsVisible }}
             onClick={() => dispatch(toggleSignInPasswordIsVisible())}
           />

@@ -7,7 +7,7 @@ import { setShowIneligibleDates } from "../../../store/db-manage-add-booking/db-
 import CustomBalancedText from "../../../components/custom-balanced-text/custom-balanced-text.component";
 import CustomSpan from "../../../components/custom-span/custom-span.component";
 
-import { DataDiv } from "../../../styles/div/div.styles";
+import { BookingWrapper, DataDiv } from "../../../styles/div/div.styles";
 import { BlackHr } from "../../../styles/hr/hr.styles";
 import { MinimalButton } from "../../../styles/button/button.styles";
 
@@ -21,8 +21,8 @@ const FailedDatesInfo = () => {
       {status === "bookingNotAvailable" &&
       failingDates &&
       failingDates.length ? (
-        <>
-          <CustomBalancedText color="white">
+        <BookingWrapper className="unavailable">
+          <CustomBalancedText>
             this booking can't be completed because some date(
             <CustomSpan type="lowercase">s</CustomSpan>) and / or slot(
             <CustomSpan type="lowercase">s</CustomSpan>) dont have enough
@@ -64,17 +64,11 @@ const FailedDatesInfo = () => {
               })}
             </>
           ) : null}
-          <CustomBalancedText color="white">
-            you can try changing the booking details and then tap the
+          <CustomBalancedText>
+            you can try changing the booking details and then tap the button
+            below again, otherwise this booking can't be made 😿
           </CustomBalancedText>
-          <CustomBalancedText color="white">
-            'check availability'
-          </CustomBalancedText>
-          <CustomBalancedText color="white">
-            button below again, otherwise this booking can't be made 😿
-          </CustomBalancedText>
-          <BlackHr />
-        </>
+        </BookingWrapper>
       ) : status === "bookingNotAvailable" && !failingDates ? (
         <DataDiv className="error">
           <CustomBalancedText color="white">

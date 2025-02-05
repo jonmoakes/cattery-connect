@@ -527,20 +527,39 @@ export const RadioLabelDiv = styled.div`
   margin: 30px auto -10px auto;
 `;
 
-export const DataDiv = styled.div`
-  background: ${radialSteelBlue};
+export const BookingWrapper = styled.div`
   width: 90%;
   height: auto;
+  margin: 0 auto;
   border: 1px solid ${softBlack};
-  border-radius: 5px;
-  margin: 0px auto 40px auto;
-  padding: 20px 0px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+
+  &.unavailable {
+    background: ${radialGrey};
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+`;
+
+export const DataDiv = styled.div`
+  background: ${radialSteelBlue};
+  width: 100%;
+  height: auto;
+  margin: 0px auto 0px auto;
   animation: 0.5s ${bounceInDownAnimation};
+  padding: 20px 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 
   &.error {
     background: ${radialRustRed};
     width: 90%;
     margin: 10px auto 0px auto;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
   }
 `;
 

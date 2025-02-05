@@ -14,22 +14,25 @@ import CheckInAndOutDateInput from "./inputs/check-in-and-out-date-input/check-i
 import CheckInAndOutTimeSlotSelectInput from "./inputs/check-in-out-and-time-slot-input/check-in-and-out-time-slot.component";
 import ShowBookingDataBeforeBooking from "./show-booking-data-before-booking.component";
 import FailedDatesInfo from "./failed-dates-info.component";
+import CheckAvailabilityButton from "./check-availability-button.component";
+import BookingIsAvailableInfoAndPlaceBookingButton from "./booking-is-available-info-and-place-booking-button.component";
 
 import { Container } from "../../../styles/container/container.styles";
 import { ParentDiv } from "../../../styles/div/div.styles";
 import { Form } from "../../../styles/form/form.styles";
-import { Button } from "../../../styles/button/button.styles";
 
 const DbManageAddBooking = () => {
   const {
     checkInDate,
     checkInSlot,
     checkOutDate,
+    checkOutSlot,
     catteryAllowsLargerPensError,
+    status,
   } = useGetDbManageAddBookingSelectors();
   const { customerHasOneCatOrMoreThanOneCatAndAtLeastOneHasBeenSelected } =
     useAddBookingVariables();
-  const { shouldShowAvailabilityCheckButton, checkBookingAvailability } =
+  const { shouldShowFormSubmissionButtons, checkBookingAvailability } =
     useConfirmAddBooking();
   useGetAllowsLargerPensBoolAndOwnersCustomersThunkUseEffect();
   useCheckInAndOutDateValidityUseEffect();
@@ -44,44 +47,49 @@ const DbManageAddBooking = () => {
       ) : (
         <ParentDiv>
           <Form onSubmit={checkBookingAvailability}>
-            <ChooseCustomerSelectInput />
+            {status === "bookingAvailable" ? null : (
+              <>
+                <ChooseCustomerSelectInput />
+                <ChooseCatsInput />
+                <CheckInAndOutDateInput
+                  dateType="checkInDate"
+                  condition={
+                    customerHasOneCatOrMoreThanOneCatAndAtLeastOneHasBeenSelected
+                  }
+                  selectedDate={checkInDate}
+                />
 
-            <ChooseCatsInput />
+                <CheckInAndOutTimeSlotSelectInput
+                  slotType="checkInSlot"
+                  checkInSlot={checkInSlot}
+                  checkOutSlot={checkOutSlot}
+                  condition={checkInDate}
+                  showHr={checkInDate}
+                />
+                <CheckInAndOutDateInput
+                  dateType="checkOutDate"
+                  condition={
+                    customerHasOneCatOrMoreThanOneCatAndAtLeastOneHasBeenSelected &&
+                    checkInSlot
+                  }
+                  selectedDate={checkOutDate}
+                />
+                <CheckInAndOutTimeSlotSelectInput
+                  slotType="checkOutSlot"
+                  checkInSlot={checkInSlot}
+                  checkOutSlot={checkOutSlot}
+                  condition={checkOutDate}
+                  showHr={checkOutDate}
+                />
+              </>
+            )}
 
-            <CheckInAndOutDateInput
-              condition={
-                customerHasOneCatOrMoreThanOneCatAndAtLeastOneHasBeenSelected
-              }
-              dateType="checkInDate"
-              selectedDate={checkInDate}
-            />
-
-            <CheckInAndOutTimeSlotSelectInput
-              condition={checkInDate}
-              slotType="checkInSlot"
-              showHr={checkInDate}
-            />
-
-            <CheckInAndOutDateInput
-              condition={
-                customerHasOneCatOrMoreThanOneCatAndAtLeastOneHasBeenSelected &&
-                checkInSlot
-              }
-              dateType="checkOutDate"
-              selectedDate={checkOutDate}
-            />
-
-            <CheckInAndOutTimeSlotSelectInput
-              condition={checkOutDate}
-              slotType="checkOutSlot"
-              showHr={checkOutDate}
-            />
-
-            {shouldShowAvailabilityCheckButton ? (
+            {shouldShowFormSubmissionButtons ? (
               <>
                 <ShowBookingDataBeforeBooking />
                 <FailedDatesInfo />
-                <Button type="submit">check availability</Button>
+                <CheckAvailabilityButton />
+                <BookingIsAvailableInfoAndPlaceBookingButton />
               </>
             ) : null}
           </Form>
