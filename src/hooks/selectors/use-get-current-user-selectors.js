@@ -6,8 +6,7 @@ const useGetCurrentUserSelectors = () => {
     currentUser,
     currentUserIsLoading,
     currentUserError,
-    allUsers,
-    allUsersError,
+    signOutIsLoading,
   } = useSelector(selectCurrentUserSelectors);
 
   const { email, id, name, role, catteryId } = currentUser ?? {};
@@ -21,8 +20,7 @@ const useGetCurrentUserSelectors = () => {
     name,
     role,
     catteryId,
-    allUsers,
-    allUsersError,
+    signOutIsLoading,
   };
 };
 

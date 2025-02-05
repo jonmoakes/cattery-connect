@@ -1,8 +1,9 @@
 import useGetCustomerDetailsManagementSelectors from "../../../hooks/selectors/use-get-customer-details-management-selectors";
 
+import CustomSpan from "../../custom-span/custom-span.component";
+
 import { StyledInput, Label } from "../../../styles/form/form.styles";
 import { BlackHr } from "../../../styles/hr/hr.styles";
-import { RedSpan } from "../../../styles/span/span.styles";
 
 const CustomerNameInput = ({ handleCustomerDetailsChange }) => {
   const { name } = useGetCustomerDetailsManagementSelectors();
@@ -11,7 +12,7 @@ const CustomerNameInput = ({ handleCustomerDetailsChange }) => {
     <>
       <BlackHr />
       <Label>
-        <RedSpan>* </RedSpan>
+        <CustomSpan>* </CustomSpan>
         name:
       </Label>
 

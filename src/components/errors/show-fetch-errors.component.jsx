@@ -1,12 +1,12 @@
-import Balancer from "react-wrap-balancer";
 import useHandleShowError from "./errors-hooks/use-handle-show-error";
+
+import CustomSpan from "../custom-span/custom-span.component";
 
 import { ErrorDiv, ParentDiv } from "../../styles/div/div.styles";
 import { RadialTealButton } from "../../styles/button/button.styles";
 import { StyledLink } from "../../styles/link/link.styles";
 
 import { contactRoute } from "../../strings/routes";
-import { YellowSpan } from "../../styles/span/span.styles";
 
 const ShowFetchErrors = () => {
   const { showErrorHeading, errorToDisplay } = useHandleShowError();
@@ -16,16 +16,14 @@ const ShowFetchErrors = () => {
       {errorToDisplay() ? (
         <ParentDiv>
           <p>
-            <Balancer>
-              sorry, there was an error fetching data on our end. please see the
-              details below:
-            </Balancer>
+            sorry, there was an error fetching data on our end. please see the
+            details below:
           </p>
           <ErrorDiv className="fetch-error">
             <p>{showErrorHeading()}</p>
             <p>
               error received:
-              <br />'<YellowSpan>{errorToDisplay()}</YellowSpan>'
+              <br />'<CustomSpan color="yellow">{errorToDisplay()}</CustomSpan>'
             </p>
           </ErrorDiv>
 

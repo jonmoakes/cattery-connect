@@ -1,6 +1,8 @@
-import Balancer from "react-wrap-balancer";
-import { Form, StyledSelect } from "../../styles/form/form.styles";
 import useGetAllCustomerSelectors from "../../hooks/selectors/use-get-all-customers-selectors";
+
+import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
+
+import { Form, StyledSelect } from "../../styles/form/form.styles";
 
 const CustomerSelectionForm = ({
   selectedCustomer,
@@ -10,12 +12,10 @@ const CustomerSelectionForm = ({
 
   return (
     <>
-      <p>
-        <Balancer>
-          to add a cat, please first select the owner of the cat from the list
-          below.
-        </Balancer>
-      </p>
+      <CustomBalancedText>
+        to add a cat, please first select the owner of the cat from the list
+        below.
+      </CustomBalancedText>
 
       <Form className="select-form">
         <StyledSelect

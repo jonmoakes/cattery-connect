@@ -6,6 +6,7 @@ const initialState = {
   currentUser: null,
   currentUserIsLoading: false,
   currentUserError: null,
+  signOutIsLoading: false,
 };
 
 const userSlice = createSlice({
@@ -21,12 +22,18 @@ const userSlice = createSlice({
       (state) => state.currentUser,
       (state) => state.currentUserIsLoading,
       (state) => state.currentUserError,
-      (state) => state.emailOtpUserId,
-      (currentUser, currentUserIsLoading, currentUserError) => {
+      (state) => state.signOutIsLoading,
+      (
+        currentUser,
+        currentUserIsLoading,
+        currentUserError,
+        signOutIsLoading
+      ) => {
         return {
           currentUser,
           currentUserIsLoading,
           currentUserError,
+          signOutIsLoading,
         };
       }
     ),
@@ -60,16 +67,15 @@ const userSlice = createSlice({
         state.currentUserError = action.payload;
       })
       .addCase(signOutAsync.pending, (state) => {
-        state.currentUserIsLoading = true;
+        state.signOutIsLoading = true;
       })
       .addCase(signOutAsync.fulfilled, (state) => {
-        state.currentUserIsLoading = false;
+        state.signOutIsLoading = false;
         state.currentUser = null;
         state.currentUserError = null;
-        state.emailOtpUserId = "";
       })
       .addCase(signOutAsync.rejected, (state, action) => {
-        state.currentUserIsLoading = false;
+        state.signOutIsLoading = false;
         state.currentUserError = action.payload;
       });
   },

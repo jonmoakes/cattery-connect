@@ -4,9 +4,10 @@ import useGetSignInFormSelectors from "../../hooks/selectors/use-get-sign-in-for
 import useGetPasswordIsVisibleSelectors from "../../hooks/selectors/use-get-password-is-visible-selectors";
 import { toggleSignInPasswordIsVisible } from "../../store/password-is-visible/password-is-visible.slice";
 
+import CustomSpan from "../../components/custom-span/custom-span.component";
+
 import { RelativePositionDiv } from "../../styles/div/div.styles";
 import { Label, PasswordInput } from "../../styles/form/form.styles";
-import { RedSpan, SignInPasswordEye } from "../../styles/span/span.styles";
 
 const SignInPassword = ({ handleSignInFormChange }) => {
   const { password } = useGetSignInFormSelectors();
@@ -17,7 +18,7 @@ const SignInPassword = ({ handleSignInFormChange }) => {
   return (
     <>
       <Label>
-        <RedSpan>* </RedSpan>password:
+        <CustomSpan color="red">* </CustomSpan>password:
       </Label>
       <RelativePositionDiv>
         <PasswordInput
@@ -29,7 +30,8 @@ const SignInPassword = ({ handleSignInFormChange }) => {
         />
 
         {password.length ? (
-          <SignInPasswordEye
+          <CustomSpan
+            type="signInPassword"
             {...{ signInPasswordIsVisible }}
             onClick={() => dispatch(toggleSignInPasswordIsVisible())}
           />

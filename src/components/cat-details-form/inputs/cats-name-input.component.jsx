@@ -1,8 +1,9 @@
 import useGetCatDetailsManagementSelectors from "../../../hooks/selectors/use-get-cat-details-management-selectors";
 
+import CustomSpan from "../../custom-span/custom-span.component";
+
 import { StyledInput, Label } from "../../../styles/form/form.styles";
 import { BlackHr } from "../../../styles/hr/hr.styles";
-import { RedSpan } from "../../../styles/span/span.styles";
 
 const CatsNameInput = ({ handleCatDetailsChange }) => {
   const { catsName } = useGetCatDetailsManagementSelectors();
@@ -11,7 +12,7 @@ const CatsNameInput = ({ handleCatDetailsChange }) => {
     <>
       <BlackHr />
       <Label>
-        <RedSpan>* </RedSpan>
+        <CustomSpan color="red">* </CustomSpan>
         name:
       </Label>
 

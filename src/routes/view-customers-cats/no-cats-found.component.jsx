@@ -1,8 +1,7 @@
-import Balancer from "react-wrap-balancer";
-
 import useViewCustomersCatsFunctions from "./view-customers-cats-hooks/use-view-customers-cats-functions";
 import useViewCustomersCatsVariables from "./view-customers-cats-hooks/use-view-customers-cats-variables";
 
+import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
 import ViewCatsNoRequiredObject from "./view-cats-no-required-object.component";
 
 import { ParentDiv } from "../../styles/div/div.styles";
@@ -20,16 +19,14 @@ const NoCatsFound = () => {
         <ViewCatsNoRequiredObject />
       ) : !data.length ? (
         <ParentDiv>
-          <p>
-            <Balancer>
-              no cats have been created for this customer yet.
-            </Balancer>
-          </p>
+          <CustomBalancedText>
+            no cats have been created for this customer yet.
+          </CustomBalancedText>
 
-          <p>
+          <CustomBalancedText>
             you can add a cat for {getFirstNameFromString(customerName)} by
             tapping on the button below.
-          </p>
+          </CustomBalancedText>
           <RadialTealButton onClick={goToAddCatRoutePassingNoExtraData}>
             add a cat
           </RadialTealButton>

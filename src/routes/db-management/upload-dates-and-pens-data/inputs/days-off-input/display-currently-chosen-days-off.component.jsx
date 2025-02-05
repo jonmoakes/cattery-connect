@@ -6,11 +6,11 @@ import {
   resetDatesClosedArray,
 } from "../../../../../store/upload-dates-and-pens-data/upload-dates-and-pens-data.slice";
 
+import CustomBalancedText from "../../../../../components/custom-balanced-text/custom-balanced-text.component";
+
 import { MinimalButton } from "../../../../../styles/button/button.styles";
 import { format } from "date-fns";
 import { BlackHr } from "../../../../../styles/hr/hr.styles";
-import { WhiteText, YellowText } from "../../../../../styles/p/p.styles";
-import Balancer from "react-wrap-balancer";
 
 const DisplayCurrentlyChosenDaysOff = () => {
   const { datesClosedArray, dateClosedToAdd } =
@@ -30,15 +30,18 @@ const DisplayCurrentlyChosenDaysOff = () => {
       {datesClosedArray && datesClosedArray.length ? (
         <>
           <BlackHr />
-          <WhiteText>
-            <Balancer>current days off you have selected:</Balancer>
-          </WhiteText>
+          <CustomBalancedText color="white">
+            current days off you have selected:
+          </CustomBalancedText>
+
           {datesClosedArray.map((dateClosed) => (
-            <YellowText key={dateClosed}>
+            <CustomBalancedText color="yellow" key={dateClosed}>
               {format(dateClosed, "EEEE dd MMMM yyyy")}
-            </YellowText>
+            </CustomBalancedText>
           ))}
+
           <BlackHr />
+
           <MinimalButton
             className="margin"
             type="button"
@@ -46,6 +49,7 @@ const DisplayCurrentlyChosenDaysOff = () => {
           >
             reset days off
           </MinimalButton>
+
           <BlackHr />
         </>
       ) : null}

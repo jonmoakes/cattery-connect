@@ -80,6 +80,7 @@ const GlobalStyles = createGlobalStyle`
     font-size: calc(1rem);
   margin-bottom: 10px;
   color: ${softBlack};
+
   }
 
 

@@ -1,4 +1,4 @@
-import Balancer from "react-wrap-balancer";
+import CustomBalancedText from "../custom-balanced-text/custom-balanced-text.component";
 
 import parseContent from "./parse-content.component";
 
@@ -12,14 +12,12 @@ const HelpAccordionContent = ({ data }) => (
         return (
           <AccordionDetails key={id}>
             {title && <h2>{title}</h2>}
-            <p>
-              <Balancer>{parseContent(content)}</Balancer>
-            </p>
+            <CustomBalancedText>{parseContent(content)}</CustomBalancedText>
           </AccordionDetails>
         );
       })
     ) : (
-      <p>error fetching help...</p>
+      <CustomBalancedText>error fetching help...</CustomBalancedText>
     )}
   </>
 );

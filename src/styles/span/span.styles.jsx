@@ -10,6 +10,7 @@ import {
   customYellow,
   gentleGrey,
   customGreen,
+  rustRed,
 } from "../colours";
 
 const zoomInLeftAnimation = keyframes`${zoomInLeft}`;
@@ -33,14 +34,6 @@ export const HamburgerSpanCloseMenu = styled(HamburgerSpan)`
   background-color: ${softBlack};
 `;
 
-export const BlackSpan = styled.span`
-  color: ${softBlack};
-`;
-
-export const RedSpan = styled.span`
-  color: red;
-`;
-
 export const BackgroundSpan = styled.span`
   background-color: ${gentleGrey};
   color: ${softBlack};
@@ -50,6 +43,10 @@ export const BackgroundSpan = styled.span`
   min-width: 200px;
   display: flex;
   justify-content: center;
+`;
+
+export const RedSpan = styled.span`
+  color: ${rustRed};
 `;
 
 export const WhiteSpan = styled.span`
@@ -79,13 +76,9 @@ export const LowercasedSpan = styled.span`
 `;
 
 export const UppercaseSpan = styled.span`
-  color: whitesmoke;
+  color: ${customYellow};
   text-shadow: 1px 1px 1px ${softBlack};
   text-transform: uppercase;
-
-  &.yellow {
-    color: ${customYellow};
-  }
 `;
 
 export const SignInPasswordEye = styled.span.withConfig({

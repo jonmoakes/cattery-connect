@@ -543,3 +543,9 @@ export const DataDiv = styled.div`
     margin: 10px auto 0px auto;
   }
 `;
+
+export const TextDiv = styled.div`
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+`;

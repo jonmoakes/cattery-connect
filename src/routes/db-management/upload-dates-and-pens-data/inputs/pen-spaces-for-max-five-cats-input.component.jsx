@@ -1,7 +1,8 @@
 import useGetUploadDatesAndPensDataSelectors from "../../../../hooks/selectors/use-get-upload-dates-and-pens-data-selectors";
 
+import CustomSpan from "../../../../components/custom-span/custom-span.component";
+
 import { Label, StyledInput } from "../../../../styles/form/form.styles";
-import { RedSpan } from "../../../../styles/span/span.styles";
 
 const PenSpacesForMaxFiveCatsInput = ({ handleDatesAndPensChange }) => {
   const { penSpacesForMaxFiveCats } = useGetUploadDatesAndPensDataSelectors();
@@ -9,7 +10,7 @@ const PenSpacesForMaxFiveCatsInput = ({ handleDatesAndPensChange }) => {
   return (
     <>
       <Label>
-        <RedSpan>* </RedSpan>pen spaces ( max 5 cats ):
+        <CustomSpan color="red">* </CustomSpan>pen spaces ( max 5 cats ):
       </Label>
       <StyledInput
         type="text"

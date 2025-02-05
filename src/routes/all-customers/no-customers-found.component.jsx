@@ -1,7 +1,7 @@
-import Balancer from "react-wrap-balancer";
-
 import useAllCatsTableVariables from "../all-cats/all-cats-hooks/use-all-cats-table-variables";
 import useHamburgerHandlerNavigate from "../../hooks/use-hamburger-handler-navigate";
+
+import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
 
 import { ParentDiv } from "../../styles/div/div.styles";
 import { MinimalButton } from "../../styles/button/button.styles";
@@ -17,9 +17,9 @@ const NoCustomersFound = ({ data }) => {
       {!data.length ? (
         <ParentDiv>
           <h2>no customers found.</h2>
-          <p>
-            <Balancer>no customers have been created yet.</Balancer>
-          </p>
+          <CustomBalancedText>
+            no customers have been created yet.
+          </CustomBalancedText>
 
           {!atLeastOneCustomerExists ? (
             <MinimalButton

@@ -1,24 +1,21 @@
+import CustomSpan from "../../../custom-span/custom-span.component";
+
 import { VaxStatusDiv } from "../../../../styles/div/div.styles";
 import { Label } from "../../../../styles/form/form.styles";
 import { BlackHr } from "../../../../styles/hr/hr.styles";
-import {
-  RedSpan,
-  WhiteSpan,
-  GreenSpan,
-} from "../../../../styles/span/span.styles";
 
 const LabelAndCurrentChoice = ({ vaccinationStatus }) => (
   <>
     <BlackHr />
     <Label className="margin">
-      <RedSpan>* </RedSpan>vaccination status:
+      <CustomSpan color="red">* </CustomSpan>vaccination status:
     </Label>
 
     {vaccinationStatus ? (
       <VaxStatusDiv>
-        <WhiteSpan>your current selection is:</WhiteSpan>
+        <CustomSpan color="white">your current selection is:</CustomSpan>
         <br />
-        <GreenSpan>{vaccinationStatus}</GreenSpan>
+        <CustomSpan color="green">{vaccinationStatus}</CustomSpan>
       </VaxStatusDiv>
     ) : null}
   </>

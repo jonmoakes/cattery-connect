@@ -1,8 +1,8 @@
-import Balancer from "react-wrap-balancer";
-
 import useHamburgerHandlerNavigate from "../../hooks/use-hamburger-handler-navigate";
 
-import { BackgroundSpan } from "../../styles/span/span.styles";
+import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
+import CustomSpan from "../../components/custom-span/custom-span.component";
+
 import { SelectCustomerButton } from "../../styles/button/button.styles";
 import { BlackHr } from "../../styles/hr/hr.styles";
 
@@ -15,19 +15,17 @@ const ConfirmCustomerChoice = ({ selectedCustomer }) => {
     <>
       {selectedCustomer ? (
         <>
-          <p>you will be adding a cat for:</p>
+          <CustomBalancedText>you will be adding a cat for:</CustomBalancedText>
 
           <BlackHr />
-          <p>
-            <BackgroundSpan>{selectedCustomer.name}</BackgroundSpan>
-          </p>
+          <CustomBalancedText>
+            <CustomSpan type="background">{selectedCustomer.name}</CustomSpan>
+          </CustomBalancedText>
           <BlackHr />
-          <p>
-            <Balancer>
-              if this is correct, tap the button below to proceed, or choose
-              another customer from the list.
-            </Balancer>
-          </p>
+          <CustomBalancedText>
+            if this is correct, tap the button below to proceed, or choose
+            another customer from the list.
+          </CustomBalancedText>
 
           <SelectCustomerButton
             type="button"

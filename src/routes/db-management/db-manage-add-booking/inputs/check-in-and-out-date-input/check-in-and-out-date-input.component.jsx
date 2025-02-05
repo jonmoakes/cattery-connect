@@ -1,8 +1,10 @@
-import Balancer from "react-wrap-balancer";
 import { format } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
 
 import useHandleCheckInAndOutDatesChange from "./check-in-and-out-date-input-hooks/use-handle-check-in-and-out-dates-change";
+
+import CustomSpan from "../../../../../components/custom-span/custom-span.component";
+import CustomBalancedText from "../../../../../components/custom-balanced-text/custom-balanced-text.component";
 
 import { StyledDatePicker } from "../../../../../styles/date-picker/date-picker.styles";
 import {
@@ -10,8 +12,6 @@ import {
   StyledDatePickerWrapper,
 } from "../../../../../styles/div/div.styles";
 import { BlackHr } from "../../../../../styles/hr/hr.styles";
-import { OptionsLabel } from "../../../../../styles/p/p.styles";
-import { YellowSpan } from "../../../../../styles/span/span.styles";
 
 const CheckInAndOutDateInput = ({ condition, dateType, selectedDate }) => {
   const { handleCheckInAndOutDatesChange } =
@@ -19,6 +19,7 @@ const CheckInAndOutDateInput = ({ condition, dateType, selectedDate }) => {
 
   const highlightedText =
     dateType === "checkInDate" ? "check in date" : "check out date";
+
   return (
     <>
       {condition ? (
@@ -26,14 +27,12 @@ const CheckInAndOutDateInput = ({ condition, dateType, selectedDate }) => {
           <BlackHr />
           <DateInputContainer>
             <StyledDatePickerWrapper>
-              <OptionsLabel className="white">
-                <Balancer>
-                  {`tap the date to choose a `}
-                  {highlightedText && (
-                    <YellowSpan>{highlightedText}</YellowSpan>
-                  )}
-                </Balancer>
-              </OptionsLabel>
+              <CustomBalancedText type="optionsLabel">
+                {`tap the date to choose a `}
+                {highlightedText && (
+                  <CustomSpan color="yellow">{highlightedText}</CustomSpan>
+                )}
+              </CustomBalancedText>
 
               <StyledDatePicker
                 selected={

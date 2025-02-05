@@ -1,23 +1,20 @@
-import Balancer from "react-wrap-balancer";
+import CustomBalancedText from "../custom-balanced-text/custom-balanced-text.component";
+import CustomSpan from "../custom-span/custom-span.component";
 
 import { NoSearchResultDiv } from "../../styles/div/div.styles";
-
-import { ClearButtonExampleSpan } from "../../styles/span/span.styles";
 
 const NoSearchResult = () => (
   <NoSearchResultDiv>
     <h2>no result found....</h2>
-    <p>
-      <Balancer>
-        please refine your search query or tap the
-        <br />
-        <br />
-        <ClearButtonExampleSpan>X</ClearButtonExampleSpan>
-        <br />
-        <br />
-        in the search bar to clear it.
-      </Balancer>
-    </p>
+    <CustomBalancedText>
+      please refine your search query or tap the
+      <br />
+      <br />
+      <CustomSpan type="clearButtonExample">X</CustomSpan>
+      <br />
+      <br />
+      in the search bar to clear it.
+    </CustomBalancedText>
   </NoSearchResultDiv>
 );
 

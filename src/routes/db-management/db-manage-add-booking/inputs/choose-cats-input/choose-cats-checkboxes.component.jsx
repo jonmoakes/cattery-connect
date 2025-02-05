@@ -1,12 +1,10 @@
-import Balancer from "react-wrap-balancer";
-
 import useGetDbManageAddBookingSelectors from "../../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
 import useAddBookingVariables from "../../db-manage-add-booking-hooks/use-add-booking-variables";
 import useHandleChooseCatsChange from "./choose-cats-input-hooks/use-handle-choose-cats-change";
 
+import CustomBalancedText from "../../../../../components/custom-balanced-text/custom-balanced-text.component";
 import OneCatInfo from "./one-cat-info.component";
 
-import { OptionsLabel, WhiteText } from "../../../../../styles/p/p.styles";
 import { InnerFormDiv } from "../../../../../styles/div/div.styles";
 import { StyledCheckbox } from "../../../../../styles/form/form.styles";
 import { BlackHr } from "../../../../../styles/hr/hr.styles";
@@ -23,12 +21,10 @@ const ChooseCatCheckboxes = () => {
         <OneCatInfo {...{ catsToRender }} />
       ) : customerHasMoreThanOneCat ? (
         <>
-          <WhiteText>
-            <Balancer>
-              please tap the square boxes to select which cats are going to be
-              in the booking:
-            </Balancer>
-          </WhiteText>
+          <CustomBalancedText color="white">
+            please tap the square boxes to select which cats are going to be in
+            the booking:
+          </CustomBalancedText>
           <BlackHr />
 
           {catsToRender.map((cat) => {
@@ -36,7 +32,9 @@ const ChooseCatCheckboxes = () => {
 
             return (
               <InnerFormDiv key={catsId} className="cat-choice">
-                <OptionsLabel className="over-bg">{catsName}</OptionsLabel>
+                <CustomBalancedText type="optionsLabel" className="over-bg">
+                  {catsName}
+                </CustomBalancedText>
                 <StyledCheckbox
                   onChange={handleChooseCatsChange}
                   className="multiple"

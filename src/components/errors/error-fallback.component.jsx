@@ -1,6 +1,5 @@
-import Balancer from "react-wrap-balancer";
-
 import ProgressiveImage from "../progressive-image/progressive-image.component";
+import CustomBalancedText from "../custom-balanced-text/custom-balanced-text.component";
 
 import { Container } from "../../styles/container/container.styles";
 import { ErrorFallbackImageDiv, ParentDiv } from "../../styles/div/div.styles";
@@ -11,23 +10,23 @@ import image from "../../assets/sad-cat.webp";
 const ErrorFallback = () => (
   <Container>
     <ParentDiv>
-      <h1>
-        <Balancer>
-          Sorry, there was an error,
-          <br />
-          'meowst' likely on our end...
-        </Balancer>
-      </h1>
+      <CustomBalancedText type="h1">
+        Sorry, there was an error,
+        <br />
+        'meowst' likely on our end...
+      </CustomBalancedText>
       <ErrorFallbackImageDiv>
         <ProgressiveImage {...{ image, altText: "sad cat" }} />
       </ErrorFallbackImageDiv>
 
-      <p>Please Try Checking Your internet Connection.</p>
+      <CustomBalancedText>
+        Please Try Checking Your internet Connection.
+      </CustomBalancedText>
 
-      <p>
+      <CustomBalancedText>
         if you're sure you're online, please try reloading the page by tapping
         the button below.
-      </p>
+      </CustomBalancedText>
       <RadialTealButton onClick={() => window.location.reload()}>
         reload the page
       </RadialTealButton>

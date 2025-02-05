@@ -1,6 +1,6 @@
-import Balancer from "react-wrap-balancer";
-
 import useAddBookingVariables from "../../db-manage-add-booking-hooks/use-add-booking-variables";
+
+import CustomBalancedText from "../../../../../components/custom-balanced-text/custom-balanced-text.component";
 
 import { ErrorDiv } from "../../../../../styles/div/div.styles";
 import { BlackHr } from "../../../../../styles/hr/hr.styles";
@@ -11,21 +11,17 @@ const CatsParsingError = () => {
 
   return (
     <ErrorDiv className="parse-error">
-      <p>
-        <Balancer>there was an error fetching the customers cats.</Balancer>
-      </p>
-      <p>
-        <Balancer>the error received was:</Balancer>
-      </p>
+      <CustomBalancedText>
+        there was an error fetching the customers cats.
+      </CustomBalancedText>
+      <CustomBalancedText>the error received was:</CustomBalancedText>
       <BlackHr />
-      <p>{error}</p>
+      <CustomBalancedText>{error}</CustomBalancedText>
       <BlackHr />
-      <p>
-        <Balancer>
-          tap the button below to relaod the page and if the error persists,
-          please contact jonathan
-        </Balancer>
-      </p>
+      <CustomBalancedText>
+        tap the button below to relaod the page and if the error persists,
+        please contact jonathan
+      </CustomBalancedText>
       <MinimalButton
         className="margin-bottom"
         type="button"

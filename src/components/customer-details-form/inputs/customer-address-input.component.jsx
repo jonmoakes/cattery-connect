@@ -1,7 +1,8 @@
 import useGetCustomerDetailsManagementSelectors from "../../../hooks/selectors/use-get-customer-details-management-selectors";
 
+import CustomSpan from "../../custom-span/custom-span.component";
+
 import { Label, StyledTextArea } from "../../../styles/form/form.styles";
-import { RedSpan } from "../../../styles/span/span.styles";
 
 const CustomerAddressInput = ({ handleCustomerDetailsChange }) => {
   const { address } = useGetCustomerDetailsManagementSelectors();
@@ -9,7 +10,7 @@ const CustomerAddressInput = ({ handleCustomerDetailsChange }) => {
   return (
     <>
       <Label>
-        <RedSpan>* </RedSpan>
+        <CustomSpan color="red">* </CustomSpan>
         customer address:
       </Label>
 

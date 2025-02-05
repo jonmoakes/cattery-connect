@@ -1,8 +1,9 @@
 import useGetUploadDatesAndPensDataSelectors from "../../../../hooks/selectors/use-get-upload-dates-and-pens-data-selectors";
 
+import CustomBalancedText from "../../../../components/custom-balanced-text/custom-balanced-text.component";
+import CustomSpan from "../../../../components/custom-span/custom-span.component";
+
 import { Label, StyledInput } from "../../../../styles/form/form.styles";
-import { YellowText } from "../../../../styles/p/p.styles";
-import { RedSpan } from "../../../../styles/span/span.styles";
 
 import { showInvalidDateInfo } from "../../../../functions/show-invalid-date-info";
 
@@ -12,7 +13,7 @@ const EndDateInput = ({ handleDatesAndPensChange }) => {
   return (
     <>
       <Label>
-        <RedSpan>* </RedSpan>end date:
+        <CustomSpan color="red">* </CustomSpan>end date:
       </Label>
       <StyledInput
         type="text"
@@ -23,7 +24,9 @@ const EndDateInput = ({ handleDatesAndPensChange }) => {
         placeholder="YYYY-MM-DD"
       />
       {showInvalidDateInfo(endDate) ? (
-        <YellowText>{showInvalidDateInfo(endDate)}</YellowText>
+        <CustomBalancedText color="yellow">
+          {showInvalidDateInfo(endDate)}
+        </CustomBalancedText>
       ) : null}
     </>
   );

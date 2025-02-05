@@ -33,22 +33,16 @@ export const YellowText = styled.p`
 `;
 
 export const OptionsLabel = styled.p`
-  color: ${softBlack};
   margin: 10px auto 10px auto;
-
-  &.white {
-    color: whitesmoke;
-    text-shadow: 1px 1px 1px ${softBlack};
-  }
+  color: whitesmoke;
+  text-shadow: 1px 1px 1px ${softBlack};
 
   &.over-bg {
+    margin: 10px auto 10px auto;
     background-color: ${softBlack};
-    color: whitesmoke;
-    text-shadow: 1px 1px 1px ${softBlack};
     border-radius: 5px;
-    padding: 5px;
+    padding: 10px 20px;
     opacity: 0.9;
-    width: 90%;
   }
 
   &.wrap {

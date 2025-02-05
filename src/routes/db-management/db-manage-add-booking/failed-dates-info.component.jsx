@@ -1,19 +1,15 @@
+import { useDispatch } from "react-redux";
 import { format } from "date-fns";
-import Balancer from "react-wrap-balancer";
 
 import useGetDbManageAddBookingSelectors from "../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
+import { setShowIneligibleDates } from "../../../store/db-manage-add-booking/db-manage-add-booking.slice";
 
-import { WhiteText } from "../../../styles/p/p.styles";
+import CustomBalancedText from "../../../components/custom-balanced-text/custom-balanced-text.component";
+import CustomSpan from "../../../components/custom-span/custom-span.component";
+
 import { DataDiv } from "../../../styles/div/div.styles";
-import {
-  LowercasedSpan,
-  UppercaseSpan,
-  YellowSpan,
-} from "../../../styles/span/span.styles";
 import { BlackHr } from "../../../styles/hr/hr.styles";
 import { MinimalButton } from "../../../styles/button/button.styles";
-import { useDispatch } from "react-redux";
-import { setShowIneligibleDates } from "../../../store/db-manage-add-booking/db-manage-add-booking.slice";
 
 const FailedDatesInfo = () => {
   const { status, failingDates, showIneligibleDates } =
@@ -26,13 +22,12 @@ const FailedDatesInfo = () => {
       failingDates &&
       failingDates.length ? (
         <>
-          <WhiteText>
-            <Balancer>
-              this booking can't be completed because some date(
-              <LowercasedSpan>s</LowercasedSpan>) and / or slot(
-              <LowercasedSpan>s</LowercasedSpan>) dont have enough availability:
-            </Balancer>
-          </WhiteText>
+          <CustomBalancedText color="white">
+            this booking can't be completed because some date(
+            <CustomSpan type="lowercase">s</CustomSpan>) and / or slot(
+            <CustomSpan type="lowercase">s</CustomSpan>) dont have enough
+            availability:
+          </CustomBalancedText>
           <BlackHr />
           <MinimalButton
             type="button"
@@ -51,43 +46,43 @@ const FailedDatesInfo = () => {
 
                 return (
                   <DataDiv key={id} className="error">
-                    <WhiteText>
+                    <CustomBalancedText color="white">
                       date:
                       <br />
-                      <YellowSpan>{format(date, "dd MMMM yyyy")}</YellowSpan>
-                    </WhiteText>
-                    <WhiteText>
+                      <CustomSpan color="yellow">
+                        {format(date, "dd MMMM yyyy")}
+                      </CustomSpan>
+                    </CustomBalancedText>
+                    <CustomBalancedText color="white">
                       slot:
                       <br />
-                      <UppercaseSpan className="yellow">{slot}</UppercaseSpan>
-                    </WhiteText>
+                      <CustomSpan type="uppercase">{slot}</CustomSpan>
+                    </CustomBalancedText>
                     <BlackHr />
                   </DataDiv>
                 );
               })}
             </>
           ) : null}
-          <WhiteText>
-            <Balancer>
-              you can try changing the booking details and then tap the
-            </Balancer>
-          </WhiteText>
-          <WhiteText>'check availability'</WhiteText>
-          <WhiteText>
-            <Balancer>
-              button below again, otherwise this booking can't be made 😿
-            </Balancer>
-          </WhiteText>
+          <CustomBalancedText color="white">
+            you can try changing the booking details and then tap the
+          </CustomBalancedText>
+          <CustomBalancedText color="white">
+            'check availability'
+          </CustomBalancedText>
+          <CustomBalancedText color="white">
+            button below again, otherwise this booking can't be made 😿
+          </CustomBalancedText>
           <BlackHr />
         </>
       ) : status === "bookingNotAvailable" && !failingDates ? (
         <DataDiv className="error">
-          <WhiteText>
+          <CustomBalancedText color="white">
             sorry, there was an error showing which dates are unavailable..
-          </WhiteText>
-          <WhiteText>
+          </CustomBalancedText>
+          <CustomBalancedText color="white">
             if you continue to se this error, please contact jonathan.
-          </WhiteText>
+          </CustomBalancedText>
         </DataDiv>
       ) : null}
     </>

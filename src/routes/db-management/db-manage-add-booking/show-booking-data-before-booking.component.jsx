@@ -1,10 +1,10 @@
 import { format } from "date-fns";
-import Balancer from "react-wrap-balancer";
 
 import useGetDbManageAddBookingSelectors from "../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
 
+import CustomSpan from "../../../components/custom-span/custom-span.component";
+
 import { DataDiv } from "../../../styles/div/div.styles";
-import { UppercaseSpan, YellowSpan } from "../../../styles/span/span.styles";
 import { BlackHr } from "../../../styles/hr/hr.styles";
 
 const ShowBookingDataBeforeBooking = () => {
@@ -19,59 +19,59 @@ const ShowBookingDataBeforeBooking = () => {
 
   return (
     <DataDiv>
-      <h3 className="white">booking details:</h3>
+      <h3>booking details:</h3>
       <ul>
         <li>
           customer name:
           <br />
-          <YellowSpan>{customerName}</YellowSpan>
+          <CustomSpan color="yellow">{customerName}</CustomSpan>
         </li>
         <BlackHr />
         <li>
           cats in the booking:
           <br />
-          <YellowSpan>
+          <CustomSpan color="yellow">
             {catsInBooking &&
               catsInBooking.map((str) => str.split(" ")).join(", ")}
-          </YellowSpan>
+          </CustomSpan>
         </li>
         <BlackHr />
         <li>
           check in date:
           <br />
-          <YellowSpan>{format(checkInDate, "EEEE dd MMMM yyyy")}</YellowSpan>
+          <CustomSpan color="yellow">
+            {format(checkInDate, "EEEE dd MMMM yyyy")}
+          </CustomSpan>
         </li>
         <BlackHr />
         <li>
           check in slot:
           <br />
-          <UppercaseSpan className="yellow">{checkInSlot}</UppercaseSpan>
+          <CustomSpan type="uppercase">{checkInSlot}</CustomSpan>
         </li>
         <BlackHr />
         <li>
           check out date:
           <br />
-          <YellowSpan>{format(checkOutDate, "EEEE dd MMMM yyyy")}</YellowSpan>
+          <CustomSpan color="yellow">
+            {format(checkOutDate, "EEEE dd MMMM yyyy")}
+          </CustomSpan>
         </li>
         <BlackHr />
         <li>
           check out slot:
           <br />
-          <UppercaseSpan className="yellow">{checkOutSlot}</UppercaseSpan>
+          <CustomSpan type="uppercase">{checkOutSlot}</CustomSpan>
         </li>
         <BlackHr />
       </ul>
       <p>
-        <Balancer>
-          if you are happy with these details, tap the 'add booking' button
-          below to check for availability.
-        </Balancer>
+        if you are happy with these details, tap the 'add booking' button below
+        to check for availability.
       </p>
       <p>
-        <Balancer>
-          if availability is confirmed, you will have chance to confirm again
-          before making the booking.
-        </Balancer>
+        if availability is confirmed, you will have chance to confirm again
+        before making the booking.
       </p>
     </DataDiv>
   );

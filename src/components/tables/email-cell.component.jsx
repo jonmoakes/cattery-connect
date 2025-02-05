@@ -1,10 +1,10 @@
 import { useState } from "react";
 
 import EmailIcon from "./email-icon.component";
+import CustomSpan from "../custom-span/custom-span.component";
 
 import { InLineDiv } from "../../styles/div/div.styles";
 import { ToggleShowEmailButton } from "../../styles/button/button.styles";
-import { LowercasedSpan } from "../../styles/span/span.styles";
 
 const EmailCell = ({ value }) => {
   const [showEmail, setShowEmail] = useState(false);
@@ -18,9 +18,9 @@ const EmailCell = ({ value }) => {
             onClick={() => setShowEmail(!showEmail)}
           />
           {showEmail ? (
-            <LowercasedSpan className="right-margin animate">
+            <CustomSpan type="lowercase" className="right-margin animate">
               {value}
-            </LowercasedSpan>
+            </CustomSpan>
           ) : null}
           <EmailIcon {...{ value }} />
         </>

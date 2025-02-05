@@ -1,10 +1,10 @@
 import { useState } from "react";
 
 import PhoneNumberIcon from "./phone-number-icon.component";
+import CustomSpan from "../custom-span/custom-span.component";
 
 import { InLineDiv } from "../../styles/div/div.styles";
 import { ToggleShowPhoneNumberButton } from "../../styles/button/button.styles";
-import { RightMarginSpan } from "../../styles/span/span.styles";
 
 const PhoneNumberCell = ({ value }) => {
   const [showPhone, setShowPhone] = useState(false);
@@ -21,7 +21,9 @@ const PhoneNumberCell = ({ value }) => {
           />
 
           {showPhone ? (
-            <RightMarginSpan className="animate">{value}</RightMarginSpan>
+            <CustomSpan type="rightMargin" className="animate">
+              {value}
+            </CustomSpan>
           ) : null}
           <PhoneNumberIcon {...{ value }} />
         </>
