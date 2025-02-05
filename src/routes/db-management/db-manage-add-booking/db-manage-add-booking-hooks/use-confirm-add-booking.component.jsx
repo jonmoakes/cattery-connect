@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import useGetDbManageAddBookingSelectors from "../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
 import { checkBookingAvailabilityAsync } from "../../../../store/db-manage-add-booking/db-manage-add-booking.thunks";
 import useGetCurrentUserSelectors from "../../../../hooks/selectors/use-get-current-user-selectors";
+import { setShowIneligibleDates } from "../../../../store/db-manage-add-booking/db-manage-add-booking.slice";
 
 const useConfirmAddBooking = () => {
   const {
@@ -14,6 +15,7 @@ const useConfirmAddBooking = () => {
     checkOutDate,
     checkOutSlot,
     catteryAllowsLargerPensBool,
+    showIneligibleDates,
   } = useGetDbManageAddBookingSelectors();
   const { catteryId } = useGetCurrentUserSelectors();
 
@@ -31,6 +33,9 @@ const useConfirmAddBooking = () => {
 
   const checkBookingAvailability = (event) => {
     event.preventDefault();
+    if (showIneligibleDates) {
+      dispatch(setShowIneligibleDates(false));
+    }
     dispatch(
       checkBookingAvailabilityAsync({
         dbManageAddBookingData,

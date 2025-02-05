@@ -5,11 +5,20 @@ import useGetDbManageAddBookingSelectors from "../../../hooks/selectors/use-get-
 
 import { WhiteText } from "../../../styles/p/p.styles";
 import { DataDiv } from "../../../styles/div/div.styles";
-import { UppercaseSpan, YellowSpan } from "../../../styles/span/span.styles";
+import {
+  LowercasedSpan,
+  UppercaseSpan,
+  YellowSpan,
+} from "../../../styles/span/span.styles";
 import { BlackHr } from "../../../styles/hr/hr.styles";
+import { MinimalButton } from "../../../styles/button/button.styles";
+import { useDispatch } from "react-redux";
+import { setShowIneligibleDates } from "../../../store/db-manage-add-booking/db-manage-add-booking.slice";
 
 const FailedDatesInfo = () => {
-  const { status, failingDates } = useGetDbManageAddBookingSelectors();
+  const { status, failingDates, showIneligibleDates } =
+    useGetDbManageAddBookingSelectors();
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -19,35 +28,54 @@ const FailedDatesInfo = () => {
         <>
           <WhiteText>
             <Balancer>
-              this booking can't be completed because the following dates and
-              slots dont have enough availability:
+              this booking can't be completed because some date(
+              <LowercasedSpan>s</LowercasedSpan>) and / or slot(
+              <LowercasedSpan>s</LowercasedSpan>) dont have enough availability:
             </Balancer>
           </WhiteText>
-          {failingDates.map((failingDate) => {
-            const { id, date, slot } = failingDate;
+          <BlackHr />
+          <MinimalButton
+            type="button"
+            className="margin"
+            onClick={() =>
+              dispatch(setShowIneligibleDates(!showIneligibleDates))
+            }
+          >
+            {showIneligibleDates ? "hide dates" : "show ineligible Dates"}
+          </MinimalButton>
+          <BlackHr />
+          {showIneligibleDates ? (
+            <>
+              {failingDates.map((failingDate) => {
+                const { id, date, slot } = failingDate;
 
-            console.log(date);
-
-            return (
-              <DataDiv key={id} className="error">
-                <WhiteText>
-                  date:
-                  <br />
-                  <YellowSpan>{format(date, "dd MMMM yyyy")}</YellowSpan>
-                </WhiteText>
-                <WhiteText>
-                  slot:
-                  <br />
-                  <UppercaseSpan className="yellow">{slot}</UppercaseSpan>
-                </WhiteText>
-                <BlackHr />
-              </DataDiv>
-            );
-          })}
+                return (
+                  <DataDiv key={id} className="error">
+                    <WhiteText>
+                      date:
+                      <br />
+                      <YellowSpan>{format(date, "dd MMMM yyyy")}</YellowSpan>
+                    </WhiteText>
+                    <WhiteText>
+                      slot:
+                      <br />
+                      <UppercaseSpan className="yellow">{slot}</UppercaseSpan>
+                    </WhiteText>
+                    <BlackHr />
+                  </DataDiv>
+                );
+              })}
+            </>
+          ) : null}
           <WhiteText>
             <Balancer>
-              you can try changing the booking details to try and find any
-              availability, otherwise this booking can't be made 😿
+              you can try changing the booking details and then tap the
+            </Balancer>
+          </WhiteText>
+          <WhiteText>'check availability'</WhiteText>
+          <WhiteText>
+            <Balancer>
+              button below again, otherwise this booking can't be made 😿
             </Balancer>
           </WhiteText>
           <BlackHr />

@@ -15,6 +15,7 @@ const INITIAL_STATE = {
   dbManageIsBookingAvailableError: null,
   dbManageAddBookingResult: "",
   dbManageAddBookingError: null,
+  showIneligibleDates: false,
 };
 
 export const dbManageAddBookingSlice = createSlice({
@@ -36,6 +37,9 @@ export const dbManageAddBookingSlice = createSlice({
     resetDbManageAddBookingError(state) {
       state.dbManageAddBookingResult = null;
     },
+    setShowIneligibleDates(state, action) {
+      state.showIneligibleDates = action.payload;
+    },
     resetDbManageAddBookingState: () => {
       return INITIAL_STATE;
     },
@@ -52,6 +56,7 @@ export const dbManageAddBookingSlice = createSlice({
       (state) => state.dbManageIsBookingAvailableError,
       (state) => state.dbManageAddBookingResult,
       (state) => state.dbManageAddBookingError,
+      (state) => state.showIneligibleDates,
       (
         dbManageAddBookingIsLoading,
         catteryAllowsLargerPensBool,
@@ -62,7 +67,8 @@ export const dbManageAddBookingSlice = createSlice({
         dbManageIsBookingAvailableResult,
         dbManageIsBookingAvailableError,
         dbManageAddBookingResult,
-        dbManageAddBookingError
+        dbManageAddBookingError,
+        showIneligibleDates
       ) => {
         return {
           dbManageAddBookingIsLoading,
@@ -75,6 +81,7 @@ export const dbManageAddBookingSlice = createSlice({
           dbManageIsBookingAvailableError,
           dbManageAddBookingResult,
           dbManageAddBookingError,
+          showIneligibleDates,
         };
       }
     ),
@@ -119,6 +126,7 @@ export const {
   resetDbManageAddBookingResult,
   resetDbManageAddBookingError,
   resetDbManageAddBookingState,
+  setShowIneligibleDates,
 } = dbManageAddBookingSlice.actions;
 export const { selectDbManageAddBookingSelectors } =
   dbManageAddBookingSlice.selectors;

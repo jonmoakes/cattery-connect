@@ -7,6 +7,7 @@ import {
   resetDbManageIsBookingAvailableError,
   resetDbManageIsBookingAvailableResult,
   setDbManageAddBookingData,
+  setShowIneligibleDates,
 } from "../../../../store/db-manage-add-booking/db-manage-add-booking.slice";
 
 const useHandleCustomerSelectChange = () => {
@@ -14,6 +15,7 @@ const useHandleCustomerSelectChange = () => {
     dbManageAddBookingData,
     dbManageIsBookingAvailableResult,
     dbManageIsBookingAvailableError,
+    showIneligibleDates,
   } = useGetDbManageAddBookingSelectors();
   const { allCustomers } = useGetAllCustomerSelectors();
   const [customerName, setCustomerName] = useState("");
@@ -53,6 +55,9 @@ const useHandleCustomerSelectChange = () => {
     }
     if (dbManageIsBookingAvailableError) {
       dispatch(resetDbManageIsBookingAvailableError());
+    }
+    if (showIneligibleDates) {
+      dispatch(setShowIneligibleDates(false));
     }
   };
 

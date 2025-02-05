@@ -6,7 +6,12 @@ import {
   catteryInfoCollectionId,
   databaseId,
 } from "../../constants/constants";
-import { hasSufficientCapacity } from "./add-booking-functions";
+import {
+  specialCheckSameDay,
+  checkFirstDayAvailability,
+} from "./day-and-slot-checks/check-first-day-availability";
+import { checkMiddleDaysAvailability } from "./day-and-slot-checks/check-middle-days-availability";
+import { checkLastDayAvailability } from "./day-and-slot-checks/check-last-day-availability";
 import { listDocumentsByQueryOrSearch } from "../../utils/appwrite/appwrite-functions";
 
 export const getAllowsLargerPensBoolAsync = createAsyncThunk(
@@ -26,7 +31,6 @@ export const getAllowsLargerPensBoolAsync = createAsyncThunk(
       );
 
       const { documents } = usersCustomers;
-      console.log(documents);
 
       const catteryDoc = documents[0];
 
@@ -104,136 +108,38 @@ export const checkBookingAvailabilityAsync = createAsyncThunk(
         afternoonPens: JSON.parse(day.afternoonPensData),
       }));
 
-      const failingDates = [];
+      let failingDates = [];
 
-      // error if pend data not correct - first day pm not being added to array.
-      const firstDay = parsedAvailabilityData[0];
-      const firstDayMorningFail =
-        checkInSlot === "am" &&
-        (!hasSufficientCapacity(
-          firstDay.morningPens,
+      if (checkInDate == checkOutDate) {
+        failingDates = specialCheckSameDay(
+          parsedAvailabilityData,
           numberOfCats,
-          catteryAllowsLargerPensBool
-        ) ||
-          !hasSufficientCapacity(
-            firstDay.afternoonPens,
-            numberOfCats,
-            catteryAllowsLargerPensBool
-          ));
-
-      const firstDayAfternoonFail =
-        checkInSlot === "pm" &&
-        !hasSufficientCapacity(
-          firstDay.afternoonPens,
+          catteryAllowsLargerPensBool,
+          failingDates
+        );
+      } else {
+        failingDates = checkFirstDayAvailability(
+          parsedAvailabilityData,
           numberOfCats,
-          catteryAllowsLargerPensBool
+          catteryAllowsLargerPensBool,
+          checkInSlot,
+          failingDates
         );
 
-      if (firstDayMorningFail) {
-        failingDates.push({
-          id: crypto.randomUUID(),
-          date: firstDay.date,
-          slot: "am",
-          failedPens: [
-            ...firstDay.morningPens.filter(
-              (pen) => pen.maxCatCapacity < numberOfCats || pen.available <= 0
-            ),
-            ...firstDay.afternoonPens.filter(
-              (pen) => pen.maxCatCapacity < numberOfCats || pen.available <= 0
-            ),
-          ],
-        });
-      }
-
-      if (firstDayAfternoonFail) {
-        failingDates.push({
-          id: crypto.randomUUID(),
-          date: firstDay.date,
-          slot: "pm",
-          failedPens: firstDay.afternoonPens.filter(
-            (pen) => pen.maxCatCapacity < numberOfCats || pen.available <= 0
-          ),
-        });
-      }
-
-      const middleDays = parsedAvailabilityData.slice(1, -1);
-      middleDays.forEach((day) => {
-        const morningFail = !hasSufficientCapacity(
-          day.morningPens,
+        failingDates = checkMiddleDaysAvailability(
+          parsedAvailabilityData,
           numberOfCats,
-          catteryAllowsLargerPensBool
-        );
-        const afternoonFail = !hasSufficientCapacity(
-          day.afternoonPens,
-          numberOfCats,
-          catteryAllowsLargerPensBool
+          catteryAllowsLargerPensBool,
+          failingDates
         );
 
-        if (morningFail) {
-          failingDates.push({
-            id: crypto.randomUUID(),
-            date: day.date,
-            slot: "am",
-            failedPens: day.morningPens.filter(
-              (pen) => pen.maxCatCapacity < numberOfCats || pen.available <= 0
-            ),
-          });
-        }
-        if (afternoonFail) {
-          failingDates.push({
-            id: crypto.randomUUID(),
-            date: day.date,
-            slot: "pm",
-            failedPens: day.afternoonPens.filter(
-              (pen) => pen.maxCatCapacity < numberOfCats || pen.available <= 0
-            ),
-          });
-        }
-      });
-
-      const lastDay = parsedAvailabilityData[parsedAvailabilityData.length - 1];
-
-      const lastDayMorningFail =
-        checkOutSlot === "am" &&
-        !hasSufficientCapacity(
-          lastDay.morningPens,
+        failingDates = checkLastDayAvailability(
+          parsedAvailabilityData,
           numberOfCats,
-          catteryAllowsLargerPensBool
+          catteryAllowsLargerPensBool,
+          checkOutSlot,
+          failingDates
         );
-
-      const lastDayAfternoonFail =
-        checkOutSlot === "pm" &&
-        (!hasSufficientCapacity(
-          lastDay.morningPens,
-          numberOfCats,
-          catteryAllowsLargerPensBool
-        ) ||
-          !hasSufficientCapacity(
-            lastDay.afternoonPens,
-            numberOfCats,
-            catteryAllowsLargerPensBool
-          ));
-
-      if (lastDayMorningFail) {
-        failingDates.push({
-          id: crypto.randomUUID(),
-          date: lastDay.date,
-          slot: "am",
-          failedPens: lastDay.morningPens.filter(
-            (pen) => pen.maxCatCapacity < numberOfCats || pen.available <= 0
-          ),
-        });
-      }
-
-      if (lastDayAfternoonFail) {
-        failingDates.push({
-          id: crypto.randomUUID(),
-          date: lastDay.date,
-          slot: "pm",
-          failedPens: lastDay.afternoonPens.filter(
-            (pen) => pen.maxCatCapacity < numberOfCats || pen.available <= 0
-          ),
-        });
       }
 
       const isBookingAvailable = failingDates.length === 0;

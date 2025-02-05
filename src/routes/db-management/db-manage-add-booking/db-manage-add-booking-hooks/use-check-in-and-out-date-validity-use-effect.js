@@ -7,8 +7,13 @@ import { setDbManageAddBookingData } from "../../../../store/db-manage-add-booki
 import useFireSwal from "../../../../hooks/use-fire-swal";
 
 const useCheckInAndOutDateValidityUseEffect = () => {
-  const { checkInDate, checkOutDate, dbManageAddBookingData } =
-    useGetDbManageAddBookingSelectors();
+  const {
+    checkInDate,
+    checkOutDate,
+    checkInSlot,
+    checkOutSlot,
+    dbManageAddBookingData,
+  } = useGetDbManageAddBookingSelectors();
 
   const dispatch = useDispatch();
   const { fireSwal } = useFireSwal();
@@ -40,8 +45,36 @@ const useCheckInAndOutDateValidityUseEffect = () => {
           );
         }
       });
+    } else if (checkInDate === checkOutDate && checkInSlot === checkOutSlot) {
+      fireSwal(
+        "error",
+        "the check in and check out slots cannot be the same..",
+        "",
+        0,
+        "",
+        false,
+        "",
+        false
+      ).then((isConfirmed) => {
+        if (isConfirmed) {
+          dispatch(
+            setDbManageAddBookingData({
+              ...dbManageAddBookingData,
+              checkOutSlot: "",
+            })
+          );
+        }
+      });
     }
-  }, [checkInDate, checkOutDate, dispatch, dbManageAddBookingData, fireSwal]);
+  }, [
+    checkInDate,
+    checkOutDate,
+    checkInSlot,
+    checkOutSlot,
+    dispatch,
+    dbManageAddBookingData,
+    fireSwal,
+  ]);
 };
 
 export default useCheckInAndOutDateValidityUseEffect;

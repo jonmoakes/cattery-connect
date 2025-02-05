@@ -45,6 +45,7 @@ const DbManageAddBooking = () => {
         <ParentDiv>
           <Form onSubmit={checkBookingAvailability}>
             <ChooseCustomerSelectInput />
+
             <ChooseCatsInput />
 
             <CheckInAndOutDateInput

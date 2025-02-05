@@ -15,6 +15,7 @@ const useGetDbManageAddBookingSelectors = () => {
     dbManageIsBookingAvailableError,
     dbManageAddBookingResult,
     dbManageAddBookingError,
+    showIneligibleDates,
   } = useSelector(selectDbManageAddBookingSelectors);
 
   const {
@@ -52,6 +53,7 @@ const useGetDbManageAddBookingSelectors = () => {
     checkOutSlot,
     status,
     failingDates,
+    showIneligibleDates,
   };
 };
 

@@ -14,7 +14,9 @@ const ChooseCustomerSelectInput = () => {
       <Label>choose a customer:</Label>
 
       <StyledSelect value={customerName} onChange={handleCustomerSelectChange}>
-        <option value="">-- Tap to select --</option>
+        <option value="" disabled>
+          -- Tap to select --
+        </option>
         {allCustomers.map((customer) => {
           const { customerId, name } = customer;
           return (
