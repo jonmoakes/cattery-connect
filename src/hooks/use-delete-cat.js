@@ -15,8 +15,9 @@ const useDeleteCat = () => {
     catsName,
     customerDocumentId
   ) => {
+    const type = "";
     confirmSwal(
-      confirmDeleteMessage(catsName),
+      confirmDeleteMessage(catsName, type),
       "",
       `yes, delete ${catsName}`,
       "don't delete",

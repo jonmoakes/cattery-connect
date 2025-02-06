@@ -40,7 +40,7 @@ export const OptionsLabel = styled.p`
   &.over-bg {
     margin: 10px auto 10px auto;
     background-color: ${darkGold};
-    border: 1px solid ${softBlack};
+    border: 3px solid ${softBlack};
     border-radius: 5px;
     color: ${softBlack};
     text-shadow: none;

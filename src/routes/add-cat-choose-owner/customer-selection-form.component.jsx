@@ -22,7 +22,9 @@ const CustomerSelectionForm = ({
           value={selectedCustomer}
           onChange={handleCustomerSelectionChange}
         >
-          <option value="">-- Select a Customer --</option>
+          <option value="" disabled>
+            -- Select a Customer --
+          </option>
           {allCustomers.map((customer) => (
             <option key={customer.$id} value={customer.name}>
               {customer.name}

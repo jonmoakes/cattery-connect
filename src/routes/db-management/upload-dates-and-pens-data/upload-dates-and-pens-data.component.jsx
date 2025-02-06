@@ -10,9 +10,8 @@ import ShowFetchErrors from "../../../components/errors/show-fetch-errors.compon
 import HelpAccordion from "../../../components/help-accordion/help-accordion.component";
 import CatteryIdSelectInput from "./inputs/cattery-id-select-input/cattery-id-select-input.component";
 import ClosedDatesQuestion from "./closed-dates-question.component";
-import DaysOffInput from "./inputs/days-off-input/days-off-input.component";
-import StartDateInput from "./inputs/start-date.input.component";
-import EndDateInput from "./inputs/end-date.input.component";
+import DaysOffInput from "./inputs/days-off-input.component";
+import StartAndEndDatesDatePicker from "./inputs/start-and-end-dates-date-picker.component";
 import PenSpacesForMaxTwoCatsInput from "./inputs/pen-spaces-for-max-two-cats-input.component";
 import PenSpacesForMaxThreeCatsInput from "./inputs/pen-spaces-for-max-three-cats-input.component";
 import PenSpacesForMaxFourCatsInput from "./inputs/pen-spaces-for-max-four-cats-input.component";
@@ -27,11 +26,13 @@ import { uploadDatesAndPensInfoAccordionData } from "./upload-dates-and-pens-inf
 
 const UploadDatesAndPensData = () => {
   const { allUsersCatteryIdsAndOwnerNameError } = useGetAllUsersSelectors();
-  const { datesIncludeDaysClosed } = useGetUploadDatesAndPensDataSelectors();
+  const { datesIncludeDaysClosed, startDate, endDate } =
+    useGetUploadDatesAndPensDataSelectors();
   useGetAllCatteryIdsAndOwnerNameArrayThunkUseEffect();
   useUploadDatesAndPensDataResultSwalUseEffect();
 
-  const { handleDatesAndPensChange } = useHandleDatesAndPensChange();
+  const { handleDatesChange, handlePensChange } = useHandleDatesAndPensChange();
+
   const { submitUploadDatesAndPensData } = useSubmitUploadDatesAndPensData();
 
   return (
@@ -53,24 +54,25 @@ const UploadDatesAndPensData = () => {
           >
             <CatteryIdSelectInput />
             <ClosedDatesQuestion />
+
             <DaysOffInput />
 
             {datesIncludeDaysClosed ? (
               <>
-                <StartDateInput {...{ handleDatesAndPensChange }} />
-                <EndDateInput {...{ handleDatesAndPensChange }} />
-                <PenSpacesForMaxTwoCatsInput
-                  {...{ handleDatesAndPensChange }}
+                <StartAndEndDatesDatePicker
+                  dateType="startDate"
+                  selectedDate={startDate}
+                  {...{ handleDatesChange }}
                 />
-                <PenSpacesForMaxThreeCatsInput
-                  {...{ handleDatesAndPensChange }}
+                <StartAndEndDatesDatePicker
+                  dateType="endDate"
+                  selectedDate={endDate}
+                  {...{ handleDatesChange }}
                 />
-                <PenSpacesForMaxFourCatsInput
-                  {...{ handleDatesAndPensChange }}
-                />
-                <PenSpacesForMaxFiveCatsInput
-                  {...{ handleDatesAndPensChange }}
-                />
+                <PenSpacesForMaxTwoCatsInput {...{ handlePensChange }} />
+                <PenSpacesForMaxThreeCatsInput {...{ handlePensChange }} />
+                <PenSpacesForMaxFourCatsInput {...{ handlePensChange }} />
+                <PenSpacesForMaxFiveCatsInput {...{ handlePensChange }} />
                 <Button type="submit">confirm upload dates</Button>
               </>
             ) : null}

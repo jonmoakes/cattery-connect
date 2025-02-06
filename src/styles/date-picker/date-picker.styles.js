@@ -13,4 +13,9 @@ export const StyledDatePicker = styled(DatePicker)`
     border-color: ${rustRed};
     box-shadow: 6px 6px 6px ${softBlack};
   }
+
+  &::placeholder {
+    color: ${softBlack};
+    text-transform: capitalize;
+  }
 `;

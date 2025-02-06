@@ -76,9 +76,17 @@ export const LowercasedSpan = styled.span`
 `;
 
 export const UppercaseSpan = styled.span`
-  color: ${customYellow};
-  text-shadow: 1px 1px 1px ${softBlack};
   text-transform: uppercase;
+
+  &.yellow {
+    color: ${customYellow};
+    text-shadow: 1px 1px 1px ${softBlack};
+  }
+
+  &.red {
+    color: ${rustRed};
+    text-shadow: 1px 1px 1px ${softBlack};
+  }
 `;
 
 export const SignInPasswordEye = styled.span.withConfig({

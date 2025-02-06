@@ -28,7 +28,7 @@ const CheckInAndOutDateInput = ({ dateType, condition, selectedDate }) => {
           <DateInputContainer>
             <StyledDatePickerWrapper>
               <CustomBalancedText type="optionsLabel">
-                {`tap the date to choose a `}
+                {`choose a `}
                 {highlightedText && (
                   <CustomSpan color="yellow">{highlightedText}</CustomSpan>
                 )}
@@ -36,9 +36,7 @@ const CheckInAndOutDateInput = ({ dateType, condition, selectedDate }) => {
 
               <StyledDatePicker
                 selected={
-                  selectedDate
-                    ? format(selectedDate, "EEE d MMM yyyy")
-                    : new Date()
+                  selectedDate ? format(selectedDate, "EEE d MMM yyyy") : null
                 }
                 onChange={(date) =>
                   handleCheckInAndOutDatesChange(dateType, date)
@@ -46,6 +44,7 @@ const CheckInAndOutDateInput = ({ dateType, condition, selectedDate }) => {
                 dateFormat="EEE d MMM yyyy"
                 minDate={new Date()}
                 onKeyDown={(e) => e.preventDefault()}
+                placeholderText="tap here to choose"
               />
             </StyledDatePickerWrapper>
           </DateInputContainer>

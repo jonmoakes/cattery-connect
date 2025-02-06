@@ -1,16 +1,16 @@
 import { useDispatch } from "react-redux";
 
-import useGetUploadDatesAndPensDataSelectors from "../../../../../hooks/selectors/use-get-upload-dates-and-pens-data-selectors";
+import useGetUploadDatesAndPensDataSelectors from "../../../../hooks/selectors/use-get-upload-dates-and-pens-data-selectors";
 import {
   resetDateClosedToAdd,
   resetDatesClosedArray,
-} from "../../../../../store/upload-dates-and-pens-data/upload-dates-and-pens-data.slice";
+} from "../../../../store/upload-dates-and-pens-data/upload-dates-and-pens-data.slice";
 
-import CustomBalancedText from "../../../../../components/custom-balanced-text/custom-balanced-text.component";
+import CustomBalancedText from "../../../../components/custom-balanced-text/custom-balanced-text.component";
 
-import { MinimalButton } from "../../../../../styles/button/button.styles";
+import { MinimalButton } from "../../../../styles/button/button.styles";
 import { format } from "date-fns";
-import { BlackHr } from "../../../../../styles/hr/hr.styles";
+import { BlackHr } from "../../../../styles/hr/hr.styles";
 
 const DisplayCurrentlyChosenDaysOff = () => {
   const { datesClosedArray, dateClosedToAdd } =
@@ -49,8 +49,6 @@ const DisplayCurrentlyChosenDaysOff = () => {
           >
             reset days off
           </MinimalButton>
-
-          <BlackHr />
         </>
       ) : null}
     </>

@@ -56,7 +56,9 @@ const FailedDatesInfo = () => {
                     <CustomBalancedText color="white">
                       slot:
                       <br />
-                      <CustomSpan type="uppercase">{slot}</CustomSpan>
+                      <CustomSpan type="uppercase" className="yellow">
+                        {slot}
+                      </CustomSpan>
                     </CustomBalancedText>
                     <BlackHr />
                   </DataDiv>

@@ -16,12 +16,10 @@ const CatteryIdSelectInput = () => {
   );
 
   return (
-    <StyledSelect
-      className="lowercase"
-      value={catteryOwnersName}
-      onChange={handleCatteryIdChange}
-    >
-      <option value="">-- Select a Cattery Id --</option>
+    <StyledSelect value={catteryOwnersName} onChange={handleCatteryIdChange}>
+      <option value="" disabled>
+        -- Select a Cattery Id --
+      </option>
       {allUsersCatteryIdsAndOwnerName.map((catteryDetails) => {
         const { catteryId, name } = catteryDetails;
         return (

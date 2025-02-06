@@ -11,6 +11,7 @@ import CustomBalancedText from "../../../components/custom-balanced-text/custom-
 
 import { MinimalButton } from "../../../styles/button/button.styles";
 import { BlackHr } from "../../../styles/hr/hr.styles";
+import CustomSpan from "../../../components/custom-span/custom-span.component";
 
 const ClosedDatesQuestion = () => {
   const {
@@ -39,8 +40,12 @@ const ClosedDatesQuestion = () => {
         <>
           <BlackHr />
           <CustomBalancedText color="white">
-            Does this cattery have any days that it is not open in the days that
-            you want to upload?
+            For the date range that you are going to select, Does this cattery
+            have any days that you{" "}
+            <CustomSpan type="uppercase" className="red">
+              do not
+            </CustomSpan>{" "}
+            want to include in the upload?
           </CustomBalancedText>
 
           <MinimalButton
@@ -58,7 +63,6 @@ const ClosedDatesQuestion = () => {
           >
             {`no ${isSelected("no") ? "✔️" : ""}`}
           </MinimalButton>
-          <BlackHr />
         </>
       )}
     </>

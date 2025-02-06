@@ -48,7 +48,9 @@ const ShowBookingDataBeforeBooking = () => {
           <li>
             check in slot:
             <br />
-            <CustomSpan type="uppercase">{checkInSlot}</CustomSpan>
+            <CustomSpan type="uppercase" className="yellow">
+              {checkInSlot}
+            </CustomSpan>
           </li>
           <BlackHr />
           <li>
@@ -62,7 +64,9 @@ const ShowBookingDataBeforeBooking = () => {
           <li>
             check out slot:
             <br />
-            <CustomSpan type="uppercase">{checkOutSlot}</CustomSpan>
+            <CustomSpan type="uppercase" className="yellow">
+              {checkOutSlot}
+            </CustomSpan>
           </li>
           <BlackHr />
         </ul>

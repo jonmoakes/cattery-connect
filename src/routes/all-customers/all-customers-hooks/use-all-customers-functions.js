@@ -28,8 +28,9 @@ const useAllCustomersFunctions = (chosenEntry) => {
   const deleteCustomer = () => {
     const { $id, name } = chosenEntry ?? {};
 
+    const type = "customer";
     confirmSwal(
-      confirmDeleteMessage(name),
+      confirmDeleteMessage(name, type),
       "",
       `yes, delete ${getFirstNameFromString(name)}`,
       "don't delete",

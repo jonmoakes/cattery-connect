@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import {
   customGreen,
+  gentleGrey,
   radialGreen,
   radialGrey,
   rustRed,
   softBlack,
   teal,
 } from "../colours";
+import DownwardArrow from "../../assets/dward-arrow.webp";
 
 export const Form = styled.form`
   width: 75%;
@@ -200,9 +202,22 @@ export const StyledSelect = styled.select`
   margin-bottom: 20px;
   font-size: 18px;
   outline: none;
-  background: ${radialGrey};
+  background-color: ${gentleGrey};
   color: ${softBlack};
   text-transform: capitalize;
+
+  /* Custom arrow */
+  appearance: none;
+  background-image: url(${DownwardArrow});
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 18px;
+  padding-right: 40px; /* Ensure space for the arrow */
+
+  /* Remove default arrow in Firefox */
+  &::-ms-expand {
+    display: none;
+  }
 
   &:focus {
     border-color: ${rustRed};
@@ -223,10 +238,6 @@ export const StyledSelect = styled.select`
   @media screen and (max-width: 320px) {
     height: 40px;
     font-size: 12px;
-  }
-
-  &.lowercase {
-    text-transform: lowercase;
   }
 `;
 

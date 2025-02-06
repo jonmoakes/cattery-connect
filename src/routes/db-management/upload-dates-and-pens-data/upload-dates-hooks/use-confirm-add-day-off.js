@@ -1,14 +1,13 @@
 import { useDispatch } from "react-redux";
 import { format } from "date-fns";
-import useGetUploadDatesAndPensDataSelectors from "../../../../../../hooks/selectors/use-get-upload-dates-and-pens-data-selectors";
+import useGetUploadDatesAndPensDataSelectors from "../../../../hooks/selectors/use-get-upload-dates-and-pens-data-selectors";
 import {
   setDateClosedToAdd,
   setDatesClosedArray,
-} from "../../../../../../store/upload-dates-and-pens-data/upload-dates-and-pens-data.slice";
+} from "../../../../store/upload-dates-and-pens-data/upload-dates-and-pens-data.slice";
 
-import useConfirmSwal from "../../../../../../hooks/use-confirm-swal";
-import useFireSwal from "../../../../../../hooks/use-fire-swal";
-import { isValidDate } from "../../../../../../functions/is-valid-date";
+import useConfirmSwal from "../../../../hooks/use-confirm-swal";
+import useFireSwal from "../../../../hooks/use-fire-swal";
 
 const useConfirmAddDayOff = () => {
   const { dateClosedToAdd, datesClosedArray } =
@@ -24,18 +23,7 @@ const useConfirmAddDayOff = () => {
   };
 
   const confirmAddDayOff = () => {
-    if (!isValidDate(dateClosedToAdd)) {
-      fireSwal(
-        "error",
-        "the date is not a valid date",
-        "",
-        0,
-        "",
-        false,
-        "",
-        false
-      );
-    } else if (dateClosedToAdd && datesClosedArray.includes(dateClosedToAdd)) {
+    if (dateClosedToAdd && datesClosedArray.includes(dateClosedToAdd)) {
       fireSwal(
         "error",
         "this date is already in the array...",

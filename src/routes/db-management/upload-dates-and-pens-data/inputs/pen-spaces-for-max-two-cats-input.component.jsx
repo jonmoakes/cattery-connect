@@ -4,7 +4,7 @@ import CustomSpan from "../../../../components/custom-span/custom-span.component
 
 import { Label, StyledInput } from "../../../../styles/form/form.styles";
 
-const PenSpacesForMaxTwoCatsInput = ({ handleDatesAndPensChange }) => {
+const PenSpacesForMaxTwoCatsInput = ({ handlePensChange }) => {
   const { penSpacesForMaxTwoCats } = useGetUploadDatesAndPensDataSelectors();
 
   return (
@@ -15,7 +15,7 @@ const PenSpacesForMaxTwoCatsInput = ({ handleDatesAndPensChange }) => {
       <StyledInput
         type="text"
         name="penSpacesForMaxTwoCats"
-        onChange={handleDatesAndPensChange}
+        onChange={handlePensChange}
         value={penSpacesForMaxTwoCats || ""}
         required
       />
