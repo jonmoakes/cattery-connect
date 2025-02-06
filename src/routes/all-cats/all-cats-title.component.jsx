@@ -19,7 +19,9 @@ const AllCatsTitle = () => {
         <CustomBalancedText type="h1">
           {!hasCatsOwnerDetails
             ? "all cats"
-            : `${selectedCatsName}'s owner details`}
+            : `${selectedCatsName}${
+                selectedCatsName.endsWith("s") ? "'" : "'s"
+              } owner details`}
         </CustomBalancedText>
 
         {atLeastOneCustomerExists ? (

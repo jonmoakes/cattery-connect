@@ -5,7 +5,7 @@ import { NoSearchResultDiv } from "../../styles/div/div.styles";
 
 const NoSearchResult = () => (
   <NoSearchResultDiv>
-    <h2>no result found....</h2>
+    <CustomBalancedText type="h2">no result found....</CustomBalancedText>
     <CustomBalancedText>
       please refine your search query or tap the
       <br />

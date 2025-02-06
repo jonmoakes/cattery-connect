@@ -1,5 +1,6 @@
 import useHandleShowError from "./errors-hooks/use-handle-show-error";
 
+import CustomBalancedText from "../custom-balanced-text/custom-balanced-text.component";
 import CustomSpan from "../custom-span/custom-span.component";
 
 import { ErrorDiv, ParentDiv } from "../../styles/div/div.styles";
@@ -15,26 +16,32 @@ const ShowFetchErrors = () => {
     <>
       {errorToDisplay() ? (
         <ParentDiv>
-          <p>
+          <CustomBalancedText>
             sorry, there was an error fetching data on our end. please see the
             details below:
-          </p>
+          </CustomBalancedText>
           <ErrorDiv className="fetch-error">
-            <p>{showErrorHeading()}</p>
-            <p>
+            <CustomBalancedText>{showErrorHeading()}</CustomBalancedText>
+            <CustomBalancedText>
               error received:
               <br />'<CustomSpan color="yellow">{errorToDisplay()}</CustomSpan>'
-            </p>
+            </CustomBalancedText>
           </ErrorDiv>
 
-          <p>press the 'reload page' button and then try again.</p>
-          <p>please don't use the browsers back button.</p>
-          <p>
+          <CustomBalancedText>
+            press the 'reload page' button and then try again.
+          </CustomBalancedText>
+          <CustomBalancedText>
+            please don't use the browsers back button.
+          </CustomBalancedText>
+          <CustomBalancedText>
             if you continue to see this error, please{" "}
             <StyledLink to={contactRoute}>contact us</StyledLink> and quote the
             error in green box above.
-          </p>
-          <p>we apologise for the inconvenience!</p>
+          </CustomBalancedText>
+          <CustomBalancedText>
+            we apologise for the inconvenience!
+          </CustomBalancedText>
 
           <RadialTealButton onClick={() => window.location.reload()}>
             reload

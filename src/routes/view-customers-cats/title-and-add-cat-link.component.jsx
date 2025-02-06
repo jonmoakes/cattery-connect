@@ -1,5 +1,8 @@
 import useViewCustomersCatsVariables from "./view-customers-cats-hooks/use-view-customers-cats-variables";
 import useViewCustomersCatsFunctions from "./view-customers-cats-hooks/use-view-customers-cats-functions";
+
+import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
+
 import { MinimalButton } from "../../styles/button/button.styles";
 import { ParentDiv } from "../../styles/div/div.styles";
 import { getFirstNameFromString } from "../../functions/get-first-name-from-string";
@@ -12,9 +15,11 @@ const TitleAndAddCatLink = () => {
   return (
     <ParentDiv>
       {customerName ? (
-        <h1>{getFirstNameFromString(customerName)}'s cats</h1>
+        <CustomBalancedText type="h1">
+          {getFirstNameFromString(customerName)}'s cats
+        </CustomBalancedText>
       ) : (
-        <h1>no cats found</h1>
+        <CustomBalancedText type="h1">no cats found</CustomBalancedText>
       )}
 
       {hasCustomerIDAndAtLeastOneCat ? (

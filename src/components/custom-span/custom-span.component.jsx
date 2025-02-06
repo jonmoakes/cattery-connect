@@ -11,6 +11,7 @@ import {
   EmergencyDetailsSpan,
 } from "../../styles/span/span.styles";
 
+// give a type or a color prop when passing
 const spanMap = {
   uppercase: UppercaseSpan,
   lowercase: LowercasedSpan,

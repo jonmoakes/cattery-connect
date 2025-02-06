@@ -2,6 +2,7 @@ import useGetCurrentUserSelectors from "../../hooks/selectors/use-get-current-us
 import useNavigateToRoute from "./account-hooks/use-navigate-to-route";
 
 import RenderButtonsList from "../../components/render-buttons-list/render-buttons-list.component";
+import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
 
 import { ParentDiv } from "../../styles/div/div.styles";
 
@@ -19,12 +20,14 @@ const AccountButtonLinks = () => {
       ) : role === "owner" ? (
         <>
           <ParentDiv>
-            <h3>customer & cat info</h3>
+            <CustomBalancedText type="h3">
+              customer & cat info
+            </CustomBalancedText>
             <RenderButtonsList {...{ buttons: catteryOwnerButtons }} />
           </ParentDiv>
 
           <ParentDiv>
-            <h3>other options</h3>
+            <CustomBalancedText type="h3">other options</CustomBalancedText>
             <RenderButtonsList
               {...{ buttons: catteryOwnerCustomerDataButtons }}
             />
@@ -32,7 +35,9 @@ const AccountButtonLinks = () => {
         </>
       ) : (
         <ParentDiv>
-          <p>customer account buttons go here.</p>
+          <CustomBalancedText>
+            customer account buttons go here.
+          </CustomBalancedText>
         </ParentDiv>
       )}
     </>

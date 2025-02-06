@@ -5,6 +5,7 @@ import useForgotPasswordRequestFunctions from "./forgot-password-request-hooks/u
 
 import SkeletonBox from "../../components/skeleton-box/skeleton-box.component";
 import HelpAccordion from "../../components/help-accordion/help-accordion.component";
+import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
 
 import { Container } from "../../styles/container/container.styles";
 import { ParentDiv } from "../../styles/div/div.styles";
@@ -30,7 +31,7 @@ const ForgotPasswordRequest = () => {
       ) : null}
 
       <ParentDiv>
-        <h1>forgot password</h1>
+        <CustomBalancedText type="h1">forgot password</CustomBalancedText>
       </ParentDiv>
 
       <ParentDiv>

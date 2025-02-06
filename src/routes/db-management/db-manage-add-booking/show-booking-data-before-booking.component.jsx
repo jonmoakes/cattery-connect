@@ -3,6 +3,7 @@ import { format } from "date-fns";
 import useGetDbManageAddBookingSelectors from "../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
 
 import CustomSpan from "../../../components/custom-span/custom-span.component";
+import CustomBalancedText from "../../../components/custom-balanced-text/custom-balanced-text.component";
 
 import { BookingWrapper, DataDiv } from "../../../styles/div/div.styles";
 import { BlackHr } from "../../../styles/hr/hr.styles";
@@ -20,7 +21,7 @@ const ShowBookingDataBeforeBooking = () => {
   return (
     <BookingWrapper>
       <DataDiv>
-        <h3>booking details:</h3>
+        <CustomBalancedText type="h3">booking details:</CustomBalancedText>
         <ul>
           <li>
             customer name:
@@ -70,14 +71,14 @@ const ShowBookingDataBeforeBooking = () => {
           </li>
           <BlackHr />
         </ul>
-        <p>
+        <CustomBalancedText>
           if you are happy with these details, tap the 'check availability'
           button below.
-        </p>
-        <p>
+        </CustomBalancedText>
+        <CustomBalancedText>
           if availability is confirmed, you will have chance to confirm again
           before making the booking.
-        </p>
+        </CustomBalancedText>
       </DataDiv>
     </BookingWrapper>
   );

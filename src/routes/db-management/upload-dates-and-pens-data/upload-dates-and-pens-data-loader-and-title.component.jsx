@@ -1,9 +1,10 @@
 import useGetUploadDatesAndPensDataSelectors from "../../../hooks/selectors/use-get-upload-dates-and-pens-data-selectors";
+import useGetCurrentUserSelectors from "../../../hooks/selectors/use-get-current-user-selectors";
 
+import CustomBalancedText from "../../../components/custom-balanced-text/custom-balanced-text.component";
 import SkeletonBox from "../../../components/skeleton-box/skeleton-box.component";
 
 import { ParentDiv } from "../../../styles/div/div.styles";
-import useGetCurrentUserSelectors from "../../../hooks/selectors/use-get-current-user-selectors";
 
 const UploadDatesAndPensDataLoaderAndTitle = () => {
   const { currentUserIsLoading } = useGetCurrentUserSelectors();
@@ -21,7 +22,7 @@ const UploadDatesAndPensDataLoaderAndTitle = () => {
       ) : null}
 
       <ParentDiv>
-        <h1>upload dates</h1>
+        <CustomBalancedText type="h1">upload dates</CustomBalancedText>
       </ParentDiv>
     </>
   );

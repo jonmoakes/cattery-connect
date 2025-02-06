@@ -1,6 +1,8 @@
 import useAllCatsTableVariables from "../all-cats/all-cats-hooks/use-all-cats-table-variables";
 import useResetCustomerDetailsIfApplicableAndGoToAddCustomerRoute from "./all-customers-hooks/use-reset-customer-details-if-applicable-and-go-to-add-customer-route";
 
+import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
+
 import { MinimalButton } from "../../styles/button/button.styles";
 import { ParentDiv } from "../../styles/div/div.styles";
 
@@ -11,7 +13,7 @@ const TitleAndAddCustomerLink = () => {
 
   return (
     <ParentDiv>
-      <h1>your customers</h1>
+      <CustomBalancedText type="h1">your customers</CustomBalancedText>
 
       {atLeastOneCustomerExists ? (
         <MinimalButton

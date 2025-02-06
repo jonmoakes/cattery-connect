@@ -49,6 +49,7 @@ const useTableWithCustomColumns = ({
     useColumnOrder,
     (hooks) => {
       hooks.visibleColumns.push((columns) => {
+        // no checkbox when having clicked show owner details button
         if (hasCatsOwnerDetails) {
           return [...columns];
         } else {

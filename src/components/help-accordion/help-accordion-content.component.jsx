@@ -11,7 +11,9 @@ const HelpAccordionContent = ({ data }) => (
         const { id, title, content } = section;
         return (
           <AccordionDetails key={id}>
-            {title && <h2>{title}</h2>}
+            {title && (
+              <CustomBalancedText type="h2">{title}</CustomBalancedText>
+            )}
             <CustomBalancedText>{parseContent(content)}</CustomBalancedText>
           </AccordionDetails>
         );

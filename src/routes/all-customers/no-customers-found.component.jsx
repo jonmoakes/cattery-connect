@@ -16,7 +16,7 @@ const NoCustomersFound = ({ data }) => {
     <>
       {!data.length ? (
         <ParentDiv>
-          <h2>no customers found.</h2>
+          <CustomBalancedText type="h2">no customers found.</CustomBalancedText>
           <CustomBalancedText>
             no customers have been created yet.
           </CustomBalancedText>

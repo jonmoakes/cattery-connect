@@ -2,8 +2,10 @@ import { useLocation } from "react-router-dom";
 import useGetCustomerDetailsManagementSelectors from "../../hooks/selectors/use-get-customer-details-management-selectors";
 
 import SkeletonBox from "../../components/skeleton-box/skeleton-box.component";
+import CustomBalancedText from "../custom-balanced-text/custom-balanced-text.component";
 
 import { ParentDiv } from "../../styles/div/div.styles";
+
 import { addCustomerRoute } from "../../strings/routes";
 
 const CustomerDetailsTitleAndLoader = () => {
@@ -25,7 +27,7 @@ const CustomerDetailsTitleAndLoader = () => {
         />
       ) : null}
       <ParentDiv>
-        <h1>
+        <CustomBalancedText type="h1">
           {path === addCustomerRoute
             ? name
               ? `Add ${name}`
@@ -33,7 +35,7 @@ const CustomerDetailsTitleAndLoader = () => {
             : name
             ? `Edit ${name}`
             : "Edit Customer"}
-        </h1>
+        </CustomBalancedText>
       </ParentDiv>
     </>
   );

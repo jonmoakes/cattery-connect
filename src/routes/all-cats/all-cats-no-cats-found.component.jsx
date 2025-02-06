@@ -28,7 +28,7 @@ const AllCatsNoCatsFound = ({ data }) => {
         </ParentDiv>
       ) : atLeastOneCustomerExists && !data.length ? (
         <ParentDiv>
-          <h2>no cats found.</h2>
+          <CustomBalancedText type="h2">no cats found.</CustomBalancedText>
           <CustomBalancedText>
             no cats have been created yet.
           </CustomBalancedText>

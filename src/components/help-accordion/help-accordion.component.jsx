@@ -1,7 +1,9 @@
 import { useState } from "react";
 
 import useGetCurrentUserSelectors from "../../hooks/selectors/use-get-current-user-selectors";
+
 import HelpAccordionContent from "./help-accordion-content.component";
+import CustomBalancedText from "../custom-balanced-text/custom-balanced-text.component";
 
 import {
   Accordion,
@@ -36,10 +38,10 @@ const HelpAccordion = ({ openText, data }) => {
 
               {role !== "admin" ? (
                 <>
-                  <p>
+                  <CustomBalancedText>
                     please <StyledLink to={contactRoute}>contact us</StyledLink>{" "}
                     if you need any help!
-                  </p>
+                  </CustomBalancedText>
                   <MinimalButton
                     className="accordion"
                     onClick={() => setShowHelp(false)}

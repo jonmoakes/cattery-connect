@@ -1,5 +1,7 @@
 import { useLocation } from "react-router-dom";
 
+import CustomBalancedText from "../custom-balanced-text/custom-balanced-text.component";
+
 import { PaginationDiv, PaginationTextDiv } from "../../styles/div/div.styles";
 import { PaginationPageButton } from "../../styles/button/button.styles";
 import {
@@ -66,9 +68,9 @@ const TablePagination = ({
       {data.length > defaultTableSize && rows.length ? (
         <PaginationDiv>
           <div>
-            <p>
+            <CustomBalancedText>
               showing Page {pageIndex + 1} Of {pageOptions.length}
-            </p>
+            </CustomBalancedText>
 
             <PaginationPageButton
               onClick={() => {
@@ -106,7 +108,7 @@ const TablePagination = ({
             </PaginationPageButton>
 
             <PaginationTextDiv>
-              <p>Or Go To Page: </p>
+              <CustomBalancedText>Or Go To Page: </CustomBalancedText>
               <PaginationInput
                 type="number"
                 onWheel={(e) => e.target.blur()}
@@ -121,7 +123,7 @@ const TablePagination = ({
             </PaginationTextDiv>
 
             <PaginationTextDiv>
-              <p>choose row amount: </p>
+              <CustomBalancedText>choose row amount: </CustomBalancedText>
               <PaginationSelect
                 value={pageSize}
                 onChange={(e) => {
