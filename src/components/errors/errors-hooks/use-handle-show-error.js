@@ -9,6 +9,7 @@ const useHandleShowError = () => {
     useGetAllCatsSelectors();
   const { allUsersCatteryIdsAndOwnerNameError } = useGetAllUsersSelectors();
   const { catteryAllowsLargerPensError } = useGetDbManageAddBookingSelectors();
+  const { allUsersError } = useGetAllUsersSelectors();
 
   const showErrorHeading = () => {
     if (getAllCustomersError) return "failed to fetch your customers.";
@@ -19,6 +20,7 @@ const useHandleShowError = () => {
       return "failed to fetch user cattery ids.";
     if (catteryAllowsLargerPensError)
       return "failed to fetch critical data for booking process ( getAllowsLargerPensBoolAsync)";
+    if (allUsersError) return "failed to fetch your users list";
   };
 
   const errorToDisplay = () => {
@@ -28,6 +30,7 @@ const useHandleShowError = () => {
       getCatsOwnerDetailsError,
       allUsersCatteryIdsAndOwnerNameError,
       catteryAllowsLargerPensError,
+      allUsersError,
     ];
     return errors.find((error) => error !== null);
   };

@@ -34,7 +34,7 @@ export const getAllUsersSlice = createSlice({
   },
   selectors: {
     selectGetAllUsersSelectors: createSelector(
-      (state) => state.getAllUsersIsLoading,
+      (state) => state.allUsersIsLoading,
       (state) => state.allUsers,
       (state) => state.allUsersError,
       (state) => state.allUsersCatteryIdsAndOwnerName,

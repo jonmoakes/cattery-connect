@@ -8,7 +8,11 @@ import {
 } from "../../styles/form/form.styles";
 
 import { defaultTableSize } from "../../constants/constants";
-import { allCatsRoute, allCustomersRoute } from "../../strings/routes";
+import {
+  allCatsRoute,
+  allCustomersRoute,
+  allUsersRoute,
+} from "../../strings/routes";
 
 const TablePagination = ({
   pageIndex,
@@ -37,6 +41,9 @@ const TablePagination = ({
         break;
       case allCatsRoute:
         localStorage.setItem("allCatsChosenTablePageSize", selectedPageSize);
+        break;
+      case allUsersRoute:
+        localStorage.setItem("allUsersChosenTablePageSize", selectedPageSize);
         break;
       default:
         return;

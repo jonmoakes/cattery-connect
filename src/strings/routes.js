@@ -15,3 +15,4 @@ export const addCatChooseOwnerRoute = "/add-cat-choose-owner";
 export const forgotPasswordRequestRoute = "/forgot-password-request";
 export const chooseNewPasswordRoute = "/choose-new-password";
 export const dbManageAddBookingRoute = "/db-manage-add-booking";
+export const allUsersRoute = "all-users";

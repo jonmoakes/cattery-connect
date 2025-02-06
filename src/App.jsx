@@ -29,6 +29,7 @@ import {
   allCatsRoute,
   addCatChooseOwnerRoute,
   dbManageAddBookingRoute,
+  allUsersRoute,
 } from "./strings/routes";
 
 const Navigation = lazy(() =>
@@ -71,6 +72,7 @@ const DbManageAddBooking = lazy(() =>
     "./routes/db-management/db-manage-add-booking/db-manage-add-booking.component"
   )
 );
+const AllUsers = lazy(() => import("./routes/all-users/all-users.component"));
 
 const App = () => {
   const { currentUser, role } = useGetCurrentUserSelectors();
@@ -99,6 +101,12 @@ const App = () => {
 
             <Route element={<PrivateRoutes />}>
               <Route path={accountRoute} element={<Account />} />
+
+              <Route
+                path={allUsersRoute}
+                element={currentUser && role === "admin" ? <AllUsers /> : null}
+              />
+
               <Route
                 path={uploadDatesAndPensDataRoute}
                 element={
@@ -107,6 +115,7 @@ const App = () => {
                   ) : null
                 }
               />
+
               <Route
                 path={addCatRoute}
                 element={currentUser && role === "owner" ? <AddCat /> : null}

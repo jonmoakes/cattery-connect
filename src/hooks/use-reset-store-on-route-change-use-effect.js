@@ -13,6 +13,7 @@ import { resetChooseNewPasswordState } from "../store/choose-new-password/choose
 import {
   resetAllUsersCatteryIdsAndOwnerName,
   resetAllUsersCatteryIdsAndOwnerNameError,
+  resetGetAllUsersState,
 } from "../store/get-all-users/get-all-users.slice";
 import { resetDbManageAddBookingState } from "../store/db-manage-add-booking/db-manage-add-booking.slice";
 
@@ -27,6 +28,7 @@ import {
   forgotPasswordRequestRoute,
   signInRoute,
   uploadDatesAndPensDataRoute,
+  allUsersRoute,
 } from "../strings/routes";
 
 const useResetStoreOnRouteChangeUseEffect = () => {
@@ -56,6 +58,9 @@ const useResetStoreOnRouteChangeUseEffect = () => {
           break;
         case allCustomersRoute:
           dispatch(resetGetAllCustomersState());
+          break;
+        case allUsersRoute:
+          dispatch(resetGetAllUsersState());
           break;
         case addCatRoute:
         case editCatRoute:

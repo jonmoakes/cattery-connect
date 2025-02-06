@@ -7,6 +7,7 @@ import {
   allCatsRoute,
   addCatChooseOwnerRoute,
   dbManageAddBookingRoute,
+  allUsersRoute,
 } from "../../../strings/routes";
 
 const useNavigateToRoute = () => {
@@ -15,6 +16,11 @@ const useNavigateToRoute = () => {
   const adminButtons = [
     {
       id: 1,
+      text: "all users",
+      onClick: () => hamburgerHandlerNavigate(allUsersRoute),
+    },
+    {
+      id: 2,
       text: "upload dates",
       onClick: () => hamburgerHandlerNavigate(uploadDatesAndPensDataRoute),
     },
@@ -22,12 +28,12 @@ const useNavigateToRoute = () => {
 
   const catteryOwnerButtons = [
     {
-      id: 1,
+      id: 3,
       text: "customers",
       onClick: () => hamburgerHandlerNavigate(allCustomersRoute),
     },
     {
-      id: 2,
+      id: 4,
       text: "cats",
       onClick: () => hamburgerHandlerNavigate(allCatsRoute),
     },
@@ -35,17 +41,17 @@ const useNavigateToRoute = () => {
 
   const catteryOwnerCustomerDataButtons = [
     {
-      id: 3,
+      id: 5,
       text: "add booking",
       onClick: () => hamburgerHandlerNavigate(dbManageAddBookingRoute),
     },
     {
-      id: 4,
+      id: 6,
       text: "add a customer",
       onClick: () => hamburgerHandlerNavigate(addCustomerRoute),
     },
     {
-      id: 5,
+      id: 7,
       text: "add a cat",
       onClick: () => hamburgerHandlerNavigate(addCatChooseOwnerRoute),
     },

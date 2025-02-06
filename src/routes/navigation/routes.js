@@ -6,6 +6,7 @@ import {
   accountRoute,
   allCustomersRoute,
   allCatsRoute,
+  allUsersRoute,
 } from "../../strings/routes";
 
 export const signedInRoutes = [
@@ -14,6 +15,8 @@ export const signedInRoutes = [
   accountRoute,
   contactRoute,
 ];
+
+export const adminSignedInRoutes = [allUsersRoute, accountRoute];
 
 export const signedOutRoutes = [
   signInRoute,
