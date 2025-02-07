@@ -1,3 +1,4 @@
+import useGetCurrentUserSelectors from "../../hooks/selectors/use-get-current-user-selectors";
 import useHandleShowError from "./errors-hooks/use-handle-show-error";
 
 import CustomBalancedText from "../custom-balanced-text/custom-balanced-text.component";
@@ -10,6 +11,7 @@ import { StyledLink } from "../../styles/link/link.styles";
 import { contactRoute } from "../../strings/routes";
 
 const ShowFetchErrors = () => {
+  const { role } = useGetCurrentUserSelectors();
   const { showErrorHeading, errorToDisplay } = useHandleShowError();
 
   return (
@@ -31,17 +33,22 @@ const ShowFetchErrors = () => {
           <CustomBalancedText>
             press the 'reload page' button and then try again.
           </CustomBalancedText>
-          <CustomBalancedText>
-            please don't use the browsers back button.
-          </CustomBalancedText>
-          <CustomBalancedText>
-            if you continue to see this error, please{" "}
-            <StyledLink to={contactRoute}>contact us</StyledLink> and quote the
-            error in green box above.
-          </CustomBalancedText>
-          <CustomBalancedText>
-            we apologise for the inconvenience!
-          </CustomBalancedText>
+
+          {role !== "admin" ? (
+            <>
+              <CustomBalancedText>
+                please don't use the browsers back button.
+              </CustomBalancedText>
+              <CustomBalancedText>
+                if you continue to see this error, please{" "}
+                <StyledLink to={contactRoute}>contact us</StyledLink> and quote
+                the error in green box above.
+              </CustomBalancedText>
+              <CustomBalancedText>
+                we apologise for the inconvenience!
+              </CustomBalancedText>
+            </>
+          ) : null}
 
           <RadialTealButton onClick={() => window.location.reload()}>
             reload

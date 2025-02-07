@@ -3,21 +3,17 @@ import useAllUsersTableVariables from "./all-users-hooks/use-all-users-table-var
 import useIsOnline from "../../hooks/use-is-online";
 
 import ShowFetchErrors from "../../components/errors/show-fetch-errors.component";
-// import NoCustomersFound from "./no-customers-found.component";
+import NoUsersFound from "./no-users-found.component";
 import RenderTable from "../../components/tables/render-table.component";
 import NetworkError from "../../components/errors/network-error.component";
 import TablePagination from "../../components/tables/table-pagination.component";
 import TableSearchBox from "../../components/tables/table-search-box.component";
-// import EditCustomerButton from "./edit-customer-button.component";
-// import DeleteCustomerButton from "./delete-customer-button.component";
-
-// import { TableOptionsButtonDiv } from "../../styles/div/div.styles";
 
 const AllUsersTable = () => {
   const { allUsersError, columns, data, initialState } =
     useAllUsersTableVariables();
-
   const { isOnline } = useIsOnline();
+
   const {
     getTableProps,
     getTableBodyProps,
@@ -34,7 +30,6 @@ const AllUsersTable = () => {
     setPageSize,
     prepareRow,
     setGlobalFilter,
-    selectedFlatRows,
     pageSize,
     pageIndex,
     value,
@@ -47,9 +42,6 @@ const AllUsersTable = () => {
   });
 
   const shouldHideHeaders = !rows.length;
-  const checkedEntry = selectedFlatRows.map((row) => row.original);
-  const chosenEntry = checkedEntry[0];
-  console.log(chosenEntry);
 
   return (
     <>
@@ -57,10 +49,10 @@ const AllUsersTable = () => {
         <NetworkError />
       ) : allUsersError ? (
         <ShowFetchErrors />
+      ) : !data.length ? (
+        <NoUsersFound />
       ) : (
         <>
-          {/* <NoCustomersFound {...{ data }} /> */}
-
           <TableSearchBox
             {...{
               rows,
@@ -72,44 +64,35 @@ const AllUsersTable = () => {
             }}
           />
 
-          {/* {chosenEntry ? (
-            <TableOptionsButtonDiv>
-              <EditCustomerButton {...{ chosenEntry }} />
-              <DeleteCustomerButton {...{ chosenEntry }} />
-            </TableOptionsButtonDiv>
-          ) : null} */}
+          <>
+            <RenderTable
+              {...{
+                initialState,
+                headerGroups: shouldHideHeaders ? [] : headerGroups,
+                getTableProps,
+                getTableBodyProps,
+                page,
+                prepareRow,
+              }}
+            />
 
-          {data.length ? (
-            <>
-              <RenderTable
-                {...{
-                  initialState,
-                  headerGroups: shouldHideHeaders ? [] : headerGroups,
-                  getTableProps,
-                  getTableBodyProps,
-                  page,
-                  prepareRow,
-                }}
-              />
-
-              <TablePagination
-                {...{
-                  data,
-                  rows,
-                  pageIndex,
-                  pageOptions,
-                  gotoPage,
-                  canPreviousPage,
-                  previousPage,
-                  nextPage,
-                  canNextPage,
-                  pageCount,
-                  pageSize,
-                  setPageSize,
-                }}
-              />
-            </>
-          ) : null}
+            <TablePagination
+              {...{
+                data,
+                rows,
+                pageIndex,
+                pageOptions,
+                gotoPage,
+                canPreviousPage,
+                previousPage,
+                nextPage,
+                canNextPage,
+                pageCount,
+                pageSize,
+                setPageSize,
+              }}
+            />
+          </>
         </>
       )}
     </>

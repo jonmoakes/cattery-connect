@@ -13,8 +13,11 @@ const useAllUsersTableVariables = () => {
   );
 
   const columns = useMemo(() => ALL_USERS_TABLE_COLUMNS, []);
+
+  //all users can potentially be undefined in the selector, so need to make it an empty array if it is.
+  // if there are no users in the db, it will return an empty array anyway which means the table can handle it.
   const data = useMemo(
-    () => (allUsers !== undefined ? allUsers : []),
+    () => (allUsers === undefined ? [] : allUsers),
     [allUsers]
   );
 
