@@ -55,6 +55,7 @@ const ALL_CUSTOMERS_TABLE_COLUMNS = [
     Cell: ({ row }) => {
       const detailsRequiredForCatManagement = {
         customerDocumentId: row.original.$id,
+        customerName: row.original.name,
       };
       return (
         <NavigateToCatRouteCell

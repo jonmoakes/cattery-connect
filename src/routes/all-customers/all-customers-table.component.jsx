@@ -14,7 +14,7 @@ import DeleteCustomerButton from "./delete-customer-button.component";
 import { TableOptionsButtonDiv } from "../../styles/div/div.styles";
 
 const AllCustomersTable = () => {
-  const { getAllCustomersError, columns, data, initialState } =
+  const { columns, data, initialState, getAllCustomersError } =
     useAllCustomersTableVariables();
 
   const { isOnline } = useIsOnline();
@@ -56,10 +56,10 @@ const AllCustomersTable = () => {
         <NetworkError />
       ) : getAllCustomersError ? (
         <ShowFetchErrors />
+      ) : !data.length ? (
+        <NoCustomersFound />
       ) : (
         <>
-          <NoCustomersFound {...{ data }} />
-
           <TableSearchBox
             {...{
               rows,

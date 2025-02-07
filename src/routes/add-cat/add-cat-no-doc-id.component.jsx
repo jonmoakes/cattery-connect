@@ -33,7 +33,7 @@ const AddCatNoDocId = () => {
           cats table ( not by using the browsers forward or back buttons ).
         </CustomBalancedText>
         <Button
-          className="teal"
+          className="red"
           type="button"
           onClick={() => hamburgerHandlerNavigate(allCustomersRoute)}
         >

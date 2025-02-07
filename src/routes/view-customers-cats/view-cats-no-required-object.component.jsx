@@ -35,7 +35,7 @@ const ViewCatsNoRequiredObject = () => {
           browsers forward or back buttons ).
         </CustomBalancedText>
         <Button
-          className="teal"
+          className="red"
           type="button"
           onClick={() => hamburgerHandlerNavigate(allCustomersRoute)}
         >

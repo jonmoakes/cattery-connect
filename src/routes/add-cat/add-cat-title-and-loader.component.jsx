@@ -6,8 +6,13 @@ import CustomBalancedText from "../../components/custom-balanced-text/custom-bal
 import { ParentDiv } from "../../styles/div/div.styles";
 
 const AddCatTitleAndLoader = () => {
-  const { catDetailManagementIsLoading, catsName } =
-    useGetCatDetailsManagementSelectors();
+  const {
+    catDetailManagementIsLoading,
+    catsName,
+    detailsRequiredForCatManagement,
+  } = useGetCatDetailsManagementSelectors();
+
+  const { customerName } = detailsRequiredForCatManagement ?? "";
 
   return (
     <>
@@ -16,7 +21,9 @@ const AddCatTitleAndLoader = () => {
       ) : null}
 
       <ParentDiv>
-        <CustomBalancedText type="h1">add a cat</CustomBalancedText>
+        <CustomBalancedText type="h1">
+          {customerName ? `add a cat for ${customerName}` : "add a cat"}
+        </CustomBalancedText>
       </ParentDiv>
     </>
   );

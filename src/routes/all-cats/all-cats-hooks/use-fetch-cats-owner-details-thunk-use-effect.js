@@ -9,6 +9,7 @@ const useFetchCatsOwnerDetailsThunkUseEffect = () => {
 
   const dispatch = useDispatch();
 
+  // runs on all cats page when a cat is selected and show owners details button is pressed
   useEffect(() => {
     if (!selectedCatsOwnerCustomerId) return;
     dispatch(fetchCatsOwnerDetailsAsync({ selectedCatsOwnerCustomerId }));

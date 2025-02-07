@@ -8,7 +8,7 @@ import { StyledLink } from "../../styles/link/link.styles";
 import { addCustomerRoute } from "../../strings/routes";
 
 // need to pass a doc id here when tapping add cat
-const AllCatsNoCatsFound = ({ data }) => {
+const AllCatsNoCatsFound = () => {
   const { atLeastOneCustomerExists } = useGetAllCatsTableVariables();
 
   return (
@@ -26,7 +26,7 @@ const AllCatsNoCatsFound = ({ data }) => {
             you will then be able to create a cat.
           </CustomBalancedText>
         </ParentDiv>
-      ) : atLeastOneCustomerExists && !data.length ? (
+      ) : atLeastOneCustomerExists ? (
         <ParentDiv>
           <CustomBalancedText type="h2">no cats found.</CustomBalancedText>
           <CustomBalancedText>

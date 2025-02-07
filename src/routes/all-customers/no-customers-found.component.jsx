@@ -1,4 +1,4 @@
-import useAllCatsTableVariables from "../all-cats/all-cats-hooks/use-all-cats-table-variables";
+import useGetAllCustomerSelectors from "../../hooks/selectors/use-get-all-customers-selectors";
 import useHamburgerHandlerNavigate from "../../hooks/use-hamburger-handler-navigate";
 
 import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
@@ -8,30 +8,26 @@ import { MinimalButton } from "../../styles/button/button.styles";
 
 import { addCustomerRoute } from "../../strings/routes";
 
-const NoCustomersFound = ({ data }) => {
-  const { atLeastOneCustomerExists } = useAllCatsTableVariables();
+const NoCustomersFound = () => {
+  const { atLeastOneCustomerExists } = useGetAllCustomerSelectors();
   const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
 
   return (
-    <>
-      {!data.length ? (
-        <ParentDiv>
-          <CustomBalancedText type="h2">no customers found.</CustomBalancedText>
-          <CustomBalancedText>
-            no customers have been created yet.
-          </CustomBalancedText>
+    <ParentDiv>
+      <CustomBalancedText type="h2">no customers found.</CustomBalancedText>
+      <CustomBalancedText>
+        no customers have been created yet.
+      </CustomBalancedText>
 
-          {!atLeastOneCustomerExists ? (
-            <MinimalButton
-              className="margin-bottom"
-              onClick={() => hamburgerHandlerNavigate(addCustomerRoute)}
-            >
-              add a customer
-            </MinimalButton>
-          ) : null}
-        </ParentDiv>
+      {!atLeastOneCustomerExists ? (
+        <MinimalButton
+          className="margin-bottom"
+          onClick={() => hamburgerHandlerNavigate(addCustomerRoute)}
+        >
+          add a customer
+        </MinimalButton>
       ) : null}
-    </>
+    </ParentDiv>
   );
 };
 

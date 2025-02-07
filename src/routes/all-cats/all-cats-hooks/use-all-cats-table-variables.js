@@ -22,14 +22,17 @@ const useAllCatsTableVariables = () => {
   } = useGetAllCatsSelectors();
   const { catDetailManagementIsLoading } =
     useGetCatDetailsManagementSelectors();
-  const { allCustomers, getAllCustomersError } = useGetAllCustomerSelectors();
+  const { getAllCustomersError, atLeastOneCustomerExists } =
+    useGetAllCustomerSelectors();
 
   const allCatsPageSizeFromLocalStorage = localStorage.getItem(
     "allCatsChosenTablePageSize"
   );
 
-  const hasCatsOwnerDetails = Object.keys(selectedCatsOwnerDetails).length > 0;
-  const atLeastOneCustomerExists = allCustomers && allCustomers.length > 0;
+  const hasCatsOwnerDetails =
+    selectedCatsOwnerDetails &&
+    selectedCatsOwnerDetails.length &&
+    Object.keys(selectedCatsOwnerDetails).length > 0;
 
   const columns = useMemo(
     () =>
@@ -37,7 +40,14 @@ const useAllCatsTableVariables = () => {
     [hasCatsOwnerDetails]
   );
   const data = useMemo(
-    () => (!hasCatsOwnerDetails ? allCats : selectedCatsOwnerDetails),
+    () =>
+      !hasCatsOwnerDetails && allCats !== undefined
+        ? allCats
+        : !hasCatsOwnerDetails && allCats === undefined
+        ? []
+        : selectedCatsOwnerDetails === undefined
+        ? []
+        : selectedCatsOwnerDetails,
     [allCats, hasCatsOwnerDetails, selectedCatsOwnerDetails]
   );
 

@@ -3,6 +3,7 @@ import useAllCatsTableVariables from "./all-cats-hooks/use-all-cats-table-variab
 import useIsOnline from "../../hooks/use-is-online";
 
 import ShowFetchErrors from "../../components/errors/show-fetch-errors.component";
+import AllCatsNoCatsFound from "./all-cats-no-cats-found.component";
 import RenderTable from "../../components/tables/render-table.component";
 import NetworkError from "../../components/errors/network-error.component";
 import TablePagination from "../../components/tables/table-pagination.component";
@@ -13,7 +14,6 @@ import AllCatsDeleteCatButton from "./all-cats-buttons/all-cats-delete-cat-butto
 import AllCatsShowAllCatsButton from "./all-cats-buttons/all-cats-show-all-cats-button.component";
 
 import { TableOptionsButtonDiv } from "../../styles/div/div.styles";
-import AllCatsNoCatsFound from "./all-cats-no-cats-found.component";
 
 const AllCatsTable = () => {
   const {
@@ -72,10 +72,10 @@ const AllCatsTable = () => {
         getCatsOwnerDetailsError ||
         getAllCustomersError ? (
         <ShowFetchErrors />
+      ) : !data.length ? (
+        <AllCatsNoCatsFound />
       ) : (
         <>
-          <AllCatsNoCatsFound {...{ data }} />
-
           {!hasCatsOwnerDetails ? (
             <TableSearchBox
               {...{
@@ -105,37 +105,35 @@ const AllCatsTable = () => {
             <AllCatsShowAllCatsButton />
           ) : null}
 
-          {data.length ? (
-            <>
-              <RenderTable
-                {...{
-                  initialState,
-                  headerGroups: shouldHideHeaders ? [] : headerGroups,
-                  getTableProps,
-                  getTableBodyProps,
-                  page,
-                  prepareRow,
-                }}
-              />
+          <>
+            <RenderTable
+              {...{
+                initialState,
+                headerGroups: shouldHideHeaders ? [] : headerGroups,
+                getTableProps,
+                getTableBodyProps,
+                page,
+                prepareRow,
+              }}
+            />
 
-              <TablePagination
-                {...{
-                  data,
-                  rows,
-                  pageIndex,
-                  pageOptions,
-                  gotoPage,
-                  canPreviousPage,
-                  previousPage,
-                  nextPage,
-                  canNextPage,
-                  pageCount,
-                  pageSize,
-                  setPageSize,
-                }}
-              />
-            </>
-          ) : null}
+            <TablePagination
+              {...{
+                data,
+                rows,
+                pageIndex,
+                pageOptions,
+                gotoPage,
+                canPreviousPage,
+                previousPage,
+                nextPage,
+                canNextPage,
+                pageCount,
+                pageSize,
+                setPageSize,
+              }}
+            />
+          </>
         </>
       )}
     </>
