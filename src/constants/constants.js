@@ -6,6 +6,7 @@ export const catteryInfoCollectionId = import.meta.env
   .VITE_CATTERY_INFO_COLLECTION_ID;
 export const availablilityCollectionId = import.meta.env
   .VITE_AVAILABILTY_COLLECTION_ID;
+export const bookingsCollectionId = import.meta.env.VITE_BOOKINGS_COLLECTION_ID;
 
 export const standardRateLimit = 500;
 export const highRateLimit = 1000;

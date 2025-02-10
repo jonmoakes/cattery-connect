@@ -8,8 +8,12 @@ import { ParentDiv } from "../../../styles/div/div.styles";
 
 const DbManageAddBookingTitleAndLoader = () => {
   const { getAllCustomersIsLoading } = useGetAllCustomerSelectors();
-  const { dbManageIsBookingAvailableIsLoading } =
-    useGetDbManageAddBookingSelectors();
+  const {
+    catteryAllowsLargerPensBoolIsLoading,
+    isBookingAvailableIsLoading,
+    updatePensDataIsLoading,
+    addBookingDataIsLoading,
+  } = useGetDbManageAddBookingSelectors();
 
   return (
     <>
@@ -17,12 +21,22 @@ const DbManageAddBookingTitleAndLoader = () => {
         <CustomBalancedText type="h1">add a booking</CustomBalancedText>
       </ParentDiv>
 
-      {getAllCustomersIsLoading || dbManageIsBookingAvailableIsLoading ? (
+      {getAllCustomersIsLoading ||
+      catteryAllowsLargerPensBoolIsLoading ||
+      isBookingAvailableIsLoading ||
+      updatePensDataIsLoading ||
+      addBookingDataIsLoading ? (
         <SkeletonBox
           loadingText={
             getAllCustomersIsLoading
               ? "Fetching Customers..."
-              : "Checking Availability..."
+              : catteryAllowsLargerPensBoolIsLoading
+              ? "fetching required cattery data..."
+              : isBookingAvailableIsLoading
+              ? "Checking booking  Availability..."
+              : updatePensDataIsLoading
+              ? "updating pens data..."
+              : addBookingDataIsLoading && "adding booking data..."
           }
         />
       ) : null}

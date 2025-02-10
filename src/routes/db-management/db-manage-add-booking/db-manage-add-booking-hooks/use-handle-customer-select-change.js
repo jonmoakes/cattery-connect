@@ -3,17 +3,17 @@ import { useDispatch } from "react-redux";
 import useGetAllCustomerSelectors from "../../../../hooks/selectors/use-get-all-customers-selectors";
 import useGetDbManageAddBookingSelectors from "../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
 import {
-  resetDbManageIsBookingAvailableError,
-  resetDbManageIsBookingAvailableResult,
-  setDbManageAddBookingData,
+  resetIsBookingAvailableError,
+  resetIsBookingAvailableResult,
+  setAddBookingData,
   setShowIneligibleDates,
 } from "../../../../store/db-manage-add-booking/db-manage-add-booking.slice";
 
 const useHandleCustomerSelectChange = () => {
   const {
-    dbManageAddBookingData,
-    dbManageIsBookingAvailableResult,
-    dbManageIsBookingAvailableError,
+    addBookingData,
+    isBookingAvailableResult,
+    isBookingAvailableError,
     showIneligibleDates,
   } = useGetDbManageAddBookingSelectors();
   const { allCustomers } = useGetAllCustomerSelectors();
@@ -30,8 +30,8 @@ const useHandleCustomerSelectChange = () => {
     );
 
     dispatch(
-      setDbManageAddBookingData({
-        ...dbManageAddBookingData,
+      setAddBookingData({
+        ...addBookingData,
         customerDocumentId: selectedCustomer?.$id || "",
         customerId: selectedCustomer?.customerId || "",
         customerName: selectedCustomer?.name || "",
@@ -47,11 +47,11 @@ const useHandleCustomerSelectChange = () => {
       })
     );
 
-    if (dbManageIsBookingAvailableResult) {
-      dispatch(resetDbManageIsBookingAvailableResult());
+    if (isBookingAvailableResult) {
+      dispatch(resetIsBookingAvailableResult());
     }
-    if (dbManageIsBookingAvailableError) {
-      dispatch(resetDbManageIsBookingAvailableError());
+    if (isBookingAvailableError) {
+      dispatch(resetIsBookingAvailableError());
     }
     if (showIneligibleDates) {
       dispatch(setShowIneligibleDates(false));

@@ -1,41 +1,58 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
 import {
-  checkBookingAvailabilityAsync,
   getAllowsLargerPensBoolAsync,
+  checkBookingAvailabilityAsync,
+  updatePensDataAsync,
+  uploadBookingDataAsync,
 } from "./db-manage-add-booking.thunks";
 
 const INITIAL_STATE = {
-  dbManageAddBookingIsLoading: false,
+  catteryAllowsLargerPensBoolIsLoading: false,
   catteryAllowsLargerPensBool: null,
   catteryAllowsLargerPensResult: "",
   catteryAllowsLargerPensError: null,
-  dbManageIsBookingAvailableIsLoading: false,
-  dbManageAddBookingData: {},
-  dbManageIsBookingAvailableResult: "",
-  dbManageIsBookingAvailableError: null,
-  dbManageAddBookingResult: "",
-  dbManageAddBookingError: null,
+
+  addBookingData: {},
+
+  isBookingAvailableIsLoading: false,
+  isBookingAvailableResult: "",
+  isBookingAvailableError: null,
+
   showIneligibleDates: false,
+
+  updatePensDataIsLoading: false,
+  updatePensDataResult: "",
+  updatePensDataError: null,
+
+  addBookingDataIsLoading: false,
+  addBookingDataResult: "",
+  addBookingDataError: null,
 };
 
 export const dbManageAddBookingSlice = createSlice({
   name: "dbManageAddBooking",
   initialState: INITIAL_STATE,
   reducers: {
-    setDbManageAddBookingData(state, action) {
-      state.dbManageAddBookingData = action.payload;
+    setAddBookingData(state, action) {
+      state.addBookingData = action.payload;
     },
-    resetDbManageIsBookingAvailableResult(state) {
-      state.dbManageIsBookingAvailableResult = "";
+    resetIsBookingAvailableResult(state) {
+      state.isBookingAvailableResult = "";
     },
-    resetDbManageIsBookingAvailableError(state) {
-      state.dbManageIsBookingAvailableError = null;
+    resetIsBookingAvailableError(state) {
+      state.isBookingAvailableError = null;
     },
-    resetDbManageAddBookingResult(state) {
-      state.dbManageAddBookingResult = "";
+    resetUpdatePensDataResult(state) {
+      state.updatePensDataResult = "";
     },
-    resetDbManageAddBookingError(state) {
-      state.dbManageAddBookingResult = null;
+    resetUpdatePensDataError(state) {
+      state.updatePensDataError = null;
+    },
+    resetAddBookingDataResult(state) {
+      state.addBookingDataResult = "";
+    },
+    resetAddBookingDataError(state) {
+      state.addBookingDataError = null;
     },
     setShowIneligibleDates(state, action) {
       state.showIneligibleDates = action.payload;
@@ -46,42 +63,60 @@ export const dbManageAddBookingSlice = createSlice({
   },
   selectors: {
     selectDbManageAddBookingSelectors: createSelector(
-      (state) => state.dbManageAddBookingIsLoading,
+      (state) => state.catteryAllowsLargerPensBoolIsLoading,
       (state) => state.catteryAllowsLargerPensBool,
       (state) => state.catteryAllowsLargerPensResult,
       (state) => state.catteryAllowsLargerPensError,
-      (state) => state.dbManageIsBookingAvailableIsLoading,
-      (state) => state.dbManageAddBookingData,
-      (state) => state.dbManageIsBookingAvailableResult,
-      (state) => state.dbManageIsBookingAvailableError,
-      (state) => state.dbManageAddBookingResult,
-      (state) => state.dbManageAddBookingError,
+
+      (state) => state.addBookingData,
+
+      (state) => state.isBookingAvailableIsLoading,
+      (state) => state.isBookingAvailableResult,
+      (state) => state.isBookingAvailableError,
+
       (state) => state.showIneligibleDates,
+
+      (state) => state.updatePensDataIsLoading,
+      (state) => state.updatePensDataResult,
+      (state) => state.updatePensDataError,
+
+      (state) => state.addBookingDataIsLoading,
+      (state) => state.addBookingDataResult,
+      (state) => state.addBookingDataError,
+
       (
-        dbManageAddBookingIsLoading,
+        catteryAllowsLargerPensBoolIsLoading,
         catteryAllowsLargerPensBool,
         catteryAllowsLargerPensResult,
         catteryAllowsLargerPensError,
-        dbManageIsBookingAvailableIsLoading,
-        dbManageAddBookingData,
-        dbManageIsBookingAvailableResult,
-        dbManageIsBookingAvailableError,
-        dbManageAddBookingResult,
-        dbManageAddBookingError,
-        showIneligibleDates
+        addBookingData,
+        isBookingAvailableIsLoading,
+        isBookingAvailableResult,
+        isBookingAvailableError,
+        showIneligibleDates,
+        updatePensDataIsLoading,
+        updatePensDataResult,
+        updatePensDataError,
+        addBookingDataIsLoading,
+        addBookingDataResult,
+        addBookingDataError
       ) => {
         return {
-          dbManageAddBookingIsLoading,
+          catteryAllowsLargerPensBoolIsLoading,
           catteryAllowsLargerPensBool,
           catteryAllowsLargerPensResult,
           catteryAllowsLargerPensError,
-          dbManageIsBookingAvailableIsLoading,
-          dbManageAddBookingData,
-          dbManageIsBookingAvailableResult,
-          dbManageIsBookingAvailableError,
-          dbManageAddBookingResult,
-          dbManageAddBookingError,
+          addBookingData,
+          isBookingAvailableIsLoading,
+          isBookingAvailableResult,
+          isBookingAvailableError,
           showIneligibleDates,
+          updatePensDataIsLoading,
+          updatePensDataResult,
+          updatePensDataError,
+          addBookingDataIsLoading,
+          addBookingDataResult,
+          addBookingDataError,
         };
       }
     ),
@@ -89,44 +124,72 @@ export const dbManageAddBookingSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getAllowsLargerPensBoolAsync.pending, (state) => {
-        state.dbManageIsBookingAvailableIsLoading = true;
+        state.catteryAllowsLargerPensBoolIsLoading = true;
       })
       .addCase(getAllowsLargerPensBoolAsync.fulfilled, (state, action) => {
-        state.dbManageIsBookingAvailableIsLoading = false;
+        state.catteryAllowsLargerPensBoolIsLoading = false;
         state.catteryAllowsLargerPensResult = "fulfilled";
         state.catteryAllowsLargerPensBool = action.payload;
         state.catteryAllowsLargerPensError = null;
       })
       .addCase(getAllowsLargerPensBoolAsync.rejected, (state, action) => {
-        state.dbManageIsBookingAvailableIsLoading = false;
+        state.catteryAllowsLargerPensBoolIsLoading = false;
         state.catteryAllowsLargerPensResult = "rejected";
         state.catteryAllowsLargerPensBool = null;
         state.catteryAllowsLargerPensError = action.payload;
       })
       .addCase(checkBookingAvailabilityAsync.pending, (state) => {
-        state.dbManageIsBookingAvailableIsLoading = true;
+        state.isBookingAvailableIsLoading = true;
       })
       .addCase(checkBookingAvailabilityAsync.fulfilled, (state, action) => {
-        state.dbManageIsBookingAvailableIsLoading = false;
-        state.dbManageIsBookingAvailableResult = action.payload;
-        state.dbManageIsBookingAvailableError = null;
+        state.isBookingAvailableIsLoading = false;
+        state.isBookingAvailableResult = action.payload;
+        state.isBookingAvailableError = null;
       })
       .addCase(checkBookingAvailabilityAsync.rejected, (state, action) => {
-        state.dbManageIsBookingAvailableIsLoading = false;
-        state.dbManageIsBookingAvailableResult = "rejected";
-        state.dbManageIsBookingAvailableError = action.payload;
+        state.isBookingAvailableIsLoading = false;
+        state.isBookingAvailableResult = "rejected";
+        state.isBookingAvailableError = action.payload;
+      })
+      .addCase(updatePensDataAsync.pending, (state) => {
+        state.updatePensDataIsLoading = true;
+      })
+      .addCase(updatePensDataAsync.fulfilled, (state) => {
+        state.updatePensDataIsLoading = false;
+        state.updatePensDataResult = "fulfilled";
+        state.updatePensDataError = null;
+      })
+      .addCase(updatePensDataAsync.rejected, (state, action) => {
+        state.updatePensDataIsLoading = false;
+        state.updatePensDataResult = "rejected";
+        state.updatePensDataError = action.payload;
+      })
+      .addCase(uploadBookingDataAsync.pending, (state) => {
+        state.addBookingDataIsLoading = true;
+      })
+      .addCase(uploadBookingDataAsync.fulfilled, (state) => {
+        state.addBookingDataIsLoading = false;
+        state.addBookingDataResult = "fulfilled";
+        state.addBookingDataError = null;
+      })
+      .addCase(uploadBookingDataAsync.rejected, (state, action) => {
+        state.addBookingDataIsLoading = false;
+        state.addBookingDataResult = "rejected";
+        state.addBookingDataError = action.payload;
       });
   },
 });
 
 export const {
-  setDbManageAddBookingData,
-  resetDbManageIsBookingAvailableResult,
-  resetDbManageIsBookingAvailableError,
-  resetDbManageAddBookingResult,
-  resetDbManageAddBookingError,
-  resetDbManageAddBookingState,
+  setAddBookingData,
+  resetIsBookingAvailableResult,
+  resetIsBookingAvailableError,
+  resetUpdatePensDataResult,
+  resetUpdatePensDataError,
+  resetAddBookingDataResult,
+  resetAddBookingDataError,
   setShowIneligibleDates,
+  resetDbManageAddBookingState,
 } = dbManageAddBookingSlice.actions;
 export const { selectDbManageAddBookingSelectors } =
   dbManageAddBookingSlice.selectors;

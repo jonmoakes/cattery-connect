@@ -1,8 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { databases } from "../../utils/appwrite/appwrite-config";
-import { Query } from "appwrite";
+import { ID, Query } from "appwrite";
 import {
   availablilityCollectionId,
+  bookingsCollectionId,
   catteryInfoCollectionId,
   databaseId,
 } from "../../constants/constants";
@@ -12,7 +13,13 @@ import {
 } from "./day-and-slot-checks/check-first-day-availability";
 import { checkMiddleDaysAvailability } from "./day-and-slot-checks/check-middle-days-availability";
 import { checkLastDayAvailability } from "./day-and-slot-checks/check-last-day-availability";
-import { listDocumentsByQueryOrSearch } from "../../utils/appwrite/appwrite-functions";
+import {
+  listDocumentsByQueryOrSearch,
+  manageDatabaseDocument,
+} from "../../utils/appwrite/appwrite-functions";
+import { getSlotsToUpdate } from "./update-pen-availability/get-slots-to-update";
+import { updateSlot } from "./update-pen-availability/update-slot";
+import { eachDayOfInterval, format } from "date-fns";
 
 export const getAllowsLargerPensBoolAsync = createAsyncThunk(
   "getAllowsLargerPensBool",
@@ -58,7 +65,7 @@ export const getAllowsLargerPensBoolAsync = createAsyncThunk(
 export const checkBookingAvailabilityAsync = createAsyncThunk(
   "checkBookingAvailability",
   async (
-    { dbManageAddBookingData, catteryId, catteryAllowsLargerPensBool },
+    { addBookingData, catteryId, catteryAllowsLargerPensBool },
     thunkAPI
   ) => {
     try {
@@ -68,7 +75,7 @@ export const checkBookingAvailabilityAsync = createAsyncThunk(
         catsInBooking,
         checkInSlot,
         checkOutSlot,
-      } = dbManageAddBookingData;
+      } = addBookingData;
 
       const numberOfCats = catsInBooking.length;
 
@@ -86,23 +93,34 @@ export const checkBookingAvailabilityAsync = createAsyncThunk(
 
       const { documents } = availabilityResponse;
 
-      const hasCheckInDateDoc = documents.some(
-        (doc) => doc.date === checkInDate
-      );
-      const hasCheckOutDateDoc = documents.some(
-        (doc) => doc.date === checkOutDate
+      const getBookingDatesFromCheckInToCheckOutInclusive = () => {
+        const daysArray = eachDayOfInterval({
+          start: checkInDate,
+          end: checkOutDate,
+        });
+
+        return daysArray.map((day) => format(day, "yyyy-MM-dd"));
+      };
+
+      const datesRequested = getBookingDatesFromCheckInToCheckOutInclusive();
+      const missingDates = datesRequested.filter(
+        (date) => !documents.some((doc) => doc.date === date)
       );
 
-      // do docs for the dates in the db.
-      if (!hasCheckInDateDoc && hasCheckOutDateDoc) {
-        throw new Error("noCheckInDate");
-      } else if (hasCheckInDateDoc && !hasCheckOutDateDoc) {
-        throw new Error("noCheckOutDate");
-      } else if (!hasCheckInDateDoc && !hasCheckOutDateDoc) {
-        throw new Error("noCheckInOrOutDate");
+      if (missingDates.length > 0) {
+        const formattedMissingDates = missingDates.map((missingDate) =>
+          format(missingDate, "EEE d MMM yyyy")
+        );
+
+        throw new Error(
+          `we are not able to make this booking because the cattery is not available for bookings on the following dates: ${formattedMissingDates.join(
+            ", "
+          )}.`
+        );
       }
 
       const parsedAvailabilityData = documents.map((day) => ({
+        documentId: day.$id,
         date: day.date,
         morningPens: JSON.parse(day.morningPensData),
         afternoonPens: JSON.parse(day.afternoonPensData),
@@ -151,7 +169,110 @@ export const checkBookingAvailabilityAsync = createAsyncThunk(
         };
       }
 
-      return { status: "bookingAvailable" };
+      return { status: "bookingAvailable", parsedAvailabilityData };
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updatePensDataAsync = createAsyncThunk(
+  "updatePensData",
+  async (
+    {
+      addBookingData,
+      catteryAllowsLargerPensBool,
+      parsedAvailabilityData,
+      operation,
+    },
+    thunkAPI
+  ) => {
+    try {
+      const { catsInBooking, checkInSlot, checkOutSlot } = addBookingData;
+      const numberOfCats = catsInBooking.length;
+      const totalDays = parsedAvailabilityData.length;
+
+      for (let index = 0; index < totalDays; index++) {
+        const day = parsedAvailabilityData[index];
+
+        let updatedMorningPens = day.morningPens;
+        let updatedAfternoonPens = day.afternoonPens;
+
+        const { shouldUpdateMorning, shouldUpdateAfternoon } = getSlotsToUpdate(
+          index,
+          totalDays,
+          checkInSlot,
+          checkOutSlot
+        );
+
+        if (shouldUpdateMorning) {
+          updatedMorningPens = updateSlot(
+            updatedMorningPens,
+            catteryAllowsLargerPensBool,
+            numberOfCats,
+            operation
+          );
+        }
+        if (shouldUpdateAfternoon) {
+          updatedAfternoonPens = updateSlot(
+            updatedAfternoonPens,
+            catteryAllowsLargerPensBool,
+            numberOfCats,
+            operation
+          );
+        }
+
+        const updatedData = {
+          morningPensData: JSON.stringify(updatedMorningPens),
+          afternoonPensData: JSON.stringify(updatedAfternoonPens),
+        };
+
+        await manageDatabaseDocument(
+          "update",
+          databaseId,
+          availablilityCollectionId,
+          day.documentId,
+          updatedData
+        );
+      }
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const uploadBookingDataAsync = createAsyncThunk(
+  "uploadBookingData",
+  async ({ addBookingData, catteryId }, thunkAPI) => {
+    try {
+      const {
+        catsInBooking,
+        checkInDate,
+        checkInSlot,
+        checkOutDate,
+        checkOutSlot,
+        customerId,
+        customerName,
+      } = addBookingData;
+
+      const data = {
+        customerName,
+        customerId,
+        checkInDate,
+        checkInSlot,
+        checkOutDate,
+        checkOutSlot,
+        catsInBooking: catsInBooking.join(", "),
+        catteryId,
+      };
+
+      await manageDatabaseDocument(
+        "create",
+        databaseId,
+        bookingsCollectionId,
+        ID.unique(),
+        data
+      );
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

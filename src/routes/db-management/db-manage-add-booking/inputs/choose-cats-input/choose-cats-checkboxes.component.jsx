@@ -10,7 +10,7 @@ import { StyledCheckbox } from "../../../../../styles/form/form.styles";
 import { BlackHr } from "../../../../../styles/hr/hr.styles";
 
 const ChooseCatCheckboxes = () => {
-  const { dbManageAddBookingData } = useGetDbManageAddBookingSelectors();
+  const { addBookingData } = useGetDbManageAddBookingSelectors();
   const { customerHasOneCat, catsToRender, customerHasMoreThanOneCat } =
     useAddBookingVariables();
   const { handleChooseCatsChange } = useHandleChooseCatsChange();
@@ -42,8 +42,7 @@ const ChooseCatCheckboxes = () => {
                   id={catsName}
                   name={catsName}
                   checked={
-                    dbManageAddBookingData.catsInBooking?.includes(catsName) ||
-                    false
+                    addBookingData.catsInBooking?.includes(catsName) || false
                   }
                 />
               </InnerFormDiv>

@@ -4,7 +4,7 @@ import useAddBookingVariables from "./db-manage-add-booking-hooks/use-add-bookin
 import useCheckInAndOutDateValidityUseEffect from "./db-manage-add-booking-hooks/use-check-in-and-out-date-validity-use-effect";
 import useCheckBookingAvailableResultSwalUseEffect from "./db-manage-add-booking-hooks/use-check-booking-available-result-swal-use-effect";
 import useGetAllowsLargerPensBoolAndOwnersCustomersThunkUseEffect from "./db-manage-add-booking-hooks/use-get-allows-larger-pens-bool-and-owners-customers-thunk-use-effect";
-import useConfirmAddBooking from "./db-manage-add-booking-hooks/use-confirm-add-booking.component";
+import useAddBookingFunctions from "./db-manage-add-booking-hooks/use-add-booking-functions";
 
 import ShowFetchErrors from "../../../components/errors/show-fetch-errors.component";
 import DbManageAddBookingTitleAndLoader from "./db-manage-add-booking-title-and-loader.component";
@@ -20,6 +20,7 @@ import BookingIsAvailableInfoAndPlaceBookingButton from "./booking-is-available-
 import { Container } from "../../../styles/container/container.styles";
 import { ParentDiv } from "../../../styles/div/div.styles";
 import { Form } from "../../../styles/form/form.styles";
+import useCompleteBookingResultSwalUseEffect from "./db-manage-add-booking-hooks/use-complete-booking-result-swal-use-effect";
 
 const DbManageAddBooking = () => {
   const {
@@ -33,10 +34,11 @@ const DbManageAddBooking = () => {
   const { customerHasOneCatOrMoreThanOneCatAndAtLeastOneHasBeenSelected } =
     useAddBookingVariables();
   const { shouldShowFormSubmissionButtons, checkBookingAvailability } =
-    useConfirmAddBooking();
+    useAddBookingFunctions();
   useGetAllowsLargerPensBoolAndOwnersCustomersThunkUseEffect();
   useCheckInAndOutDateValidityUseEffect();
   useCheckBookingAvailableResultSwalUseEffect();
+  useCompleteBookingResultSwalUseEffect();
 
   return (
     <Container>

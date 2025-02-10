@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 
 import useGetDbManageAddBookingSelectors from "../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
 import {
-  resetDbManageIsBookingAvailableError,
-  resetDbManageIsBookingAvailableResult,
+  resetIsBookingAvailableError,
+  resetIsBookingAvailableResult,
 } from "../../../../store/db-manage-add-booking/db-manage-add-booking.slice";
 
 import useFireSwal from "../../../../hooks/use-fire-swal";
@@ -14,8 +14,9 @@ import { errorReceivedMessage } from "../../../../strings/errors";
 
 const useCheckBookingAvailableResultSwalUseEffect = () => {
   const {
-    dbManageIsBookingAvailableResult,
-    dbManageIsBookingAvailableError,
+    addBookingData,
+    isBookingAvailableResult,
+    isBookingAvailableError,
     status,
   } = useGetDbManageAddBookingSelectors();
 
@@ -24,35 +25,22 @@ const useCheckBookingAvailableResultSwalUseEffect = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!dbManageIsBookingAvailableResult && !dbManageIsBookingAvailableError)
+    if (
+      (!isBookingAvailableResult && !isBookingAvailableError) ||
+      status === "bookingAvailable"
+    )
       return;
 
-    if (status === "bookingAvailable") {
-      // dispatch(resetDbManageIsBookingAvailableResult());
-      // console.log("booked");
-      return;
-      // confirmSwal(
-      //   "are yousure you want to place this booking?",
-      //   "",
-      //   imSureMessage,
-      //   "",
-      //   () => alert("booked!"),
-      //   null
-      // );
-    } else if (dbManageIsBookingAvailableResult === "rejected") {
-      const error = dbManageIsBookingAvailableError;
-
+    if (isBookingAvailableResult === "rejected") {
       fireSwal(
         "error",
-        error === "noCheckInOrOutDate"
-          ? "sorry, we have no availability on either of your selected check in or check out dates.."
-          : error === "noCheckInDate"
-          ? "sorry, we have no availability on your selected check in date.."
-          : error === "noCheckOutDate"
-          ? "sorry, we have no availability on your selected check out date.."
+        isBookingAvailableError.includes(
+          "we are not able to make this booking because the cattery is not available for bookings on the following dates:"
+        )
+          ? isBookingAvailableError
           : errorReceivedMessage(
-              "error checking booking availability..",
-              error
+              "Error checking date availability.",
+              isBookingAvailableError
             ),
         "",
         0,
@@ -62,18 +50,19 @@ const useCheckBookingAvailableResultSwalUseEffect = () => {
         false
       ).then((isConfirmed) => {
         if (isConfirmed) {
-          dispatch(resetDbManageIsBookingAvailableResult());
-          dispatch(resetDbManageIsBookingAvailableError());
+          dispatch(resetIsBookingAvailableResult());
+          dispatch(resetIsBookingAvailableError());
         }
       });
     }
   }, [
-    dbManageIsBookingAvailableResult,
-    dbManageIsBookingAvailableError,
+    isBookingAvailableResult,
+    isBookingAvailableError,
     dispatch,
     fireSwal,
     status,
     confirmSwal,
+    addBookingData,
   ]);
 };
 

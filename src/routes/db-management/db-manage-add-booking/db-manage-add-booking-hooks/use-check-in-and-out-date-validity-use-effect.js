@@ -1,9 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { isBefore, parseISO } from "date-fns";
 
 import useGetDbManageAddBookingSelectors from "../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
-import { isBefore, parseISO } from "date-fns";
-import { setDbManageAddBookingData } from "../../../../store/db-manage-add-booking/db-manage-add-booking.slice";
+
+import { setAddBookingData } from "../../../../store/db-manage-add-booking/db-manage-add-booking.slice";
+
 import useFireSwal from "../../../../hooks/use-fire-swal";
 
 const useCheckInAndOutDateValidityUseEffect = () => {
@@ -12,7 +14,7 @@ const useCheckInAndOutDateValidityUseEffect = () => {
     checkOutDate,
     checkInSlot,
     checkOutSlot,
-    dbManageAddBookingData,
+    addBookingData,
   } = useGetDbManageAddBookingSelectors();
 
   const dispatch = useDispatch();
@@ -37,8 +39,8 @@ const useCheckInAndOutDateValidityUseEffect = () => {
       ).then((isConfirmed) => {
         if (isConfirmed) {
           dispatch(
-            setDbManageAddBookingData({
-              ...dbManageAddBookingData,
+            setAddBookingData({
+              ...addBookingData,
               checkOutDate: "",
               checkOutSlot: "",
             })
@@ -58,8 +60,8 @@ const useCheckInAndOutDateValidityUseEffect = () => {
       ).then((isConfirmed) => {
         if (isConfirmed) {
           dispatch(
-            setDbManageAddBookingData({
-              ...dbManageAddBookingData,
+            setAddBookingData({
+              ...addBookingData,
               checkOutSlot: "",
             })
           );
@@ -72,7 +74,7 @@ const useCheckInAndOutDateValidityUseEffect = () => {
     checkInSlot,
     checkOutSlot,
     dispatch,
-    dbManageAddBookingData,
+    addBookingData,
     fireSwal,
   ]);
 };

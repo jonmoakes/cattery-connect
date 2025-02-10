@@ -2,17 +2,17 @@ import { useDispatch } from "react-redux";
 import { format } from "date-fns";
 
 import useGetDbManageAddBookingSelectors from "../../../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
-import { setDbManageAddBookingData } from "../../../../../../store/db-manage-add-booking/db-manage-add-booking.slice";
+import { setAddBookingData } from "../../../../../../store/db-manage-add-booking/db-manage-add-booking.slice";
 
 const useHandleCheckInAndOutDatesChange = () => {
-  const { dbManageAddBookingData, checkInDate, checkOutDate } =
+  const { addBookingData, checkInDate, checkOutDate } =
     useGetDbManageAddBookingSelectors();
   const dispatch = useDispatch();
 
   const handleCheckInAndOutDatesChange = (dateType, date) => {
     dispatch(
-      setDbManageAddBookingData({
-        ...dbManageAddBookingData,
+      setAddBookingData({
+        ...addBookingData,
         [dateType]: format(date, "yyyy-MM-dd"),
       })
     );

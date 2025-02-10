@@ -4,18 +4,21 @@ import { selectDbManageAddBookingSelectors } from "../../store/db-manage-add-boo
 
 const useGetDbManageAddBookingSelectors = () => {
   const {
-    dbManageAddBookingIsLoading,
+    catteryAllowsLargerPensBoolIsLoading,
     catteryAllowsLargerPensBool,
     catteryAllowsLargerPensResult,
     catteryAllowsLargerPensError,
-    dbManageAddBookingCheckAvailabilityIsLoading,
-    dbManageAddBookingData,
-    dbManageIsBookingAvailableIsLoading,
-    dbManageIsBookingAvailableResult,
-    dbManageIsBookingAvailableError,
-    dbManageAddBookingResult,
-    dbManageAddBookingError,
+    addBookingData,
+    isBookingAvailableIsLoading,
+    isBookingAvailableResult,
+    isBookingAvailableError,
     showIneligibleDates,
+    updatePensDataIsLoading,
+    updatePensDataResult,
+    updatePensDataError,
+    addBookingDataIsLoading,
+    addBookingDataResult,
+    addBookingDataError,
   } = useSelector(selectDbManageAddBookingSelectors);
 
   const {
@@ -27,22 +30,27 @@ const useGetDbManageAddBookingSelectors = () => {
     checkInSlot,
     checkOutDate,
     checkOutSlot,
-  } = dbManageAddBookingData ?? {};
+  } = addBookingData ?? {};
 
-  const { status, failingDates } = dbManageIsBookingAvailableResult ?? {};
+  const { status, failingDates, parsedAvailabilityData } =
+    isBookingAvailableResult ?? {};
 
   return {
-    dbManageAddBookingIsLoading,
+    catteryAllowsLargerPensBoolIsLoading,
     catteryAllowsLargerPensBool,
     catteryAllowsLargerPensResult,
     catteryAllowsLargerPensError,
-    dbManageAddBookingCheckAvailabilityIsLoading,
-    dbManageAddBookingData,
-    dbManageIsBookingAvailableIsLoading,
-    dbManageIsBookingAvailableResult,
-    dbManageIsBookingAvailableError,
-    dbManageAddBookingResult,
-    dbManageAddBookingError,
+    addBookingData,
+    isBookingAvailableIsLoading,
+    isBookingAvailableResult,
+    isBookingAvailableError,
+    showIneligibleDates,
+    updatePensDataIsLoading,
+    updatePensDataResult,
+    updatePensDataError,
+    addBookingDataIsLoading,
+    addBookingDataResult,
+    addBookingDataError,
     customerDocumentId,
     customerName,
     catDetails,
@@ -53,7 +61,7 @@ const useGetDbManageAddBookingSelectors = () => {
     checkOutSlot,
     status,
     failingDates,
-    showIneligibleDates,
+    parsedAvailabilityData,
   };
 };
 
