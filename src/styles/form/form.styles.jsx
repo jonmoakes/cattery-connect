@@ -331,3 +331,7 @@ export const StyledCheckbox = styled.input`
     margin: 10px auto 15px auto;
   }
 `;
+
+export const PaginationOption = styled.option`
+  color: ${softBlack};
+`;

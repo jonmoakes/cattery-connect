@@ -19,8 +19,8 @@ const CatsParsingError = () => {
       <CustomBalancedText>{error}</CustomBalancedText>
       <BlackHr />
       <CustomBalancedText>
-        tap the button below to relaod the page and if the error persists,
-        please contact jonathan
+        tap the button below to reload the page and if the error persists,
+        please contact jonathan.
       </CustomBalancedText>
       <MinimalButton
         className="margin-bottom"

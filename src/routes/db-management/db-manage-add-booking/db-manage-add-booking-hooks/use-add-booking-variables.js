@@ -27,9 +27,6 @@ const useAddBookingVariables = () => {
 
   const customerHasBeenSelectedAndErrorParsingCats = !!customerName && !!error;
 
-  const customerHasBeenSelectedAndHasNoCats =
-    !!customerName && !!catDetails && catsToRender.length === 0;
-
   const customerHasBeenSelectedAndHasAtLeastOneCat =
     !!customerName && !!catDetails && catsToRender.length > 0;
 
@@ -49,7 +46,6 @@ const useAddBookingVariables = () => {
     noCustomerSelectedYet,
     customerSelectedThenDefaultValueSelected,
     customerHasBeenSelectedAndErrorParsingCats,
-    customerHasBeenSelectedAndHasNoCats,
     customerHasBeenSelectedAndHasAtLeastOneCat,
     customerHasOneCat,
     customerHasMoreThanOneCat,

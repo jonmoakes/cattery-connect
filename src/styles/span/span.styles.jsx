@@ -63,6 +63,10 @@ export const GreenSpan = styled.span`
   color: ${customGreen};
 `;
 
+export const OrangeSpan = styled.span`
+  color: orange;
+`;
+
 export const LowercasedSpan = styled.span`
   text-transform: lowercase;
 

@@ -9,6 +9,7 @@ import {
   ClearButtonExampleSpan,
   RightMarginSpan,
   EmergencyDetailsSpan,
+  OrangeSpan,
 } from "../../styles/span/span.styles";
 
 // give a type or a color prop when passing
@@ -23,6 +24,7 @@ const spanMap = {
   yellow: YellowSpan,
   green: GreenSpan,
   red: RedSpan,
+  orange: OrangeSpan,
 };
 
 const CustomSpan = ({ type, color, className, children }) => {

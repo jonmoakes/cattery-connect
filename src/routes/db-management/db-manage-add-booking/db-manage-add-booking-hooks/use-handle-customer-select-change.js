@@ -25,9 +25,9 @@ const useHandleCustomerSelectChange = () => {
       (customer) => customer.name === e.target.value
     );
 
-    const parsedCustomerCatDetails = JSON.parse(
-      selectedCustomer?.catDetails || []
-    );
+    const parsedCustomerCatDetails = selectedCustomer.catDetails
+      ? JSON.parse(selectedCustomer?.catDetails || [])
+      : "";
 
     dispatch(
       setAddBookingData({

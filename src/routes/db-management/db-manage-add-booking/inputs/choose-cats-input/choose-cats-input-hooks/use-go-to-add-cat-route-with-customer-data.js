@@ -7,14 +7,14 @@ import useHamburgerHandlerNavigate from "../../../../../../hooks/use-hamburger-h
 
 import { addCatRoute } from "../../../../../../strings/routes";
 
-const useAddCatForCustomerWithNoCats = () => {
-  const { customerDocumentId, customerName } =
+const useGoToAddCatRouteWithCustomerData = () => {
+  const { customerName, customerDocumentId } =
     useGetDbManageAddBookingSelectors();
-  const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
 
   const dispatch = useDispatch();
+  const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
 
-  const addCatForCustomerWithNoCats = () => {
+  const goToAddCatRouteWithCustomerData = () => {
     dispatch(
       setDetailsRequiredForCatManagement({
         customerDocumentId,
@@ -24,7 +24,7 @@ const useAddCatForCustomerWithNoCats = () => {
     hamburgerHandlerNavigate(addCatRoute);
   };
 
-  return { addCatForCustomerWithNoCats };
+  return { goToAddCatRouteWithCustomerData };
 };
 
-export default useAddCatForCustomerWithNoCats;
+export default useGoToAddCatRouteWithCustomerData;

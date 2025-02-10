@@ -9,7 +9,6 @@ const ChooseCatsInput = () => {
     noCustomerSelectedYet,
     customerSelectedThenDefaultValueSelected,
     customerHasBeenSelectedAndErrorParsingCats,
-    customerHasBeenSelectedAndHasNoCats,
     customerHasBeenSelectedAndHasAtLeastOneCat,
   } = useAddBookingVariables();
 
@@ -18,7 +17,7 @@ const ChooseCatsInput = () => {
       {noCustomerSelectedYet ||
       customerSelectedThenDefaultValueSelected ? null : customerHasBeenSelectedAndErrorParsingCats ? (
         <CatsParsingError />
-      ) : customerHasBeenSelectedAndHasNoCats ? (
+      ) : !customerHasBeenSelectedAndHasAtLeastOneCat ? (
         <NoSelectedCustomersCatsHaveBeenAddedYet />
       ) : customerHasBeenSelectedAndHasAtLeastOneCat ? (
         <ChooseCatCheckboxes />

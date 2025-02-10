@@ -6,6 +6,7 @@ import { PaginationDiv, PaginationTextDiv } from "../../styles/div/div.styles";
 import { PaginationPageButton } from "../../styles/button/button.styles";
 import {
   PaginationInput,
+  PaginationOption,
   PaginationSelect,
 } from "../../styles/form/form.styles";
 
@@ -133,9 +134,9 @@ const TablePagination = ({
                 }}
               >
                 {pageSizeOptions.map(({ value, id }) => (
-                  <option key={id} value={value}>
+                  <PaginationOption key={id} value={value}>
                     Show {value} Rows
-                  </option>
+                  </PaginationOption>
                 ))}
               </PaginationSelect>
             </PaginationTextDiv>
