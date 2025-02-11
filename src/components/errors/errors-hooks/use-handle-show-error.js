@@ -19,7 +19,7 @@ const useHandleShowError = () => {
     if (allUsersCatteryIdsAndOwnerNameError)
       return "failed to fetch user cattery ids.";
     if (catteryAllowsLargerPensError)
-      return "failed to fetch critical data for booking process ( getAllowsLargerPensBoolAsync)";
+      return `failed to fetch critical data for booking process ( getAllowsLargerPensBoolAsync)`;
     if (allUsersError) return "failed to fetch your users list";
   };
 

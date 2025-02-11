@@ -1,10 +1,11 @@
 import useGetDbManageAddBookingSelectors from "../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
 
+import useAddBookingFunctions from "./db-manage-add-booking-hooks/use-add-booking-functions";
 import useAddBookingVariables from "./db-manage-add-booking-hooks/use-add-booking-variables";
 import useCheckInAndOutDateValidityUseEffect from "./db-manage-add-booking-hooks/use-check-in-and-out-date-validity-use-effect";
 import useCheckBookingAvailableResultSwalUseEffect from "./db-manage-add-booking-hooks/use-check-booking-available-result-swal-use-effect";
 import useGetAllowsLargerPensBoolAndOwnersCustomersThunkUseEffect from "./db-manage-add-booking-hooks/use-get-allows-larger-pens-bool-and-owners-customers-thunk-use-effect";
-import useAddBookingFunctions from "./db-manage-add-booking-hooks/use-add-booking-functions";
+import useCompleteBookingResultSwalUseEffect from "./db-manage-add-booking-hooks/use-complete-booking-result-swal-use-effect";
 
 import ShowFetchErrors from "../../../components/errors/show-fetch-errors.component";
 import DbManageAddBookingTitleAndLoader from "./db-manage-add-booking-title-and-loader.component";
@@ -20,7 +21,7 @@ import BookingIsAvailableInfoAndPlaceBookingButton from "./booking-is-available-
 import { Container } from "../../../styles/container/container.styles";
 import { ParentDiv } from "../../../styles/div/div.styles";
 import { Form } from "../../../styles/form/form.styles";
-import useCompleteBookingResultSwalUseEffect from "./db-manage-add-booking-hooks/use-complete-booking-result-swal-use-effect";
+import useGetAllCustomerSelectors from "../../../hooks/selectors/use-get-all-customers-selectors";
 
 const DbManageAddBooking = () => {
   const {
@@ -31,6 +32,7 @@ const DbManageAddBooking = () => {
     catteryAllowsLargerPensError,
     status,
   } = useGetDbManageAddBookingSelectors();
+  const { getAllCustomersError } = useGetAllCustomerSelectors();
   const { customerHasOneCatOrMoreThanOneCatAndAtLeastOneHasBeenSelected } =
     useAddBookingVariables();
   const { shouldShowFormSubmissionButtons, checkBookingAvailability } =
@@ -44,7 +46,7 @@ const DbManageAddBooking = () => {
     <Container>
       <DbManageAddBookingTitleAndLoader />
 
-      {catteryAllowsLargerPensError ? (
+      {catteryAllowsLargerPensError || getAllCustomersError ? (
         <ShowFetchErrors />
       ) : (
         <ParentDiv>

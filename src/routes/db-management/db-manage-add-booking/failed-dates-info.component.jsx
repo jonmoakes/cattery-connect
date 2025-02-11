@@ -22,13 +22,17 @@ const FailedDatesInfo = () => {
       failingDates &&
       failingDates.length ? (
         <BookingWrapper className="unavailable">
-          <CustomBalancedText>
-            this booking can't be completed because some date(
-            <CustomSpan type="lowercase">s</CustomSpan>) and / or slot(
-            <CustomSpan type="lowercase">s</CustomSpan>) dont have enough
-            availability:
-          </CustomBalancedText>
-          <BlackHr />
+          {!showIneligibleDates ? (
+            <>
+              <CustomBalancedText>
+                this booking can't be completed because some date(
+                <CustomSpan type="lowercase">s</CustomSpan>) and slot(
+                <CustomSpan type="lowercase">s</CustomSpan>) dont have any
+                availability:
+              </CustomBalancedText>
+              <BlackHr />
+            </>
+          ) : null}
           <MinimalButton
             type="button"
             className="margin"
@@ -41,6 +45,12 @@ const FailedDatesInfo = () => {
           <BlackHr />
           {showIneligibleDates ? (
             <>
+              <CustomBalancedText>
+                the following date(
+                <CustomSpan type="lowercase">s</CustomSpan>) and slot(
+                <CustomSpan type="lowercase">s</CustomSpan>) dont have any
+                availability:
+              </CustomBalancedText>
               {failingDates.map((failingDate) => {
                 const { id, date, slot } = failingDate;
 

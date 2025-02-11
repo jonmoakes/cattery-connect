@@ -45,8 +45,7 @@ export const getAllowsLargerPensBoolAsync = createAsyncThunk(
         throw new Error("Couldn't Find Cattery Document");
       }
 
-      const catteryAllowsLargerPensBool =
-        catteryDoc.catteryAllowsLargerPensBool;
+      const { catteryAllowsLargerPensBool } = catteryDoc;
 
       if (
         catteryAllowsLargerPensBool === undefined ||

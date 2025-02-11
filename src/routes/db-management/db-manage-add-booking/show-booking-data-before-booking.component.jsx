@@ -42,7 +42,7 @@ const ShowBookingDataBeforeBooking = () => {
             check in date:
             <br />
             <CustomSpan color="yellow">
-              {format(checkInDate, "EEEE dd MMMM yyyy")}
+              {format(checkInDate, "EEE dd MMMM yyyy")}
             </CustomSpan>
           </li>
           <BlackHr />
@@ -58,7 +58,7 @@ const ShowBookingDataBeforeBooking = () => {
             check out date:
             <br />
             <CustomSpan color="yellow">
-              {format(checkOutDate, "EEEE dd MMMM yyyy")}
+              {format(checkOutDate, "EEE dd MMMM yyyy")}
             </CustomSpan>
           </li>
           <BlackHr />
