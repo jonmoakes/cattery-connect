@@ -109,6 +109,12 @@ const GlobalStyles = createGlobalStyle`
     &.orange {
       color: orange;
     }
+
+    &.clickable {
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
 
   ul {

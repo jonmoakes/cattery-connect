@@ -16,10 +16,14 @@ const spanMap = {
   emergencyDetails: EmergencyDetailsSpan,
 };
 
-const CustomSpan = ({ type, color, className, children }) => {
+const CustomSpan = ({ type, color, className, children, ...props }) => {
   const Component = spanMap[type] || spanMap[color] || "span";
 
-  return <Component className={className}>{children}</Component>;
+  return (
+    <Component className={className} {...props}>
+      {children}
+    </Component>
+  );
 };
 
 export default CustomSpan;

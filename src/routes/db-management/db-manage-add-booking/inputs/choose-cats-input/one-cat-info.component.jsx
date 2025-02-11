@@ -25,7 +25,7 @@ const OneCatInfo = ({ catsToRender }) => {
         continue filling out the form if this is correct or
         <br />
         <CustomSpan
-          className="orange"
+          className="orange clickable"
           onClick={goToAddCatRouteWithCustomerData}
         >
           add another cat
