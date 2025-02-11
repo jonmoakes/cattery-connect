@@ -1,18 +1,12 @@
 import {
-  GreenSpan,
-  RedSpan,
-  WhiteSpan,
-  YellowSpan,
   UppercaseSpan,
   LowercasedSpan,
   BackgroundSpan,
   ClearButtonExampleSpan,
   RightMarginSpan,
   EmergencyDetailsSpan,
-  OrangeSpan,
 } from "../../styles/span/span.styles";
 
-// give a type or a color prop when passing
 const spanMap = {
   uppercase: UppercaseSpan,
   lowercase: LowercasedSpan,
@@ -20,11 +14,6 @@ const spanMap = {
   clearButtonExample: ClearButtonExampleSpan,
   rightMargin: RightMarginSpan,
   emergencyDetails: EmergencyDetailsSpan,
-  white: WhiteSpan,
-  yellow: YellowSpan,
-  green: GreenSpan,
-  red: RedSpan,
-  orange: OrangeSpan,
 };
 
 const CustomSpan = ({ type, color, className, children }) => {

@@ -15,17 +15,16 @@ const NoSelectedCustomersCatsHaveBeenAddedYet = () => {
 
   return (
     <>
-      <CustomBalancedText color="white">
+      <CustomBalancedText className="white">
         no cat(<CustomSpan type="lowercase">s</CustomSpan>) have been added for{" "}
-        <CustomSpan color="yellow">
+        <CustomSpan className="yellow">
           {getFirstNameFromString(customerName)}
         </CustomSpan>{" "}
         yet.
       </CustomBalancedText>
-      <CustomBalancedText color="white">
-        please add one by tapping the button below and then returning to this
-        page once the cat(<CustomSpan type="lowercase">s</CustomSpan>) have been
-        added.
+      <CustomBalancedText className="white">
+        please add at least one cat by tapping the button below and then
+        returning to this page once the cat has been added.
       </CustomBalancedText>
       <BlackHr />
 

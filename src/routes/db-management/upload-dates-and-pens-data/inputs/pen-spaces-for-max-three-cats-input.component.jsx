@@ -10,7 +10,7 @@ const PenSpacesForMaxThreeCatsInput = ({ handlePensChange }) => {
   return (
     <>
       <Label>
-        <CustomSpan color="red">* </CustomSpan>pen spaces ( max 3 cats ):
+        <CustomSpan className="red">* </CustomSpan>pen spaces ( max 3 cats ):
       </Label>
       <StyledInput
         type="text"

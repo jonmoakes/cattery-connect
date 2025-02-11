@@ -12,7 +12,8 @@ const CatsFeedingInfoInput = ({ handleCatDetailsChange }) => {
     <>
       <BlackHr />
       <Label>
-        <CustomSpan color="red">* </CustomSpan>Feeding info:
+        <CustomSpan className="red">* </CustomSpan>
+        Feeding info:
       </Label>
 
       <StyledTextArea

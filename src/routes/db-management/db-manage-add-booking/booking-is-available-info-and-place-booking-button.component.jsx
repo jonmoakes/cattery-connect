@@ -15,11 +15,11 @@ const BookingIsAvailableInfoAndPlaceBookingButton = () => {
     <>
       {status === "bookingAvailable" ? (
         <>
-          <CustomBalancedText color="white">
+          <CustomBalancedText className="white">
             good news - this booking slot is available!😺
           </CustomBalancedText>
 
-          <CustomBalancedText color="white">
+          <CustomBalancedText className="white">
             tap the button below to confirm!
           </CustomBalancedText>
 

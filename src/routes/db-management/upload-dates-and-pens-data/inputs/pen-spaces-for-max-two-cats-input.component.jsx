@@ -10,7 +10,7 @@ const PenSpacesForMaxTwoCatsInput = ({ handlePensChange }) => {
   return (
     <>
       <Label>
-        <CustomSpan color="red">* </CustomSpan>pen spaces ( max 2 cats ):
+        <CustomSpan className="red">* </CustomSpan>pen spaces ( max 2 cats ):
       </Label>
       <StyledInput
         type="text"

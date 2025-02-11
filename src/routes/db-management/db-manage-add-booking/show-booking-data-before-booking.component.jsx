@@ -26,13 +26,13 @@ const ShowBookingDataBeforeBooking = () => {
           <li>
             customer name:
             <br />
-            <CustomSpan color="yellow">{customerName}</CustomSpan>
+            <CustomSpan className="yellow">{customerName}</CustomSpan>
           </li>
           <BlackHr />
           <li>
             cats in the booking:
             <br />
-            <CustomSpan color="yellow">
+            <CustomSpan className="yellow">
               {catsInBooking &&
                 catsInBooking.map((str) => str.split(" ")).join(", ")}
             </CustomSpan>
@@ -41,7 +41,7 @@ const ShowBookingDataBeforeBooking = () => {
           <li>
             check in date:
             <br />
-            <CustomSpan color="yellow">
+            <CustomSpan className="yellow">
               {format(checkInDate, "EEE dd MMMM yyyy")}
             </CustomSpan>
           </li>
@@ -57,7 +57,7 @@ const ShowBookingDataBeforeBooking = () => {
           <li>
             check out date:
             <br />
-            <CustomSpan color="yellow">
+            <CustomSpan className="yellow">
               {format(checkOutDate, "EEE dd MMMM yyyy")}
             </CustomSpan>
           </li>

@@ -4,14 +4,7 @@ import { zoomInLeft } from "react-animations";
 import eyeIcon from "../../assets/eye.png";
 import eyeIconHide from "../../assets/hide-eye.png";
 
-import {
-  teal,
-  softBlack,
-  customYellow,
-  gentleGrey,
-  customGreen,
-  rustRed,
-} from "../colours";
+import { teal, softBlack, gentleGrey } from "../colours";
 
 const zoomInLeftAnimation = keyframes`${zoomInLeft}`;
 
@@ -45,28 +38,6 @@ export const BackgroundSpan = styled.span`
   justify-content: center;
 `;
 
-export const RedSpan = styled.span`
-  color: ${rustRed};
-`;
-
-export const WhiteSpan = styled.span`
-  color: whitesmoke;
-  text-shadow: 1px 1px 1px ${softBlack};
-`;
-
-export const YellowSpan = styled.span`
-  color: ${customYellow};
-  text-shadow: 1px 1px 1px ${softBlack};
-`;
-
-export const GreenSpan = styled.span`
-  color: ${customGreen};
-`;
-
-export const OrangeSpan = styled.span`
-  color: orange;
-`;
-
 export const LowercasedSpan = styled.span`
   text-transform: lowercase;
 
@@ -81,16 +52,6 @@ export const LowercasedSpan = styled.span`
 
 export const UppercaseSpan = styled.span`
   text-transform: uppercase;
-
-  &.yellow {
-    color: ${customYellow};
-    text-shadow: 1px 1px 1px ${softBlack};
-  }
-
-  &.red {
-    color: ${rustRed};
-    text-shadow: 1px 1px 1px ${softBlack};
-  }
 `;
 
 export const SignInPasswordEye = styled.span.withConfig({

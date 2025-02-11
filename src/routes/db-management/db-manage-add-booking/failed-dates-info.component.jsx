@@ -56,14 +56,14 @@ const FailedDatesInfo = () => {
 
                 return (
                   <DataDiv key={id} className="error">
-                    <CustomBalancedText color="white">
+                    <CustomBalancedText className="white">
                       date:
                       <br />
-                      <CustomSpan color="yellow">
+                      <CustomSpan className="yellow">
                         {format(date, "dd MMMM yyyy")}
                       </CustomSpan>
                     </CustomBalancedText>
-                    <CustomBalancedText color="white">
+                    <CustomBalancedText className="white">
                       slot:
                       <br />
                       <CustomSpan type="uppercase" className="yellow">
@@ -83,10 +83,10 @@ const FailedDatesInfo = () => {
         </BookingWrapper>
       ) : status === "bookingNotAvailable" && !failingDates ? (
         <DataDiv className="error">
-          <CustomBalancedText color="white">
+          <CustomBalancedText className="white">
             sorry, there was an error showing which dates are unavailable..
           </CustomBalancedText>
-          <CustomBalancedText color="white">
+          <CustomBalancedText className="white">
             if you continue to se this error, please contact jonathan.
           </CustomBalancedText>
         </DataDiv>

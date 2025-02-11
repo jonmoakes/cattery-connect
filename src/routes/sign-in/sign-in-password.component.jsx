@@ -19,7 +19,7 @@ const SignInPassword = ({ handleSignInFormChange }) => {
   return (
     <>
       <Label>
-        <CustomSpan color="red">* </CustomSpan>password:
+        <CustomSpan className="red">* </CustomSpan>password:
       </Label>
       <RelativePositionDiv>
         <PasswordInput

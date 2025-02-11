@@ -8,14 +8,14 @@ const LabelAndCurrentChoice = ({ vaccinationStatus }) => (
   <>
     <BlackHr />
     <Label className="margin">
-      <CustomSpan color="red">* </CustomSpan>vaccination status:
+      <CustomSpan className="red">* </CustomSpan>vaccination status:
     </Label>
 
     {vaccinationStatus ? (
       <VaxStatusDiv>
-        <CustomSpan color="white">your current selection is:</CustomSpan>
+        <CustomSpan className="white">your current selection is:</CustomSpan>
         <br />
-        <CustomSpan color="green">{vaccinationStatus}</CustomSpan>
+        <CustomSpan className="green">{vaccinationStatus}</CustomSpan>
       </VaxStatusDiv>
     ) : null}
   </>

@@ -26,7 +26,7 @@ const StartAndEndDatesDatePicker = ({
           <CustomBalancedText type="optionsLabel">
             {`choose a `}
             {highlightedText && (
-              <CustomSpan color="yellow">{highlightedText}</CustomSpan>
+              <CustomSpan className="yellow">{highlightedText}</CustomSpan>
             )}
           </CustomBalancedText>
 

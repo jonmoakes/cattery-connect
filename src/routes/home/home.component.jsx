@@ -13,30 +13,31 @@ const Home = () => {
     <Container>
       <ParentDiv>
         <CustomBalancedText type="h1">
-          book and manage your cat's stay whilst you're away!
+          Effortlessly Manage Your Cattery!
         </CustomBalancedText>
       </ParentDiv>
       <ParentDiv>
-        <CustomBalancedText>
-          At Cattery Connect, we make it easy for you to book and manage your
-          cat’s stay whilst you're away.
+        <CustomBalancedText type="h2">
+          Welcome to Cattery Connect!
         </CustomBalancedText>
         <CustomBalancedText>
-          Whether you're going on holiday, a business trip, or just need a
-          reliable place for your feline friend, our platform ensures a seamless
-          experience!
+          your comprehensive solution for efficient cattery management.
+        </CustomBalancedText>
+        <CustomBalancedText>
+          Our platform streamlines your operations, allowing you to focus more
+          on providing exceptional care to your feline guests.
         </CustomBalancedText>
 
         <ProgressiveImage {...{ image, altText }} />
 
         <CustomBalancedText>
-          With simple online booking, real-time updates, and easy communication
-          with cattery owners, you can have peace of mind knowing your cat is in
-          safe hands.
+          With user-friendly booking management and seamless communication
+          tools, managing your cattery has never been easier.
         </CustomBalancedText>
+
         <CustomBalancedText>
-          Say goodbye to the stress of last minute arrangements and hello to a
-          hassle free, tailored pet care experience.
+          Say goodbye to manual scheduling and administrative hassles, and
+          embrace a more organised, efficient approach to running your cattery.
         </CustomBalancedText>
       </ParentDiv>
     </Container>

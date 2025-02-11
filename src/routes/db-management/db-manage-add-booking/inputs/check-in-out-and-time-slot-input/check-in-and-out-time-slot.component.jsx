@@ -34,7 +34,7 @@ const CheckInAndOutTimeSlot = ({
             <CustomBalancedText type="optionsLabel">
               {`tap a circle to choose a `}
               {highlightedText && (
-                <CustomSpan color="yellow">{highlightedText}</CustomSpan>
+                <CustomSpan className="yellow">{highlightedText}</CustomSpan>
               )}
             </CustomBalancedText>
           </RadioLabelDiv>

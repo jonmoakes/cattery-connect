@@ -13,7 +13,7 @@ const CustomerEmergencyContactDetailsInput = ({
   return (
     <>
       <Label>
-        <CustomSpan color="red">* </CustomSpan>
+        <CustomSpan className="red">* </CustomSpan>
         emergency Contact Details:
       </Label>
 

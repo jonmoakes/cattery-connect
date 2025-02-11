@@ -30,7 +30,7 @@ const CheckInAndOutDateInput = ({ dateType, condition, selectedDate }) => {
               <CustomBalancedText type="optionsLabel">
                 {`choose a `}
                 {highlightedText && (
-                  <CustomSpan color="yellow">{highlightedText}</CustomSpan>
+                  <CustomSpan className="yellow">{highlightedText}</CustomSpan>
                 )}
               </CustomBalancedText>
 

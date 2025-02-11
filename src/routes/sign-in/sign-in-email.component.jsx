@@ -10,7 +10,7 @@ const SignInEmail = ({ handleSignInFormChange }) => {
   return (
     <>
       <Label>
-        <CustomSpan color="red">* </CustomSpan>email:
+        <CustomSpan className="red">* </CustomSpan>email:
       </Label>
       <LowercasedInput
         type="email"

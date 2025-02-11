@@ -7,8 +7,8 @@ const AddCatInstructions = () => (
       please enter the details about the cat that you want to add.
     </CustomBalancedText>
     <CustomBalancedText>
-      inputs marked with a <CustomSpan color="red">*</CustomSpan> next to their
-      name are required.
+      inputs marked with a <CustomSpan className="red">*</CustomSpan> next to
+      their name are required.
     </CustomBalancedText>
   </>
 );

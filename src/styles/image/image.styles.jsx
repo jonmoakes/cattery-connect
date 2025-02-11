@@ -18,7 +18,7 @@ export const ResponsiveImage = styled.img`
   height: auto;
   display: block;
   transition: opacity 0.3s ease-in-out;
-  margin: 20px auto 50px auto;
+  margin: 20px auto 30px auto;
   border: 2px solid ${softBlack};
   border-radius: 5px;
   box-shadow: 15px 15px 15px ${softBlack};

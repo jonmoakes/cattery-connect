@@ -21,7 +21,7 @@ const ChooseCatCheckboxes = () => {
         <OneCatInfo {...{ catsToRender }} />
       ) : customerHasMoreThanOneCat ? (
         <>
-          <CustomBalancedText color="white">
+          <CustomBalancedText className="white">
             please tap the square boxes to select which cats are going to be in
             the booking:
           </CustomBalancedText>

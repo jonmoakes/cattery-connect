@@ -10,7 +10,7 @@ const CustomerAddressInput = ({ handleCustomerDetailsChange }) => {
   return (
     <>
       <Label>
-        <CustomSpan color="red">* </CustomSpan>
+        <CustomSpan className="red">* </CustomSpan>
         customer address:
       </Label>
 

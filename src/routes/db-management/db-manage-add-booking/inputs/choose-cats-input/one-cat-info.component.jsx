@@ -6,7 +6,6 @@ import CustomBalancedText from "../../../../../components/custom-balanced-text/c
 import CustomSpan from "../../../../../components/custom-span/custom-span.component";
 
 import { BlackHr } from "../../../../../styles/hr/hr.styles";
-import { OrangeSpan } from "../../../../../styles/span/span.styles";
 
 import { getFirstNameFromString } from "../../../../../functions/get-first-name-from-string";
 
@@ -18,15 +17,20 @@ const OneCatInfo = ({ catsToRender }) => {
   return (
     <>
       <BlackHr />
-      <CustomBalancedText color="white">
-        <CustomSpan color="yellow">{catsToRender[0].catsName}</CustomSpan> is
-        the only cat found for {getFirstNameFromString(customerName)}.
+      <CustomBalancedText className="white">
+        <CustomSpan className="yellow">{catsToRender[0].catsName}</CustomSpan>{" "}
+        is the only cat found for {getFirstNameFromString(customerName)}.
       </CustomBalancedText>
-      <CustomBalancedText color="white">
-        continue filling out the form if this is correct or{" "}
-        <OrangeSpan onClick={goToAddCatRouteWithCustomerData}>
+      <CustomBalancedText className="white">
+        continue filling out the form if this is correct or
+        <br />
+        <CustomSpan
+          className="orange"
+          onClick={goToAddCatRouteWithCustomerData}
+        >
           add another cat
-        </OrangeSpan>{" "}
+        </CustomSpan>
+        <br />
         if necessary.
       </CustomBalancedText>
     </>

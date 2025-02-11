@@ -30,12 +30,12 @@ const DisplayCurrentlyChosenDaysOff = () => {
       {datesClosedArray && datesClosedArray.length ? (
         <>
           <BlackHr />
-          <CustomBalancedText color="white">
+          <CustomBalancedText className="white">
             current days off you have selected:
           </CustomBalancedText>
 
           {datesClosedArray.map((dateClosed) => (
-            <CustomBalancedText color="yellow" key={dateClosed}>
+            <CustomBalancedText className="yellow" key={dateClosed}>
               {format(dateClosed, "EEEE dd MMMM yyyy")}
             </CustomBalancedText>
           ))}

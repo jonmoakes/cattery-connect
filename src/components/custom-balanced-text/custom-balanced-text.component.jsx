@@ -1,14 +1,12 @@
 import Balancer from "react-wrap-balancer";
-import { OptionsLabel, WhiteText, YellowText } from "../../styles/p/p.styles";
+import { OptionsLabel } from "../../styles/p/p.styles";
 
-// give a type or a color prop when passing
+// give an optional type when passing -defaults to <p></p>
 const componentMap = {
   h1: "h1",
   h2: "h2",
   h3: "h3",
   optionsLabel: OptionsLabel,
-  white: WhiteText,
-  yellow: YellowText,
 };
 
 const CustomBalancedText = ({ type, color, className, children }) => {

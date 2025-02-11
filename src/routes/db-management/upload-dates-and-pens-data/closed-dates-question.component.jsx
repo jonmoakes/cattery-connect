@@ -39,7 +39,7 @@ const ClosedDatesQuestion = () => {
       {catteryId && (
         <>
           <BlackHr />
-          <CustomBalancedText color="white">
+          <CustomBalancedText className="white">
             For the date range that you are going to select, Does this cattery
             have any days that you{" "}
             <CustomSpan type="uppercase" className="red">

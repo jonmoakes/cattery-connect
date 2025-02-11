@@ -26,7 +26,8 @@ const ShowFetchErrors = () => {
             <CustomBalancedText>{showErrorHeading()}</CustomBalancedText>
             <CustomBalancedText>
               error received:
-              <br />'<CustomSpan color="yellow">{errorToDisplay()}</CustomSpan>'
+              <br />'
+              <CustomSpan className="yellow">{errorToDisplay()}</CustomSpan>'
             </CustomBalancedText>
           </ErrorDiv>
 

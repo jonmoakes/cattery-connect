@@ -29,7 +29,7 @@ const DaysOffInput = () => {
             <StyledDatePickerWrapper>
               <CustomBalancedText type="optionsLabel">
                 choose an{" "}
-                <CustomSpan color="yellow">unavailable day</CustomSpan>
+                <CustomSpan className="yellow">unavailable day</CustomSpan>
               </CustomBalancedText>
 
               <StyledDatePicker

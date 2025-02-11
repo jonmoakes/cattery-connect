@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { customYellow, darkGold, softBlack } from "../colours";
+import { darkGold, softBlack } from "../colours";
 
 export const LoadingText = styled.p`
   margin-top: 1rem;
@@ -20,16 +20,6 @@ export const NavLink = styled.p`
       transition: none;
     }
   }
-`;
-
-export const WhiteText = styled.p`
-  color: whitesmoke;
-  text-shadow: 1px 1px 1px ${softBlack};
-`;
-
-export const YellowText = styled.p`
-  color: ${customYellow};
-  text-shadow: 1px 1px 1px ${softBlack};
 `;
 
 export const OptionsLabel = styled.p`
