@@ -16,8 +16,8 @@ const spanMap = {
   emergencyDetails: EmergencyDetailsSpan,
 };
 
-const CustomSpan = ({ type, color, className, children, ...props }) => {
-  const Component = spanMap[type] || spanMap[color] || "span";
+const CustomSpan = ({ type, className, children, ...props }) => {
+  const Component = spanMap[type] || "span";
 
   return (
     <Component className={className} {...props}>

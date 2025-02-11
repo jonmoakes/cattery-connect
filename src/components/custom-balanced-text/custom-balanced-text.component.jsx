@@ -9,8 +9,8 @@ const componentMap = {
   optionsLabel: OptionsLabel,
 };
 
-const CustomBalancedText = ({ type, color, className, children, ...props }) => {
-  const Component = componentMap[type] || componentMap[color] || "p";
+const CustomBalancedText = ({ type, className, children, ...props }) => {
+  const Component = componentMap[type] || "p";
 
   return (
     <Component className={className} {...props}>
