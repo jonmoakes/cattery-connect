@@ -1,10 +1,11 @@
 import useGetDbManageAddBookingSelectors from "../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
+import useGetAllCustomerSelectors from "../../../hooks/selectors/use-get-all-customers-selectors";
 
 import useAddBookingFunctions from "./db-manage-add-booking-hooks/use-add-booking-functions";
 import useAddBookingVariables from "./db-manage-add-booking-hooks/use-add-booking-variables";
 import useCheckInAndOutDateValidityUseEffect from "./db-manage-add-booking-hooks/use-check-in-and-out-date-validity-use-effect";
 import useCheckBookingAvailableResultSwalUseEffect from "./db-manage-add-booking-hooks/use-check-booking-available-result-swal-use-effect";
-import useGetAllowsLargerPensBoolAndOwnersCustomersThunkUseEffect from "./db-manage-add-booking-hooks/use-get-allows-larger-pens-bool-and-owners-customers-thunk-use-effect";
+import useGetAllowsLargerPensBoolMaxCatsPerPenAndOwnersCustomersThunkUseEffect from "./db-manage-add-booking-hooks/use-get-allows-larger-pens-bool-max-cats-per-pen-and-owners-customers-thunk-use-effect";
 import useCompleteBookingResultSwalUseEffect from "./db-manage-add-booking-hooks/use-complete-booking-result-swal-use-effect";
 
 import ShowFetchErrors from "../../../components/errors/show-fetch-errors.component";
@@ -21,7 +22,7 @@ import BookingIsAvailableInfoAndPlaceBookingButton from "./booking-is-available-
 import { Container } from "../../../styles/container/container.styles";
 import { ParentDiv } from "../../../styles/div/div.styles";
 import { Form } from "../../../styles/form/form.styles";
-import useGetAllCustomerSelectors from "../../../hooks/selectors/use-get-all-customers-selectors";
+import MoreCatsSelectedThanSinglePenCapacity from "./more-cats-selected-than-single-pen-capacity.component";
 
 const DbManageAddBooking = () => {
   const {
@@ -33,11 +34,15 @@ const DbManageAddBooking = () => {
     status,
   } = useGetDbManageAddBookingSelectors();
   const { getAllCustomersError } = useGetAllCustomerSelectors();
-  const { customerHasOneCatOrMoreThanOneCatAndAtLeastOneHasBeenSelected } =
-    useAddBookingVariables();
+  const {
+    customerHasOneCatOrMoreThanOneCatAndAtLeastOneHasBeenSelected,
+    moreCatsInBookingThanCapacityInOnePen,
+    numberOfCatsInBooking,
+    maximumCatsInSinglePen,
+  } = useAddBookingVariables();
   const { shouldShowFormSubmissionButtons, checkBookingAvailability } =
     useAddBookingFunctions();
-  useGetAllowsLargerPensBoolAndOwnersCustomersThunkUseEffect();
+  useGetAllowsLargerPensBoolMaxCatsPerPenAndOwnersCustomersThunkUseEffect();
   useCheckInAndOutDateValidityUseEffect();
   useCheckBookingAvailableResultSwalUseEffect();
   useCompleteBookingResultSwalUseEffect();
@@ -51,10 +56,20 @@ const DbManageAddBooking = () => {
       ) : (
         <ParentDiv>
           <Form onSubmit={checkBookingAvailability}>
-            {status === "bookingAvailable" ? null : (
+            {status ===
+            "bookingAvailable" ? null : moreCatsInBookingThanCapacityInOnePen ? (
               <>
                 <ChooseCustomerSelectInput />
                 <ChooseCatsInput />
+                <MoreCatsSelectedThanSinglePenCapacity
+                  {...{ numberOfCatsInBooking, maximumCatsInSinglePen }}
+                />
+              </>
+            ) : (
+              <>
+                <ChooseCustomerSelectInput />
+                <ChooseCatsInput />
+
                 <CheckInAndOutDateInput
                   dateType="checkInDate"
                   condition={

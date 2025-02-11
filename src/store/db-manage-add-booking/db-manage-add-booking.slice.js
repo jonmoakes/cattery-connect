@@ -1,16 +1,16 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
 import {
-  getAllowsLargerPensBoolAsync,
+  getAllowsLargerPensBoolAndMaxCatsPerPenAsync,
   checkBookingAvailabilityAsync,
   updatePensDataAsync,
   uploadBookingDataAsync,
 } from "./db-manage-add-booking.thunks";
 
 const INITIAL_STATE = {
-  catteryAllowsLargerPensBoolIsLoading: false,
-  catteryAllowsLargerPensBool: null,
-  catteryAllowsLargerPensResult: "",
-  catteryAllowsLargerPensError: null,
+  catteryAllowsLargerPensBoolAndMaxCatsPerPenIsLoading: false,
+  catteryAllowsLargerPensBoolAndMaxCatsPerPen: {},
+  catteryAllowsLargerPensAndMaxCatsPerPenResult: "",
+  catteryAllowsLargerPensAndMaxCatsPerPenError: null,
 
   addBookingData: {},
 
@@ -63,10 +63,10 @@ export const dbManageAddBookingSlice = createSlice({
   },
   selectors: {
     selectDbManageAddBookingSelectors: createSelector(
-      (state) => state.catteryAllowsLargerPensBoolIsLoading,
-      (state) => state.catteryAllowsLargerPensBool,
-      (state) => state.catteryAllowsLargerPensResult,
-      (state) => state.catteryAllowsLargerPensError,
+      (state) => state.catteryAllowsLargerPensBoolAndMaxCatsPerPenIsLoading,
+      (state) => state.catteryAllowsLargerPensBoolAndMaxCatsPerPen,
+      (state) => state.catteryAllowsLargerPensAndMaxCatsPerPenResult,
+      (state) => state.catteryAllowsLargerPensAndMaxCatsPerPenError,
 
       (state) => state.addBookingData,
 
@@ -85,10 +85,10 @@ export const dbManageAddBookingSlice = createSlice({
       (state) => state.addBookingDataError,
 
       (
-        catteryAllowsLargerPensBoolIsLoading,
-        catteryAllowsLargerPensBool,
-        catteryAllowsLargerPensResult,
-        catteryAllowsLargerPensError,
+        catteryAllowsLargerPensBoolAndMaxCatsPerPenIsLoading,
+        catteryAllowsLargerPensBoolAndMaxCatsPerPen,
+        catteryAllowsLargerPensAndMaxCatsPerPenResult,
+        catteryAllowsLargerPensAndMaxCatsPerPenError,
         addBookingData,
         isBookingAvailableIsLoading,
         isBookingAvailableResult,
@@ -102,10 +102,10 @@ export const dbManageAddBookingSlice = createSlice({
         addBookingDataError
       ) => {
         return {
-          catteryAllowsLargerPensBoolIsLoading,
-          catteryAllowsLargerPensBool,
-          catteryAllowsLargerPensResult,
-          catteryAllowsLargerPensError,
+          catteryAllowsLargerPensBoolAndMaxCatsPerPenIsLoading,
+          catteryAllowsLargerPensBoolAndMaxCatsPerPen,
+          catteryAllowsLargerPensAndMaxCatsPerPenResult,
+          catteryAllowsLargerPensAndMaxCatsPerPenError,
           addBookingData,
           isBookingAvailableIsLoading,
           isBookingAvailableResult,
@@ -123,21 +123,30 @@ export const dbManageAddBookingSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getAllowsLargerPensBoolAsync.pending, (state) => {
-        state.catteryAllowsLargerPensBoolIsLoading = true;
-      })
-      .addCase(getAllowsLargerPensBoolAsync.fulfilled, (state, action) => {
-        state.catteryAllowsLargerPensBoolIsLoading = false;
-        state.catteryAllowsLargerPensResult = "fulfilled";
-        state.catteryAllowsLargerPensBool = action.payload;
-        state.catteryAllowsLargerPensError = null;
-      })
-      .addCase(getAllowsLargerPensBoolAsync.rejected, (state, action) => {
-        state.catteryAllowsLargerPensBoolIsLoading = false;
-        state.catteryAllowsLargerPensResult = "rejected";
-        state.catteryAllowsLargerPensBool = null;
-        state.catteryAllowsLargerPensError = action.payload;
-      })
+      .addCase(
+        getAllowsLargerPensBoolAndMaxCatsPerPenAsync.pending,
+        (state) => {
+          state.catteryAllowsLargerPensBoolAndMaxCatsPerPenIsLoading = true;
+        }
+      )
+      .addCase(
+        getAllowsLargerPensBoolAndMaxCatsPerPenAsync.fulfilled,
+        (state, action) => {
+          state.catteryAllowsLargerPensBoolAndMaxCatsPerPenIsLoading = false;
+          state.catteryAllowsLargerPensAndMaxCatsPerPenResult = "fulfilled";
+          state.catteryAllowsLargerPensBoolAndMaxCatsPerPen = action.payload;
+          state.catteryAllowsLargerPensAndMaxCatsPerPenError = null;
+        }
+      )
+      .addCase(
+        getAllowsLargerPensBoolAndMaxCatsPerPenAsync.rejected,
+        (state, action) => {
+          state.catteryAllowsLargerPensBoolAndMaxCatsPerPenIsLoading = false;
+          state.catteryAllowsLargerPensAndMaxCatsPerPenResult = "rejected";
+          state.catteryAllowsLargerPensBoolAndMaxCatsPerPen = null;
+          state.catteryAllowsLargerPensAndMaxCatsPerPenError = action.payload;
+        }
+      )
       .addCase(checkBookingAvailabilityAsync.pending, (state) => {
         state.isBookingAvailableIsLoading = true;
       })

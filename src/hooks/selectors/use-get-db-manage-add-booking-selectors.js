@@ -4,10 +4,10 @@ import { selectDbManageAddBookingSelectors } from "../../store/db-manage-add-boo
 
 const useGetDbManageAddBookingSelectors = () => {
   const {
-    catteryAllowsLargerPensBoolIsLoading,
-    catteryAllowsLargerPensBool,
-    catteryAllowsLargerPensResult,
-    catteryAllowsLargerPensError,
+    catteryAllowsLargerPensBoolAndMaxCatsPerPenIsLoading,
+    catteryAllowsLargerPensBoolAndMaxCatsPerPen,
+    catteryAllowsLargerPensAndMaxCatsPerPenResult,
+    catteryAllowsLargerPensAndMaxCatsPerPenError,
     addBookingData,
     isBookingAvailableIsLoading,
     isBookingAvailableResult,
@@ -35,11 +35,16 @@ const useGetDbManageAddBookingSelectors = () => {
   const { status, failingDates, parsedAvailabilityData } =
     isBookingAvailableResult ?? {};
 
+  const { catteryAllowsLargerPensBool, maximumCatsInSinglePen } =
+    catteryAllowsLargerPensBoolAndMaxCatsPerPen ?? {};
+
   return {
-    catteryAllowsLargerPensBoolIsLoading,
+    catteryAllowsLargerPensBoolAndMaxCatsPerPenIsLoading,
+    catteryAllowsLargerPensBoolAndMaxCatsPerPen,
+    catteryAllowsLargerPensAndMaxCatsPerPenResult,
+    catteryAllowsLargerPensAndMaxCatsPerPenError,
     catteryAllowsLargerPensBool,
-    catteryAllowsLargerPensResult,
-    catteryAllowsLargerPensError,
+    maximumCatsInSinglePen,
     addBookingData,
     isBookingAvailableIsLoading,
     isBookingAvailableResult,

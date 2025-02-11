@@ -21,8 +21,8 @@ import { getSlotsToUpdate } from "./update-pen-availability/get-slots-to-update"
 import { updateSlot } from "./update-pen-availability/update-slot";
 import { eachDayOfInterval, format } from "date-fns";
 
-export const getAllowsLargerPensBoolAsync = createAsyncThunk(
-  "getAllowsLargerPensBool",
+export const getAllowsLargerPensBoolAndMaxCatsPerPenAsync = createAsyncThunk(
+  "getAllowsLargerPensBoolAndMaxCatsPerPen",
   async ({ catteryId }, thunkAPI) => {
     try {
       const queryIndex = "catteryId";
@@ -45,7 +45,8 @@ export const getAllowsLargerPensBoolAsync = createAsyncThunk(
         throw new Error("Couldn't Find Cattery Document");
       }
 
-      const { catteryAllowsLargerPensBool } = catteryDoc;
+      const { catteryAllowsLargerPensBool, maximumCatsInSinglePen } =
+        catteryDoc;
 
       if (
         catteryAllowsLargerPensBool === undefined ||
@@ -54,7 +55,7 @@ export const getAllowsLargerPensBoolAsync = createAsyncThunk(
         throw new Error("Couldn't Find The AllowsLargerPens Bool");
       }
 
-      return catteryAllowsLargerPensBool;
+      return { catteryAllowsLargerPensBool, maximumCatsInSinglePen };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

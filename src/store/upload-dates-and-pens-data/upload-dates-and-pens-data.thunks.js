@@ -11,7 +11,7 @@ import {
   databaseId,
 } from "../../constants/constants";
 
-import { generateCatteryAvailabilityForDate } from "../../functions/generate-dates-and-pens-info";
+import { generateCatteryAvailabilityForDate } from "./upload-dates-and-epens-functions/upload-dates-and-pens-functions";
 
 export const uploadDatesAndPensAvailabilityDocumentAsync = createAsyncThunk(
   "uploadDatesAndPensAvailabilityDocument",
@@ -49,9 +49,9 @@ export const uploadDatesAndPensAvailabilityDocumentAsync = createAsyncThunk(
 
       const values = [
         penSpacesForMaxTwoCats,
-        penSpacesForMaxThreeCats,
-        penSpacesForMaxFourCats,
-        penSpacesForMaxFiveCats,
+        penSpacesForMaxThreeCats ? penSpacesForMaxThreeCats : 0,
+        penSpacesForMaxFourCats ? penSpacesForMaxFourCats : 0,
+        penSpacesForMaxFiveCats ? penSpacesForMaxFiveCats : 0,
       ];
 
       const totalNumberOfPens = values.reduce(
@@ -61,7 +61,7 @@ export const uploadDatesAndPensAvailabilityDocumentAsync = createAsyncThunk(
 
       if (totalNumberOfPens !== maxNumberOfPens) {
         throw new Error(
-          "The total provided does not equal the total number of pens available in the cattery."
+          `The total provided ( ${totalNumberOfPens} ) does not equal the total number of pens in this cattery ( ${maxNumberOfPens} ).`
         );
       }
 

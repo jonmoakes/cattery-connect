@@ -14,6 +14,7 @@ import {
 import useConfirmSwal from "../../../../hooks/use-confirm-swal";
 
 import { imSureMessage } from "../../../../strings/confirms";
+import useAddBookingVariables from "./use-add-booking-variables";
 
 const useAddBookingFunctions = () => {
   const {
@@ -29,12 +30,14 @@ const useAddBookingFunctions = () => {
     showIneligibleDates,
     parsedAvailabilityData,
   } = useGetDbManageAddBookingSelectors();
+  const { moreCatsInBookingThanCapacityInOnePen } = useAddBookingVariables();
   const { catteryId } = useGetCurrentUserSelectors();
 
   const dispatch = useDispatch();
   const { confirmSwal } = useConfirmSwal();
 
   const shouldShowFormSubmissionButtons =
+    !moreCatsInBookingThanCapacityInOnePen &&
     customerDocumentId &&
     customerName &&
     catsInBooking &&

@@ -14,6 +14,7 @@ import { MinimalButton } from "../../../styles/button/button.styles";
 const FailedDatesInfo = () => {
   const { status, failingDates, showIneligibleDates } =
     useGetDbManageAddBookingSelectors();
+
   const dispatch = useDispatch();
 
   return (

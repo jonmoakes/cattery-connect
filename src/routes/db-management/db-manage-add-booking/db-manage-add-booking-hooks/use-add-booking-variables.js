@@ -1,7 +1,7 @@
 import useGetDbManageAddBookingSelectors from "../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
 
 const useAddBookingVariables = () => {
-  const { customerName, catDetails, catsInBooking } =
+  const { customerName, catDetails, catsInBooking, maximumCatsInSinglePen } =
     useGetDbManageAddBookingSelectors();
 
   let parsedCatDetails = [];
@@ -40,6 +40,11 @@ const useAddBookingVariables = () => {
       Array.isArray(catsInBooking) &&
       catsInBooking.length > 0);
 
+  const numberOfCatsInBooking = catsInBooking ? catsInBooking.length : 0;
+
+  const moreCatsInBookingThanCapacityInOnePen =
+    numberOfCatsInBooking > maximumCatsInSinglePen;
+
   return {
     catsToRender,
     error,
@@ -50,6 +55,9 @@ const useAddBookingVariables = () => {
     customerHasOneCat,
     customerHasMoreThanOneCat,
     customerHasOneCatOrMoreThanOneCatAndAtLeastOneHasBeenSelected,
+    numberOfCatsInBooking,
+    moreCatsInBookingThanCapacityInOnePen,
+    maximumCatsInSinglePen,
   };
 };
 
