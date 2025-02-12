@@ -7,11 +7,13 @@ import useCheckInAndOutDateValidityUseEffect from "./db-manage-add-booking-hooks
 import useCheckBookingAvailableResultSwalUseEffect from "./db-manage-add-booking-hooks/use-check-booking-available-result-swal-use-effect";
 import useGetAllowsLargerPensBoolMaxCatsPerPenAndOwnersCustomersThunkUseEffect from "./db-manage-add-booking-hooks/use-get-allows-larger-pens-bool-max-cats-per-pen-and-owners-customers-thunk-use-effect";
 import useCompleteBookingResultSwalUseEffect from "./db-manage-add-booking-hooks/use-complete-booking-result-swal-use-effect";
+import useSendEmailUpdatePensRollbackErrorResultSwalUseEffect from "./db-manage-add-booking-hooks/use-send-email-update-pens-rollback-error-result-swal-use-effect";
 
 import ShowFetchErrors from "../../../components/errors/show-fetch-errors.component";
 import DbManageAddBookingTitleAndLoader from "./db-manage-add-booking-title-and-loader.component";
 import ChooseCustomerSelectInput from "./inputs/choose-customer-select-input.component";
 import ChooseCatsInput from "./inputs/choose-cats-input/choose-cats-input.component";
+import MoreCatsSelectedThanSinglePenCapacity from "./more-cats-selected-than-single-pen-capacity.component";
 import CheckInAndOutDateInput from "./inputs/check-in-and-out-date-input/check-in-and-out-date-input.component";
 import CheckInAndOutTimeSlotSelectInput from "./inputs/check-in-out-and-time-slot-input/check-in-and-out-time-slot.component";
 import ShowBookingDataBeforeBooking from "./show-booking-data-before-booking.component";
@@ -22,7 +24,6 @@ import BookingIsAvailableInfoAndPlaceBookingButton from "./booking-is-available-
 import { Container } from "../../../styles/container/container.styles";
 import { ParentDiv } from "../../../styles/div/div.styles";
 import { Form } from "../../../styles/form/form.styles";
-import MoreCatsSelectedThanSinglePenCapacity from "./more-cats-selected-than-single-pen-capacity.component";
 
 const DbManageAddBooking = () => {
   const {
@@ -46,6 +47,7 @@ const DbManageAddBooking = () => {
   useCheckInAndOutDateValidityUseEffect();
   useCheckBookingAvailableResultSwalUseEffect();
   useCompleteBookingResultSwalUseEffect();
+  useSendEmailUpdatePensRollbackErrorResultSwalUseEffect();
 
   return (
     <Container>

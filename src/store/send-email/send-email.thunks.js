@@ -17,6 +17,13 @@ export const sendEmailCatteryConnectUpdatePensRollbackErrorAsync =
       thunkAPI
     ) => {
       try {
+        console.log(
+          catteryId,
+          operation,
+          addBookingData,
+          rollbackFailures,
+          originalAvailabilityData
+        );
         const response = await axios.post(
           SEND_EMAIL_CATTERY_CONNECT_UPDATE_PENS_ROLLBACK_ERROR_ENDPOINT,
           {

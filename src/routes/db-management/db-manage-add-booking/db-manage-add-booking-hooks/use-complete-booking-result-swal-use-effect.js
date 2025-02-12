@@ -30,7 +30,7 @@ const useCompleteBookingResultSwalUseEffect = () => {
     updatePensDataError,
     addBookingDataResult,
     addBookingDataError,
-    addBookingData,
+    // addBookingData,
   } = useGetDbManageAddBookingSelectors();
   const { catteryId } = useGetCurrentUserSelectors();
 
@@ -89,8 +89,13 @@ const useCompleteBookingResultSwalUseEffect = () => {
           false
         ).then((isConfirmed) => {
           if (isConfirmed) {
-            const { operation, rollbackFailures, originalAvailabilityData } =
-              updatePensDataError ?? {};
+            // const { operation, rollbackFailures, originalAvailabilityData } =
+            //   updatePensDataError ?? {};
+
+            const operation = "deduct";
+            const addBookingData = "booking data";
+            const rollbackFailures = "id list goes here";
+            const originalAvailabilityData = "data goes here";
             dispatch(
               sendEmailCatteryConnectUpdatePensRollbackErrorAsync({
                 catteryId,
@@ -99,30 +104,7 @@ const useCompleteBookingResultSwalUseEffect = () => {
                 rollbackFailures,
                 originalAvailabilityData,
               })
-            ).then((resultAction) => {
-              if (
-                sendEmailCatteryConnectUpdatePensRollbackErrorAsync.fulfilled.match(
-                  resultAction
-                )
-              ) {
-                hamburgerHandlerNavigate(accountRoute);
-              } else {
-                fireSwal(
-                  "error",
-                  "error sending email. please contact jonathan urgently.",
-                  "",
-                  0,
-                  "",
-                  false,
-                  "",
-                  false
-                ).then((isConfirmed) => {
-                  if (isConfirmed) {
-                    hamburgerHandlerNavigate(accountRoute);
-                  }
-                });
-              }
-            });
+            );
           }
         });
       } else {
@@ -179,7 +161,7 @@ const useCompleteBookingResultSwalUseEffect = () => {
     fireSwal,
     confirmSwal,
     hamburgerHandlerNavigate,
-    addBookingData,
+    // addBookingData,
     catteryId,
   ]);
 };
