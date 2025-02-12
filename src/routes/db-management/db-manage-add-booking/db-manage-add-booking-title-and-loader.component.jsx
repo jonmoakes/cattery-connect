@@ -1,5 +1,6 @@
 import useGetAllCustomerSelectors from "../../../hooks/selectors/use-get-all-customers-selectors";
 import useGetDbManageAddBookingSelectors from "../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
+import useGetSendEmailSelectors from "../../../hooks/selectors/use-get-send-email-selectors";
 
 import CustomBalancedText from "../../../components/custom-balanced-text/custom-balanced-text.component";
 import SkeletonBox from "../../../components/skeleton-box/skeleton-box.component";
@@ -14,6 +15,7 @@ const DbManageAddBookingTitleAndLoader = () => {
     updatePensDataIsLoading,
     addBookingDataIsLoading,
   } = useGetDbManageAddBookingSelectors();
+  const { sendEmailIsLoading } = useGetSendEmailSelectors();
 
   return (
     <>
@@ -25,7 +27,8 @@ const DbManageAddBookingTitleAndLoader = () => {
       catteryAllowsLargerPensBoolAndMaxCatsPerPenIsLoading ||
       isBookingAvailableIsLoading ||
       updatePensDataIsLoading ||
-      addBookingDataIsLoading ? (
+      addBookingDataIsLoading ||
+      sendEmailIsLoading ? (
         <SkeletonBox
           loadingText={
             getAllCustomersIsLoading
@@ -36,7 +39,9 @@ const DbManageAddBookingTitleAndLoader = () => {
               ? "Checking booking  Availability..."
               : updatePensDataIsLoading
               ? "updating pens data..."
-              : addBookingDataIsLoading && "adding booking data..."
+              : addBookingDataIsLoading
+              ? "adding booking data..."
+              : sendEmailIsLoading && "sending email..."
           }
         />
       ) : null}

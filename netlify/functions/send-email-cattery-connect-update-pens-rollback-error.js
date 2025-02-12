@@ -1,5 +1,6 @@
 import postmark from "postmark";
-const client = new postmark.ServerClient(import.meta.env.VITE_POSTMARK_API_KEY);
+import "dotenv/config";
+const client = new postmark.ServerClient(process.env.VITE_POSTMARK_API_KEY);
 
 export const handler = async (event) => {
   const {
@@ -8,12 +9,12 @@ export const handler = async (event) => {
     addBookingData,
     rollbackFailures,
     originalAvailabilityData,
-  } = event.body;
+  } = JSON.parse(event.body);
 
   try {
     await client.sendEmailWithTemplate({
-      From: import.meta.env.VITE_APP_ADMIN_EMAIL,
-      To: import.meta.env.VITE_APP_ADMIN_EMAIL,
+      From: process.env.VITE_APP_ADMIN_EMAIL,
+      To: process.env.VITE_APP_ADMIN_EMAIL,
       TemplateAlias: "send-email-cattery-connect-update-pens-rollback-error",
       TemplateModel: {
         product_url: "https://cattery-connect.netlify.app",

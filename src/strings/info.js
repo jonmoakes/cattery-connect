@@ -13,3 +13,5 @@ export const passwordResetSuccessMessage =
   "your password has been successfuly reset!";
 export const signInWithNewPasswordMessage =
   "you can now sign in with your new password.";
+
+export const updatePenRollbackErrorEmailSentMessage = `<span style="font-size:20px";> email sent!<br/><br/>jonathan will contact you shortly to explain the error that occured in more detail!<br/><br/>as a reminder, please don't attempt to make any more bookings until the issue has been fixed.</span>`;

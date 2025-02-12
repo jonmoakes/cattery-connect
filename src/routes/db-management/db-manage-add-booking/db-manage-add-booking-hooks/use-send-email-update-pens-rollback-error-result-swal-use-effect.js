@@ -5,6 +5,7 @@ import useFireSwal from "../../../../hooks/use-fire-swal";
 
 import useHamburgerHandlerNavigate from "../../../../hooks/use-hamburger-handler-navigate";
 import { accountRoute } from "../../../../strings/routes";
+import { updatePenRollbackErrorEmailSentMessage } from "../../../../strings/info";
 
 const useSendEmailUpdatePensRollbackErrorResultSwalUseEffect = () => {
   const { sendEmailStatusCode, sendEmailError } = useGetSendEmailSelectors();
@@ -16,13 +17,20 @@ const useSendEmailUpdatePensRollbackErrorResultSwalUseEffect = () => {
     if (!sendEmailStatusCode && !sendEmailError) return;
 
     if (sendEmailStatusCode === 202) {
-      fireSwal("success", "email sent!", "", 0, "", false, "", false).then(
-        (isConfirmed) => {
-          if (isConfirmed) {
-            hamburgerHandlerNavigate(accountRoute);
-          }
+      fireSwal(
+        "success",
+        updatePenRollbackErrorEmailSentMessage,
+        "",
+        0,
+        "",
+        false,
+        "",
+        false
+      ).then((isConfirmed) => {
+        if (isConfirmed) {
+          hamburgerHandlerNavigate(accountRoute);
         }
-      );
+      });
     } else if (sendEmailError) {
       fireSwal(
         "error",

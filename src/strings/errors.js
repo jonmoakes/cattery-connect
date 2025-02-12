@@ -1,4 +1,4 @@
-import { warmBeige } from "../styles/colours";
+import { customYellow, warmBeige } from "../styles/colours";
 
 export const noNetworkMessage =
   "you don't seem to be connected to the internet. Please check your connection";
@@ -23,6 +23,13 @@ export const appwritePasswordLengthError =
 
 export const errorReceivedMessage = (errorInfo, error) => {
   return `<span style="font-size:20px";>${errorInfo}<br/><br/>The error received was:<br/>'<span style="color:${warmBeige}";>${error}</span>'<br/><br/><span style="font-size:20px";>please try again or contact us if the error persists.</span>`;
+};
+
+export const updatePensDataErrorMessage = (
+  errorInfo,
+  updatePensDataErrorMessage
+) => {
+  return `<span style="font-size:20px";>${errorInfo}<br/><br/><span style="color:${customYellow}";>${updatePensDataErrorMessage}</span>'</span>`;
 };
 
 export const cantIncludeCommaMessage = "names can't include a comma";

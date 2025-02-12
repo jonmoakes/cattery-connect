@@ -283,9 +283,11 @@ export const updatePensDataAsync = createAsyncThunk(
 
       if (rollbackFailures.length > 0) {
         return thunkAPI.rejectWithValue({
-          message: `Error making booking 
+          message: `there was an Error making booking..
 
 ( error code 'RBF'). 
+
+in order to avoid disruption to the booking system, please don't attempt to make any more bookings just yet.
 
 due to the nature of the error, we require manual intervention. 
 

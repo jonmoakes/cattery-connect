@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import useGetDbManageAddBookingSelectors from "../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
@@ -14,7 +14,10 @@ import useFireSwal from "../../../../hooks/use-fire-swal";
 import useConfirmSwal from "../../../../hooks/use-confirm-swal";
 import useHamburgerHandlerNavigate from "../../../../hooks/use-hamburger-handler-navigate";
 
-import { errorReceivedMessage } from "../../../../strings/errors";
+import {
+  errorReceivedMessage,
+  updatePensDataErrorMessage,
+} from "../../../../strings/errors";
 import { accountRoute } from "../../../../strings/routes";
 import {
   resetAddBookingDataError,
@@ -34,6 +37,8 @@ const useCompleteBookingResultSwalUseEffect = () => {
   } = useGetDbManageAddBookingSelectors();
   const { catteryId } = useGetCurrentUserSelectors();
 
+  const [swalConfirmed, setSwalConfirmed] = useState(false);
+
   const { fireSwal } = useFireSwal();
   const { confirmSwal } = useConfirmSwal();
   const dispatch = useDispatch();
@@ -41,10 +46,11 @@ const useCompleteBookingResultSwalUseEffect = () => {
 
   useEffect(() => {
     if (
-      !updatePensDataResult &&
-      !updatePensDataError &&
-      !addBookingDataResult &&
-      !addBookingDataError
+      (!updatePensDataResult &&
+        !updatePensDataError &&
+        !addBookingDataResult &&
+        !addBookingDataError) ||
+      swalConfirmed
     )
       return;
 
@@ -63,6 +69,7 @@ const useCompleteBookingResultSwalUseEffect = () => {
         false
       ).then((isConfirmed) => {
         if (isConfirmed) {
+          setSwalConfirmed(true);
           confirmSwal(
             "would you like to make another booking?",
             "",
@@ -80,7 +87,10 @@ const useCompleteBookingResultSwalUseEffect = () => {
       ) {
         fireSwal(
           "error",
-          updatePensDataError.message,
+          updatePensDataErrorMessage(
+            "important message!",
+            updatePensDataError.message
+          ),
           "",
           0,
           "send email",
@@ -91,7 +101,7 @@ const useCompleteBookingResultSwalUseEffect = () => {
           if (isConfirmed) {
             // const { operation, rollbackFailures, originalAvailabilityData } =
             //   updatePensDataError ?? {};
-
+            setSwalConfirmed(true);
             const operation = "deduct";
             const addBookingData = "booking data";
             const rollbackFailures = "id list goes here";
@@ -163,6 +173,7 @@ const useCompleteBookingResultSwalUseEffect = () => {
     hamburgerHandlerNavigate,
     // addBookingData,
     catteryId,
+    swalConfirmed,
   ]);
 };
 
