@@ -10,7 +10,7 @@ export const generateNewPasswordRequestAsync = createAsyncThunk(
       if (import.meta.env.MODE === "development") {
         await account.createRecovery(
           generateNewPasswordRequestEmail,
-          `http://localhost:5173${chooseNewPasswordRoute}`
+          `http://localhost:8888${chooseNewPasswordRoute}`
         );
       } else if (import.meta.env.MODE === "production") {
         await account.createRecovery(

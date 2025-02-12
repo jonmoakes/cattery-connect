@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import useGetDbManageAddBookingSelectors from "../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
+import useGetCurrentUserSelectors from "../../../../hooks/selectors/use-get-current-user-selectors";
 
 import // resetDbManageAddBookingDataError,
 // resetDbManageAddBookingDataResult,
@@ -21,6 +22,7 @@ import {
   resetUpdatePensDataError,
   resetUpdatePensDataResult,
 } from "../../../../store/db-manage-add-booking/db-manage-add-booking.slice";
+import { sendEmailCatteryConnectUpdatePensRollbackErrorAsync } from "../../../../store/send-email/send-email.thunks";
 
 const useCompleteBookingResultSwalUseEffect = () => {
   const {
@@ -28,7 +30,9 @@ const useCompleteBookingResultSwalUseEffect = () => {
     updatePensDataError,
     addBookingDataResult,
     addBookingDataError,
+    addBookingData,
   } = useGetDbManageAddBookingSelectors();
+  const { catteryId } = useGetCurrentUserSelectors();
 
   const { fireSwal } = useFireSwal();
   const { confirmSwal } = useConfirmSwal();
@@ -70,22 +74,76 @@ const useCompleteBookingResultSwalUseEffect = () => {
         }
       });
     } else if (updatePensDataResult === "rejected") {
-      fireSwal(
-        "error",
-        "error updating pen data",
-        "",
-        0,
-        "",
-        false,
-        "",
-        false
-      ).then((isConfirmed) => {
-        if (isConfirmed) {
-          dispatch(resetUpdatePensDataResult());
-          dispatch(resetUpdatePensDataError());
-          // roll back pen dates data??
-        }
-      });
+      if (
+        updatePensDataError.message &&
+        updatePensDataError.message.includes("error code 'RBF'")
+      ) {
+        fireSwal(
+          "error",
+          updatePensDataError.message,
+          "",
+          0,
+          "send email",
+          false,
+          "",
+          false
+        ).then((isConfirmed) => {
+          if (isConfirmed) {
+            const { operation, rollbackFailures, originalAvailabilityData } =
+              updatePensDataError ?? {};
+            dispatch(
+              sendEmailCatteryConnectUpdatePensRollbackErrorAsync({
+                catteryId,
+                operation,
+                addBookingData,
+                rollbackFailures,
+                originalAvailabilityData,
+              })
+            ).then((resultAction) => {
+              if (
+                sendEmailCatteryConnectUpdatePensRollbackErrorAsync.fulfilled.match(
+                  resultAction
+                )
+              ) {
+                hamburgerHandlerNavigate(accountRoute);
+              } else {
+                fireSwal(
+                  "error",
+                  "error sending email. please contact jonathan urgently.",
+                  "",
+                  0,
+                  "",
+                  false,
+                  "",
+                  false
+                ).then((isConfirmed) => {
+                  if (isConfirmed) {
+                    hamburgerHandlerNavigate(accountRoute);
+                  }
+                });
+              }
+            });
+          }
+        });
+      } else {
+        fireSwal(
+          "error",
+          errorReceivedMessage(
+            "there was an error making the booking.",
+            updatePensDataError
+          ),
+          0,
+          "",
+          false,
+          "",
+          false
+        ).then((isConfirmed) => {
+          if (isConfirmed) {
+            dispatch(resetUpdatePensDataResult());
+            dispatch(resetUpdatePensDataError());
+          }
+        });
+      }
     } else if (
       updatePensDataResult === "fulfilled" &&
       addBookingDataResult === "rejected"
@@ -121,6 +179,8 @@ const useCompleteBookingResultSwalUseEffect = () => {
     fireSwal,
     confirmSwal,
     hamburgerHandlerNavigate,
+    addBookingData,
+    catteryId,
   ]);
 };
 

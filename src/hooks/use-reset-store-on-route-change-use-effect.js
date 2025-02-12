@@ -16,6 +16,7 @@ import {
   resetGetAllUsersState,
 } from "../store/get-all-users/get-all-users.slice";
 import { resetDbManageAddBookingState } from "../store/db-manage-add-booking/db-manage-add-booking.slice";
+import { resetSendEmailState } from "../store/send-email/send-email.slice";
 
 import {
   addCatChooseOwnerRoute,
@@ -74,6 +75,7 @@ const useResetStoreOnRouteChangeUseEffect = () => {
           break;
         case dbManageAddBookingRoute:
           dispatch(resetDbManageAddBookingState());
+          dispatch(resetSendEmailState());
           break;
         default:
           break;

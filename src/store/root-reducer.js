@@ -13,6 +13,7 @@ import { catDetailsManagementReducer } from "./cat-details-management/cat-detail
 import { getAllCatsReducer } from "./get-all-cats/get-all-cats.slice";
 import { getAllUsersReducer } from "./get-all-users/get-all-users.slice";
 import { dbManageAddBookingReducer } from "./db-manage-add-booking/db-manage-add-booking.slice";
+import { sendEmailReducer } from "./send-email/send-email.slice";
 
 export const rootReducer = combineReducers({
   hamburgerMenu: hamburgerMenuReducer,
@@ -28,4 +29,5 @@ export const rootReducer = combineReducers({
   getAllCats: getAllCatsReducer,
   getAllUsers: getAllUsersReducer,
   dbManageAddBooking: dbManageAddBookingReducer,
+  sendEmail: sendEmailReducer,
 });

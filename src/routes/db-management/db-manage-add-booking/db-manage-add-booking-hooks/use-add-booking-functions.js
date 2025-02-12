@@ -71,9 +71,9 @@ const useAddBookingFunctions = () => {
       () =>
         dispatch(
           updatePensDataAsync({
+            parsedAvailabilityData,
             addBookingData,
             catteryAllowsLargerPensBool,
-            parsedAvailabilityData,
             operation,
           })
         ).then((resultAction) => {

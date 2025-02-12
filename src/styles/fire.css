@@ -11,6 +11,7 @@
   font-weight: bold;
   text-transform: capitalize;
   font-size: calc(1.3rem);
+  white-space: pre-wrap;
 }
 
 /*the second text */
@@ -18,6 +19,7 @@
   color: whitesmoke;
   font-size: 20px;
   font-weight: bold;
+  white-space: pre-wrap;
 }
 
 /*confirm button text colour */

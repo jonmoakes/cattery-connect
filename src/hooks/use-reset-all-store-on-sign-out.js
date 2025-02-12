@@ -10,6 +10,7 @@ import { resetGetAllCustomersState } from "../store/get-all-customers/get-all-cu
 import { resetGetAllUsersState } from "../store/get-all-users/get-all-users.slice";
 import { resetGetAllCatsState } from "../store/get-all-cats/get-all-cats.slice";
 import { resetDbManageAddBookingState } from "../store/db-manage-add-booking/db-manage-add-booking.slice";
+import { resetSendEmailState } from "../store/send-email/send-email.slice";
 
 const useResetAllStoreOnSignOut = () => {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ const useResetAllStoreOnSignOut = () => {
     dispatch(resetGetAllUsersState());
     dispatch(resetGetAllCatsState());
     dispatch(resetDbManageAddBookingState());
+    dispatch(resetSendEmailState());
     localStorage.clear();
   };
 

@@ -180,19 +180,26 @@ export const updatePensDataAsync = createAsyncThunk(
   "updatePensData",
   async (
     {
+      parsedAvailabilityData,
       addBookingData,
       catteryAllowsLargerPensBool,
-      parsedAvailabilityData,
       operation,
     },
     thunkAPI
   ) => {
+    // Deep copy the original availability data for rollback purposes
+    const originalAvailabilityData = JSON.parse(
+      JSON.stringify(parsedAvailabilityData)
+    );
     try {
       const { catsInBooking, checkInSlot, checkOutSlot } = addBookingData;
       const numberOfCats = catsInBooking.length;
       const totalDays = parsedAvailabilityData.length;
 
       for (let index = 0; index < totalDays; index++) {
+        if (index === 5) {
+          throw new Error(`updating failed at index ${index}`);
+        }
         const day = parsedAvailabilityData[index];
 
         let updatedMorningPens = day.morningPens;
@@ -236,7 +243,66 @@ export const updatePensDataAsync = createAsyncThunk(
         );
       }
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      // Rollback to original availability data
+      const rollbackFailures = [];
+
+      for (const day of originalAvailabilityData) {
+        const originalData = {
+          morningPensData: JSON.stringify(day.morningPens),
+          afternoonPensData: JSON.stringify(day.afternoonPens),
+        };
+        try {
+          // Simulate an error during the rollback for a specific document (e.g., index 3)
+          // if (day.documentId === originalAvailabilityData[2].documentId) {
+          //   throw new Error(
+          //     `There was an error rolling backSimulated error during rollback for documentId ${format(
+          //       day.date,
+          //       "EEE dd MMMM yyyy"
+          //     )}`
+          //   );
+          // }
+          if (
+            day.documentId === originalAvailabilityData[2].documentId ||
+            day.documentId === originalAvailabilityData[3].documentId ||
+            day.documentId === originalAvailabilityData[4].documentId
+          ) {
+            throw new Error("error in rollback operation");
+          }
+
+          await manageDatabaseDocument(
+            "update",
+            databaseId,
+            availablilityCollectionId,
+            day.documentId,
+            originalData
+          );
+        } catch {
+          rollbackFailures.push(day.documentId);
+        }
+      }
+
+      if (rollbackFailures.length > 0) {
+        return thunkAPI.rejectWithValue({
+          message: `Error making booking 
+
+( error code 'RBF'). 
+
+due to the nature of the error, we require manual intervention. 
+
+when you press 'send email' below, we will send an email to jonathan with details of the error. 
+
+please confirm he has fixed the errors before attempting to make any more bookings.`,
+          originalAvailabilityData,
+          addBookingData,
+          rollbackFailures,
+          operation,
+        });
+      } else {
+        // Rollback succeeded
+        return thunkAPI.rejectWithValue(
+          `${error} - failed to update pen data. no changes have been made the database.`
+        );
+      }
     }
   }
 );
