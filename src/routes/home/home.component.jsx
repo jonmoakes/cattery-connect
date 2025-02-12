@@ -17,9 +17,7 @@ const Home = () => {
         </CustomBalancedText>
       </ParentDiv>
       <ParentDiv>
-        <CustomBalancedText type="h2">
-          Welcome to Cattery Connect!
-        </CustomBalancedText>
+        <CustomBalancedText>Welcome to Cattery Connect!</CustomBalancedText>
         <CustomBalancedText>
           your comprehensive solution for efficient cattery management.
         </CustomBalancedText>

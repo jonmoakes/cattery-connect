@@ -34,7 +34,7 @@ const useSendEmailUpdatePensRollbackErrorResultSwalUseEffect = () => {
     } else if (sendEmailError) {
       fireSwal(
         "error",
-        `sorry,the email failed to send.. Please contact jonathan urgently The error received was ${sendEmailError}`,
+        `sorry,the email failed to send.. Please contact jonathan urgently. The error received was ${sendEmailError}`,
         "",
         0,
         "",
