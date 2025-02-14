@@ -3,27 +3,21 @@ import postmark from "postmark";
 const client = new postmark.ServerClient(process.env.VITE_POSTMARK_API_KEY);
 
 export const handler = async (event) => {
-  const {
-    catteryId,
-    operation,
-    formattedBookingDetails,
-    formattedRollbackFailures,
-    formattedOriginalAvailabilityData,
-  } = JSON.parse(event.body);
+  const { catteryId, addBookingDataError, formattedFullBookingDetails } =
+    JSON.parse(event.body);
 
   try {
     await client.sendEmailWithTemplate({
       From: process.env.VITE_APP_ADMIN_EMAIL,
       To: process.env.VITE_APP_ADMIN_EMAIL,
-      TemplateAlias: "send-email-cattery-connect-update-pens-rollback-error",
+      TemplateAlias:
+        "send-email-cattery-connect-pens-updated-add-booking-data-failed",
       TemplateModel: {
         product_url: "https://cattery-connect.netlify.app",
         product_name: "Cattery Connect",
         catteryId,
-        operation,
-        formattedBookingDetails,
-        formattedRollbackFailures,
-        formattedOriginalAvailabilityData,
+        addBookingDataError,
+        formattedFullBookingDetails,
       },
     });
 

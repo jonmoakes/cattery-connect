@@ -113,9 +113,9 @@ export const checkBookingAvailabilityAsync = createAsyncThunk(
         );
 
         throw new Error(
-          `we are not able to make this booking because the cattery is not available for bookings on the following dates: ${formattedMissingDates.join(
-            ", "
-          )}.`
+          `we are not able to make this booking because the cattery is not available for bookings on the following dates: 
+
+${formattedMissingDates.join(",\n")}.`
         );
       }
 
@@ -197,9 +197,6 @@ export const updatePensDataAsync = createAsyncThunk(
       const totalDays = parsedAvailabilityData.length;
 
       for (let index = 0; index < totalDays; index++) {
-        if (index === 5) {
-          throw new Error(`updating failed at index ${index}`);
-        }
         const day = parsedAvailabilityData[index];
 
         let updatedMorningPens = day.morningPens;
@@ -252,23 +249,6 @@ export const updatePensDataAsync = createAsyncThunk(
           afternoonPensData: JSON.stringify(day.afternoonPens),
         };
         try {
-          // Simulate an error during the rollback for a specific document (e.g., index 3)
-          // if (day.documentId === originalAvailabilityData[2].documentId) {
-          //   throw new Error(
-          //     `There was an error rolling backSimulated error during rollback for documentId ${format(
-          //       day.date,
-          //       "EEE dd MMMM yyyy"
-          //     )}`
-          //   );
-          // }
-          if (
-            day.documentId === originalAvailabilityData[2].documentId ||
-            day.documentId === originalAvailabilityData[3].documentId ||
-            day.documentId === originalAvailabilityData[4].documentId
-          ) {
-            throw new Error("error in rollback operation");
-          }
-
           await manageDatabaseDocument(
             "update",
             databaseId,

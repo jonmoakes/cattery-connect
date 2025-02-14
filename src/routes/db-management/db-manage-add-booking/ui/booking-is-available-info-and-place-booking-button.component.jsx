@@ -1,10 +1,10 @@
-import useGetDbManageAddBookingSelectors from "../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
-import useAddBookingFunctions from "./db-manage-add-booking-hooks/use-add-booking-functions";
-import CustomBalancedText from "../../../components/custom-balanced-text/custom-balanced-text.component";
+import useGetDbManageAddBookingSelectors from "../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
+import useAddBookingFunctions from "../db-manage-add-booking-hooks/use-add-booking-functions";
+import CustomBalancedText from "../../../../components/custom-balanced-text/custom-balanced-text.component";
 
-import { Button } from "../../../styles/button/button.styles";
+import { Button } from "../../../../styles/button/button.styles";
 
-import { BlackHr } from "../../../styles/hr/hr.styles";
+import { BlackHr } from "../../../../styles/hr/hr.styles";
 
 const BookingIsAvailableInfoAndPlaceBookingButton = () => {
   const { status } = useGetDbManageAddBookingSelectors();

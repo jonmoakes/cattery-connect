@@ -1,5 +1,5 @@
-import CustomBalancedText from "../../../components/custom-balanced-text/custom-balanced-text.component";
-import CustomSpan from "../../../components/custom-span/custom-span.component";
+import CustomBalancedText from "../../../../components/custom-balanced-text/custom-balanced-text.component";
+import CustomSpan from "../../../../components/custom-span/custom-span.component";
 
 const MoreCatsSelectedThanSinglePenCapacity = ({
   numberOfCatsInBooking,

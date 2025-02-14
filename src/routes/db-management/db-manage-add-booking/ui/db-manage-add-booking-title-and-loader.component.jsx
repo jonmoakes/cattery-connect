@@ -1,11 +1,11 @@
-import useGetAllCustomerSelectors from "../../../hooks/selectors/use-get-all-customers-selectors";
-import useGetDbManageAddBookingSelectors from "../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
-import useGetSendEmailSelectors from "../../../hooks/selectors/use-get-send-email-selectors";
+import useGetAllCustomerSelectors from "../../../../hooks/selectors/use-get-all-customers-selectors";
+import useGetDbManageAddBookingSelectors from "../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
+import useGetSendEmailSelectors from "../../../../hooks/selectors/use-get-send-email-selectors";
 
-import CustomBalancedText from "../../../components/custom-balanced-text/custom-balanced-text.component";
-import SkeletonBox from "../../../components/skeleton-box/skeleton-box.component";
+import CustomBalancedText from "../../../../components/custom-balanced-text/custom-balanced-text.component";
+import SkeletonBox from "../../../../components/skeleton-box/skeleton-box.component";
 
-import { ParentDiv } from "../../../styles/div/div.styles";
+import { ParentDiv } from "../../../../styles/div/div.styles";
 
 const DbManageAddBookingTitleAndLoader = () => {
   const { getAllCustomersIsLoading } = useGetAllCustomerSelectors();

@@ -1,37 +1,76 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-import { SEND_EMAIL_CATTERY_CONNECT_UPDATE_PENS_ROLLBACK_ERROR_ENDPOINT } from "../../../netlify/api-endpoints/api-endpoints";
+import {
+  SEND_EMAIL_CATTERY_CONNECT_UPDATE_PENS_ROLLBACK_ERROR_ENDPOINT,
+  SEND_EMAIL_CATTERY_CONNECT_PENS_UPDATED_ADD_BOOKING_DATA_FAILED_ENDPOINT,
+} from "../../../netlify/api-endpoints/api-endpoints";
+
+import { formatBookingDetailsForUpdatePenDataError } from "./functions/format-booking-details-for-update-pen-data-error";
+import { formatOriginalAvailabilityData } from "./functions/format-original-availability-data";
+import { formatFullBookingDetails } from "./functions/format-full-booking-details";
 
 export const sendEmailCatteryConnectUpdatePensRollbackErrorAsync =
   createAsyncThunk(
     "sendEmailCatteryConnectUpdatePensRollbackError",
     async (
       {
-        catteryId,
-        operation,
         addBookingData,
         rollbackFailures,
         originalAvailabilityData,
+        catteryId,
+        operation,
       },
       thunkAPI
     ) => {
       try {
-        console.log(
-          catteryId,
-          operation,
-          addBookingData,
-          rollbackFailures,
-          originalAvailabilityData
+        const formattedBookingDetails =
+          formatBookingDetailsForUpdatePenDataError(addBookingData);
+
+        const formattedRollbackFailures =
+          rollbackFailures && rollbackFailures.length > 0
+            ? rollbackFailures.join("\n\n")
+            : "No Doc IDs Found";
+
+        const filteredAvailabilityData = originalAvailabilityData.filter(
+          (day) => rollbackFailures.includes(day.documentId)
         );
+        const formattedOriginalAvailabilityData =
+          formatOriginalAvailabilityData(filteredAvailabilityData);
+
         const response = await axios.post(
           SEND_EMAIL_CATTERY_CONNECT_UPDATE_PENS_ROLLBACK_ERROR_ENDPOINT,
           {
             catteryId,
             operation,
-            addBookingData,
-            rollbackFailures,
-            originalAvailabilityData,
+            formattedBookingDetails,
+            formattedRollbackFailures,
+            formattedOriginalAvailabilityData,
+          }
+        );
+
+        const statusCode = response.status;
+        return statusCode;
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+    }
+  );
+
+export const sendEmailCatteryConnectPensUpdatedAddBookingDataFailedAsync =
+  createAsyncThunk(
+    "sendEmailPensUpdatedAddBookingDataFailed",
+    async ({ addBookingData, catteryId, addBookingDataError }, thunkAPI) => {
+      try {
+        const formattedFullBookingDetails =
+          formatFullBookingDetails(addBookingData);
+
+        const response = await axios.post(
+          SEND_EMAIL_CATTERY_CONNECT_PENS_UPDATED_ADD_BOOKING_DATA_FAILED_ENDPOINT,
+          {
+            catteryId,
+            addBookingDataError,
+            formattedFullBookingDetails,
           }
         );
 

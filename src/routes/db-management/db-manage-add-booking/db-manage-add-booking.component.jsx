@@ -3,23 +3,23 @@ import useGetAllCustomerSelectors from "../../../hooks/selectors/use-get-all-cus
 
 import useAddBookingFunctions from "./db-manage-add-booking-hooks/use-add-booking-functions";
 import useAddBookingVariables from "./db-manage-add-booking-hooks/use-add-booking-variables";
-import useCheckInAndOutDateValidityUseEffect from "./db-manage-add-booking-hooks/use-check-in-and-out-date-validity-use-effect";
-import useCheckBookingAvailableResultSwalUseEffect from "./db-manage-add-booking-hooks/use-check-booking-available-result-swal-use-effect";
-import useGetAllowsLargerPensBoolMaxCatsPerPenAndOwnersCustomersThunkUseEffect from "./db-manage-add-booking-hooks/use-get-allows-larger-pens-bool-max-cats-per-pen-and-owners-customers-thunk-use-effect";
-import useCompleteBookingResultSwalUseEffect from "./db-manage-add-booking-hooks/use-complete-booking-result-swal-use-effect";
-import useSendEmailUpdatePensRollbackErrorResultSwalUseEffect from "./db-manage-add-booking-hooks/use-send-email-update-pens-rollback-error-result-swal-use-effect";
+import useCheckInAndOutDateValidityUseEffect from "./db-manage-add-booking-hooks/use-effects/use-check-in-and-out-date-validity-use-effect";
+import useCheckBookingAvailableResultSwalUseEffect from "./db-manage-add-booking-hooks/use-effects/use-check-booking-available-result-swal-use-effect";
+import useGetAllowsLargerPensBoolMaxCatsPerPenAndOwnersCustomersThunkUseEffect from "./db-manage-add-booking-hooks/use-effects/use-get-allows-larger-pens-bool-max-cats-per-pen-and-owners-customers-thunk-use-effect";
+import useCompleteBookingResultSwalUseEffect from "./db-manage-add-booking-hooks/use-effects/use-complete-booking-result-swal-use-effect";
+import useSendEmailResultSwalUseEffect from "./db-manage-add-booking-hooks/use-effects/use-send-email-result-swal-use-effect";
 
 import ShowFetchErrors from "../../../components/errors/show-fetch-errors.component";
-import DbManageAddBookingTitleAndLoader from "./db-manage-add-booking-title-and-loader.component";
+import DbManageAddBookingTitleAndLoader from "./ui/db-manage-add-booking-title-and-loader.component";
 import ChooseCustomerSelectInput from "./inputs/choose-customer-select-input.component";
 import ChooseCatsInput from "./inputs/choose-cats-input/choose-cats-input.component";
-import MoreCatsSelectedThanSinglePenCapacity from "./more-cats-selected-than-single-pen-capacity.component";
+import MoreCatsSelectedThanSinglePenCapacity from "./ui/more-cats-selected-than-single-pen-capacity.component";
 import CheckInAndOutDateInput from "./inputs/check-in-and-out-date-input/check-in-and-out-date-input.component";
 import CheckInAndOutTimeSlotSelectInput from "./inputs/check-in-out-and-time-slot-input/check-in-and-out-time-slot.component";
-import ShowBookingDataBeforeBooking from "./show-booking-data-before-booking.component";
-import FailedDatesInfo from "./failed-dates-info.component";
-import CheckAvailabilityButton from "./check-availability-button.component";
-import BookingIsAvailableInfoAndPlaceBookingButton from "./booking-is-available-info-and-place-booking-button.component";
+import ShowBookingDataBeforeBooking from "./ui/show-booking-data-before-booking.component";
+import FailedDatesInfo from "./ui/failed-dates-info.component";
+import CheckAvailabilityButton from "./ui/check-availability-button.component";
+import BookingIsAvailableInfoAndPlaceBookingButton from "./ui/booking-is-available-info-and-place-booking-button.component";
 
 import { Container } from "../../../styles/container/container.styles";
 import { ParentDiv } from "../../../styles/div/div.styles";
@@ -43,11 +43,12 @@ const DbManageAddBooking = () => {
   } = useAddBookingVariables();
   const { shouldShowFormSubmissionButtons, checkBookingAvailability } =
     useAddBookingFunctions();
+
   useGetAllowsLargerPensBoolMaxCatsPerPenAndOwnersCustomersThunkUseEffect();
   useCheckInAndOutDateValidityUseEffect();
   useCheckBookingAvailableResultSwalUseEffect();
   useCompleteBookingResultSwalUseEffect();
-  useSendEmailUpdatePensRollbackErrorResultSwalUseEffect();
+  useSendEmailResultSwalUseEffect();
 
   return (
     <Container>

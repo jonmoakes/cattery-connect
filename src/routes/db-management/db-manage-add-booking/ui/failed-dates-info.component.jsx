@@ -1,15 +1,15 @@
 import { useDispatch } from "react-redux";
 import { format } from "date-fns";
 
-import useGetDbManageAddBookingSelectors from "../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
-import { setShowIneligibleDates } from "../../../store/db-manage-add-booking/db-manage-add-booking.slice";
+import useGetDbManageAddBookingSelectors from "../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
+import { setShowIneligibleDates } from "../../../../store/db-manage-add-booking/db-manage-add-booking.slice";
 
-import CustomBalancedText from "../../../components/custom-balanced-text/custom-balanced-text.component";
-import CustomSpan from "../../../components/custom-span/custom-span.component";
+import CustomBalancedText from "../../../../components/custom-balanced-text/custom-balanced-text.component";
+import CustomSpan from "../../../../components/custom-span/custom-span.component";
 
-import { BookingWrapper, DataDiv } from "../../../styles/div/div.styles";
-import { BlackHr } from "../../../styles/hr/hr.styles";
-import { MinimalButton } from "../../../styles/button/button.styles";
+import { BookingWrapper, DataDiv } from "../../../../styles/div/div.styles";
+import { BlackHr } from "../../../../styles/hr/hr.styles";
+import { MinimalButton } from "../../../../styles/button/button.styles";
 
 const FailedDatesInfo = () => {
   const { status, failingDates, showIneligibleDates } =
