@@ -10,7 +10,7 @@ import { ParentDiv } from "../../../../styles/div/div.styles";
 const DbManageAddBookingTitleAndLoader = () => {
   const { getAllCustomersIsLoading } = useGetAllCustomerSelectors();
   const {
-    catteryAllowsLargerPensBoolAndMaxCatsPerPenIsLoading,
+    requiredCatteryDataIsLoading,
     isBookingAvailableIsLoading,
     updatePensDataIsLoading,
     addBookingDataIsLoading,
@@ -24,7 +24,7 @@ const DbManageAddBookingTitleAndLoader = () => {
       </ParentDiv>
 
       {getAllCustomersIsLoading ||
-      catteryAllowsLargerPensBoolAndMaxCatsPerPenIsLoading ||
+      requiredCatteryDataIsLoading ||
       isBookingAvailableIsLoading ||
       updatePensDataIsLoading ||
       addBookingDataIsLoading ||
@@ -33,7 +33,7 @@ const DbManageAddBookingTitleAndLoader = () => {
           loadingText={
             getAllCustomersIsLoading
               ? "Fetching Customers..."
-              : catteryAllowsLargerPensBoolAndMaxCatsPerPenIsLoading
+              : requiredCatteryDataIsLoading
               ? "fetching required cattery data..."
               : isBookingAvailableIsLoading
               ? "Checking booking  Availability..."

@@ -5,7 +5,7 @@ import useAddBookingFunctions from "./db-manage-add-booking-hooks/use-add-bookin
 import useAddBookingVariables from "./db-manage-add-booking-hooks/use-add-booking-variables";
 import useCheckInAndOutDateValidityUseEffect from "./db-manage-add-booking-hooks/use-effects/use-check-in-and-out-date-validity-use-effect";
 import useCheckBookingAvailableResultSwalUseEffect from "./db-manage-add-booking-hooks/use-effects/use-check-booking-available-result-swal-use-effect";
-import useGetAllowsLargerPensBoolMaxCatsPerPenAndOwnersCustomersThunkUseEffect from "./db-manage-add-booking-hooks/use-effects/use-get-allows-larger-pens-bool-max-cats-per-pen-and-owners-customers-thunk-use-effect";
+import useGetRequiredCatteryDataThunkUseEffect from "./db-manage-add-booking-hooks/use-effects/use-get-required-cattery-data-thunk-use-effect";
 import useCompleteBookingResultSwalUseEffect from "./db-manage-add-booking-hooks/use-effects/use-complete-booking-result-swal-use-effect";
 import useSendEmailResultSwalUseEffect from "./db-manage-add-booking-hooks/use-effects/use-send-email-result-swal-use-effect";
 
@@ -44,7 +44,7 @@ const DbManageAddBooking = () => {
   const { shouldShowFormSubmissionButtons, checkBookingAvailability } =
     useAddBookingFunctions();
 
-  useGetAllowsLargerPensBoolMaxCatsPerPenAndOwnersCustomersThunkUseEffect();
+  useGetRequiredCatteryDataThunkUseEffect();
   useCheckInAndOutDateValidityUseEffect();
   useCheckBookingAvailableResultSwalUseEffect();
   useCompleteBookingResultSwalUseEffect();

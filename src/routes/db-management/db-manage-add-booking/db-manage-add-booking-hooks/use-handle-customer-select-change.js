@@ -35,6 +35,7 @@ const useHandleCustomerSelectChange = () => {
         customerDocumentId: selectedCustomer?.$id || "",
         customerId: selectedCustomer?.customerId || "",
         customerName: selectedCustomer?.name || "",
+        customerEmail: selectedCustomer?.email || "",
         catDetails: selectedCustomer?.catDetails ?? "",
         catsInBooking:
           parsedCustomerCatDetails && parsedCustomerCatDetails.length === 1

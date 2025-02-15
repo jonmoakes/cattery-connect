@@ -4,10 +4,10 @@ import { selectDbManageAddBookingSelectors } from "../../store/db-manage-add-boo
 
 const useGetDbManageAddBookingSelectors = () => {
   const {
-    catteryAllowsLargerPensBoolAndMaxCatsPerPenIsLoading,
-    catteryAllowsLargerPensBoolAndMaxCatsPerPen,
-    catteryAllowsLargerPensAndMaxCatsPerPenResult,
-    catteryAllowsLargerPensAndMaxCatsPerPenError,
+    requiredCatteryDataIsLoading,
+    requiredCatteryData,
+    requiredCatteryDataResult,
+    requiredCatteryDataError,
     addBookingData,
     isBookingAvailableIsLoading,
     isBookingAvailableResult,
@@ -24,6 +24,7 @@ const useGetDbManageAddBookingSelectors = () => {
   const {
     customerDocumentId,
     customerName,
+    customerEmail,
     catDetails,
     catsInBooking,
     checkInDate,
@@ -35,16 +36,26 @@ const useGetDbManageAddBookingSelectors = () => {
   const { status, failingDates, parsedAvailabilityData } =
     isBookingAvailableResult ?? {};
 
-  const { catteryAllowsLargerPensBool, maximumCatsInSinglePen } =
-    catteryAllowsLargerPensBoolAndMaxCatsPerPen ?? {};
-
-  return {
-    catteryAllowsLargerPensBoolAndMaxCatsPerPenIsLoading,
-    catteryAllowsLargerPensBoolAndMaxCatsPerPen,
-    catteryAllowsLargerPensAndMaxCatsPerPenResult,
-    catteryAllowsLargerPensAndMaxCatsPerPenError,
+  const {
     catteryAllowsLargerPensBool,
     maximumCatsInSinglePen,
+    pricePerNight,
+    name,
+    phone,
+    email: catteryEmail,
+  } = requiredCatteryData ?? {};
+
+  return {
+    requiredCatteryDataIsLoading,
+    requiredCatteryData,
+    requiredCatteryDataResult,
+    requiredCatteryDataError,
+    catteryAllowsLargerPensBool,
+    maximumCatsInSinglePen,
+    pricePerNight,
+    name,
+    phone,
+    catteryEmail,
     addBookingData,
     isBookingAvailableIsLoading,
     isBookingAvailableResult,
@@ -58,6 +69,7 @@ const useGetDbManageAddBookingSelectors = () => {
     addBookingDataError,
     customerDocumentId,
     customerName,
+    customerEmail,
     catDetails,
     catsInBooking,
     checkInDate,
