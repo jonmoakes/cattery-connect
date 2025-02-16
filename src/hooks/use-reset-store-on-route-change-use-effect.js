@@ -15,7 +15,6 @@ import {
   resetAllUsersCatteryIdsAndOwnerNameError,
   resetGetAllUsersState,
 } from "../store/get-all-users/get-all-users.slice";
-import { resetDbManageAddBookingState } from "../store/db-manage-add-booking/db-manage-add-booking.slice";
 import { resetSendEmailState } from "../store/send-email/send-email.slice";
 
 import {
@@ -31,9 +30,11 @@ import {
   uploadDatesAndPensDataRoute,
   allUsersRoute,
 } from "../strings/routes";
+import useResetAddBookingState from "./use-reset-add-booking-state";
 
 const useResetStoreOnRouteChangeUseEffect = () => {
   const { allUsersCatteryIdsAndOwnerNameError } = useGetAllUsersSelectors();
+  const { resetAddBookingState } = useResetAddBookingState();
   const location = useLocation();
   const dispatch = useDispatch();
   const prevLocation = useRef(location.pathname);
@@ -74,7 +75,7 @@ const useResetStoreOnRouteChangeUseEffect = () => {
           dispatch(resetGetAllCustomersState());
           break;
         case dbManageAddBookingRoute:
-          dispatch(resetDbManageAddBookingState());
+          resetAddBookingState();
           dispatch(resetSendEmailState());
           break;
         default:
@@ -83,7 +84,12 @@ const useResetStoreOnRouteChangeUseEffect = () => {
 
       prevLocation.current = location.pathname;
     }
-  }, [location, dispatch, allUsersCatteryIdsAndOwnerNameError]);
+  }, [
+    location,
+    dispatch,
+    allUsersCatteryIdsAndOwnerNameError,
+    resetAddBookingState,
+  ]);
 };
 
 export default useResetStoreOnRouteChangeUseEffect;

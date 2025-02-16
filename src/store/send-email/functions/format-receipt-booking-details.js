@@ -1,13 +1,13 @@
 import { format } from "date-fns";
 
-export const formatReceiptBookingDetails = (addBookingData) => {
+export const formatReceiptBookingDetails = (uploadBookingData) => {
   const {
     catsInBooking,
     checkInDate,
     checkInSlot,
     checkOutDate,
     checkOutSlot,
-  } = addBookingData;
+  } = uploadBookingData;
 
   return `
 

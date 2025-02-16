@@ -1,4 +1,4 @@
-import useGetDbManageAddBookingSelectors from "../../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
+import useGetUploadBookingDataSelectors from "../../../../../hooks/selectors/use-get-upload-booking-data-selectors";
 import useAddBookingVariables from "../../db-manage-add-booking-hooks/use-add-booking-variables";
 import useHandleChooseCatsChange from "./choose-cats-input-hooks/use-handle-choose-cats-change";
 
@@ -10,7 +10,7 @@ import { StyledCheckbox } from "../../../../../styles/form/form.styles";
 import { BlackHr } from "../../../../../styles/hr/hr.styles";
 
 const ChooseCatCheckboxes = () => {
-  const { addBookingData } = useGetDbManageAddBookingSelectors();
+  const { uploadBookingData } = useGetUploadBookingDataSelectors();
   const { customerHasOneCat, catsToRender, customerHasMoreThanOneCat } =
     useAddBookingVariables();
   const { handleChooseCatsChange } = useHandleChooseCatsChange();
@@ -42,7 +42,7 @@ const ChooseCatCheckboxes = () => {
                   id={catsName}
                   name={catsName}
                   checked={
-                    addBookingData.catsInBooking?.includes(catsName) || false
+                    uploadBookingData.catsInBooking?.includes(catsName) || false
                   }
                 />
               </InnerFormDiv>

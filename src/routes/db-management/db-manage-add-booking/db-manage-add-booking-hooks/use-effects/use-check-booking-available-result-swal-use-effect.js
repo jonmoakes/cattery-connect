@@ -1,10 +1,12 @@
 import { useEffect } from "react";
-import useGetDbManageAddBookingSelectors from "../../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
+
+import useGetIsBookingAvailableSelectors from "../../../../../hooks/selectors/use-get-is-booking-available-selectors";
+
 import useCatteryNotAvailableOnChosenDatesSwal from "../swals/use-cattery-not-available-on-chosen-dates-swal";
 
 const useCheckBookingAvailableResultSwalUseEffect = () => {
   const { isBookingAvailableResult, isBookingAvailableError, status } =
-    useGetDbManageAddBookingSelectors();
+    useGetIsBookingAvailableSelectors();
 
   const { catteryNotAvailableOnChosenDatesSwal } =
     useCatteryNotAvailableOnChosenDatesSwal();

@@ -1,11 +1,13 @@
-export const formatBookingDetailsForUpdatePenDataError = (addBookingData) => {
+export const formatBookingDetailsForUpdatePenDataError = (
+  uploadBookingData
+) => {
   const {
     catsInBooking,
     checkInDate,
     checkInSlot,
     checkOutDate,
     checkOutSlot,
-  } = addBookingData;
+  } = uploadBookingData;
 
   return `
 

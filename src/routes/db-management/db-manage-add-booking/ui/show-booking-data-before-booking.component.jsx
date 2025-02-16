@@ -1,6 +1,6 @@
 import { format } from "date-fns";
 
-import useGetDbManageAddBookingSelectors from "../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
+import useGetUploadBookingDataSelectors from "../../../../hooks/selectors/use-get-upload-booking-data-selectors";
 
 import CustomSpan from "../../../../components/custom-span/custom-span.component";
 import CustomBalancedText from "../../../../components/custom-balanced-text/custom-balanced-text.component";
@@ -16,7 +16,7 @@ const ShowBookingDataBeforeBooking = () => {
     checkInSlot,
     checkOutDate,
     checkOutSlot,
-  } = useGetDbManageAddBookingSelectors();
+  } = useGetUploadBookingDataSelectors();
 
   return (
     <BookingWrapper>

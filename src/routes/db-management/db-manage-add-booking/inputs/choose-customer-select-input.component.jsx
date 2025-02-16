@@ -1,11 +1,11 @@
-import useGetDbManageAddBookingSelectors from "../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
+import useGetUploadBookingDataSelectors from "../../../../hooks/selectors/use-get-upload-booking-data-selectors";
 import useGetAllCustomerSelectors from "../../../../hooks/selectors/use-get-all-customers-selectors";
 import useHandleCustomerSelectChange from "../db-manage-add-booking-hooks/use-handle-customer-select-change";
 
 import { Label, StyledSelect } from "../../../../styles/form/form.styles";
 
 const ChooseCustomerSelectInput = () => {
-  const { customerName } = useGetDbManageAddBookingSelectors();
+  const { customerName } = useGetUploadBookingDataSelectors();
   const { handleCustomerSelectChange } = useHandleCustomerSelectChange();
   const { allCustomers } = useGetAllCustomerSelectors();
 

@@ -1,9 +1,9 @@
-import useGetDbManageAddBookingSelectors from "../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
+import useGetIsBookingAvailableSelectors from "../../../../hooks/selectors/use-get-is-booking-available-selectors";
 
 import { Button } from "../../../../styles/button/button.styles";
 
 const CheckAvailabilityButton = () => {
-  const { status } = useGetDbManageAddBookingSelectors();
+  const { status } = useGetIsBookingAvailableSelectors();
   return (
     <>
       {status !== "bookingAvailable" ? (

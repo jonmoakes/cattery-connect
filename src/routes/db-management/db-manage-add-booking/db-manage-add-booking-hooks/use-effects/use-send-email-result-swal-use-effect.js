@@ -1,7 +1,9 @@
 import { useEffect } from "react";
 
 import useGetSendEmailSelectors from "../../../../../hooks/selectors/use-get-send-email-selectors";
-import useGetDbManageAddBookingSelectors from "../../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
+import useGetUpdatePensDataSelectors from "../../../../../hooks/selectors/use-get-update-pens-data-selectors";
+import useGetUploadBookingDataSelectors from "../../../../../hooks/selectors/use-get-upload-booking-data-selectors";
+
 import useFireSwal from "../../../../../hooks/use-fire-swal";
 import useHamburgerHandlerNavigate from "../../../../../hooks/use-hamburger-handler-navigate";
 
@@ -13,8 +15,9 @@ import {
 
 const useSendEmailResultSwalUseEffect = () => {
   const { sendEmailStatusCode, sendEmailError } = useGetSendEmailSelectors();
-  const { updatePensDataError, addBookingDataError, addBookingDataResult } =
-    useGetDbManageAddBookingSelectors();
+  const { uploadBookingDataError, uploadBookingDataResult } =
+    useGetUploadBookingDataSelectors();
+  const { updatePensDataError } = useGetUpdatePensDataSelectors();
 
   const { fireSwal } = useFireSwal();
   const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
@@ -37,7 +40,7 @@ const useSendEmailResultSwalUseEffect = () => {
           hamburgerHandlerNavigate(accountRoute);
         }
       });
-    } else if (sendEmailStatusCode === 202 && addBookingDataError) {
+    } else if (sendEmailStatusCode === 202 && uploadBookingDataError) {
       fireSwal(
         "success",
         pensUpdatedUploadBookingDataFailedEmailSentMessage,
@@ -54,7 +57,7 @@ const useSendEmailResultSwalUseEffect = () => {
       });
     } else if (
       sendEmailStatusCode === 202 &&
-      addBookingDataResult === "fulfilled"
+      uploadBookingDataResult === "fulfilled"
     ) {
       fireSwal("success", "email sent!", "", 0, "", false, "", false).then(
         (isConfirmed) => {
@@ -84,9 +87,9 @@ const useSendEmailResultSwalUseEffect = () => {
     sendEmailError,
     hamburgerHandlerNavigate,
     fireSwal,
-    addBookingDataError,
+    uploadBookingDataError,
     updatePensDataError,
-    addBookingDataResult,
+    uploadBookingDataResult,
   ]);
 };
 

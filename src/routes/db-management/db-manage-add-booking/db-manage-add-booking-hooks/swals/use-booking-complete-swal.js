@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 
-import useGetDbManageAddBookingSelectors from "../../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
+import useGetUploadBookingDataSelectors from "../../../../../hooks/selectors/use-get-upload-booking-data-selectors";
 import { sendEmailCatteryConnectSendCustomerEmailReceiptAsync } from "../../../../../store/send-email/send-email.thunks";
 
 import useConfirmSwal from "../../../../../hooks/use-confirm-swal";
@@ -9,16 +9,13 @@ import useHamburgerHandlerNavigate from "../../../../../hooks/use-hamburger-hand
 
 import { accountRoute } from "../../../../../strings/routes";
 import { bookingCompletedSendEmailQuestionMessage } from "../../../../../strings/confirms";
+import useGetRequiredCatteryDataForBookingSelectors from "../../../../../hooks/selectors/use-get-required-cattery-data-for-booking-selectors";
 
 const useBookingCompleteSwal = () => {
-  const {
-    addBookingData,
-    customerEmail,
-    pricePerNight,
-    name,
-    phone,
-    catteryEmail,
-  } = useGetDbManageAddBookingSelectors();
+  const { uploadBookingData, customerEmail } =
+    useGetUploadBookingDataSelectors();
+  const { name, phone, catteryEmail, pricePerNight } =
+    useGetRequiredCatteryDataForBookingSelectors();
 
   const { fireSwal } = useFireSwal();
   const { confirmSwal } = useConfirmSwal();
@@ -59,7 +56,7 @@ const useBookingCompleteSwal = () => {
         () =>
           dispatch(
             sendEmailCatteryConnectSendCustomerEmailReceiptAsync({
-              addBookingData,
+              uploadBookingData,
               pricePerNight,
               name,
               phone,

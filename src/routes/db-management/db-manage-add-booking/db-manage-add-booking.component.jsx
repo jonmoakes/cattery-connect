@@ -1,11 +1,8 @@
-import useGetDbManageAddBookingSelectors from "../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
-import useGetAllCustomerSelectors from "../../../hooks/selectors/use-get-all-customers-selectors";
-
 import useAddBookingFunctions from "./db-manage-add-booking-hooks/use-add-booking-functions";
 import useAddBookingVariables from "./db-manage-add-booking-hooks/use-add-booking-variables";
 import useCheckInAndOutDateValidityUseEffect from "./db-manage-add-booking-hooks/use-effects/use-check-in-and-out-date-validity-use-effect";
 import useCheckBookingAvailableResultSwalUseEffect from "./db-manage-add-booking-hooks/use-effects/use-check-booking-available-result-swal-use-effect";
-import useGetRequiredCatteryDataThunkUseEffect from "./db-manage-add-booking-hooks/use-effects/use-get-required-cattery-data-thunk-use-effect";
+import useGetRequiredCatteryDataAndCustomersThunkUseEffect from "./db-manage-add-booking-hooks/use-effects/use-get-required-cattery-data-and-customers-thunk-use-effect";
 import useCompleteBookingResultSwalUseEffect from "./db-manage-add-booking-hooks/use-effects/use-complete-booking-result-swal-use-effect";
 import useSendEmailResultSwalUseEffect from "./db-manage-add-booking-hooks/use-effects/use-send-email-result-swal-use-effect";
 
@@ -31,11 +28,9 @@ const DbManageAddBooking = () => {
     checkInSlot,
     checkOutDate,
     checkOutSlot,
-    catteryAllowsLargerPensError,
     status,
-  } = useGetDbManageAddBookingSelectors();
-  const { getAllCustomersError } = useGetAllCustomerSelectors();
-  const {
+    getAllCustomersError,
+    requiredCatteryDataError,
     customerHasOneCatOrMoreThanOneCatAndAtLeastOneHasBeenSelected,
     moreCatsInBookingThanCapacityInOnePen,
     numberOfCatsInBooking,
@@ -44,7 +39,7 @@ const DbManageAddBooking = () => {
   const { shouldShowFormSubmissionButtons, checkBookingAvailability } =
     useAddBookingFunctions();
 
-  useGetRequiredCatteryDataThunkUseEffect();
+  useGetRequiredCatteryDataAndCustomersThunkUseEffect();
   useCheckInAndOutDateValidityUseEffect();
   useCheckBookingAvailableResultSwalUseEffect();
   useCompleteBookingResultSwalUseEffect();
@@ -54,7 +49,7 @@ const DbManageAddBooking = () => {
     <Container>
       <DbManageAddBookingTitleAndLoader />
 
-      {catteryAllowsLargerPensError || getAllCustomersError ? (
+      {requiredCatteryDataError || getAllCustomersError ? (
         <ShowFetchErrors />
       ) : (
         <ParentDiv>

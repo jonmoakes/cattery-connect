@@ -1,21 +1,23 @@
 import { useDispatch } from "react-redux";
 
 import useGetAllCustomerSelectors from "../../../../hooks/selectors/use-get-all-customers-selectors";
-import useGetDbManageAddBookingSelectors from "../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
+import useGetIsBookingAvailableSelectors from "../../../../hooks/selectors/use-get-is-booking-available-selectors";
+import useGetUploadBookingDataSelectors from "../../../../hooks/selectors/use-get-upload-booking-data-selectors";
+
+import { setUploadBookingData } from "../../../../store/upload-booking-data/upload-booking-data.slice";
 import {
   resetIsBookingAvailableError,
   resetIsBookingAvailableResult,
-  setAddBookingData,
   setShowIneligibleDates,
-} from "../../../../store/db-manage-add-booking/db-manage-add-booking.slice";
+} from "../../../../store/is-booking-available/is-booking-available.slice";
 
 const useHandleCustomerSelectChange = () => {
+  const { uploadBookingData } = useGetUploadBookingDataSelectors();
   const {
-    addBookingData,
     isBookingAvailableResult,
     isBookingAvailableError,
     showIneligibleDates,
-  } = useGetDbManageAddBookingSelectors();
+  } = useGetIsBookingAvailableSelectors();
   const { allCustomers } = useGetAllCustomerSelectors();
 
   const dispatch = useDispatch();
@@ -30,8 +32,8 @@ const useHandleCustomerSelectChange = () => {
       : "";
 
     dispatch(
-      setAddBookingData({
-        ...addBookingData,
+      setUploadBookingData({
+        ...uploadBookingData,
         customerDocumentId: selectedCustomer?.$id || "",
         customerId: selectedCustomer?.customerId || "",
         customerName: selectedCustomer?.name || "",

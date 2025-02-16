@@ -1,12 +1,13 @@
 import { useDispatch } from "react-redux";
 
-import useGetDbManageAddBookingSelectors from "../../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
-import { setAddBookingData } from "../../../../../store/db-manage-add-booking/db-manage-add-booking.slice";
+import useGetUploadBookingDataSelectors from "../../../../../hooks/selectors/use-get-upload-booking-data-selectors";
+
+import { setUploadBookingData } from "../../../../../store/upload-booking-data/upload-booking-data.slice";
 
 import useFireSwal from "../../../../../hooks/use-fire-swal";
 
 const useSameDayCheckInAndOutSlotsAreTheSameSwal = () => {
-  const { addBookingData } = useGetDbManageAddBookingSelectors();
+  const { uploadBookingData } = useGetUploadBookingDataSelectors();
   const { fireSwal } = useFireSwal();
   const dispatch = useDispatch();
 
@@ -23,8 +24,8 @@ const useSameDayCheckInAndOutSlotsAreTheSameSwal = () => {
     ).then((isConfirmed) => {
       if (isConfirmed) {
         dispatch(
-          setAddBookingData({
-            ...addBookingData,
+          setUploadBookingData({
+            ...uploadBookingData,
             checkOutSlot: "",
           })
         );

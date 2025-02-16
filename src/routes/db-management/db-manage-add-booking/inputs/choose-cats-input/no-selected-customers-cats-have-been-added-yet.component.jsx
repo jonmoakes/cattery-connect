@@ -1,4 +1,4 @@
-import useGetDbManageAddBookingSelectors from "../../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
+import useGetUploadBookingDataSelectors from "../../../../../hooks/selectors/use-get-upload-booking-data-selectors";
 import useAddCatForCustomerWithNoCats from "./choose-cats-input-hooks/use-add-cat-for-customer-with-no-cats";
 
 import CustomBalancedText from "../../../../../components/custom-balanced-text/custom-balanced-text.component";
@@ -10,7 +10,7 @@ import { MinimalButton } from "../../../../../styles/button/button.styles";
 import { getFirstNameFromString } from "../../../../../functions/get-first-name-from-string";
 
 const NoSelectedCustomersCatsHaveBeenAddedYet = () => {
-  const { customerName } = useGetDbManageAddBookingSelectors();
+  const { customerName } = useGetUploadBookingDataSelectors();
   const { addCatForCustomerWithNoCats } = useAddCatForCustomerWithNoCats();
 
   return (

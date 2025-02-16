@@ -2,15 +2,15 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import useGetCurrentUserSelectors from "../../../../../hooks/selectors/use-get-current-user-selectors";
-import useGetDbManageAddBookingSelectors from "../../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
+import useGetRequiredCatteryDataForBookingSelectors from "../../../../../hooks/selectors/use-get-required-cattery-data-for-booking-selectors";
 
-import { getRequiredCatteryDataAsync } from "../../../../../store/db-manage-add-booking/db-manage-add-booking.thunks";
+import { getRequiredCatteryDataForBookingAsync } from "../../../../../store/required-cattery-data/required-cattery-data-for-booking.thunks";
 import { getAllOwnersCustomersAsync } from "../../../../../store/get-all-customers/get-all-customers.thunks";
 
-const useGetRequiredCatteryDataThunkUseEffect = () => {
+const useGetRequiredCatteryDataAndCustomersThunkUseEffect = () => {
   const { catteryId } = useGetCurrentUserSelectors();
   const { requiredCatteryDataResult, catteryAllowsLargerPensBool } =
-    useGetDbManageAddBookingSelectors();
+    useGetRequiredCatteryDataForBookingSelectors();
 
   const dispatch = useDispatch();
 
@@ -21,9 +21,11 @@ const useGetRequiredCatteryDataThunkUseEffect = () => {
         catteryAllowsLargerPensBool === false)
     )
       return;
-    dispatch(getRequiredCatteryDataAsync({ catteryId })).then(
+    dispatch(getRequiredCatteryDataForBookingAsync({ catteryId })).then(
       (resultAction) => {
-        if (getRequiredCatteryDataAsync.rejected.match(resultAction)) {
+        if (
+          getRequiredCatteryDataForBookingAsync.rejected.match(resultAction)
+        ) {
           return;
         } else {
           dispatch(
@@ -42,4 +44,4 @@ const useGetRequiredCatteryDataThunkUseEffect = () => {
   ]);
 };
 
-export default useGetRequiredCatteryDataThunkUseEffect;
+export default useGetRequiredCatteryDataAndCustomersThunkUseEffect;

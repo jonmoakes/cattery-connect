@@ -1,4 +1,4 @@
-import useGetDbManageAddBookingSelectors from "../../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
+import useGetUploadBookingDataSelectors from "../../../../../hooks/selectors/use-get-upload-booking-data-selectors";
 
 import useGoToAddCatRouteWithCustomerData from "./choose-cats-input-hooks/use-go-to-add-cat-route-with-customer-data";
 
@@ -10,7 +10,7 @@ import { BlackHr } from "../../../../../styles/hr/hr.styles";
 import { getFirstNameFromString } from "../../../../../functions/get-first-name-from-string";
 
 const OneCatInfo = ({ catsToRender }) => {
-  const { customerName } = useGetDbManageAddBookingSelectors();
+  const { customerName } = useGetUploadBookingDataSelectors();
   const { goToAddCatRouteWithCustomerData } =
     useGoToAddCatRouteWithCustomerData();
 

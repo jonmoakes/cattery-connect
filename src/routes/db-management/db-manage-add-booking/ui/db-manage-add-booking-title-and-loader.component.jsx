@@ -1,5 +1,8 @@
 import useGetAllCustomerSelectors from "../../../../hooks/selectors/use-get-all-customers-selectors";
-import useGetDbManageAddBookingSelectors from "../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
+import useGetRequiredCatteryDataForBookingSelectors from "../../../../hooks/selectors/use-get-required-cattery-data-for-booking-selectors";
+import useGetIsBookingAvailableSelectors from "../../../../hooks/selectors/use-get-is-booking-available-selectors";
+import useGetUpdatePensDataSelectors from "../../../../hooks/selectors/use-get-update-pens-data-selectors";
+import useGetUploadBookingDataSelectors from "../../../../hooks/selectors/use-get-upload-booking-data-selectors";
 import useGetSendEmailSelectors from "../../../../hooks/selectors/use-get-send-email-selectors";
 
 import CustomBalancedText from "../../../../components/custom-balanced-text/custom-balanced-text.component";
@@ -9,13 +12,12 @@ import { ParentDiv } from "../../../../styles/div/div.styles";
 
 const DbManageAddBookingTitleAndLoader = () => {
   const { getAllCustomersIsLoading } = useGetAllCustomerSelectors();
-  const {
-    requiredCatteryDataIsLoading,
-    isBookingAvailableIsLoading,
-    updatePensDataIsLoading,
-    addBookingDataIsLoading,
-  } = useGetDbManageAddBookingSelectors();
+  const { updatePensDataIsLoading } = useGetUpdatePensDataSelectors();
+  const { uploadBookingDataIsLoading } = useGetUploadBookingDataSelectors();
   const { sendEmailIsLoading } = useGetSendEmailSelectors();
+  const { requiredCatteryDataIsLoading } =
+    useGetRequiredCatteryDataForBookingSelectors();
+  const { isBookingAvailableIsLoading } = useGetIsBookingAvailableSelectors();
 
   return (
     <>
@@ -27,7 +29,7 @@ const DbManageAddBookingTitleAndLoader = () => {
       requiredCatteryDataIsLoading ||
       isBookingAvailableIsLoading ||
       updatePensDataIsLoading ||
-      addBookingDataIsLoading ||
+      uploadBookingDataIsLoading ||
       sendEmailIsLoading ? (
         <SkeletonBox
           loadingText={
@@ -39,7 +41,7 @@ const DbManageAddBookingTitleAndLoader = () => {
               ? "Checking booking  Availability..."
               : updatePensDataIsLoading
               ? "updating pens data..."
-              : addBookingDataIsLoading
+              : uploadBookingDataIsLoading
               ? "adding booking data..."
               : sendEmailIsLoading && "sending email..."
           }

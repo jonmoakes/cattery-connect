@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import {
   resetIsBookingAvailableError,
   resetIsBookingAvailableResult,
-} from "../../../../../store/db-manage-add-booking/db-manage-add-booking.slice";
+} from "../../../../../store/is-booking-available/is-booking-available.slice";
 
 import useFireSwal from "../../../../../hooks/use-fire-swal";
 

@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 
-import useGetDbManageAddBookingSelectors from "../../../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
+import useGetUploadBookingDataSelectors from "../../../../../../hooks/selectors/use-get-upload-booking-data-selectors";
 import { setDetailsRequiredForCatManagement } from "../../../../../../store/cat-details-management/cat-details-management.slice";
 
 import useHamburgerHandlerNavigate from "../../../../../../hooks/use-hamburger-handler-navigate";
@@ -9,7 +9,7 @@ import { addCatRoute } from "../../../../../../strings/routes";
 
 const useAddCatForCustomerWithNoCats = () => {
   const { customerDocumentId, customerName } =
-    useGetDbManageAddBookingSelectors();
+    useGetUploadBookingDataSelectors();
   const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
 
   const dispatch = useDispatch();

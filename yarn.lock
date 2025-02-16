@@ -799,10 +799,10 @@
   resolved "https://registry.yarnpkg.com/@netlify/binary-info/-/binary-info-1.0.0.tgz#cd0d86fb783fb03e52067f0cd284865e57be86c8"
   integrity sha512-4wMPu9iN3/HL97QblBsBay3E1etIciR84izI3U+4iALY+JHCrI+a2jO0qbAZ/nxKoegypYEaiiqWXylm+/zfrw==
 
-"@netlify/blobs@8.1.0":
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/@netlify/blobs/-/blobs-8.1.0.tgz#b870b7c90c731a787eab550704593222af8222af"
-  integrity sha512-9hIbusvAZjSGBJ42OyFC2AxsEph1LuKQahMWFcPGEIsOqIYHhMRkYA7wSUMhH7naydjNmllpcp3pJLOK4RhFaQ==
+"@netlify/blobs@8.1.1":
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/@netlify/blobs/-/blobs-8.1.1.tgz#f1f16a44f46274a13b2024c84fdd3939af894d0b"
+  integrity sha512-7Dg3PzArvQ0Owq4wpkLECC9iaDBOxuWUN2uwbQtUF6tZssyez2QN+eO0CjuIhhZUivbw+X9bwsyiEjWkdJnv/A==
 
 "@netlify/blobs@^7.4.0":
   version "7.4.0"
@@ -6258,14 +6258,14 @@ nested-error-stacks@^2.0.0, nested-error-stacks@^2.1.0, nested-error-stacks@^2.1
   resolved "https://registry.yarnpkg.com/nested-error-stacks/-/nested-error-stacks-2.1.1.tgz#26c8a3cee6cc05fbcf1e333cd2fc3e003326c0b5"
   integrity sha512-9iN1ka/9zmX1ZvLV9ewJYEk9h7RyRRtqdK0woXcqohu8EWIerfPUjYJPg0ULy0UqP7cslmdGc8xKDJcojlKiaw==
 
-netlify-cli@^18.0.4:
-  version "18.0.4"
-  resolved "https://registry.yarnpkg.com/netlify-cli/-/netlify-cli-18.0.4.tgz#6bf63df87cbe76dbe22d2e92dda88b7c0019c7b0"
-  integrity sha512-4NGnJy2wUTquJm7YH4cbPgXqPqfO0KEWlbkX8XEaKI2fGe9gQCQRG628E5wYqfXsG+jJZfNF7O/r8OmgqxiHUw==
+netlify-cli@^18.1.0:
+  version "18.1.0"
+  resolved "https://registry.yarnpkg.com/netlify-cli/-/netlify-cli-18.1.0.tgz#6e13b1133edc315803d87a43dce257ce899d38cc"
+  integrity sha512-W0r5IqYAZJz8VjRes1D7358GyZxYmI5ODUlEcHr8tI58pks4Ybyw2D3VDITZp6/yjXtDhGTWdAQ6x7mg+68eKQ==
   dependencies:
     "@bugsnag/js" "8.2.0"
     "@fastify/static" "7.0.4"
-    "@netlify/blobs" "8.1.0"
+    "@netlify/blobs" "8.1.1"
     "@netlify/build" "29.58.9"
     "@netlify/build-info" "8.0.0"
     "@netlify/config" "20.21.7"

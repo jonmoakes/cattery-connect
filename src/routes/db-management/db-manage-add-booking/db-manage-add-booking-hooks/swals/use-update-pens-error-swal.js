@@ -1,17 +1,17 @@
 import { useDispatch } from "react-redux";
 
-import useGetDbManageAddBookingSelectors from "../../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
+import useGetUpdatePensDataSelectors from "../../../../../hooks/selectors/use-get-update-pens-data-selectors";
 import {
   resetUpdatePensDataError,
   resetUpdatePensDataResult,
-} from "../../../../../store/db-manage-add-booking/db-manage-add-booking.slice";
+} from "../../../../../store/update-pens-data/update-pens-data.slice";
 
 import useFireSwal from "../../../../../hooks/use-fire-swal";
 
 import { errorReceivedMessage } from "../../../../../strings/errors";
 
 const useUpdatePensErrorSwal = () => {
-  const { updatePensDataError } = useGetDbManageAddBookingSelectors();
+  const { updatePensDataError } = useGetUpdatePensDataSelectors();
   const { fireSwal } = useFireSwal();
   const dispatch = useDispatch();
 

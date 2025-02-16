@@ -1,4 +1,4 @@
-export const formatFullBookingDetails = (addBookingData) => {
+export const formatFullBookingDetails = (uploadBookingData) => {
   const {
     customerName,
     catsInBooking,
@@ -7,7 +7,7 @@ export const formatFullBookingDetails = (addBookingData) => {
     checkOutDate,
     checkOutSlot,
     customerId,
-  } = addBookingData;
+  } = uploadBookingData;
 
   return `
 

@@ -9,10 +9,11 @@ import { resetCatDetailsManagementState } from "../store/cat-details-management/
 import { resetGetAllCustomersState } from "../store/get-all-customers/get-all-customers.slice";
 import { resetGetAllUsersState } from "../store/get-all-users/get-all-users.slice";
 import { resetGetAllCatsState } from "../store/get-all-cats/get-all-cats.slice";
-import { resetDbManageAddBookingState } from "../store/db-manage-add-booking/db-manage-add-booking.slice";
 import { resetSendEmailState } from "../store/send-email/send-email.slice";
+import useResetAddBookingState from "./use-reset-add-booking-state";
 
 const useResetAllStoreOnSignOut = () => {
+  const { resetAddBookingState } = useResetAddBookingState();
   const dispatch = useDispatch();
 
   const resetAllStoreOnSignOut = () => {
@@ -25,8 +26,8 @@ const useResetAllStoreOnSignOut = () => {
     dispatch(resetGetAllCustomersState());
     dispatch(resetGetAllUsersState());
     dispatch(resetGetAllCatsState());
-    dispatch(resetDbManageAddBookingState());
     dispatch(resetSendEmailState());
+    resetAddBookingState();
     localStorage.clear();
   };
 

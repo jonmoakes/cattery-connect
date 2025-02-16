@@ -1,18 +1,20 @@
 import { useDispatch } from "react-redux";
-import useGetDbManageAddBookingSelectors from "../../../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
-import { setAddBookingData } from "../../../../../../store/db-manage-add-booking/db-manage-add-booking.slice";
+
+import useGetUploadBookingDataSelectors from "../../../../../../hooks/selectors/use-get-upload-booking-data-selectors";
+
+import { setUploadBookingData } from "../../../../../../store/upload-booking-data/upload-booking-data.slice";
 
 const useHandleCheckInAndOutTimeSlotChange = () => {
-  const { addBookingData, checkInSlot, checkOutSlot } =
-    useGetDbManageAddBookingSelectors();
+  const { uploadBookingData, checkInSlot, checkOutSlot } =
+    useGetUploadBookingDataSelectors();
   const dispatch = useDispatch();
 
   const handleChooseCheckInAndOutTimeSlotChange = (event, slotType) => {
     const { value } = event.target;
 
     dispatch(
-      setAddBookingData({
-        ...addBookingData,
+      setUploadBookingData({
+        ...uploadBookingData,
         [slotType]: value,
       })
     );

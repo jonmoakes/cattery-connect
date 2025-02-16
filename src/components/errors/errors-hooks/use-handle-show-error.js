@@ -1,14 +1,15 @@
 import useGetAllCatsSelectors from "../../../hooks/selectors/use-get-all-cats-selectors";
 import useGetAllCustomerSelectors from "../../../hooks/selectors/use-get-all-customers-selectors";
 import useGetAllUsersSelectors from "../../../hooks/selectors/use-get-all-users-selectors";
-import useGetDbManageAddBookingSelectors from "../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
+import useGetRequiredCatteryDataForBookingSelectors from "../../../hooks/selectors/use-get-required-cattery-data-for-booking-selectors";
 
 const useHandleShowError = () => {
   const { getAllCustomersError } = useGetAllCustomerSelectors();
   const { getAllCatsError, getCatsOwnerDetailsError } =
     useGetAllCatsSelectors();
   const { allUsersCatteryIdsAndOwnerNameError } = useGetAllUsersSelectors();
-  const { requiredCatteryDataError } = useGetDbManageAddBookingSelectors();
+  const { requiredCatteryDataError } =
+    useGetRequiredCatteryDataForBookingSelectors();
   const { allUsersError } = useGetAllUsersSelectors();
 
   const showErrorHeading = () => {
@@ -18,9 +19,8 @@ const useHandleShowError = () => {
       return "failed to fetch the cat owner's details.";
     if (allUsersCatteryIdsAndOwnerNameError)
       return "failed to fetch user cattery ids.";
-    if (requiredCatteryDataError)
-      return `failed to fetch critical data for booking process ( getRequiredCatteryDataAsync )`;
-    if (allUsersError) return "failed to fetch your users list";
+    if (requiredCatteryDataError) return `fetch cattery data thunk Error.`;
+    if (allUsersError) return "failed to fetch your users list.";
   };
 
   const errorToDisplay = () => {

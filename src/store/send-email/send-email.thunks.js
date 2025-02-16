@@ -11,7 +11,7 @@ import { getFirstNameFromString } from "../../functions/get-first-name-from-stri
 
 import {
   SEND_EMAIL_CATTERY_CONNECT_UPDATE_PENS_ROLLBACK_ERROR_ENDPOINT,
-  SEND_EMAIL_CATTERY_CONNECT_PENS_UPDATED_ADD_BOOKING_DATA_FAILED_ENDPOINT,
+  SEND_EMAIL_CATTERY_CONNECT_PENS_UPDATED_BOOKING_DATA_FAILED_ENDPOINT,
   SEND_EMAIL_CATTERY_CONNECT_SEND_CUSTOMER_EMAIL_RECEIPT_ENDPOINT,
 } from "../../../netlify/api-endpoints/api-endpoints";
 
@@ -20,7 +20,7 @@ export const sendEmailCatteryConnectUpdatePensRollbackErrorAsync =
     "sendEmailCatteryConnectUpdatePensRollbackError",
     async (
       {
-        addBookingData,
+        uploadBookingData,
         rollbackFailures,
         originalAvailabilityData,
         catteryId,
@@ -30,7 +30,7 @@ export const sendEmailCatteryConnectUpdatePensRollbackErrorAsync =
     ) => {
       try {
         const formattedBookingDetails =
-          formatBookingDetailsForUpdatePenDataError(addBookingData);
+          formatBookingDetailsForUpdatePenDataError(uploadBookingData);
 
         const formattedRollbackFailures =
           rollbackFailures && rollbackFailures.length > 0
@@ -62,16 +62,16 @@ export const sendEmailCatteryConnectUpdatePensRollbackErrorAsync =
     }
   );
 
-export const sendEmailCatteryConnectPensUpdatedAddBookingDataFailedAsync =
+export const sendEmailCatteryConnectPensUpdatedBookingDataFailedAsync =
   createAsyncThunk(
-    "sendEmailPensUpdatedAddBookingDataFailed",
-    async ({ addBookingData, catteryId, addBookingDataError }, thunkAPI) => {
+    "sendEmailPensUpdatedUploadBookingDataFailed",
+    async ({ uploadBookingData, catteryId, addBookingDataError }, thunkAPI) => {
       try {
         const formattedFullBookingDetails =
-          formatFullBookingDetails(addBookingData);
+          formatFullBookingDetails(uploadBookingData);
 
         const response = await axios.post(
-          SEND_EMAIL_CATTERY_CONNECT_PENS_UPDATED_ADD_BOOKING_DATA_FAILED_ENDPOINT,
+          SEND_EMAIL_CATTERY_CONNECT_PENS_UPDATED_BOOKING_DATA_FAILED_ENDPOINT,
           {
             catteryId,
             addBookingDataError,
@@ -91,19 +91,19 @@ export const sendEmailCatteryConnectSendCustomerEmailReceiptAsync =
   createAsyncThunk(
     "sendEmailCatteryConnectSendCustomerEmailReceipt",
     async (
-      { addBookingData, pricePerNight, name, phone, catteryEmail },
+      { uploadBookingData, pricePerNight, name, phone, catteryEmail },
       thunkAPI
     ) => {
       try {
         const formattedFullBookingDetails =
-          formatReceiptBookingDetails(addBookingData);
+          formatReceiptBookingDetails(uploadBookingData);
         const {
           catsInBooking,
           checkOutDate,
           checkInDate,
           customerEmail,
           customerName,
-        } = addBookingData;
+        } = uploadBookingData;
 
         const numberOfCats = catsInBooking.length;
         const lengthOfStay = differenceInDays(checkOutDate, checkInDate);

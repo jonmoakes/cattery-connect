@@ -1,13 +1,13 @@
 import { useDispatch } from "react-redux";
 
-import useGetDbManageAddBookingSelectors from "../../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
+import useGetUploadBookingDataSelectors from "../../../../../hooks/selectors/use-get-upload-booking-data-selectors";
 
-import { setAddBookingData } from "../../../../../store/db-manage-add-booking/db-manage-add-booking.slice";
+import { setUploadBookingData } from "../../../../../store/upload-booking-data/upload-booking-data.slice";
 
 import useFireSwal from "../../../../../hooks/use-fire-swal";
 
 const useCheckOutDateBeforeCheckInDateSwal = () => {
-  const { addBookingData } = useGetDbManageAddBookingSelectors();
+  const { uploadBookingData } = useGetUploadBookingDataSelectors();
 
   const { fireSwal } = useFireSwal();
   const dispatch = useDispatch();
@@ -25,8 +25,8 @@ const useCheckOutDateBeforeCheckInDateSwal = () => {
     ).then((isConfirmed) => {
       if (isConfirmed) {
         dispatch(
-          setAddBookingData({
-            ...addBookingData,
+          setUploadBookingData({
+            ...uploadBookingData,
             checkOutDate: "",
             checkOutSlot: "",
           })

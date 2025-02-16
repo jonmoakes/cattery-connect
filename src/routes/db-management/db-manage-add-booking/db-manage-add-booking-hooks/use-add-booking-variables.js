@@ -1,8 +1,22 @@
-import useGetDbManageAddBookingSelectors from "../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
+import useGetAllCustomerSelectors from "../../../../hooks/selectors/use-get-all-customers-selectors";
+import useGetIsBookingAvailableSelectors from "../../../../hooks/selectors/use-get-is-booking-available-selectors";
+import useGetRequiredCatteryDataForBookingSelectors from "../../../../hooks/selectors/use-get-required-cattery-data-for-booking-selectors";
+import useGetUploadBookingDataSelectors from "../../../../hooks/selectors/use-get-upload-booking-data-selectors";
 
 const useAddBookingVariables = () => {
-  const { customerName, catDetails, catsInBooking, maximumCatsInSinglePen } =
-    useGetDbManageAddBookingSelectors();
+  const {
+    customerName,
+    catDetails,
+    catsInBooking,
+    checkInDate,
+    checkInSlot,
+    checkOutDate,
+    checkOutSlot,
+  } = useGetUploadBookingDataSelectors();
+  const { maximumCatsInSinglePen, requiredCatteryDataError } =
+    useGetRequiredCatteryDataForBookingSelectors();
+  const { status } = useGetIsBookingAvailableSelectors();
+  const { getAllCustomersError } = useGetAllCustomerSelectors();
 
   let parsedCatDetails = [];
   let error = null;
@@ -58,6 +72,13 @@ const useAddBookingVariables = () => {
     numberOfCatsInBooking,
     moreCatsInBookingThanCapacityInOnePen,
     maximumCatsInSinglePen,
+    checkInDate,
+    checkInSlot,
+    checkOutDate,
+    checkOutSlot,
+    requiredCatteryDataError,
+    status,
+    getAllCustomersError,
   };
 };
 

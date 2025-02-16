@@ -1,24 +1,26 @@
 import { useDispatch } from "react-redux";
 
-import useGetDbManageAddBookingSelectors from "../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
-import {
-  checkBookingAvailabilityAsync,
-  updatePensDataAsync,
-  uploadBookingDataAsync,
-} from "../../../../store/db-manage-add-booking/db-manage-add-booking.thunks";
+import useGetRequiredCatteryDataForBookingSelectors from "../../../../hooks/selectors/use-get-required-cattery-data-for-booking-selectors";
+import useGetIsBookingAvailableSelectors from "../../../../hooks/selectors/use-get-is-booking-available-selectors";
+import useGetUploadBookingDataSelectors from "../../../../hooks/selectors/use-get-upload-booking-data-selectors";
 import useGetCurrentUserSelectors from "../../../../hooks/selectors/use-get-current-user-selectors";
+
+import { checkBookingAvailabilityAsync } from "../../../../store/is-booking-available/is-booking-available.thunks";
+import { updatePensDataInDbAsync } from "../../../../store/update-pens-data/update-pens-data.thunks";
+import { uploadBookingDataToDbAsync } from "../../../../store/upload-booking-data/upload-booking-data.thunks";
 import {
   resetIsBookingAvailableResult,
   setShowIneligibleDates,
-} from "../../../../store/db-manage-add-booking/db-manage-add-booking.slice";
+} from "../../../../store/is-booking-available/is-booking-available.slice";
+
 import useConfirmSwal from "../../../../hooks/use-confirm-swal";
+import useAddBookingVariables from "./use-add-booking-variables";
 
 import { imSureMessage } from "../../../../strings/confirms";
-import useAddBookingVariables from "./use-add-booking-variables";
 
 const useAddBookingFunctions = () => {
   const {
-    addBookingData,
+    uploadBookingData,
     customerDocumentId,
     customerName,
     catsInBooking,
@@ -26,10 +28,11 @@ const useAddBookingFunctions = () => {
     checkInSlot,
     checkOutDate,
     checkOutSlot,
-    catteryAllowsLargerPensBool,
-    showIneligibleDates,
-    parsedAvailabilityData,
-  } = useGetDbManageAddBookingSelectors();
+  } = useGetUploadBookingDataSelectors();
+  const { catteryAllowsLargerPensBool } =
+    useGetRequiredCatteryDataForBookingSelectors();
+  const { showIneligibleDates, parsedAvailabilityData } =
+    useGetIsBookingAvailableSelectors();
   const { moreCatsInBookingThanCapacityInOnePen } = useAddBookingVariables();
   const { catteryId } = useGetCurrentUserSelectors();
 
@@ -54,7 +57,7 @@ const useAddBookingFunctions = () => {
     }
     dispatch(
       checkBookingAvailabilityAsync({
-        addBookingData,
+        uploadBookingData,
         catteryId,
         catteryAllowsLargerPensBool,
       })
@@ -70,15 +73,17 @@ const useAddBookingFunctions = () => {
       "",
       () =>
         dispatch(
-          updatePensDataAsync({
+          updatePensDataInDbAsync({
             parsedAvailabilityData,
-            addBookingData,
+            uploadBookingData,
             catteryAllowsLargerPensBool,
             operation,
           })
         ).then((resultAction) => {
-          if (updatePensDataAsync.fulfilled.match(resultAction)) {
-            dispatch(uploadBookingDataAsync({ addBookingData, catteryId }));
+          if (updatePensDataInDbAsync.fulfilled.match(resultAction)) {
+            dispatch(
+              uploadBookingDataToDbAsync({ uploadBookingData, catteryId })
+            );
           }
         }),
       null

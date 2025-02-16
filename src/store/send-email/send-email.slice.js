@@ -1,7 +1,7 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
 import {
   sendEmailCatteryConnectUpdatePensRollbackErrorAsync,
-  sendEmailCatteryConnectPensUpdatedAddBookingDataFailedAsync,
+  sendEmailCatteryConnectPensUpdatedBookingDataFailedAsync,
   sendEmailCatteryConnectSendCustomerEmailReceiptAsync,
 } from "./send-email.thunks";
 
@@ -57,7 +57,7 @@ export const sendEmailSlice = createSlice({
     );
     handleAsyncAction(
       builder,
-      sendEmailCatteryConnectPensUpdatedAddBookingDataFailedAsync
+      sendEmailCatteryConnectPensUpdatedBookingDataFailedAsync
     );
     handleAsyncAction(
       builder,

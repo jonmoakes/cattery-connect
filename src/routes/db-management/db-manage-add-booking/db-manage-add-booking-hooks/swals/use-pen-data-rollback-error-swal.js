@@ -1,13 +1,17 @@
 import { useDispatch } from "react-redux";
-import useFireSwal from "../../../../../hooks/use-fire-swal";
-import { sendEmailCatteryConnectUpdatePensRollbackErrorAsync } from "../../../../../store/send-email/send-email.thunks";
-import { updatePensDataErrorMessage } from "../../../../../strings/errors";
-import useGetDbManageAddBookingSelectors from "../../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
+
 import useGetCurrentUserSelectors from "../../../../../hooks/selectors/use-get-current-user-selectors";
+import useGetUpdatePensDataSelectors from "../../../../../hooks/selectors/use-get-update-pens-data-selectors";
+import useGetUploadBookingDataSelectors from "../../../../../hooks/selectors/use-get-upload-booking-data-selectors";
+import { sendEmailCatteryConnectUpdatePensRollbackErrorAsync } from "../../../../../store/send-email/send-email.thunks";
+
+import useFireSwal from "../../../../../hooks/use-fire-swal";
+
+import { updatePensDataErrorMessage } from "../../../../../strings/errors";
 
 const usePenDataRollbackErrorSwal = () => {
-  const { updatePensDataError, addBookingData } =
-    useGetDbManageAddBookingSelectors();
+  const { updatePensDataError } = useGetUpdatePensDataSelectors();
+  const { uploadBookingData } = useGetUploadBookingDataSelectors();
   const { catteryId } = useGetCurrentUserSelectors();
 
   const { fireSwal } = useFireSwal();
@@ -35,7 +39,7 @@ const usePenDataRollbackErrorSwal = () => {
 
         dispatch(
           sendEmailCatteryConnectUpdatePensRollbackErrorAsync({
-            addBookingData,
+            uploadBookingData,
             rollbackFailures,
             originalAvailabilityData,
             catteryId,
