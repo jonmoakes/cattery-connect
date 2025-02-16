@@ -4,6 +4,7 @@ import {
   radialBeige,
   radialDustyBlue,
   radialGrey,
+  radialLightGreen,
   radialRustRed,
   radialSteelBlue,
   rustRed,
@@ -20,6 +21,7 @@ import {
 import BackgroundImage from "../../assets/cat-in-basket.webp";
 import AsleepImage from "../../assets/cat-asleep-in-basket.webp";
 import PlayingWithToyImage from "../../assets/cat-playing-with-toy.webp";
+
 const bounceInDownAnimation = keyframes`${bounceInDown}`;
 const slideInLeftAnimation = keyframes`${slideInLeft}`;
 const slideInrightAnimation = keyframes`${slideInRight}`;
@@ -543,6 +545,17 @@ export const BookingWrapper = styled.div`
   border: 1px solid ${softBlack};
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  animation: 2s ${rollInAnimation};
+
+  &.available {
+    background: ${radialLightGreen};
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin: 0px auto 20px auto;
+    padding: 20px 0px;
+  }
 
   &.unavailable {
     background: ${radialGrey};

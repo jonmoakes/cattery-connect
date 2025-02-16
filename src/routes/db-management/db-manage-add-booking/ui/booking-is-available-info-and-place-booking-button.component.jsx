@@ -5,6 +5,7 @@ import CustomBalancedText from "../../../../components/custom-balanced-text/cust
 import { Button } from "../../../../styles/button/button.styles";
 
 import { BlackHr } from "../../../../styles/hr/hr.styles";
+import { BookingWrapper } from "../../../../styles/div/div.styles";
 
 const BookingIsAvailableInfoAndPlaceBookingButton = () => {
   const { status } = useGetIsBookingAvailableSelectors();
@@ -15,17 +16,21 @@ const BookingIsAvailableInfoAndPlaceBookingButton = () => {
     <>
       {status === "bookingAvailable" ? (
         <>
-          <CustomBalancedText className="white">
-            good news - this booking slot is available!😺
-          </CustomBalancedText>
+          <BookingWrapper className="available">
+            <CustomBalancedText>
+              good news - this booking slot is available!
+              <br />
+              😺
+            </CustomBalancedText>
 
-          <CustomBalancedText className="white">
-            tap the button below to confirm!
-          </CustomBalancedText>
+            <CustomBalancedText>
+              please tap the button below to confirm!
+            </CustomBalancedText>
 
-          <Button type="button" onClick={confirmPlaceBooking}>
-            complete booking
-          </Button>
+            <Button type="button" onClick={confirmPlaceBooking}>
+              complete booking
+            </Button>
+          </BookingWrapper>
 
           <BlackHr />
 
