@@ -1,11 +1,14 @@
 import { useDispatch } from "react-redux";
+
+import useGetDbManageAddBookingSelectors from "../../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
+import { sendEmailCatteryConnectSendCustomerEmailReceiptAsync } from "../../../../../store/send-email/send-email.thunks";
+
 import useConfirmSwal from "../../../../../hooks/use-confirm-swal";
 import useFireSwal from "../../../../../hooks/use-fire-swal";
 import useHamburgerHandlerNavigate from "../../../../../hooks/use-hamburger-handler-navigate";
 
 import { accountRoute } from "../../../../../strings/routes";
-import useGetDbManageAddBookingSelectors from "../../../../../hooks/selectors/use-get-db-manage-add-booking-selectors";
-import { sendEmailCatteryConnectSendCustomerEmailReceiptAsync } from "../../../../../store/send-email/send-email.thunks";
+import { bookingCompletedSendEmailQuestionMessage } from "../../../../../strings/confirms";
 
 const useBookingCompleteSwal = () => {
   const {
@@ -22,7 +25,6 @@ const useBookingCompleteSwal = () => {
   const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
   const dispatch = useDispatch();
 
-  console.log(customerEmail);
   const bookingCompleteSwal = (setSwalConfirmed) => {
     if (!customerEmail) {
       fireSwal(
@@ -50,7 +52,7 @@ const useBookingCompleteSwal = () => {
     } else if (customerEmail) {
       setSwalConfirmed(true);
       confirmSwal(
-        "booking completed! would you like to send the customer an email?",
+        bookingCompletedSendEmailQuestionMessage,
         "",
         `yes`,
         "no",
@@ -75,22 +77,6 @@ const useBookingCompleteSwal = () => {
           )
       );
     }
-
-    // fireSwal("success", "booking completed!", "", 0, "", false, "", false).then(
-    //   (isConfirmed) => {
-    //     if (isConfirmed) {
-    //       setSwalConfirmed(true);
-    //       confirmSwal(
-    //         "would you like to make another booking?",
-    //         "",
-    //         `yes`,
-    //         "no",
-    //         () => window.location.reload(),
-    //         () => hamburgerHandlerNavigate(accountRoute)
-    //       );
-    //     }
-    //   }
-    // );
   };
 
   return { bookingCompleteSwal };

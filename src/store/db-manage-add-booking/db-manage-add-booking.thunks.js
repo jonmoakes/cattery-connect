@@ -5,7 +5,9 @@ import {
   availablilityCollectionId,
   bookingsCollectionId,
   catteryInfoCollectionId,
+  catteryNotAvailableOnThisDateString,
   databaseId,
+  pensRollbackFailureErrorCode,
 } from "../../constants/constants";
 import {
   specialCheckSameDay,
@@ -126,7 +128,7 @@ export const checkBookingAvailabilityAsync = createAsyncThunk(
         );
 
         throw new Error(
-          `we are not able to make this booking because the cattery is not available for bookings on the following dates: 
+          `${catteryNotAvailableOnThisDateString}
 
 ${formattedMissingDates.join(",\n")}.`
         );
@@ -278,7 +280,7 @@ export const updatePensDataAsync = createAsyncThunk(
         return thunkAPI.rejectWithValue({
           message: `there was an Error making booking..
 
-( error code 'RBF'). 
+( error code '${pensRollbackFailureErrorCode}' ). 
 
 in order to avoid disruption to the booking system, please don't attempt to make any more bookings just yet.
 

@@ -13,7 +13,7 @@ import {
 
 const useSendEmailResultSwalUseEffect = () => {
   const { sendEmailStatusCode, sendEmailError } = useGetSendEmailSelectors();
-  const { updatePensDataError, addBookingDataError } =
+  const { updatePensDataError, addBookingDataError, addBookingDataResult } =
     useGetDbManageAddBookingSelectors();
 
   const { fireSwal } = useFireSwal();
@@ -52,6 +52,17 @@ const useSendEmailResultSwalUseEffect = () => {
           hamburgerHandlerNavigate(accountRoute);
         }
       });
+    } else if (
+      sendEmailStatusCode === 202 &&
+      addBookingDataResult === "fulfilled"
+    ) {
+      fireSwal("success", "email sent!", "", 0, "", false, "", false).then(
+        (isConfirmed) => {
+          if (isConfirmed) {
+            hamburgerHandlerNavigate(accountRoute);
+          }
+        }
+      );
     } else if (sendEmailError) {
       fireSwal(
         "error",
@@ -75,6 +86,7 @@ const useSendEmailResultSwalUseEffect = () => {
     fireSwal,
     addBookingDataError,
     updatePensDataError,
+    addBookingDataResult,
   ]);
 };
 

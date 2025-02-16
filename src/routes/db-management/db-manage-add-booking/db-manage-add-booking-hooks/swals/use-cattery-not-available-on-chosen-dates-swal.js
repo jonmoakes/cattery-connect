@@ -8,6 +8,7 @@ import {
 import useFireSwal from "../../../../../hooks/use-fire-swal";
 
 import { errorReceivedMessage } from "../../../../../strings/errors";
+import { catteryNotAvailableOnThisDateString } from "../../../../../constants/constants";
 
 const useCatteryNotAvailableOnChosenDatesSwal = () => {
   const { fireSwal } = useFireSwal();
@@ -16,9 +17,7 @@ const useCatteryNotAvailableOnChosenDatesSwal = () => {
   const catteryNotAvailableOnChosenDatesSwal = (isBookingAvailableError) => {
     fireSwal(
       "error",
-      isBookingAvailableError.includes(
-        "we are not able to make this booking because the cattery is not available for bookings on the following dates:"
-      )
+      isBookingAvailableError.includes(catteryNotAvailableOnThisDateString)
         ? isBookingAvailableError
         : errorReceivedMessage(
             "Error checking date availability.",

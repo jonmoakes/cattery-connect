@@ -6,6 +6,7 @@ import useBookingCompleteSwal from "../swals/use-booking-complete-swal";
 import usePenDataRollbackErrorSwal from "../swals/use-pen-data-rollback-error-swal";
 import useUpdatePensErrorSwal from "../swals/use-update-pens-error-swal";
 import usePensUpdatedUploadBookingDataFailedSwal from "../swals/use-pens-updated-upload-booking-data-failed-swal";
+import { pensRollbackFailureErrorCode } from "../../../../../constants/constants";
 
 const useCompleteBookingResultSwalUseEffect = () => {
   const {
@@ -41,7 +42,9 @@ const useCompleteBookingResultSwalUseEffect = () => {
     } else if (updatePensDataResult === "rejected") {
       if (
         updatePensDataError.message &&
-        updatePensDataError.message.includes("error code 'RBF'")
+        updatePensDataError.message.includes(
+          `error code '${pensRollbackFailureErrorCode}'`
+        )
       ) {
         penDataRollbackErrorSwal(setSwalConfirmed);
       } else {

@@ -14,3 +14,8 @@ export const defaultRateLimit = 25;
 export const smallRateLimit = 250;
 
 export const defaultTableSize = 30;
+
+// errors
+export const pensRollbackFailureErrorCode = "PRBF";
+export const catteryNotAvailableOnThisDateString =
+  "we are not able to make this booking because the cattery is not available for bookings on the following dates:";

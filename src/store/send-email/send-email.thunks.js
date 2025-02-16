@@ -1,17 +1,19 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { differenceInDays } from "date-fns";
+
+import { formatBookingDetailsForUpdatePenDataError } from "./functions/format-booking-details-for-update-pen-data-error";
+import { formatOriginalAvailabilityData } from "./functions/format-original-availability-data";
+import { formatFullBookingDetails } from "./functions/format-full-booking-details";
+
+import { formatReceiptBookingDetails } from "./functions/format-receipt-booking-details";
+import { getFirstNameFromString } from "../../functions/get-first-name-from-string";
 
 import {
   SEND_EMAIL_CATTERY_CONNECT_UPDATE_PENS_ROLLBACK_ERROR_ENDPOINT,
   SEND_EMAIL_CATTERY_CONNECT_PENS_UPDATED_ADD_BOOKING_DATA_FAILED_ENDPOINT,
   SEND_EMAIL_CATTERY_CONNECT_SEND_CUSTOMER_EMAIL_RECEIPT_ENDPOINT,
 } from "../../../netlify/api-endpoints/api-endpoints";
-
-import { formatBookingDetailsForUpdatePenDataError } from "./functions/format-booking-details-for-update-pen-data-error";
-import { formatOriginalAvailabilityData } from "./functions/format-original-availability-data";
-import { formatFullBookingDetails } from "./functions/format-full-booking-details";
-import { differenceInDays } from "date-fns";
-import { formatReceiptBookingDetails } from "./functions/format-receipt-booking-details";
 
 export const sendEmailCatteryConnectUpdatePensRollbackErrorAsync =
   createAsyncThunk(
@@ -115,7 +117,7 @@ export const sendEmailCatteryConnectSendCustomerEmailReceiptAsync =
           SEND_EMAIL_CATTERY_CONNECT_SEND_CUSTOMER_EMAIL_RECEIPT_ENDPOINT,
           {
             customerEmail,
-            customerName,
+            customerName: getFirstNameFromString(customerName),
             name,
             formattedFullBookingDetails,
             costOfStayPounds,
