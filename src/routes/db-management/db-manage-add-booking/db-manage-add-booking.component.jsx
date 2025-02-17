@@ -13,7 +13,7 @@ import ChooseCatsInput from "./inputs/choose-cats-input/choose-cats-input.compon
 import MoreCatsSelectedThanSinglePenCapacity from "./ui/more-cats-selected-than-single-pen-capacity.component";
 import CheckInAndOutDateInput from "./inputs/check-in-and-out-date-input/check-in-and-out-date-input.component";
 import CheckInAndOutTimeSlotSelectInput from "./inputs/check-in-out-and-time-slot-input/check-in-and-out-time-slot.component";
-import ShowBookingDataBeforeBooking from "./ui/show-booking-data-before-booking.component";
+import ShowBookingData from "../../../components/show-booking-data/show-booking-data.component";
 import FailedDatesInfo from "./ui/failed-dates-info.component";
 import CheckAvailabilityButton from "./ui/check-availability-button.component";
 import BookingIsAvailableInfoAndPlaceBookingButton from "./ui/booking-is-available-info-and-place-booking-button.component";
@@ -35,6 +35,7 @@ const DbManageAddBooking = () => {
     moreCatsInBookingThanCapacityInOnePen,
     numberOfCatsInBooking,
     maximumCatsInSinglePen,
+    bookingDataToShow,
   } = useAddBookingVariables();
   const { shouldShowFormSubmissionButtons, checkBookingAvailability } =
     useAddBookingFunctions();
@@ -103,7 +104,7 @@ const DbManageAddBooking = () => {
 
             {shouldShowFormSubmissionButtons ? (
               <>
-                <ShowBookingDataBeforeBooking />
+                <ShowBookingData {...{ bookingDataToShow }} />
                 <FailedDatesInfo />
                 <CheckAvailabilityButton />
                 <BookingIsAvailableInfoAndPlaceBookingButton />

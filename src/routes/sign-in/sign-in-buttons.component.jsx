@@ -4,10 +4,10 @@ import NetworkError from "../../components/errors/network-error.component";
 
 import { Button } from "../../styles/button/button.styles";
 import { ForgotPasswordDiv, AuthButtonDiv } from "../../styles/div/div.styles";
-import { WhiteLink } from "../../styles/link/link.styles";
 
 import { forgotPasswordRequestRoute } from "../../strings/routes";
 import { BlackHr } from "../../styles/hr/hr.styles";
+import CustomSpan from "../../components/custom-span/custom-span.component";
 
 const SignInButtons = () => {
   const { isOnline } = useIsOnline();
@@ -20,9 +20,13 @@ const SignInButtons = () => {
 
           <BlackHr />
           <ForgotPasswordDiv>
-            <WhiteLink to={forgotPasswordRequestRoute}>
+            <CustomSpan
+              type="link"
+              className="white"
+              to={forgotPasswordRequestRoute}
+            >
               forgot password?
-            </WhiteLink>
+            </CustomSpan>
           </ForgotPasswordDiv>
         </AuthButtonDiv>
       ) : (

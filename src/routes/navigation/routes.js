@@ -7,9 +7,11 @@ import {
   allCustomersRoute,
   allCatsRoute,
   allUsersRoute,
+  bookingsRoute,
 } from "../../strings/routes";
 
 export const signedInRoutes = [
+  bookingsRoute,
   allCustomersRoute,
   allCatsRoute,
   accountRoute,

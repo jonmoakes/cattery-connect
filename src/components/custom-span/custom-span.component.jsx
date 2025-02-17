@@ -6,6 +6,7 @@ import {
   RightMarginSpan,
   EmergencyDetailsSpan,
 } from "../../styles/span/span.styles";
+import { StyledLink } from "../../styles/link/link.styles";
 
 const spanMap = {
   uppercase: UppercaseSpan,
@@ -14,6 +15,7 @@ const spanMap = {
   clearButtonExample: ClearButtonExampleSpan,
   rightMargin: RightMarginSpan,
   emergencyDetails: EmergencyDetailsSpan,
+  link: StyledLink,
 };
 
 const CustomSpan = ({ type, className, children, ...props }) => {

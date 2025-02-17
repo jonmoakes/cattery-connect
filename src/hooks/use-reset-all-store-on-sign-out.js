@@ -11,6 +11,8 @@ import { resetGetAllUsersState } from "../store/get-all-users/get-all-users.slic
 import { resetGetAllCatsState } from "../store/get-all-cats/get-all-cats.slice";
 import { resetSendEmailState } from "../store/send-email/send-email.slice";
 import useResetAddBookingState from "./use-reset-add-booking-state";
+import { resetBookingsState } from "../store/bookings/bookings.slice";
+import { resetCancelBookingState } from "../store/cancel-booking/cancel-booking.slice";
 
 const useResetAllStoreOnSignOut = () => {
   const { resetAddBookingState } = useResetAddBookingState();
@@ -28,6 +30,8 @@ const useResetAllStoreOnSignOut = () => {
     dispatch(resetGetAllCatsState());
     dispatch(resetSendEmailState());
     resetAddBookingState();
+    dispatch(resetBookingsState());
+    dispatch(resetCancelBookingState());
     localStorage.clear();
   };
 

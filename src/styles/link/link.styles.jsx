@@ -12,28 +12,22 @@ export const StyledLink = styled(Link)`
     color: ${teal};
 
     @media screen and (max-width: 1366px) {
-      color: red;
+      color: ${rustRed};
     }
   }
-`;
 
-export const WhiteLink = styled(Link)`
-  color: whitesmoke;
-  text-decoration: none;
-  text-transform: capitalize;
-  text-shadow: 1px 1px 1px ${softBlack};
+  &.white {
+    color: whitesmoke;
+    text-decoration: none;
+    text-transform: capitalize;
+    text-shadow: 1px 1px 1px ${softBlack};
 
-  &:hover {
-    color: ${customYellow};
+    &:hover {
+      color: ${customYellow};
 
-    @media screen and (max-width: 1366px) {
-      color: whitesmoke;
+      @media screen and (max-width: 1366px) {
+        color: whitesmoke;
+      }
     }
   }
-`;
-
-export const OrangeLink = styled(Link)`
-  color: orange;
-  text-transform: capitalize;
-  text-decoration: none;
 `;

@@ -7,6 +7,8 @@ import {
   databaseId,
   pensRollbackFailureErrorCode,
 } from "../../constants/constants";
+import { Query } from "appwrite";
+import { databases } from "../../utils/appwrite/appwrite-config";
 
 export const updatePensDataInDbAsync = createAsyncThunk(
   "updatePensDataInDb",
@@ -23,6 +25,7 @@ export const updatePensDataInDbAsync = createAsyncThunk(
     const originalAvailabilityData = JSON.parse(
       JSON.stringify(parsedAvailabilityData)
     );
+
     try {
       const { catsInBooking, checkInSlot, checkOutSlot } = uploadBookingData;
       const numberOfCats = catsInBooking.length;

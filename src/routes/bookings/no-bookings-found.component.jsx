@@ -1,4 +1,4 @@
-import useAllCustomersTableVariables from "./all-customers-hooks/use-all-customers-table-variables";
+import useBookingsTableVariables from "./bookings-hooks/use-bookings-table-variables";
 import useHamburgerHandlerNavigate from "../../hooks/use-hamburger-handler-navigate";
 
 import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
@@ -6,29 +6,29 @@ import CustomBalancedText from "../../components/custom-balanced-text/custom-bal
 import { ParentDiv } from "../../styles/div/div.styles";
 import { MinimalButton } from "../../styles/button/button.styles";
 
-import { addCustomerRoute } from "../../strings/routes";
+import { addBookingRoute } from "../../strings/routes";
 
-const NoCustomersFound = () => {
-  const { atLeastOneCustomerExists } = useAllCustomersTableVariables();
+const NoBookingsFound = () => {
+  const { atLeastOneBookingExists } = useBookingsTableVariables();
   const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
 
   return (
     <ParentDiv>
-      <CustomBalancedText type="h2">no customers found.</CustomBalancedText>
+      <CustomBalancedText type="h2">no bookings found.</CustomBalancedText>
       <CustomBalancedText>
-        no customers have been created yet.
+        no bookings have been created yet.
       </CustomBalancedText>
 
-      {!atLeastOneCustomerExists ? (
+      {!atLeastOneBookingExists ? (
         <MinimalButton
           className="margin-bottom"
-          onClick={() => hamburgerHandlerNavigate(addCustomerRoute)}
+          onClick={() => hamburgerHandlerNavigate(addBookingRoute)}
         >
-          add a customer
+          add a booking
         </MinimalButton>
       ) : null}
     </ParentDiv>
   );
 };
 
-export default NoCustomersFound;
+export default NoBookingsFound;

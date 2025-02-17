@@ -59,6 +59,15 @@ const useAddBookingVariables = () => {
   const moreCatsInBookingThanCapacityInOnePen =
     numberOfCatsInBooking > maximumCatsInSinglePen;
 
+  const bookingDataToShow = {
+    customerName,
+    catsInBooking,
+    checkInDate,
+    checkInSlot,
+    checkOutDate,
+    checkOutSlot,
+  };
+
   return {
     catsToRender,
     error,
@@ -79,6 +88,7 @@ const useAddBookingVariables = () => {
     requiredCatteryDataError,
     status,
     getAllCustomersError,
+    bookingDataToShow,
   };
 };
 

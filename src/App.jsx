@@ -28,8 +28,10 @@ import {
   editCustomerRoute,
   allCatsRoute,
   addCatChooseOwnerRoute,
-  dbManageAddBookingRoute,
+  addBookingRoute,
   allUsersRoute,
+  bookingsRoute,
+  cancelBookingRoute,
 } from "./strings/routes";
 
 const Navigation = lazy(() =>
@@ -73,6 +75,10 @@ const DbManageAddBooking = lazy(() =>
   )
 );
 const AllUsers = lazy(() => import("./routes/all-users/all-users.component"));
+const Bookings = lazy(() => import("./routes/bookings/bookings.component"));
+const CancelBooking = lazy(() =>
+  import("./routes/cancel-booking/cancel-booking.component")
+);
 
 const App = () => {
   const { currentUser, role } = useGetCurrentUserSelectors();
@@ -117,9 +123,15 @@ const App = () => {
               />
 
               <Route
+                path={bookingsRoute}
+                element={currentUser && role === "owner" ? <Bookings /> : null}
+              />
+
+              <Route
                 path={addCatRoute}
                 element={currentUser && role === "owner" ? <AddCat /> : null}
               />
+
               <Route
                 path={addCustomerRoute}
                 element={
@@ -166,11 +178,18 @@ const App = () => {
               />
 
               <Route
-                path={dbManageAddBookingRoute}
+                path={addBookingRoute}
                 element={
                   currentUser && role === "owner" ? (
                     <DbManageAddBooking />
                   ) : null
+                }
+              />
+
+              <Route
+                path={cancelBookingRoute}
+                element={
+                  currentUser && role === "owner" ? <CancelBooking /> : null
                 }
               />
             </Route>

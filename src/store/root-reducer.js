@@ -17,6 +17,8 @@ import { requiredDataForCatteryBookingReducer } from "./required-cattery-data/re
 import { isBookingAvailableReducer } from "./is-booking-available/is-booking-available.slice";
 import { updatePensDataReducer } from "./update-pens-data/update-pens-data.slice";
 import { uploadBookingDataReducer } from "./upload-booking-data/upload-booking-data.slice";
+import { bookingsReducer } from "./bookings/bookings.slice";
+import { cancelBookingReducer } from "./cancel-booking/cancel-booking.slice";
 
 export const rootReducer = combineReducers({
   hamburgerMenu: hamburgerMenuReducer,
@@ -36,4 +38,6 @@ export const rootReducer = combineReducers({
   isBookingAvailable: isBookingAvailableReducer,
   updatePensData: updatePensDataReducer,
   uploadBookingData: uploadBookingDataReducer,
+  bookings: bookingsReducer,
+  cancelBooking: cancelBookingReducer,
 });

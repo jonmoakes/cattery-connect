@@ -7,7 +7,11 @@ const middlewares = [import.meta.env.MODE === "development" && logger].filter(
   Boolean
 );
 
-const rememberedKeys = ["customerDetailsManagement", "catDetailsManagement"];
+const rememberedKeys = [
+  "customerDetailsManagement",
+  "catDetailsManagement",
+  "cancelBooking",
+];
 
 export const store = configureStore({
   reducer: rememberReducer(rootReducer),
