@@ -45,7 +45,7 @@ export const uploadDatesAndPensAvailabilityDocumentAsync = createAsyncThunk(
         throw new Error("No cattery info found");
       }
 
-      const { maxNumberOfPens } = documents[0];
+      const { numberOfPensInCattery } = documents[0];
 
       const values = [
         penSpacesForMaxTwoCats,
@@ -59,9 +59,9 @@ export const uploadDatesAndPensAvailabilityDocumentAsync = createAsyncThunk(
         0
       );
 
-      if (totalNumberOfPens !== maxNumberOfPens) {
+      if (totalNumberOfPens !== numberOfPensInCattery) {
         throw new Error(
-          `The total provided ( ${totalNumberOfPens} ) does not equal the total number of pens in this cattery ( ${maxNumberOfPens} ).`
+          `The total provided ( ${totalNumberOfPens} ) does not equal the total number of pens in this cattery ( ${numberOfPensInCattery} ).`
         );
       }
 

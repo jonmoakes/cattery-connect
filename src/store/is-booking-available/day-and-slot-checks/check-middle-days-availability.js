@@ -10,7 +10,6 @@ const checkPenCapacity = (penData, numberOfCats) => {
 export const checkMiddleDaysAvailability = (
   parsedAvailabilityData,
   numberOfCats,
-  catteryAllowsLargerPensBool,
   failingDates
 ) => {
   const middleDays = parsedAvailabilityData.slice(1, -1);
@@ -18,14 +17,12 @@ export const checkMiddleDaysAvailability = (
   middleDays.forEach((day) => {
     const morningSlotFail = !hasSufficientCapacity(
       day.morningPens,
-      numberOfCats,
-      catteryAllowsLargerPensBool
+      numberOfCats
     );
 
     const afternoonSlotFail = !hasSufficientCapacity(
       day.afternoonPens,
-      numberOfCats,
-      catteryAllowsLargerPensBool
+      numberOfCats
     );
 
     // Check AM slot first

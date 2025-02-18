@@ -10,7 +10,6 @@ const checkPenCapacity = (penData, numberOfCats) => {
 export const checkLastDayAvailability = (
   parsedAvailabilityData,
   numberOfCats,
-  catteryAllowsLargerPensBool,
   checkOutSlot,
   failingDates
 ) => {
@@ -18,14 +17,12 @@ export const checkLastDayAvailability = (
 
   const lastDayMorningSlotFail = !hasSufficientCapacity(
     lastDay.morningPens,
-    numberOfCats,
-    catteryAllowsLargerPensBool
+    numberOfCats
   );
 
   const lastDayAfternoonSlotFail = !hasSufficientCapacity(
     lastDay.afternoonPens,
-    numberOfCats,
-    catteryAllowsLargerPensBool
+    numberOfCats
   );
 
   // If the checkout slot is "am" and morning pens don't have enough capacity

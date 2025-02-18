@@ -11,7 +11,6 @@ const useGetRequiredCatteryDataForBookingSelectors = () => {
   } = useSelector(selectRequiredCatteryDataForBookingSelectors);
 
   const {
-    catteryAllowsLargerPensBool,
     maximumCatsInSinglePen,
     pricePerNight,
     name,
@@ -24,7 +23,6 @@ const useGetRequiredCatteryDataForBookingSelectors = () => {
     requiredCatteryData,
     requiredCatteryDataResult,
     requiredCatteryDataError,
-    catteryAllowsLargerPensBool,
     maximumCatsInSinglePen,
     pricePerNight,
     name,

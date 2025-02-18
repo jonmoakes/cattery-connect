@@ -1,6 +1,5 @@
 import { useDispatch } from "react-redux";
 
-import useGetRequiredCatteryDataForBookingSelectors from "../../../../hooks/selectors/use-get-required-cattery-data-for-booking-selectors";
 import useGetIsBookingAvailableSelectors from "../../../../hooks/selectors/use-get-is-booking-available-selectors";
 import useGetUploadBookingDataSelectors from "../../../../hooks/selectors/use-get-upload-booking-data-selectors";
 import useGetCurrentUserSelectors from "../../../../hooks/selectors/use-get-current-user-selectors";
@@ -29,8 +28,6 @@ const useAddBookingFunctions = () => {
     checkOutDate,
     checkOutSlot,
   } = useGetUploadBookingDataSelectors();
-  const { catteryAllowsLargerPensBool } =
-    useGetRequiredCatteryDataForBookingSelectors();
   const { showIneligibleDates, parsedAvailabilityData } =
     useGetIsBookingAvailableSelectors();
   const { moreCatsInBookingThanCapacityInOnePen } = useAddBookingVariables();
@@ -59,7 +56,6 @@ const useAddBookingFunctions = () => {
       checkBookingAvailabilityAsync({
         uploadBookingData,
         catteryId,
-        catteryAllowsLargerPensBool,
       })
     );
   };
@@ -76,7 +72,6 @@ const useAddBookingFunctions = () => {
           updatePensDataInDbAsync({
             parsedAvailabilityData,
             uploadBookingData,
-            catteryAllowsLargerPensBool,
             operation,
           })
         ).then((resultAction) => {

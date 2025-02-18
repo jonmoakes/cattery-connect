@@ -1,9 +1,4 @@
-export const updateSlot = (
-  pens,
-  catteryAllowsLargerPensBool,
-  numberOfCats,
-  operation
-) => {
+export const updateSlot = (pens, numberOfCats, operation) => {
   // Validate operation early on.
   if (operation !== "deduct" && operation !== "add") {
     throw new Error(
@@ -14,9 +9,8 @@ export const updateSlot = (
   // Determine the adjustment factor based on the operation
   const adjustment = operation === "deduct" ? -1 : 1;
 
-  // Adjust for 1 cat: treat it as a pen with capacity 2 if needed
-  const adjustedNumberOfCats =
-    !catteryAllowsLargerPensBool && numberOfCats === 1 ? 2 : numberOfCats;
+  // Because Whether there is 1 or 2 cats they would both go in the same pen size
+  const adjustedNumberOfCats = numberOfCats === 1 ? 2 : numberOfCats;
 
   // Find the index of the first pen that matches the criteria
   const penIndex = pens.findIndex(
@@ -24,6 +18,7 @@ export const updateSlot = (
   );
 
   // If a matching pen is found, update its availability
+  // final calc if operation is deduct, it is in effect doing number + ( -1 )
   if (penIndex !== -1) {
     const updatedPens = [...pens];
     updatedPens[penIndex] = {

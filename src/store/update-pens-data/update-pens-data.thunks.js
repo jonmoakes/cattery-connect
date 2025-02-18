@@ -7,18 +7,11 @@ import {
   databaseId,
   pensRollbackFailureErrorCode,
 } from "../../constants/constants";
-import { Query } from "appwrite";
-import { databases } from "../../utils/appwrite/appwrite-config";
 
 export const updatePensDataInDbAsync = createAsyncThunk(
   "updatePensDataInDb",
   async (
-    {
-      parsedAvailabilityData,
-      uploadBookingData,
-      catteryAllowsLargerPensBool,
-      operation,
-    },
+    { parsedAvailabilityData, uploadBookingData, operation },
     thunkAPI
   ) => {
     // Deep copy the original availability data for rollback purposes
@@ -47,7 +40,6 @@ export const updatePensDataInDbAsync = createAsyncThunk(
         if (shouldUpdateMorning) {
           updatedMorningPens = updateSlot(
             updatedMorningPens,
-            catteryAllowsLargerPensBool,
             numberOfCats,
             operation
           );
@@ -55,7 +47,6 @@ export const updatePensDataInDbAsync = createAsyncThunk(
         if (shouldUpdateAfternoon) {
           updatedAfternoonPens = updateSlot(
             updatedAfternoonPens,
-            catteryAllowsLargerPensBool,
             numberOfCats,
             operation
           );

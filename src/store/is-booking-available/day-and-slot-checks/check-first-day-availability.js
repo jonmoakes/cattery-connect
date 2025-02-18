@@ -11,21 +11,18 @@ const checkPenCapacity = (penData, numberOfCats) => {
 export const specialCheckSameDay = (
   parsedAvailabilityData,
   numberOfCats,
-  catteryAllowsLargerPensBool,
   failingDates
 ) => {
   const firstDay = parsedAvailabilityData[0];
 
   const firstDayAmSlotFail = !hasSufficientCapacity(
     firstDay.morningPens,
-    numberOfCats,
-    catteryAllowsLargerPensBool
+    numberOfCats
   );
 
   const firstDayPmSlotFail = !hasSufficientCapacity(
     firstDay.afternoonPens,
-    numberOfCats,
-    catteryAllowsLargerPensBool
+    numberOfCats
   );
 
   if (firstDayAmSlotFail && !firstDayPmSlotFail) {
@@ -65,7 +62,6 @@ export const specialCheckSameDay = (
 export const checkFirstDayAvailability = (
   parsedAvailabilityData,
   numberOfCats,
-  catteryAllowsLargerPensBool,
   checkInSlot,
   failingDates
 ) => {
@@ -74,14 +70,12 @@ export const checkFirstDayAvailability = (
   // Check AM and PM slots for capacity
   const firstDayAmSlotFail = !hasSufficientCapacity(
     firstDay.morningPens,
-    numberOfCats,
-    catteryAllowsLargerPensBool
+    numberOfCats
   );
 
   const firstDayPmSlotFail = !hasSufficientCapacity(
     firstDay.afternoonPens,
-    numberOfCats,
-    catteryAllowsLargerPensBool
+    numberOfCats
   );
 
   // If AM is selected and AM fails, but PM has capacity

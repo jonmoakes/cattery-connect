@@ -26,24 +26,10 @@ export const getRequiredCatteryDataForBookingAsync = createAsyncThunk(
         throw new Error("Couldn't Find Cattery Document");
       }
 
-      const {
-        catteryAllowsLargerPensBool,
-        maximumCatsInSinglePen,
-        pricePerNight,
-        name,
-        phone,
-        email,
-      } = catteryDoc;
-
-      if (
-        catteryAllowsLargerPensBool === undefined ||
-        catteryAllowsLargerPensBool === null
-      ) {
-        throw new Error("Couldn't Find The catteryAllowsLargerPens Bool");
-      }
+      const { maximumCatsInSinglePen, pricePerNight, name, phone, email } =
+        catteryDoc;
 
       return {
-        catteryAllowsLargerPensBool,
         maximumCatsInSinglePen,
         pricePerNight,
         name,

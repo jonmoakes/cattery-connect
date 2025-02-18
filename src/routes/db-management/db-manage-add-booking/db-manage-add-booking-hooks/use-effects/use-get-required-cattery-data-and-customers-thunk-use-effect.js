@@ -9,18 +9,13 @@ import { getAllOwnersCustomersAsync } from "../../../../../store/get-all-custome
 
 const useGetRequiredCatteryDataAndCustomersThunkUseEffect = () => {
   const { catteryId } = useGetCurrentUserSelectors();
-  const { requiredCatteryDataResult, catteryAllowsLargerPensBool } =
+  const { requiredCatteryDataResult } =
     useGetRequiredCatteryDataForBookingSelectors();
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (
-      requiredCatteryDataResult &&
-      (catteryAllowsLargerPensBool === true ||
-        catteryAllowsLargerPensBool === false)
-    )
-      return;
+    if (requiredCatteryDataResult) return;
     dispatch(getRequiredCatteryDataForBookingAsync({ catteryId })).then(
       (resultAction) => {
         if (
@@ -36,12 +31,7 @@ const useGetRequiredCatteryDataAndCustomersThunkUseEffect = () => {
         }
       }
     );
-  }, [
-    requiredCatteryDataResult,
-    catteryAllowsLargerPensBool,
-    catteryId,
-    dispatch,
-  ]);
+  }, [requiredCatteryDataResult, catteryId, dispatch]);
 };
 
 export default useGetRequiredCatteryDataAndCustomersThunkUseEffect;

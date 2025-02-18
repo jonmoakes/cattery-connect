@@ -16,10 +16,7 @@ import { checkLastDayAvailability } from "./day-and-slot-checks/check-last-day-a
 
 export const checkBookingAvailabilityAsync = createAsyncThunk(
   "checkBookingAvailability",
-  async (
-    { uploadBookingData, catteryId, catteryAllowsLargerPensBool },
-    thunkAPI
-  ) => {
+  async ({ uploadBookingData, catteryId }, thunkAPI) => {
     try {
       const {
         checkInDate,
@@ -84,14 +81,12 @@ export const checkBookingAvailabilityAsync = createAsyncThunk(
         failingDates = specialCheckSameDay(
           parsedAvailabilityData,
           numberOfCats,
-          catteryAllowsLargerPensBool,
           failingDates
         );
       } else {
         failingDates = checkFirstDayAvailability(
           parsedAvailabilityData,
           numberOfCats,
-          catteryAllowsLargerPensBool,
           checkInSlot,
           failingDates
         );
@@ -99,14 +94,13 @@ export const checkBookingAvailabilityAsync = createAsyncThunk(
         failingDates = checkMiddleDaysAvailability(
           parsedAvailabilityData,
           numberOfCats,
-          catteryAllowsLargerPensBool,
           failingDates
         );
 
         failingDates = checkLastDayAvailability(
           parsedAvailabilityData,
           numberOfCats,
-          catteryAllowsLargerPensBool,
+
           checkOutSlot,
           failingDates
         );
