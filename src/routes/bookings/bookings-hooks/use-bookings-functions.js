@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 
-import { setDataForAvailabilityDocsRequest } from "../../../store/cancel-booking/cancel-booking.slice";
+import { setDataFromBooking } from "../../../store/cancel-booking/cancel-booking.slice";
 
 import useHamburgerHandlerNavigate from "../../../hooks/use-hamburger-handler-navigate";
 
@@ -12,6 +12,7 @@ const useBookingsFunctions = () => {
 
   const passDataAndNavigateToCancelBookingRoute = (chosenEntry) => {
     const {
+      $id,
       catsInBooking,
       catteryId,
       checkInDate,
@@ -21,7 +22,10 @@ const useBookingsFunctions = () => {
       customerName,
     } = chosenEntry;
 
+    console.log(chosenEntry);
+
     const dataToPass = {
+      $id,
       catsInBooking,
       catteryId,
       checkInDate,
@@ -31,7 +35,7 @@ const useBookingsFunctions = () => {
       customerName,
     };
 
-    dispatch(setDataForAvailabilityDocsRequest(dataToPass));
+    dispatch(setDataFromBooking(dataToPass));
     hamburgerHandlerNavigate(cancelBookingRoute);
   };
 

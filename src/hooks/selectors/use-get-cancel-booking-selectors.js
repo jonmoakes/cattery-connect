@@ -5,13 +5,17 @@ import { selectCancelBookingSelectors } from "../../store/cancel-booking/cancel-
 const useGetCancelBookingSelectors = () => {
   const {
     fetchAvailabilityDocsToUpdateIsLoading,
-    dataForAvailabilityDocsRequest,
+    dataFromBooking,
     availabilityDocsToUpdate,
     fetchAvailabilityDocsToUpdateResult,
     fetchAvailabilityDocsToUpdateError,
+    deleteBookingDataIsLoading,
+    deleteBookingDataResult,
+    deleteBookingDataError,
   } = useSelector(selectCancelBookingSelectors);
 
   const {
+    $id,
     catsInBooking,
     catteryId,
     checkInDate,
@@ -19,14 +23,15 @@ const useGetCancelBookingSelectors = () => {
     checkOutDate,
     checkOutSlot,
     customerName,
-  } = dataForAvailabilityDocsRequest ?? {};
+  } = dataFromBooking ?? {};
 
   return {
     fetchAvailabilityDocsToUpdateIsLoading,
-    dataForAvailabilityDocsRequest,
+    dataFromBooking,
     availabilityDocsToUpdate,
     fetchAvailabilityDocsToUpdateResult,
     fetchAvailabilityDocsToUpdateError,
+    $id,
     catsInBooking,
     catteryId,
     checkInDate,
@@ -34,6 +39,9 @@ const useGetCancelBookingSelectors = () => {
     checkOutDate,
     checkOutSlot,
     customerName,
+    deleteBookingDataIsLoading,
+    deleteBookingDataResult,
+    deleteBookingDataError,
   };
 };
 

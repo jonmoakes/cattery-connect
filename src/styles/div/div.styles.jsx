@@ -187,6 +187,7 @@ export const ErrorDiv = styled.div`
 
   &.fetch-error {
     margin: 20px auto;
+    white-space: pre;
   }
 
   &.margin {

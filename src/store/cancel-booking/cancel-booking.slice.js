@@ -1,26 +1,38 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
-import { fetchAvailabilityDocsToUpdateAsync } from "./cancel-booking.thunks";
+import {
+  fetchAvailabilityDocsToUpdateAsync,
+  deleteBookingDataAsync,
+} from "./cancel-booking.thunks";
 
 const INITIAL_STATE = {
   fetchAvailabilityDocsToUpdateIsLoading: false,
-  dataForAvailabilityDocsRequest: {},
+  dataFromBooking: {},
   availabilityDocsToUpdate: [],
   fetchAvailabilityDocsToUpdateResult: "",
   fetchAvailabilityDocsToUpdateError: null,
+  deleteBookingDataIsLoading: false,
+  deleteBookingDataResult: "",
+  deleteBookingDataError: null,
 };
 
 export const cancelBookingSlice = createSlice({
   name: "cancelBooking",
   initialState: INITIAL_STATE,
   reducers: {
-    setDataForAvailabilityDocsRequest(state, action) {
-      state.dataForAvailabilityDocsRequest = action.payload;
+    setDataFromBooking(state, action) {
+      state.dataFromBooking = action.payload;
     },
     resetFetchAvailabilityDocsToUpdateResult(state) {
       state.fetchAvailabilityDocsToUpdateResult = "";
     },
     resetFetchAvailabilityDocsToUpdateError(state) {
       state.fetchAvailabilityDocsToUpdateError = null;
+    },
+    resetDeleteBookingDataResult(state) {
+      state.deleteBookingDataResult = "";
+    },
+    resetDeleteBookingDataError(state) {
+      state.deleteBookingDataError = "";
     },
     resetCancelBookingState: () => {
       return INITIAL_STATE;
@@ -29,23 +41,35 @@ export const cancelBookingSlice = createSlice({
   selectors: {
     selectCancelBookingSelectors: createSelector(
       (state) => state.fetchAvailabilityDocsToUpdateIsLoading,
+      (state) => state.dataFromBooking,
       (state) => state.dataForAvailabilityDocsRequest,
       (state) => state.availabilityDocsToUpdate,
       (state) => state.fetchAvailabilityDocsToUpdateResult,
       (state) => state.fetchAvailabilityDocsToUpdateError,
+      (state) => state.deleteBookingDataIsLoading,
+      (state) => state.deleteBookingDataResult,
+      (state) => state.deleteBookingDataError,
       (
         fetchAvailabilityDocsToUpdateIsLoading,
+        dataFromBooking,
         dataForAvailabilityDocsRequest,
         availabilityDocsToUpdate,
         fetchAvailabilityDocsToUpdateResult,
-        fetchAvailabilityDocsToUpdateError
+        fetchAvailabilityDocsToUpdateError,
+        deleteBookingDataIsLoading,
+        deleteBookingDataResult,
+        deleteBookingDataError
       ) => {
         return {
           fetchAvailabilityDocsToUpdateIsLoading,
+          dataFromBooking,
           dataForAvailabilityDocsRequest,
           availabilityDocsToUpdate,
           fetchAvailabilityDocsToUpdateResult,
           fetchAvailabilityDocsToUpdateError,
+          deleteBookingDataIsLoading,
+          deleteBookingDataResult,
+          deleteBookingDataError,
         };
       }
     ),
@@ -69,14 +93,29 @@ export const cancelBookingSlice = createSlice({
         state.availabilityDocsToUpdate = [];
         state.fetchAvailabilityDocsToUpdateResult = "rejected";
         state.fetchAvailabilityDocsToUpdateError = action.payload;
+      })
+      .addCase(deleteBookingDataAsync.pending, (state) => {
+        state.deleteBookingDataIsLoading = true;
+      })
+      .addCase(deleteBookingDataAsync.fulfilled, (state) => {
+        state.deleteBookingDataIsLoading = false;
+        state.deleteBookingDataResult = "fulfilled";
+        state.deleteBookingDataError = null;
+      })
+      .addCase(deleteBookingDataAsync.rejected, (state, action) => {
+        state.deleteBookingDataIsLoading = false;
+        state.deleteBookingDataResult = "rejected";
+        state.deleteBookingDataError = action.payload;
       });
   },
 });
 
 export const {
-  setDataForAvailabilityDocsRequest,
+  setDataFromBooking,
   resetFetchAvailabilityDocsToUpdateResult,
   resetFetchAvailabilityDocsToUpdateError,
+  resetDeleteBookingDataResult,
+  resetDeleteBookingDataError,
   resetCancelBookingState,
 } = cancelBookingSlice.actions;
 export const { selectCancelBookingSelectors } = cancelBookingSlice.selectors;

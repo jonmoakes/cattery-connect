@@ -100,7 +100,6 @@ export const checkBookingAvailabilityAsync = createAsyncThunk(
         failingDates = checkLastDayAvailability(
           parsedAvailabilityData,
           numberOfCats,
-
           checkOutSlot,
           failingDates
         );
