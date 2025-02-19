@@ -2,6 +2,7 @@ import { format } from "date-fns";
 
 export const formatReceiptBookingDetails = (uploadBookingData) => {
   const {
+    bookingId,
     catsInBooking,
     checkInDate,
     checkInSlot,
@@ -10,6 +11,12 @@ export const formatReceiptBookingDetails = (uploadBookingData) => {
   } = uploadBookingData;
 
   return `
+
+________________________
+
+**Booking ID**
+
+${bookingId}
 
 ________________________
 

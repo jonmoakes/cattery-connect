@@ -8,6 +8,7 @@ import { addBookingRoute, cancelBookingRoute } from "../../strings/routes";
 
 const ShowBookingData = ({ bookingDataToShow }) => {
   const {
+    bookingId,
     customerName,
     catsInBooking,
     checkInDate,
@@ -30,6 +31,15 @@ const ShowBookingData = ({ bookingDataToShow }) => {
         </CustomBalancedText>
         <BlackHr />
         <ul>
+          {path === cancelBookingRoute ? (
+            <>
+              <li>
+                booking ID
+                <br /> <CustomSpan className="yellow">{bookingId}</CustomSpan>
+              </li>{" "}
+              <BlackHr />
+            </>
+          ) : null}
           <li>
             customer name:
             <br />

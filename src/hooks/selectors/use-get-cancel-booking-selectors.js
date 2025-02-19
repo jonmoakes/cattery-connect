@@ -16,6 +16,7 @@ const useGetCancelBookingSelectors = () => {
 
   const {
     $id,
+    bookingId,
     catsInBooking,
     catteryId,
     checkInDate,
@@ -34,6 +35,7 @@ const useGetCancelBookingSelectors = () => {
     fetchAvailabilityDocsToUpdateResult,
     fetchAvailabilityDocsToUpdateError,
     $id,
+    bookingId,
     catsInBooking,
     catteryId,
     checkInDate,

@@ -8,6 +8,7 @@ const useCancelBookingVariables = () => {
     fetchAvailabilityDocsToUpdateError,
     dataFromBooking,
     $id,
+    bookingId,
     catsInBooking,
     checkInDate,
     checkInSlot,
@@ -28,6 +29,7 @@ const useCancelBookingVariables = () => {
     Object.keys(dataFromBooking).length > 0;
 
   const bookingDataToShow = {
+    bookingId,
     catsInBooking,
     checkInDate,
     checkInSlot,

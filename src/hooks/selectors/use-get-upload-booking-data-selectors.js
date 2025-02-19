@@ -12,6 +12,7 @@ const useGetUploadBookingDataSelectors = () => {
 
   const {
     customerDocumentId,
+    bookingId,
     customerName,
     customerEmail,
     catDetails,
@@ -21,13 +22,13 @@ const useGetUploadBookingDataSelectors = () => {
     checkOutDate,
     checkOutSlot,
   } = uploadBookingData ?? {};
-
   return {
     uploadBookingData,
     uploadBookingDataIsLoading,
     uploadBookingDataResult,
     uploadBookingDataError,
     customerDocumentId,
+    bookingId,
     customerName,
     customerEmail,
     catDetails,

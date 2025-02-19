@@ -10,6 +10,7 @@ import {
   resetIsBookingAvailableResult,
   setShowIneligibleDates,
 } from "../../../../store/is-booking-available/is-booking-available.slice";
+import { generateBookingId } from "../../../../functions/generate-short-id";
 
 const useHandleCustomerSelectChange = () => {
   const { uploadBookingData } = useGetUploadBookingDataSelectors();
@@ -34,6 +35,7 @@ const useHandleCustomerSelectChange = () => {
     dispatch(
       setUploadBookingData({
         ...uploadBookingData,
+        bookingId: generateBookingId(),
         customerDocumentId: selectedCustomer?.$id || "",
         customerId: selectedCustomer?.customerId || "",
         customerName: selectedCustomer?.name || "",
