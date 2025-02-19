@@ -13,14 +13,17 @@ import {
   SEND_EMAIL_CATTERY_CONNECT_UPDATE_PENS_ROLLBACK_ERROR_ENDPOINT,
   SEND_EMAIL_CATTERY_CONNECT_PENS_UPDATED_BOOKING_DATA_FAILED_ENDPOINT,
   SEND_EMAIL_CATTERY_CONNECT_SEND_CUSTOMER_EMAIL_RECEIPT_ENDPOINT,
+  SEND_EMAIL_CATTERY_CONNECT_DELETE_BOOKING_DATA_FAILED_ENDPOINT,
+  SEND_EMAIL_CATTERY_CONNECT_CANCEL_BOOKING_RECEIPT_ENDPOINT,
 } from "../../../netlify/api-endpoints/api-endpoints";
+import { formatCancelBookingReceipt } from "./functions/format-cancel-booking-receipt";
 
 export const sendEmailCatteryConnectUpdatePensRollbackErrorAsync =
   createAsyncThunk(
     "sendEmailCatteryConnectUpdatePensRollbackError",
     async (
       {
-        uploadBookingData,
+        dataForEmail,
         rollbackFailures,
         originalAvailabilityData,
         catteryId,
@@ -30,7 +33,7 @@ export const sendEmailCatteryConnectUpdatePensRollbackErrorAsync =
     ) => {
       try {
         const formattedBookingDetails =
-          formatBookingDetailsForUpdatePenDataError(uploadBookingData);
+          formatBookingDetailsForUpdatePenDataError(dataForEmail);
 
         const formattedRollbackFailures =
           rollbackFailures && rollbackFailures.length > 0
@@ -133,3 +136,55 @@ export const sendEmailCatteryConnectSendCustomerEmailReceiptAsync =
       }
     }
   );
+
+export const sendEmailCatteryConnectDeleteBookingDataFailedAsync =
+  createAsyncThunk(
+    "sendEmailCatteryConnectDeleteBookingDataFailed",
+    async ({ catteryId, $id, deleteBookingDataError }, thunkAPI) => {
+      try {
+        const response = await axios.post(
+          SEND_EMAIL_CATTERY_CONNECT_DELETE_BOOKING_DATA_FAILED_ENDPOINT,
+          {
+            catteryId,
+            documentId: $id,
+            deleteBookingDataError,
+          }
+        );
+
+        const statusCode = response.status;
+        return statusCode;
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+    }
+  );
+
+export const sendCustomerCancellationEmailAsync = createAsyncThunk(
+  "sendCustomerCancellationEmail",
+  async ({ dataFromBooking, catteryName, phone, catteryEmail }, thunkAPI) => {
+    try {
+      const { customerEmail, customerName, bookingId } = dataFromBooking;
+
+      const formattedCancelledBookingDetails =
+        formatCancelBookingReceipt(dataFromBooking);
+
+      const response = await axios.post(
+        SEND_EMAIL_CATTERY_CONNECT_CANCEL_BOOKING_RECEIPT_ENDPOINT,
+        {
+          customerEmail,
+          customerName: getFirstNameFromString(customerName),
+          catteryName,
+          bookingId,
+          formattedCancelledBookingDetails,
+          phone,
+          catteryEmail,
+        }
+      );
+
+      const statusCode = response.status;
+      return statusCode;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

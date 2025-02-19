@@ -1,25 +1,33 @@
 import { useDispatch } from "react-redux";
 
-import useGetUpdatePensDataSelectors from "../../../../../hooks/selectors/use-get-update-pens-data-selectors";
+import useGetUpdatePensDataSelectors from "../hooks/selectors/use-get-update-pens-data-selectors";
 import {
   resetUpdatePensDataError,
   resetUpdatePensDataResult,
-} from "../../../../../store/update-pens-data/update-pens-data.slice";
+} from "../store/update-pens-data/update-pens-data.slice";
 
-import useFireSwal from "../../../../../hooks/use-fire-swal";
+import useFireSwal from "../hooks/use-fire-swal";
 
-import { errorReceivedMessage } from "../../../../../strings/errors";
+import { errorReceivedMessage } from "../strings/errors";
+import { useLocation } from "react-router-dom";
+import { addBookingRoute, cancelBookingRoute } from "../strings/routes";
 
 const useUpdatePensErrorSwal = () => {
   const { updatePensDataError } = useGetUpdatePensDataSelectors();
   const { fireSwal } = useFireSwal();
   const dispatch = useDispatch();
+  const location = useLocation();
+  const path = location.pathname;
 
   const updatePensErrorSwal = () => {
     fireSwal(
       "error",
       errorReceivedMessage(
-        "there was an error making the booking.",
+        `there was an error  ${
+          path === addBookingRoute
+            ? "making"
+            : path === cancelBookingRoute && "cancelling"
+        } the booking.`,
         updatePensDataError
       ),
       0,

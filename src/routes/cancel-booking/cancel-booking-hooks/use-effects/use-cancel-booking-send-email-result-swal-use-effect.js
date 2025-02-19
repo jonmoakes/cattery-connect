@@ -1,23 +1,22 @@
 import { useEffect } from "react";
 
-import useGetSendEmailSelectors from "../../../../../hooks/selectors/use-get-send-email-selectors";
-import useGetUpdatePensDataSelectors from "../../../../../hooks/selectors/use-get-update-pens-data-selectors";
-import useGetUploadBookingDataSelectors from "../../../../../hooks/selectors/use-get-upload-booking-data-selectors";
+import useGetSendEmailSelectors from "../../../../hooks/selectors/use-get-send-email-selectors";
+import useCancelBookingVariables from "../use-cancel-booking-variables";
 
-import useFireSwal from "../../../../../hooks/use-fire-swal";
-import useHamburgerHandlerNavigate from "../../../../../hooks/use-hamburger-handler-navigate";
+import useFireSwal from "../../../../hooks/use-fire-swal";
+import useHamburgerHandlerNavigate from "../../../../hooks/use-hamburger-handler-navigate";
 
-import { accountRoute } from "../../../../../strings/routes";
-import {
-  pensUpdatedUploadBookingDataFailedEmailSentMessage,
-  updatePenRollbackErrorEmailSentMessage,
-} from "../../../../../strings/info";
+import { updatePenRollbackErrorEmailSentMessage } from "../../../../strings/info";
+import { pensUpdatedDeleteBookingDataFailedEmailSentMessage } from "../../../../strings/info";
+import { bookingsRoute, contactRoute } from "../../../../strings/routes";
 
-const useSendEmailResultSwalUseEffect = () => {
+const useCancelBookingSendEmailResultSwalUseEffect = () => {
   const { sendEmailStatusCode, sendEmailError } = useGetSendEmailSelectors();
-  const { uploadBookingDataError, uploadBookingDataResult } =
-    useGetUploadBookingDataSelectors();
-  const { updatePensDataError } = useGetUpdatePensDataSelectors();
+  const {
+    deleteBookingDataResult,
+    deleteBookingDataError,
+    updatePensDataError,
+  } = useCancelBookingVariables();
 
   const { fireSwal } = useFireSwal();
   const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
@@ -37,13 +36,13 @@ const useSendEmailResultSwalUseEffect = () => {
         false
       ).then((isConfirmed) => {
         if (isConfirmed) {
-          hamburgerHandlerNavigate(accountRoute);
+          hamburgerHandlerNavigate(bookingsRoute);
         }
       });
-    } else if (sendEmailStatusCode === 202 && uploadBookingDataError) {
+    } else if (sendEmailStatusCode === 202 && deleteBookingDataError) {
       fireSwal(
         "success",
-        pensUpdatedUploadBookingDataFailedEmailSentMessage,
+        pensUpdatedDeleteBookingDataFailedEmailSentMessage,
         "",
         0,
         "",
@@ -52,17 +51,17 @@ const useSendEmailResultSwalUseEffect = () => {
         false
       ).then((isConfirmed) => {
         if (isConfirmed) {
-          hamburgerHandlerNavigate(accountRoute);
+          hamburgerHandlerNavigate(bookingsRoute);
         }
       });
     } else if (
       sendEmailStatusCode === 202 &&
-      uploadBookingDataResult === "fulfilled"
+      deleteBookingDataResult === "fulfilled"
     ) {
       fireSwal("success", "email sent!", "", 0, "", false, "", false).then(
         (isConfirmed) => {
           if (isConfirmed) {
-            hamburgerHandlerNavigate(accountRoute);
+            hamburgerHandlerNavigate(bookingsRoute);
           }
         }
       );
@@ -70,7 +69,7 @@ const useSendEmailResultSwalUseEffect = () => {
       fireSwal(
         "error",
         `sorry,the email failed to send.. Please contact jonathan. The error received was: 
-        
+
 ${sendEmailError}`,
         "",
         0,
@@ -80,7 +79,7 @@ ${sendEmailError}`,
         true
       ).then((isConfirmed) => {
         if (isConfirmed) {
-          hamburgerHandlerNavigate(accountRoute);
+          hamburgerHandlerNavigate(contactRoute);
         }
       });
     }
@@ -89,10 +88,10 @@ ${sendEmailError}`,
     sendEmailError,
     hamburgerHandlerNavigate,
     fireSwal,
-    uploadBookingDataError,
+    deleteBookingDataResult,
+    deleteBookingDataError,
     updatePensDataError,
-    uploadBookingDataResult,
   ]);
 };
 
-export default useSendEmailResultSwalUseEffect;
+export default useCancelBookingSendEmailResultSwalUseEffect;

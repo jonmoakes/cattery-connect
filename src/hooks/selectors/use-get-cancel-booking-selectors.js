@@ -23,11 +23,13 @@ const useGetCancelBookingSelectors = () => {
     checkOutDate,
     checkOutSlot,
     customerName,
+    customerEmail,
   } = dataFromBooking ?? {};
 
   return {
     fetchAvailabilityDocsToUpdateIsLoading,
     dataFromBooking,
+    customerEmail,
     availabilityDocsToUpdate,
     fetchAvailabilityDocsToUpdateResult,
     fetchAvailabilityDocsToUpdateError,

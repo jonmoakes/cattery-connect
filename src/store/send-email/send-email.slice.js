@@ -3,6 +3,8 @@ import {
   sendEmailCatteryConnectUpdatePensRollbackErrorAsync,
   sendEmailCatteryConnectPensUpdatedBookingDataFailedAsync,
   sendEmailCatteryConnectSendCustomerEmailReceiptAsync,
+  sendEmailCatteryConnectDeleteBookingDataFailedAsync,
+  sendCustomerCancellationEmailAsync,
 } from "./send-email.thunks";
 
 const INITIAL_STATE = {
@@ -63,6 +65,11 @@ export const sendEmailSlice = createSlice({
       builder,
       sendEmailCatteryConnectSendCustomerEmailReceiptAsync
     );
+    handleAsyncAction(
+      builder,
+      sendEmailCatteryConnectDeleteBookingDataFailedAsync
+    );
+    handleAsyncAction(builder, sendCustomerCancellationEmailAsync);
   },
 });
 

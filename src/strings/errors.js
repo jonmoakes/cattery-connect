@@ -34,6 +34,7 @@ export const updatePensDataErrorMessage = (
 
 export const pensUpdatedBookingDataNotAddedErrorMessage = `<span style="font-size:20px";>the pens data was successfully updated but booking data was not uploaded to the database.<br/><br/>when you tap 'send email' below, we will send jonathan details of the error so he can update the database manually.</span>`;
 
+export const pensUpdatedBookingDataNotDeletedErrorMessage = `<span style="font-size:20px";>the pens data was successfully updated but booking data was not deleted from the database.<br/><br/>when you tap 'send email' below, we will send jonathan details of the error so he can update the database manually.</span>`;
 export const cantIncludeCommaMessage = "names can't include a comma";
 export const appwriteUserNotFoundMessage =
   "User with the requested ID could not be found.";

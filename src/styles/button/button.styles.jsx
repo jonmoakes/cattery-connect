@@ -59,6 +59,10 @@ export const Button = styled.button`
     text-shadow: 1px 1px 1px ${softBlack};
   }
 
+  &.cancel {
+    margin-top: 40px;
+  }
+
   @media screen and (max-width: 320px) {
     width: 200px;
   }

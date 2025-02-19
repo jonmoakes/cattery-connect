@@ -546,7 +546,7 @@ export const BookingWrapper = styled.div`
   border: 1px solid ${softBlack};
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  animation: 2s ${rollInAnimation};
+  animation: 1s ${rollInAnimation};
 
   &.available {
     background: ${radialLightGreen};

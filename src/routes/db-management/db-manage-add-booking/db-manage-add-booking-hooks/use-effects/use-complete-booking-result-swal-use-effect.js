@@ -4,8 +4,8 @@ import useGetUpdatePensDataSelectors from "../../../../../hooks/selectors/use-ge
 import useGetUploadBookingDataSelectors from "../../../../../hooks/selectors/use-get-upload-booking-data-selectors";
 
 import useBookingCompleteSwal from "../swals/use-booking-complete-swal";
-import usePenDataRollbackErrorSwal from "../swals/use-pen-data-rollback-error-swal";
-import useUpdatePensErrorSwal from "../swals/use-update-pens-error-swal";
+import usePenDataRollbackErrorSwal from "../../../../../hooks/use-pen-data-rollback-error-swal";
+import useUpdatePensErrorSwal from "../../../../../hooks/use-update-pens-error-swal";
 import usePensUpdatedBookingDataFailedSwal from "../swals/use-pens-updated-booking-data-failed-swal";
 import { pensRollbackFailureErrorCode } from "../../../../../constants/constants";
 

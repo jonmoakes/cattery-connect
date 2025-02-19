@@ -1,9 +1,9 @@
 import useGetCancelBookingSelectors from "../../../hooks/selectors/use-get-cancel-booking-selectors";
+import useGetRequiredCatteryDataForBookingSelectors from "../../../hooks/selectors/use-get-required-cattery-data-for-booking-selectors";
 import useGetUpdatePensDataSelectors from "../../../hooks/selectors/use-get-update-pens-data-selectors";
 
 const useCancelBookingVariables = () => {
   const {
-    fetchAvailabilityDocsToUpdateIsLoading,
     availabilityDocsToUpdate,
     fetchAvailabilityDocsToUpdateError,
     dataFromBooking,
@@ -14,13 +14,15 @@ const useCancelBookingVariables = () => {
     checkOutDate,
     checkOutSlot,
     customerName,
+    customerEmail,
     parsedAvailabilityData,
-    deleteBookingDataIsLoading,
     deleteBookingDataResult,
     deleteBookingDataError,
   } = useGetCancelBookingSelectors();
-  const { updatePensDataIsLoading, updatePensDataResult, updatePensDataError } =
+  const { updatePensDataResult, updatePensDataError } =
     useGetUpdatePensDataSelectors();
+  const { requiredCatteryDataError, name, phone, catteryEmail } =
+    useGetRequiredCatteryDataForBookingSelectors();
 
   const hasDataPassedFromBookingsTable =
     Object.keys(dataFromBooking).length > 0;
@@ -35,8 +37,7 @@ const useCancelBookingVariables = () => {
   };
 
   return {
-    updatePensDataIsLoading,
-    fetchAvailabilityDocsToUpdateIsLoading,
+    customerEmail,
     fetchAvailabilityDocsToUpdateError,
     $id,
     dataFromBooking,
@@ -44,11 +45,14 @@ const useCancelBookingVariables = () => {
     bookingDataToShow,
     parsedAvailabilityData,
     hasDataPassedFromBookingsTable,
-    deleteBookingDataIsLoading,
     deleteBookingDataResult,
     deleteBookingDataError,
     updatePensDataResult,
     updatePensDataError,
+    requiredCatteryDataError,
+    name,
+    phone,
+    catteryEmail,
   };
 };
 

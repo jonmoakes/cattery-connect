@@ -35,6 +35,7 @@ import {
 import useResetAddBookingState from "./use-reset-add-booking-state";
 import { resetBookingsState } from "../store/bookings/bookings.slice";
 import { resetCancelBookingState } from "../store/cancel-booking/cancel-booking.slice";
+import { resetRequiredCatteryDataForBookingState } from "../store/required-cattery-data/required-cattery-data-for-booking.slice";
 
 const useResetStoreOnRouteChangeUseEffect = () => {
   const { allUsersCatteryIdsAndOwnerNameError } = useGetAllUsersSelectors();
@@ -87,6 +88,7 @@ const useResetStoreOnRouteChangeUseEffect = () => {
           break;
         case cancelBookingRoute:
           dispatch(resetCancelBookingState());
+          dispatch(resetRequiredCatteryDataForBookingState());
           break;
         default:
           break;

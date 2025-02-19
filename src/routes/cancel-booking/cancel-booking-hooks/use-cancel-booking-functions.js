@@ -19,13 +19,16 @@ const useCancelBookingFunctions = () => {
   const dispatch = useDispatch();
   const { confirmSwal } = useConfirmSwal();
 
-  const confirmCancelBooking = () => {
+  const confirmCancelBooking = (e) => {
+    e.preventDefault();
+
     const uploadBookingData = {
       ...dataFromBooking,
-      catsInBooking: dataFromBooking.catsInBooking
-        .split(",")
-        .map((cat) => cat.trim()),
+      catsInBooking: dataFromBooking?.catsInBooking
+        ? dataFromBooking.catsInBooking.split(",").map((cat) => cat.trim())
+        : [],
     };
+
     const operation = "add";
 
     confirmSwal(

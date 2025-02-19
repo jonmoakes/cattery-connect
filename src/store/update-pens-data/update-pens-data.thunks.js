@@ -56,7 +56,6 @@ export const updatePensDataInDbAsync = createAsyncThunk(
           morningPensData: JSON.stringify(updatedMorningPens),
           afternoonPensData: JSON.stringify(updatedAfternoonPens),
         };
-
         await manageDatabaseDocument(
           "update",
           databaseId,
@@ -74,6 +73,7 @@ export const updatePensDataInDbAsync = createAsyncThunk(
           morningPensData: JSON.stringify(day.morningPens),
           afternoonPensData: JSON.stringify(day.afternoonPens),
         };
+
         try {
           await manageDatabaseDocument(
             "update",
@@ -89,17 +89,17 @@ export const updatePensDataInDbAsync = createAsyncThunk(
 
       if (rollbackFailures.length > 0) {
         return thunkAPI.rejectWithValue({
-          message: `there was an Error making booking..
+          message: `there was an Error processing the booking..
   
   ( error code '${pensRollbackFailureErrorCode}' ). 
   
-  in order to avoid disruption to the booking system, please don't attempt to make any more bookings just yet.
+  in order to avoid disruption to the booking system, please don't attempt to make or cancel any more bookings just yet.
   
   due to the nature of the error, we require manual intervention. 
   
   when you press 'send email' below, we will send an email to jonathan with details of the error. 
   
-  please confirm he has fixed the errors before attempting to make any more bookings.`,
+  please confirm he has fixed the errors before attempting to make or cancel any more bookings.`,
           originalAvailabilityData,
           uploadBookingData,
           rollbackFailures,

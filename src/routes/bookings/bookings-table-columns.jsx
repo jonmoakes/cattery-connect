@@ -42,6 +42,10 @@ const BOOKINGS_TABLE_COLUMNS = [
     Header: "customer ID",
     accessor: "customerId",
   },
+  {
+    Header: "booking ID",
+    accessor: "bookingId",
+  },
 ];
 
 export default BOOKINGS_TABLE_COLUMNS;

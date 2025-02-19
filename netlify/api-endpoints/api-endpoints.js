@@ -4,3 +4,7 @@ export const SEND_EMAIL_CATTERY_CONNECT_PENS_UPDATED_BOOKING_DATA_FAILED_ENDPOIN
   "/.netlify/functions/send-email-cattery-connect-pens-updated-booking-data-failed";
 export const SEND_EMAIL_CATTERY_CONNECT_SEND_CUSTOMER_EMAIL_RECEIPT_ENDPOINT =
   "/.netlify/functions/send-email-cattery-connect-send-customer-email-receipt";
+export const SEND_EMAIL_CATTERY_CONNECT_DELETE_BOOKING_DATA_FAILED_ENDPOINT =
+  "/.netlify/functions/send-email-cattery-connect-delete-booking-data-failed";
+export const SEND_EMAIL_CATTERY_CONNECT_CANCEL_BOOKING_RECEIPT_ENDPOINT =
+  "/.netlify/functions/send-email-cattery-connect-cancel-booking-receipt";

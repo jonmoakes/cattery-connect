@@ -12,3 +12,9 @@ export const generateShortId = (name) => {
 
   return firstInitial + lastInitial + randomPart;
 };
+
+export const generateBookingId = () => {
+  const numbers = customAlphabet("0123456789", 3)(); // Generate 3 random numbers
+  const letters = customAlphabet("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 3)(); // Generate 3 random uppercase letters
+  return `CAT-${numbers}${letters}`; // Format as CAT-123ABC
+};

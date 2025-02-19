@@ -25,9 +25,10 @@ const ShowBookingData = ({ bookingDataToShow }) => {
         <CustomBalancedText type="h3">
           {path === addBookingRoute
             ? "booking details"
-            : path === cancelBookingRoute && "details of booking to cancel"}
+            : path === cancelBookingRoute && "details of the booking to cancel"}
           :
         </CustomBalancedText>
+        <BlackHr />
         <ul>
           <li>
             customer name:

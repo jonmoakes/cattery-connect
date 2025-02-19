@@ -20,9 +20,9 @@ const useBookingsFunctions = () => {
       checkOutDate,
       checkOutSlot,
       customerName,
+      customerEmail,
+      bookingId,
     } = chosenEntry;
-
-    console.log(chosenEntry);
 
     const dataToPass = {
       $id,
@@ -33,6 +33,8 @@ const useBookingsFunctions = () => {
       checkOutDate,
       checkOutSlot,
       customerName,
+      customerEmail,
+      bookingId,
     };
 
     dispatch(setDataFromBooking(dataToPass));

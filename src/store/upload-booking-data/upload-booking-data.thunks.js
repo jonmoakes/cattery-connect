@@ -4,6 +4,7 @@ import { ID } from "appwrite";
 import { bookingsCollectionId, databaseId } from "../../constants/constants";
 
 import { manageDatabaseDocument } from "../../utils/appwrite/appwrite-functions";
+import { generateBookingId } from "../../functions/generate-short-id";
 
 export const uploadBookingDataToDbAsync = createAsyncThunk(
   "uploadBookingDataToDb",
@@ -17,10 +18,13 @@ export const uploadBookingDataToDbAsync = createAsyncThunk(
         checkOutSlot,
         customerId,
         customerName,
+        customerEmail,
       } = uploadBookingData;
 
       const data = {
+        bookingId: generateBookingId(),
         customerName,
+        customerEmail,
         customerId,
         checkInDate,
         checkInSlot,
