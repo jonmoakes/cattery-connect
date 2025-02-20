@@ -25,6 +25,10 @@ export const errorReceivedMessage = (errorInfo, error) => {
   return `<span style="font-size:20px";>${errorInfo}<br/><br/>The error received was:<br/>'<span style="color:${warmBeige}";>${error}</span>'<br/><br/><span style="font-size:20px";>please try again or contact us if the error persists.</span>`;
 };
 
+export const contactFormErrorMessage = (error) => {
+  return `<span style="font-size:20px";>sorry, there was an error sending the message.<br/><br/>The error received was:<br/>'<span style="color:${warmBeige}";>${error}</span>'<br/><br/><span style="font-size:20px";>please try again or find our email address in the 'account' section of our app and manually send us an email.<br/><br/>we apologise for the inconvenience.</span>`;
+};
+
 export const updatePensDataErrorMessage = (
   errorInfo,
   updatePensDataErrorMessage

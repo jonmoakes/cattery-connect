@@ -5,9 +5,17 @@ import {
   sendEmailCatteryConnectSendCustomerEmailReceiptAsync,
   sendEmailCatteryConnectDeleteBookingDataFailedAsync,
   sendCustomerCancellationEmailAsync,
+  sendEmailContactFormMessageAsync,
 } from "./send-email.thunks";
 
+const defaultContactFormDetails = {
+  senderName: "",
+  senderEmail: "",
+  senderMessage: "",
+};
+
 const INITIAL_STATE = {
+  contactFormDetails: defaultContactFormDetails,
   sendEmailIsLoading: false,
   sendEmailStatusCode: "",
   sendEmailError: null,
@@ -34,6 +42,12 @@ export const sendEmailSlice = createSlice({
   name: "sendEmail",
   initialState: INITIAL_STATE,
   reducers: {
+    setContactFormDetails(state, action) {
+      state.contactFormDetails = action.payload;
+    },
+    resetContactFormDetails(state) {
+      state.contactFormDetails = defaultContactFormDetails;
+    },
     resetSendEmailState: () => {
       return INITIAL_STATE;
     },
@@ -43,11 +57,18 @@ export const sendEmailSlice = createSlice({
       (state) => state.sendEmailIsLoading,
       (state) => state.sendEmailStatusCode,
       (state) => state.sendEmailError,
-      (sendEmailIsLoading, sendEmailStatusCode, sendEmailError) => {
+      (state) => state.contactFormDetails,
+      (
+        sendEmailIsLoading,
+        sendEmailStatusCode,
+        sendEmailError,
+        contactFormDetails
+      ) => {
         return {
           sendEmailIsLoading,
           sendEmailStatusCode,
           sendEmailError,
+          contactFormDetails,
         };
       }
     ),
@@ -70,10 +91,15 @@ export const sendEmailSlice = createSlice({
       sendEmailCatteryConnectDeleteBookingDataFailedAsync
     );
     handleAsyncAction(builder, sendCustomerCancellationEmailAsync);
+    handleAsyncAction(builder, sendEmailContactFormMessageAsync);
   },
 });
 
-export const { resetSendEmailState } = sendEmailSlice.actions;
+export const {
+  setContactFormDetails,
+  resetContactFormDetails,
+  resetSendEmailState,
+} = sendEmailSlice.actions;
 export const { selectSendEmailSelectors } = sendEmailSlice.selectors;
 
 export const sendEmailReducer = sendEmailSlice.reducer;

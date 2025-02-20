@@ -15,6 +15,8 @@ export const smallRateLimit = 250;
 
 export const defaultTableSize = 30;
 
+export const maxTextAreaCharacterLength = 1000;
+
 // errors
 export const pensRollbackFailureErrorCode = "PRBF";
 export const catteryNotAvailableOnThisDateString =

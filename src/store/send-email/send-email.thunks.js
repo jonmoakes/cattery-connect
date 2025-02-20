@@ -15,6 +15,7 @@ import {
   SEND_EMAIL_CATTERY_CONNECT_SEND_CUSTOMER_EMAIL_RECEIPT_ENDPOINT,
   SEND_EMAIL_CATTERY_CONNECT_DELETE_BOOKING_DATA_FAILED_ENDPOINT,
   SEND_EMAIL_CATTERY_CONNECT_CANCEL_BOOKING_RECEIPT_ENDPOINT,
+  SEND_EMAIL_CATTERY_CONNECT_CONTACT_FORM_MESSAGE_ENDPOINT,
 } from "../../../netlify/api-endpoints/api-endpoints";
 import { formatCancelBookingReceipt } from "./functions/format-cancel-booking-receipt";
 
@@ -178,6 +179,27 @@ export const sendCustomerCancellationEmailAsync = createAsyncThunk(
           formattedCancelledBookingDetails,
           phone,
           catteryEmail,
+        }
+      );
+
+      const statusCode = response.status;
+      return statusCode;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const sendEmailContactFormMessageAsync = createAsyncThunk(
+  "sendEmailContactFormMessage",
+  async ({ senderName, senderEmail, senderMessage }, thunkAPI) => {
+    try {
+      const response = await axios.post(
+        SEND_EMAIL_CATTERY_CONNECT_CONTACT_FORM_MESSAGE_ENDPOINT,
+        {
+          senderName,
+          senderEmail: senderEmail.toLowerCase(),
+          senderMessage,
         }
       );
 

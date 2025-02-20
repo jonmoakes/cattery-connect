@@ -15,7 +15,10 @@ import {
   resetAllUsersCatteryIdsAndOwnerNameError,
   resetGetAllUsersState,
 } from "../store/get-all-users/get-all-users.slice";
-import { resetSendEmailState } from "../store/send-email/send-email.slice";
+import {
+  resetContactFormDetails,
+  resetSendEmailState,
+} from "../store/send-email/send-email.slice";
 
 import {
   addCatChooseOwnerRoute,
@@ -31,6 +34,7 @@ import {
   allUsersRoute,
   bookingsRoute,
   cancelBookingRoute,
+  contactRoute,
 } from "../strings/routes";
 import useResetAddBookingState from "./use-reset-add-booking-state";
 import { resetBookingsState } from "../store/bookings/bookings.slice";
@@ -89,6 +93,10 @@ const useResetStoreOnRouteChangeUseEffect = () => {
         case cancelBookingRoute:
           dispatch(resetCancelBookingState());
           dispatch(resetRequiredCatteryDataForBookingState());
+          break;
+        case contactRoute:
+          dispatch(resetContactFormDetails());
+          dispatch(resetSendEmailState());
           break;
         default:
           break;

@@ -19,3 +19,5 @@ export const updatePenRollbackErrorEmailSentMessage = `<span style="font-size:20
 export const pensUpdatedUploadBookingDataFailedEmailSentMessage = `<span style="font-size:20px";> email sent!<br/><br/>jonathan will diagnose the error and then manually update the database.<br/><br/>he will contact you as soon as it has been done and you will also see the booking appear in your bookings table as soon as it has been manually uploaded.<br/><br/>we apologise for the inconvenience!</span>`;
 
 export const pensUpdatedDeleteBookingDataFailedEmailSentMessage = `<span style="font-size:20px";> email sent!<br/><br/>jonathan will diagnose the error and then manually update the database.<br/><br/>he will contact you as soon as it has been done and you will also see the booking disappear in your bookings table as soon as it has been manually deleted.<br/><br/>we apologise for the inconvenience!</span>`;
+export const emailResponseTimeMessage =
+  "Your Message Has Been Sent! We aim to respond to your email within 24hrs.";
