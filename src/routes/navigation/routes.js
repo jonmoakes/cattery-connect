@@ -8,9 +8,11 @@ import {
   allCatsRoute,
   allUsersRoute,
   bookingsRoute,
+  todaysScheduleRoute,
 } from "../../strings/routes";
 
 export const signedInRoutes = [
+  todaysScheduleRoute,
   bookingsRoute,
   allCustomersRoute,
   allCatsRoute,

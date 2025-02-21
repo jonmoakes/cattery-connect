@@ -33,6 +33,7 @@ import {
   bookingsRoute,
   cancelBookingRoute,
   contactRoute,
+  todaysScheduleRoute,
 } from "./strings/routes";
 
 const Navigation = lazy(() =>
@@ -79,6 +80,9 @@ const Bookings = lazy(() => import("./routes/bookings/bookings.component"));
 const CancelBooking = lazy(() =>
   import("./routes/cancel-booking/cancel-booking.component")
 );
+const TodaysSchedule = lazy(() =>
+  import("./routes/todays-schedule/todays-schedule.component")
+);
 
 const App = () => {
   const { currentUser, role } = useGetCurrentUserSelectors();
@@ -120,6 +124,13 @@ const App = () => {
                   currentUser && role === "admin" ? (
                     <UploadDatesAndPensData />
                   ) : null
+                }
+              />
+
+              <Route
+                path={todaysScheduleRoute}
+                element={
+                  currentUser && role === "owner" ? <TodaysSchedule /> : null
                 }
               />
 
