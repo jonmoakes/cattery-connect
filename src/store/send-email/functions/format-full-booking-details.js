@@ -1,5 +1,6 @@
 export const formatFullBookingDetails = (uploadBookingData) => {
   const {
+    bookingId,
     customerName,
     catsInBooking,
     checkInDate,
@@ -10,6 +11,12 @@ export const formatFullBookingDetails = (uploadBookingData) => {
   } = uploadBookingData;
 
   return `
+
+________________________
+
+**Booking ID**
+
+${bookingId}
 
 ________________________
 

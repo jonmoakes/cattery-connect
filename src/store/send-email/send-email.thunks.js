@@ -69,7 +69,10 @@ export const sendEmailCatteryConnectUpdatePensRollbackErrorAsync =
 export const sendEmailCatteryConnectPensUpdatedBookingDataFailedAsync =
   createAsyncThunk(
     "sendEmailPensUpdatedUploadBookingDataFailed",
-    async ({ uploadBookingData, catteryId, addBookingDataError }, thunkAPI) => {
+    async (
+      { uploadBookingData, catteryId, uploadBookingDataError },
+      thunkAPI
+    ) => {
       try {
         const formattedFullBookingDetails =
           formatFullBookingDetails(uploadBookingData);
@@ -78,7 +81,7 @@ export const sendEmailCatteryConnectPensUpdatedBookingDataFailedAsync =
           SEND_EMAIL_CATTERY_CONNECT_PENS_UPDATED_BOOKING_DATA_FAILED_ENDPOINT,
           {
             catteryId,
-            addBookingDataError,
+            uploadBookingDataError,
             formattedFullBookingDetails,
           }
         );
