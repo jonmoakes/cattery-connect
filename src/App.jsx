@@ -71,10 +71,8 @@ const AllCats = lazy(() => import("./routes/all-cats/all-cats.component"));
 const AddCatChooseOwner = lazy(() =>
   import("./routes/add-cat-choose-owner/add-cat-choose-owner.component")
 );
-const DbManageAddBooking = lazy(() =>
-  import(
-    "./routes/db-management/db-manage-add-booking/db-manage-add-booking.component"
-  )
+const AddBooking = lazy(() =>
+  import("./routes/add-booking/add-booking.component")
 );
 const AllUsers = lazy(() => import("./routes/all-users/all-users.component"));
 const Bookings = lazy(() => import("./routes/bookings/bookings.component"));
@@ -183,9 +181,7 @@ const App = () => {
               <Route
                 path={addBookingRoute}
                 element={
-                  currentUser && role === "owner" ? (
-                    <DbManageAddBooking />
-                  ) : null
+                  currentUser && role === "owner" ? <AddBooking /> : null
                 }
               />
 
