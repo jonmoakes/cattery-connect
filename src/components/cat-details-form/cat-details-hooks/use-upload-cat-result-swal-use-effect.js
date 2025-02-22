@@ -6,6 +6,7 @@ import useGetCatDetailsManagementSelectors from "../../../hooks/selectors/use-ge
 import {
   resetCatDetailsManagementError,
   resetCatDetailsManagementResult,
+  resetCatDetailsManagementState,
 } from "../../../store/cat-details-management/cat-details-management.slice";
 
 import useFireSwal from "../../../hooks/use-fire-swal";
@@ -55,14 +56,16 @@ const useUploadCatResultSwalUseEffect = (fromRoute) => {
         false
       ).then((isConfirmed) => {
         if (isConfirmed) {
-          if (fromRoute === viewCustomersCatsRoute) {
+          dispatch(resetCatDetailsManagementState());
+          if (
+            fromRoute === viewCustomersCatsRoute ||
+            fromRoute === allCustomersRoute
+          ) {
             hamburgerHandlerNavigate(allCustomersRoute);
           } else if (
-            fromRoute === allCatsRoute ||
-            fromRoute === addCatChooseOwnerRoute
+            fromRoute === addCatChooseOwnerRoute ||
+            fromRoute === allCatsRoute
           ) {
-            hamburgerHandlerNavigate(allCatsRoute);
-          } else {
             hamburgerHandlerNavigate(allCatsRoute);
           }
         }

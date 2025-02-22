@@ -14,7 +14,6 @@ const useAllCatsTableVariables = () => {
     fetchOwnerDetailsIsLoading,
     allCats,
     selectedCatsName,
-    selectedCatsOwnerCustomerDocumentId,
     selectedCatsOwnerCustomerId,
     selectedCatsOwnerDetails,
     getAllCatsError,
@@ -32,7 +31,9 @@ const useAllCatsTableVariables = () => {
   const hasCatsOwnerDetails =
     selectedCatsOwnerDetails &&
     selectedCatsOwnerDetails.length &&
-    Object.keys(selectedCatsOwnerDetails).length > 0;
+    Object.keys(selectedCatsOwnerDetails).length > 0
+      ? true
+      : false;
 
   const columns = useMemo(
     () =>
@@ -53,7 +54,7 @@ const useAllCatsTableVariables = () => {
 
   const initialState = useMemo(
     () => ({
-      sortBy: [{ id: "customerName", desc: false }],
+      sortBy: [{ id: "ownersName", desc: false }],
       pageSize: allCatsPageSizeFromLocalStorage
         ? Number(allCatsPageSizeFromLocalStorage)
         : defaultTableSize,
@@ -70,7 +71,6 @@ const useAllCatsTableVariables = () => {
     catDetailManagementIsLoading,
     allCats,
     selectedCatsName,
-    selectedCatsOwnerCustomerDocumentId,
     selectedCatsOwnerCustomerId,
     selectedCatsOwnerDetails,
     getAllCatsError,

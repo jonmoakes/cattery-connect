@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { deleteCatFromDbAsync } from "../store/cat-details-management/cat-details-management.thunks";
+import { deleteCatAsync } from "../store/cat-details-management/cat-details-management.thunks";
 
 import useConfirmSwal from "./use-confirm-swal";
 
@@ -10,11 +10,7 @@ const useDeleteCat = () => {
 
   const dispatch = useDispatch();
 
-  const deleteCat = (
-    catDetailsAfterRemovingCatForDeletion,
-    catsName,
-    customerDocumentId
-  ) => {
+  const deleteCat = (catsName, catsDocumentId) => {
     const type = "";
     confirmSwal(
       confirmDeleteMessage(catsName, type),
@@ -23,9 +19,8 @@ const useDeleteCat = () => {
       "don't delete",
       () =>
         dispatch(
-          deleteCatFromDbAsync({
-            catDetailsAfterRemovingCatForDeletion,
-            customerDocumentId,
+          deleteCatAsync({
+            catsDocumentId,
           })
         ),
       null

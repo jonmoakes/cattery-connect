@@ -5,18 +5,14 @@ import { useLocation } from "react-router-dom";
 import useGetCatDetailsManagementSelectors from "./selectors/use-get-cat-details-management-selectors";
 import useGetCurrentUserSelectors from "./selectors/use-get-current-user-selectors";
 import useHamburgerHandlerNavigate from "./use-hamburger-handler-navigate";
-import { resetCatDetailsManagementState } from "../store/cat-details-management/cat-details-management.slice";
-import { resetGetAllCatsState } from "../store/get-all-cats/get-all-cats.slice";
-import { fetchAllCatsAsync } from "../store/get-all-cats/get-all-cats.thunks";
+import {
+  resetDeleteCatError,
+  resetDeleteCatResult,
+} from "../store/cat-details-management/cat-details-management.slice";
 
 import useFireSwal from "./use-fire-swal";
 
 import { errorReceivedMessage } from "../strings/errors";
-import {
-  allCatsRoute,
-  allCustomersRoute,
-  viewCustomersCatsRoute,
-} from "../strings/routes";
 
 const useDeleteCatResultSwalUseEffect = () => {
   const { deleteCatResult, deleteCatError } =
@@ -44,13 +40,7 @@ const useDeleteCatResultSwalUseEffect = () => {
         false
       ).then((isConfirmed) => {
         if (isConfirmed) {
-          dispatch(resetCatDetailsManagementState());
-          if (path === viewCustomersCatsRoute) {
-            hamburgerHandlerNavigate(allCustomersRoute);
-          } else if (path === allCatsRoute) {
-            dispatch(resetGetAllCatsState());
-            dispatch(fetchAllCatsAsync({ catteryId }));
-          }
+          dispatch(resetDeleteCatResult());
         }
       });
     } else {
@@ -66,7 +56,8 @@ const useDeleteCatResultSwalUseEffect = () => {
         false
       ).then((isConfirmed) => {
         if (isConfirmed) {
-          dispatch(resetCatDetailsManagementState());
+          dispatch(resetDeleteCatResult());
+          dispatch(resetDeleteCatError());
         }
       });
     }

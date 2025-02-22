@@ -4,7 +4,9 @@ import { listDocumentsByQueryOrSearch } from "../../utils/appwrite/appwrite-func
 import {
   databaseId,
   customersCollectionId,
-  standardRateLimit,
+  catsCollectionId,
+  highRateLimit,
+  smallRateLimit,
 } from "../../constants/constants";
 
 export const fetchAllCatsAsync = createAsyncThunk(
@@ -14,54 +16,21 @@ export const fetchAllCatsAsync = createAsyncThunk(
       const queryIndex = "catteryId";
       const queryValue = catteryId;
 
-      const usersCustomers = await listDocumentsByQueryOrSearch(
+      const catteryCats = await listDocumentsByQueryOrSearch(
         databaseId,
-        customersCollectionId,
+        catsCollectionId,
         queryIndex,
         queryValue,
         false,
-        standardRateLimit
+        highRateLimit
       );
 
-      const { documents } = usersCustomers;
+      const { documents } = catteryCats;
 
       if (!documents.length) {
         return [];
       }
-
-      const allCatsDetails = documents
-        .filter((doc) => doc.catDetails) // Exclude documents where customer has no cats
-        .flatMap((doc) => {
-          try {
-            const parsedDetails = JSON.parse(doc.catDetails);
-
-            // Ensure parsedDetails is an array, then add customerId and name to each object
-            const catWithAddedDetails = Array.isArray(parsedDetails)
-              ? parsedDetails.map((cat) => ({
-                  ...cat,
-                  customerId: doc.customerId,
-                  customerName: doc.name,
-                  customerDocumentId: doc.$id,
-                }))
-              : [
-                  {
-                    ...parsedDetails,
-                    customerId: doc.customerId,
-                    customerName: doc.name,
-                  },
-                ];
-
-            return catWithAddedDetails;
-          } catch (error) {
-            console.error(
-              `Failed to parse catDetails for document ID ${doc.$id}`,
-              error
-            );
-            return []; // Return an empty array for failed parses
-          }
-        });
-
-      return allCatsDetails;
+      return documents;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -81,13 +50,13 @@ export const fetchCatsOwnerDetailsAsync = createAsyncThunk(
         queryIndex,
         queryValue,
         false,
-        standardRateLimit
+        smallRateLimit
       );
 
       const { documents } = usersCustomers;
 
       if (!documents.length) {
-        return {};
+        throw new Error("no owner found");
       }
 
       return documents;

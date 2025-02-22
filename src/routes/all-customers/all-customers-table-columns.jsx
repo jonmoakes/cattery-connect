@@ -4,7 +4,11 @@ import EmergencyContactsCell from "../../components/tables/emergency-contacts-ce
 import NavigateToCatRouteCell from "../../components/tables/navigate-to-cat-route-cell.component";
 import WrapTextCell from "../../components/tables/wrap-text-cell.component";
 
-import { addCatRoute, viewCustomersCatsRoute } from "../../strings/routes";
+import {
+  addCatRoute,
+  allCustomersRoute,
+  viewCustomersCatsRoute,
+} from "../../strings/routes";
 
 const ALL_CUSTOMERS_TABLE_COLUMNS = [
   {
@@ -36,9 +40,9 @@ const ALL_CUSTOMERS_TABLE_COLUMNS = [
     accessor: "catDetails",
     Cell: ({ row }) => {
       const detailsRequiredForCatManagement = {
-        customerDocumentId: row.original.$id,
         customerName: row.original.name,
-        catDetails: row.original.catDetails,
+        customerId: row.original.customerId,
+        catsDocumentId: row.original.$id,
       };
       return (
         <>
@@ -54,12 +58,13 @@ const ALL_CUSTOMERS_TABLE_COLUMNS = [
     Header: "Add Cat",
     Cell: ({ row }) => {
       const detailsRequiredForCatManagement = {
-        customerDocumentId: row.original.$id,
+        customerId: row.original.customerId,
         customerName: row.original.name,
       };
       return (
         <NavigateToCatRouteCell
           {...{ detailsRequiredForCatManagement }}
+          fromRoute={allCustomersRoute}
           route={addCatRoute}
         />
       );

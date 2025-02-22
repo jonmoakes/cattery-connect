@@ -1,7 +1,8 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
 import {
-  uploadCatToDbAsync,
-  deleteCatFromDbAsync,
+  addCatAsync,
+  editCatAsync,
+  deleteCatAsync,
 } from "./cat-details-management.thunks";
 
 const defaultCatDetails = {
@@ -63,28 +64,41 @@ export const catDetailsManagementSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(uploadCatToDbAsync.pending, (state) => {
+      .addCase(addCatAsync.pending, (state) => {
         state.catDetailManagementIsLoading = true;
       })
-      .addCase(uploadCatToDbAsync.fulfilled, (state) => {
+      .addCase(addCatAsync.fulfilled, (state) => {
         state.catDetailManagementIsLoading = false;
         state.catDetailsManagementResult = "fulfilled";
         state.catDetailsManagementError = null;
       })
-      .addCase(uploadCatToDbAsync.rejected, (state, action) => {
+      .addCase(addCatAsync.rejected, (state, action) => {
         state.catDetailManagementIsLoading = false;
         state.catDetailsManagementResult = "rejected";
         state.catDetailsManagementError = action.payload;
       })
-      .addCase(deleteCatFromDbAsync.pending, (state) => {
+      .addCase(editCatAsync.pending, (state) => {
         state.catDetailManagementIsLoading = true;
       })
-      .addCase(deleteCatFromDbAsync.fulfilled, (state) => {
+      .addCase(editCatAsync.fulfilled, (state) => {
+        state.catDetailManagementIsLoading = false;
+        state.catDetailsManagementResult = "fulfilled";
+        state.catDetailsManagementError = null;
+      })
+      .addCase(editCatAsync.rejected, (state, action) => {
+        state.catDetailManagementIsLoading = false;
+        state.catDetailsManagementResult = "rejected";
+        state.catDetailsManagementError = action.payload;
+      })
+      .addCase(deleteCatAsync.pending, (state) => {
+        state.catDetailManagementIsLoading = true;
+      })
+      .addCase(deleteCatAsync.fulfilled, (state) => {
         state.catDetailManagementIsLoading = false;
         state.deleteCatResult = "fulfilled";
         state.deleteCatError = null;
       })
-      .addCase(deleteCatFromDbAsync.rejected, (state, action) => {
+      .addCase(deleteCatAsync.rejected, (state, action) => {
         state.catDetailManagementIsLoading = false;
         state.deleteCatResult = "rejected";
         state.deleteCatError = action.payload;
@@ -97,7 +111,7 @@ export const catDetailsManagementSlice = createSlice({
       (state) => state.catDetails,
       (state) => state.catDetailsForFormComparison,
       (state) => state.catDetailsManagementResult,
-      (state) => state.catDetailsManagementResult,
+      (state) => state.catDetailsManagementError,
       (state) => state.deleteCatResult,
       (state) => state.deleteCatError,
       (

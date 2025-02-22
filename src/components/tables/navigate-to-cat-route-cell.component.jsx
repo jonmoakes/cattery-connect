@@ -7,7 +7,11 @@ import { MinimalButton } from "../../styles/button/button.styles";
 import { viewCustomersCatsRoute } from "../../strings/routes";
 import { getFirstNameFromString } from "../../functions/get-first-name-from-string";
 
-const NavigateToCatRouteCell = ({ detailsRequiredForCatManagement, route }) => {
+const NavigateToCatRouteCell = ({
+  detailsRequiredForCatManagement,
+  fromRoute,
+  route,
+}) => {
   const { setDetailsRequiredForCatManagementAndNavigate } =
     useSetDetailsRequiredForCatManagementAndNavigate();
 
@@ -19,6 +23,7 @@ const NavigateToCatRouteCell = ({ detailsRequiredForCatManagement, route }) => {
       onClick={() =>
         setDetailsRequiredForCatManagementAndNavigate(
           detailsRequiredForCatManagement,
+          fromRoute,
           route
         )
       }

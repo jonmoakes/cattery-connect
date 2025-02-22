@@ -15,6 +15,8 @@ const useGetCatDetailsManagementSelectors = () => {
   } = useSelector(selectCatDetailsManagementSelectors);
 
   const {
+    catsId,
+    customerId,
     catsName,
     catsBreed,
     catsAge,
@@ -34,6 +36,8 @@ const useGetCatDetailsManagementSelectors = () => {
     catDetailsManagementError,
     deleteCatResult,
     deleteCatError,
+    catsId,
+    customerId,
     catsName,
     catsBreed,
     catsAge,

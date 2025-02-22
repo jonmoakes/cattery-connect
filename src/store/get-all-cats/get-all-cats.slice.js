@@ -9,7 +9,6 @@ const INITIAL_STATE = {
   fetchOwnerDetailsIsLoading: false,
   allCats: [],
   selectedCatsName: "",
-  selectedCatsOwnerCustomerDocumentId: "",
   selectedCatsOwnerCustomerId: "",
   selectedCatsOwnerDetails: [],
   getAllCatsError: null,
@@ -25,9 +24,6 @@ export const getAllCatsSlice = createSlice({
     },
     setSelectedCatsName(state, action) {
       state.selectedCatsName = action.payload;
-    },
-    setSelectedCatsOwnerCustomerDocumentId(state, action) {
-      state.selectedCatsOwnerCustomerDocumentId = action.payload;
     },
     setSelectedCatsOwnerCustomerId(state, action) {
       state.selectedCatsOwnerCustomerId = action.payload;
@@ -51,7 +47,6 @@ export const getAllCatsSlice = createSlice({
       (state) => state.fetchOwnerDetailsIsLoading,
       (state) => state.allCats,
       (state) => state.selectedCatsName,
-      (state) => state.selectedCatsOwnerCustomerDocumentId,
       (state) => state.selectedCatsOwnerCustomerId,
       (state) => state.selectedCatsOwnerDetails,
       (state) => state.getAllCatsError,
@@ -61,7 +56,6 @@ export const getAllCatsSlice = createSlice({
         fetchOwnerDetailsIsLoading,
         allCats,
         selectedCatsName,
-        selectedCatsOwnerCustomerDocumentId,
         selectedCatsOwnerCustomerId,
         selectedCatsOwnerDetails,
         getAllCatsError,
@@ -72,7 +66,6 @@ export const getAllCatsSlice = createSlice({
           fetchOwnerDetailsIsLoading,
           allCats,
           selectedCatsName,
-          selectedCatsOwnerCustomerDocumentId,
           selectedCatsOwnerCustomerId,
           selectedCatsOwnerDetails,
           getAllCatsError,

@@ -4,6 +4,7 @@ import useGetAllUsersSelectors from "../../../hooks/selectors/use-get-all-users-
 import useGetBookingsSelectors from "../../../hooks/selectors/use-get-bookings-selectors";
 import useGetCancelBookingSelectors from "../../../hooks/selectors/use-get-cancel-booking-selectors";
 import useGetRequiredCatteryDataForBookingSelectors from "../../../hooks/selectors/use-get-required-cattery-data-for-booking-selectors";
+import useGetIndividualCustomersCatsSelectors from "../../../hooks/selectors/use-get-individual-customers-cats-selectors";
 
 const useHandleShowError = () => {
   const { getAllCustomersError } = useGetAllCustomerSelectors();
@@ -15,10 +16,12 @@ const useHandleShowError = () => {
   const { allUsersError } = useGetAllUsersSelectors();
   const { fetchOwnerBookingsError } = useGetBookingsSelectors();
   const { fetchAvailabilityDocsToUpdateError } = useGetCancelBookingSelectors();
+  const { individualCustomersCatsError } =
+    useGetIndividualCustomersCatsSelectors();
 
   const showErrorHeading = () => {
     if (getAllCustomersError) return "failed to fetch your customers.";
-    if (getAllCatsError) return "failed to fetch your cats list.";
+    if (getAllCatsError) return "failed to fetch all cats.";
     if (getCatsOwnerDetailsError)
       return "failed to fetch the cat owner's details.";
     if (allUsersCatteryIdsAndOwnerNameError)
@@ -29,6 +32,7 @@ const useHandleShowError = () => {
     if (fetchAvailabilityDocsToUpdateError)
       return `failed to pen data. 
 ( fetch Availability Docs )`;
+    if (individualCustomersCatsError) return "failed to fetch customers cats.";
   };
 
   const errorToDisplay = () => {
@@ -41,6 +45,7 @@ const useHandleShowError = () => {
       allUsersError,
       fetchOwnerBookingsError,
       fetchAvailabilityDocsToUpdateError,
+      individualCustomersCatsError,
     ];
     return errors.find((error) => error !== null);
   };

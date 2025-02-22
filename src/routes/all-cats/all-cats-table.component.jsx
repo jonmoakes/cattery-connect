@@ -9,11 +9,12 @@ import NetworkError from "../../components/errors/network-error.component";
 import TablePagination from "../../components/tables/table-pagination.component";
 import TableSearchBox from "../../components/tables/table-search-box.component";
 import AllCatsShowCatsOwnerDetailsButton from "./all-cats-buttons/all-cats-show-cats-owner-details-button.component";
-import AllCatsEditCatButton from "./all-cats-buttons/all-cats-edit-cat-button.component";
-import AllCatsDeleteCatButton from "./all-cats-buttons/all-cats-delete-cat-button.component";
+import EditCatButton from "../../components/tables/edit-cat-button.component";
+import DeleteCatButton from "../../components/tables/delete-cat-button.component";
 import AllCatsShowAllCatsButton from "./all-cats-buttons/all-cats-show-all-cats-button.component";
 
 import { TableOptionsButtonDiv } from "../../styles/div/div.styles";
+import { allCatsRoute } from "../../strings/routes";
 
 const AllCatsTable = () => {
   const {
@@ -61,8 +62,8 @@ const AllCatsTable = () => {
   const checkedEntry = selectedFlatRows.map((row) => row.original);
   const chosenEntry = checkedEntry[0];
   const selectedCatsOwnerCustomerId = chosenEntry ? chosenEntry.customerId : "";
-  const customerDocumentId = chosenEntry ? chosenEntry.customerDocumentId : "";
   const catsName = chosenEntry ? chosenEntry.catsName : "";
+  const catsDocumentId = chosenEntry ? chosenEntry.$id : "";
 
   return (
     <>
@@ -94,12 +95,10 @@ const AllCatsTable = () => {
               <AllCatsShowCatsOwnerDetailsButton
                 {...{ selectedCatsOwnerCustomerId, catsName }}
               />
-              <AllCatsEditCatButton
-                {...{ chosenEntry, customerDocumentId, catsName }}
+              <EditCatButton
+                {...{ chosenEntry, fromRoute: allCatsRoute, catsName }}
               />
-              <AllCatsDeleteCatButton
-                {...{ chosenEntry, catsName, customerDocumentId }}
-              />
+              <DeleteCatButton {...{ catsName, catsDocumentId }} />
             </TableOptionsButtonDiv>
           ) : hasCatsOwnerDetails ? (
             <AllCatsShowAllCatsButton />

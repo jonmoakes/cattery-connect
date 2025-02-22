@@ -5,10 +5,13 @@ import useGetCustomerDetailsManagementSelectors from "../../../hooks/selectors/u
 import { resetCustomerDetails } from "../../../store/customer-details-management/customer-details-management.slice";
 import {
   resetCatDetails,
+  setCatDetailForFormComparison,
+  setCatDetails,
   setDetailsRequiredForCatManagement,
 } from "../../../store/cat-details-management/cat-details-management.slice";
 
 import useHamburgerHandlerNavigate from "../../../hooks/use-hamburger-handler-navigate";
+import { editCatRoute } from "../../../strings/routes";
 
 const useSetDetailsRequiredForCatManagementAndNavigate = () => {
   const { customerDetails } = useGetCustomerDetailsManagementSelectors();
@@ -18,6 +21,7 @@ const useSetDetailsRequiredForCatManagementAndNavigate = () => {
 
   const setDetailsRequiredForCatManagementAndNavigate = (
     detailsRequiredForCatManagement,
+    fromRoute,
     route
   ) => {
     const ObjectHasDetails = (obj) => {
@@ -33,10 +37,19 @@ const useSetDetailsRequiredForCatManagementAndNavigate = () => {
     dispatch(
       setDetailsRequiredForCatManagement(detailsRequiredForCatManagement)
     );
-    hamburgerHandlerNavigate(route);
+    hamburgerHandlerNavigate(route, { fromRoute: fromRoute });
   };
 
-  return { setDetailsRequiredForCatManagementAndNavigate };
+  const setDataForCatEditingAndGoToEditCatRoute = (chosenEntry, fromRoute) => {
+    dispatch(setCatDetails(chosenEntry));
+    dispatch(setCatDetailForFormComparison(chosenEntry));
+    hamburgerHandlerNavigate(editCatRoute, { fromRoute: fromRoute });
+  };
+
+  return {
+    setDetailsRequiredForCatManagementAndNavigate,
+    setDataForCatEditingAndGoToEditCatRoute,
+  };
 };
 
 export default useSetDetailsRequiredForCatManagementAndNavigate;

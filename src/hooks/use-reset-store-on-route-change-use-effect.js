@@ -6,7 +6,6 @@ import useGetAllUsersSelectors from "./selectors/use-get-all-users-selectors";
 import { resetSignInFormState } from "../store/sign-in-form/sign-in-form.slice";
 import { resetUploadDatesAndPensDataState } from "../store/upload-dates-and-pens-data/upload-dates-and-pens-data.slice";
 import { resetGetAllCustomersState } from "../store/get-all-customers/get-all-customers.slice";
-import { resetCatDetailsManagementState } from "../store/cat-details-management/cat-details-management.slice";
 import { resetGetAllCatsState } from "../store/get-all-cats/get-all-cats.slice";
 import { resetGenerateNewPasswordRequestState } from "../store/generate-new-password-request/generate-new-password-request.slice";
 import { resetChooseNewPasswordState } from "../store/choose-new-password/choose-new-password.slice";
@@ -22,12 +21,10 @@ import {
 
 import {
   addCatChooseOwnerRoute,
-  addCatRoute,
   allCatsRoute,
   allCustomersRoute,
   chooseNewPasswordRoute,
   addBookingRoute,
-  editCatRoute,
   forgotPasswordRequestRoute,
   signInRoute,
   uploadDatesAndPensDataRoute,
@@ -35,11 +32,13 @@ import {
   bookingsRoute,
   cancelBookingRoute,
   contactRoute,
+  viewCustomersCatsRoute,
 } from "../strings/routes";
 import useResetAddBookingState from "./use-reset-add-booking-state";
 import { resetBookingsState } from "../store/bookings/bookings.slice";
 import { resetCancelBookingState } from "../store/cancel-booking/cancel-booking.slice";
 import { resetRequiredCatteryDataForBookingState } from "../store/required-cattery-data/required-cattery-data-for-booking.slice";
+import { resetIndividualCustomersCatsState } from "../store/get-individual-customers-cats/get-individual-customers-cats.slice";
 
 const useResetStoreOnRouteChangeUseEffect = () => {
   const { allUsersCatteryIdsAndOwnerNameError } = useGetAllUsersSelectors();
@@ -73,10 +72,6 @@ const useResetStoreOnRouteChangeUseEffect = () => {
         case allUsersRoute:
           dispatch(resetGetAllUsersState());
           break;
-        case addCatRoute:
-        case editCatRoute:
-          dispatch(resetCatDetailsManagementState());
-          break;
         case allCatsRoute:
           dispatch(resetGetAllCatsState());
           break;
@@ -97,6 +92,9 @@ const useResetStoreOnRouteChangeUseEffect = () => {
         case contactRoute:
           dispatch(resetContactFormDetails());
           dispatch(resetSendEmailState());
+          break;
+        case viewCustomersCatsRoute:
+          dispatch(resetIndividualCustomersCatsState());
           break;
         default:
           break;

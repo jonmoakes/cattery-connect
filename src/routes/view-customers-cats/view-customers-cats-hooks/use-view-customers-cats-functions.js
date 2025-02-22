@@ -21,8 +21,10 @@ const useViewCustomersCatsFunctions = (chosenEntry) => {
   const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
   const dispatch = useDispatch();
 
-  const goToAddCatRoutePassingNoExtraData = () => {
-    hamburgerHandlerNavigate(addCatRoute);
+  const goToAddCatRoutePassingfromRoute = () => {
+    hamburgerHandlerNavigate(addCatRoute, {
+      fromRoute: viewCustomersCatsRoute,
+    });
   };
 
   const setCatDetailsForEditingAndGoToEditCatRoute = () => {
@@ -35,7 +37,7 @@ const useViewCustomersCatsFunctions = (chosenEntry) => {
   };
 
   return {
-    goToAddCatRoutePassingNoExtraData,
+    goToAddCatRoutePassingfromRoute,
     setCatDetailsForEditingAndGoToEditCatRoute,
   };
 };

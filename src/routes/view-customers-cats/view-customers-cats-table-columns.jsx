@@ -42,6 +42,10 @@ const VIEW_CUSTOMERS_CATS_TABLE_COLUMNS = [
     Header: "cat ID",
     accessor: "catsId",
   },
+  {
+    Header: "cus ID",
+    accessor: "customerId",
+  },
 ];
 
 export default VIEW_CUSTOMERS_CATS_TABLE_COLUMNS;

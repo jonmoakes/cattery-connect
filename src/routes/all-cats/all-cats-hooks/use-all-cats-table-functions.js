@@ -10,7 +10,6 @@ import { fetchAllCatsAsync } from "../../../store/get-all-cats/get-all-cats.thun
 import {
   setCatDetailForFormComparison,
   setCatDetails,
-  setDetailsRequiredForCatManagement,
 } from "../../../store/cat-details-management/cat-details-management.slice";
 import useHamburgerHandlerNavigate from "../../../hooks/use-hamburger-handler-navigate";
 
@@ -21,13 +20,9 @@ const useAllCatsTableFunctions = () => {
   const dispatch = useDispatch();
   const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
 
-  const setDataForCatEditingAndGoToEditCatRoute = (
-    chosenEntry,
-    customerDocumentId
-  ) => {
+  const setDataForCatEditingAndGoToEditCatRoute = (chosenEntry) => {
     dispatch(setCatDetails(chosenEntry));
     dispatch(setCatDetailForFormComparison(chosenEntry));
-    dispatch(setDetailsRequiredForCatManagement({ customerDocumentId }));
     hamburgerHandlerNavigate(editCatRoute, { fromRoute: allCatsRoute });
   };
 

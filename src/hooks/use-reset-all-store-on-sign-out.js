@@ -16,6 +16,7 @@ import {
 import useResetAddBookingState from "./use-reset-add-booking-state";
 import { resetBookingsState } from "../store/bookings/bookings.slice";
 import { resetCancelBookingState } from "../store/cancel-booking/cancel-booking.slice";
+import { resetIndividualCustomersCatsState } from "../store/get-individual-customers-cats/get-individual-customers-cats.slice";
 
 const useResetAllStoreOnSignOut = () => {
   const { resetAddBookingState } = useResetAddBookingState();
@@ -36,7 +37,7 @@ const useResetAllStoreOnSignOut = () => {
     dispatch(resetBookingsState());
     dispatch(resetCancelBookingState());
     dispatch(resetContactFormDetails());
-
+    dispatch(resetIndividualCustomersCatsState());
     localStorage.clear();
   };
 

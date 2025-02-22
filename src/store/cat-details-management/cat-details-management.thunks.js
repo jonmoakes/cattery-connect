@@ -1,73 +1,31 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { manageDatabaseDocument } from "../../utils/appwrite/appwrite-functions";
-import { customersCollectionId, databaseId } from "../../constants/constants";
+import { databaseId, catsCollectionId } from "../../constants/constants";
 import { lowercaseObjectValues } from "../../functions/lowercase-object-vaules";
 import { generateShortId } from "../../functions/generate-short-id";
+import { ID } from "appwrite";
 
-export const uploadCatToDbAsync = createAsyncThunk(
-  "uploadCatToDb",
-  async ({ catObject, customerDocumentId }, thunkAPI) => {
+export const addCatAsync = createAsyncThunk(
+  "addCat",
+  async ({ catObject, customerId, customerName, catteryId }, thunkAPI) => {
     try {
       const lowercasedCat = lowercaseObjectValues(catObject);
-      const { catsId } = lowercasedCat;
 
-      const customerDoc = await manageDatabaseDocument(
-        "get",
-        databaseId,
-        customersCollectionId,
-        customerDocumentId
-      );
-
-      const { catDetails } = customerDoc;
-
-      let existingCatDetails = [];
-
-      if (catDetails) {
-        try {
-          const parsedCatDetails = JSON.parse(catDetails);
-
-          if (Array.isArray(parsedCatDetails)) {
-            existingCatDetails = parsedCatDetails;
-          }
-        } catch (error) {
-          return thunkAPI.rejectWithValue(
-            `Failed to parse existing cat details. ${error}`
-          );
-        }
-      }
-
-      // Check if the cat already exists and update it
-      const catIndex = existingCatDetails.findIndex(
-        (cat) => cat.catsId === catsId
-      );
-
-      if (catIndex !== -1) {
-        // Update the existing cat's details
-        existingCatDetails[catIndex] = {
-          ...existingCatDetails[catIndex],
-          ...lowercasedCat,
-        };
-      } else {
-        // If the cat doesn't exist, add it as a new entry
-        existingCatDetails.push({
-          catsId: catsId || generateShortId(lowercasedCat.catsName),
-          ...lowercasedCat,
-        });
-      }
-
-      const updatedCatDetailsString = JSON.stringify(existingCatDetails);
-
-      const dataToUpdate = {
-        catDetails: updatedCatDetailsString,
+      const data = {
+        customerId,
+        ownersName: customerName,
+        catsId: generateShortId(catObject.catsName),
+        catteryId,
+        ...lowercasedCat,
       };
 
       await manageDatabaseDocument(
-        "update",
+        "create",
         databaseId,
-        customersCollectionId,
-        customerDocumentId,
-        dataToUpdate
+        catsCollectionId,
+        ID.unique(),
+        data
       );
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -75,31 +33,60 @@ export const uploadCatToDbAsync = createAsyncThunk(
   }
 );
 
-export const deleteCatFromDbAsync = createAsyncThunk(
-  " deleteCatFromDb",
-  async (
-    { catDetailsAfterRemovingCatForDeletion, customerDocumentId },
-    thunkAPI
-  ) => {
+export const editCatAsync = createAsyncThunk(
+  "editCat",
+  async ({ catObject }, thunkAPI) => {
     try {
-      const lowercasedCats = catDetailsAfterRemovingCatForDeletion.map((cat) =>
-        lowercaseObjectValues(cat)
-      );
+      const { $id, ...rest } = catObject;
 
-      const attributeKey = "catDetails";
-      const catDetailsAfterRemovingCatForDeletionString =
-        JSON.stringify(lowercasedCats);
+      const {
+        catsId,
+        catsName,
+        catsBreed,
+        catsAge,
+        catsGender,
+        catsMedicalInfo,
+        vaccinationStatus,
+        catsFeedingInfo,
+        catsBehaviourInfo,
+        customerId,
+      } = rest;
 
-      const dataToUpdate = {
-        [attributeKey]: catDetailsAfterRemovingCatForDeletionString,
-      };
+      const data = lowercaseObjectValues({
+        catsId,
+        catsName,
+        catsBreed,
+        catsAge,
+        catsGender,
+        catsMedicalInfo,
+        vaccinationStatus,
+        catsFeedingInfo,
+        catsBehaviourInfo,
+        customerId,
+      });
 
       await manageDatabaseDocument(
         "update",
         databaseId,
-        customersCollectionId,
-        customerDocumentId,
-        dataToUpdate
+        catsCollectionId,
+        $id,
+        data
+      );
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const deleteCatAsync = createAsyncThunk(
+  " deleteCat",
+  async ({ catsDocumentId }, thunkAPI) => {
+    try {
+      await manageDatabaseDocument(
+        "delete",
+        databaseId,
+        catsCollectionId,
+        catsDocumentId
       );
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

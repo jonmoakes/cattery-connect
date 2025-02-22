@@ -5,18 +5,24 @@ import useGetCatDetailsManagementSelectors from "../../../hooks/selectors/use-ge
 import VIEW_CUSTOMERS_CATS_TABLE_COLUMNS from "../view-customers-cats-table-columns";
 
 import { defaultTableSize } from "../../../constants/constants";
+import useGetIndividualCustomersCatsSelectors from "../../../hooks/selectors/use-get-individual-customers-cats-selectors";
 
-const useViewCustomersCatsVariables = (chosenEntry) => {
-  const { detailsRequiredForCatManagement } =
+const useViewCustomersCatsVariables = () => {
+  const { detailsRequiredForCatManagement, catDetailManagementIsLoading } =
     useGetCatDetailsManagementSelectors();
-  const { customerName, catDetails, customerDocumentId } =
-    detailsRequiredForCatManagement ?? {};
+  const {
+    individualCustomersCatsIsLoading,
+    individualCustomersCats,
+    individualCustomersCatsError,
+  } = useGetIndividualCustomersCatsSelectors();
+  const { customerName, customerId } = detailsRequiredForCatManagement ?? {};
 
-  // table
   const columns = useMemo(() => VIEW_CUSTOMERS_CATS_TABLE_COLUMNS, []);
-  const data = useMemo(() => {
-    return catDetails ? JSON.parse(catDetails) : [];
-  }, [catDetails]);
+  const data = useMemo(
+    () =>
+      individualCustomersCats === undefined ? [] : individualCustomersCats,
+    [individualCustomersCats]
+  );
 
   const initialState = useMemo(
     () => ({
@@ -27,22 +33,19 @@ const useViewCustomersCatsVariables = (chosenEntry) => {
   );
 
   // title-and-add-cat-link
-  const hasCustomerIDAndAtLeastOneCat = customerDocumentId && data.length;
-
-  // view-customers-cats-delete-cat-button
-  const catDetailsAfterRemovingCatForDeletion = data
-    ? data.filter((cat) => cat.catsId !== (chosenEntry && chosenEntry.catsId))
-    : [];
+  const hasCustomerIDAndAtLeastOneCat =
+    customerId && data.length > 0 ? true : false;
 
   return {
+    catDetailManagementIsLoading,
+    individualCustomersCatsIsLoading,
+    individualCustomersCatsError,
     columns,
     data,
     initialState,
     customerName,
-    customerDocumentId,
     hasCustomerIDAndAtLeastOneCat,
-    catDetails,
-    catDetailsAfterRemovingCatForDeletion,
+    customerId,
   };
 };
 

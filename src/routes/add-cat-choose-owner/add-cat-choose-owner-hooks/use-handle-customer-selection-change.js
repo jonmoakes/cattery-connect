@@ -16,11 +16,11 @@ const useHandleCustomerSelectionChange = () => {
     const selectedCustomer = allCustomers.find(
       (customer) => customer.name === selectedCustomerName
     );
-
     setSelectedCustomer(selectedCustomer);
     dispatch(
       setDetailsRequiredForCatManagement({
-        customerDocumentId: selectedCustomer.$id,
+        customerId: selectedCustomer.customerId,
+        customerName: selectedCustomer.name,
       })
     );
   };

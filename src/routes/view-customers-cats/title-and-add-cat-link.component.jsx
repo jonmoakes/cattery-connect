@@ -5,27 +5,24 @@ import CustomBalancedText from "../../components/custom-balanced-text/custom-bal
 
 import { MinimalButton } from "../../styles/button/button.styles";
 import { ParentDiv } from "../../styles/div/div.styles";
-import { getFirstNameFromString } from "../../functions/get-first-name-from-string";
 
 const TitleAndAddCatLink = () => {
   const { customerName, hasCustomerIDAndAtLeastOneCat } =
     useViewCustomersCatsVariables();
-  const { goToAddCatRoutePassingNoExtraData } = useViewCustomersCatsFunctions();
+  const { goToAddCatRoutePassingfromRoute } = useViewCustomersCatsFunctions();
 
   return (
     <ParentDiv>
-      {customerName ? (
-        <CustomBalancedText type="h1">
-          {getFirstNameFromString(customerName)}'s cats
-        </CustomBalancedText>
-      ) : (
-        <CustomBalancedText type="h1">no cats found</CustomBalancedText>
-      )}
+      <CustomBalancedText type="h1">
+        {customerName
+          ? `${customerName}${customerName.endsWith("s") ? "'" : "'s"} cats`
+          : "Customer's cats"}
+      </CustomBalancedText>
 
       {hasCustomerIDAndAtLeastOneCat ? (
         <MinimalButton
           className="margin-bottom"
-          onClick={goToAddCatRoutePassingNoExtraData}
+          onClick={goToAddCatRoutePassingfromRoute}
         >
           add another cat
         </MinimalButton>

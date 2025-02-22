@@ -1,10 +1,15 @@
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 
-import { uploadCatToDbAsync } from "../../../store/cat-details-management/cat-details-management.thunks";
+import useGetCatDetailsManagementSelectors from "../../../hooks/selectors/use-get-cat-details-management-selectors";
+import useGetCurrentUserSelectors from "../../../hooks/selectors/use-get-current-user-selectors";
+
+import {
+  addCatAsync,
+  editCatAsync,
+} from "../../../store/cat-details-management/cat-details-management.thunks";
 
 import useConfirmSwal from "../../../hooks/use-confirm-swal";
-import useGetCatDetailsManagementSelectors from "../../../hooks/selectors/use-get-cat-details-management-selectors";
 import useFireSwal from "../../../hooks/use-fire-swal";
 
 import { addCatRoute, editCatRoute } from "../../../strings/routes";
@@ -22,9 +27,12 @@ const useSubmitCat = () => {
     catsName,
     catDetails: catObject,
     catDetailsForFormComparison,
+    catsId,
   } = useGetCatDetailsManagementSelectors();
+  const { catteryId } = useGetCurrentUserSelectors();
 
-  const { customerDocumentId } = detailsRequiredForCatManagement ?? "";
+  const { customerId, customerName } = detailsRequiredForCatManagement ?? "";
+
   const dispatch = useDispatch();
   const location = useLocation();
   const path = location.pathname;
@@ -38,20 +46,17 @@ const useSubmitCat = () => {
         ? confirmAddDataMessage(catsName)
         : confirmEditDataMessage(catsName);
 
-    confirmSwal(
-      title,
-      "",
-      imSureMessage,
-      "",
-      () =>
+    const confirmResult = () => {
+      if (catsId === undefined) {
         dispatch(
-          uploadCatToDbAsync({
-            catObject,
-            customerDocumentId,
-          })
-        ),
-      null
-    );
+          addCatAsync({ catObject, customerId, customerName, catteryId })
+        );
+      } else {
+        dispatch(editCatAsync({ catObject }));
+      }
+    };
+
+    confirmSwal(title, "", imSureMessage, "", confirmResult, null);
   };
 
   const submitCat = (e) => {

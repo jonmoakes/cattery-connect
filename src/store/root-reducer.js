@@ -20,6 +20,7 @@ import { uploadBookingDataReducer } from "./upload-booking-data/upload-booking-d
 import { bookingsReducer } from "./bookings/bookings.slice";
 import { cancelBookingReducer } from "./cancel-booking/cancel-booking.slice";
 import { todaysScheduleReducer } from "./todays-schedule/todays-schedule.slice";
+import { individualCustomersCatsReducer } from "./get-individual-customers-cats/get-individual-customers-cats.slice";
 
 export const rootReducer = combineReducers({
   hamburgerMenu: hamburgerMenuReducer,
@@ -42,4 +43,5 @@ export const rootReducer = combineReducers({
   bookings: bookingsReducer,
   cancelBooking: cancelBookingReducer,
   todaysSchedule: todaysScheduleReducer,
+  individualCustomersCats: individualCustomersCatsReducer,
 });

@@ -9,14 +9,16 @@ import SkeletonBox from "../../components/skeleton-box/skeleton-box.component";
 import AllCatsTable from "./all-cats-table.component";
 
 import { Container } from "../../styles/container/container.styles";
+import useAllCatsDeleteListener from "./all-cats-hooks/use-all-cats-delete-listener";
 
 const AllCats = () => {
+  useAllCatsDeleteListener();
+
   const {
     getAllCatsIsLoading,
     fetchOwnerDetailsIsLoading,
     catDetailManagementIsLoading,
   } = useAllCatsTableVariables();
-
   useGetAllCustomersThunkUseEffect();
   useFetchAllCatsThunkUseEffect();
   useFetchCatsOwnerDetailsThunkUseEffect();
