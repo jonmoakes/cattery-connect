@@ -9,6 +9,7 @@ import CustomBalancedText from "../../../components/custom-balanced-text/custom-
 import SkeletonBox from "../../../components/skeleton-box/skeleton-box.component";
 
 import { ParentDiv } from "../../../styles/div/div.styles";
+import useGetIndividualCustomersCatsSelectors from "../../../hooks/selectors/use-get-individual-customers-cats-selectors";
 
 const AddBookingTitleAndLoader = () => {
   const { getAllCustomersIsLoading } = useGetAllCustomerSelectors();
@@ -18,6 +19,8 @@ const AddBookingTitleAndLoader = () => {
   const { requiredCatteryDataIsLoading } =
     useGetRequiredCatteryDataForBookingSelectors();
   const { isBookingAvailableIsLoading } = useGetIsBookingAvailableSelectors();
+  const { individualCustomersCatsIsLoading } =
+    useGetIndividualCustomersCatsSelectors();
 
   return (
     <>
@@ -30,6 +33,7 @@ const AddBookingTitleAndLoader = () => {
       isBookingAvailableIsLoading ||
       updatePensDataIsLoading ||
       uploadBookingDataIsLoading ||
+      individualCustomersCatsIsLoading ||
       sendEmailIsLoading ? (
         <SkeletonBox
           loadingText={
@@ -43,6 +47,8 @@ const AddBookingTitleAndLoader = () => {
               ? "updating pens data..."
               : uploadBookingDataIsLoading
               ? "adding booking data..."
+              : individualCustomersCatsIsLoading
+              ? "fetching customers cats..."
               : sendEmailIsLoading && "sending email..."
           }
         />

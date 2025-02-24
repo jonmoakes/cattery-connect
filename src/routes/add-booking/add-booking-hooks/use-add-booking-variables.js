@@ -2,11 +2,11 @@ import useGetAllCustomerSelectors from "../../../hooks/selectors/use-get-all-cus
 import useGetIsBookingAvailableSelectors from "../../../hooks/selectors/use-get-is-booking-available-selectors";
 import useGetRequiredCatteryDataForBookingSelectors from "../../../hooks/selectors/use-get-required-cattery-data-for-booking-selectors";
 import useGetUploadBookingDataSelectors from "../../../hooks/selectors/use-get-upload-booking-data-selectors";
+import useGetIndividualCustomersCatsSelectors from "../../../hooks/selectors/use-get-individual-customers-cats-selectors";
 
 const useAddBookingVariables = () => {
   const {
     customerName,
-    catDetails,
     catsInBooking,
     checkInDate,
     checkInSlot,
@@ -17,38 +17,27 @@ const useAddBookingVariables = () => {
     useGetRequiredCatteryDataForBookingSelectors();
   const { status } = useGetIsBookingAvailableSelectors();
   const { getAllCustomersError } = useGetAllCustomerSelectors();
+  const { individualCustomersCats, individualCustomersCatsError } =
+    useGetIndividualCustomersCatsSelectors();
 
-  let parsedCatDetails = [];
-  let error = null;
+  const catsToRender = individualCustomersCats
+    ? individualCustomersCats.map((cat) => ({
+        catsId: cat.catsId,
+        catsName: cat.catsName,
+      }))
+    : undefined;
 
-  try {
-    parsedCatDetails = catDetails ? JSON.parse(catDetails) : [];
-  } catch (err) {
-    error = `Invalid JSON format in catDetails: ${err.message}`;
-  }
-
-  const catsToRender =
-    parsedCatDetails?.map((parsedCat) => ({
-      catsId: parsedCat.catsId,
-      catsName: parsedCat.catsName,
-    })) || [];
-
-  const noCustomerSelectedYet =
-    customerName === undefined && catDetails === undefined;
-
-  const customerSelectedThenDefaultValueSelected =
-    !customerName && !catDetails && catsToRender.length === 0;
-
-  const customerHasBeenSelectedAndErrorParsingCats = !!customerName && !!error;
+  const noCustomerSelectedYet = customerName === undefined;
+  const customerHasBeenSelectedAndHasNoAddedCats =
+    customerName && catsToRender && catsToRender.length === 0;
 
   const customerHasBeenSelectedAndHasAtLeastOneCat =
-    !!customerName && !!catDetails && catsToRender.length > 0;
-
+    customerName && catsToRender && catsToRender.length > 0;
   const customerHasOneCat = catsToRender && catsToRender.length === 1;
 
   const customerHasMoreThanOneCat = catsToRender && catsToRender.length > 1;
 
-  const customerHasOneCatOrMoreThanOneCatAndAtLeastOneHasBeenSelected =
+  const atLeastOneCatHasBeenSelected =
     customerHasOneCat ||
     (customerHasMoreThanOneCat &&
       Array.isArray(catsInBooking) &&
@@ -69,26 +58,26 @@ const useAddBookingVariables = () => {
   };
 
   return {
-    catsToRender,
-    error,
-    noCustomerSelectedYet,
-    customerSelectedThenDefaultValueSelected,
-    customerHasBeenSelectedAndErrorParsingCats,
-    customerHasBeenSelectedAndHasAtLeastOneCat,
-    customerHasOneCat,
-    customerHasMoreThanOneCat,
-    customerHasOneCatOrMoreThanOneCatAndAtLeastOneHasBeenSelected,
-    numberOfCatsInBooking,
+    requiredCatteryDataError,
+    getAllCustomersError,
+    individualCustomersCatsError,
+    status,
     moreCatsInBookingThanCapacityInOnePen,
+    numberOfCatsInBooking,
     maximumCatsInSinglePen,
+    atLeastOneCatHasBeenSelected,
     checkInDate,
     checkInSlot,
     checkOutDate,
     checkOutSlot,
-    requiredCatteryDataError,
-    status,
-    getAllCustomersError,
     bookingDataToShow,
+    catsToRender,
+    noCustomerSelectedYet,
+    customerHasBeenSelectedAndHasNoAddedCats,
+    customerHasBeenSelectedAndHasAtLeastOneCat,
+    customerHasOneCat,
+    customerHasMoreThanOneCat,
+    individualCustomersCats,
   };
 };
 

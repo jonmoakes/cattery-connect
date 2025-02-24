@@ -19,7 +19,6 @@ import { imSureMessage } from "../../../strings/confirms";
 
 const useAddBookingFunctions = () => {
   const {
-    uploadBookingData,
     customerDocumentId,
     customerName,
     catsInBooking,
@@ -28,9 +27,11 @@ const useAddBookingFunctions = () => {
     checkOutDate,
     checkOutSlot,
   } = useGetUploadBookingDataSelectors();
+  let { uploadBookingData } = useGetUploadBookingDataSelectors();
   const { showIneligibleDates, parsedAvailabilityData } =
     useGetIsBookingAvailableSelectors();
-  const { moreCatsInBookingThanCapacityInOnePen } = useAddBookingVariables();
+  const { moreCatsInBookingThanCapacityInOnePen, individualCustomersCats } =
+    useAddBookingVariables();
   const { catteryId } = useGetCurrentUserSelectors();
 
   const dispatch = useDispatch();
@@ -47,14 +48,27 @@ const useAddBookingFunctions = () => {
     checkOutSlot &&
     true;
 
+  const getUpdatedBookingData = () => {
+    if (uploadBookingData.catsInBooking.length === 0) {
+      return {
+        ...uploadBookingData,
+        catsInBooking: [individualCustomersCats[0].catsName], // Needs to be an array for the thunk - it is a string by default here.
+      };
+    }
+    return uploadBookingData;
+  };
+
   const checkBookingAvailability = (event) => {
     event.preventDefault();
     if (showIneligibleDates) {
       dispatch(setShowIneligibleDates(false));
     }
+
+    const updatedBookingData = getUpdatedBookingData();
+
     dispatch(
       checkBookingAvailabilityAsync({
-        uploadBookingData,
+        uploadBookingData: updatedBookingData,
         catteryId,
       })
     );
@@ -62,6 +76,8 @@ const useAddBookingFunctions = () => {
 
   const confirmPlaceBooking = () => {
     const operation = "deduct";
+    const updatedBookingData = getUpdatedBookingData();
+
     confirmSwal(
       "are you sure that you want to place this booking?",
       "",
@@ -71,13 +87,16 @@ const useAddBookingFunctions = () => {
         dispatch(
           updatePensDataInDbAsync({
             parsedAvailabilityData,
-            uploadBookingData,
+            uploadBookingData: updatedBookingData,
             operation,
           })
         ).then((resultAction) => {
           if (updatePensDataInDbAsync.fulfilled.match(resultAction)) {
             dispatch(
-              uploadBookingDataToDbAsync({ uploadBookingData, catteryId })
+              uploadBookingDataToDbAsync({
+                uploadBookingData: updatedBookingData,
+                catteryId,
+              })
             );
           }
         }),

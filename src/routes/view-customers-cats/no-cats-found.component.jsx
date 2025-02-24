@@ -2,7 +2,6 @@ import useViewCustomersCatsFunctions from "./view-customers-cats-hooks/use-view-
 import useViewCustomersCatsVariables from "./view-customers-cats-hooks/use-view-customers-cats-variables";
 
 import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
-// import ViewCatsNoRequiredObject from "./view-cats-no-required-object.component";
 
 import { ParentDiv } from "../../styles/div/div.styles";
 import { RadialTealButton } from "../../styles/button/button.styles";
@@ -11,7 +10,7 @@ import { getFirstNameFromString } from "../../functions/get-first-name-from-stri
 
 const NoCatsFound = () => {
   const { data, customerName } = useViewCustomersCatsVariables();
-  const { goToAddCatRoutePassingNoExtraData } = useViewCustomersCatsFunctions();
+  const { goToAddCatRoutePassingFromRoute } = useViewCustomersCatsFunctions();
 
   return (
     <>
@@ -25,7 +24,7 @@ const NoCatsFound = () => {
             you can add a cat for {getFirstNameFromString(customerName)} by
             tapping on the button below.
           </CustomBalancedText>
-          <RadialTealButton onClick={goToAddCatRoutePassingNoExtraData}>
+          <RadialTealButton onClick={goToAddCatRoutePassingFromRoute}>
             add a cat
           </RadialTealButton>
         </ParentDiv>

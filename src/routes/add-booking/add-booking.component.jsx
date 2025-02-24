@@ -24,17 +24,18 @@ import { Form } from "../../styles/form/form.styles";
 
 const AddBooking = () => {
   const {
+    requiredCatteryDataError,
+    getAllCustomersError,
+    individualCustomersCatsError,
+    status,
+    moreCatsInBookingThanCapacityInOnePen,
+    numberOfCatsInBooking,
+    maximumCatsInSinglePen,
+    atLeastOneCatHasBeenSelected,
     checkInDate,
     checkInSlot,
     checkOutDate,
     checkOutSlot,
-    status,
-    getAllCustomersError,
-    requiredCatteryDataError,
-    customerHasOneCatOrMoreThanOneCatAndAtLeastOneHasBeenSelected,
-    moreCatsInBookingThanCapacityInOnePen,
-    numberOfCatsInBooking,
-    maximumCatsInSinglePen,
     bookingDataToShow,
   } = useAddBookingVariables();
   const { shouldShowFormSubmissionButtons, checkBookingAvailability } =
@@ -50,7 +51,9 @@ const AddBooking = () => {
     <Container>
       <AddBookingTitleAndLoader />
 
-      {requiredCatteryDataError || getAllCustomersError ? (
+      {requiredCatteryDataError ||
+      getAllCustomersError ||
+      individualCustomersCatsError ? (
         <ShowFetchErrors />
       ) : (
         <ParentDiv>
@@ -71,9 +74,7 @@ const AddBooking = () => {
 
                 <CheckInAndOutDateInput
                   dateType="checkInDate"
-                  condition={
-                    customerHasOneCatOrMoreThanOneCatAndAtLeastOneHasBeenSelected
-                  }
+                  condition={atLeastOneCatHasBeenSelected}
                   selectedDate={checkInDate}
                 />
 
@@ -86,10 +87,7 @@ const AddBooking = () => {
                 />
                 <CheckInAndOutDateInput
                   dateType="checkOutDate"
-                  condition={
-                    customerHasOneCatOrMoreThanOneCatAndAtLeastOneHasBeenSelected &&
-                    checkInSlot
-                  }
+                  condition={atLeastOneCatHasBeenSelected && checkInSlot}
                   selectedDate={checkOutDate}
                 />
                 <CheckInAndOutTimeSlotSelectInput

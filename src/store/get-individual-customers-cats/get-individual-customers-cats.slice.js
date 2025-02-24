@@ -3,7 +3,7 @@ import { fetchIndividualCustomersCatsAsync } from "./get-individual-customers-ca
 
 const INITIAL_STATE = {
   individualCustomersCatsIsLoading: false,
-  individualCustomersCats: [],
+  individualCustomersCats: undefined,
   individualCustomersCatsError: null,
 };
 

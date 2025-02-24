@@ -1,11 +1,12 @@
 import CustomBalancedText from "../../../components/custom-balanced-text/custom-balanced-text.component";
 import CustomSpan from "../../../components/custom-span/custom-span.component";
+import { ErrorDiv } from "../../../styles/div/div.styles";
 
 const MoreCatsSelectedThanSinglePenCapacity = ({
   numberOfCatsInBooking,
   maximumCatsInSinglePen,
 }) => (
-  <>
+  <ErrorDiv className="red">
     <CustomBalancedText className="white">
       sorry, you have more selected cats ({" "}
       <CustomSpan className="yellow">{numberOfCatsInBooking}</CustomSpan> ) than
@@ -19,7 +20,7 @@ const MoreCatsSelectedThanSinglePenCapacity = ({
     <CustomBalancedText className="white">
       This approach ensures that each pen is utilised within its capacity.
     </CustomBalancedText>
-  </>
+  </ErrorDiv>
 );
 
 export default MoreCatsSelectedThanSinglePenCapacity;
