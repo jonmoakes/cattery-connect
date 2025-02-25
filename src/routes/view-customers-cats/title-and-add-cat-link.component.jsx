@@ -9,7 +9,7 @@ import { ParentDiv } from "../../styles/div/div.styles";
 const TitleAndAddCatLink = () => {
   const { customerName, hasCustomerIDAndAtLeastOneCat } =
     useViewCustomersCatsVariables();
-  const { goToAddCatRoutePassingfromRoute } = useViewCustomersCatsFunctions();
+  const { goToAddCatRoutePassingFromRoute } = useViewCustomersCatsFunctions();
 
   return (
     <ParentDiv>
@@ -22,7 +22,7 @@ const TitleAndAddCatLink = () => {
       {hasCustomerIDAndAtLeastOneCat ? (
         <MinimalButton
           className="margin-bottom"
-          onClick={goToAddCatRoutePassingfromRoute}
+          onClick={goToAddCatRoutePassingFromRoute}
         >
           add another cat
         </MinimalButton>

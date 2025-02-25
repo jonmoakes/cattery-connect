@@ -1,7 +1,15 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import { manageDatabaseDocument } from "../../utils/appwrite/appwrite-functions";
-import { customersCollectionId, databaseId } from "../../constants/constants";
+import {
+  listDocumentsByQueryOrSearch,
+  manageDatabaseDocument,
+} from "../../utils/appwrite/appwrite-functions";
+import {
+  catsCollectionId,
+  customersCollectionId,
+  databaseId,
+  smallRateLimit,
+} from "../../constants/constants";
 import { ID } from "appwrite";
 
 import { lowercaseObjectValues } from "../../functions/lowercase-object-vaules";
@@ -73,6 +81,46 @@ export const editCustomerAsync = createAsyncThunk(
   }
 );
 
+export const deleteCustomersCatsAsync = createAsyncThunk(
+  "deleteCustomersCats",
+  async ({ customerId, $id }, thunkAPI) => {
+    try {
+      const queryIndex = "customerId";
+      const queryValue = customerId;
+
+      const customersCats = await listDocumentsByQueryOrSearch(
+        databaseId,
+        catsCollectionId,
+        queryIndex,
+        queryValue,
+        false,
+        smallRateLimit
+      );
+
+      const { documents } = customersCats;
+
+      if (!documents.length) {
+        return $id;
+      }
+
+      const catDocumentIds = documents.map((cat) => cat.$id);
+
+      for (const catId of catDocumentIds) {
+        await manageDatabaseDocument(
+          "delete",
+          databaseId,
+          catsCollectionId,
+          catId
+        );
+      }
+
+      return $id;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const deleteCustomerAsync = createAsyncThunk(
   " deleteCustomer",
   async ({ $id }, thunkAPI) => {
@@ -84,7 +132,10 @@ export const deleteCustomerAsync = createAsyncThunk(
         $id
       );
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue({
+        customerDocumentId: $id,
+        message: error.message,
+      });
     }
   }
 );

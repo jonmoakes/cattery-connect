@@ -1,6 +1,5 @@
 import { useDispatch } from "react-redux";
 
-import { deleteCustomerAsync } from "../../../store/customer-details-management/customer-details-management.thunks";
 import {
   setCustomerDetailForFormComparison,
   setCustomerDetails,
@@ -13,6 +12,10 @@ import { editCustomerRoute } from "../../../strings/routes";
 import { confirmDeleteMessage } from "../../../strings/confirms";
 
 import { getFirstNameFromString } from "../../../functions/get-first-name-from-string";
+import {
+  deleteCustomerAsync,
+  deleteCustomersCatsAsync,
+} from "../../../store/customer-details-management/customer-details-management.thunks";
 
 const useAllCustomersFunctions = (chosenEntry) => {
   const dispatch = useDispatch();
@@ -26,7 +29,17 @@ const useAllCustomersFunctions = (chosenEntry) => {
   };
 
   const deleteCustomer = () => {
-    const { $id, name } = chosenEntry ?? {};
+    const { name, customerId, $id } = chosenEntry ?? {};
+
+    const confirmResult = () => {
+      dispatch(deleteCustomersCatsAsync({ customerId, $id })).then(
+        (resultAction) => {
+          if (deleteCustomersCatsAsync.fulfilled.match(resultAction)) {
+            dispatch(deleteCustomerAsync({ $id }));
+          }
+        }
+      );
+    };
 
     const type = "customer";
     confirmSwal(
@@ -34,7 +47,7 @@ const useAllCustomersFunctions = (chosenEntry) => {
       "",
       `yes, delete ${getFirstNameFromString(name)}`,
       "don't delete",
-      () => dispatch(deleteCustomerAsync({ $id })),
+      confirmResult,
       null
     );
   };

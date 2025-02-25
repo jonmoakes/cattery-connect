@@ -3,6 +3,7 @@ import {
   addCustomerAsync,
   editCustomerAsync,
   deleteCustomerAsync,
+  deleteCustomersCatsAsync,
 } from "./customer-details-management.thunks";
 
 const defaultCustomerDetails = {
@@ -21,6 +22,9 @@ const INITIAL_STATE = {
   addCustomerError: null,
   editCustomerResult: "",
   editCustomerError: null,
+  deleteCustomersCatsIsLoading: false,
+  deleteCustomersCatsResult: "",
+  deleteCustomersCatsError: null,
   deleteCustomerResult: "",
   deleteCustomerError: null,
 };
@@ -50,11 +54,11 @@ export const customerDetailsManagementSlice = createSlice({
     resetEditCustomerError(state) {
       state.editCustomerError = null;
     },
-    resetDeleteCustomerResult(state) {
-      state.deleteCustomerResult = "";
+    resetDeleteCustomersCatsResult(state) {
+      state.deleteCustomersCatsResult = "";
     },
-    resetDeleteCustomerError(state) {
-      state.deleteCustomerError = null;
+    resetDeleteCustomersCatsError(state) {
+      state.deleteCustomersCatsError = null;
     },
     resetCustomerDetailsManagementState: () => {
       return INITIAL_STATE;
@@ -88,6 +92,19 @@ export const customerDetailsManagementSlice = createSlice({
         state.editCustomerResult = "rejected";
         state.editCustomerError = action.payload;
       })
+      .addCase(deleteCustomersCatsAsync.pending, (state) => {
+        state.deleteCustomersCatsIsLoading = true;
+      })
+      .addCase(deleteCustomersCatsAsync.fulfilled, (state) => {
+        state.deleteCustomersCatsIsLoading = false;
+        state.deleteCustomersCatsResult = "fulfilled";
+        state.deleteCustomersCatsError = null;
+      })
+      .addCase(deleteCustomersCatsAsync.rejected, (state, action) => {
+        state.deleteCustomersCatsIsLoading = false;
+        state.deleteCustomersCatsResult = "rejected";
+        state.deleteCustomersCatsError = action.payload;
+      })
       .addCase(deleteCustomerAsync.pending, (state) => {
         state.customerDetailsManagementIsLoading = true;
       })
@@ -113,6 +130,9 @@ export const customerDetailsManagementSlice = createSlice({
       (state) => state.editCustomerError,
       (state) => state.deleteCustomerResult,
       (state) => state.deleteCustomerError,
+      (state) => state.deleteCustomersCatsIsLoading,
+      (state) => state.deleteCustomersCatsResult,
+      (state) => state.deleteCustomersCatsError,
       (
         customerDetails,
         customerDetailsForFormComparison,
@@ -122,7 +142,10 @@ export const customerDetailsManagementSlice = createSlice({
         editCustomerResult,
         editCustomerError,
         deleteCustomerResult,
-        deleteCustomerError
+        deleteCustomerError,
+        deleteCustomersCatsIsLoading,
+        deleteCustomersCatsResult,
+        deleteCustomersCatsError
       ) => {
         return {
           customerDetails,
@@ -134,6 +157,9 @@ export const customerDetailsManagementSlice = createSlice({
           editCustomerError,
           deleteCustomerResult,
           deleteCustomerError,
+          deleteCustomersCatsIsLoading,
+          deleteCustomersCatsResult,
+          deleteCustomersCatsError,
         };
       }
     ),
@@ -148,8 +174,8 @@ export const {
   resetAddCustomerError,
   resetEditCustomerResult,
   resetEditCustomerError,
-  resetDeleteCustomerResult,
-  resetDeleteCustomerError,
+  resetDeleteCustomersCatsResult,
+  resetDeleteCustomersCatsError,
   resetCustomerDetailsManagementState,
 } = customerDetailsManagementSlice.actions;
 export const { selectCustomerDetailsManagementSelectors } =

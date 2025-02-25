@@ -13,6 +13,9 @@ const useGetCustomerDetailsManagementSelectors = () => {
     editCustomerError,
     deleteCustomerResult,
     deleteCustomerError,
+    deleteCustomersCatsIsLoading,
+    deleteCustomersCatsResult,
+    deleteCustomersCatsError,
   } = useSelector(selectCustomerDetailsManagementSelectors);
 
   const {
@@ -37,6 +40,9 @@ const useGetCustomerDetailsManagementSelectors = () => {
     editCustomerError,
     deleteCustomerResult,
     deleteCustomerError,
+    deleteCustomersCatsIsLoading,
+    deleteCustomersCatsResult,
+    deleteCustomersCatsError,
     $id,
     name,
     phoneNumber,
