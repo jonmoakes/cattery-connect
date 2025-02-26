@@ -1,104 +1,45 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 
 import useGetCatDetailsManagementSelectors from "../../../hooks/selectors/use-get-cat-details-management-selectors";
-import {
-  resetCatDetailsManagementError,
-  resetCatDetailsManagementResult,
-  resetCatDetailsManagementState,
-} from "../../../store/cat-details-management/cat-details-management.slice";
+import useCatUploadedSuccessSwal from "./swals/use-cat-uploaded-success-swal";
+import useCatUploadFailedSwal from "./swals/use-cat-upload-failed-swal";
 
-import useFireSwal from "../../../hooks/use-fire-swal";
-import useHamburgerHandlerNavigate from "../../../hooks/use-hamburger-handler-navigate";
-
-import { errorReceivedMessage } from "../../../strings/errors";
-import {
-  addCatChooseOwnerRoute,
-  addCatRoute,
-  allCatsRoute,
-  allCustomersRoute,
-  viewCustomersCatsRoute,
-} from "../../../strings/routes";
+import { addCatRoute } from "../../../strings/routes";
 
 const useUploadCatResultSwalUseEffect = (fromRoute) => {
   const { catDetailsManagementResult, catDetailsManagementError, catsName } =
     useGetCatDetailsManagementSelectors();
-
-  const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
-  const dispatch = useDispatch();
-  const { fireSwal } = useFireSwal();
-  const location = useLocation();
-  const path = location.pathname;
+  const { pathname: path } = useLocation();
+  const { catUploadedSuccessSwal } = useCatUploadedSuccessSwal();
+  const { catUploadFailedSwal } = useCatUploadFailedSwal();
 
   useEffect(() => {
     if (!catDetailsManagementResult && !catDetailsManagementError) return;
 
+    const isSuccess = catDetailsManagementResult === "fulfilled";
     const action =
       path === addCatRoute
-        ? catDetailsManagementResult === "fulfilled"
+        ? isSuccess
           ? "added"
           : "adding"
-        : catDetailsManagementResult === "fulfilled"
+        : isSuccess
         ? "updated"
         : "updating";
-    const isSuccess = catDetailsManagementResult === "fulfilled";
 
     if (isSuccess) {
-      fireSwal(
-        "success",
-        `${catsName} ${action}!`,
-        "",
-        0,
-        "",
-        false,
-        "",
-        false
-      ).then((isConfirmed) => {
-        if (isConfirmed) {
-          dispatch(resetCatDetailsManagementState());
-          if (
-            fromRoute === viewCustomersCatsRoute ||
-            fromRoute === allCustomersRoute
-          ) {
-            hamburgerHandlerNavigate(allCustomersRoute);
-          } else if (
-            fromRoute === addCatChooseOwnerRoute ||
-            fromRoute === allCatsRoute
-          ) {
-            hamburgerHandlerNavigate(allCatsRoute);
-          }
-        }
-      });
+      catUploadedSuccessSwal(catsName, action, fromRoute);
     } else {
-      fireSwal(
-        "error",
-        errorReceivedMessage(
-          `error ${action} cat..`,
-          catDetailsManagementError
-        ),
-        "",
-        0,
-        "",
-        false,
-        "",
-        false
-      ).then((isConfirmed) => {
-        if (isConfirmed) {
-          dispatch(resetCatDetailsManagementResult());
-          dispatch(resetCatDetailsManagementError());
-        }
-      });
+      catUploadFailedSwal(action);
     }
   }, [
-    fireSwal,
-    catDetailsManagementResult,
     catDetailsManagementError,
-    path,
-    dispatch,
-    hamburgerHandlerNavigate,
+    catDetailsManagementResult,
+    catUploadFailedSwal,
+    catUploadedSuccessSwal,
     catsName,
     fromRoute,
+    path,
   ]);
 };
 

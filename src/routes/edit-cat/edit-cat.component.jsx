@@ -6,14 +6,10 @@ import CatDetailsForm from "../../components/cat-details-form/cat-details-form.c
 
 import { Container } from "../../styles/container/container.styles";
 import { ParentDiv } from "../../styles/div/div.styles";
-import { useLocation } from "react-router-dom";
-import { allCatsRoute } from "../../strings/routes";
 
 const EditCat = () => {
   const { detailsRequiredForCatManagement } =
     useGetCatDetailsManagementSelectors();
-  const location = useLocation();
-  const fromRoute = location.state?.fromRoute;
 
   const { customerId } = detailsRequiredForCatManagement ?? {};
 
@@ -21,7 +17,7 @@ const EditCat = () => {
     <Container>
       <EditCatTitleAndLoader />
 
-      {fromRoute !== allCatsRoute && !customerId ? (
+      {!customerId ? (
         <NoCustomerIdFound />
       ) : (
         <ParentDiv>

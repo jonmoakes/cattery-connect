@@ -1,6 +1,6 @@
 import useViewCustomersCatsVariables from "./view-customers-cats-hooks/use-view-customers-cats-variables";
 import useFetchCustomersCatsThunkUseEffect from "./view-customers-cats-hooks/use-fetch-customers-cats-thunk-use-effect";
-import useDeleteCatResultSwalUseEffect from "../../hooks/use-delete-cat-result-swal-use-effect";
+import useDeleteCatResultSwalUseEffect from "../../hooks/delete-cat/use-delete-cat-result-swal-use-effect";
 
 import ViewCustomersCatsLoader from "./view-customers-cats-loader.component";
 import NoCustomerIdFound from "../../components/no-customer-id-found/no-customer-id-found.component";

@@ -1,4 +1,4 @@
-import useDeleteCat from "../../hooks/use-delete-cat";
+import useDeleteCat from "../../hooks/delete-cat/use-delete-cat";
 
 import { EntryOptionsButton } from "../../styles/button/button.styles";
 

@@ -57,6 +57,7 @@ export const editCustomerAsync = createAsyncThunk(
         phoneNumber,
       } = rest;
 
+      console.log(customerDetails);
       const data = lowercaseObjectValues({
         address,
         catDetails,
@@ -83,7 +84,7 @@ export const editCustomerAsync = createAsyncThunk(
 
 export const deleteCustomersCatsAsync = createAsyncThunk(
   "deleteCustomersCats",
-  async ({ customerId, $id }, thunkAPI) => {
+  async ({ customerId }, thunkAPI) => {
     try {
       const queryIndex = "customerId";
       const queryValue = customerId;
@@ -100,7 +101,7 @@ export const deleteCustomersCatsAsync = createAsyncThunk(
       const { documents } = customersCats;
 
       if (!documents.length) {
-        return $id;
+        return;
       }
 
       const catDocumentIds = documents.map((cat) => cat.$id);
@@ -113,8 +114,6 @@ export const deleteCustomersCatsAsync = createAsyncThunk(
           catId
         );
       }
-
-      return $id;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

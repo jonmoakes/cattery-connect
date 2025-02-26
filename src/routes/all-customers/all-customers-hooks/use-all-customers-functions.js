@@ -32,7 +32,7 @@ const useAllCustomersFunctions = (chosenEntry) => {
     const { name, customerId, $id } = chosenEntry ?? {};
 
     const confirmResult = () => {
-      dispatch(deleteCustomersCatsAsync({ customerId, $id })).then(
+      dispatch(deleteCustomersCatsAsync({ customerId })).then(
         (resultAction) => {
           if (deleteCustomersCatsAsync.fulfilled.match(resultAction)) {
             dispatch(deleteCustomerAsync({ $id }));

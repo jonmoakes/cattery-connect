@@ -41,8 +41,10 @@ const useSetDetailsRequiredForCatManagementAndNavigate = () => {
   };
 
   const setDataForCatEditingAndGoToEditCatRoute = (chosenEntry, fromRoute) => {
+    const customerId = chosenEntry.customerId ?? {};
     dispatch(setCatDetails(chosenEntry));
     dispatch(setCatDetailForFormComparison(chosenEntry));
+    dispatch(setDetailsRequiredForCatManagement({ customerId }));
     hamburgerHandlerNavigate(editCatRoute, { fromRoute: fromRoute });
   };
 

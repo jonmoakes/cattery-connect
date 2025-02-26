@@ -46,6 +46,9 @@ export const catDetailsManagementSlice = createSlice({
     setCatDetailForFormComparison(state, action) {
       state.catDetailsForFormComparison = action.payload;
     },
+    resetCatDetailForFormComparison(state) {
+      state.catDetailsForFormComparison = {};
+    },
     resetCatDetailsManagementResult(state) {
       state.catDetailsManagementResult = "";
     },
@@ -145,6 +148,7 @@ export const {
   setCatDetails,
   resetCatDetails,
   setCatDetailForFormComparison,
+  resetCatDetailForFormComparison,
   resetCatDetailsManagementResult,
   resetCatDetailsManagementError,
   resetDeleteCatResult,

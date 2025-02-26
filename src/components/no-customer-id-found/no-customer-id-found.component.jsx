@@ -33,6 +33,7 @@ const NoCustomerIdFound = () => {
           have you used the browsers back and forward buttons to leave and then
           return to this page?
         </CustomBalancedText>
+        <CustomBalancedText>or have you reloaded the page?</CustomBalancedText>
         <CustomBalancedText>
           we fetch the cats based on the customers ID which is lost when the
           browsers backward and forward buttons are used.

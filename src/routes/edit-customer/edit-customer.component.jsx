@@ -4,14 +4,25 @@ import CustomerDetailsTitleAndLoader from "../../components/customer-details-for
 import CustomerDetailsForm from "../../components/customer-details-form/customer-details-form.component";
 
 import { Container } from "../../styles/container/container.styles";
+import useGetCustomerDetailsManagementSelectors from "../../hooks/selectors/use-get-customer-details-management-selectors";
+import NoCustomerDetailsFound from "./no-customer-details-found.component";
 
 const EditCustomer = () => {
+  const { customerDetails } = useGetCustomerDetailsManagementSelectors();
+
   useEditCustomerResultSwalUseEffect();
 
+  console.log(customerDetails);
   return (
     <Container>
       <CustomerDetailsTitleAndLoader />
-      <CustomerDetailsForm />
+      {Object.values(customerDetails).every((value) => value === "") ? (
+        <NoCustomerDetailsFound />
+      ) : (
+        <>
+          <CustomerDetailsForm />
+        </>
+      )}
     </Container>
   );
 };
