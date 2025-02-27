@@ -37,6 +37,7 @@ import {
   editCatRoute,
   editCustomerRoute,
   addCustomerRoute,
+  todaysScheduleRoute,
 } from "../strings/routes";
 import useResetAddBookingState from "./use-reset-add-booking-state";
 import { resetBookingsState } from "../store/bookings/bookings.slice";
@@ -52,6 +53,7 @@ import {
   resetCustomerDetailsManagementState,
 } from "../store/customer-details-management/customer-details-management.slice";
 import { resetUpdatePensDataState } from "../store/update-pens-data/update-pens-data.slice";
+import { resetGetTodaysScheduleState } from "../store/todays-schedule/todays-schedule.slice";
 
 const useResetStoreOnRouteChangeUseEffect = () => {
   const { allUsersCatteryIdsAndOwnerNameError } = useGetAllUsersSelectors();
@@ -122,6 +124,9 @@ const useResetStoreOnRouteChangeUseEffect = () => {
         case contactRoute:
           dispatch(resetContactFormDetails());
           dispatch(resetSendEmailState());
+          break;
+        case todaysScheduleRoute:
+          dispatch(resetGetTodaysScheduleState());
           break;
         default:
           break;

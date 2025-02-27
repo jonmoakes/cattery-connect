@@ -1,21 +1,22 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
-import { getTodaysScheduleAsync } from "./todays-schedule.thunks";
+import { getTodaysBookingsRequiredDataAsync } from "./todays-schedule.thunks";
 
 const INITIAL_STATE = {
   todaysScheduleIsLoading: false,
-  todaysScheduleData: [],
-  todaysScheduleError: null,
+  todaysBookingsData: [],
+  todaysBookingsDataResult: "",
+  todaysBookingsDataError: null,
 };
 
 export const todaysScheduleSlice = createSlice({
   name: "todaysSchedule",
   initialState: INITIAL_STATE,
   reducers: {
-    setTodaysScheduleData(state, action) {
-      state.todaysScheduleData = action.payload;
+    resetTodaysBookingsDataResult(state) {
+      state.todaysBookingsDataResult = "";
     },
-    resetGetTodaysScheduleError(state) {
-      state.todaysScheduleError = null;
+    resetTodaysBookingsDataError(state) {
+      state.todaysBookingsDataError = null;
     },
     resetGetTodaysScheduleState: () => {
       return INITIAL_STATE;
@@ -24,39 +25,51 @@ export const todaysScheduleSlice = createSlice({
   selectors: {
     selectTodaysScheduleSelectors: createSelector(
       (state) => state.todaysScheduleIsLoading,
-      (state) => state.todaysScheduleData,
-      (state) => state.todaysScheduleError,
-      (todaysScheduleIsLoading, todaysScheduleData, todaysScheduleError) => {
+      (state) => state.todaysBookingsData,
+      (state) => state.todaysBookingsDataResult,
+      (state) => state.todaysBookingsDataError,
+      (
+        todaysScheduleIsLoading,
+        todaysBookingsData,
+        todaysBookingsDataResult,
+        todaysBookingsDataError
+      ) => {
         return {
           todaysScheduleIsLoading,
-          todaysScheduleData,
-          todaysScheduleError,
+          todaysBookingsData,
+          todaysBookingsDataResult,
+          todaysBookingsDataError,
         };
       }
     ),
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getTodaysScheduleAsync.pending, (state) => {
+      .addCase(getTodaysBookingsRequiredDataAsync.pending, (state) => {
         state.todaysScheduleIsLoading = true;
       })
-      .addCase(getTodaysScheduleAsync.fulfilled, (state, action) => {
+      .addCase(
+        getTodaysBookingsRequiredDataAsync.fulfilled,
+        (state, action) => {
+          state.todaysScheduleIsLoading = false;
+          state.todaysBookingsDataResult = "fulfilled";
+          state.todaysBookingsData = action.payload;
+          state.todaysBookingsDataError = null;
+        }
+      )
+      .addCase(getTodaysBookingsRequiredDataAsync.rejected, (state, action) => {
         state.todaysScheduleIsLoading = false;
-        state.todaysScheduleData = action.payload;
-        state.todaysScheduleError = null;
-      })
-      .addCase(getTodaysScheduleAsync.rejected, (state, action) => {
-        state.todaysScheduleIsLoading = false;
-        state.todaysScheduleData = [];
-        state.todaysScheduleError = action.payload;
+        state.todaysBookingsDataResult = "rejected";
+        state.todaysBookingsData = [];
+        state.todaysBookingsDataError = action.payload;
       });
   },
 });
 
 export const {
-  resetGetTodaysScheduleError,
+  resetTodaysBookingsDataResult,
+  resetTodaysBookingsDataError,
   resetGetTodaysScheduleState,
-  setTodaysScheduleData,
 } = todaysScheduleSlice.actions;
 export const { selectTodaysScheduleSelectors } = todaysScheduleSlice.selectors;
 

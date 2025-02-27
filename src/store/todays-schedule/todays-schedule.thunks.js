@@ -4,56 +4,56 @@ import { format } from "date-fns";
 import {
   databaseId,
   bookingsCollectionId,
-  //   customersCollectionId,
-  //   standardRateLimit,
+  catsCollectionId,
 } from "../../constants/constants";
 import { Query } from "appwrite";
 import { databases } from "../../utils/appwrite/appwrite-config";
-// import { listDocumentsByQueryOrSearch } from "../../utils/appwrite/appwrite-functions";
 
-export const getTodaysScheduleAsync = createAsyncThunk(
-  "getTodaysSchedule",
+export const getTodaysBookingsRequiredDataAsync = createAsyncThunk(
+  "getTodaysBookingsRequiredData",
   async ({ catteryId }, thunkAPI) => {
     try {
-      const today = format(new Date(), "yyyy-MM-dd"); // Format today's date
+      if (!catteryId) {
+        throw new Error("No cattery ID provided");
+      }
 
-      const queries = [
+      const today = format(new Date(), "yyyy-MM-dd");
+
+      const todaysBookingsQuery = [
         Query.equal("catteryId", catteryId),
         Query.lessThanEqual("checkInDate", today),
         Query.greaterThanEqual("checkOutDate", today),
       ];
 
-      const queriesResponse = await databases.listDocuments(
+      const bookingsResponse = await databases.listDocuments(
         databaseId,
         bookingsCollectionId,
-        queries
+        todaysBookingsQuery
       );
 
-      const { documents } = queriesResponse;
+      const todayBookings = bookingsResponse.documents;
 
-      if (!documents.length) return [];
+      if (!todayBookings.length) return [];
 
-      if (!documents.length) {
-        return [];
-      }
+      const customerIdsArray = todayBookings.map(
+        (booking) => booking.customerId
+      );
 
-      const catsAndCustomerIds = documents.map((doc) => ({
-        catsInBooking: doc.catsInBooking,
-        customerId: doc.customerId,
+      const catsResponse = await databases.listDocuments(
+        databaseId,
+        catsCollectionId,
+        [Query.equal("customerId", customerIdsArray)]
+      );
+
+      const catsInToday = catsResponse.documents;
+
+      const requiredCatData = catsInToday.map((cat) => ({
+        catsName: cat.catsName,
+        catsFeedingInfo: cat.catsFeedingInfo,
+        catsMedicalInfo: cat.catsMedicalInfo,
       }));
 
-      return catsAndCustomerIds;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
-export const getTodaysCatsAsync = createAsyncThunk(
-  "schedule/getTodaysCats",
-  async ({ todaysScheduleData }, thunkAPI) => {
-    try {
-      console.log(todaysScheduleData);
+      return requiredCatData;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

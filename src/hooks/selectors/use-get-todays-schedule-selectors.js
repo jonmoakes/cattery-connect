@@ -3,17 +3,18 @@ import { useSelector } from "react-redux";
 import { selectTodaysScheduleSelectors } from "../../store/todays-schedule/todays-schedule.slice";
 
 const useGetTodaysScheduleSelectors = () => {
-  const { todaysScheduleIsLoading, todaysScheduleData, todaysScheduleError } =
-    useSelector(selectTodaysScheduleSelectors);
-
-  const atLeastOneBookingOnTodaysDate =
-    todaysScheduleData && todaysScheduleData.length > 0;
+  const {
+    todaysScheduleIsLoading,
+    todaysBookingsData,
+    todaysBookingsDataResult,
+    todaysBookingsDataError,
+  } = useSelector(selectTodaysScheduleSelectors);
 
   return {
     todaysScheduleIsLoading,
-    todaysScheduleData,
-    todaysScheduleError,
-    atLeastOneBookingOnTodaysDate,
+    todaysBookingsData,
+    todaysBookingsDataResult,
+    todaysBookingsDataError,
   };
 };
 
