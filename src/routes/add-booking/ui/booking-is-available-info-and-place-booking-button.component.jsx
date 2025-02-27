@@ -1,20 +1,22 @@
 import useGetIsBookingAvailableSelectors from "../../../hooks/selectors/use-get-is-booking-available-selectors";
-import useAddBookingFunctions from "../add-booking-hooks/use-add-booking-functions";
+
+import useConfirmPlaceBooking from "../add-booking-hooks/use-confirm-place-booking";
+import useHandleChangeDetailsRequest from "../add-booking-hooks/use-handle-change-details-request";
+
 import CustomBalancedText from "../../../components/custom-balanced-text/custom-balanced-text.component";
 
 import { Button } from "../../../styles/button/button.styles";
-
 import { BlackHr } from "../../../styles/hr/hr.styles";
 import { BookingWrapper } from "../../../styles/div/div.styles";
 
 const BookingIsAvailableInfoAndPlaceBookingButton = () => {
-  const { status } = useGetIsBookingAvailableSelectors();
-  const { confirmPlaceBooking, handleChangeDetailsRequest } =
-    useAddBookingFunctions();
+  const { availabilityStatus } = useGetIsBookingAvailableSelectors();
+  const { confirmPlaceBooking } = useConfirmPlaceBooking();
+  const { handleChangeDetailsRequest } = useHandleChangeDetailsRequest();
 
   return (
     <>
-      {status === "bookingAvailable" ? (
+      {availabilityStatus === "bookingAvailable" ? (
         <>
           <BookingWrapper className="available">
             <CustomBalancedText>

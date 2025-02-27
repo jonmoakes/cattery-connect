@@ -9,7 +9,7 @@ import { BlackHr } from "../../../../styles/hr/hr.styles";
 
 import { getFirstNameFromString } from "../../../../functions/get-first-name-from-string";
 
-const OneCatInfo = ({ catsToRender }) => {
+const OneCatInfo = ({ customersCats }) => {
   const { customerName } = useGetUploadBookingDataSelectors();
   const { goToAddCatRouteWithCustomerData } =
     useGoToAddCatRouteWithCustomerData();
@@ -18,7 +18,7 @@ const OneCatInfo = ({ catsToRender }) => {
     <>
       <BlackHr />
       <CustomBalancedText className="white">
-        <CustomSpan className="yellow">{catsToRender[0].catsName}</CustomSpan>{" "}
+        <CustomSpan className="yellow">{customersCats[0].catsName}</CustomSpan>{" "}
         is the only cat found for {getFirstNameFromString(customerName)}.
       </CustomBalancedText>
       <CustomBalancedText className="white">

@@ -1,4 +1,4 @@
-import useAddBookingVariables from "../../add-booking-hooks/use-add-booking-variables";
+import useChooseCatsVariables from "./choose-cats-input-hooks/use-choose-cat-variables";
 
 import NoSelectedCustomersCatsHaveBeenAddedYet from "./no-selected-customers-cats-have-been-added-yet.component";
 import ChooseCatCheckboxes from "./choose-cats-checkboxes.component";
@@ -8,7 +8,7 @@ const ChooseCatsInput = () => {
     noCustomerSelectedYet,
     customerHasBeenSelectedAndHasNoAddedCats,
     customerHasBeenSelectedAndHasAtLeastOneCat,
-  } = useAddBookingVariables();
+  } = useChooseCatsVariables();
 
   return (
     <>

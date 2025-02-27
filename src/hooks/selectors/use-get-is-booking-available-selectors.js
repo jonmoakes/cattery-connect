@@ -10,7 +10,7 @@ const useGetIsBookingAvailableSelectors = () => {
     showIneligibleDates,
   } = useSelector(selectIsBookingAvailableSelectors);
 
-  const { status, failingDates, parsedAvailabilityData } =
+  const { availabilityStatus, failingDates, parsedAvailabilityData } =
     isBookingAvailableResult ?? {};
 
   return {
@@ -18,7 +18,7 @@ const useGetIsBookingAvailableSelectors = () => {
     isBookingAvailableResult,
     isBookingAvailableError,
     showIneligibleDates,
-    status,
+    availabilityStatus,
     failingDates,
     parsedAvailabilityData,
   };

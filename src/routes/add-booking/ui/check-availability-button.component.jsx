@@ -3,10 +3,10 @@ import useGetIsBookingAvailableSelectors from "../../../hooks/selectors/use-get-
 import { Button } from "../../../styles/button/button.styles";
 
 const CheckAvailabilityButton = () => {
-  const { status } = useGetIsBookingAvailableSelectors();
+  const { availabilityStatus } = useGetIsBookingAvailableSelectors();
   return (
     <>
-      {status !== "bookingAvailable" ? (
+      {availabilityStatus !== "bookingAvailable" ? (
         <Button type="submit" className="margin">
           check availability
         </Button>

@@ -5,8 +5,11 @@ import useGetIsBookingAvailableSelectors from "../../../../hooks/selectors/use-g
 import useCatteryNotAvailableOnChosenDatesSwal from "../swals/use-cattery-not-available-on-chosen-dates-swal";
 
 const useCheckBookingAvailableResultSwalUseEffect = () => {
-  const { isBookingAvailableResult, isBookingAvailableError, status } =
-    useGetIsBookingAvailableSelectors();
+  const {
+    isBookingAvailableResult,
+    isBookingAvailableError,
+    availabilityStatus,
+  } = useGetIsBookingAvailableSelectors();
 
   const { catteryNotAvailableOnChosenDatesSwal } =
     useCatteryNotAvailableOnChosenDatesSwal();
@@ -14,7 +17,7 @@ const useCheckBookingAvailableResultSwalUseEffect = () => {
   useEffect(() => {
     if (
       (!isBookingAvailableResult && !isBookingAvailableError) ||
-      status === "bookingAvailable"
+      availabilityStatus === "bookingAvailable"
     )
       return;
 
@@ -25,7 +28,7 @@ const useCheckBookingAvailableResultSwalUseEffect = () => {
     isBookingAvailableResult,
     isBookingAvailableError,
     catteryNotAvailableOnChosenDatesSwal,
-    status,
+    availabilityStatus,
   ]);
 };
 

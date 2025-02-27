@@ -11,14 +11,14 @@ import { BlackHr } from "../../../../styles/hr/hr.styles";
 
 const ChooseCatCheckboxes = () => {
   const { uploadBookingData } = useGetUploadBookingDataSelectors();
-  const { customerHasOneCat, catsToRender, customerHasMoreThanOneCat } =
+  const { customerHasOneCat, customersCats, customerHasMoreThanOneCat } =
     useAddBookingVariables();
   const { handleChooseCatsChange } = useHandleChooseCatsChange();
 
   return (
     <>
       {customerHasOneCat ? (
-        <OneCatInfo {...{ catsToRender }} />
+        <OneCatInfo {...{ customersCats }} />
       ) : customerHasMoreThanOneCat ? (
         <>
           <CustomBalancedText className="white">
@@ -27,7 +27,7 @@ const ChooseCatCheckboxes = () => {
           </CustomBalancedText>
           <BlackHr />
 
-          {catsToRender.map((cat, index) => {
+          {customersCats.map((cat, index) => {
             const { catsId, catsName } = cat;
 
             return (

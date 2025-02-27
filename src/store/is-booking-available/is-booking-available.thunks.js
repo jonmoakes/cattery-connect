@@ -109,12 +109,12 @@ export const checkBookingAvailabilityAsync = createAsyncThunk(
 
       if (!isBookingAvailable) {
         return {
-          status: "bookingNotAvailable",
+          availabilityStatus: "bookingNotAvailable",
           failingDates,
         };
       }
 
-      return { status: "bookingAvailable", parsedAvailabilityData };
+      return { availabilityStatus: "bookingAvailable", parsedAvailabilityData };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

@@ -1,4 +1,3 @@
-import useAddBookingFunctions from "./add-booking-hooks/use-add-booking-functions";
 import useAddBookingVariables from "./add-booking-hooks/use-add-booking-variables";
 import useCheckInAndOutDateValidityUseEffect from "./add-booking-hooks/use-effects/use-check-in-and-out-date-validity-use-effect";
 import useCheckBookingAvailableResultSwalUseEffect from "./add-booking-hooks/use-effects/use-check-booking-available-result-swal-use-effect";
@@ -21,25 +20,30 @@ import BookingIsAvailableInfoAndPlaceBookingButton from "./ui/booking-is-availab
 import { Container } from "../../styles/container/container.styles";
 import { ParentDiv } from "../../styles/div/div.styles";
 import { Form } from "../../styles/form/form.styles";
+import useGetRequiredCatteryDataForBookingSelectors from "../../hooks/selectors/use-get-required-cattery-data-for-booking-selectors";
+import useGetAllCustomerSelectors from "../../hooks/selectors/use-get-all-customers-selectors";
+import useGetIndividualCustomersCatsSelectors from "../../hooks/selectors/use-get-individual-customers-cats-selectors";
+import useGetUploadBookingDataSelectors from "../../hooks/selectors/use-get-upload-booking-data-selectors";
+import useGetIsBookingAvailableSelectors from "../../hooks/selectors/use-get-is-booking-available-selectors";
+import useCheckBookingAvailability from "./add-booking-hooks/use-check-booking-availability";
 
 const AddBooking = () => {
+  const { requiredCatteryDataError } =
+    useGetRequiredCatteryDataForBookingSelectors();
+  const { getAllCustomersError } = useGetAllCustomerSelectors();
+  const { individualCustomersCatsError } =
+    useGetIndividualCustomersCatsSelectors();
+  const { checkInDate, checkInSlot, checkOutDate, checkOutSlot } =
+    useGetUploadBookingDataSelectors();
+  const { availabilityStatus } = useGetIsBookingAvailableSelectors();
+
+  const { checkBookingAvailability } = useCheckBookingAvailability();
   const {
-    requiredCatteryDataError,
-    getAllCustomersError,
-    individualCustomersCatsError,
-    status,
     moreCatsInBookingThanCapacityInOnePen,
-    numberOfCatsInBooking,
-    maximumCatsInSinglePen,
     atLeastOneCatHasBeenSelected,
-    checkInDate,
-    checkInSlot,
-    checkOutDate,
-    checkOutSlot,
     bookingDataToShow,
+    shouldShowFormSubmissionButtons,
   } = useAddBookingVariables();
-  const { shouldShowFormSubmissionButtons, checkBookingAvailability } =
-    useAddBookingFunctions();
 
   useGetRequiredCatteryDataAndCustomersThunkUseEffect();
   useCheckInAndOutDateValidityUseEffect();
@@ -58,14 +62,12 @@ const AddBooking = () => {
       ) : (
         <ParentDiv>
           <Form onSubmit={checkBookingAvailability}>
-            {status ===
+            {availabilityStatus ===
             "bookingAvailable" ? null : moreCatsInBookingThanCapacityInOnePen ? (
               <>
                 <ChooseCustomerSelectInput />
                 <ChooseCatsInput />
-                <MoreCatsSelectedThanSinglePenCapacity
-                  {...{ numberOfCatsInBooking, maximumCatsInSinglePen }}
-                />
+                <MoreCatsSelectedThanSinglePenCapacity />
               </>
             ) : (
               <>

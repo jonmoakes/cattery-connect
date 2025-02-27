@@ -16,7 +16,7 @@
     "date-fns": "^4.1.0",
     "dotenv": "^16.4.7",
     "nanoid": "^5.0.9",
-    "netlify-cli": "^18.1.0",
+    "netlify-cli": "^19.0.0",
     "postmark": "^4.0.5",
     "react": "^19.0.0",
     "react-animations": "^1.0.0",

@@ -3,7 +3,7 @@ import { hasSufficientCapacity } from "./has-sufficient-capacity";
 // Helper function to filter pens with insufficient capacity
 const checkPenCapacity = (penData, numberOfCats) => {
   return penData.filter(
-    (pen) => pen.penCapacity < numberOfCats || pen.available <= 0
+    (pen) => pen.penCapacity < numberOfCats || pen.available === 0
   );
 };
 
@@ -15,58 +15,41 @@ export const checkLastDayAvailability = (
 ) => {
   const lastDay = parsedAvailabilityData[parsedAvailabilityData.length - 1];
 
+  if (!lastDay) return failingDates; // Early return if no availability data
+
+  const { date, morningPens, afternoonPens } = lastDay;
+
   const lastDayMorningSlotFail = !hasSufficientCapacity(
-    lastDay.morningPens,
+    morningPens,
     numberOfCats
   );
-
   const lastDayAfternoonSlotFail = !hasSufficientCapacity(
-    lastDay.afternoonPens,
+    afternoonPens,
     numberOfCats
   );
 
-  // If the checkout slot is "am" and morning pens don't have enough capacity
   if (checkOutSlot === "am" && lastDayMorningSlotFail) {
     failingDates.push({
       id: crypto.randomUUID(),
-      date: lastDay.date,
+      date,
       slot: "am",
-      failedPens: checkPenCapacity(lastDay.morningPens, numberOfCats),
+      failedPens: checkPenCapacity(morningPens, numberOfCats),
     });
-  }
-  // If the checkout slot is "pm"
-  else if (checkOutSlot === "pm") {
-    // If morning pens have sufficient capacity but afternoon pens don't
-    if (!lastDayMorningSlotFail && lastDayAfternoonSlotFail) {
+  } else if (checkOutSlot === "pm") {
+    if (lastDayMorningSlotFail) {
       failingDates.push({
         id: crypto.randomUUID(),
-        date: lastDay.date,
-        slot: "pm",
-        failedPens: checkPenCapacity(lastDay.afternoonPens, numberOfCats),
+        date,
+        slot: "am",
+        failedPens: checkPenCapacity(morningPens, numberOfCats),
       });
     }
-    // If morning pens don't have sufficient capacity but afternoon pens do
-    else if (lastDayMorningSlotFail && !lastDayAfternoonSlotFail) {
+    if (lastDayAfternoonSlotFail) {
       failingDates.push({
         id: crypto.randomUUID(),
-        date: lastDay.date,
-        slot: "am",
-        failedPens: checkPenCapacity(lastDay.morningPens, numberOfCats),
-      });
-    }
-    // If both morning and afternoon pens don't have sufficient capacity
-    else if (lastDayMorningSlotFail && lastDayAfternoonSlotFail) {
-      failingDates.push({
-        id: crypto.randomUUID(),
-        date: lastDay.date,
-        slot: "am",
-        failedPens: checkPenCapacity(lastDay.morningPens, numberOfCats),
-      });
-      failingDates.push({
-        id: crypto.randomUUID(),
-        date: lastDay.date,
+        date,
         slot: "pm",
-        failedPens: checkPenCapacity(lastDay.afternoonPens, numberOfCats),
+        failedPens: checkPenCapacity(afternoonPens, numberOfCats),
       });
     }
   }

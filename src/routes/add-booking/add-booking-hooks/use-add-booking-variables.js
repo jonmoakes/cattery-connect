@@ -1,11 +1,11 @@
-import useGetAllCustomerSelectors from "../../../hooks/selectors/use-get-all-customers-selectors";
-import useGetIsBookingAvailableSelectors from "../../../hooks/selectors/use-get-is-booking-available-selectors";
 import useGetRequiredCatteryDataForBookingSelectors from "../../../hooks/selectors/use-get-required-cattery-data-for-booking-selectors";
 import useGetUploadBookingDataSelectors from "../../../hooks/selectors/use-get-upload-booking-data-selectors";
 import useGetIndividualCustomersCatsSelectors from "../../../hooks/selectors/use-get-individual-customers-cats-selectors";
 
 const useAddBookingVariables = () => {
+  const { individualCustomersCats } = useGetIndividualCustomersCatsSelectors();
   const {
+    customerDocumentId,
     customerName,
     catsInBooking,
     checkInDate,
@@ -13,29 +13,18 @@ const useAddBookingVariables = () => {
     checkOutDate,
     checkOutSlot,
   } = useGetUploadBookingDataSelectors();
-  const { maximumCatsInSinglePen, requiredCatteryDataError } =
+  const { maximumCatsInSinglePen } =
     useGetRequiredCatteryDataForBookingSelectors();
-  const { status } = useGetIsBookingAvailableSelectors();
-  const { getAllCustomersError } = useGetAllCustomerSelectors();
-  const { individualCustomersCats, individualCustomersCatsError } =
-    useGetIndividualCustomersCatsSelectors();
 
-  const catsToRender = individualCustomersCats
+  const customersCats = individualCustomersCats
     ? individualCustomersCats.map((cat) => ({
         catsId: cat.catsId,
         catsName: cat.catsName,
       }))
     : undefined;
 
-  const noCustomerSelectedYet = customerName === undefined;
-  const customerHasBeenSelectedAndHasNoAddedCats =
-    customerName && catsToRender && catsToRender.length === 0;
-
-  const customerHasBeenSelectedAndHasAtLeastOneCat =
-    customerName && catsToRender && catsToRender.length > 0;
-  const customerHasOneCat = catsToRender && catsToRender.length === 1;
-
-  const customerHasMoreThanOneCat = catsToRender && catsToRender.length > 1;
+  const customerHasOneCat = customersCats && customersCats.length === 1;
+  const customerHasMoreThanOneCat = customersCats && customersCats.length > 1;
 
   const atLeastOneCatHasBeenSelected =
     customerHasOneCat ||
@@ -48,6 +37,17 @@ const useAddBookingVariables = () => {
   const moreCatsInBookingThanCapacityInOnePen =
     numberOfCatsInBooking > maximumCatsInSinglePen;
 
+  const shouldShowFormSubmissionButtons =
+    !moreCatsInBookingThanCapacityInOnePen &&
+    customerDocumentId &&
+    customerName &&
+    catsInBooking &&
+    checkInDate &&
+    checkInSlot &&
+    checkOutDate &&
+    checkOutSlot &&
+    true;
+
   const bookingDataToShow = {
     customerName,
     catsInBooking,
@@ -58,26 +58,14 @@ const useAddBookingVariables = () => {
   };
 
   return {
-    requiredCatteryDataError,
-    getAllCustomersError,
-    individualCustomersCatsError,
-    status,
     moreCatsInBookingThanCapacityInOnePen,
-    numberOfCatsInBooking,
-    maximumCatsInSinglePen,
     atLeastOneCatHasBeenSelected,
-    checkInDate,
-    checkInSlot,
-    checkOutDate,
-    checkOutSlot,
+    shouldShowFormSubmissionButtons,
     bookingDataToShow,
-    catsToRender,
-    noCustomerSelectedYet,
-    customerHasBeenSelectedAndHasNoAddedCats,
-    customerHasBeenSelectedAndHasAtLeastOneCat,
+    numberOfCatsInBooking,
+    customersCats,
     customerHasOneCat,
     customerHasMoreThanOneCat,
-    individualCustomersCats,
   };
 };
 

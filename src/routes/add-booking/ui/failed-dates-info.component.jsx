@@ -12,14 +12,14 @@ import { MinimalButton } from "../../../styles/button/button.styles";
 import useGetIsBookingAvailableSelectors from "../../../hooks/selectors/use-get-is-booking-available-selectors";
 
 const FailedDatesInfo = () => {
-  const { status, failingDates, showIneligibleDates } =
+  const { availabilityStatus, failingDates, showIneligibleDates } =
     useGetIsBookingAvailableSelectors();
 
   const dispatch = useDispatch();
 
   return (
     <>
-      {status === "bookingNotAvailable" &&
+      {availabilityStatus === "bookingNotAvailable" &&
       failingDates &&
       failingDates.length ? (
         <BookingWrapper className="unavailable">
@@ -82,7 +82,7 @@ const FailedDatesInfo = () => {
             below again, otherwise this booking can't be made 😿
           </CustomBalancedText>
         </BookingWrapper>
-      ) : status === "bookingNotAvailable" && !failingDates ? (
+      ) : availabilityStatus === "bookingNotAvailable" && !failingDates ? (
         <DataDiv className="error">
           <CustomBalancedText className="white">
             sorry, there was an error showing which dates are unavailable..
