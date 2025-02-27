@@ -19,10 +19,10 @@ export const uploadDatesAndPensAvailabilityDocumentAsync = createAsyncThunk(
     try {
       const {
         catteryId,
-        penSpacesForMaxTwoCats,
-        penSpacesForMaxThreeCats,
-        penSpacesForMaxFourCats,
-        penSpacesForMaxFiveCats,
+        penSpacesForOneOrTwoCats,
+        penSpacesForThreeCats,
+        penSpacesForFourCats,
+        penSpacesForFiveCats,
         startDate,
         endDate,
       } = datesAndPensData;
@@ -48,10 +48,10 @@ export const uploadDatesAndPensAvailabilityDocumentAsync = createAsyncThunk(
       const { numberOfPensInCattery } = documents[0];
 
       const values = [
-        penSpacesForMaxTwoCats,
-        penSpacesForMaxThreeCats ? penSpacesForMaxThreeCats : 0,
-        penSpacesForMaxFourCats ? penSpacesForMaxFourCats : 0,
-        penSpacesForMaxFiveCats ? penSpacesForMaxFiveCats : 0,
+        penSpacesForOneOrTwoCats,
+        penSpacesForThreeCats ? penSpacesForThreeCats : 0,
+        penSpacesForFourCats ? penSpacesForFourCats : 0,
+        penSpacesForFiveCats ? penSpacesForFiveCats : 0,
       ];
 
       const totalNumberOfPens = values.reduce(
@@ -83,10 +83,10 @@ export const uploadDatesAndPensAvailabilityDocumentAsync = createAsyncThunk(
       for (const date of dates) {
         const availability = generateCatteryAvailabilityForDate(
           catteryId,
-          penSpacesForMaxTwoCats,
-          penSpacesForMaxThreeCats,
-          penSpacesForMaxFourCats,
-          penSpacesForMaxFiveCats
+          penSpacesForOneOrTwoCats,
+          penSpacesForThreeCats,
+          penSpacesForFourCats,
+          penSpacesForFiveCats
         );
 
         // Adjust the date for the specific day in the loop and add the catteryId

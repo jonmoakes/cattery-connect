@@ -15,7 +15,7 @@ export const formatOriginalAvailabilityData = (availabilityData) => {
         return pens
           .map(
             (pen) =>
-              `Max Capacity: ${pen?.maxCatCapacity || "N/A"}, Available: ${
+              `Pen Capacity: ${pen?.penCapacity || "N/A"}, Available: ${
                 pen?.available || "N/A"
               }`
           )

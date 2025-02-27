@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 
 import useGetUploadBookingDataSelectors from "../../../../hooks/selectors/use-get-upload-booking-data-selectors";
@@ -12,7 +13,7 @@ const useCheckOutDateBeforeCheckInDateSwal = () => {
   const { fireSwal } = useFireSwal();
   const dispatch = useDispatch();
 
-  const checkOutDateBeforeCheckInDateSwal = () => {
+  const checkOutDateBeforeCheckInDateSwal = useCallback(() => {
     fireSwal(
       "error",
       "the check out date cannot be before the check in date..",
@@ -33,7 +34,7 @@ const useCheckOutDateBeforeCheckInDateSwal = () => {
         );
       }
     });
-  };
+  }, [dispatch, fireSwal, uploadBookingData]);
 
   return { checkOutDateBeforeCheckInDateSwal };
 };

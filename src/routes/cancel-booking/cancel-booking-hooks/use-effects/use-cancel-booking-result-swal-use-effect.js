@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 
-import useCancelBookingVariables from "../use-cancel-booking-variables";
+import useGetUpdatePensDataSelectors from "../../../../hooks/selectors/use-get-update-pens-data-selectors";
+import useGetCancelBookingSelectors from "../../../../hooks/selectors/use-get-cancel-booking-selectors";
+
 import useHamburgerHandlerNavigate from "../../../../hooks/use-hamburger-handler-navigate";
 import useBookingCancelledSuccessSwal from "../swals/use-booking-cancelled-success-swal";
 import usePenDataRollbackErrorSwal from "../../../../hooks/use-pen-data-rollback-error-swal";
 import useUpdatePensErrorSwal from "../../../../hooks/use-update-pens-error-swal";
+import usePensUpdatedDeleteBookingDataFailedSwal from "../swals/use-pens-updated-delete-booking-data-failed-swal";
 
 import { pensRollbackFailureErrorCode } from "../../../../constants/constants";
-import usePensUpdatedDeleteBookingDataFailedSwal from "../swals/use-pens-updated-delete-booking-data-failed-swal";
 
 const useCancelBookingResultSwalUseEffect = () => {
   const {
@@ -15,9 +17,9 @@ const useCancelBookingResultSwalUseEffect = () => {
     fetchAvailabilityDocsToUpdateError,
     deleteBookingDataResult,
     deleteBookingDataError,
-    updatePensDataResult,
-    updatePensDataError,
-  } = useCancelBookingVariables();
+  } = useGetCancelBookingSelectors();
+  const { updatePensDataResult, updatePensDataError } =
+    useGetUpdatePensDataSelectors();
   const { bookingCancelledSuccessSwal } = useBookingCancelledSuccessSwal();
   const { penDataRollbackErrorSwal } = usePenDataRollbackErrorSwal();
   const { updatePensErrorSwal } = useUpdatePensErrorSwal();

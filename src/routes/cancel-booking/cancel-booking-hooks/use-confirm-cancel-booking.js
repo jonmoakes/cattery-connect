@@ -1,9 +1,10 @@
 import { useDispatch } from "react-redux";
 
+import useGetCancelBookingSelectors from "../../../hooks/selectors/use-get-cancel-booking-selectors";
+
 import { updatePensDataInDbAsync } from "../../../store/update-pens-data/update-pens-data.thunks";
 import { deleteBookingDataAsync } from "../../../store/cancel-booking/cancel-booking.thunks";
 
-import useCancelBookingVariables from "./use-cancel-booking-variables";
 import useConfirmSwal from "../../../hooks/use-confirm-swal";
 
 import { imSureMessage } from "../../../strings/confirms";
@@ -12,9 +13,9 @@ import { imSureMessage } from "../../../strings/confirms";
 // regarding catsInBooking which was a string and needs to be an array,
 // and availabilityDocsToUpdate needs to be named parsedAvailabilityData in the thunk
 
-const useCancelBookingFunctions = () => {
+const useConfirmCancelBooking = () => {
   const { dataFromBooking, availabilityDocsToUpdate, $id } =
-    useCancelBookingVariables();
+    useGetCancelBookingSelectors();
 
   const dispatch = useDispatch();
   const { confirmSwal } = useConfirmSwal();
@@ -29,27 +30,27 @@ const useCancelBookingFunctions = () => {
         : [],
     };
 
-    const operation = "add";
+    const confirmResult = () => {
+      const operation = "add";
+      dispatch(
+        updatePensDataInDbAsync({
+          parsedAvailabilityData: availabilityDocsToUpdate,
+          uploadBookingData,
+          operation,
+        })
+      ).then((resultAction) => {
+        if (updatePensDataInDbAsync.fulfilled.match(resultAction)) {
+          dispatch(deleteBookingDataAsync({ $id }));
+        }
+      });
+    };
 
     confirmSwal(
       "are you sure you want to cancel this booking?",
       "",
       imSureMessage,
       "don't cancel",
-      () =>
-        dispatch(
-          updatePensDataInDbAsync({
-            parsedAvailabilityData: availabilityDocsToUpdate,
-            uploadBookingData,
-            operation,
-          })
-        ).then((resultAction) => {
-          if (updatePensDataInDbAsync.rejected.match(resultAction)) {
-            return;
-          } else {
-            dispatch(deleteBookingDataAsync({ $id }));
-          }
-        }),
+      confirmResult,
       null
     );
   };
@@ -57,4 +58,4 @@ const useCancelBookingFunctions = () => {
   return { confirmCancelBooking };
 };
 
-export default useCancelBookingFunctions;
+export default useConfirmCancelBooking;

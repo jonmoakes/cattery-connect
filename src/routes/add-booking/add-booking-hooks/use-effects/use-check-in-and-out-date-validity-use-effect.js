@@ -5,6 +5,7 @@ import useGetUploadBookingDataSelectors from "../../../../hooks/selectors/use-ge
 
 import useCheckOutDateBeforeCheckInDateSwal from "../swals/use-check-out-date-before-check-in-date-swal";
 import useSameDayCheckInAndOutSlotsAreTheSameSwal from "../swals/use-same-day-check-in-and-out-slots-are-the-same-swal";
+import useSameDayCheckInOutSlotsError from "../swals/use-same-day-check-in-out-slots-error-swal";
 
 const useCheckInAndOutDateValidityUseEffect = () => {
   const { checkInDate, checkOutDate, checkInSlot, checkOutSlot } =
@@ -13,6 +14,7 @@ const useCheckInAndOutDateValidityUseEffect = () => {
     useCheckOutDateBeforeCheckInDateSwal();
   const { sameDayCheckInAndOutSlotsAreTheSameSwal } =
     useSameDayCheckInAndOutSlotsAreTheSameSwal();
+  const { sameDayCheckInOutSlotsError } = useSameDayCheckInOutSlotsError();
 
   useEffect(() => {
     if (!checkInDate && !checkOutDate) return;
@@ -26,6 +28,12 @@ const useCheckInAndOutDateValidityUseEffect = () => {
       checkOutDateBeforeCheckInDateSwal();
     } else if (checkInDate === checkOutDate && checkInSlot === checkOutSlot) {
       sameDayCheckInAndOutSlotsAreTheSameSwal();
+    } else if (
+      checkInDate === checkOutDate &&
+      checkInSlot === "pm" &&
+      checkOutSlot === "am"
+    ) {
+      sameDayCheckInOutSlotsError();
     }
   }, [
     checkInDate,
@@ -34,6 +42,7 @@ const useCheckInAndOutDateValidityUseEffect = () => {
     checkOutSlot,
     checkOutDateBeforeCheckInDateSwal,
     sameDayCheckInAndOutSlotsAreTheSameSwal,
+    sameDayCheckInOutSlotsError,
   ]);
 };
 

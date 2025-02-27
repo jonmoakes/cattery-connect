@@ -51,6 +51,7 @@ import {
   resetCustomerDetails,
   resetCustomerDetailsManagementState,
 } from "../store/customer-details-management/customer-details-management.slice";
+import { resetUpdatePensDataState } from "../store/update-pens-data/update-pens-data.slice";
 
 const useResetStoreOnRouteChangeUseEffect = () => {
   const { allUsersCatteryIdsAndOwnerNameError } = useGetAllUsersSelectors();
@@ -108,7 +109,6 @@ const useResetStoreOnRouteChangeUseEffect = () => {
           break;
         case addBookingRoute:
           resetAddBookingState();
-          dispatch(resetSendEmailState());
           break;
         case bookingsRoute:
           dispatch(resetBookingsState());
@@ -116,6 +116,8 @@ const useResetStoreOnRouteChangeUseEffect = () => {
         case cancelBookingRoute:
           dispatch(resetCancelBookingState());
           dispatch(resetRequiredCatteryDataForBookingState());
+          dispatch(resetSendEmailState());
+          dispatch(resetUpdatePensDataState());
           break;
         case contactRoute:
           dispatch(resetContactFormDetails());

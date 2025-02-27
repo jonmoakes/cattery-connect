@@ -16,10 +16,10 @@ const useGetUploadDatesAndPensDataSelectors = () => {
     catteryId,
     startDate,
     endDate,
-    penSpacesForMaxTwoCats,
-    penSpacesForMaxThreeCats,
-    penSpacesForMaxFourCats,
-    penSpacesForMaxFiveCats,
+    penSpacesForOneOrTwoCats,
+    penSpacesForThreeCats,
+    penSpacesForFourCats,
+    penSpacesForFiveCats,
   } = datesAndPensData ?? {};
 
   return {
@@ -33,10 +33,10 @@ const useGetUploadDatesAndPensDataSelectors = () => {
     datesClosedArray,
     startDate,
     endDate,
-    penSpacesForMaxTwoCats,
-    penSpacesForMaxThreeCats,
-    penSpacesForMaxFourCats,
-    penSpacesForMaxFiveCats,
+    penSpacesForOneOrTwoCats,
+    penSpacesForThreeCats,
+    penSpacesForFourCats,
+    penSpacesForFiveCats,
   };
 };
 

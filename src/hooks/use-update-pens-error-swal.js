@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 
 import useGetUpdatePensDataSelectors from "../hooks/selectors/use-get-update-pens-data-selectors";
@@ -19,7 +20,7 @@ const useUpdatePensErrorSwal = () => {
   const location = useLocation();
   const path = location.pathname;
 
-  const updatePensErrorSwal = () => {
+  const updatePensErrorSwal = useCallback(() => {
     fireSwal(
       "error",
       errorReceivedMessage(
@@ -41,7 +42,7 @@ const useUpdatePensErrorSwal = () => {
         dispatch(resetUpdatePensDataError());
       }
     });
-  };
+  }, [updatePensDataError, path, fireSwal, dispatch]);
 
   return { updatePensErrorSwal };
 };

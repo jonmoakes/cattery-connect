@@ -19,10 +19,8 @@ const useGetRequiredCatteryDataAndCustomersThunkUseEffect = () => {
     dispatch(getRequiredCatteryDataForBookingAsync({ catteryId })).then(
       (resultAction) => {
         if (
-          getRequiredCatteryDataForBookingAsync.rejected.match(resultAction)
+          getRequiredCatteryDataForBookingAsync.fulfilled.match(resultAction)
         ) {
-          return;
-        } else {
           dispatch(
             getAllOwnersCustomersAsync({
               catteryId,

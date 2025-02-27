@@ -1,96 +1,52 @@
 import { useEffect } from "react";
 
 import useGetSendEmailSelectors from "../../../../hooks/selectors/use-get-send-email-selectors";
-import useCancelBookingVariables from "../use-cancel-booking-variables";
 
-import useFireSwal from "../../../../hooks/use-fire-swal";
-import useHamburgerHandlerNavigate from "../../../../hooks/use-hamburger-handler-navigate";
-
-import { updatePenRollbackErrorEmailSentMessage } from "../../../../strings/info";
-import { pensUpdatedDeleteBookingDataFailedEmailSentMessage } from "../../../../strings/info";
-import { bookingsRoute, contactRoute } from "../../../../strings/routes";
+import useGetCancelBookingSelectors from "../../../../hooks/selectors/use-get-cancel-booking-selectors";
+import useGetUpdatePensDataSelectors from "../../../../hooks/selectors/use-get-update-pens-data-selectors";
+import useSendEmailSentWithUpdatePensErrorSwal from "../swals/use-send-email-sent-with-update-pens-error-swal";
+import useSendEmailSentWithDeleteBookingDataErrorSwal from "../swals/use-send-email-sent-with-delete-booking-data-error-swal";
+import useEmailSentSuccessSwal from "../swals/use-email-sent-success-swal";
+import useSendEmailErrorSwal from "../swals/use-send-email-error-swal";
 
 const useCancelBookingSendEmailResultSwalUseEffect = () => {
   const { sendEmailStatusCode, sendEmailError } = useGetSendEmailSelectors();
-  const {
-    deleteBookingDataResult,
-    deleteBookingDataError,
-    updatePensDataError,
-  } = useCancelBookingVariables();
+  const { deleteBookingDataResult, deleteBookingDataError } =
+    useGetCancelBookingSelectors();
+  const { updatePensDataError } = useGetUpdatePensDataSelectors();
 
-  const { fireSwal } = useFireSwal();
-  const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
+  const { sendEmailSentWithUpdatePensErrorSwal } =
+    useSendEmailSentWithUpdatePensErrorSwal();
+  const { sendEmailSentWithDeleteBookingDataErrorSwal } =
+    useSendEmailSentWithDeleteBookingDataErrorSwal();
+  const { emailSentSuccessSwal } = useEmailSentSuccessSwal();
+  const { sendEmailErrorSwal } = useSendEmailErrorSwal();
 
   useEffect(() => {
     if (!sendEmailStatusCode && !sendEmailError) return;
 
     if (sendEmailStatusCode === 202 && updatePensDataError) {
-      fireSwal(
-        "success",
-        updatePenRollbackErrorEmailSentMessage,
-        "",
-        0,
-        "",
-        false,
-        "",
-        false
-      ).then((isConfirmed) => {
-        if (isConfirmed) {
-          hamburgerHandlerNavigate(bookingsRoute);
-        }
-      });
+      sendEmailSentWithUpdatePensErrorSwal();
     } else if (sendEmailStatusCode === 202 && deleteBookingDataError) {
-      fireSwal(
-        "success",
-        pensUpdatedDeleteBookingDataFailedEmailSentMessage,
-        "",
-        0,
-        "",
-        false,
-        "",
-        false
-      ).then((isConfirmed) => {
-        if (isConfirmed) {
-          hamburgerHandlerNavigate(bookingsRoute);
-        }
-      });
+      sendEmailSentWithDeleteBookingDataErrorSwal();
     } else if (
       sendEmailStatusCode === 202 &&
       deleteBookingDataResult === "fulfilled"
     ) {
-      fireSwal("success", "email sent!", "", 0, "", false, "", false).then(
-        (isConfirmed) => {
-          if (isConfirmed) {
-            hamburgerHandlerNavigate(bookingsRoute);
-          }
-        }
-      );
+      emailSentSuccessSwal();
     } else if (sendEmailError) {
-      fireSwal(
-        "error",
-        `sorry,the email failed to send.. Please contact jonathan. The error received was: 
-
-${sendEmailError}`,
-        "",
-        0,
-        "",
-        false,
-        "",
-        true
-      ).then((isConfirmed) => {
-        if (isConfirmed) {
-          hamburgerHandlerNavigate(contactRoute);
-        }
-      });
+      sendEmailErrorSwal(sendEmailError);
     }
   }, [
-    sendEmailStatusCode,
-    sendEmailError,
-    hamburgerHandlerNavigate,
-    fireSwal,
-    deleteBookingDataResult,
     deleteBookingDataError,
+    deleteBookingDataResult,
+    sendEmailStatusCode,
     updatePensDataError,
+    emailSentSuccessSwal,
+    sendEmailError,
+    sendEmailErrorSwal,
+    sendEmailSentWithDeleteBookingDataErrorSwal,
+    sendEmailSentWithUpdatePensErrorSwal,
   ]);
 };
 

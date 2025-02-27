@@ -41,7 +41,7 @@ const useHandleCustomerSelectChange = () => {
               customerId: selectedCustomer?.customerId || "",
               customerName: selectedCustomer?.name || "",
               customerEmail: selectedCustomer?.email || "",
-              catsInBooking: [],
+              catsInBooking: undefined,
               checkInDate: "",
               checkInSlot: "",
               checkOutDate: "",

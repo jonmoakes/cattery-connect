@@ -4,14 +4,10 @@ import useGetSendEmailSelectors from "../../../../hooks/selectors/use-get-send-e
 import useGetUpdatePensDataSelectors from "../../../../hooks/selectors/use-get-update-pens-data-selectors";
 import useGetUploadBookingDataSelectors from "../../../../hooks/selectors/use-get-upload-booking-data-selectors";
 
-import useFireSwal from "../../../../hooks/use-fire-swal";
-import useHamburgerHandlerNavigate from "../../../../hooks/use-hamburger-handler-navigate";
-
-import { accountRoute } from "../../../../strings/routes";
-import {
-  pensUpdatedUploadBookingDataFailedEmailSentMessage,
-  updatePenRollbackErrorEmailSentMessage,
-} from "../../../../strings/info";
+import useSendEmailSuccessWithUpdatePensErrorSwal from "../swals/use-send-email-success-with-update-pens-error-swal";
+import useSendEmailSuccessWithUploadBookingDataErrorSwal from "../swals/use-send-email-success-with-upload-booking-data-error-swal";
+import useSendEmailSuccessSwal from "../swals/use-send-email-success-swal";
+import useSendEmailErrorSwal from "../swals/use-send-email-error-swal";
 
 const useSendEmailResultSwalUseEffect = () => {
   const { sendEmailStatusCode, sendEmailError } = useGetSendEmailSelectors();
@@ -19,79 +15,38 @@ const useSendEmailResultSwalUseEffect = () => {
     useGetUploadBookingDataSelectors();
   const { updatePensDataError } = useGetUpdatePensDataSelectors();
 
-  const { fireSwal } = useFireSwal();
-  const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
+  const { sendEmailSuccessWithUpdatePensErrorSwal } =
+    useSendEmailSuccessWithUpdatePensErrorSwal();
+  const { sendEmailSuccessWithUploadBookingDataErrorSwal } =
+    useSendEmailSuccessWithUploadBookingDataErrorSwal();
+  const { sendEmailSuccessSwal } = useSendEmailSuccessSwal();
+  const { sendEmailErrorSwal } = useSendEmailErrorSwal();
 
   useEffect(() => {
     if (!sendEmailStatusCode && !sendEmailError) return;
 
     if (sendEmailStatusCode === 202 && updatePensDataError) {
-      fireSwal(
-        "success",
-        updatePenRollbackErrorEmailSentMessage,
-        "",
-        0,
-        "",
-        false,
-        "",
-        false
-      ).then((isConfirmed) => {
-        if (isConfirmed) {
-          hamburgerHandlerNavigate(accountRoute);
-        }
-      });
+      sendEmailSuccessWithUpdatePensErrorSwal();
     } else if (sendEmailStatusCode === 202 && uploadBookingDataError) {
-      fireSwal(
-        "success",
-        pensUpdatedUploadBookingDataFailedEmailSentMessage,
-        "",
-        0,
-        "",
-        false,
-        "",
-        false
-      ).then((isConfirmed) => {
-        if (isConfirmed) {
-          hamburgerHandlerNavigate(accountRoute);
-        }
-      });
+      sendEmailSuccessWithUploadBookingDataErrorSwal();
     } else if (
       sendEmailStatusCode === 202 &&
       uploadBookingDataResult === "fulfilled"
     ) {
-      fireSwal("success", "email sent!", "", 0, "", false, "", false).then(
-        (isConfirmed) => {
-          if (isConfirmed) {
-            hamburgerHandlerNavigate(accountRoute);
-          }
-        }
-      );
+      sendEmailSuccessSwal();
     } else if (sendEmailError) {
-      fireSwal(
-        "error",
-        `sorry,the email failed to send.. Please contact jonathan. The error received was: 
-        
-${sendEmailError}`,
-        "",
-        0,
-        "",
-        false,
-        "",
-        true
-      ).then((isConfirmed) => {
-        if (isConfirmed) {
-          hamburgerHandlerNavigate(accountRoute);
-        }
-      });
+      sendEmailErrorSwal(sendEmailError);
     }
   }, [
-    sendEmailStatusCode,
-    sendEmailError,
-    hamburgerHandlerNavigate,
-    fireSwal,
-    uploadBookingDataError,
     updatePensDataError,
+    uploadBookingDataError,
     uploadBookingDataResult,
+    sendEmailError,
+    sendEmailErrorSwal,
+    sendEmailStatusCode,
+    sendEmailSuccessSwal,
+    sendEmailSuccessWithUpdatePensErrorSwal,
+    sendEmailSuccessWithUploadBookingDataErrorSwal,
   ]);
 };
 

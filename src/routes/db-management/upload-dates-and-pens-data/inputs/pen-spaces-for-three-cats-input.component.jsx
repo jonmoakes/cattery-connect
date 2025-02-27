@@ -2,20 +2,20 @@ import useGetUploadDatesAndPensDataSelectors from "../../../../hooks/selectors/u
 
 import { Label, StyledInput } from "../../../../styles/form/form.styles";
 
-const PenSpacesForMaxFourCatsInput = ({ handlePensChange }) => {
-  const { penSpacesForMaxFourCats } = useGetUploadDatesAndPensDataSelectors();
+const PenSpacesForThreeCatsInput = ({ handlePensChange }) => {
+  const { penSpacesForThreeCats } = useGetUploadDatesAndPensDataSelectors();
 
   return (
     <>
-      <Label>pen spaces ( max 4 cats ):</Label>
+      <Label>pen spaces ( for 3 cats ):</Label>
       <StyledInput
         type="text"
-        name="penSpacesForMaxFourCats"
+        name="penSpacesForThreeCats"
         onChange={handlePensChange}
-        value={penSpacesForMaxFourCats || ""}
+        value={penSpacesForThreeCats || ""}
       />
     </>
   );
 };
 
-export default PenSpacesForMaxFourCatsInput;
+export default PenSpacesForThreeCatsInput;

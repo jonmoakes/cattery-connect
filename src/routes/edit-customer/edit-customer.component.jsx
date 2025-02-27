@@ -12,7 +12,6 @@ const EditCustomer = () => {
 
   useEditCustomerResultSwalUseEffect();
 
-  console.log(customerDetails);
   return (
     <Container>
       <CustomerDetailsTitleAndLoader />

@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 
 import {
@@ -14,28 +15,31 @@ const useCatteryNotAvailableOnChosenDatesSwal = () => {
   const { fireSwal } = useFireSwal();
   const dispatch = useDispatch();
 
-  const catteryNotAvailableOnChosenDatesSwal = (isBookingAvailableError) => {
-    fireSwal(
-      "error",
-      isBookingAvailableError.includes(catteryNotAvailableOnThisDateString)
-        ? isBookingAvailableError
-        : errorReceivedMessage(
-            "Error checking date availability.",
-            isBookingAvailableError
-          ),
-      "",
-      0,
-      "",
-      false,
-      "",
-      false
-    ).then((isConfirmed) => {
-      if (isConfirmed) {
-        dispatch(resetIsBookingAvailableResult());
-        dispatch(resetIsBookingAvailableError());
-      }
-    });
-  };
+  const catteryNotAvailableOnChosenDatesSwal = useCallback(
+    (isBookingAvailableError) => {
+      fireSwal(
+        "error",
+        isBookingAvailableError.includes(catteryNotAvailableOnThisDateString)
+          ? isBookingAvailableError
+          : errorReceivedMessage(
+              "Error checking date availability.",
+              isBookingAvailableError
+            ),
+        "",
+        0,
+        "",
+        false,
+        "",
+        false
+      ).then((isConfirmed) => {
+        if (isConfirmed) {
+          dispatch(resetIsBookingAvailableResult());
+          dispatch(resetIsBookingAvailableError());
+        }
+      });
+    },
+    [dispatch, fireSwal]
+  );
 
   return { catteryNotAvailableOnChosenDatesSwal };
 };

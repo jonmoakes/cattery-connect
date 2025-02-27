@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 
@@ -35,38 +36,41 @@ const usePenDataRollbackErrorSwal = () => {
       : path === cancelBookingRoute &&
         bookingDataWithCatsInBookingConvertedToArray;
 
-  const penDataRollbackErrorSwal = (setSwalConfirmed) => {
-    fireSwal(
-      "error",
-      updatePensDataErrorMessage(
-        "important message!",
-        updatePensDataError.message
-      ),
-      "",
-      0,
-      "send email",
-      false,
-      "",
-      false
-    ).then((isConfirmed) => {
-      if (isConfirmed) {
-        const { operation, rollbackFailures, originalAvailabilityData } =
-          updatePensDataError ?? {};
+  const penDataRollbackErrorSwal = useCallback(
+    (setSwalConfirmed) => {
+      fireSwal(
+        "error",
+        updatePensDataErrorMessage(
+          "important message!",
+          updatePensDataError.message
+        ),
+        "",
+        0,
+        "send email",
+        false,
+        "",
+        false
+      ).then((isConfirmed) => {
+        if (isConfirmed) {
+          const { operation, rollbackFailures, originalAvailabilityData } =
+            updatePensDataError ?? {};
 
-        setSwalConfirmed(true);
+          setSwalConfirmed(true);
 
-        dispatch(
-          sendEmailCatteryConnectUpdatePensRollbackErrorAsync({
-            dataForEmail,
-            rollbackFailures,
-            originalAvailabilityData,
-            catteryId,
-            operation,
-          })
-        );
-      }
-    });
-  };
+          dispatch(
+            sendEmailCatteryConnectUpdatePensRollbackErrorAsync({
+              dataForEmail,
+              rollbackFailures,
+              originalAvailabilityData,
+              catteryId,
+              operation,
+            })
+          );
+        }
+      });
+    },
+    [catteryId, dataForEmail, updatePensDataError, dispatch, fireSwal]
+  );
 
   return { penDataRollbackErrorSwal };
 };

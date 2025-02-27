@@ -26,12 +26,11 @@ const useAddBookingFunctions = () => {
     checkInSlot,
     checkOutDate,
     checkOutSlot,
+    uploadBookingData,
   } = useGetUploadBookingDataSelectors();
-  let { uploadBookingData } = useGetUploadBookingDataSelectors();
   const { showIneligibleDates, parsedAvailabilityData } =
     useGetIsBookingAvailableSelectors();
-  const { moreCatsInBookingThanCapacityInOnePen, individualCustomersCats } =
-    useAddBookingVariables();
+  const { moreCatsInBookingThanCapacityInOnePen } = useAddBookingVariables();
   const { catteryId } = useGetCurrentUserSelectors();
 
   const dispatch = useDispatch();
@@ -48,27 +47,15 @@ const useAddBookingFunctions = () => {
     checkOutSlot &&
     true;
 
-  const getUpdatedBookingData = () => {
-    if (uploadBookingData.catsInBooking.length === 0) {
-      return {
-        ...uploadBookingData,
-        catsInBooking: [individualCustomersCats[0].catsName], // Needs to be an array for the thunk - it is a string by default here.
-      };
-    }
-    return uploadBookingData;
-  };
-
   const checkBookingAvailability = (event) => {
     event.preventDefault();
     if (showIneligibleDates) {
       dispatch(setShowIneligibleDates(false));
     }
 
-    const updatedBookingData = getUpdatedBookingData();
-
     dispatch(
       checkBookingAvailabilityAsync({
-        uploadBookingData: updatedBookingData,
+        uploadBookingData,
         catteryId,
       })
     );
@@ -76,30 +63,32 @@ const useAddBookingFunctions = () => {
 
   const confirmPlaceBooking = () => {
     const operation = "deduct";
-    const updatedBookingData = getUpdatedBookingData();
+
+    const confirmResult = () => {
+      dispatch(
+        updatePensDataInDbAsync({
+          parsedAvailabilityData,
+          uploadBookingData,
+          operation,
+        })
+      ).then((resultAction) => {
+        if (updatePensDataInDbAsync.fulfilled.match(resultAction)) {
+          dispatch(
+            uploadBookingDataToDbAsync({
+              uploadBookingData,
+              catteryId,
+            })
+          );
+        }
+      });
+    };
 
     confirmSwal(
       "are you sure that you want to place this booking?",
       "",
       imSureMessage,
       "",
-      () =>
-        dispatch(
-          updatePensDataInDbAsync({
-            parsedAvailabilityData,
-            uploadBookingData: updatedBookingData,
-            operation,
-          })
-        ).then((resultAction) => {
-          if (updatePensDataInDbAsync.fulfilled.match(resultAction)) {
-            dispatch(
-              uploadBookingDataToDbAsync({
-                uploadBookingData: updatedBookingData,
-                catteryId,
-              })
-            );
-          }
-        }),
+      confirmResult,
       null
     );
   };

@@ -1,8 +1,12 @@
+import useGetCancelBookingSelectors from "../../hooks/selectors/use-get-cancel-booking-selectors";
+import useGetRequiredCatteryDataForBookingSelectors from "../../hooks/selectors/use-get-required-cattery-data-for-booking-selectors";
+
 import useFetchAvailabilityDocsToUpdateThunkUseEffect from "./cancel-booking-hooks/use-effects/use-fetch-availability-docs-to-update-thunk-use-effect";
 import useCancelBookingResultSwalUseEffect from "./cancel-booking-hooks/use-effects/use-cancel-booking-result-swal-use-effect";
+import useCancelBookingSendEmailResultSwalUseEffect from "./cancel-booking-hooks/use-effects/use-cancel-booking-send-email-result-swal-use-effect";
 
-import useCancelBookingVariables from "./cancel-booking-hooks/use-cancel-booking-variables";
-import useCancelBookingFunctions from "./cancel-booking-hooks/use-cancel-booking-functions";
+import useGetBookingDataToShow from "./cancel-booking-hooks/use-get-booking-data-to-show";
+import useConfirmCancelBooking from "./cancel-booking-hooks/use-confirm-cancel-booking";
 
 import CancelBookingTitleAndLoader from "./cancel-booking-title-and-loader.component";
 import ShowFetchErrors from "../../components/errors/show-fetch-errors.component";
@@ -12,16 +16,14 @@ import ShowBookingData from "../../components/show-booking-data/show-booking-dat
 import { Container } from "../../styles/container/container.styles";
 import { Button } from "../../styles/button/button.styles";
 import { Form } from "../../styles/form/form.styles";
-import useCancelBookingSendEmailResultSwalUseEffect from "./cancel-booking-hooks/use-effects/use-cancel-booking-send-email-result-swal-use-effect";
 
 const CancelBooking = () => {
-  const {
-    fetchAvailabilityDocsToUpdateError,
-    hasDataPassedFromBookingsTable,
-    bookingDataToShow,
-    requiredCatteryDataError,
-  } = useCancelBookingVariables();
-  const { confirmCancelBooking } = useCancelBookingFunctions();
+  const { bookingDataToShow } = useGetBookingDataToShow();
+  const { fetchAvailabilityDocsToUpdateError, hasBookingToCancelData } =
+    useGetCancelBookingSelectors();
+  const { requiredCatteryDataError } =
+    useGetRequiredCatteryDataForBookingSelectors();
+  const { confirmCancelBooking } = useConfirmCancelBooking();
 
   useFetchAvailabilityDocsToUpdateThunkUseEffect();
   useCancelBookingResultSwalUseEffect();
@@ -33,7 +35,7 @@ const CancelBooking = () => {
 
       {fetchAvailabilityDocsToUpdateError || requiredCatteryDataError ? (
         <ShowFetchErrors />
-      ) : !hasDataPassedFromBookingsTable ? (
+      ) : !hasBookingToCancelData ? (
         <NoBookingDataFound />
       ) : (
         <Form onSubmit={confirmCancelBooking}>

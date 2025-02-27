@@ -12,10 +12,10 @@ import CatteryIdSelectInput from "./inputs/cattery-id-select-input/cattery-id-se
 import ClosedDatesQuestion from "./closed-dates-question.component";
 import DaysOffInput from "./inputs/days-off-input.component";
 import StartAndEndDatesDatePicker from "./inputs/start-and-end-dates-date-picker.component";
-import PenSpacesForMaxTwoCatsInput from "./inputs/pen-spaces-for-max-two-cats-input.component";
-import PenSpacesForMaxThreeCatsInput from "./inputs/pen-spaces-for-max-three-cats-input.component";
-import PenSpacesForMaxFourCatsInput from "./inputs/pen-spaces-for-max-four-cats-input.component";
-import PenSpacesForMaxFiveCatsInput from "./inputs/pen-spaces-for-max-five-cats-input.component";
+import PenSpacesForOneOrTwoCatsInput from "./inputs/pen-spaces-for-one-or-two-cats-input.component";
+import PenSpacesForThreeCatsInput from "./inputs/pen-spaces-for-three-cats-input.component";
+import PenSpacesForFourCatsInput from "./inputs/pen-spaces-for-four-cats-input.component";
+import PenSpacesForFiveCatsInput from "./inputs/pen-spaces-for-five-cats-input.component";
 
 import { Container } from "../../../styles/container/container.styles";
 import { ParentDiv } from "../../../styles/div/div.styles";
@@ -69,10 +69,10 @@ const UploadDatesAndPensData = () => {
                   selectedDate={endDate}
                   {...{ handleDatesChange }}
                 />
-                <PenSpacesForMaxTwoCatsInput {...{ handlePensChange }} />
-                <PenSpacesForMaxThreeCatsInput {...{ handlePensChange }} />
-                <PenSpacesForMaxFourCatsInput {...{ handlePensChange }} />
-                <PenSpacesForMaxFiveCatsInput {...{ handlePensChange }} />
+                <PenSpacesForOneOrTwoCatsInput {...{ handlePensChange }} />
+                <PenSpacesForThreeCatsInput {...{ handlePensChange }} />
+                <PenSpacesForFourCatsInput {...{ handlePensChange }} />
+                <PenSpacesForFiveCatsInput {...{ handlePensChange }} />
                 <Button type="submit">confirm upload dates</Button>
               </>
             ) : null}

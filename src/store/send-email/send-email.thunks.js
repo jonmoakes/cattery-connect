@@ -104,6 +104,7 @@ export const sendEmailCatteryConnectSendCustomerEmailReceiptAsync =
       try {
         const formattedFullBookingDetails =
           formatReceiptBookingDetails(uploadBookingData);
+
         const {
           catsInBooking,
           checkOutDate,
@@ -115,10 +116,10 @@ export const sendEmailCatteryConnectSendCustomerEmailReceiptAsync =
         const numberOfCats = catsInBooking.length;
         const lengthOfStay = differenceInDays(checkOutDate, checkInDate);
 
-        const costOfStayPounds = (
-          (numberOfCats * lengthOfStay * pricePerNight) /
-          100
-        ).toFixed(2);
+        const costOfStayPounds =
+          lengthOfStay === 0
+            ? (pricePerNight / 100).toFixed(2)
+            : ((numberOfCats * lengthOfStay * pricePerNight) / 100).toFixed(2);
 
         const response = await axios.post(
           SEND_EMAIL_CATTERY_CONNECT_SEND_CUSTOMER_EMAIL_RECEIPT_ENDPOINT,

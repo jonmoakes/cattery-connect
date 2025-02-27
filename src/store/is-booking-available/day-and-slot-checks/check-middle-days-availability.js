@@ -3,7 +3,7 @@ import { hasSufficientCapacity } from "./has-sufficient-capacity";
 // Helper function to filter pens with insufficient capacity
 const checkPenCapacity = (penData, numberOfCats) => {
   return penData.filter(
-    (pen) => pen.maxCatCapacity < numberOfCats || pen.available <= 0
+    (pen) => pen.penCapacity < numberOfCats || pen.available <= 0
   );
 };
 

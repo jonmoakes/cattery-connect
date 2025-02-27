@@ -57,7 +57,6 @@ export const editCustomerAsync = createAsyncThunk(
         phoneNumber,
       } = rest;
 
-      console.log(customerDetails);
       const data = lowercaseObjectValues({
         address,
         catDetails,

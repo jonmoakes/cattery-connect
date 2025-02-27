@@ -4,23 +4,23 @@ import CustomSpan from "../../../../components/custom-span/custom-span.component
 
 import { Label, StyledInput } from "../../../../styles/form/form.styles";
 
-const PenSpacesForMaxTwoCatsInput = ({ handlePensChange }) => {
-  const { penSpacesForMaxTwoCats } = useGetUploadDatesAndPensDataSelectors();
+const PenSpacesForOneOrTwoCatsInput = ({ handlePensChange }) => {
+  const { penSpacesForOneOrTwoCats } = useGetUploadDatesAndPensDataSelectors();
 
   return (
     <>
       <Label>
-        <CustomSpan className="red">* </CustomSpan>pen spaces ( max 2 cats ):
+        <CustomSpan className="red">* </CustomSpan>pen spaces ( 1 or 2 cats ):
       </Label>
       <StyledInput
         type="text"
-        name="penSpacesForMaxTwoCats"
+        name="penSpacesForOneOrTwoCats"
         onChange={handlePensChange}
-        value={penSpacesForMaxTwoCats || ""}
+        value={penSpacesForOneOrTwoCats || ""}
         required
       />
     </>
   );
 };
 
-export default PenSpacesForMaxTwoCatsInput;
+export default PenSpacesForOneOrTwoCatsInput;

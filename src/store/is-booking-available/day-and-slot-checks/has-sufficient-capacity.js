@@ -3,6 +3,6 @@ export const hasSufficientCapacity = (pens, numberOfCats) => {
   const adjustedNumberOfCats = numberOfCats === 1 ? 2 : numberOfCats;
 
   return pens.some(
-    (pen) => pen.maxCatCapacity === adjustedNumberOfCats && pen.available > 0
+    (pen) => pen.penCapacity === adjustedNumberOfCats && pen.available > 0
   );
 };
