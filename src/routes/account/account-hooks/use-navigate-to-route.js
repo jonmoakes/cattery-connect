@@ -10,6 +10,7 @@ import {
   allUsersRoute,
   bookingsRoute,
   todaysScheduleRoute,
+  penAvailabilityRoute,
 } from "../../../strings/routes";
 
 const useNavigateToRoute = () => {
@@ -49,21 +50,26 @@ const useNavigateToRoute = () => {
       text: "cats",
       onClick: () => hamburgerHandlerNavigate(allCatsRoute),
     },
+    {
+      id: 7,
+      text: "pen availability",
+      onClick: () => hamburgerHandlerNavigate(penAvailabilityRoute),
+    },
   ];
 
   const catteryOwnerCustomerDataButtons = [
     {
-      id: 7,
+      id: 8,
       text: "add booking",
       onClick: () => hamburgerHandlerNavigate(addBookingRoute),
     },
     {
-      id: 8,
+      id: 9,
       text: "add a customer",
       onClick: () => hamburgerHandlerNavigate(addCustomerRoute),
     },
     {
-      id: 9,
+      id: 10,
       text: "add a cat",
       onClick: () => hamburgerHandlerNavigate(addCatChooseOwnerRoute),
     },

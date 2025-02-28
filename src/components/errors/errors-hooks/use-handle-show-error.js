@@ -6,6 +6,7 @@ import useGetCancelBookingSelectors from "../../../hooks/selectors/use-get-cance
 import useGetRequiredCatteryDataForBookingSelectors from "../../../hooks/selectors/use-get-required-cattery-data-for-booking-selectors";
 import useGetIndividualCustomersCatsSelectors from "../../../hooks/selectors/use-get-individual-customers-cats-selectors";
 import useGetTodaysScheduleSelectors from "../../../hooks/selectors/use-get-todays-schedule-selectors";
+import useGetViewPenAvailabilitySelectors from "../../../hooks/selectors/use-get-view-pen-availability-selectors";
 
 const useHandleShowError = () => {
   const { getAllCustomersError } = useGetAllCustomerSelectors();
@@ -20,6 +21,7 @@ const useHandleShowError = () => {
   const { individualCustomersCatsError } =
     useGetIndividualCustomersCatsSelectors();
   const { todaysBookingsDataError } = useGetTodaysScheduleSelectors();
+  const { chosenDatePenDataError } = useGetViewPenAvailabilitySelectors();
 
   const showErrorHeading = () => {
     if (getAllCustomersError) return "failed to fetch your customers.";
@@ -36,6 +38,7 @@ const useHandleShowError = () => {
 ( fetch Availability Docs )`;
     if (individualCustomersCatsError) return "failed to fetch customers cats.";
     if (todaysBookingsDataError) return "fetch todays bookings thunk error";
+    if (chosenDatePenDataError) return "failed to fetch pen data.";
   };
 
   const errorToDisplay = () => {
@@ -50,6 +53,7 @@ const useHandleShowError = () => {
       fetchAvailabilityDocsToUpdateError,
       individualCustomersCatsError,
       todaysBookingsDataError,
+      chosenDatePenDataError,
     ];
     return errors.find((error) => error !== null);
   };

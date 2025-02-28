@@ -11,6 +11,9 @@ export const NavLink = styled.p`
   padding: 0.1rem 1.5rem;
   cursor: pointer;
   transition: all 0.5s ease-in-out;
+  display: inline-block;
+  min-width: 150px;
+  text-align: center;
 
   &:hover {
     transform: scale(1.2);

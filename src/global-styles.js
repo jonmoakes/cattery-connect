@@ -96,6 +96,11 @@ const GlobalStyles = createGlobalStyle`
       color: ${rustRed};
     }
 
+    &.bright-red {
+      color: red;
+      text-shadow: 1px 1px 1px ${softBlack};
+    }
+
     &.white {
       color: whitesmoke;
       text-shadow: 1px 1px 1px ${softBlack};
@@ -108,10 +113,12 @@ const GlobalStyles = createGlobalStyle`
 
     &.green {
       color: ${customGreen};
+      text-shadow: 1px 1px 1px ${softBlack};
     }
 
     &.orange {
       color: orange;
+      text-shadow: 1px 1px 1px ${softBlack};
     }
 
     &.clickable {

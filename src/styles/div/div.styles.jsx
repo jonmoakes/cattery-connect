@@ -3,6 +3,7 @@ import {
   customGreen,
   radialBeige,
   radialDustyBlue,
+  radialGreen,
   radialGrey,
   radialLightGreen,
   radialRustRed,
@@ -473,6 +474,10 @@ export const DateInputContainer = styled.div`
   margin: 20px auto 35px auto;
   animation: 0.5s ${slideInLeftAnimation};
 
+  &.no-margin-top {
+    margin: 0px auto 35px auto;
+  }
+
   @media screen and (max-width: 600px) {
     padding: 0 10px;
   }
@@ -574,8 +579,10 @@ export const DataDiv = styled.div`
   margin: 0px auto 0px auto;
   animation: 0.5s ${bounceInDownAnimation};
   padding: 20px 10px;
+  border: 2px solid ${softBlack};
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  box-shadow: 6px 6px 15px ${softBlack};
 
   &.error {
     background: ${radialRustRed};
@@ -583,6 +590,41 @@ export const DataDiv = styled.div`
     margin: 10px auto 0px auto;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+  }
+
+  &.morning {
+    background: ${radialGreen};
+    width: 75%;
+    margin: 0px auto 30px auto;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    @media screen and (max-width: 1366px) {
+      width: 90%;
+    }
+
+    @media screen and (max-width: 450px) {
+      width: 95%;
+    }
+  }
+
+  &.afternoon {
+    background: ${radialGreen};
+    width: 75%;
+    margin: 0px auto 70px auto;
+    border-radius: 5px;
+
+    @media screen and (max-width: 1366px) {
+      width: 90%;
+    }
+
+    @media screen and (max-width: 450px) {
+      width: 95%;
+    }
+  }
+
+  @media screen and (max-width: 1366px) {
+    box-shadow: none;
   }
 `;
 

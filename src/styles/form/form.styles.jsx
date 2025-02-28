@@ -58,7 +58,7 @@ export const Form = styled.form`
     margin: 0px auto 70px auto;
   }
 
-  &.select-form {
+  &.no-margin-top-small-margin-bottom {
     margin: 0px auto 30px auto;
   }
 `;

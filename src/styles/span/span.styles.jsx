@@ -13,6 +13,9 @@ export const BorderLink = styled.span`
   border: 2px solid ${teal};
   padding: 5px;
   border-radius: 5px;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
 `;
 
 export const HamburgerSpan = styled.span`

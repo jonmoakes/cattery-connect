@@ -17,7 +17,7 @@ const CustomerSelectionForm = ({
         below.
       </CustomBalancedText>
 
-      <Form className="select-form">
+      <Form className="no-margin-top-small-margin-bottom">
         <StyledSelect
           value={selectedCustomer}
           onChange={handleCustomerSelectionChange}
