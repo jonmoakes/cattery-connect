@@ -29,16 +29,27 @@ export const TableWithStyle = styled.table`
     background: ${radialBeige};
     animation: 0.5s ${fadeInLeftAnimation};
   }
+
   .column-catsName {
     min-width: 150px;
     max-width: 400px;
   }
+
+  .column-status {
+    width: 200px;
+  }
+
   .column-emergencyContactDetails,
   .column-catsFeedingInfo,
   .column-catsMedicalInfo,
   .column-catsBehaviourInfo,
   .column-vaccinationStatus {
     min-width: 250px;
+    max-width: 400px;
+  }
+
+  .column-cats {
+    min-width: 300px;
     max-width: 400px;
   }
 

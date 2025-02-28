@@ -1,5 +1,5 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
-import { getTodaysBookingsRequiredDataAsync } from "./todays-schedule.thunks";
+import { getTodaysBookingsDataAsync } from "./todays-schedule.thunks";
 
 const INITIAL_STATE = {
   todaysScheduleIsLoading: false,
@@ -45,19 +45,16 @@ export const todaysScheduleSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getTodaysBookingsRequiredDataAsync.pending, (state) => {
+      .addCase(getTodaysBookingsDataAsync.pending, (state) => {
         state.todaysScheduleIsLoading = true;
       })
-      .addCase(
-        getTodaysBookingsRequiredDataAsync.fulfilled,
-        (state, action) => {
-          state.todaysScheduleIsLoading = false;
-          state.todaysBookingsDataResult = "fulfilled";
-          state.todaysBookingsData = action.payload;
-          state.todaysBookingsDataError = null;
-        }
-      )
-      .addCase(getTodaysBookingsRequiredDataAsync.rejected, (state, action) => {
+      .addCase(getTodaysBookingsDataAsync.fulfilled, (state, action) => {
+        state.todaysScheduleIsLoading = false;
+        state.todaysBookingsDataResult = "fulfilled";
+        state.todaysBookingsData = action.payload;
+        state.todaysBookingsDataError = null;
+      })
+      .addCase(getTodaysBookingsDataAsync.rejected, (state, action) => {
         state.todaysScheduleIsLoading = false;
         state.todaysBookingsDataResult = "rejected";
         state.todaysBookingsData = [];

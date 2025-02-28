@@ -16,6 +16,7 @@ import {
   allCustomersRoute,
   allUsersRoute,
   bookingsRoute,
+  todaysScheduleRoute,
 } from "../../strings/routes";
 
 const TablePagination = ({
@@ -51,6 +52,12 @@ const TablePagination = ({
         break;
       case bookingsRoute:
         localStorage.setItem("bookingsChosenTablePageSize", selectedPageSize);
+        break;
+      case todaysScheduleRoute:
+        localStorage.setItem(
+          "todaysScheduleChosenTablePageSize",
+          selectedPageSize
+        );
         break;
       default:
         return;

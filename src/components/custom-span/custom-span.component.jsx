@@ -5,6 +5,7 @@ import {
   ClearButtonExampleSpan,
   RightMarginSpan,
   EmergencyDetailsSpan,
+  UnderlinedSpan,
 } from "../../styles/span/span.styles";
 import { StyledLink } from "../../styles/link/link.styles";
 
@@ -16,6 +17,7 @@ const spanMap = {
   rightMargin: RightMarginSpan,
   emergencyDetails: EmergencyDetailsSpan,
   link: StyledLink,
+  underline: UnderlinedSpan,
 };
 
 const CustomSpan = ({ type, className, children, ...props }) => {

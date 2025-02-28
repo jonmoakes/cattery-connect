@@ -59,6 +59,10 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h2 {
+    &.teal {
+      color: ${teal};
+    }
+
     @media screen and (max-width: 600px) {
       font-size: 20px;
     }

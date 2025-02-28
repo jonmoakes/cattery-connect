@@ -19,7 +19,7 @@ const useHandleShowError = () => {
   const { fetchAvailabilityDocsToUpdateError } = useGetCancelBookingSelectors();
   const { individualCustomersCatsError } =
     useGetIndividualCustomersCatsSelectors();
-  const { todaysBookingsRequiredDataError } = useGetTodaysScheduleSelectors();
+  const { todaysBookingsDataError } = useGetTodaysScheduleSelectors();
 
   const showErrorHeading = () => {
     if (getAllCustomersError) return "failed to fetch your customers.";
@@ -35,8 +35,7 @@ const useHandleShowError = () => {
       return `failed to pen data. 
 ( fetch Availability Docs )`;
     if (individualCustomersCatsError) return "failed to fetch customers cats.";
-    if (todaysBookingsRequiredDataError)
-      return "fetch todays bookings thunk error";
+    if (todaysBookingsDataError) return "fetch todays bookings thunk error";
   };
 
   const errorToDisplay = () => {
@@ -50,7 +49,7 @@ const useHandleShowError = () => {
       fetchOwnerBookingsError,
       fetchAvailabilityDocsToUpdateError,
       individualCustomersCatsError,
-      todaysBookingsRequiredDataError,
+      todaysBookingsDataError,
     ];
     return errors.find((error) => error !== null);
   };

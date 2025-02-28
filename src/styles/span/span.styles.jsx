@@ -54,6 +54,10 @@ export const UppercaseSpan = styled.span`
   text-transform: uppercase;
 `;
 
+export const UnderlinedSpan = styled.span`
+  text-decoration: underline;
+`;
+
 export const SignInPasswordEye = styled.span.withConfig({
   shouldForwardProp: (prop) => prop !== "signInPasswordIsVisible",
 })`

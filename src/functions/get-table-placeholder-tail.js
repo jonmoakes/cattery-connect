@@ -3,6 +3,7 @@ import {
   viewCustomersCatsRoute,
   allCatsRoute,
   bookingsRoute,
+  todaysScheduleRoute,
 } from "../strings/routes";
 
 export const getTablePlaceholderTail = (path) => {
@@ -14,6 +15,8 @@ export const getTablePlaceholderTail = (path) => {
       return "Cats";
     case bookingsRoute:
       return "Bookings";
+    case todaysScheduleRoute:
+      return "Todays Schedule";
     default:
       return "";
   }

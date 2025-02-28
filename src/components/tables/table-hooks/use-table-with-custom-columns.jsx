@@ -10,7 +10,7 @@ import {
 import useHandleClickTableCheckbox from "./use-handle-click-table-checkbox";
 
 import TableCheckBox from "../table-checkbox";
-import { allUsersRoute } from "../../../strings/routes";
+import { allUsersRoute, todaysScheduleRoute } from "../../../strings/routes";
 import { useLocation } from "react-router-dom";
 
 const useTableWithCustomColumns = ({
@@ -55,7 +55,11 @@ const useTableWithCustomColumns = ({
     (hooks) => {
       hooks.visibleColumns.push((columns) => {
         // no checkbox when having clicked show owner details button
-        if (hasCatsOwnerDetails || path === allUsersRoute) {
+        if (
+          hasCatsOwnerDetails ||
+          path === allUsersRoute ||
+          path === todaysScheduleRoute
+        ) {
           return [...columns];
         } else {
           return [
