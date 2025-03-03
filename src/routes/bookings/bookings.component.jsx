@@ -1,29 +1,24 @@
-import useGetBookingsSelectors from "../../hooks/selectors/use-get-bookings-selectors";
-import useFetchOwnerBookingsThunkUseEffect from "./bookings-hooks/use-fetch-owner-bookings-thunk-use-effect";
-import { Container } from "../../styles/container/container.styles";
-
-import SkeletonBox from "../../components/skeleton-box/skeleton-box.component";
-import TitleAndAddBookingLink from "./title-and-add-booking-link.component";
-
-import BookingsTable from "./bookings-table.component";
 import useBookingsListener from "./bookings-hooks/use-bookings-listener";
 
-const Bookings = () => {
-  const { fetchOwnerBookingsIsLoading } = useGetBookingsSelectors();
+import useFetchOwnerBookingsThunkUseEffect from "./bookings-hooks/use-effects/use-fetch-owner-bookings-thunk-use-effect";
+import useUpdatePaymentStatusResultSwalUseEffect from "./bookings-hooks/use-effects/use-update-payment-status-result-swal-use-effect";
 
+import BookingsLoader from "./booking-loader.component";
+import TitleAndAddBookingLink from "./title-and-add-booking-link.component";
+import BookingsTable from "./bookings-table.component";
+
+import { Container } from "../../styles/container/container.styles";
+
+const Bookings = () => {
   useBookingsListener();
   useFetchOwnerBookingsThunkUseEffect();
+  useUpdatePaymentStatusResultSwalUseEffect();
 
   return (
     <Container>
-      {fetchOwnerBookingsIsLoading ? (
-        <SkeletonBox loadingText="fetching bookings..." />
-      ) : (
-        <>
-          <TitleAndAddBookingLink />
-          <BookingsTable />
-        </>
-      )}
+      <BookingsLoader />
+      <TitleAndAddBookingLink />
+      <BookingsTable />
     </Container>
   );
 };

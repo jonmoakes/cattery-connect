@@ -5,9 +5,11 @@ import {
   radialBeige,
   radialDustyBlue,
   radialGreen,
+  radialGrey,
   radialLightGreen,
   radialRustRed,
   radialYellow,
+  rustRed,
   softBlack,
 } from "../colours";
 import eyeIcon from "../../assets/eye.png";
@@ -82,7 +84,7 @@ export const MinimalButton = styled.button`
   font-weight: 700;
   outline: none;
   border: 1px solid ${softBlack};
-  border-radius: 2px;
+  border-radius: 5px;
   color: ${softBlack};
   transition: all 0.2s ease-in-out;
 
@@ -122,6 +124,11 @@ export const MinimalButton = styled.button`
 
   &.margin {
     margin: 20px auto;
+  }
+
+  &.payment-status {
+    margin: 10px auto 0px auto;
+    background: ${radialGrey};
   }
 
   &.animate {
@@ -283,5 +290,20 @@ export const EntryOptionsButton = styled(Button)`
     color: whitesmoke;
     text-shadow: 1px 1px 1px ${softBlack};
     animation: 1s ${zoomInRightAnimation};
+  }
+`;
+
+export const PlainButton = styled.button`
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  color: ${softBlack};
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  &.red {
+    color: ${rustRed};
+    text-shadow: 0.5px 0.5px 0.5px ${softBlack};
   }
 `;

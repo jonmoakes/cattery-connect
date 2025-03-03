@@ -22,6 +22,7 @@ const useBookingsFunctions = () => {
       customerName,
       customerEmail,
       bookingId,
+      paymentStatus,
     } = chosenEntry;
 
     const dataToPass = {
@@ -35,6 +36,7 @@ const useBookingsFunctions = () => {
       customerName,
       customerEmail,
       bookingId,
+      paymentStatus,
     };
 
     dispatch(setDataFromBooking(dataToPass));

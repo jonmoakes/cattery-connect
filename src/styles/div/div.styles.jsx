@@ -547,7 +547,7 @@ export const RadioLabelDiv = styled.div`
 export const BookingWrapper = styled.div`
   width: 90%;
   height: auto;
-  margin: 0 auto;
+  margin: 20px auto;
   border: 1px solid ${softBlack};
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;

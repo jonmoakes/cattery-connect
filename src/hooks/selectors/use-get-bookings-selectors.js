@@ -9,6 +9,9 @@ const useGetBookingsSelectors = () => {
     fetchOwnerBookingsResult,
     fetchOwnerBookingsError,
     sortedOwnerBookings,
+    updatePaymentStatusIsLoading,
+    updatePaymentStatusResult,
+    updatePaymentStatusError,
   } = useSelector(selectBookingsSelectors);
 
   const atLeastOneBookingExists = ownerBookings && ownerBookings.length > 0;
@@ -20,6 +23,9 @@ const useGetBookingsSelectors = () => {
     fetchOwnerBookingsError,
     atLeastOneBookingExists,
     sortedOwnerBookings,
+    updatePaymentStatusIsLoading,
+    updatePaymentStatusResult,
+    updatePaymentStatusError,
   };
 };
 

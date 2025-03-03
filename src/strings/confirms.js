@@ -20,6 +20,10 @@ export const confirmEditDataMessage = (name) => {
   return `<span style="font-size:20px";>are you sure you want to update<br/><span style="color:${customYellow}";>${name}</span><br/>with these new details?</span>`;
 };
 
+export const confirmUpdatePaymentStatusMessage = (value, valueToUpdateTo) => {
+  return `<span style="font-size:20px";>are you sure you want to change the payment status of this booking from <span style="color:${customYellow}";>${value}</span> to <span style="color:${customYellow}";>${valueToUpdateTo}</span>?</span>`;
+};
+
 export const confirmSendPasswordResetRequestMessage = (email) => {
   return `<span style="font-size:20px;">Are you sure that you wish to send the password reset request to<br/><span style="color:${customYellow}; text-transform:lowercase;">${email}</span>?</span>`;
 };

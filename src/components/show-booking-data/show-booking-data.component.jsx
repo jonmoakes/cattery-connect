@@ -15,6 +15,7 @@ const ShowBookingData = ({ bookingDataToShow }) => {
     checkInSlot,
     checkOutDate,
     checkOutSlot,
+    paymentStatus,
   } = bookingDataToShow;
 
   const location = useLocation();
@@ -86,6 +87,13 @@ const ShowBookingData = ({ bookingDataToShow }) => {
             <CustomSpan type="uppercase" className="yellow">
               {checkOutSlot}
             </CustomSpan>
+          </li>
+          <BlackHr />
+
+          <li>
+            payment status:
+            <br />
+            <CustomSpan className="yellow">{paymentStatus}</CustomSpan>
           </li>
           <BlackHr />
         </ul>

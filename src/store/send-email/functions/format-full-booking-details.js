@@ -8,6 +8,7 @@ export const formatFullBookingDetails = (uploadBookingData) => {
     checkOutDate,
     checkOutSlot,
     customerId,
+    paymentStatus,
   } = uploadBookingData;
 
   return `
@@ -47,6 +48,12 @@ ________________________
 **Check-Out Date & Time**  
 
 ${checkOutDate} (${checkOutSlot})  
+
+________________________
+
+**Payment Status**
+
+${paymentStatus}
 
 `.trim();
 };

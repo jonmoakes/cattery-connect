@@ -10,15 +10,16 @@ export const uploadBookingDataToDbAsync = createAsyncThunk(
   async ({ uploadBookingData, catteryId }, thunkAPI) => {
     try {
       const {
-        catsInBooking,
+        bookingId,
+        customerName,
+        customerEmail,
+        customerId,
         checkInDate,
         checkInSlot,
         checkOutDate,
         checkOutSlot,
-        customerId,
-        customerName,
-        customerEmail,
-        bookingId,
+        paymentStatus,
+        catsInBooking,
       } = uploadBookingData;
 
       const data = {
@@ -30,6 +31,7 @@ export const uploadBookingDataToDbAsync = createAsyncThunk(
         checkInSlot,
         checkOutDate,
         checkOutSlot,
+        paymentStatus,
         catsInBooking: catsInBooking.join(", "),
         catteryId,
       };

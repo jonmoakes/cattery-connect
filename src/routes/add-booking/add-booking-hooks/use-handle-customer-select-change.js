@@ -46,6 +46,7 @@ const useHandleCustomerSelectChange = () => {
               checkInSlot: "",
               checkOutDate: "",
               checkOutSlot: "",
+              paymentStatus: "",
             })
           );
         }

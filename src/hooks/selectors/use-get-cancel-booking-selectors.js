@@ -25,6 +25,7 @@ const useGetCancelBookingSelectors = () => {
     checkOutSlot,
     customerName,
     customerEmail,
+    paymentStatus,
   } = dataFromBooking ?? {};
 
   const hasBookingToCancelData = Object.keys(dataFromBooking).length > 0;
@@ -48,6 +49,7 @@ const useGetCancelBookingSelectors = () => {
     checkOutSlot,
     customerName,
     customerEmail,
+    paymentStatus,
     hasBookingToCancelData,
   };
 };

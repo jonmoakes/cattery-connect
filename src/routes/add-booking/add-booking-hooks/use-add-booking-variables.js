@@ -12,6 +12,7 @@ const useAddBookingVariables = () => {
     checkInSlot,
     checkOutDate,
     checkOutSlot,
+    paymentStatus,
   } = useGetUploadBookingDataSelectors();
   const { maximumCatsInSinglePen } =
     useGetRequiredCatteryDataForBookingSelectors();
@@ -46,6 +47,7 @@ const useAddBookingVariables = () => {
     checkInSlot &&
     checkOutDate &&
     checkOutSlot &&
+    paymentStatus &&
     true;
 
   const bookingDataToShow = {
@@ -55,6 +57,7 @@ const useAddBookingVariables = () => {
     checkInSlot,
     checkOutDate,
     checkOutSlot,
+    paymentStatus,
   };
 
   return {

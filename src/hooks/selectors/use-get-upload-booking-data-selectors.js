@@ -25,6 +25,7 @@ const useGetUploadBookingDataSelectors = () => {
     checkInSlot,
     checkOutDate,
     checkOutSlot,
+    paymentStatus,
   } = uploadBookingData ?? {};
 
   // this handles an issue where if a customer only has one cat, as it is not set in the handleCustomerChange function
@@ -61,6 +62,7 @@ const useGetUploadBookingDataSelectors = () => {
     checkInSlot,
     checkOutDate,
     checkOutSlot,
+    paymentStatus,
   };
 };
 

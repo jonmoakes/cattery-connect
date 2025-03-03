@@ -9,6 +9,7 @@ const useGetBookingDataToShow = () => {
     checkOutDate,
     checkOutSlot,
     customerName,
+    paymentStatus,
   } = useGetCancelBookingSelectors();
 
   const bookingDataToShow = {
@@ -19,6 +20,7 @@ const useGetBookingDataToShow = () => {
     checkOutDate,
     checkOutSlot,
     customerName,
+    paymentStatus,
   };
 
   return {

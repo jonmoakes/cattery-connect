@@ -8,7 +8,13 @@ export const formatReceiptBookingDetails = (uploadBookingData) => {
     checkInSlot,
     checkOutDate,
     checkOutSlot,
+    paymentStatus,
   } = uploadBookingData;
+
+  const payStatus =
+    paymentStatus === "complete"
+      ? "😺 paid with thanks! 😺"
+      : `due on ${format(checkOutDate, "EEE dd MMMM yyyy")}`;
 
   return `
 
@@ -35,6 +41,12 @@ ________________________
 ${format(checkOutDate, "EEE dd MMMM yyyy")} 
 (${checkOutSlot.toUpperCase()})  
 
+________________________
 
+**Payment Status**
+
+${payStatus}
+
+________________________
 `.trim();
 };

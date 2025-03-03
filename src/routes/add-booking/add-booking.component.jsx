@@ -1,4 +1,11 @@
+import useGetRequiredCatteryDataForBookingSelectors from "../../hooks/selectors/use-get-required-cattery-data-for-booking-selectors";
+import useGetAllCustomerSelectors from "../../hooks/selectors/use-get-all-customers-selectors";
+import useGetIndividualCustomersCatsSelectors from "../../hooks/selectors/use-get-individual-customers-cats-selectors";
+import useGetUploadBookingDataSelectors from "../../hooks/selectors/use-get-upload-booking-data-selectors";
+import useGetIsBookingAvailableSelectors from "../../hooks/selectors/use-get-is-booking-available-selectors";
+
 import useAddBookingVariables from "./add-booking-hooks/use-add-booking-variables";
+import useCheckBookingAvailability from "./add-booking-hooks/use-check-booking-availability";
 import useCheckInAndOutDateValidityUseEffect from "./add-booking-hooks/use-effects/use-check-in-and-out-date-validity-use-effect";
 import useCheckBookingAvailableResultSwalUseEffect from "./add-booking-hooks/use-effects/use-check-booking-available-result-swal-use-effect";
 import useGetRequiredCatteryDataAndCustomersThunkUseEffect from "./add-booking-hooks/use-effects/use-get-required-cattery-data-and-customers-thunk-use-effect";
@@ -12,6 +19,7 @@ import ChooseCatsInput from "./inputs/choose-cats-input/choose-cats-input.compon
 import MoreCatsSelectedThanSinglePenCapacity from "./ui/more-cats-selected-than-single-pen-capacity.component";
 import CheckInAndOutDateInput from "./inputs/check-in-and-out-date-input/check-in-and-out-date-input.component";
 import CheckInAndOutTimeSlotSelectInput from "./inputs/check-in-out-and-time-slot-input/check-in-and-out-time-slot.component";
+import PaymentStatusSelectInput from "./inputs/payment-status-select-input.component";
 import ShowBookingData from "../../components/show-booking-data/show-booking-data.component";
 import FailedDatesInfo from "./ui/failed-dates-info.component";
 import CheckAvailabilityButton from "./ui/check-availability-button.component";
@@ -20,12 +28,6 @@ import BookingIsAvailableInfoAndPlaceBookingButton from "./ui/booking-is-availab
 import { Container } from "../../styles/container/container.styles";
 import { ParentDiv } from "../../styles/div/div.styles";
 import { Form } from "../../styles/form/form.styles";
-import useGetRequiredCatteryDataForBookingSelectors from "../../hooks/selectors/use-get-required-cattery-data-for-booking-selectors";
-import useGetAllCustomerSelectors from "../../hooks/selectors/use-get-all-customers-selectors";
-import useGetIndividualCustomersCatsSelectors from "../../hooks/selectors/use-get-individual-customers-cats-selectors";
-import useGetUploadBookingDataSelectors from "../../hooks/selectors/use-get-upload-booking-data-selectors";
-import useGetIsBookingAvailableSelectors from "../../hooks/selectors/use-get-is-booking-available-selectors";
-import useCheckBookingAvailability from "./add-booking-hooks/use-check-booking-availability";
 
 const AddBooking = () => {
   const { requiredCatteryDataError } =
@@ -33,8 +35,13 @@ const AddBooking = () => {
   const { getAllCustomersError } = useGetAllCustomerSelectors();
   const { individualCustomersCatsError } =
     useGetIndividualCustomersCatsSelectors();
-  const { checkInDate, checkInSlot, checkOutDate, checkOutSlot } =
-    useGetUploadBookingDataSelectors();
+  const {
+    checkInDate,
+    checkInSlot,
+    checkOutDate,
+    checkOutSlot,
+    paymentStatus,
+  } = useGetUploadBookingDataSelectors();
   const { availabilityStatus } = useGetIsBookingAvailableSelectors();
 
   const { checkBookingAvailability } = useCheckBookingAvailability();
@@ -98,6 +105,11 @@ const AddBooking = () => {
                   checkOutSlot={checkOutSlot}
                   condition={checkOutDate}
                   showHr={checkOutDate}
+                />
+
+                <PaymentStatusSelectInput
+                  condition={checkOutSlot}
+                  paymentStatus={paymentStatus}
                 />
               </>
             )}

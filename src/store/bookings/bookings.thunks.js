@@ -1,5 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { listDocumentsByQueryOrSearch } from "../../utils/appwrite/appwrite-functions";
+import {
+  listDocumentsByQueryOrSearch,
+  manageDatabaseDocument,
+} from "../../utils/appwrite/appwrite-functions";
 
 import {
   databaseId,
@@ -30,6 +33,38 @@ export const fetchOwnerBookingsAsync = createAsyncThunk(
       }
 
       return documents;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateBookingPaymentStatusAsync = createAsyncThunk(
+  "updateBookingPaymentStatus",
+  async ({ documentId }, thunkAPI) => {
+    try {
+      const documentToUpdate = await manageDatabaseDocument(
+        "get",
+        databaseId,
+        bookingsCollectionId,
+        documentId
+      );
+
+      const { paymentStatus } = documentToUpdate;
+
+      const newValue = paymentStatus === "complete" ? "incomplete" : "complete";
+
+      const dataToUpdate = {
+        ["paymentStatus"]: newValue,
+      };
+
+      await manageDatabaseDocument(
+        "update",
+        databaseId,
+        bookingsCollectionId,
+        documentId,
+        dataToUpdate
+      );
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
