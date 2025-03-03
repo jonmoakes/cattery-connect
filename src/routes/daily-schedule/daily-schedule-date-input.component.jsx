@@ -13,15 +13,19 @@ import {
 } from "../../styles/div/div.styles";
 import { Form } from "../../styles/form/form.styles";
 import useGetDailyScheduleSelectors from "../../hooks/selectors/use-get-daily-schedule-selectors";
+import useDailyScheduleTableVariables from "./daily-schedule-hooks/use-daily-schedule-table-variables";
 
 const DailyScheduleDateInput = () => {
   const { dailyBookingsDataError } = useGetDailyScheduleSelectors();
+  const { data } = useDailyScheduleTableVariables();
   const { chosenDate, chooseDateAndFetchData } = useChooseDateAndFetchData();
 
   return (
     <>
       {dailyBookingsDataError ? null : (
-        <Form className="no-margin-top-small-margin-bottom">
+        <Form
+          className={data.length ? "no-margin-top-small-margin-bottom" : ""}
+        >
           <DateInputContainer className="no-margin">
             <StyledDatePickerWrapper>
               <CustomBalancedText type="optionsLabel">
