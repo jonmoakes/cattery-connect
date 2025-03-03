@@ -33,7 +33,7 @@ import {
   bookingsRoute,
   cancelBookingRoute,
   contactRoute,
-  todaysScheduleRoute,
+  dailyScheduleRoute,
   penAvailabilityRoute,
 } from "./strings/routes";
 
@@ -81,8 +81,8 @@ const Bookings = lazy(() => import("./routes/bookings/bookings.component"));
 const CancelBooking = lazy(() =>
   import("./routes/cancel-booking/cancel-booking.component")
 );
-const TodaysSchedule = lazy(() =>
-  import("./routes/todays-schedule/todays-schedule.component")
+const DailySchedule = lazy(() =>
+  import("./routes/daily-schedule/daily-schedule.component")
 );
 const ViewPenAvailability = lazy(() =>
   import("./routes/view-pen-availability/view-pen-availability.component")
@@ -132,9 +132,9 @@ const App = () => {
               />
 
               <Route
-                path={todaysScheduleRoute}
+                path={dailyScheduleRoute}
                 element={
-                  currentUser && role === "owner" ? <TodaysSchedule /> : null
+                  currentUser && role === "owner" ? <DailySchedule /> : null
                 }
               />
 

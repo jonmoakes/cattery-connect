@@ -1,6 +1,6 @@
-import TodaysScheduleCatsDetailCell from "../../components/tables/todays-schedule-cat-details-cell.component";
+import DailyScheduleCatsDetailCell from "../../components/tables/daily-schedule-cat-details-cell.component";
 
-const TODAYS_SCHEDULE_TABLE_COLUMNS = [
+const DAILY_SCHEDULE_TABLE_COLUMNS = [
   {
     Header: "status",
     accessor: "status",
@@ -9,7 +9,7 @@ const TODAYS_SCHEDULE_TABLE_COLUMNS = [
     Header: "cat details",
     accessor: "cats",
     Cell: ({ value }) => {
-      return <TodaysScheduleCatsDetailCell {...{ value }} />;
+      return <DailyScheduleCatsDetailCell {...{ value }} />;
     },
   },
   {
@@ -26,4 +26,4 @@ const TODAYS_SCHEDULE_TABLE_COLUMNS = [
   },
 ];
 
-export default TODAYS_SCHEDULE_TABLE_COLUMNS;
+export default DAILY_SCHEDULE_TABLE_COLUMNS;

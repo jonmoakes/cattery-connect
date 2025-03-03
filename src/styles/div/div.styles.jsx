@@ -478,6 +478,10 @@ export const DateInputContainer = styled.div`
     margin: 0px auto 35px auto;
   }
 
+  &.no-margin {
+    margin: 0 auto;
+  }
+
   @media screen and (max-width: 600px) {
     padding: 0 10px;
   }

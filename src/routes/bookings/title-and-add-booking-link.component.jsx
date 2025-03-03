@@ -23,6 +23,7 @@ const TitleAndAddBookingLink = () => {
       {atLeastOneBookingExists ? (
         <MinimalButton
           onClick={() => hamburgerHandlerNavigate(addBookingRoute)}
+          className="teal"
         >
           add another booking
         </MinimalButton>

@@ -8,11 +8,11 @@ import {
   allCatsRoute,
   allUsersRoute,
   bookingsRoute,
-  todaysScheduleRoute,
+  dailyScheduleRoute,
 } from "../../strings/routes";
 
 export const signedInRoutes = [
-  todaysScheduleRoute,
+  dailyScheduleRoute,
   bookingsRoute,
   allCustomersRoute,
   allCatsRoute,

@@ -37,7 +37,7 @@ import {
   editCatRoute,
   editCustomerRoute,
   addCustomerRoute,
-  todaysScheduleRoute,
+  dailyScheduleRoute,
   penAvailabilityRoute,
 } from "../strings/routes";
 import useResetAddBookingState from "./use-reset-add-booking-state";
@@ -54,8 +54,7 @@ import {
   resetCustomerDetailsManagementState,
 } from "../store/customer-details-management/customer-details-management.slice";
 import { resetUpdatePensDataState } from "../store/update-pens-data/update-pens-data.slice";
-import { resetGetTodaysScheduleState } from "../store/todays-schedule/todays-schedule.slice";
-import ViewPenAvailability from "../routes/view-pen-availability/view-pen-availability.component";
+import { resetDailyScheduleState } from "../store/daily-schedule/daily-schedule.slice";
 import { resetViewPenAvailabilityState } from "../store/view-pen-availability/view-pen-availability.slice";
 
 const useResetStoreOnRouteChangeUseEffect = () => {
@@ -128,8 +127,8 @@ const useResetStoreOnRouteChangeUseEffect = () => {
           dispatch(resetContactFormDetails());
           dispatch(resetSendEmailState());
           break;
-        case todaysScheduleRoute:
-          dispatch(resetGetTodaysScheduleState());
+        case dailyScheduleRoute:
+          dispatch(resetDailyScheduleState());
           break;
         case penAvailabilityRoute:
           dispatch(resetViewPenAvailabilityState());

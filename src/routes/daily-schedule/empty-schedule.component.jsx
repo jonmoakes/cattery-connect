@@ -2,7 +2,7 @@ import CustomBalancedText from "../../components/custom-balanced-text/custom-bal
 
 import { ParentDiv } from "../../styles/div/div.styles";
 
-import image from "../../assets/cat-pen.webp";
+import image from "../../assets/empty-cattery.webp";
 import ProgressiveImage from "../../components/progressive-image/progressive-image.component";
 
 const EmptySchedule = () => (

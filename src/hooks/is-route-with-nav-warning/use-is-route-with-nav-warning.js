@@ -2,7 +2,14 @@ import { useLocation } from "react-router-dom";
 
 import useFormValuesCheck from "./use-form-values-check";
 
-import { signInRoute } from "../../strings/routes";
+import {
+  addBookingRoute,
+  addCatRoute,
+  addCustomerRoute,
+  editCatRoute,
+  editCustomerRoute,
+  signInRoute,
+} from "../../strings/routes";
 
 const useIsRouteWithNavWarning = () => {
   const { hasSignInValues } = useFormValuesCheck();
@@ -10,7 +17,14 @@ const useIsRouteWithNavWarning = () => {
   const path = location.pathname;
 
   const isRouteWithNavWarning = () => {
-    return path === signInRoute && hasSignInValues;
+    return (
+      path === (signInRoute && hasSignInValues) ||
+      path === addCustomerRoute ||
+      path === editCustomerRoute ||
+      path === addCatRoute ||
+      path === editCatRoute ||
+      path === addBookingRoute
+    );
   };
 
   return { isRouteWithNavWarning };

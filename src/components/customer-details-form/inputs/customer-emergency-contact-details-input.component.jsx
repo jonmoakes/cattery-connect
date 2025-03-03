@@ -27,7 +27,7 @@ Separate into lines for easier viewing in the table - ie:
 
 jane bloggs
 mother
-07512345678`}
+07512345678 ( no spaces for phone number please. )`}
         required
       />
     </>

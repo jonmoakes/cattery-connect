@@ -14,6 +14,7 @@ import useConfirmSwal from "../../../hooks/use-confirm-swal";
 import {
   enterPhoneNumberMessage,
   phoneLengthErrorMessage,
+  phoneNumberIncludesSpaceErrorMessage,
 } from "../../../strings/errors";
 import { addCustomerRoute, editCustomerRoute } from "../../../strings/routes";
 import { isValidEmail } from "../../../functions/is-valid-email";
@@ -61,6 +62,17 @@ const useSubmitCustomer = () => {
       fireSwal("error", "invalid email", "", 0, "", false, "", false);
     } else if (!phoneNumber) {
       fireSwal("error", enterPhoneNumberMessage, "", 0, "", false, "", false);
+    } else if (phoneNumber && phoneNumber.includes(" ")) {
+      fireSwal(
+        "error",
+        phoneNumberIncludesSpaceErrorMessage,
+        "",
+        0,
+        "",
+        false,
+        "",
+        false
+      );
     } else if (phoneNumber && phoneNumber.length !== 11) {
       fireSwal("error", phoneLengthErrorMessage, "", 0, "", false, "", false);
     } else {

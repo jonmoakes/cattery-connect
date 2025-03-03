@@ -9,20 +9,24 @@ import {
 import { Query } from "appwrite";
 import { databases } from "../../utils/appwrite/appwrite-config";
 
-export const getTodaysBookingsDataAsync = createAsyncThunk(
-  "getTodaysBookingsData",
-  async ({ catteryId }, thunkAPI) => {
+export const getDailyBookingsDataAsync = createAsyncThunk(
+  "getDailyBookingsData",
+  async ({ catteryId, chosenDate }, thunkAPI) => {
     try {
       if (!catteryId) {
         throw new Error("No cattery ID provided");
       }
 
-      const today = format(new Date(), "yyyy-MM-dd");
+      const parsedDate = chosenDate ? new Date(chosenDate) : new Date();
+      if (isNaN(parsedDate)) {
+        throw new Error("Invalid date provided");
+      }
+      const date = format(parsedDate, "yyyy-MM-dd");
 
       const bookingsQuery = [
         Query.equal("catteryId", catteryId),
-        Query.lessThanEqual("checkInDate", today),
-        Query.greaterThanEqual("checkOutDate", today),
+        Query.lessThanEqual("checkInDate", date),
+        Query.greaterThanEqual("checkOutDate", date),
       ];
 
       const bookingsResponse = await databases.listDocuments(
@@ -43,14 +47,14 @@ export const getTodaysBookingsDataAsync = createAsyncThunk(
         customerId: booking.customerId,
         customerName: booking.customerName,
         status:
-          booking.checkInDate === today && booking.checkOutDate === today
+          booking.checkInDate === date && booking.checkOutDate === date
             ? `Checking In 
 (${booking.checkInSlot.toUpperCase()}) 
 & Checking Out ( ${booking.checkOutSlot.toUpperCase()} )`
-            : booking.checkInDate === today
-            ? `Checking In
+            : booking.checkInDate === date
+            ? `Checking In 
 ( ${booking.checkInSlot.toUpperCase()} )`
-            : booking.checkOutDate === today
+            : booking.checkOutDate === date
             ? `Checking Out
 ( ${booking.checkOutSlot.toUpperCase()} )`
             : "Staying",
@@ -120,7 +124,10 @@ export const getTodaysBookingsDataAsync = createAsyncThunk(
         return a.customerName.localeCompare(b.customerName);
       });
 
-      return combinedData;
+      return {
+        chosenDaysData: combinedData,
+        dateForShownData: format(parsedDate, "yyyy-MM-dd"),
+      };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

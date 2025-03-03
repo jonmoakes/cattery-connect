@@ -99,6 +99,12 @@ export const MinimalButton = styled.button`
     }
   }
 
+  &.teal {
+    background: ${radialGreen};
+    color: whitesmoke;
+    text-shadow: 0.5px 0.5px 0.5px ${softBlack};
+  }
+
   &.margin-bottom {
     background: ${radialGreen};
     color: whitesmoke;

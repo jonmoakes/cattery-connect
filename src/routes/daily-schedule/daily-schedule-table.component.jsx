@@ -1,5 +1,7 @@
+import useGetDailyScheduleSelectors from "../../hooks/selectors/use-get-daily-schedule-selectors";
+
 import useTableWithCustomColumns from "../../components/tables/table-hooks/use-table-with-custom-columns";
-import useTodaysScheduleTableVariables from "./todays-schedule-hooks/use-todays-schedule-table-variables";
+import useDailyScheduleTableVariables from "./daily-schedule-hooks/use-daily-schedule-table-variables";
 import useIsOnline from "../../hooks/use-is-online";
 
 import ShowFetchErrors from "../../components/errors/show-fetch-errors.component";
@@ -8,12 +10,11 @@ import RenderTable from "../../components/tables/render-table.component";
 import NetworkError from "../../components/errors/network-error.component";
 import TablePagination from "../../components/tables/table-pagination.component";
 import TableSearchBox from "../../components/tables/table-search-box.component";
-import useGetTodaysScheduleSelectors from "../../hooks/selectors/use-get-todays-schedule-selectors";
 
-const TodaysScheduleTable = () => {
-  const { todaysBookingsDataError, todaysBookingsDataResult } =
-    useGetTodaysScheduleSelectors();
-  const { columns, data, initialState } = useTodaysScheduleTableVariables();
+const DailyScheduleTable = () => {
+  const { dailyBookingsDataError, dailyBookingsDataResult } =
+    useGetDailyScheduleSelectors();
+  const { columns, data, initialState } = useDailyScheduleTableVariables();
   const { isOnline } = useIsOnline();
 
   const {
@@ -49,9 +50,9 @@ const TodaysScheduleTable = () => {
     <>
       {!isOnline ? (
         <NetworkError />
-      ) : todaysBookingsDataError ? (
+      ) : dailyBookingsDataError ? (
         <ShowFetchErrors />
-      ) : todaysBookingsDataResult === "fulfilled" && !data.length ? (
+      ) : dailyBookingsDataResult === "fulfilled" && !data.length ? (
         <EmptySchedule />
       ) : (
         <>
@@ -101,4 +102,4 @@ const TodaysScheduleTable = () => {
   );
 };
 
-export default TodaysScheduleTable;
+export default DailyScheduleTable;

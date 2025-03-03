@@ -19,6 +19,7 @@ const CustomerPhoneNumberInput = ({ handleCustomerDetailsChange }) => {
         name="phoneNumber"
         value={phoneNumber || ""}
         onChange={handleCustomerDetailsChange}
+        placeholder="no spaces please"
       />
     </>
   );

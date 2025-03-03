@@ -1,8 +1,9 @@
-import { BlackHr } from "../../styles/hr/hr.styles";
 import CustomBalancedText from "../custom-balanced-text/custom-balanced-text.component";
 import CustomSpan from "../custom-span/custom-span.component";
 
-const TodaysScheduleCatsDetailCell = ({ value }) => (
+import { BlackHr } from "../../styles/hr/hr.styles";
+
+const DailyScheduleCatsDetailCell = ({ value }) => (
   <>
     {value.map((cat, index) => {
       const { catsId, catsName, catsFeedingInfo, catsMedicalInfo } = cat;
@@ -42,4 +43,4 @@ const TodaysScheduleCatsDetailCell = ({ value }) => (
   </>
 );
 
-export default TodaysScheduleCatsDetailCell;
+export default DailyScheduleCatsDetailCell;

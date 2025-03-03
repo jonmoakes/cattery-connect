@@ -5,7 +5,7 @@ import useGetBookingsSelectors from "../../../hooks/selectors/use-get-bookings-s
 import useGetCancelBookingSelectors from "../../../hooks/selectors/use-get-cancel-booking-selectors";
 import useGetRequiredCatteryDataForBookingSelectors from "../../../hooks/selectors/use-get-required-cattery-data-for-booking-selectors";
 import useGetIndividualCustomersCatsSelectors from "../../../hooks/selectors/use-get-individual-customers-cats-selectors";
-import useGetTodaysScheduleSelectors from "../../../hooks/selectors/use-get-todays-schedule-selectors";
+import useGetDailyScheduleSelectors from "../../../hooks/selectors/use-get-daily-schedule-selectors";
 import useGetViewPenAvailabilitySelectors from "../../../hooks/selectors/use-get-view-pen-availability-selectors";
 
 const useHandleShowError = () => {
@@ -20,7 +20,7 @@ const useHandleShowError = () => {
   const { fetchAvailabilityDocsToUpdateError } = useGetCancelBookingSelectors();
   const { individualCustomersCatsError } =
     useGetIndividualCustomersCatsSelectors();
-  const { todaysBookingsDataError } = useGetTodaysScheduleSelectors();
+  const { dailyBookingsDataError } = useGetDailyScheduleSelectors();
   const { chosenDatePenDataError } = useGetViewPenAvailabilitySelectors();
 
   const showErrorHeading = () => {
@@ -37,7 +37,7 @@ const useHandleShowError = () => {
       return `failed to pen data. 
 ( fetch Availability Docs )`;
     if (individualCustomersCatsError) return "failed to fetch customers cats.";
-    if (todaysBookingsDataError) return "fetch todays bookings thunk error";
+    if (dailyBookingsDataError) return "fetch daily bookings thunk error";
     if (chosenDatePenDataError) return "failed to fetch pen data.";
   };
 
@@ -52,7 +52,7 @@ const useHandleShowError = () => {
       fetchOwnerBookingsError,
       fetchAvailabilityDocsToUpdateError,
       individualCustomersCatsError,
-      todaysBookingsDataError,
+      dailyBookingsDataError,
       chosenDatePenDataError,
     ];
     return errors.find((error) => error !== null);

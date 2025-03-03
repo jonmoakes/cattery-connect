@@ -9,7 +9,7 @@ import {
   addBookingRoute,
   allUsersRoute,
   bookingsRoute,
-  todaysScheduleRoute,
+  dailyScheduleRoute,
   penAvailabilityRoute,
 } from "../../../strings/routes";
 
@@ -32,8 +32,8 @@ const useNavigateToRoute = () => {
   const catteryOwnerButtons = [
     {
       id: 3,
-      text: "today's schedule",
-      onClick: () => hamburgerHandlerNavigate(todaysScheduleRoute),
+      text: "daily schedule",
+      onClick: () => hamburgerHandlerNavigate(dailyScheduleRoute),
     },
     {
       id: 4,

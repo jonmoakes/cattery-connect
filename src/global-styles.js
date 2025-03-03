@@ -121,6 +121,11 @@ const GlobalStyles = createGlobalStyle`
       text-shadow: 1px 1px 1px ${softBlack};
     }
 
+&.black {
+  color: ${softBlack};
+  text-shadow:none;
+}
+
     &.clickable {
       &:hover {
         cursor: pointer;
