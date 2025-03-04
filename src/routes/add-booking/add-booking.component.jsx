@@ -4,6 +4,7 @@ import useGetIndividualCustomersCatsSelectors from "../../hooks/selectors/use-ge
 import useGetUploadBookingDataSelectors from "../../hooks/selectors/use-get-upload-booking-data-selectors";
 import useGetIsBookingAvailableSelectors from "../../hooks/selectors/use-get-is-booking-available-selectors";
 
+import useHandleCustomerSelectChange from "../../components/customer-select-drop-down/customer-select-dropdown-hooks/use-handle-customer-select-change";
 import useAddBookingVariables from "./add-booking-hooks/use-add-booking-variables";
 import useCheckBookingAvailability from "./add-booking-hooks/use-check-booking-availability";
 import useCheckInAndOutDateValidityUseEffect from "./add-booking-hooks/use-effects/use-check-in-and-out-date-validity-use-effect";
@@ -14,7 +15,7 @@ import useSendEmailResultSwalUseEffect from "./add-booking-hooks/use-effects/use
 
 import ShowFetchErrors from "../../components/errors/show-fetch-errors.component";
 import AddBookingTitleAndLoader from "./ui/add-booking-title-and-loader.component";
-import ChooseCustomerSelectInput from "./inputs/choose-customer-select-input.component";
+import CustomerSelectDropdown from "../../components/customer-select-drop-down/customer-select-dropdown.component";
 import ChooseCatsInput from "./inputs/choose-cats-input/choose-cats-input.component";
 import MoreCatsSelectedThanSinglePenCapacity from "./ui/more-cats-selected-than-single-pen-capacity.component";
 import CheckInAndOutDateInput from "./inputs/check-in-and-out-date-input/check-in-and-out-date-input.component";
@@ -44,6 +45,7 @@ const AddBooking = () => {
   } = useGetUploadBookingDataSelectors();
   const { availabilityStatus } = useGetIsBookingAvailableSelectors();
 
+  const { handleCustomerSelectChange } = useHandleCustomerSelectChange();
   const { checkBookingAvailability } = useCheckBookingAvailability();
   const {
     moreCatsInBookingThanCapacityInOnePen,
@@ -72,13 +74,13 @@ const AddBooking = () => {
             {availabilityStatus ===
             "bookingAvailable" ? null : moreCatsInBookingThanCapacityInOnePen ? (
               <>
-                <ChooseCustomerSelectInput />
+                <CustomerSelectDropdown {...{ handleCustomerSelectChange }} />
                 <ChooseCatsInput />
                 <MoreCatsSelectedThanSinglePenCapacity />
               </>
             ) : (
               <>
-                <ChooseCustomerSelectInput />
+                <CustomerSelectDropdown {...{ handleCustomerSelectChange }} />
                 <ChooseCatsInput />
 
                 <CheckInAndOutDateInput

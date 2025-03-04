@@ -1,8 +1,9 @@
 import { useDispatch } from "react-redux";
 
 import useGetAllCustomerSelectors from "../../../hooks/selectors/use-get-all-customers-selectors";
-import useGetIsBookingAvailableSelectors from "../../../hooks/selectors/use-get-is-booking-available-selectors";
 import useGetUploadBookingDataSelectors from "../../../hooks/selectors/use-get-upload-booking-data-selectors";
+import useGetIsBookingAvailableSelectors from "../../../hooks/selectors/use-get-is-booking-available-selectors";
+
 import { fetchIndividualCustomersCatsAsync } from "../../../store/get-individual-customers-cats/get-individual-customers-cats.thunks";
 import { setUploadBookingData } from "../../../store/upload-booking-data/upload-booking-data.slice";
 import {
@@ -13,21 +14,22 @@ import {
 
 import { generateBookingId } from "../../../functions/generate-short-id";
 
-const useHandleCustomerSelectChange = () => {
+const useHandleAddBookingRouteCustomerSelect = () => {
+  const { allCustomers } = useGetAllCustomerSelectors();
   const { uploadBookingData } = useGetUploadBookingDataSelectors();
   const {
     isBookingAvailableResult,
     isBookingAvailableError,
     showIneligibleDates,
   } = useGetIsBookingAvailableSelectors();
-  const { allCustomers } = useGetAllCustomerSelectors();
 
   const dispatch = useDispatch();
 
-  const handleCustomerSelectChange = (e) => {
+  const handleAddBookingRouteCustomerSelect = (customer) => {
     const selectedCustomer = allCustomers.find(
-      (customer) => customer.name === e.target.value
+      (cust) => cust.name === customer.name
     );
+
     const customerId = selectedCustomer.customerId;
 
     dispatch(fetchIndividualCustomersCatsAsync({ customerId })).then(
@@ -64,7 +66,7 @@ const useHandleCustomerSelectChange = () => {
     }
   };
 
-  return { handleCustomerSelectChange };
+  return { handleAddBookingRouteCustomerSelect };
 };
 
-export default useHandleCustomerSelectChange;
+export default useHandleAddBookingRouteCustomerSelect;

@@ -1,21 +1,25 @@
 import useGetAllCustomerSelectors from "../../hooks/selectors/use-get-all-customers-selectors";
 import useGetAllCustomersThunkUseEffect from "../../hooks/use-get-all-customers-thunk-use-effect";
-import useHandleCustomerSelectionChange from "./add-cat-choose-owner-hooks/use-handle-customer-selection-change";
+import useHandleCustomerSelectChange from "../../components/customer-select-drop-down/customer-select-dropdown-hooks/use-handle-customer-select-change";
+import useDropdownLogic from "../../components/customer-select-drop-down/customer-select-dropdown-hooks/use-dropdown-logic";
 
 import AllCatsNoCatsFound from "../all-cats/all-cats-no-cats-found.component";
 import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
 import ShowFetchErrors from "../../components/errors/show-fetch-errors.component";
-import CustomerSelectionForm from "./customer-selection-form.component";
+import CustomerSelectDropdown from "../../components/customer-select-drop-down/customer-select-dropdown.component";
 import ConfirmCustomerChoice from "./confirm-customer-choice.component";
 
 import { Container } from "../../styles/container/container.styles";
 import { ParentDiv } from "../../styles/div/div.styles";
+import { Form } from "../../styles/form/form.styles";
 
 const AddCatChooseOwner = () => {
-  const { getAllCustomersError, allCustomers } = useGetAllCustomerSelectors();
+  const { getAllCustomersError } = useGetAllCustomerSelectors();
+  const { hasAtLeastOneCustomer } = useDropdownLogic();
+  const { handleCustomerSelectChange, selectedCustomerName } =
+    useHandleCustomerSelectChange();
+
   useGetAllCustomersThunkUseEffect();
-  const { handleCustomerSelectionChange, selectedCustomer } =
-    useHandleCustomerSelectionChange();
 
   return (
     <Container>
@@ -25,13 +29,15 @@ const AddCatChooseOwner = () => {
 
       {getAllCustomersError ? (
         <ShowFetchErrors />
-      ) : allCustomers && allCustomers.length ? (
+      ) : hasAtLeastOneCustomer ? (
         <>
           <ParentDiv>
-            <CustomerSelectionForm
-              {...{ selectedCustomer, handleCustomerSelectionChange }}
-            />
-            <ConfirmCustomerChoice {...{ selectedCustomer }} />
+            <Form className="small-margin-bottom">
+              <CustomerSelectDropdown {...{ handleCustomerSelectChange }} />
+            </Form>
+            {selectedCustomerName ? (
+              <ConfirmCustomerChoice {...{ selectedCustomerName }} />
+            ) : null}
           </ParentDiv>
         </>
       ) : (

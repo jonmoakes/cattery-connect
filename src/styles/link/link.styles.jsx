@@ -30,4 +30,16 @@ export const StyledLink = styled(Link)`
       }
     }
   }
+
+  &.yellow {
+    color: ${customYellow};
+
+    &:hover {
+      color: orange;
+
+      @media screen and (max-width: 1366px) {
+        color: ${customYellow};
+      }
+    }
+  }
 `;

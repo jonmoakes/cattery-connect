@@ -8,37 +8,34 @@ import { BlackHr } from "../../styles/hr/hr.styles";
 
 import { addCatChooseOwnerRoute, addCatRoute } from "../../strings/routes";
 
-const ConfirmCustomerChoice = ({ selectedCustomer }) => {
+const ConfirmCustomerChoice = ({ selectedCustomerName }) => {
   const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
 
   return (
     <>
-      {selectedCustomer ? (
-        <>
-          <CustomBalancedText>you will be adding a cat for:</CustomBalancedText>
+      <CustomBalancedText>you will be adding a cat for:</CustomBalancedText>
 
-          <BlackHr />
-          <CustomBalancedText>
-            <CustomSpan type="background">{selectedCustomer.name}</CustomSpan>
-          </CustomBalancedText>
-          <BlackHr />
-          <CustomBalancedText>
-            if this is correct, tap the button below to proceed, or choose
-            another customer from the list.
-          </CustomBalancedText>
+      <BlackHr />
+      <CustomBalancedText>
+        <CustomSpan type="background">{selectedCustomerName}</CustomSpan>
+      </CustomBalancedText>
+      <BlackHr />
+      <CustomBalancedText>
+        if this is correct, tap the button below to proceed, or choose another
+        customer from the list ( you will have to modify or delete the current
+        search term that you have entered in order to choose another customer ).
+      </CustomBalancedText>
 
-          <SelectCustomerButton
-            type="button"
-            onClick={() =>
-              hamburgerHandlerNavigate(addCatRoute, {
-                fromRoute: addCatChooseOwnerRoute,
-              })
-            }
-          >
-            continue
-          </SelectCustomerButton>
-        </>
-      ) : null}
+      <SelectCustomerButton
+        type="button"
+        onClick={() =>
+          hamburgerHandlerNavigate(addCatRoute, {
+            fromRoute: addCatChooseOwnerRoute,
+          })
+        }
+      >
+        continue
+      </SelectCustomerButton>
     </>
   );
 };

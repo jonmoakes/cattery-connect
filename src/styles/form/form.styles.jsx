@@ -1,6 +1,8 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+import { zoomInLeft } from "react-animations";
 import {
   customGreen,
+  dustyBlue,
   gentleGrey,
   radialGreen,
   radialGrey,
@@ -9,6 +11,8 @@ import {
   teal,
 } from "../colours";
 import DownwardArrow from "../../assets/dward-arrow.webp";
+
+const zoomInLeftAnimation = keyframes`${zoomInLeft}`;
 
 export const Form = styled.form`
   width: 75%;
@@ -60,6 +64,43 @@ export const Form = styled.form`
 
   &.no-margin-top-small-margin-bottom {
     margin: 0px auto 30px auto;
+  }
+
+  &.small-margin-bottom {
+    margin: 50px auto 30px auto;
+  }
+`;
+
+export const DropdownList = styled.ul`
+  width: 70%;
+  max-height: 200px;
+  overflow-y: auto;
+  background: ${radialGrey};
+  border: 2px solid ${softBlack};
+  border-radius: 5px;
+  list-style: none;
+  padding: 20px 0px;
+  margin: 20px auto 0px auto;
+  z-index: 10;
+  box-shadow: 6px 6px 15px ${softBlack};
+  animation: 1s ${zoomInLeftAnimation};
+
+  li {
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.5s ease-in-out;
+
+    &:hover {
+      background: ${dustyBlue};
+    }
+  }
+
+  @media screen and (max-width: 1366px) {
+    box-shadow: none;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 90%;
   }
 `;
 
