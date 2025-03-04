@@ -27,7 +27,7 @@ const useHandleDatesAndPensChange = () => {
   };
 
   const handleDayOffToAddChange = (date) => {
-    dispatch(setDateClosedToAdd(date));
+    dispatch(setDateClosedToAdd(format(date, "yyyy-MM-dd")));
   };
 
   return {

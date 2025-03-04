@@ -28,7 +28,7 @@ const ChoosePenDataDatePicker = () => {
           selected={
             returnedChosenDate ? format(returnedChosenDate, "yyyy-MM-dd") : null
           }
-          onChange={chooseDateAndFetchPenData}
+          onChange={(chosenDate) => chooseDateAndFetchPenData(chosenDate)}
           dateFormat="EEE d MMM yyyy"
           minDate={new Date()}
           onKeyDown={(e) => e.preventDefault()}

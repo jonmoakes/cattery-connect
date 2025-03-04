@@ -38,9 +38,7 @@ const DaysOffInput = () => {
                     ? format(dateClosedToAdd, "EEE d MMM yyyy")
                     : null
                 }
-                onChange={(date) =>
-                  handleDayOffToAddChange(format(date, "yyyy-MM-dd"))
-                }
+                onChange={(date) => handleDayOffToAddChange(date)}
                 dateFormat="EEE d MMM yyyy"
                 minDate={new Date()}
                 onKeyDown={(e) => e.preventDefault()}

@@ -17,11 +17,11 @@ export const getDailyBookingsDataAsync = createAsyncThunk(
         throw new Error("No cattery ID provided");
       }
 
-      const parsedDate = chosenDate ? new Date(chosenDate) : new Date();
-      if (isNaN(parsedDate)) {
-        throw new Error("Invalid date provided");
-      }
-      const date = format(parsedDate, "yyyy-MM-dd");
+      const today = new Date();
+
+      const date = chosenDate
+        ? format(chosenDate, "yyyy-MM-dd")
+        : format(today, "yyyy-MM-dd");
 
       const bookingsQuery = [
         Query.equal("catteryId", catteryId),
@@ -126,7 +126,7 @@ export const getDailyBookingsDataAsync = createAsyncThunk(
 
       return {
         chosenDaysData: combinedData,
-        dateForShownData: format(parsedDate, "yyyy-MM-dd"),
+        dateForShownData: date,
       };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
