@@ -11,10 +11,14 @@ const useChooseDateAndFetchData = () => {
   const dispatch = useDispatch();
   const [chosenDate, setChosenDate] = useState("");
 
-  const chooseDateAndFetchData = (chosenDate, setIsOpen) => {
+  const chooseDateAndFetchData = (chosenDate, event) => {
     setChosenDate(chosenDate);
     dispatch(getDailyBookingsDataAsync({ catteryId, chosenDate }));
-    setIsOpen(false);
+
+    // Close date picker manually on mobile
+    if (event?.target) {
+      event.target.blur(); // Forces input field to lose focus
+    }
   };
 
   return { chosenDate, chooseDateAndFetchData };
