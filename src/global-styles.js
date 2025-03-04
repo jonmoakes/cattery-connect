@@ -24,14 +24,14 @@ const GlobalStyles = createGlobalStyle`
   }
 
   html {
-    height: 100%;
-    width: 100%;
+    width:100%;
+    height:100vh;
   }
 
   body {
-    margin: 0;
-    min-width: 320px;
-    min-height: 100vh;
+    margin: 0px auto;
+    width:100%;
+    height:100%;
     position: relative;
 
     &:before {
