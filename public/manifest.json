@@ -34,7 +34,7 @@
   "start_url": "/",
   "id": "/",
   "display": "standalone",
-  "theme_color": "#FCD19C",
-  "background_color": "#FCD19C",
+  "theme_color": "#C6975B",
+  "background_color": "#C6975B",
   "scope": "/"
 }
