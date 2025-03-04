@@ -24,15 +24,18 @@ const GlobalStyles = createGlobalStyle`
   }
 
   html {
-    width:100%;
-    height:100vh;
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden; 
+    overscroll-behavior: none; 
   }
 
   body {
     margin: 0px auto;
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
     position: relative;
+    overflow-x: hidden;
 
     &:before {
       content: "";
