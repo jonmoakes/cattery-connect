@@ -11,6 +11,7 @@ import {
   rustRed,
   softBlack,
   teal,
+  warmBeige,
 } from "../colours";
 
 import {
@@ -31,7 +32,7 @@ const rollInAnimation = keyframes`${rollIn}`;
 const backgroundImages = [AsleepImage, PlayingWithToyImage, BackgroundImage];
 
 export const Nav = styled.div`
-  background: ${radialBeige};
+  background-color: ${warmBeige};
   height: 90px;
   width: 100%;
   display: flex;
