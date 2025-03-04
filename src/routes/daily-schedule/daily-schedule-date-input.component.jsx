@@ -14,11 +14,14 @@ import {
 import { Form } from "../../styles/form/form.styles";
 import useGetDailyScheduleSelectors from "../../hooks/selectors/use-get-daily-schedule-selectors";
 import useDailyScheduleTableVariables from "./daily-schedule-hooks/use-daily-schedule-table-variables";
+import { useState } from "react";
 
 const DailyScheduleDateInput = () => {
   const { dailyBookingsDataError } = useGetDailyScheduleSelectors();
   const { data } = useDailyScheduleTableVariables();
   const { chosenDate, chooseDateAndFetchData } = useChooseDateAndFetchData();
+
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
@@ -34,10 +37,12 @@ const DailyScheduleDateInput = () => {
 
               <StyledDatePicker
                 selected={chosenDate ? format(chosenDate, "yyyy-MM-dd") : null}
-                onChange={chooseDateAndFetchData}
+                onChange={() => chooseDateAndFetchData(setIsOpen)}
                 dateFormat="EEE d MMM yyyy"
                 minDate={new Date()}
                 onKeyDown={(e) => e.preventDefault()}
+                open={isOpen}
+                onFocus={() => setIsOpen(true)} // Open when clicking the input
                 shouldCloseOnSelect={true}
                 inputMode="none"
                 placeholderText="tap here to choose"

@@ -11,9 +11,10 @@ const useChooseDateAndFetchData = () => {
   const dispatch = useDispatch();
   const [chosenDate, setChosenDate] = useState("");
 
-  const chooseDateAndFetchData = (chosenDate) => {
+  const chooseDateAndFetchData = (chosenDate, setIsOpen) => {
     setChosenDate(chosenDate);
     dispatch(getDailyBookingsDataAsync({ catteryId, chosenDate }));
+    setIsOpen(false);
   };
 
   return { chosenDate, chooseDateAndFetchData };
