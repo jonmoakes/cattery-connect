@@ -38,6 +38,7 @@ const DailyScheduleDateInput = () => {
                 dateFormat="EEE d MMM yyyy"
                 minDate={new Date()}
                 onKeyDown={(e) => e.preventDefault()}
+                shouldCloseOnSelect={true}
                 placeholderText="tap here to choose"
               />
             </StyledDatePickerWrapper>
