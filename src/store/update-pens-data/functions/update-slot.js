@@ -7,13 +7,14 @@ export const updateSlot = (pens, numberOfCats, operation) => {
 
   const adjustment = operation === "deduct" ? -1 : 1;
 
-  // Because whether there is 1 or 2 cats, they would both go in the same pen size
+  // If the number of cats is 1, adjust it to 2 because 1-capacity pens do not exist
   const adjustedNumberOfCats = numberOfCats === 1 ? 2 : numberOfCats;
 
+  // Find the first pen with "any" capacity or with the exact adjusted number of cats
   const penIndex = pens.findIndex(
     (pen) =>
-      pen.penCapacity === adjustedNumberOfCats &&
-      (operation === "add" || pen.available > 0) // Allow adding even if available is 0
+      (pen.penCapacity === "any" && pen.available > 0) ||
+      (pen.penCapacity === adjustedNumberOfCats && pen.available > 0)
   );
 
   // If a matching pen is found, update its availability

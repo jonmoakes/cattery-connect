@@ -1,22 +1,27 @@
 export const generateCatteryAvailabilityForDate = (
   date,
-  penSpacesForOneOrTwoCats,
-  penSpacesForThreeCats,
-  penSpacesForFourCats,
-  penSpacesForFiveCats
+  penSpacesForAnyNumberOfCats,
+  penSpacesForMaxTwoCats,
+  penSpacesForMaxThreeCats,
+  penSpacesForMaxFourCats,
+  penSpacesForMaxFiveCats
 ) => {
-  // Build an array of pens where capacity 2 is always included,
-  // and capacities 3, 4, and 5 are included only if they’re greater than 0.
+  // Build an array of pens where all capacities are included only if greater than 0.
   const buildPens = () => [
-    { penCapacity: 2, available: Number(penSpacesForOneOrTwoCats) },
-    ...(Number(penSpacesForThreeCats) > 0
-      ? [{ penCapacity: 3, available: Number(penSpacesForThreeCats) }]
+    ...(Number(penSpacesForAnyNumberOfCats) > 0
+      ? [{ penCapacity: "any", available: Number(penSpacesForAnyNumberOfCats) }]
       : []),
-    ...(Number(penSpacesForFourCats) > 0
-      ? [{ penCapacity: 4, available: Number(penSpacesForFourCats) }]
+    ...(Number(penSpacesForMaxTwoCats) > 0
+      ? [{ penCapacity: 2, available: Number(penSpacesForMaxTwoCats) }]
       : []),
-    ...(Number(penSpacesForFiveCats) > 0
-      ? [{ penCapacity: 5, available: Number(penSpacesForFiveCats) }]
+    ...(Number(penSpacesForMaxThreeCats) > 0
+      ? [{ penCapacity: 3, available: Number(penSpacesForMaxThreeCats) }]
+      : []),
+    ...(Number(penSpacesForMaxFourCats) > 0
+      ? [{ penCapacity: 4, available: Number(penSpacesForMaxFourCats) }]
+      : []),
+    ...(Number(penSpacesForMaxFiveCats) > 0
+      ? [{ penCapacity: 5, available: Number(penSpacesForMaxFiveCats) }]
       : []),
   ];
 

@@ -21,15 +21,19 @@ const TitleAndAddBookingLink = () => {
       <CustomBalancedText type="h1">your bookings</CustomBalancedText>
 
       {atLeastOneBookingExists ? (
-        <MinimalButton
-          onClick={() => hamburgerHandlerNavigate(addBookingRoute)}
-          className="teal"
-        >
-          add another booking
-        </MinimalButton>
+        <>
+          <MinimalButton
+            onClick={() => hamburgerHandlerNavigate(addBookingRoute)}
+            className="teal"
+          >
+            add another booking
+          </MinimalButton>
+          <HelpAccordion
+            openText="table help"
+            data={bookingsTableAccordionData}
+          />
+        </>
       ) : null}
-
-      <HelpAccordion openText="table help" data={bookingsTableAccordionData} />
     </ParentDiv>
   );
 };

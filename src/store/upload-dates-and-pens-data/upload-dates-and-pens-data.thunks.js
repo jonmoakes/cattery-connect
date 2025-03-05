@@ -19,6 +19,7 @@ export const uploadDatesAndPensAvailabilityDocumentAsync = createAsyncThunk(
     try {
       const {
         catteryId,
+        penSpacesForAnyNumberOfCats,
         penSpacesForOneOrTwoCats,
         penSpacesForThreeCats,
         penSpacesForFourCats,
@@ -48,7 +49,8 @@ export const uploadDatesAndPensAvailabilityDocumentAsync = createAsyncThunk(
       const { numberOfPensInCattery } = documents[0];
 
       const values = [
-        penSpacesForOneOrTwoCats,
+        penSpacesForAnyNumberOfCats ? penSpacesForAnyNumberOfCats : 0,
+        penSpacesForOneOrTwoCats ? penSpacesForOneOrTwoCats : 0,
         penSpacesForThreeCats ? penSpacesForThreeCats : 0,
         penSpacesForFourCats ? penSpacesForFourCats : 0,
         penSpacesForFiveCats ? penSpacesForFiveCats : 0,
@@ -83,6 +85,7 @@ export const uploadDatesAndPensAvailabilityDocumentAsync = createAsyncThunk(
       for (const date of dates) {
         const availability = generateCatteryAvailabilityForDate(
           catteryId,
+          penSpacesForAnyNumberOfCats,
           penSpacesForOneOrTwoCats,
           penSpacesForThreeCats,
           penSpacesForFourCats,

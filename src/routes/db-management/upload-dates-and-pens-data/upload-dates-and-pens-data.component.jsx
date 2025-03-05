@@ -12,6 +12,7 @@ import CatteryIdSelectInput from "./inputs/cattery-id-select-input/cattery-id-se
 import ClosedDatesQuestion from "./closed-dates-question.component";
 import DaysOffInput from "./inputs/days-off-input.component";
 import StartAndEndDatesDatePicker from "./inputs/start-and-end-dates-date-picker.component";
+import PenSpacesForAnyNumberOfCatsInput from "./inputs/pen-spaces-for-any-number-of-cats-input.component";
 import PenSpacesForOneOrTwoCatsInput from "./inputs/pen-spaces-for-one-or-two-cats-input.component";
 import PenSpacesForThreeCatsInput from "./inputs/pen-spaces-for-three-cats-input.component";
 import PenSpacesForFourCatsInput from "./inputs/pen-spaces-for-four-cats-input.component";
@@ -26,14 +27,18 @@ import { uploadDatesAndPensInfoAccordionData } from "./upload-dates-and-pens-inf
 
 const UploadDatesAndPensData = () => {
   const { allUsersCatteryIdsAndOwnerNameError } = useGetAllUsersSelectors();
-  const { datesIncludeDaysClosed, startDate, endDate } =
-    useGetUploadDatesAndPensDataSelectors();
+  const {
+    datesIncludeDaysClosed,
+    startDate,
+    endDate,
+    anyInputOtherInputSet,
+    penSpacesForAnyNumberOfCatsHasValue,
+  } = useGetUploadDatesAndPensDataSelectors();
+  const { handleDatesChange, handlePensChange } = useHandleDatesAndPensChange();
+  const { submitUploadDatesAndPensData } = useSubmitUploadDatesAndPensData();
+
   useGetAllCatteryIdsAndOwnerNameArrayThunkUseEffect();
   useUploadDatesAndPensDataResultSwalUseEffect();
-
-  const { handleDatesChange, handlePensChange } = useHandleDatesAndPensChange();
-
-  const { submitUploadDatesAndPensData } = useSubmitUploadDatesAndPensData();
 
   return (
     <Container>
@@ -69,10 +74,20 @@ const UploadDatesAndPensData = () => {
                   selectedDate={endDate}
                   {...{ handleDatesChange }}
                 />
-                <PenSpacesForOneOrTwoCatsInput {...{ handlePensChange }} />
-                <PenSpacesForThreeCatsInput {...{ handlePensChange }} />
-                <PenSpacesForFourCatsInput {...{ handlePensChange }} />
-                <PenSpacesForFiveCatsInput {...{ handlePensChange }} />
+
+                {anyInputOtherInputSet ? null : (
+                  <PenSpacesForAnyNumberOfCatsInput {...{ handlePensChange }} />
+                )}
+
+                {penSpacesForAnyNumberOfCatsHasValue ? null : (
+                  <>
+                    <PenSpacesForOneOrTwoCatsInput {...{ handlePensChange }} />
+                    <PenSpacesForThreeCatsInput {...{ handlePensChange }} />
+                    <PenSpacesForFourCatsInput {...{ handlePensChange }} />
+                    <PenSpacesForFiveCatsInput {...{ handlePensChange }} />
+                  </>
+                )}
+
                 <Button type="submit">confirm upload dates</Button>
               </>
             ) : null}

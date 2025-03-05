@@ -16,11 +16,27 @@ const useGetUploadDatesAndPensDataSelectors = () => {
     catteryId,
     startDate,
     endDate,
+    penSpacesForAnyNumberOfCats,
     penSpacesForOneOrTwoCats,
     penSpacesForThreeCats,
     penSpacesForFourCats,
     penSpacesForFiveCats,
   } = datesAndPensData ?? {};
+
+  const anyInputOtherInputSet =
+    penSpacesForOneOrTwoCats ||
+    penSpacesForThreeCats ||
+    penSpacesForFourCats ||
+    penSpacesForFiveCats;
+
+  const penSpacesForAnyNumberOfCatsHasValue = penSpacesForAnyNumberOfCats;
+
+  const noInputsHaveValues =
+    !penSpacesForAnyNumberOfCats &&
+    !penSpacesForOneOrTwoCats &&
+    !penSpacesForThreeCats &&
+    !penSpacesForFourCats &&
+    !penSpacesForFiveCats;
 
   return {
     uploadDatesAndPensDataIsLoading,
@@ -33,6 +49,10 @@ const useGetUploadDatesAndPensDataSelectors = () => {
     datesClosedArray,
     startDate,
     endDate,
+    anyInputOtherInputSet,
+    penSpacesForAnyNumberOfCatsHasValue,
+    noInputsHaveValues,
+    penSpacesForAnyNumberOfCats,
     penSpacesForOneOrTwoCats,
     penSpacesForThreeCats,
     penSpacesForFourCats,

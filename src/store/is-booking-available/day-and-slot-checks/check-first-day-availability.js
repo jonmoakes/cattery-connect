@@ -1,13 +1,14 @@
 import { hasSufficientCapacity } from "./has-sufficient-capacity";
 
-// Helper function to filter pens with insufficient capacity
 const checkPenCapacity = (penData, numberOfCats) => {
   return penData.filter(
-    (pen) => pen.penCapacity < numberOfCats || pen.available === 0
+    (pen) =>
+      pen.available === 0 ||
+      (pen.penCapacity !== "any" && pen.penCapacity < numberOfCats)
   );
 };
 
-// Special check function to handle a one day booking - very rare
+// original Special check function to handle a one day booking - very rare
 export const specialCheckSameDay = (
   parsedAvailabilityData,
   numberOfCats,

@@ -2,24 +2,24 @@ import useGetUploadDatesAndPensDataSelectors from "../../../../hooks/selectors/u
 
 import CustomSpan from "../../../../components/custom-span/custom-span.component";
 
+import { BounceInDiv } from "../../../../styles/div/div.styles";
 import { Label, StyledInput } from "../../../../styles/form/form.styles";
 
 const PenSpacesForOneOrTwoCatsInput = ({ handlePensChange }) => {
   const { penSpacesForOneOrTwoCats } = useGetUploadDatesAndPensDataSelectors();
 
   return (
-    <>
+    <BounceInDiv>
       <Label>
-        <CustomSpan className="red">* </CustomSpan>pen spaces ( 1 or 2 cats ):
+        pen spaces ( <CustomSpan className="yellow">1 or 2 cats</CustomSpan> ):
       </Label>
       <StyledInput
         type="text"
         name="penSpacesForOneOrTwoCats"
         onChange={handlePensChange}
         value={penSpacesForOneOrTwoCats || ""}
-        required
       />
-    </>
+    </BounceInDiv>
   );
 };
 

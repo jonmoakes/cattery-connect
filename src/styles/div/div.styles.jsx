@@ -19,6 +19,7 @@ import {
   rollIn,
   slideInLeft,
   slideInRight,
+  bounceIn,
 } from "react-animations";
 import BackgroundImage from "../../assets/cat-in-basket.webp";
 import AsleepImage from "../../assets/cat-asleep-in-basket.webp";
@@ -28,6 +29,7 @@ const bounceInDownAnimation = keyframes`${bounceInDown}`;
 const slideInLeftAnimation = keyframes`${slideInLeft}`;
 const slideInrightAnimation = keyframes`${slideInRight}`;
 const rollInAnimation = keyframes`${rollIn}`;
+const bounceInAnimation = keyframes`${bounceIn}`;
 
 const backgroundImages = [AsleepImage, PlayingWithToyImage, BackgroundImage];
 
@@ -637,4 +639,8 @@ export const TextDiv = styled.div`
   width: 100%;
   height: auto;
   margin: 0 auto;
+`;
+
+export const BounceInDiv = styled.div`
+  animation: 2s ${bounceInAnimation};
 `;

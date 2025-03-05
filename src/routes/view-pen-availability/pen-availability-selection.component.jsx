@@ -28,12 +28,14 @@ const PenAvailabilitySection = ({ title, penData, chosenDate }) => (
           <div key={penCapacity}>
             {index === 0 ? <BlackHr /> : null}
 
-            <CustomBalancedText>
-              pen capacity:{" "}
-              <CustomSpan className="yellow">
-                {penCapacity === 2 ? "1 or 2" : penCapacity}
-              </CustomSpan>
-            </CustomBalancedText>
+            {penCapacity === "any" ? null : (
+              <CustomBalancedText>
+                pen capacity:{" "}
+                <CustomSpan className="yellow">
+                  {penCapacity === 2 ? "1 or 2" : penCapacity}
+                </CustomSpan>
+              </CustomBalancedText>
+            )}
 
             <CustomBalancedText>
               available pens:{" "}

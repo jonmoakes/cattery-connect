@@ -5,22 +5,24 @@ import CustomSpan from "../../../../components/custom-span/custom-span.component
 import { BounceInDiv } from "../../../../styles/div/div.styles";
 import { Label, StyledInput } from "../../../../styles/form/form.styles";
 
-const PenSpacesForThreeCatsInput = ({ handlePensChange }) => {
-  const { penSpacesForThreeCats } = useGetUploadDatesAndPensDataSelectors();
+const PenSpacesForAnyNumberOfCatsInput = ({ handlePensChange }) => {
+  const { penSpacesForAnyNumberOfCats } =
+    useGetUploadDatesAndPensDataSelectors();
 
   return (
     <BounceInDiv>
       <Label>
-        pen spaces ( <CustomSpan className="yellow">for 3 cats</CustomSpan> ):
+        pen spaces ( <CustomSpan className="yellow">Any no of cats</CustomSpan>{" "}
+        ):
       </Label>
       <StyledInput
         type="text"
-        name="penSpacesForThreeCats"
+        name="penSpacesForAnyNumberOfCats"
         onChange={handlePensChange}
-        value={penSpacesForThreeCats || ""}
+        value={penSpacesForAnyNumberOfCats || ""}
       />
     </BounceInDiv>
   );
 };
 
-export default PenSpacesForThreeCatsInput;
+export default PenSpacesForAnyNumberOfCatsInput;
