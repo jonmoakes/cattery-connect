@@ -13,7 +13,7 @@ export const handler = async (event) => {
       To: process.env.VITE_APP_ADMIN_EMAIL,
       TemplateAlias: "send-email-cattery-connect-delete-booking-data-failed",
       TemplateModel: {
-        product_url: "https://cattery-connect.netlify.app",
+        product_url: "https://cattery-connect.co.uk",
         product_name: "Cattery Connect",
         catteryId,
         documentId,

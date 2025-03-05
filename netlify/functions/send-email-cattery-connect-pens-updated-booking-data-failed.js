@@ -13,7 +13,7 @@ export const handler = async (event) => {
       TemplateAlias:
         "send-email-cattery-connect-pens-updated-booking-data-failed",
       TemplateModel: {
-        product_url: "https://cattery-connect.netlify.app",
+        product_url: "https://cattery-connect.co.uk",
         product_name: "Cattery Connect",
         catteryId,
         uploadBookingDataError,

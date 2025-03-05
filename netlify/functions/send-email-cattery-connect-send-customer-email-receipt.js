@@ -19,7 +19,7 @@ export const handler = async (event) => {
       To: customerEmail,
       TemplateAlias: "send-email-cattery-connect-send-customer-email-receipt",
       TemplateModel: {
-        product_url: "https://cattery-connect.netlify.app",
+        product_url: "https://cattery-connect.co.uk",
         product_name: "Cattery Connect",
         customerName,
         name,
