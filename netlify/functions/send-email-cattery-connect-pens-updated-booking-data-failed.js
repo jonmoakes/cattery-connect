@@ -13,7 +13,7 @@ export const handler = async (event) => {
       TemplateAlias:
         "send-email-cattery-connect-pens-updated-booking-data-failed",
       TemplateModel: {
-        product_url: "https://cattery-connect.co.uk",
+        product_url: "https://www.cattery-connect.co.uk",
         product_name: "Cattery Connect",
         catteryId,
         uploadBookingDataError,

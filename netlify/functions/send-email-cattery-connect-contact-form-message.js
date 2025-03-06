@@ -10,7 +10,7 @@ export const handler = async (event) => {
       To: process.env.VITE_APP_ADMIN_EMAIL,
       TemplateAlias: "send-email-cattery-connect-contact-form-message",
       TemplateModel: {
-        product_url: "https://cattery-connect.co.uk",
+        product_url: "https://www.cattery-connect.co.uk",
         product_name: "Cattery Connect",
         senderName,
         senderEmail,

@@ -15,7 +15,7 @@ export const generateNewPasswordRequestAsync = createAsyncThunk(
       } else if (import.meta.env.MODE === "production") {
         await account.createRecovery(
           generateNewPasswordRequestEmail,
-          `https://cattery-connect.co.uk${chooseNewPasswordRoute}`
+          `https://www.cattery-connect.co.uk/${chooseNewPasswordRoute}`
         );
       }
     } catch (error) {

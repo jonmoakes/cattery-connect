@@ -17,7 +17,7 @@ export const handler = async (event) => {
       To: process.env.VITE_APP_ADMIN_EMAIL,
       TemplateAlias: "send-email-cattery-connect-update-pens-rollback-error",
       TemplateModel: {
-        product_url: "https://cattery-connect.co.uk",
+        product_url: "https://www.cattery-connect.co.uk",
         product_name: "Cattery Connect",
         catteryId,
         operation,
