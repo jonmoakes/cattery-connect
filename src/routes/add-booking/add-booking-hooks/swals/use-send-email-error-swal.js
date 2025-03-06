@@ -15,7 +15,7 @@ const useSendEmailErrorSwal = () => {
         "error",
         `sorry,the email failed to send.. Please contact jonathan. The error received was: 
         
-${sendEmailError}`,
+'${sendEmailError}'`,
         "",
         0,
         "",

@@ -22,9 +22,10 @@ export const handler = async (event) => {
       statusCode: 202,
     };
   } catch (error) {
-    console.log(error);
+    console.error("Postmark Error:", error);
     return {
       statusCode: 500,
+      body: JSON.stringify({ message: error.message, stack: error.stack }),
     };
   }
 };
