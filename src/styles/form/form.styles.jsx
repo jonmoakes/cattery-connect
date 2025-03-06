@@ -182,6 +182,19 @@ export const StyledInput = styled.input`
       text-transform: none;
     }
   }
+
+  &.customer-search {
+    width: 50%;
+    margin: 20px auto;
+
+    @media screen and (max-width: 850px) {
+      width: 70%;
+    }
+
+    @media screen and (max-width: 600px) {
+      width: 95%;
+    }
+  }
 `;
 
 export const PasswordInput = styled(StyledInput)`
@@ -328,12 +341,9 @@ export const SearchInput = styled.input`
     font-size: 160px;
   }
 
-  @media screen and (max-width: 850px) {
-    margin: 0px auto 0px auto;
-  }
-
   @media screen and (max-width: 450px) {
     height: 40px;
+    margin: 0px auto 0px auto;
   }
 
   @media screen and (max-width: 320px) {

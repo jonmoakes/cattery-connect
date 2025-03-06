@@ -92,7 +92,6 @@ export const sendEmailCatteryConnectPensUpdatedBookingDataFailedAsync =
         const statusCode = response.status;
         return statusCode;
       } catch (error) {
-        // Check if the error has a response and contains data.message
         const errorMessage = error.response?.data?.message || error.message;
         console.error("Error sending email:", errorMessage);
         return thunkAPI.rejectWithValue(errorMessage);
@@ -143,7 +142,6 @@ export const sendEmailCatteryConnectSendCustomerEmailReceiptAsync =
         const statusCode = response.status;
         return statusCode;
       } catch (error) {
-        // Check if the error has a response and contains data.message
         const errorMessage = error.response?.data?.message || error.message;
         console.error("Error sending email:", errorMessage);
         return thunkAPI.rejectWithValue(errorMessage);
@@ -168,7 +166,6 @@ export const sendEmailCatteryConnectDeleteBookingDataFailedAsync =
         const statusCode = response.status;
         return statusCode;
       } catch (error) {
-        // Check if the error has a response and contains data.message
         const errorMessage = error.response?.data?.message || error.message;
         console.error("Error sending email:", errorMessage);
         return thunkAPI.rejectWithValue(errorMessage);
@@ -201,7 +198,6 @@ export const sendCustomerCancellationEmailAsync = createAsyncThunk(
       const statusCode = response.status;
       return statusCode;
     } catch (error) {
-      // Check if the error has a response and contains data.message
       const errorMessage = error.response?.data?.message || error.message;
       console.error("Error sending email:", errorMessage);
       return thunkAPI.rejectWithValue(errorMessage);
@@ -225,7 +221,6 @@ export const sendEmailContactFormMessageAsync = createAsyncThunk(
       const statusCode = response.status;
       return statusCode;
     } catch (error) {
-      // Check if the error has a response and contains data.message
       const errorMessage = error.response?.data?.message || error.message;
       console.error("Error sending email:", errorMessage);
       return thunkAPI.rejectWithValue(errorMessage);

@@ -33,6 +33,7 @@ export const StyledLink = styled(Link)`
 
   &.yellow {
     color: ${customYellow};
+    text-shadow: 1px 1px 1px ${softBlack};
 
     &:hover {
       color: orange;

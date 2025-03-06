@@ -21,6 +21,7 @@ const CustomerSelectDropdown = ({ handleCustomerSelectChange }) => {
       <CustomerSelectHelpText />
 
       <StyledInput
+        className="customer-search"
         type="text"
         placeholder="Search customer name / id..."
         value={searchTerm}
