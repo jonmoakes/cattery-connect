@@ -38,42 +38,6 @@ export const cancelBookingSlice = createSlice({
       return INITIAL_STATE;
     },
   },
-  selectors: {
-    selectCancelBookingSelectors: createSelector(
-      (state) => state.fetchAvailabilityDocsToUpdateIsLoading,
-      (state) => state.dataFromBooking,
-      (state) => state.dataForAvailabilityDocsRequest,
-      (state) => state.availabilityDocsToUpdate,
-      (state) => state.fetchAvailabilityDocsToUpdateResult,
-      (state) => state.fetchAvailabilityDocsToUpdateError,
-      (state) => state.deleteBookingDataIsLoading,
-      (state) => state.deleteBookingDataResult,
-      (state) => state.deleteBookingDataError,
-      (
-        fetchAvailabilityDocsToUpdateIsLoading,
-        dataFromBooking,
-        dataForAvailabilityDocsRequest,
-        availabilityDocsToUpdate,
-        fetchAvailabilityDocsToUpdateResult,
-        fetchAvailabilityDocsToUpdateError,
-        deleteBookingDataIsLoading,
-        deleteBookingDataResult,
-        deleteBookingDataError
-      ) => {
-        return {
-          fetchAvailabilityDocsToUpdateIsLoading,
-          dataFromBooking,
-          dataForAvailabilityDocsRequest,
-          availabilityDocsToUpdate,
-          fetchAvailabilityDocsToUpdateResult,
-          fetchAvailabilityDocsToUpdateError,
-          deleteBookingDataIsLoading,
-          deleteBookingDataResult,
-          deleteBookingDataError,
-        };
-      }
-    ),
-  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchAvailabilityDocsToUpdateAsync.pending, (state) => {
@@ -118,6 +82,24 @@ export const {
   resetDeleteBookingDataError,
   resetCancelBookingState,
 } = cancelBookingSlice.actions;
-export const { selectCancelBookingSelectors } = cancelBookingSlice.selectors;
+
+export const selectCancelBookingSelectors = createSelector(
+  (state) => state.cancelBooking,
+  (cancelBooking) => ({
+    fetchAvailabilityDocsToUpdateIsLoading:
+      cancelBooking.fetchAvailabilityDocsToUpdateIsLoading,
+    dataFromBooking: cancelBooking.dataFromBooking,
+    dataForAvailabilityDocsRequest:
+      cancelBooking.dataForAvailabilityDocsRequest,
+    availabilityDocsToUpdate: cancelBooking.availabilityDocsToUpdate,
+    fetchAvailabilityDocsToUpdateResult:
+      cancelBooking.fetchAvailabilityDocsToUpdateResult,
+    fetchAvailabilityDocsToUpdateError:
+      cancelBooking.fetchAvailabilityDocsToUpdateError,
+    deleteBookingDataIsLoading: cancelBooking.deleteBookingDataIsLoading,
+    deleteBookingDataResult: cancelBooking.deleteBookingDataResult,
+    deleteBookingDataError: cancelBooking.deleteBookingDataError,
+  })
+);
 
 export const cancelBookingReducer = cancelBookingSlice.reducer;

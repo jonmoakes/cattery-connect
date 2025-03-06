@@ -17,27 +17,6 @@ const userSlice = createSlice({
       state.currentUserError = null;
     },
   },
-  selectors: {
-    selectCurrentUserSelectors: createSelector(
-      (state) => state.currentUser,
-      (state) => state.currentUserIsLoading,
-      (state) => state.currentUserError,
-      (state) => state.signOutIsLoading,
-      (
-        currentUser,
-        currentUserIsLoading,
-        currentUserError,
-        signOutIsLoading
-      ) => {
-        return {
-          currentUser,
-          currentUserIsLoading,
-          currentUserError,
-          signOutIsLoading,
-        };
-      }
-    ),
-  },
   extraReducers: (builder) => {
     builder
       .addCase(getUserOnLoadAsync.pending, (state) => {
@@ -82,6 +61,15 @@ const userSlice = createSlice({
 });
 
 export const { resetCurrentUserErrorMessage } = userSlice.actions;
-export const { selectCurrentUserSelectors } = userSlice.selectors;
+
+export const selectCurrentUserSelectors = createSelector(
+  (state) => state.user,
+  (user) => ({
+    currentUserIsLoading: user.currentUserIsLoading,
+    currentUser: user.currentUser,
+    currentUserError: user.currentUserError,
+    signOutIsLoading: user.signOutIsLoading,
+  })
+);
 
 export const userReducer = userSlice.reducer;

@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-import { selectUpdatePensDataSelectors } from "../../store/update-pens-data/update-pens-data.slice";
+import { selectUpdatePensDataSelectors } from "../../store/update-pens-data/update-pens-data-selectors";
 
 const useGetUpdatePensDataSelectors = () => {
   const { updatePensDataIsLoading, updatePensDataResult, updatePensDataError } =

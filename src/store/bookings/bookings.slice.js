@@ -37,56 +37,6 @@ export const bookingsSlice = createSlice({
       return INITIAL_STATE;
     },
   },
-  selectors: {
-    selectBookingsSelectors: createSelector(
-      (state) => state.fetchOwnerBookingsIsLoading,
-      (state) => state.ownerBookings,
-      (state) => state.fetchOwnerBookingsResult,
-      (state) => state.fetchOwnerBookingsError,
-      (state) => state.updatePaymentStatusIsLoading,
-      (state) => state.updatePaymentStatusResult,
-      (state) => state.updatePaymentStatusError,
-      (
-        fetchOwnerBookingsIsLoading,
-        ownerBookings,
-        fetchOwnerBookingsResult,
-        fetchOwnerBookingsError,
-        updatePaymentStatusIsLoading,
-        updatePaymentStatusResult,
-        updatePaymentStatusError
-      ) => {
-        const formattedOwnerBookings = ownerBookings
-          ? ownerBookings.map((booking) => {
-              return {
-                ...booking,
-                checkInDateAsDateObjectForSorting: new Date(
-                  booking.checkInDate
-                ),
-              };
-            })
-          : [];
-
-        const sortedOwnerBookings = formattedOwnerBookings.sort(
-          (bookingA, bookingB) => {
-            const dateA = new Date(bookingA.dateAsDateObjectForSorting);
-            const dateB = new Date(bookingB.dateAsDateObjectForSorting);
-
-            return dateA - dateB;
-          }
-        );
-        return {
-          fetchOwnerBookingsIsLoading,
-          ownerBookings,
-          fetchOwnerBookingsResult,
-          fetchOwnerBookingsError,
-          sortedOwnerBookings,
-          updatePaymentStatusIsLoading,
-          updatePaymentStatusResult,
-          updatePaymentStatusError,
-        };
-      }
-    ),
-  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchOwnerBookingsAsync.pending, (state) => {
@@ -128,6 +78,39 @@ export const {
   resetUpdatePaymentStatusError,
   resetBookingsState,
 } = bookingsSlice.actions;
-export const { selectBookingsSelectors } = bookingsSlice.selectors;
+
+export const selectBookingsSelectors = createSelector(
+  (state) => state.bookings,
+  (bookings) => {
+    const { ownerBookings } = bookings;
+
+    const formattedOwnerBookings = ownerBookings
+      ? ownerBookings.map((booking) => ({
+          ...booking,
+          checkInDateAsDateObjectForSorting: new Date(booking.checkInDate),
+        }))
+      : [];
+
+    const sortedOwnerBookings = formattedOwnerBookings.sort(
+      (bookingA, bookingB) => {
+        const dateA = new Date(bookingA.checkInDateAsDateObjectForSorting);
+        const dateB = new Date(bookingB.checkInDateAsDateObjectForSorting);
+        return dateA - dateB; // Sort in ascending order
+      }
+    );
+
+    return {
+      fetchOwnerBookingsIsLoading: bookings.fetchOwnerBookingsIsLoading,
+      ownerBookings,
+      sortedOwnerBookings,
+      formattedOwnerBookings,
+      fetchOwnerBookingsResult: bookings.fetchOwnerBookingsResult,
+      fetchOwnerBookingsError: bookings.fetchOwnerBookingsError,
+      updatePaymentStatusIsLoading: bookings.updatePaymentStatusIsLoading,
+      updatePaymentStatusResult: bookings.updatePaymentStatusResult,
+      updatePaymentStatusError: bookings.updatePaymentStatusError,
+    };
+  }
+);
 
 export const bookingsReducer = bookingsSlice.reducer;

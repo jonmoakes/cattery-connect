@@ -119,51 +119,6 @@ export const customerDetailsManagementSlice = createSlice({
         state.deleteCustomerError = action.payload;
       });
   },
-  selectors: {
-    selectCustomerDetailsManagementSelectors: createSelector(
-      (state) => state.customerDetails,
-      (state) => state.customerDetailsForFormComparison,
-      (state) => state.customerDetailsManagementIsLoading,
-      (state) => state.addCustomerResult,
-      (state) => state.addCustomerError,
-      (state) => state.editCustomerResult,
-      (state) => state.editCustomerError,
-      (state) => state.deleteCustomerResult,
-      (state) => state.deleteCustomerError,
-      (state) => state.deleteCustomersCatsIsLoading,
-      (state) => state.deleteCustomersCatsResult,
-      (state) => state.deleteCustomersCatsError,
-      (
-        customerDetails,
-        customerDetailsForFormComparison,
-        customerDetailsManagementIsLoading,
-        addCustomerResult,
-        addCustomerError,
-        editCustomerResult,
-        editCustomerError,
-        deleteCustomerResult,
-        deleteCustomerError,
-        deleteCustomersCatsIsLoading,
-        deleteCustomersCatsResult,
-        deleteCustomersCatsError
-      ) => {
-        return {
-          customerDetails,
-          customerDetailsForFormComparison,
-          customerDetailsManagementIsLoading,
-          addCustomerResult,
-          addCustomerError,
-          editCustomerResult,
-          editCustomerError,
-          deleteCustomerResult,
-          deleteCustomerError,
-          deleteCustomersCatsIsLoading,
-          deleteCustomersCatsResult,
-          deleteCustomersCatsError,
-        };
-      }
-    ),
-  },
 });
 
 export const {
@@ -178,8 +133,28 @@ export const {
   resetDeleteCustomersCatsError,
   resetCustomerDetailsManagementState,
 } = customerDetailsManagementSlice.actions;
-export const { selectCustomerDetailsManagementSelectors } =
-  customerDetailsManagementSlice.selectors;
+
+export const selectCustomerDetailsManagementSelectors = createSelector(
+  (state) => state.customerDetailsManagement,
+  (customerDetailsManagement) => ({
+    customerDetails: customerDetailsManagement.customerDetails,
+    customerDetailsForFormComparison: customerDetailsManagement.customerDetails,
+    customerDetailsManagementIsLoading:
+      customerDetailsManagement.customerDetailsManagementIsLoading,
+    addCustomerResult: customerDetailsManagement.addCustomerResult,
+    addCustomerError: customerDetailsManagement.addCustomerError,
+    editCustomerResult: customerDetailsManagement.editCustomerResult,
+    editCustomerError: customerDetailsManagement.editCustomerError,
+    deleteCustomerResult: customerDetailsManagement.deleteCustomerResult,
+    deleteCustomerError: customerDetailsManagement.deleteCustomerError,
+    deleteCustomersCatsIsLoading:
+      customerDetailsManagement.deleteCustomersCatsIsLoading,
+    deleteCustomersCatsResult:
+      customerDetailsManagement.deleteCustomersCatsResult,
+    deleteCustomersCatsError:
+      customerDetailsManagement.deleteCustomersCatsError,
+  })
+);
 
 export const customerDetailsManagementReducer =
   customerDetailsManagementSlice.reducer;

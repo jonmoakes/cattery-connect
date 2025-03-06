@@ -27,27 +27,6 @@ export const chooseNewPasswordSlice = createSlice({
       return INITIAL_STATE;
     },
   },
-  selectors: {
-    selectChooseNewPasswordSelectors: createSelector(
-      (state) => state.newPasswordDetails,
-      (state) => state.newPasswordResultIsLoading,
-      (state) => state.newPasswordResult,
-      (state) => state.newPasswordError,
-      (
-        newPasswordDetails,
-        newPasswordResultIsLoading,
-        newPasswordResult,
-        newPasswordError
-      ) => {
-        return {
-          newPasswordDetails,
-          newPasswordResultIsLoading,
-          newPasswordResult,
-          newPasswordError,
-        };
-      }
-    ),
-  },
   extraReducers: (builder) => {
     builder
       .addCase(getChooseNewPasswordResultAsync.pending, (state) => {
@@ -71,7 +50,15 @@ export const {
   resetPasswordResultError,
   resetChooseNewPasswordState,
 } = chooseNewPasswordSlice.actions;
-export const { selectChooseNewPasswordSelectors } =
-  chooseNewPasswordSlice.selectors;
+
+export const selectChooseNewPasswordSelectors = createSelector(
+  (state) => state.chooseNewPassword,
+  (chooseNewPassword) => ({
+    newPasswordDetails: chooseNewPassword.newPasswordDetails,
+    newPasswordResultIsLoading: chooseNewPassword.newPasswordResultIsLoading,
+    newPasswordResult: chooseNewPassword.newPasswordResult,
+    newPasswordError: chooseNewPassword.newPasswordError,
+  })
+);
 
 export const chooseNewPasswordReducer = chooseNewPasswordSlice.reducer;

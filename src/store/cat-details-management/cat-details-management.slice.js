@@ -107,39 +107,6 @@ export const catDetailsManagementSlice = createSlice({
         state.deleteCatError = action.payload;
       });
   },
-  selectors: {
-    selectCatDetailsManagementSelectors: createSelector(
-      (state) => state.detailsRequiredForCatManagement,
-      (state) => state.catDetailManagementIsLoading,
-      (state) => state.catDetails,
-      (state) => state.catDetailsForFormComparison,
-      (state) => state.catDetailsManagementResult,
-      (state) => state.catDetailsManagementError,
-      (state) => state.deleteCatResult,
-      (state) => state.deleteCatError,
-      (
-        detailsRequiredForCatManagement,
-        catDetailManagementIsLoading,
-        catDetails,
-        catDetailsForFormComparison,
-        catDetailsManagementResult,
-        catDetailsManagementError,
-        deleteCatResult,
-        deleteCatError
-      ) => {
-        return {
-          detailsRequiredForCatManagement,
-          catDetailManagementIsLoading,
-          catDetails,
-          catDetailsForFormComparison,
-          catDetailsManagementResult,
-          catDetailsManagementError,
-          deleteCatResult,
-          deleteCatError,
-        };
-      }
-    ),
-  },
 });
 
 export const {
@@ -155,7 +122,22 @@ export const {
   resetDeleteCatError,
   resetCatDetailsManagementState,
 } = catDetailsManagementSlice.actions;
-export const { selectCatDetailsManagementSelectors } =
-  catDetailsManagementSlice.selectors;
+
+export const selectCatDetailsManagementSelectors = createSelector(
+  (state) => state.catDetailsManagement,
+  (catDetailsManagement) => ({
+    detailsRequiredForCatManagement:
+      catDetailsManagement.detailsRequiredForCatManagement,
+    catDetailManagementIsLoading:
+      catDetailsManagement.catDetailManagementIsLoading,
+    catDetails: catDetailsManagement.catDetails,
+    catDetailsForFormComparison:
+      catDetailsManagement.catDetailsForFormComparison,
+    catDetailsManagementResult: catDetailsManagement.catDetailsManagementResult,
+    catDetailsManagementError: catDetailsManagement.catDetailsManagementError,
+    deleteCatResult: catDetailsManagement.deleteCatResult,
+    deleteCatError: catDetailsManagement.deleteCatError,
+  })
+);
 
 export const catDetailsManagementReducer = catDetailsManagementSlice.reducer;

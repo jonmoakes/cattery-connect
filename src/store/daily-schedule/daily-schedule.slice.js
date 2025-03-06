@@ -22,27 +22,6 @@ export const dailyScheduleSlice = createSlice({
       return INITIAL_STATE;
     },
   },
-  selectors: {
-    selectDailyScheduleSelectors: createSelector(
-      (state) => state.dailyScheduleIsLoading,
-      (state) => state.dailyBookingsData,
-      (state) => state.dailyBookingsDataResult,
-      (state) => state.dailyBookingsDataError,
-      (
-        dailyScheduleIsLoading,
-        dailyBookingsData,
-        dailyBookingsDataResult,
-        dailyBookingsDataError
-      ) => {
-        return {
-          dailyScheduleIsLoading,
-          dailyBookingsData,
-          dailyBookingsDataResult,
-          dailyBookingsDataError,
-        };
-      }
-    ),
-  },
   extraReducers: (builder) => {
     builder
       .addCase(getDailyBookingsDataAsync.pending, (state) => {
@@ -68,6 +47,15 @@ export const {
   resetDailyBookingsDataError,
   resetDailyScheduleState,
 } = dailyScheduleSlice.actions;
-export const { selectDailyScheduleSelectors } = dailyScheduleSlice.selectors;
+
+export const selectDailyScheduleSelectors = createSelector(
+  (state) => state.dailySchedule,
+  (dailySchedule) => ({
+    dailyScheduleIsLoading: dailySchedule.dailyScheduleIsLoading,
+    dailyBookingsData: dailySchedule.dailyBookingsData,
+    dailyBookingsDataResult: dailySchedule.dailyBookingsDataResult,
+    dailyBookingsDataError: dailySchedule.dailyBookingsDataError,
+  })
+);
 
 export const dailyScheduleReducer = dailyScheduleSlice.reducer;

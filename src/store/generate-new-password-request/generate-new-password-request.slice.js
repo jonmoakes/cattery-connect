@@ -19,27 +19,6 @@ export const generateNewPasswordRequestSlice = createSlice({
       return INITIAL_STATE;
     },
   },
-  selectors: {
-    selectGenerateNewPasswordRequestSelectors: createSelector(
-      (state) => state.generateNewPasswordRequestEmail,
-      (state) => state.generateNewPasswordRequestIsLoading,
-      (state) => state.generateNewPasswordRequestResult,
-      (state) => state.generateNewPasswordRequestError,
-      (
-        generateNewPasswordRequestEmail,
-        generateNewPasswordRequestIsLoading,
-        generateNewPasswordRequestResult,
-        generateNewPasswordRequestError
-      ) => {
-        return {
-          generateNewPasswordRequestEmail,
-          generateNewPasswordRequestIsLoading,
-          generateNewPasswordRequestResult,
-          generateNewPasswordRequestError,
-        };
-      }
-    ),
-  },
   extraReducers: (builder) => {
     builder
       .addCase(generateNewPasswordRequestAsync.pending, (state) => {
@@ -62,8 +41,20 @@ export const {
   setGenerateNewPasswordRequestEmail,
   resetGenerateNewPasswordRequestState,
 } = generateNewPasswordRequestSlice.actions;
-export const { selectGenerateNewPasswordRequestSelectors } =
-  generateNewPasswordRequestSlice.selectors;
+
+export const selectGenerateNewPasswordRequestSelectors = createSelector(
+  (state) => state.generateNewPasswordRequest,
+  (generateNewPasswordRequest) => ({
+    generateNewPasswordRequestEmail:
+      generateNewPasswordRequest.generateNewPasswordRequestEmail,
+    generateNewPasswordRequestIsLoading:
+      generateNewPasswordRequest.generateNewPasswordRequestIsLoading,
+    generateNewPasswordRequestResult:
+      generateNewPasswordRequest.generateNewPasswordRequestResult,
+    generateNewPasswordRequestError:
+      generateNewPasswordRequest.generateNewPasswordRequestError,
+  })
+);
 
 export const generateNewPasswordRequestReducer =
   generateNewPasswordRequestSlice.reducer;
