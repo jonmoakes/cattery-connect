@@ -1,12 +1,7 @@
-import { createSelector, createSlice } from "@reduxjs/toolkit";
-import { checkBookingAvailabilityAsync } from "./is-booking-available.thunks";
+import { createSlice } from "@reduxjs/toolkit";
 
-const INITIAL_STATE = {
-  isBookingAvailableIsLoading: false,
-  isBookingAvailableResult: "",
-  isBookingAvailableError: null,
-  showIneligibleDates: false,
-};
+import { INITIAL_STATE } from "./initial-state";
+import { extraReducers } from "./extra-reducers";
 
 export const isBookingAvailableSlice = createSlice({
   name: "isBookingAvailable",
@@ -25,43 +20,7 @@ export const isBookingAvailableSlice = createSlice({
       return INITIAL_STATE;
     },
   },
-  selectors: {
-    selectIsBookingAvailableSelectors: createSelector(
-      (state) => state.isBookingAvailableIsLoading,
-      (state) => state.isBookingAvailableResult,
-      (state) => state.isBookingAvailableError,
-      (state) => state.showIneligibleDates,
-      (
-        isBookingAvailableIsLoading,
-        isBookingAvailableResult,
-        isBookingAvailableError,
-        showIneligibleDates
-      ) => {
-        return {
-          isBookingAvailableIsLoading,
-          isBookingAvailableResult,
-          isBookingAvailableError,
-          showIneligibleDates,
-        };
-      }
-    ),
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(checkBookingAvailabilityAsync.pending, (state) => {
-        state.isBookingAvailableIsLoading = true;
-      })
-      .addCase(checkBookingAvailabilityAsync.fulfilled, (state, action) => {
-        state.isBookingAvailableIsLoading = false;
-        state.isBookingAvailableResult = action.payload;
-        state.isBookingAvailableError = null;
-      })
-      .addCase(checkBookingAvailabilityAsync.rejected, (state, action) => {
-        state.isBookingAvailableIsLoading = false;
-        state.isBookingAvailableResult = "rejected";
-        state.isBookingAvailableError = action.payload;
-      });
-  },
+  extraReducers,
 });
 
 export const {
@@ -70,7 +29,5 @@ export const {
   setShowIneligibleDates,
   resetIsBookingAvailableState,
 } = isBookingAvailableSlice.actions;
-export const { selectIsBookingAvailableSelectors } =
-  isBookingAvailableSlice.selectors;
 
 export const isBookingAvailableReducer = isBookingAvailableSlice.reducer;

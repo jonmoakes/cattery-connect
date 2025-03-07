@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-import { selectCustomerDetailsManagementSelectors } from "../../store/customer-details-management/customer-details-management.slice";
+import { selectCustomerDetailsManagementSelectors } from "../../store/customer-details-management/selectors";
 
 const useGetCustomerDetailsManagementSelectors = () => {
   const {

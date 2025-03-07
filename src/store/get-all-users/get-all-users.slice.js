@@ -1,16 +1,6 @@
-import { createSelector, createSlice } from "@reduxjs/toolkit";
-import {
-  fetchAllUsersDocumentsAsync,
-  fetchCatteryIdsAndOwnerNameArrayAsync,
-} from "./get-all-users.thunks";
-
-const INITIAL_STATE = {
-  allUsersIsLoading: false,
-  allUsers: [],
-  allUsersError: null,
-  allUsersCatteryIdsAndOwnerName: [],
-  allUsersCatteryIdsAndOwnerNameError: null,
-};
+import { createSlice } from "@reduxjs/toolkit";
+import { INITIAL_STATE } from "./initial-state";
+import { extraReducers } from "./extra-reducers";
 
 export const getAllUsersSlice = createSlice({
   name: "getAllUsers",
@@ -32,65 +22,7 @@ export const getAllUsersSlice = createSlice({
       return INITIAL_STATE;
     },
   },
-  selectors: {
-    selectGetAllUsersSelectors: createSelector(
-      (state) => state.allUsersIsLoading,
-      (state) => state.allUsers,
-      (state) => state.allUsersError,
-      (state) => state.allUsersCatteryIdsAndOwnerName,
-      (state) => state.allUsersCatteryIdsAndOwnerNameError,
-      (
-        allUsersIsLoading,
-        allUsers,
-        allUsersError,
-        allUsersCatteryIdsAndOwnerName,
-        allUsersCatteryIdsAndOwnerNameError
-      ) => {
-        return {
-          allUsersIsLoading,
-          allUsers,
-          allUsersError,
-          allUsersCatteryIdsAndOwnerName,
-          allUsersCatteryIdsAndOwnerNameError,
-        };
-      }
-    ),
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchAllUsersDocumentsAsync.pending, (state) => {
-        state.allUsersIsLoading = true;
-      })
-      .addCase(fetchAllUsersDocumentsAsync.fulfilled, (state, action) => {
-        state.allUsersIsLoading = false;
-        state.allUsers = action.payload;
-        state.allUsersError = null;
-      })
-      .addCase(fetchAllUsersDocumentsAsync.rejected, (state, action) => {
-        state.allUsersIsLoading = false;
-        state.allUsers = [];
-        state.allUsersError = action.payload;
-      })
-      .addCase(fetchCatteryIdsAndOwnerNameArrayAsync.pending, (state) => {
-        state.allUsersIsLoading = true;
-      })
-      .addCase(
-        fetchCatteryIdsAndOwnerNameArrayAsync.fulfilled,
-        (state, action) => {
-          state.allUsersIsLoading = false;
-          state.allUsersCatteryIdsAndOwnerName = action.payload;
-          state.allUsersCatteryIdsAndOwnerNameError = null;
-        }
-      )
-      .addCase(
-        fetchCatteryIdsAndOwnerNameArrayAsync.rejected,
-        (state, action) => {
-          state.allUsersIsLoading = false;
-          state.allUsersCatteryIdsAndOwnerName = [];
-          state.allUsersCatteryIdsAndOwnerNameError = action.payload;
-        }
-      );
-  },
+  extraReducers,
 });
 
 export const {
@@ -100,6 +32,5 @@ export const {
   resetAllUsersCatteryIdsAndOwnerNameError,
   resetGetAllUsersState,
 } = getAllUsersSlice.actions;
-export const { selectGetAllUsersSelectors } = getAllUsersSlice.selectors;
 
 export const getAllUsersReducer = getAllUsersSlice.reducer;

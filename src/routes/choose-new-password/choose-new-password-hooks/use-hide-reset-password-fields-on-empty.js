@@ -19,10 +19,11 @@ const useHideResetPasswordFieldsOnEmpty = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (resetPasswordIsVisible && !newPassword.length) {
+    if (resetPasswordIsVisible && newPassword && !newPassword.length) {
       dispatch(hideResetPasswordIsVisible());
     } else if (
       resetPasswordConfirmPasswordIsVisible &&
+      confirmNewPassword &&
       !confirmNewPassword.length
     ) {
       dispatch(hideResetPasswordConfirmPasswordIsVisible());

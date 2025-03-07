@@ -1,19 +1,6 @@
-import { createSelector, createSlice } from "@reduxjs/toolkit";
-import {
-  fetchAvailabilityDocsToUpdateAsync,
-  deleteBookingDataAsync,
-} from "./cancel-booking.thunks";
-
-const INITIAL_STATE = {
-  fetchAvailabilityDocsToUpdateIsLoading: false,
-  dataFromBooking: {},
-  availabilityDocsToUpdate: [],
-  fetchAvailabilityDocsToUpdateResult: "",
-  fetchAvailabilityDocsToUpdateError: null,
-  deleteBookingDataIsLoading: false,
-  deleteBookingDataResult: "",
-  deleteBookingDataError: null,
-};
+import { createSlice } from "@reduxjs/toolkit";
+import { INITIAL_STATE } from "./initial-state";
+import { extraReducers } from "./extra-reducers";
 
 export const cancelBookingSlice = createSlice({
   name: "cancelBooking",
@@ -38,40 +25,7 @@ export const cancelBookingSlice = createSlice({
       return INITIAL_STATE;
     },
   },
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchAvailabilityDocsToUpdateAsync.pending, (state) => {
-        state.fetchAvailabilityDocsToUpdateIsLoading = true;
-      })
-      .addCase(
-        fetchAvailabilityDocsToUpdateAsync.fulfilled,
-        (state, action) => {
-          state.fetchAvailabilityDocsToUpdateIsLoading = false;
-          state.availabilityDocsToUpdate = action.payload;
-          state.fetchAvailabilityDocsToUpdateResult = "fulfilled";
-          state.fetchAvailabilityDocsToUpdateError = null;
-        }
-      )
-      .addCase(fetchAvailabilityDocsToUpdateAsync.rejected, (state, action) => {
-        state.fetchAvailabilityDocsToUpdateIsLoading = false;
-        state.availabilityDocsToUpdate = [];
-        state.fetchAvailabilityDocsToUpdateResult = "rejected";
-        state.fetchAvailabilityDocsToUpdateError = action.payload;
-      })
-      .addCase(deleteBookingDataAsync.pending, (state) => {
-        state.deleteBookingDataIsLoading = true;
-      })
-      .addCase(deleteBookingDataAsync.fulfilled, (state) => {
-        state.deleteBookingDataIsLoading = false;
-        state.deleteBookingDataResult = "fulfilled";
-        state.deleteBookingDataError = null;
-      })
-      .addCase(deleteBookingDataAsync.rejected, (state, action) => {
-        state.deleteBookingDataIsLoading = false;
-        state.deleteBookingDataResult = "rejected";
-        state.deleteBookingDataError = action.payload;
-      });
-  },
+  extraReducers,
 });
 
 export const {
@@ -82,24 +36,5 @@ export const {
   resetDeleteBookingDataError,
   resetCancelBookingState,
 } = cancelBookingSlice.actions;
-
-export const selectCancelBookingSelectors = createSelector(
-  (state) => state.cancelBooking,
-  (cancelBooking) => ({
-    fetchAvailabilityDocsToUpdateIsLoading:
-      cancelBooking.fetchAvailabilityDocsToUpdateIsLoading,
-    dataFromBooking: cancelBooking.dataFromBooking,
-    dataForAvailabilityDocsRequest:
-      cancelBooking.dataForAvailabilityDocsRequest,
-    availabilityDocsToUpdate: cancelBooking.availabilityDocsToUpdate,
-    fetchAvailabilityDocsToUpdateResult:
-      cancelBooking.fetchAvailabilityDocsToUpdateResult,
-    fetchAvailabilityDocsToUpdateError:
-      cancelBooking.fetchAvailabilityDocsToUpdateError,
-    deleteBookingDataIsLoading: cancelBooking.deleteBookingDataIsLoading,
-    deleteBookingDataResult: cancelBooking.deleteBookingDataResult,
-    deleteBookingDataError: cancelBooking.deleteBookingDataError,
-  })
-);
 
 export const cancelBookingReducer = cancelBookingSlice.reducer;

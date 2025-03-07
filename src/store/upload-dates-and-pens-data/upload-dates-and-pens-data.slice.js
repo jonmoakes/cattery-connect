@@ -1,15 +1,6 @@
-import { createSelector, createSlice } from "@reduxjs/toolkit";
-import { uploadDatesAndPensAvailabilityDocumentAsync } from "./upload-dates-and-pens-data.thunks";
-
-const INITIAL_STATE = {
-  uploadDatesAndPensDataIsLoading: false,
-  datesAndPensData: {},
-  datesIncludeDaysClosed: "",
-  dateClosedToAdd: "",
-  datesClosedArray: [],
-  uploadDatesAndPensDataResult: "",
-  uploadDatesAndPensDataError: null,
-};
+import { createSlice } from "@reduxjs/toolkit";
+import { INITIAL_STATE } from "./initial-state";
+import { extraReducers } from "../update-pens-data/extra-reducers";
 
 export const uploadDatesAndPensDataSlice = createSlice({
   name: "uploadDatesAndPensData",
@@ -49,58 +40,7 @@ export const uploadDatesAndPensDataSlice = createSlice({
       return INITIAL_STATE;
     },
   },
-  extraReducers: (builder) => {
-    builder
-      .addCase(uploadDatesAndPensAvailabilityDocumentAsync.pending, (state) => {
-        state.uploadDatesAndPensDataIsLoading = true;
-      })
-      .addCase(
-        uploadDatesAndPensAvailabilityDocumentAsync.fulfilled,
-        (state) => {
-          state.uploadDatesAndPensDataIsLoading = false;
-          state.uploadDatesAndPensDataResult = "fulfilled";
-          state.uploadDatesAndPensDataError = null;
-        }
-      )
-      .addCase(
-        uploadDatesAndPensAvailabilityDocumentAsync.rejected,
-        (state, action) => {
-          state.uploadDatesAndPensDataIsLoading = false;
-          state.uploadDatesAndPensDataResult = "rejected";
-          state.uploadDatesAndPensDataError = action.payload;
-        }
-      );
-  },
-  selectors: {
-    selectUploadDatesAndPensDataSelectors: createSelector(
-      (state) => state.uploadDatesAndPensDataIsLoading,
-      (state) => state.datesAndPensData,
-      (state) => state.datesIncludeDaysClosed,
-      (state) => state.dateClosedToAdd,
-      (state) => state.datesClosedArray,
-      (state) => state.uploadDatesAndPensDataResult,
-      (state) => state.uploadDatesAndPensDataError,
-      (
-        uploadDatesAndPensDataIsLoading,
-        datesAndPensData,
-        datesIncludeDaysClosed,
-        dateClosedToAdd,
-        datesClosedArray,
-        uploadDatesAndPensDataResult,
-        uploadDatesAndPensDataError
-      ) => {
-        return {
-          uploadDatesAndPensDataIsLoading,
-          datesAndPensData,
-          datesIncludeDaysClosed,
-          dateClosedToAdd,
-          datesClosedArray,
-          uploadDatesAndPensDataResult,
-          uploadDatesAndPensDataError,
-        };
-      }
-    ),
-  },
+  extraReducers,
 });
 
 export const {
@@ -116,8 +56,6 @@ export const {
   resetUploadDatesAndPensDataError,
   resetUploadDatesAndPensDataState,
 } = uploadDatesAndPensDataSlice.actions;
-export const { selectUploadDatesAndPensDataSelectors } =
-  uploadDatesAndPensDataSlice.selectors;
 
 export const uploadDatesAndPensDataReducer =
   uploadDatesAndPensDataSlice.reducer;

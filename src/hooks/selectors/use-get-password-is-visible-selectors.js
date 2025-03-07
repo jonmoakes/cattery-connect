@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-import { selectPasswordIsVisibleSelectors } from "../../store/password-is-visible/password-is-visible.slice";
+import { selectPasswordIsVisibleSelectors } from "../../store/password-is-visible/selectors";
 
 const useGetPasswordIsVisibleSelectors = () => {
   const {

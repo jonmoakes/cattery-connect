@@ -1,4 +1,4 @@
-export const UPDATE_PENS_DATA_INITIAL_STATE = {
+export const INITIAL_STATE = {
   updatePensDataIsLoading: false,
   updatePensDataResult: "",
   updatePensDataError: null,

@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-import { selectRequiredCatteryDataForBookingSelectors } from "../../store/required-cattery-data/required-cattery-data-for-booking.slice";
+import { selectRequiredCatteryDataForBookingSelectors } from "../../store/required-cattery-data/selectors";
 
 const useGetRequiredCatteryDataForBookingSelectors = () => {
   const {

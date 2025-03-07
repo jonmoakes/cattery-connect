@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { selectSendEmailSelectors } from "../../store/send-email/send-email.slice";
+import { selectSendEmailSelectors } from "../../store/send-email/selectors";
 
 const useGetSendEmailSelectors = () => {
   const {

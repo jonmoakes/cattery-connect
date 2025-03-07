@@ -1,12 +1,7 @@
-import { createSelector, createSlice } from "@reduxjs/toolkit";
-import { fetchChosenDaysPenDataAsync } from "./view-pen-availability.thunks";
+import { createSlice } from "@reduxjs/toolkit";
 
-const INITIAL_STATE = {
-  chosenDatePenDataIsLoading: false,
-  chosenDatePenData: {},
-  chosenDatePenDataResult: "",
-  chosenDatePenDataError: null,
-};
+import { INITIAL_STATE } from "./initial-state";
+import { extraReducers } from "./extra-reducers";
 
 export const viewPenAvailabilitySlice = createSlice({
   name: "viewPenAvailability",
@@ -16,51 +11,10 @@ export const viewPenAvailabilitySlice = createSlice({
       return INITIAL_STATE;
     },
   },
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchChosenDaysPenDataAsync.pending, (state) => {
-        state.chosenDatePenDataIsLoading = true;
-      })
-      .addCase(fetchChosenDaysPenDataAsync.fulfilled, (state, action) => {
-        state.chosenDatePenDataIsLoading = false;
-        state.chosenDatePenDataResult = "fulfilled";
-        state.chosenDatePenData = action.payload;
-        state.chosenDatePenDataError = null;
-      })
-      .addCase(fetchChosenDaysPenDataAsync.rejected, (state, action) => {
-        state.chosenDatePenDataIsLoading = false;
-        state.chosenDatePenDataResult = "rejected";
-        state.chosenDatePenData = {};
-        state.chosenDatePenDataError = action.payload;
-      });
-  },
-  selectors: {
-    selectViewPenAvailabilitySelectors: createSelector(
-      (state) => state.chosenDatePenDataIsLoading,
-      (state) => state.chosenDatePenData,
-      (state) => state.chosenDatePenDataResult,
-      (state) => state.chosenDatePenDataError,
-
-      (
-        chosenDatePenDataIsLoading,
-        chosenDatePenData,
-        chosenDatePenDataResult,
-        chosenDatePenDataError
-      ) => {
-        return {
-          chosenDatePenDataIsLoading,
-          chosenDatePenData,
-          chosenDatePenDataResult,
-          chosenDatePenDataError,
-        };
-      }
-    ),
-  },
+  extraReducers,
 });
 
 export const { resetViewPenAvailabilityState } =
   viewPenAvailabilitySlice.actions;
-export const { selectViewPenAvailabilitySelectors } =
-  viewPenAvailabilitySlice.selectors;
 
 export const viewPenAvailabilityReducer = viewPenAvailabilitySlice.reducer;

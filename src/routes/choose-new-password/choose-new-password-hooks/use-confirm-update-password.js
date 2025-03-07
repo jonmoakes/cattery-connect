@@ -23,7 +23,10 @@ const useConfirmUpdatePassword = () => {
 
   const confirmUpdatePassword = (e) => {
     e.preventDefault();
-    if (newPassword.length < 8 || confirmNewPassword.length < 8) {
+    if (
+      (newPassword && newPassword.length < 8) ||
+      (confirmNewPassword && confirmNewPassword.length < 8)
+    ) {
       fireSwal(
         "error",
         passwordLengthErrorMessage,
@@ -34,7 +37,11 @@ const useConfirmUpdatePassword = () => {
         "",
         false
       );
-    } else if (newPassword !== confirmNewPassword) {
+    } else if (
+      newPassword &&
+      confirmNewPassword &&
+      newPassword !== confirmNewPassword
+    ) {
       fireSwal("error", passwordsDontMatchMessage, "", 0, "", false, "", false);
     } else {
       confirmSwal(

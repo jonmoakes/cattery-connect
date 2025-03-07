@@ -42,7 +42,7 @@ const NewPasswords = () => {
           type={resetPasswordIsVisible ? "text" : "password"}
         />
 
-        {newPassword.length ? (
+        {newPassword && newPassword.length ? (
           <ToggleResetPassword
             {...{ resetPasswordIsVisible }}
             onClick={() => dispatch(toggleResetPasswordIsVisible())}
@@ -61,7 +61,7 @@ const NewPasswords = () => {
           type={resetPasswordConfirmPasswordIsVisible ? "text" : "password"}
         />
 
-        {confirmNewPassword.length ? (
+        {confirmNewPassword && confirmNewPassword.length ? (
           <ToggleResetPasswordConfirmPassword
             {...{ resetPasswordConfirmPasswordIsVisible }}
             onClick={() =>

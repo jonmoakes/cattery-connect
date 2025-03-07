@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-import { selectGenerateNewPasswordRequestSelectors } from "../../store/generate-new-password-request/generate-new-password-request.slice";
+import { selectGenerateNewPasswordRequestSelectors } from "../../store/generate-new-password-request/selectors";
 
 const useGetGenerateNewPasswordRequestSelectors = () => {
   const {

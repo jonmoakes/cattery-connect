@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 
-import { selectUploadBookingDataSelectors } from "../../store/upload-booking-data/upload-booking-data.slice";
-import { selectIndividualCustomersCatsSelectors } from "../../store/get-individual-customers-cats/get-individual-customers-cats.slice";
+import { selectUploadBookingDataSelectors } from "../../store/upload-booking-data/selectors";
+import { selectIndividualCustomersCatsSelectors } from "../../store/get-individual-customers-cats/selectors";
 
 const useGetUploadBookingDataSelectors = () => {
   let { uploadBookingData } = useSelector(selectUploadBookingDataSelectors);

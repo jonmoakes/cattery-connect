@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-import { selectViewPenAvailabilitySelectors } from "../../store/view-pen-availability/view-pen-availability.slice";
+import { selectViewPenAvailabilitySelectors } from "../../store/view-pen-availability/selectors";
 
 const useGetViewPenAvailabilitySelectors = () => {
   const {

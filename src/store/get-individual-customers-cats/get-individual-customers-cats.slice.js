@@ -1,11 +1,6 @@
-import { createSelector, createSlice } from "@reduxjs/toolkit";
-import { fetchIndividualCustomersCatsAsync } from "./get-individual-customers-cats.thunks";
-
-const INITIAL_STATE = {
-  individualCustomersCatsIsLoading: false,
-  individualCustomersCats: undefined,
-  individualCustomersCatsError: null,
-};
+import { createSlice } from "@reduxjs/toolkit";
+import { INITIAL_STATE } from "./initial-state";
+import { extraReducers } from "./extra-reducers";
 
 export const individualCustomersCatsSlice = createSlice({
   name: "individualCustomersCats",
@@ -21,40 +16,7 @@ export const individualCustomersCatsSlice = createSlice({
       return INITIAL_STATE;
     },
   },
-  selectors: {
-    selectIndividualCustomersCatsSelectors: createSelector(
-      (state) => state.individualCustomersCatsIsLoading,
-      (state) => state.individualCustomersCats,
-      (state) => state.individualCustomersCatsError,
-      (
-        individualCustomersCatsIsLoading,
-        individualCustomersCats,
-        individualCustomersCatsError
-      ) => {
-        return {
-          individualCustomersCatsIsLoading,
-          individualCustomersCats,
-          individualCustomersCatsError,
-        };
-      }
-    ),
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchIndividualCustomersCatsAsync.pending, (state) => {
-        state.individualCustomersCatsIsLoading = true;
-      })
-      .addCase(fetchIndividualCustomersCatsAsync.fulfilled, (state, action) => {
-        state.individualCustomersCatsIsLoading = false;
-        state.individualCustomersCats = action.payload;
-        state.individualCustomersCatsError = null;
-      })
-      .addCase(fetchIndividualCustomersCatsAsync.rejected, (state, action) => {
-        state.individualCustomersCatsIsLoading = false;
-        state.individualCustomersCats = [];
-        state.individualCustomersCatsError = action.payload;
-      });
-  },
+  extraReducers,
 });
 
 export const {
@@ -62,8 +24,6 @@ export const {
   resetindividualCustomersCatsError,
   resetIndividualCustomersCatsState,
 } = individualCustomersCatsSlice.actions;
-export const { selectIndividualCustomersCatsSelectors } =
-  individualCustomersCatsSlice.selectors;
 
 export const individualCustomersCatsReducer =
   individualCustomersCatsSlice.reducer;

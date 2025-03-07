@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { UPDATE_PENS_DATA_INITIAL_STATE } from "./update-pens-data-initial-state";
-import { updatePensDataExtraReducers } from "./update-pens-data-extra-reducers";
+import { INITIAL_STATE } from "./initial-state";
+import { extraReducers } from "./extra-reducers";
 
 export const updatePensDataSlice = createSlice({
   name: "updatePensData",
-  initialState: UPDATE_PENS_DATA_INITIAL_STATE,
+  initialState: INITIAL_STATE,
   reducers: {
     resetUpdatePensDataResult(state) {
       state.updatePensDataResult = "";
@@ -13,10 +13,10 @@ export const updatePensDataSlice = createSlice({
       state.updatePensDataError = null;
     },
     resetUpdatePensDataState: () => {
-      return UPDATE_PENS_DATA_INITIAL_STATE;
+      return INITIAL_STATE;
     },
   },
-  extraReducers: updatePensDataExtraReducers,
+  extraReducers,
 });
 
 export const {

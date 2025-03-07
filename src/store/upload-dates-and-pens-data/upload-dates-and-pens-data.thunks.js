@@ -11,7 +11,7 @@ import {
   databaseId,
 } from "../../constants/constants";
 
-import { generateCatteryAvailabilityForDate } from "./upload-dates-and-epens-functions/upload-dates-and-pens-functions";
+import { generateCatteryAvailabilityForDate } from "./generate-cattery-availability-for-date";
 
 export const uploadDatesAndPensAvailabilityDocumentAsync = createAsyncThunk(
   "uploadDatesAndPensAvailabilityDocument",

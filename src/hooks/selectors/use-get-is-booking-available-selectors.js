@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-import { selectIsBookingAvailableSelectors } from "../../store/is-booking-available/is-booking-available.slice";
+import { selectIsBookingAvailableSelectors } from "../../store/is-booking-available/selectors";
 
 const useGetIsBookingAvailableSelectors = () => {
   const {

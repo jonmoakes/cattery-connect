@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-import { selectGetAllCustomersSelectors } from "../../store/get-all-customers/get-all-customers.slice";
+import { selectGetAllCustomersSelectors } from "../../store/get-all-customers/selectors";
 
 const useGetAllCustomerSelectors = () => {
   const { getAllCustomersIsLoading, allCustomers, getAllCustomersError } =

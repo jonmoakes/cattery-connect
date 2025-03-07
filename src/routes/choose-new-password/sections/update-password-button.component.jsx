@@ -15,7 +15,10 @@ const ResetPasswordButton = () => {
     <>
       {!isOnline ? (
         <NetworkError />
-      ) : newPassword && confirmNewPassword ? (
+      ) : newPassword &&
+        newPassword.length &&
+        confirmNewPassword &&
+        confirmNewPassword.length ? (
         <AuthButtonDiv className="new-password">
           <Button type="submit">update password</Button>
         </AuthButtonDiv>

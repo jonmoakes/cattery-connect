@@ -1,19 +1,6 @@
-import { createSelector, createSlice } from "@reduxjs/toolkit";
-import {
-  fetchAllCatsAsync,
-  fetchCatsOwnerDetailsAsync,
-} from "./get-all-cats.thunks";
-
-const INITIAL_STATE = {
-  getAllCatsIsLoading: false,
-  fetchOwnerDetailsIsLoading: false,
-  allCats: [],
-  selectedCatsName: "",
-  selectedCatsOwnerCustomerId: "",
-  selectedCatsOwnerDetails: [],
-  getAllCatsError: null,
-  getCatsOwnerDetailsError: null,
-};
+import { createSlice } from "@reduxjs/toolkit";
+import { INITIAL_STATE } from "./initial-state";
+import { extraReducers } from "./extra-reducers";
 
 export const getAllCatsSlice = createSlice({
   name: "getAllCats",
@@ -41,68 +28,7 @@ export const getAllCatsSlice = createSlice({
       return INITIAL_STATE;
     },
   },
-  selectors: {
-    selectGetAllCatsSelectors: createSelector(
-      (state) => state.getAllCatsIsLoading,
-      (state) => state.fetchOwnerDetailsIsLoading,
-      (state) => state.allCats,
-      (state) => state.selectedCatsName,
-      (state) => state.selectedCatsOwnerCustomerId,
-      (state) => state.selectedCatsOwnerDetails,
-      (state) => state.getAllCatsError,
-      (state) => state.getCatsOwnerDetailsError,
-      (
-        getAllCatsIsLoading,
-        fetchOwnerDetailsIsLoading,
-        allCats,
-        selectedCatsName,
-        selectedCatsOwnerCustomerId,
-        selectedCatsOwnerDetails,
-        getAllCatsError,
-        getCatsOwnerDetailsError
-      ) => {
-        return {
-          getAllCatsIsLoading,
-          fetchOwnerDetailsIsLoading,
-          allCats,
-          selectedCatsName,
-          selectedCatsOwnerCustomerId,
-          selectedCatsOwnerDetails,
-          getAllCatsError,
-          getCatsOwnerDetailsError,
-        };
-      }
-    ),
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchAllCatsAsync.pending, (state) => {
-        state.getAllCatsIsLoading = true;
-      })
-      .addCase(fetchAllCatsAsync.fulfilled, (state, action) => {
-        state.getAllCatsIsLoading = false;
-        state.allCats = action.payload;
-        state.getAllCatsError = null;
-      })
-      .addCase(fetchAllCatsAsync.rejected, (state, action) => {
-        state.getAllCatsIsLoading = false;
-        state.allCats = [];
-        state.getAllCatsError = action.payload;
-      })
-      .addCase(fetchCatsOwnerDetailsAsync.pending, (state) => {
-        state.fetchOwnerDetailsIsLoading = true;
-      })
-      .addCase(fetchCatsOwnerDetailsAsync.fulfilled, (state, action) => {
-        state.fetchOwnerDetailsIsLoading = false;
-        state.selectedCatsOwnerDetails = action.payload;
-        state.getCatsOwnerDetailsError = null;
-      })
-      .addCase(fetchCatsOwnerDetailsAsync.rejected, (state, action) => {
-        state.fetchOwnerDetailsIsLoading = false;
-        state.selectedCatsOwnerDetails = [];
-        state.getCatsOwnerDetailsError = action.payload;
-      });
-  },
+  extraReducers,
 });
 
 export const {
@@ -115,6 +41,5 @@ export const {
   resetGetCatsOwnerDetailsError,
   resetGetAllCatsState,
 } = getAllCatsSlice.actions;
-export const { selectGetAllCatsSelectors } = getAllCatsSlice.selectors;
 
 export const getAllCatsReducer = getAllCatsSlice.reducer;

@@ -1,12 +1,6 @@
-import { createSelector, createSlice } from "@reduxjs/toolkit";
-import { generateNewPasswordRequestAsync } from "./generate-new-password-request.thunks";
-
-const INITIAL_STATE = {
-  generateNewPasswordRequestEmail: "",
-  generateNewPasswordRequestIsLoading: false,
-  generateNewPasswordRequestResult: "",
-  generateNewPasswordRequestError: null,
-};
+import { createSlice } from "@reduxjs/toolkit";
+import { INITIAL_STATE } from "./inital-state";
+import { extraReducers } from "./extra-reducers";
 
 export const generateNewPasswordRequestSlice = createSlice({
   name: "generateNewPasswordRequest",
@@ -19,42 +13,13 @@ export const generateNewPasswordRequestSlice = createSlice({
       return INITIAL_STATE;
     },
   },
-  extraReducers: (builder) => {
-    builder
-      .addCase(generateNewPasswordRequestAsync.pending, (state) => {
-        state.generateNewPasswordRequestIsLoading = true;
-      })
-      .addCase(generateNewPasswordRequestAsync.fulfilled, (state) => {
-        state.generateNewPasswordRequestIsLoading = false;
-        state.generateNewPasswordRequestResult = "success";
-        state.generateNewPasswordRequestError = null;
-      })
-      .addCase(generateNewPasswordRequestAsync.rejected, (state, action) => {
-        state.generateNewPasswordRequestIsLoading = false;
-        state.generateNewPasswordRequestResult = "";
-        state.generateNewPasswordRequestError = action.payload;
-      });
-  },
+  extraReducers,
 });
 
 export const {
   setGenerateNewPasswordRequestEmail,
   resetGenerateNewPasswordRequestState,
 } = generateNewPasswordRequestSlice.actions;
-
-export const selectGenerateNewPasswordRequestSelectors = createSelector(
-  (state) => state.generateNewPasswordRequest,
-  (generateNewPasswordRequest) => ({
-    generateNewPasswordRequestEmail:
-      generateNewPasswordRequest.generateNewPasswordRequestEmail,
-    generateNewPasswordRequestIsLoading:
-      generateNewPasswordRequest.generateNewPasswordRequestIsLoading,
-    generateNewPasswordRequestResult:
-      generateNewPasswordRequest.generateNewPasswordRequestResult,
-    generateNewPasswordRequestError:
-      generateNewPasswordRequest.generateNewPasswordRequestError,
-  })
-);
 
 export const generateNewPasswordRequestReducer =
   generateNewPasswordRequestSlice.reducer;

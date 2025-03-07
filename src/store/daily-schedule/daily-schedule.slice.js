@@ -1,12 +1,6 @@
-import { createSelector, createSlice } from "@reduxjs/toolkit";
-import { getDailyBookingsDataAsync } from "./daily-schedule.thunks";
-
-const INITIAL_STATE = {
-  dailyScheduleIsLoading: false,
-  dailyBookingsData: [],
-  dailyBookingsDataResult: "",
-  dailyBookingsDataError: null,
-};
+import { createSlice } from "@reduxjs/toolkit";
+import { INITIAL_STATE } from "./initial-state";
+import { extraReducers } from "./extra-reducers";
 
 export const dailyScheduleSlice = createSlice({
   name: "dailySchedule",
@@ -22,24 +16,7 @@ export const dailyScheduleSlice = createSlice({
       return INITIAL_STATE;
     },
   },
-  extraReducers: (builder) => {
-    builder
-      .addCase(getDailyBookingsDataAsync.pending, (state) => {
-        state.dailyScheduleIsLoading = true;
-      })
-      .addCase(getDailyBookingsDataAsync.fulfilled, (state, action) => {
-        state.dailyScheduleIsLoading = false;
-        state.dailyBookingsDataResult = "fulfilled";
-        state.dailyBookingsData = action.payload;
-        state.dailyBookingsDataError = null;
-      })
-      .addCase(getDailyBookingsDataAsync.rejected, (state, action) => {
-        state.dailyScheduleIsLoading = false;
-        state.dailyBookingsDataResult = "rejected";
-        state.dailyBookingsData = [];
-        state.dailyBookingsDataError = action.payload;
-      });
-  },
+  extraReducers,
 });
 
 export const {
@@ -47,15 +24,5 @@ export const {
   resetDailyBookingsDataError,
   resetDailyScheduleState,
 } = dailyScheduleSlice.actions;
-
-export const selectDailyScheduleSelectors = createSelector(
-  (state) => state.dailySchedule,
-  (dailySchedule) => ({
-    dailyScheduleIsLoading: dailySchedule.dailyScheduleIsLoading,
-    dailyBookingsData: dailySchedule.dailyBookingsData,
-    dailyBookingsDataResult: dailySchedule.dailyBookingsDataResult,
-    dailyBookingsDataError: dailySchedule.dailyBookingsDataError,
-  })
-);
 
 export const dailyScheduleReducer = dailyScheduleSlice.reducer;

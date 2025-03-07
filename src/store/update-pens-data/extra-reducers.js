@@ -1,6 +1,6 @@
 import { updatePensDataInDbAsync } from "./update-pens-data.thunks";
 
-export const updatePensDataExtraReducers = (builder) => {
+export const extraReducers = (builder) => {
   builder
     .addCase(updatePensDataInDbAsync.pending, (state) => {
       state.updatePensDataIsLoading = true;

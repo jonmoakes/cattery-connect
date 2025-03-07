@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-import { selectGetAllCatsSelectors } from "../../store/get-all-cats/get-all-cats.slice";
+import { selectGetAllCatsSelectors } from "../../store/get-all-cats/selectors";
 
 const useGetAllCatsSelectors = () => {
   const {

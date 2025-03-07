@@ -1,42 +1,7 @@
-import { createSelector, createSlice } from "@reduxjs/toolkit";
-import {
-  sendEmailCatteryConnectUpdatePensRollbackErrorAsync,
-  sendEmailCatteryConnectPensUpdatedBookingDataFailedAsync,
-  sendEmailCatteryConnectSendCustomerEmailReceiptAsync,
-  sendEmailCatteryConnectDeleteBookingDataFailedAsync,
-  sendCustomerCancellationEmailAsync,
-  sendEmailContactFormMessageAsync,
-} from "./send-email.thunks";
+import { createSlice } from "@reduxjs/toolkit";
 
-const defaultContactFormDetails = {
-  senderName: "",
-  senderEmail: "",
-  senderMessage: "",
-};
-
-const INITIAL_STATE = {
-  contactFormDetails: defaultContactFormDetails,
-  sendEmailIsLoading: false,
-  sendEmailStatusCode: "",
-  sendEmailError: null,
-};
-
-const handleAsyncAction = (builder, asyncAction) => {
-  builder
-    .addCase(asyncAction.pending, (state) => {
-      state.sendEmailIsLoading = true;
-    })
-    .addCase(asyncAction.fulfilled, (state, action) => {
-      state.sendEmailIsLoading = false;
-      state.sendEmailStatusCode = action.payload;
-      state.sendEmailError = null;
-    })
-    .addCase(asyncAction.rejected, (state, action) => {
-      state.sendEmailIsLoading = false;
-      state.sendEmailStatusCode = "";
-      state.sendEmailError = action.payload;
-    });
-};
+import { INITIAL_STATE } from "./initial-state";
+import { extraReducers } from "./extra-reducers";
 
 export const sendEmailSlice = createSlice({
   name: "sendEmail",
@@ -46,53 +11,13 @@ export const sendEmailSlice = createSlice({
       state.contactFormDetails = action.payload;
     },
     resetContactFormDetails(state) {
-      state.contactFormDetails = defaultContactFormDetails;
+      state.contactFormDetails = {};
     },
     resetSendEmailState: () => {
       return INITIAL_STATE;
     },
   },
-  selectors: {
-    selectSendEmailSelectors: createSelector(
-      (state) => state.sendEmailIsLoading,
-      (state) => state.sendEmailStatusCode,
-      (state) => state.sendEmailError,
-      (state) => state.contactFormDetails,
-      (
-        sendEmailIsLoading,
-        sendEmailStatusCode,
-        sendEmailError,
-        contactFormDetails
-      ) => {
-        return {
-          sendEmailIsLoading,
-          sendEmailStatusCode,
-          sendEmailError,
-          contactFormDetails,
-        };
-      }
-    ),
-  },
-  extraReducers: (builder) => {
-    handleAsyncAction(
-      builder,
-      sendEmailCatteryConnectUpdatePensRollbackErrorAsync
-    );
-    handleAsyncAction(
-      builder,
-      sendEmailCatteryConnectPensUpdatedBookingDataFailedAsync
-    );
-    handleAsyncAction(
-      builder,
-      sendEmailCatteryConnectSendCustomerEmailReceiptAsync
-    );
-    handleAsyncAction(
-      builder,
-      sendEmailCatteryConnectDeleteBookingDataFailedAsync
-    );
-    handleAsyncAction(builder, sendCustomerCancellationEmailAsync);
-    handleAsyncAction(builder, sendEmailContactFormMessageAsync);
-  },
+  extraReducers,
 });
 
 export const {
@@ -100,6 +25,5 @@ export const {
   resetContactFormDetails,
   resetSendEmailState,
 } = sendEmailSlice.actions;
-export const { selectSendEmailSelectors } = sendEmailSlice.selectors;
 
 export const sendEmailReducer = sendEmailSlice.reducer;

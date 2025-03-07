@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { selectChooseNewPasswordSelectors } from "../../store/choose-new-password/choose-new-password.slice";
+import { selectChooseNewPasswordSelectors } from "../../store/choose-new-password/selectors";
 
 const useGetChooseNewPasswordSelectors = () => {
   const {
@@ -9,7 +9,7 @@ const useGetChooseNewPasswordSelectors = () => {
     newPasswordError,
   } = useSelector(selectChooseNewPasswordSelectors);
 
-  const { newPassword, confirmNewPassword } = newPasswordDetails;
+  const { newPassword, confirmNewPassword } = newPasswordDetails ?? {};
 
   return {
     newPasswordDetails,

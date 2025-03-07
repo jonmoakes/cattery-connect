@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-import { selectCancelBookingSelectors } from "../../store/cancel-booking/cancel-booking.slice";
+import { selectCancelBookingSelectors } from "../../store/cancel-booking/selectors";
 
 const useGetCancelBookingSelectors = () => {
   const {

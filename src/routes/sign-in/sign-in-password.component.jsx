@@ -30,7 +30,7 @@ const SignInPassword = ({ handleSignInFormChange }) => {
           type={signInPasswordIsVisible ? "text" : "password"}
         />
 
-        {password.length ? (
+        {password && password.length ? (
           <SignInPasswordEye
             {...{ signInPasswordIsVisible }}
             onClick={() => dispatch(toggleSignInPasswordIsVisible())}

@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-import { selectGetAllUsersSelectors } from "../../store/get-all-users/get-all-users.slice";
+import { selectGetAllUsersSelectors } from "../../store/get-all-users/selectors";
 
 const useGetAllUsersSelectors = () => {
   const {

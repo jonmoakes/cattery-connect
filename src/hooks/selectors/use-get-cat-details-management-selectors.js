@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-import { selectCatDetailsManagementSelectors } from "../../store/cat-details-management/cat-details-management.slice";
+import { selectCatDetailsManagementSelectors } from "../../store/cat-details-management/selectors";
 
 const useGetCatDetailsManagementSelectors = () => {
   const {

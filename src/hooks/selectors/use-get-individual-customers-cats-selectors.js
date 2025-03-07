@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-import { selectIndividualCustomersCatsSelectors } from "../../store/get-individual-customers-cats/get-individual-customers-cats.slice";
+import { selectIndividualCustomersCatsSelectors } from "../../store/get-individual-customers-cats/selectors";
 
 const useGetIndividualCustomersCatsSelectors = () => {
   const {

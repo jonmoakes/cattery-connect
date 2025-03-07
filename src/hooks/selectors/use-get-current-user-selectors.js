@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { selectCurrentUserSelectors } from "../../store/user/user.slice";
+import { selectCurrentUserSelectors } from "../../store/user/selectors";
 
 const useGetCurrentUserSelectors = () => {
   const {

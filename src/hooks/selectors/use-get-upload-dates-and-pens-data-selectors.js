@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { selectUploadDatesAndPensDataSelectors } from "../../store/upload-dates-and-pens-data/upload-dates-and-pens-data.slice";
+import { selectUploadDatesAndPensDataSelectors } from "../../store/upload-dates-and-pens-data/selectors";
 
 const useGetUploadDatesAndPensDataSelectors = () => {
   const {

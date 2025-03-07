@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-import { selectDailyScheduleSelectors } from "../../store/daily-schedule/daily-schedule.slice";
+import { selectDailyScheduleSelectors } from "../../store/daily-schedule/selectors";
 
 const useGetDailyScheduleSelectors = () => {
   const {
