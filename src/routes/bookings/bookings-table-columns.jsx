@@ -43,15 +43,7 @@ const BOOKINGS_TABLE_COLUMNS = [
     accessor: "paymentStatus",
     Cell: ({ row, value }) => {
       const documentId = row.original.$id;
-      return (
-        <>
-          {value === "complete" ? (
-            value
-          ) : (
-            <UpdatePaymentStatusCell {...{ value, documentId }} />
-          )}
-        </>
-      );
+      return <UpdatePaymentStatusCell {...{ value, documentId }} />;
     },
   },
   {

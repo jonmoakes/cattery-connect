@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import useConfirmGoBack from "./use-confirm-go-back";
 import useIsRouteWithNavWarning from "../../hooks/is-route-with-nav-warning/use-is-route-with-nav-warning";
@@ -14,17 +14,23 @@ const FloatingBackButton = () => {
   const { isMobileDevice, isDesktop } = useIsMobileDevice();
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const path = location.pathname;
+
+  const noConfirmNeeded = path !== "/" && !isRouteWithNavWarning();
+  const confirmNeeded = path !== "/" && isRouteWithNavWarning();
+  const dontShowButton = path === "/";
 
   return (
     <>
-      {isDesktop() || !isRouteWithNavWarning() ? null : !isMobileDevice() &&
-        !isRouteWithNavWarning() ? (
+      {isDesktop() || dontShowButton ? null : isMobileDevice() &&
+        noConfirmNeeded ? (
         <RelativePositionDiv>
           <BackButton onClick={() => navigate(-1)}>
             <BackArrow />
           </BackButton>
         </RelativePositionDiv>
-      ) : !isMobileDevice() && isRouteWithNavWarning() ? (
+      ) : isMobileDevice() && confirmNeeded ? (
         <RelativePositionDiv>
           <BackButton onClick={confirmGoBack}>
             <BackArrow />
