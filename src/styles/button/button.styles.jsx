@@ -313,3 +313,29 @@ export const PlainButton = styled.button`
     text-shadow: 0.5px 0.5px 0.5px ${softBlack};
   }
 `;
+
+export const BackButton = styled.button`
+  width: 80px;
+  height: 80px;
+  border-radius: 50px;
+  position: fixed;
+  left: 10px;
+  bottom: 22px;
+  background: ${radialGrey};
+  color: ${softBlack};
+  border: 2px solid ${softBlack};
+  z-index: 10;
+  outline: none;
+  cursor: pointer;
+
+  @media screen and (max-width: 850px) {
+    height: 60px;
+    width: 60px;
+  }
+
+  @media screen and (max-width: 450px) {
+    height: 55px;
+    width: 55px;
+    bottom: 25px;
+  }
+`;

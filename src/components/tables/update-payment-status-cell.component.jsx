@@ -1,8 +1,8 @@
+import { useState } from "react";
+
 import useConfirmUpdatePaymentStatus from "./table-hooks/use-confirm-update-payment-status";
 
 import { MinimalButton, PlainButton } from "../../styles/button/button.styles";
-import { useState } from "react";
-import CustomSpan from "../custom-span/custom-span.component";
 
 const UpdatePaymentStatusCell = ({ value, documentId }) => {
   const { confirmUpdatePaymentStatus } = useConfirmUpdatePaymentStatus();
@@ -18,7 +18,7 @@ const UpdatePaymentStatusCell = ({ value, documentId }) => {
         onClick={handleClick}
         className={value === "incomplete" ? "red" : ""}
       >
-        <CustomSpan>{value}</CustomSpan>
+        {value}
       </PlainButton>
 
       {value === "incomplete" || showButton ? (

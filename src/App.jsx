@@ -11,6 +11,7 @@ import useResetStoreOnRouteChangeUseEffect from "./hooks/use-reset-store-on-rout
 import GlobalStyles from "./global-styles";
 import "./App.css";
 import ErrorFallback from "./components/errors/error-fallback.component";
+import FloatingBackButton from "./components/floating-back-button/floating-back-button.component";
 import SkeletonBox from "./components/skeleton-box/skeleton-box.component";
 import PrivateRoutes from "./components/private-routes/private-routes.component";
 
@@ -97,6 +98,7 @@ const App = () => {
   return (
     <>
       <GlobalStyles />
+      <FloatingBackButton />
       <Navigation />
 
       <ErrorBoundary FallbackComponent={ErrorFallback}>
