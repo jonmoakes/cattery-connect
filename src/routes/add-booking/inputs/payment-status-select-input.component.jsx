@@ -29,13 +29,13 @@ const PaymentStatusSelectInput = ({ condition, paymentStatus }) => {
             value={paymentStatus || ""}
             onChange={handlePaymentStatusChange}
           >
-            <option style={{ textTransform: "capitalize" }} value="" disabled>
+            <option value="" disabled>
               -- Tap to select --
             </option>
             {values.map((value) => {
               return (
                 <option key={value} value={value}>
-                  {value}
+                  {value.charAt(0).toUpperCase() + value.slice(1)}
                 </option>
               );
             })}
