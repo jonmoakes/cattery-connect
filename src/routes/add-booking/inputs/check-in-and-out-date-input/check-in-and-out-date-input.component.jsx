@@ -45,7 +45,7 @@ const CheckInAndOutDateInput = ({ dateType, condition, selectedDate }) => {
                 minDate={new Date()}
                 onKeyDown={(e) => e.preventDefault()}
                 placeholderText="tap here to choose"
-                inputProps={{ style: { pointerEvents: "none" } }}
+                onFocus={(e) => e.target.blur()}
               />
             </StyledDatePickerWrapper>
           </DateInputContainer>
