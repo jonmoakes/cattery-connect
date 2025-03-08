@@ -39,6 +39,7 @@ const StartAndEndDatesDatePicker = ({
             minDate={new Date()}
             onKeyDown={(e) => e.preventDefault()}
             placeholderText="tap here to choose"
+            onFocus={(e) => e.target.blur()}
           />
         </StyledDatePickerWrapper>
       </DateInputContainer>
