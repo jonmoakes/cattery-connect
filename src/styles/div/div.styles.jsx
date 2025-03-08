@@ -647,6 +647,24 @@ export const BounceInDiv = styled.div`
 
 export const NextAndPreviousDateButtonContainer = styled.div`
   display: flex;
-  justify-content: center; /* Center the buttons in the container */
-  margin-top: 10px; /* Space above the buttons */
+  justify-content: center;
+`;
+
+//compensates for container padding
+export const FooterContainer = styled.div`
+  width: 75%;
+  margin: -75px auto 0px auto;
+  padding-bottom: 100px;
+
+  @media screen and (max-width: 600px) {
+    width: 90%;
+  }
+`;
+
+export const FooterLinksDiv = styled.div`
+  width: 50%;
+
+  @media screen and (max-width: 450px) {
+    width: 100%;
+  }
 `;

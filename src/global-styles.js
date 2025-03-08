@@ -149,6 +149,12 @@ const GlobalStyles = createGlobalStyle`
     margin-bottom: 10px;
     color: ${softBlack};
   }
+
+  a {
+    &.teal {
+      color: ${teal};
+    }
+  }
 `;
 
 export default GlobalStyles;

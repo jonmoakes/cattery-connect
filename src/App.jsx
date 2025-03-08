@@ -37,6 +37,7 @@ import {
   dailyScheduleRoute,
   penDataRoute,
 } from "./strings/routes";
+import Footer from "./components/footer/footer.component";
 
 const Navigation = lazy(() =>
   import("./routes/navigation/navigation.component")
@@ -100,7 +101,6 @@ const App = () => {
       <GlobalStyles />
       <FloatingBackButton />
       <Navigation />
-
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <Suspense fallback={<SkeletonBox loadingText="please wait..." />}>
           <Routes>
@@ -219,6 +219,8 @@ const App = () => {
           </Routes>
         </Suspense>
       </ErrorBoundary>
+
+      <Footer />
     </>
   );
 };

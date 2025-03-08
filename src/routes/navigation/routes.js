@@ -1,7 +1,6 @@
 import {
   signInRoute,
   aboutRoute,
-  pricingRoute,
   contactRoute,
   accountRoute,
   allCustomersRoute,
@@ -24,9 +23,4 @@ export const signedInRoutes = [
 
 export const adminSignedInRoutes = [allUsersRoute, accountRoute];
 
-export const signedOutRoutes = [
-  signInRoute,
-  aboutRoute,
-  pricingRoute,
-  contactRoute,
-];
+export const signedOutRoutes = [signInRoute, aboutRoute, contactRoute];
