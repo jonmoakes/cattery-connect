@@ -353,6 +353,7 @@ export const NextAndPreviousDateButton = styled.button`
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   outline: none;
+  color: ${softBlack};
 
   :active {
     transform: translate(0, 0.5rem);
