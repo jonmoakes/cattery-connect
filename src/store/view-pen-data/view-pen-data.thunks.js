@@ -17,7 +17,7 @@ export const fetchChosenDaysPenDataAsync = createAsyncThunk(
       const queryIndex = "date";
       const queryValue = formattedChosenDate;
 
-      const availabilityData = await listDocumentsByQueryOrSearch(
+      const penData = await listDocumentsByQueryOrSearch(
         databaseId,
         availablilityCollectionId,
         queryIndex,
@@ -26,7 +26,7 @@ export const fetchChosenDaysPenDataAsync = createAsyncThunk(
         smallRateLimit
       );
 
-      const { documents } = availabilityData;
+      const { documents } = penData;
 
       if (!documents.length) {
         return [];

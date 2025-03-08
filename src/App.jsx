@@ -35,7 +35,7 @@ import {
   cancelBookingRoute,
   contactRoute,
   dailyScheduleRoute,
-  penAvailabilityRoute,
+  penDataRoute,
 } from "./strings/routes";
 
 const Navigation = lazy(() =>
@@ -85,8 +85,8 @@ const CancelBooking = lazy(() =>
 const DailySchedule = lazy(() =>
   import("./routes/daily-schedule/daily-schedule.component")
 );
-const ViewPenAvailability = lazy(() =>
-  import("./routes/view-pen-availability/view-pen-availability.component")
+const ViewPenData = lazy(() =>
+  import("./routes/view-pen-data/view-pen-data.component")
 );
 
 const App = () => {
@@ -210,11 +210,9 @@ const App = () => {
               />
 
               <Route
-                path={penAvailabilityRoute}
+                path={penDataRoute}
                 element={
-                  currentUser && role === "owner" ? (
-                    <ViewPenAvailability />
-                  ) : null
+                  currentUser && role === "owner" ? <ViewPenData /> : null
                 }
               />
             </Route>

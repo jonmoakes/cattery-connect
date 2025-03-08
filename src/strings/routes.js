@@ -19,4 +19,4 @@ export const allUsersRoute = "/all-users";
 export const bookingsRoute = "/bookings";
 export const cancelBookingRoute = "/cancel-booking";
 export const dailyScheduleRoute = "/daily-schedule";
-export const penAvailabilityRoute = "/pen-availability";
+export const penDataRoute = "/pen-data";

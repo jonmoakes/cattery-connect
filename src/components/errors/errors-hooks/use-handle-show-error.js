@@ -6,7 +6,7 @@ import useGetCancelBookingSelectors from "../../../hooks/selectors/use-get-cance
 import useGetRequiredCatteryDataForBookingSelectors from "../../../hooks/selectors/use-get-required-cattery-data-for-booking-selectors";
 import useGetIndividualCustomersCatsSelectors from "../../../hooks/selectors/use-get-individual-customers-cats-selectors";
 import useGetDailyScheduleSelectors from "../../../hooks/selectors/use-get-daily-schedule-selectors";
-import useGetViewPenAvailabilitySelectors from "../../../hooks/selectors/use-get-view-pen-availability-selectors";
+import useGetViewPenDataSelectors from "../../../hooks/selectors/use-get-view-pen-data-selectors";
 
 const useHandleShowError = () => {
   const { getAllCustomersError } = useGetAllCustomerSelectors();
@@ -21,7 +21,7 @@ const useHandleShowError = () => {
   const { individualCustomersCatsError } =
     useGetIndividualCustomersCatsSelectors();
   const { dailyBookingsDataError } = useGetDailyScheduleSelectors();
-  const { chosenDatePenDataError } = useGetViewPenAvailabilitySelectors();
+  const { chosenDatePenDataError } = useGetViewPenDataSelectors();
 
   const showErrorHeading = () => {
     if (getAllCustomersError) return "failed to fetch your customers.";

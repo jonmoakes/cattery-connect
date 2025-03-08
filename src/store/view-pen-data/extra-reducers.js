@@ -1,4 +1,4 @@
-import { fetchChosenDaysPenDataAsync } from "./view-pen-availability.thunks";
+import { fetchChosenDaysPenDataAsync } from "./view-pen-data.thunks";
 
 export const extraReducers = (builder) => {
   builder

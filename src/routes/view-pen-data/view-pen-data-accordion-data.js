@@ -1,4 +1,4 @@
-export const viewPenAvailabilityAccordionData = [
+export const viewPenDataAccordionData = [
   {
     id: 1,
     content: `here, you can view how many pens you have available on a selected date.`,

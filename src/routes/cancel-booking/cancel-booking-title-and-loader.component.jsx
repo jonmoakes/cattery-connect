@@ -24,7 +24,7 @@ const CancelBookingTitleAndLoader = () => {
             fetchAvailabilityDocsToUpdateIsLoading
               ? "fetching required data..."
               : updatePensDataIsLoading
-              ? "updating pen availability..."
+              ? "updating pen data..."
               : deleteBookingDataIsLoading
               ? "deleting booking data..."
               : sendEmailIsLoading && "sending email..."

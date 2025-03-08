@@ -10,7 +10,7 @@ import {
   allUsersRoute,
   bookingsRoute,
   dailyScheduleRoute,
-  penAvailabilityRoute,
+  penDataRoute,
 } from "../../../strings/routes";
 
 const useNavigateToRoute = () => {
@@ -52,8 +52,8 @@ const useNavigateToRoute = () => {
     },
     {
       id: 7,
-      text: "pen availability",
-      onClick: () => hamburgerHandlerNavigate(penAvailabilityRoute),
+      text: "pen data",
+      onClick: () => hamburgerHandlerNavigate(penDataRoute),
     },
   ];
 

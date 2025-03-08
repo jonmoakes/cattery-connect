@@ -1,29 +1,29 @@
-import useGetViewPenAvailabilitySelectors from "../../hooks/selectors/use-get-view-pen-availability-selectors";
+import useGetViewPenDataSelectors from "../../hooks/selectors/use-get-view-pen-data-selectors";
 
-import ViewPenAvailabilityTitleAndLoader from "./view-pen-availability-title-and-loader.component";
+import ViewPenDataTitleAndLoader from "./view-pen-data-title-and-loader.component";
 import HelpAccordion from "../../components/help-accordion/help-accordion.component";
 import ShowFetchErrors from "../../components/errors/show-fetch-errors.component";
 import ChoosePenDataDatePicker from "./choose-pen-data-date-picker.component";
-import PenAvailabilitySection from "./pen-availability-selection.component";
+import PenDataSection from "./pen-availability-section.component";
 
 import { Container } from "../../styles/container/container.styles";
 import { ParentDiv } from "../../styles/div/div.styles";
 import { Form } from "../../styles/form/form.styles";
 
-import { viewPenAvailabilityAccordionData } from "./view-pen-availability-accordion-data";
+import { viewPenDataAccordionData } from "./view-pen-data-accordion-data";
 
-const ViewPenAvailability = () => {
+const ViewPenData = () => {
   const {
     returnedChosenDate,
     chosenDatePenDataResult,
     chosenDatePenDataError,
     parsedMorningPens,
     parsedAfternoonPens,
-  } = useGetViewPenAvailabilitySelectors();
+  } = useGetViewPenDataSelectors();
 
   return (
     <Container>
-      <ViewPenAvailabilityTitleAndLoader />
+      <ViewPenDataTitleAndLoader />
 
       {chosenDatePenDataError ? (
         <ShowFetchErrors />
@@ -31,7 +31,7 @@ const ViewPenAvailability = () => {
         <ParentDiv>
           <HelpAccordion
             openText="view pen data help"
-            data={viewPenAvailabilityAccordionData}
+            data={viewPenDataAccordionData}
           />
 
           <Form className="no-margin-top-small-margin-bottom">
@@ -40,12 +40,12 @@ const ViewPenAvailability = () => {
 
           {chosenDatePenDataResult === "fulfilled" ? (
             <>
-              <PenAvailabilitySection
+              <PenDataSection
                 title="morning"
                 penData={parsedMorningPens}
                 chosenDate={returnedChosenDate}
               />
-              <PenAvailabilitySection
+              <PenDataSection
                 title="afternoon"
                 penData={parsedAfternoonPens}
                 chosenDate={returnedChosenDate}
@@ -58,4 +58,4 @@ const ViewPenAvailability = () => {
   );
 };
 
-export default ViewPenAvailability;
+export default ViewPenData;

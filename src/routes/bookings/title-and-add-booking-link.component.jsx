@@ -28,6 +28,7 @@ const TitleAndAddBookingLink = () => {
           >
             add another booking
           </MinimalButton>
+
           <HelpAccordion
             openText="table help"
             data={bookingsTableAccordionData}

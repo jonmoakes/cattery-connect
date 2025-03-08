@@ -38,7 +38,7 @@ import {
   editCustomerRoute,
   addCustomerRoute,
   dailyScheduleRoute,
-  penAvailabilityRoute,
+  penDataRoute,
 } from "../strings/routes";
 import useResetAddBookingState from "./use-reset-add-booking-state";
 import { resetBookingsState } from "../store/bookings/bookings.slice";
@@ -55,7 +55,7 @@ import {
 } from "../store/customer-details-management/customer-details-management.slice";
 import { resetUpdatePensDataState } from "../store/update-pens-data/update-pens-data.slice";
 import { resetDailyScheduleState } from "../store/daily-schedule/daily-schedule.slice";
-import { resetViewPenAvailabilityState } from "../store/view-pen-availability/view-pen-availability.slice";
+import { resetViewPenDataState } from "../store/view-pen-data/view-pen-data.slice";
 
 const useResetStoreOnRouteChangeUseEffect = () => {
   const { allUsersCatteryIdsAndOwnerNameError } = useGetAllUsersSelectors();
@@ -130,8 +130,8 @@ const useResetStoreOnRouteChangeUseEffect = () => {
         case dailyScheduleRoute:
           dispatch(resetDailyScheduleState());
           break;
-        case penAvailabilityRoute:
-          dispatch(resetViewPenAvailabilityState());
+        case penDataRoute:
+          dispatch(resetViewPenDataState());
           break;
         default:
           break;

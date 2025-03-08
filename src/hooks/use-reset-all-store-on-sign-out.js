@@ -18,7 +18,7 @@ import { resetBookingsState } from "../store/bookings/bookings.slice";
 import { resetCancelBookingState } from "../store/cancel-booking/cancel-booking.slice";
 import { resetIndividualCustomersCatsState } from "../store/get-individual-customers-cats/get-individual-customers-cats.slice";
 import { resetDailyScheduleState } from "../store/daily-schedule/daily-schedule.slice";
-import { resetViewPenAvailabilityState } from "../store/view-pen-availability/view-pen-availability.slice";
+import { resetViewPenDataState } from "../store/view-pen-data/view-pen-data.slice";
 
 const useResetAllStoreOnSignOut = () => {
   const { resetAddBookingState } = useResetAddBookingState();
@@ -41,7 +41,7 @@ const useResetAllStoreOnSignOut = () => {
     dispatch(resetContactFormDetails());
     dispatch(resetIndividualCustomersCatsState());
     dispatch(resetDailyScheduleState());
-    dispatch(resetViewPenAvailabilityState());
+    dispatch(resetViewPenDataState());
     localStorage.clear();
   };
 

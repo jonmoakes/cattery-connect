@@ -1,14 +1,14 @@
 import { useSelector } from "react-redux";
 
-import { selectViewPenAvailabilitySelectors } from "../../store/view-pen-availability/selectors";
+import { selectViewPenDataSelectors } from "../../store/view-pen-data/selectors";
 
-const useGetViewPenAvailabilitySelectors = () => {
+const useGetViewPenDataSelectors = () => {
   const {
     chosenDatePenDataIsLoading,
     chosenDatePenData,
     chosenDatePenDataResult,
     chosenDatePenDataError,
-  } = useSelector(selectViewPenAvailabilitySelectors);
+  } = useSelector(selectViewPenDataSelectors);
 
   const { returnedChosenDate, parsedMorningPens, parsedAfternoonPens } =
     chosenDatePenData ?? {};
@@ -24,4 +24,4 @@ const useGetViewPenAvailabilitySelectors = () => {
   };
 };
 
-export default useGetViewPenAvailabilitySelectors;
+export default useGetViewPenDataSelectors;

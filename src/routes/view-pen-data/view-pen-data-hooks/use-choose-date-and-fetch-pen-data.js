@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 
-import { fetchChosenDaysPenDataAsync } from "../../../store/view-pen-availability/view-pen-availability.thunks";
+import { fetchChosenDaysPenDataAsync } from "../../../store/view-pen-data/view-pen-data.thunks";
 
 const useChooseDateAndFetchPenData = () => {
   const dispatch = useDispatch();
