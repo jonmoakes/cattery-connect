@@ -4,6 +4,7 @@ import ViewPenDataTitleAndLoader from "./view-pen-data-title-and-loader.componen
 import HelpAccordion from "../../components/help-accordion/help-accordion.component";
 import ShowFetchErrors from "../../components/errors/show-fetch-errors.component";
 import ChoosePenDataDatePicker from "./choose-pen-data-date-picker.component";
+import NextAndPreviousDatesButtons from "./next-and-previous-dates-buttons.component";
 import PenDataSection from "./pen-availability-section.component";
 
 import { Container } from "../../styles/container/container.styles";
@@ -36,6 +37,7 @@ const ViewPenData = () => {
 
           <Form className="no-margin-top-small-margin-bottom">
             <ChoosePenDataDatePicker />
+            <NextAndPreviousDatesButtons />
           </Form>
 
           {chosenDatePenDataResult === "fulfilled" ? (

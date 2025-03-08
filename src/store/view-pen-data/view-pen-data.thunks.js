@@ -12,6 +12,7 @@ export const fetchChosenDaysPenDataAsync = createAsyncThunk(
   "fetchChosenDaysPenData",
   async ({ chosenDate }, thunkAPI) => {
     try {
+      console.log("j o ", chosenDate);
       const formattedChosenDate = format(chosenDate, "yyyy-MM-dd");
 
       const queryIndex = "date";

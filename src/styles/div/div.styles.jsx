@@ -644,3 +644,9 @@ export const TextDiv = styled.div`
 export const BounceInDiv = styled.div`
   animation: 2s ${bounceInAnimation};
 `;
+
+export const NextAndPreviousDateButtonContainer = styled.div`
+  display: flex;
+  justify-content: center; /* Center the buttons in the container */
+  margin-top: 10px; /* Space above the buttons */
+`;

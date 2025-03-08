@@ -339,3 +339,33 @@ export const BackButton = styled.button`
     bottom: 25px;
   }
 `;
+
+export const NextAndPreviousDateButton = styled.button`
+  font-family: inherit;
+  font-size: 16px;
+  text-transform: capitalize;
+  width: auto;
+  padding: 5px 10px;
+  margin: 0px 10px;
+  background: ${radialGrey};
+  border: 1px solid ${softBlack};
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  outline: none;
+
+  :active {
+    transform: translate(0, 0.5rem);
+    box-shadow: 0 0.1rem ${softBlack};
+  }
+
+  &:hover {
+    transform: scale(1.05);
+    color: ${softBlack};
+
+    @media screen and (max-width: 1366px) {
+      transition: none;
+      transform: none;
+    }
+  }
+`;
