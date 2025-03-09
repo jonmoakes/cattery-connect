@@ -28,15 +28,13 @@ const ChoosePenDataDatePicker = () => {
           selected={
             returnedChosenDate ? format(returnedChosenDate, "yyyy-MM-dd") : null
           }
-          onChange={(chosenDate, e) => {
-            chooseDateAndFetchPenData(chosenDate);
-            setTimeout(() => e?.target?.blur(), 100); // Delay to ensure focus shifts
-          }}
+          onChange={(chosenDate) => chooseDateAndFetchPenData(chosenDate)}
           dateFormat="EEE d MMM yyyy"
           minDate={new Date()}
           onKeyDown={(e) => e.preventDefault()}
           placeholderText="tap here to choose"
           onFocus={(e) => e.target.blur()}
+          readOnly={true}
         />
       </StyledDatePickerWrapper>
     </DateInputContainer>
