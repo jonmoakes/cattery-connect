@@ -10,7 +10,8 @@ const useGetDailyScheduleSelectors = () => {
     dailyBookingsDataError,
   } = useSelector(selectDailyScheduleSelectors);
 
-  const { chosenDaysData, dateForShownData } = dailyBookingsData ?? {};
+  const { chosenDaysData, dateForShownData, passedChosenDate } =
+    dailyBookingsData ?? {};
 
   return {
     dailyScheduleIsLoading,
@@ -19,6 +20,7 @@ const useGetDailyScheduleSelectors = () => {
     dateForShownData,
     dailyBookingsDataResult,
     dailyBookingsDataError,
+    passedChosenDate,
   };
 };
 

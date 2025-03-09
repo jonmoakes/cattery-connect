@@ -23,6 +23,8 @@ export const getDailyBookingsDataAsync = createAsyncThunk(
         ? format(chosenDate, "yyyy-MM-dd")
         : format(today, "yyyy-MM-dd");
 
+      console.log("hi ", chosenDate);
+
       const bookingsQuery = [
         Query.equal("catteryId", catteryId),
         Query.lessThanEqual("checkInDate", date),
@@ -36,7 +38,8 @@ export const getDailyBookingsDataAsync = createAsyncThunk(
       );
 
       const todayBookings = bookingsResponse.documents;
-      if (!todayBookings.length) return [];
+
+      if (!todayBookings.length) return { passedChosenDate: chosenDate };
 
       const customerIdsArray = todayBookings.map(
         (booking) => booking.customerId

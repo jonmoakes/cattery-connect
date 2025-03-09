@@ -6,7 +6,8 @@ import { defaultTableSize } from "../../../constants/constants";
 import TODAYS_SCHEDULE_TABLE_COLUMNS from "../daily-schedule-table-columns";
 
 const useDailyScheduleTableVariables = () => {
-  const { chosenDaysData } = useGetDailyScheduleSelectors();
+  const { dailyBookingsDataResult, chosenDaysData, passedChosenDate } =
+    useGetDailyScheduleSelectors();
 
   const dailySchedulePageSizeFromLocalStorage = localStorage.getItem(
     "dailyScheduleChosenTablePageSize"
@@ -28,10 +29,14 @@ const useDailyScheduleTableVariables = () => {
     [dailySchedulePageSizeFromLocalStorage]
   );
 
+  const noDataFoundSoReturnedChosenDate =
+    dailyBookingsDataResult === "fulfilled" && !data.length && passedChosenDate;
+
   return {
     columns,
     data,
     initialState,
+    noDataFoundSoReturnedChosenDate,
   };
 };
 

@@ -4,15 +4,16 @@ import useGetViewPenDataSelectors from "../../../hooks/selectors/use-get-view-pe
 
 import { fetchChosenDaysPenDataAsync } from "../../../store/view-pen-data/view-pen-data.thunks";
 
-import useFireSwal from "../../../hooks/use-fire-swal";
+import usePastDateDataNotAvailableSwal from "./use-past-date-data-not-available-swal";
 
-const useGetNextOrPreviousDaysPenData = () => {
+const useHandlePenDataDateChange = () => {
   const { returnedChosenDate } = useGetViewPenDataSelectors();
-  const dispatch = useDispatch();
-  const { fireSwal } = useFireSwal();
+  const { pastDateDataNotAvailableSwal } = usePastDateDataNotAvailableSwal();
 
-  const getNextOrPreviousDaysPenData = (direction) => {
-    const returnedChosenDateAsDateObject = new Date(returnedChosenDate);
+  const dispatch = useDispatch();
+
+  const handlePenDataDateChange = (direction) => {
+    let returnedChosenDateAsDateObject = new Date(returnedChosenDate);
 
     if (direction === "next") {
       returnedChosenDateAsDateObject.setDate(
@@ -25,20 +26,10 @@ const useGetNextOrPreviousDaysPenData = () => {
           returnedChosenDateAsDateObject.getDate() - 1
         );
       } else {
-        fireSwal(
-          "info",
-          "sorry, pen data is not available for past dates.",
-          "",
-          0,
-          "",
-          false,
-          "",
-          false
-        );
+        pastDateDataNotAvailableSwal();
         return;
       }
     }
-
     dispatch(
       fetchChosenDaysPenDataAsync({
         chosenDate: returnedChosenDateAsDateObject,
@@ -46,7 +37,7 @@ const useGetNextOrPreviousDaysPenData = () => {
     );
   };
 
-  return { getNextOrPreviousDaysPenData };
+  return { handlePenDataDateChange };
 };
 
-export default useGetNextOrPreviousDaysPenData;
+export default useHandlePenDataDateChange;

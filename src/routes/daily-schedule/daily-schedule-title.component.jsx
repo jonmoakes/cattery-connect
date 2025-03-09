@@ -6,15 +6,21 @@ import useDailyScheduleTableVariables from "./daily-schedule-hooks/use-daily-sch
 import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
 
 const DailyScheduleTitle = () => {
-  const { dailyBookingsDataResult, dateForShownData, dailyBookingsDataError } =
+  const { dateForShownData, dailyBookingsDataError, passedChosenDate } =
     useGetDailyScheduleSelectors();
-  const { data } = useDailyScheduleTableVariables();
+  const { noDataFoundSoReturnedChosenDate } = useDailyScheduleTableVariables();
 
   return (
     <>
       {dailyBookingsDataError ? (
         <CustomBalancedText type="h1">daily schedule</CustomBalancedText>
-      ) : dailyBookingsDataResult === "fulfilled" && !data.length ? null : (
+      ) : noDataFoundSoReturnedChosenDate ? (
+        <CustomBalancedText type="h1">
+          schedule for
+          <br />
+          {format(passedChosenDate, "EEE dd MMMM yyyy")}
+        </CustomBalancedText>
+      ) : (
         <CustomBalancedText type="h1">
           schedule for
           <br />
