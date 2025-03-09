@@ -36,6 +36,7 @@ import {
   contactRoute,
   dailyScheduleRoute,
   penDataRoute,
+  termsRoute,
 } from "./strings/routes";
 import Footer from "./components/footer/footer.component";
 
@@ -89,6 +90,9 @@ const DailySchedule = lazy(() =>
 const ViewPenData = lazy(() =>
   import("./routes/view-pen-data/view-pen-data.component")
 );
+const TermsAndConditions = lazy(() =>
+  import("./routes/terms-and-conditions/terms-and-conditions.component")
+);
 
 const App = () => {
   const { currentUser, role } = useGetCurrentUserSelectors();
@@ -115,6 +119,7 @@ const App = () => {
               path={chooseNewPasswordRoute}
               element={<ChooseNewPassword />}
             />
+            <Route path={termsRoute} element={<TermsAndConditions />} />
 
             <Route element={<PrivateRoutes />}>
               <Route path={accountRoute} element={<Account />} />

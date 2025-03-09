@@ -5,7 +5,6 @@ import {
   accountRoute,
   allCustomersRoute,
   allCatsRoute,
-  penDataRoute,
   allUsersRoute,
   bookingsRoute,
   dailyScheduleRoute,
@@ -16,7 +15,6 @@ export const signedInRoutes = [
   bookingsRoute,
   allCustomersRoute,
   allCatsRoute,
-  penDataRoute,
   accountRoute,
   contactRoute,
 ];

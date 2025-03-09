@@ -44,10 +44,12 @@ export const Button = styled.button`
   &:hover {
     transform: scale(1.05);
     color: ${softBlack};
+    box-shadow: 6px 6px 6px ${softBlack};
 
     @media screen and (max-width: 1366px) {
       transition: none;
       transform: none;
+      box-shadow: none;
     }
   }
 
