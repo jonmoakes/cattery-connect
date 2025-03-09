@@ -12,12 +12,10 @@ import {
   DateInputContainer,
   StyledDatePickerWrapper,
 } from "../../styles/div/div.styles";
-import { useRef } from "react";
 
 const ChoosePenDataDatePicker = () => {
   const { returnedChosenDate } = useGetViewPenDataSelectors();
   const { chooseDateAndFetchPenData } = useChooseDateAndFetchPenData();
-  const datePickerRef = useRef(null);
 
   return (
     <DateInputContainer className="no-margin-top">
@@ -30,14 +28,12 @@ const ChoosePenDataDatePicker = () => {
           selected={
             returnedChosenDate ? format(returnedChosenDate, "yyyy-MM-dd") : null
           }
-          onChange={(chosenDate) => {
-            chooseDateAndFetchPenData(chosenDate);
-            datePickerRef.current?.setBlur();
-          }}
+          onChange={(chosenDate) => chooseDateAndFetchPenData(chosenDate)}
           dateFormat="EEE d MMM yyyy"
           minDate={new Date()}
           onKeyDown={(e) => e.preventDefault()}
           placeholderText="tap here to choose"
+          onSelect={(e) => e?.target?.blur()}
           onFocus={(e) => e.target.blur()}
         />
       </StyledDatePickerWrapper>

@@ -11,13 +11,13 @@ const PolicyContactInfo = () => (
       <br />
       <br />
       <CustomBalancedText>
-        <CustomSpan type="lowercase">admin@cattery-connect.co.uk</CustomSpan>(
-        Support & General Inquiries )
+        <CustomSpan type="lowercase">admin@cattery-connect.co.uk</CustomSpan>
+        <br />( Support & General Inquiries )
       </CustomBalancedText>
       <CustomBalancedText>or</CustomBalancedText>
       <CustomBalancedText>
-        <CustomSpan type="lowercase">jonathan@solaris-apps.co.uk</CustomSpan>(
-        Business & Partnership Inquiries )
+        <CustomSpan type="lowercase">jonathan@solaris-apps.co.uk</CustomSpan>
+        <br />( Business & Partnership Inquiries )
       </CustomBalancedText>
     </CustomBalancedText>
   </ParentDiv>
