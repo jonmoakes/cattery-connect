@@ -33,7 +33,8 @@ const ChoosePenDataDatePicker = () => {
           minDate={new Date()}
           onKeyDown={(e) => e.preventDefault()}
           placeholderText="tap here to choose"
-          onFocus={(e) => (e.target.readOnly = true)}
+          // onFocus={(e) => e.target.blur()}
+          onFocus={(e) => (e.target.blur(), (e.target.readOnly = true))}
         />
       </StyledDatePickerWrapper>
     </DateInputContainer>
