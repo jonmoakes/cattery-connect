@@ -41,6 +41,7 @@ import {
   cookiesRoute,
   securityPolicyRoute,
   refundsPolicyRoute,
+  dataProtectionPolicyRoute,
 } from "./strings/routes";
 import Footer from "./components/footer/footer.component";
 
@@ -109,6 +110,9 @@ const SecurityPolicy = lazy(() =>
 const RefundsPolicy = lazy(() =>
   import("./routes/refunds-policy/refunds-policy.component")
 );
+const DataProtection = lazy(() =>
+  import("./routes/data-protection/data-protection.component")
+);
 
 const App = () => {
   const { currentUser, role } = useGetCurrentUserSelectors();
@@ -140,6 +144,10 @@ const App = () => {
             <Route path={cookiesRoute} element={<CookiePolicy />} />
             <Route path={securityPolicyRoute} element={<SecurityPolicy />} />
             <Route path={refundsPolicyRoute} element={<RefundsPolicy />} />
+            <Route
+              path={dataProtectionPolicyRoute}
+              element={<DataProtection />}
+            />
 
             <Route element={<PrivateRoutes />}>
               <Route path={accountRoute} element={<Account />} />
