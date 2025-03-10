@@ -1,12 +1,12 @@
+import useGetSendEmailSelectors from "../../hooks/selectors/use-get-send-email-selectors";
 import useSendContactFormMessageResultSwal from "./contact-form-hooks/use-send-contact-form-message-result-swal";
 
 import SkeletonBox from "../../components/skeleton-box/skeleton-box.component";
+import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
 import ContactForm from "./sections/contact-form.component";
 
 import { Container } from "../../styles/container/container.styles";
 import { ParentDiv } from "../../styles/div/div.styles";
-import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
-import useGetSendEmailSelectors from "../../hooks/selectors/use-get-send-email-selectors";
 
 const Contact = () => {
   const { sendEmailIsLoading } = useGetSendEmailSelectors();

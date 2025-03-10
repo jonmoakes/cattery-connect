@@ -14,16 +14,6 @@ const BookingsAndCancellations = () => (
     </CustomBalancedText>
 
     <CustomBalancedText>
-      Cancellations must be made before a date and time specified in writing or
-      by email between the owner and customer.
-    </CustomBalancedText>
-
-    <CustomBalancedText>
-      After this cutoff time, refunds are not guaranteed unless the owner and
-      customer mutually agree.
-    </CustomBalancedText>
-
-    <CustomBalancedText>
       Cattery Connect is not responsible for enforcing agreements,
       cancellations, or refunds between owners and customers.
     </CustomBalancedText>

@@ -13,7 +13,6 @@ const Footer = () => {
       {shouldShowFooter ? (
         <FooterContainer>
           <BlackHr />
-
           <ParentDiv>
             <LinksMap />
             <Copyright />

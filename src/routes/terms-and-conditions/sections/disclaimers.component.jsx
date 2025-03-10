@@ -25,7 +25,7 @@ const Disclaimers = () => (
       We do not warrant that the app will:
     </CustomBalancedText>
 
-    <ul>
+    <ul className="bullit">
       <li>Meet your specific requirements or expectations</li>
       <li>Achieve any intended results</li>
       <li>Be free of viruses or other harmful components</li>
@@ -40,7 +40,7 @@ const Disclaimers = () => (
       or punitive damages, including but not limited to:
     </CustomBalancedText>
 
-    <ul>
+    <ul className="bullit">
       <li>
         Loss of profits, revenue, data, goodwill, or other intangible losses
       </li>

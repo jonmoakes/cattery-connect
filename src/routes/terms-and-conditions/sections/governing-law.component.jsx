@@ -6,7 +6,8 @@ const GoverningLaw = () => (
   <ParentDiv>
     <CustomBalancedText type="h2">governing law</CustomBalancedText>
     <CustomBalancedText>
-      United Kingdom of Great Britain and Northern Ireland.
+      These terms are governed by the laws of the United Kingdom of Great
+      Britain and Northern Ireland.
     </CustomBalancedText>
   </ParentDiv>
 );

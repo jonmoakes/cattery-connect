@@ -26,8 +26,7 @@ const GlobalStyles = createGlobalStyle`
   html {
     width: 100%;
     height: 100vh;
-    overflow-x: hidden; 
-    overscroll-behavior: none; 
+
   }
 
   body {
@@ -35,7 +34,7 @@ const GlobalStyles = createGlobalStyle`
     width: 100%;
     height: 100%;
     position: relative;
-    overflow-x: hidden;
+
 
     &:before {
       content: "";
@@ -142,6 +141,10 @@ const GlobalStyles = createGlobalStyle`
     margin: 10px auto;
     list-style-type: none;
     width: 90%;
+
+    &.bullit {
+      list-style-type: unset;
+    }
   }
 
   li {

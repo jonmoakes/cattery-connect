@@ -2,6 +2,7 @@ import {
   cookiesRoute,
   dataProtectionPolicyRoute,
   imageCreditsRoute,
+  privacyPolicyRoute,
   refundsPolicyRoute,
   securityPolicyRoute,
   termsRoute,
@@ -9,9 +10,10 @@ import {
 
 export const links = [
   { id: 1, text: "terms & condintions", route: termsRoute },
-  { id: 2, text: "cookies policy", route: cookiesRoute },
-  { id: 3, text: "security policy", route: securityPolicyRoute },
-  { id: 4, text: "refunds policy", route: refundsPolicyRoute },
-  { id: 5, text: "Data protection", route: dataProtectionPolicyRoute },
-  { id: 6, text: "image credits", route: imageCreditsRoute },
+  { id: 2, text: "privacy policy", route: privacyPolicyRoute },
+  { id: 3, text: "cookies policy", route: cookiesRoute },
+  { id: 4, text: "security policy", route: securityPolicyRoute },
+  { id: 5, text: "refunds policy", route: refundsPolicyRoute },
+  { id: 6, text: "Data protection", route: dataProtectionPolicyRoute },
+  { id: 7, text: "image credits", route: imageCreditsRoute },
 ];

@@ -63,6 +63,12 @@ export const Button = styled.button`
     text-shadow: 1px 1px 1px ${softBlack};
   }
 
+  &.teal {
+    background: ${radialGreen};
+    color: whitesmoke;
+    text-shadow: 1px 1px 1px ${softBlack};
+  }
+
   &.cancel {
     margin-top: 40px;
   }
