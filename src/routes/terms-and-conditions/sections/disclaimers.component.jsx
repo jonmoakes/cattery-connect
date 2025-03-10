@@ -33,7 +33,12 @@ const Disclaimers = () => (
 
     <CustomBalancedText>
       To the maximum extent permitted by applicable law,{" "}
-      <a className="teal" href="https://www.solaris-apps.co.uk">
+      <a
+        className="teal"
+        href="https://www.solaris-apps.co.uk"
+        target="_blank"
+        rel="noreferrer"
+      >
         solaris apps
       </a>{" "}
       shall not be liable for any indirect, incidental, special, consequential,
@@ -58,7 +63,12 @@ const Disclaimers = () => (
 
     <CustomBalancedText>
       In no event shall{" "}
-      <a className="teal" href="https://www.solaris-apps.co.uk">
+      <a
+        className="teal"
+        href="https://www.solaris-apps.co.uk"
+        target="_blank"
+        rel="noreferrer"
+      >
         solaris apps'
       </a>{" "}
       total liability to you for any claims arising from these terms or your use

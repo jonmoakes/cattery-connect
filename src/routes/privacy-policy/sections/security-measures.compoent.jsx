@@ -14,7 +14,12 @@ const SecurityMeasures = () => (
 
     <CustomBalancedText>
       We use a leading{" "}
-      <a className="teal" href="https://en.wikipedia.org//wiki/Open_source">
+      <a
+        className="teal"
+        href="https://en.wikipedia.org//wiki/Open_source"
+        target="_blank"
+        rel="noreferrer"
+      >
         Open source
       </a>{" "}
       data service provider, allowing public scrutiny of their code to quickly
@@ -86,7 +91,12 @@ const SecurityMeasures = () => (
     <CustomBalancedText type="h3">Payment Security:</CustomBalancedText>
 
     <CustomBalancedText>
-      <a className="teal" href="https://stripe.com/gb">
+      <a
+        className="teal"
+        href="https://stripe.com/gb"
+        target="_blank"
+        rel="noreferrer"
+      >
         Stripe
       </a>{" "}
       is our chosen payment processor, ensuring secure transactions for both

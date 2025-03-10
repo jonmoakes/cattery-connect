@@ -38,6 +38,9 @@ import {
   penDataRoute,
   termsRoute,
   privacyPolicyRoute,
+  cookiesRoute,
+  securityPolicyRoute,
+  refundsPolicyRoute,
 } from "./strings/routes";
 import Footer from "./components/footer/footer.component";
 
@@ -97,6 +100,15 @@ const TermsAndConditions = lazy(() =>
 const PrivacyPolicy = lazy(() =>
   import("./routes/privacy-policy/privacy-policy.component")
 );
+const CookiePolicy = lazy(() =>
+  import("./routes/cookie-policy/cookie-policy.component")
+);
+const SecurityPolicy = lazy(() =>
+  import("./routes/security-policy/security-policy.component")
+);
+const RefundsPolicy = lazy(() =>
+  import("./routes/refunds-policy/refunds-policy.component")
+);
 
 const App = () => {
   const { currentUser, role } = useGetCurrentUserSelectors();
@@ -125,6 +137,9 @@ const App = () => {
             />
             <Route path={termsRoute} element={<TermsAndConditions />} />
             <Route path={privacyPolicyRoute} element={<PrivacyPolicy />} />
+            <Route path={cookiesRoute} element={<CookiePolicy />} />
+            <Route path={securityPolicyRoute} element={<SecurityPolicy />} />
+            <Route path={refundsPolicyRoute} element={<RefundsPolicy />} />
 
             <Route element={<PrivateRoutes />}>
               <Route path={accountRoute} element={<Account />} />

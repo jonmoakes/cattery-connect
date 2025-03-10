@@ -9,7 +9,7 @@ import DataRetention from "./sections/data-retention.component";
 import UserRights from "./sections/user-rights.component";
 import ChangesToPolicy from "./sections/changes-to-policy.component";
 import PolicyContactInfo from "../../components/policy-contact-info/policy-contact-info.component";
-import CookiePolicyLink from "./sections/cookie-policy-link.component";
+import NextPolicyLink from "../../components/next-policy-link/next-policy-link.component";
 
 import { Container } from "../../styles/container/container.styles";
 
@@ -26,7 +26,7 @@ const PrivacyPolicy = () => (
     <UserRights />
     <ChangesToPolicy />
     <PolicyContactInfo />
-    <CookiePolicyLink />
+    <NextPolicyLink />
   </Container>
 );
 

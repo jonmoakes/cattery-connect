@@ -13,7 +13,12 @@ const DataSharingAndDisclosure = () => (
     <CustomBalancedText>
       We share information with third-party service providers necessary for
       operating our app, such as payment processors ( e.g.,{" "}
-      <a className="teal" href="https://stripe.com/gb">
+      <a
+        className="teal"
+        href="https://stripe.com/gb"
+        target="_blank"
+        rel="noreferrer"
+      >
         Stripe
       </a>{" "}
       ) and data storage providers.

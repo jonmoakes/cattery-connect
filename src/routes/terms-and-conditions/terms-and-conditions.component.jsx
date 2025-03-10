@@ -13,7 +13,7 @@ import Disclaimers from "./sections/disclaimers.component";
 import Termination from "./sections/termination.component";
 import GoverningLaw from "./sections/governing-law.component";
 import PolicyContactInfo from "../../components/policy-contact-info/policy-contact-info.component";
-import PrivacyPolicyLink from "./sections/privacy-policy-link.component";
+import NextPolicyLink from "../../components/next-policy-link/next-policy-link.component";
 
 import { Container } from "../../styles/container/container.styles";
 import { ParentDiv } from "../../styles/div/div.styles";
@@ -37,7 +37,7 @@ const TermsAndConditions = () => (
     <Termination />
     <GoverningLaw />
     <PolicyContactInfo />
-    <PrivacyPolicyLink />
+    <NextPolicyLink />
   </Container>
 );
 

@@ -7,7 +7,12 @@ const PaymentsAndBilling = () => (
     <CustomBalancedText type="h2">Payments And billing:</CustomBalancedText>
     <CustomBalancedText>
       payments can be made in-app using our payment processor,{" "}
-      <a className="teal" href="https://stripe.com/gb">
+      <a
+        className="teal"
+        href="https://stripe.com/gb"
+        target="_blank"
+        rel="noreferrer"
+      >
         Stripe
       </a>
       .
@@ -44,7 +49,12 @@ const PaymentsAndBilling = () => (
 
     <CustomBalancedText>
       please see{" "}
-      <a className="teal" href="https://stripe.com/gb/pricing">
+      <a
+        className="teal"
+        href="https://stripe.com/gb/pricing"
+        target="_blank"
+        rel="noreferrer"
+      >
         Here
       </a>{" "}
       for stripe transaction fees.

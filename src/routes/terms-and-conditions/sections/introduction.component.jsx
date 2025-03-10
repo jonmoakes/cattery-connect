@@ -6,7 +6,12 @@ const Introduction = () => (
     <CustomBalancedText type="h2">introduction</CustomBalancedText>
     <CustomBalancedText>
       Welcome to cattery connect, an app developed by{" "}
-      <a className="teal" href="https://www.solaris-apps.co.uk">
+      <a
+        className="teal"
+        href="https://www.solaris-apps.co.uk"
+        target="_blank"
+        rel="noreferrer"
+      >
         solaris apps
       </a>{" "}
       for managing your cattery.
