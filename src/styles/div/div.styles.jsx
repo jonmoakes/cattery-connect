@@ -388,6 +388,18 @@ export const Accordion = styled.div.withConfig({
   border: 2px solid ${softBlack};
   border-radius: 5px;
 
+  &.neg-margin-top {
+    margin: -10px auto 20px auto;
+  }
+
+  &.daily-schedule {
+    margin: -10px auto 40px auto;
+
+    @media screen and (max-width: 600px) {
+      margin: -10px auto 30px auto;
+    }
+  }
+
   @media screen and (max-width: 1366px) {
     width: ${({ showHelp }) => (showHelp ? "90%" : "50%")};
   }
@@ -481,8 +493,8 @@ export const DateInputContainer = styled.div`
     margin: 0px auto 35px auto;
   }
 
-  &.no-margin {
-    margin: 0 auto;
+  &.neg-margin {
+    margin: -15px auto 0px auto;
   }
 
   @media screen and (max-width: 600px) {
@@ -648,6 +660,19 @@ export const BounceInDiv = styled.div`
 export const NextAndPreviousDateButtonContainer = styled.div`
   display: flex;
   justify-content: center;
+  margin: 20px auto 10px auto;
+
+  &.margin {
+    margin: 0px auto 25px auto;
+
+    @media screen and (max-width: 600px) {
+      margin: -10px auto 20px auto;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    margin: 20px auto 5px auto;
+  }
 `;
 
 //compensates for container padding

@@ -1,5 +1,5 @@
 import CustomBalancedText from "../../../components/custom-balanced-text/custom-balanced-text.component";
-import CustomSpan from "../../../components/custom-span/custom-span.component";
+
 import { ParentDiv } from "../../../styles/div/div.styles";
 import { BlackHr } from "../../../styles/hr/hr.styles";
 
@@ -49,20 +49,6 @@ const UserRights = () => (
     <CustomBalancedText>
       You have the right to request a copy of your data in a structured,
       commonly used, and machine-readable format.
-    </CustomBalancedText>
-
-    <CustomBalancedText>
-      To exercise any of these rights, please contact us at:
-    </CustomBalancedText>
-
-    <CustomBalancedText>
-      <CustomSpan type="lowercase">jonathan@solaris-apps.co.uk</CustomSpan>
-    </CustomBalancedText>
-
-    <CustomBalancedText>or</CustomBalancedText>
-
-    <CustomBalancedText>
-      <CustomSpan type="lowercase">admin@cattery-connect.co.uk</CustomSpan>
     </CustomBalancedText>
   </ParentDiv>
 );

@@ -1,5 +1,6 @@
 import useBookingsTableVariables from "./bookings-hooks/use-bookings-table-variables";
 import useHamburgerHandlerNavigate from "../../hooks/use-hamburger-handler-navigate";
+import useBookingsTableAccordionData from "./bookings-hooks/use-bookings-table-accordion-data";
 
 import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
 import HelpAccordion from "../../components/help-accordion/help-accordion.component";
@@ -8,8 +9,6 @@ import { MinimalButton } from "../../styles/button/button.styles";
 import { ParentDiv } from "../../styles/div/div.styles";
 
 import { addBookingRoute } from "../../strings/routes";
-
-import useBookingsTableAccordionData from "./bookings-hooks/use-bookings-table-accordion-data";
 
 const TitleAndAddBookingLink = () => {
   const { atLeastOneBookingExists } = useBookingsTableVariables();

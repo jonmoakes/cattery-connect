@@ -11,4 +11,8 @@ export const viewPenDataAccordionData = [
     id: 3,
     content: `change dates to view data for a new date.`,
   },
+  {
+    id: 4,
+    content: `use the '<' and '>' buttons to choose the previous and next dates.`,
+  },
 ];

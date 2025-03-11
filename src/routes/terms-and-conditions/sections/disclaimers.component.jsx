@@ -33,12 +33,7 @@ const Disclaimers = () => (
 
     <CustomBalancedText>
       To the maximum extent permitted by applicable law,{" "}
-      <a
-        className="teal"
-        href="https://www.solaris-apps.co.uk"
-        target="_blank"
-        rel="noreferrer"
-      >
+      <a href="https://www.solaris-apps.co.uk" target="_blank" rel="noreferrer">
         solaris apps
       </a>{" "}
       shall not be liable for any indirect, incidental, special, consequential,

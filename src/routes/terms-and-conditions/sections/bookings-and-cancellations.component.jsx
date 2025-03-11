@@ -9,8 +9,8 @@ const BookingsAndCancellations = () => (
 
     <CustomBalancedText>
       Owners are responsible for booking and cancelling stays for their
-      customers through the app, having agreed upon the duration, price, and cat
-      details beforehand.
+      customers cats through the app, having agreed upon the duration, price,
+      and cat details beforehand.
     </CustomBalancedText>
 
     <CustomBalancedText>

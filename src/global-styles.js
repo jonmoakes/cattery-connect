@@ -154,9 +154,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   a {
-    &.teal {
       color: ${teal};
-    }
   }
 `;
 

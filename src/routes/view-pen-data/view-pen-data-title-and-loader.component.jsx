@@ -1,9 +1,12 @@
 import useGetViewPenDataSelectors from "../../hooks/selectors/use-get-view-pen-data-selectors";
 
 import Skeletonbox from "../../components/skeleton-box/skeleton-box.component";
+import HelpAccordion from "../../components/help-accordion/help-accordion.component";
 import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
 
 import { ParentDiv } from "../../styles/div/div.styles";
+
+import { viewPenDataAccordionData } from "./view-pen-data-accordion-data";
 
 const ViewPenDataTitleAndLoader = () => {
   const { chosenDatePenDataIsLoading } = useGetViewPenDataSelectors();
@@ -16,6 +19,12 @@ const ViewPenDataTitleAndLoader = () => {
 
       <ParentDiv>
         <CustomBalancedText type="h1">pen data</CustomBalancedText>
+
+        <HelpAccordion
+          className="neg-margin-top"
+          openText="view pen data help"
+          data={viewPenDataAccordionData}
+        />
       </ParentDiv>
     </>
   );

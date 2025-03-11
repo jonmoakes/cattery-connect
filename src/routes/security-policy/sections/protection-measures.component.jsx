@@ -10,7 +10,7 @@ const ProtectionMeasures = () => (
     <CustomBalancedText type="h3">encryption:</CustomBalancedText>
 
     <CustomBalancedText>
-      We use industry-standard encryption protocols (such as TLS) to protect
+      We use industry-standard encryption protocols ( such as TLS ) to protect
       data transmitted between your device and our servers.
     </CustomBalancedText>
 
@@ -19,7 +19,7 @@ const ProtectionMeasures = () => (
     <CustomBalancedText type="h3">Access Controls:</CustomBalancedText>
     <CustomBalancedText>
       Access to user data is strictly controlled and limited to authorised
-      personnel only. We implement role-based access controls (RBAC) to ensure
+      personnel only. We implement role-based access controls ( RBAC ) to ensure
       that access is granted on a need-to-know basis.
     </CustomBalancedText>
 

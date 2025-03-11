@@ -4,9 +4,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import useGetDailyScheduleSelectors from "../../hooks/selectors/use-get-daily-schedule-selectors";
 import useChooseDateAndFetchData from "./daily-schedule-hooks/use-choose-date-and-fetch-data";
 
-import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
-
-import CustomSpan from "../../components/custom-span/custom-span.component";
 import { StyledDatePicker } from "../../styles/date-picker/date-picker.styles";
 import {
   DateInputContainer,
@@ -20,12 +17,8 @@ const DailyScheduleDateInput = () => {
   return (
     <>
       {dailyBookingsDataError ? null : (
-        <DateInputContainer className="no-margin">
+        <DateInputContainer className="neg-margin">
           <StyledDatePickerWrapper>
-            <CustomBalancedText type="optionsLabel">
-              <CustomSpan>choose another date</CustomSpan>
-            </CustomBalancedText>
-
             <StyledDatePicker
               value=""
               selected={chosenDate ? format(chosenDate, "yyyy-MM-dd") : null}
@@ -33,7 +26,7 @@ const DailyScheduleDateInput = () => {
               dateFormat="EEE d MMM yyyy"
               minDate={new Date()}
               onKeyDown={(e) => e.preventDefault()}
-              placeholderText="tap here to choose"
+              placeholderText="tap to choose date"
               onFocus={(e) => (e.target.blur(), (e.target.readOnly = true))}
             />
           </StyledDatePickerWrapper>

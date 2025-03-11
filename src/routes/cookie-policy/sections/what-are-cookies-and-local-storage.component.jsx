@@ -13,7 +13,7 @@ const WhatAreCookiesAndLocalStorage = () => (
     </CustomBalancedText>
 
     <CustomBalancedText>
-      They help the website or app recognize your device and store information
+      They help the website or app recognise your device and store information
       about your preferences or past actions.
     </CustomBalancedText>
 

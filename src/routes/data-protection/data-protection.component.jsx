@@ -1,18 +1,22 @@
 import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
-import PolicyContactInfo from "../../components/policy-contact-info/policy-contact-info.component";
-import NextPolicyLink from "../../components/next-policy-link/next-policy-link.component";
+import PolicyContactInfo from "../../components/legal/policy-contact-info/policy-contact-info.component";
+import NextPolicyLink from "../../components/legal/next-policy-link/next-policy-link.component";
 
 import { Container } from "../../styles/container/container.styles";
 import { ParentDiv } from "../../styles/div/div.styles";
 import { StyledLink } from "../../styles/link/link.styles";
 
 import { privacyPolicyRoute } from "../../strings/routes";
+import PolicyLastUpdated from "../../components/legal/policy-last-updated/policy-last-updated.component";
+import ChangesToPolicy from "../../components/legal/changes-to-policy/changes-to-policy.component";
 
 const DataProtection = () => (
   <Container>
     <ParentDiv>
       <CustomBalancedText type="h1">Data Protection</CustomBalancedText>
     </ParentDiv>
+
+    <PolicyLastUpdated date="11th March 2025" />
 
     <ParentDiv>
       <CustomBalancedText>
@@ -83,6 +87,7 @@ const DataProtection = () => (
       </CustomBalancedText>
     </ParentDiv>
 
+    <ChangesToPolicy />
     <PolicyContactInfo />
     <NextPolicyLink />
   </Container>

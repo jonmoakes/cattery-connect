@@ -62,12 +62,7 @@ const TypesOfCookiesWeUse = () => (
     <CustomBalancedText>
       For more information on how Stripe uses cookies and handles your data,
       please refer to{" "}
-      <a
-        className="teal"
-        href="https://stripe.com/gb/privacy"
-        target="_blank"
-        rel="noreferrer"
-      >
+      <a href="https://stripe.com/gb/privacy" target="_blank" rel="noreferrer">
         Stripe’s Privacy Policy
       </a>
       .

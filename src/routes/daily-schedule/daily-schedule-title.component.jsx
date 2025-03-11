@@ -4,6 +4,9 @@ import useGetDailyScheduleSelectors from "../../hooks/selectors/use-get-daily-sc
 import useDailyScheduleTableVariables from "./daily-schedule-hooks/use-daily-schedule-table-variables";
 
 import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
+import HelpAccordion from "../../components/help-accordion/help-accordion.component";
+
+import { dailyScheduleAccordionData } from "./daily-schedule-accordion-data";
 
 const DailyScheduleTitle = () => {
   const { dateForShownData, dailyBookingsDataError, passedChosenDate } =
@@ -21,11 +24,20 @@ const DailyScheduleTitle = () => {
           {format(passedChosenDate, "EEE dd MMMM yyyy")}
         </CustomBalancedText>
       ) : (
-        <CustomBalancedText type="h1">
-          schedule for
-          <br />
-          {dateForShownData ? format(dateForShownData, "EEE dd MMMM yyyy") : ""}
-        </CustomBalancedText>
+        <>
+          <CustomBalancedText type="h1">
+            schedule for
+            <br />
+            {dateForShownData
+              ? format(dateForShownData, "EEE dd MMMM yyyy")
+              : ""}
+          </CustomBalancedText>
+          <HelpAccordion
+            className="daily-schedule"
+            openText="schedule help"
+            data={dailyScheduleAccordionData}
+          />
+        </>
       )}
     </>
   );

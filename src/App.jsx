@@ -42,6 +42,7 @@ import {
   securityPolicyRoute,
   refundsPolicyRoute,
   dataProtectionPolicyRoute,
+  imageCreditsRoute,
 } from "./strings/routes";
 import Footer from "./components/footer/footer.component";
 
@@ -113,6 +114,9 @@ const RefundsPolicy = lazy(() =>
 const DataProtection = lazy(() =>
   import("./routes/data-protection/data-protection.component")
 );
+const ImageCredits = lazy(() =>
+  import("./routes/image-credits/image-credits.component")
+);
 
 const App = () => {
   const { currentUser, role } = useGetCurrentUserSelectors();
@@ -148,6 +152,7 @@ const App = () => {
               path={dataProtectionPolicyRoute}
               element={<DataProtection />}
             />
+            <Route path={imageCreditsRoute} element={<ImageCredits />} />
 
             <Route element={<PrivateRoutes />}>
               <Route path={accountRoute} element={<Account />} />

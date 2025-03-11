@@ -8,10 +8,10 @@ import DailyScheduleTable from "./daily-schedule-table.component";
 
 import { Container } from "../../styles/container/container.styles";
 import { ParentDiv } from "../../styles/div/div.styles";
-
-import { Form } from "../../styles/form/form.styles";
+import useGetDailyScheduleSelectors from "../../hooks/selectors/use-get-daily-schedule-selectors";
 
 const DailySchedule = () => {
+  const { dailyBookingsDataError } = useGetDailyScheduleSelectors();
   useGetTodaysDataThunkUseEffect();
 
   return (
@@ -19,11 +19,8 @@ const DailySchedule = () => {
       <DailyScheduleLoader />
       <ParentDiv>
         <DailyScheduleTitle />
-
-        <Form className={"no-margin-top-small-margin-bottom"}>
-          <DailyScheduleDateInput />
-          <NextAndPreviousDatesButtons />
-        </Form>
+        <DailyScheduleDateInput />
+        {dailyBookingsDataError ? null : <NextAndPreviousDatesButtons />}
       </ParentDiv>
 
       <DailyScheduleTable />

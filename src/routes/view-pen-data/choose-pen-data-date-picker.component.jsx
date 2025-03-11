@@ -4,9 +4,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import useGetViewPenDataSelectors from "../../hooks/selectors/use-get-view-pen-data-selectors";
 import useChooseDateAndFetchPenData from "./view-pen-data-hooks/use-choose-date-and-fetch-pen-data";
 
-import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
-import CustomSpan from "../../components/custom-span/custom-span.component";
-
 import { StyledDatePicker } from "../../styles/date-picker/date-picker.styles";
 import {
   DateInputContainer,
@@ -18,12 +15,8 @@ const ChoosePenDataDatePicker = () => {
   const { chooseDateAndFetchPenData } = useChooseDateAndFetchPenData();
 
   return (
-    <DateInputContainer className="no-margin-top">
+    <DateInputContainer>
       <StyledDatePickerWrapper>
-        <CustomBalancedText type="optionsLabel">
-          <CustomSpan className="yellow">choose a date</CustomSpan>
-        </CustomBalancedText>
-
         <StyledDatePicker
           selected={
             returnedChosenDate ? format(returnedChosenDate, "yyyy-MM-dd") : null
@@ -32,7 +25,7 @@ const ChoosePenDataDatePicker = () => {
           dateFormat="EEE d MMM yyyy"
           minDate={new Date()}
           onKeyDown={(e) => e.preventDefault()}
-          placeholderText="tap here to choose"
+          placeholderText="tap to choose date"
           onFocus={(e) => (e.target.blur(), (e.target.readOnly = true))}
         />
       </StyledDatePickerWrapper>

@@ -1,6 +1,6 @@
-import CustomBalancedText from "../custom-balanced-text/custom-balanced-text.component";
+import CustomBalancedText from "../../custom-balanced-text/custom-balanced-text.component";
 
-import { ParentDiv } from "../../styles/div/div.styles";
+import { ParentDiv } from "../../../styles/div/div.styles";
 
 const LegalDefinitions = () => (
   <ParentDiv>

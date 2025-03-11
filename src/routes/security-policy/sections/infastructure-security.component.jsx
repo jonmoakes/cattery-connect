@@ -19,7 +19,7 @@ const InfastructureSecurity = () => (
     <CustomBalancedText type="h3">DDoS Protection:</CustomBalancedText>
     <CustomBalancedText>
       Our infrastructure includes built-in DDoS protection to mitigate attacks.
-      A DDoS (Distributed Denial of Service) attack involves overwhelming our
+      A DDoS ( Distributed Denial of Service ) attack involves overwhelming our
       servers with traffic from multiple sources to disrupt service
       availability. Our systems are designed to detect and prevent such attacks,
       ensuring continuous service.
@@ -27,7 +27,7 @@ const InfastructureSecurity = () => (
     <BlackHr />
 
     <CustomBalancedText type="h3">
-      Content Delivery Network (CDN):
+      Content Delivery Network ( CDN ):
     </CustomBalancedText>
 
     <CustomBalancedText>

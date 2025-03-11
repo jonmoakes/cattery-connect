@@ -23,8 +23,6 @@ export const getDailyBookingsDataAsync = createAsyncThunk(
         ? format(chosenDate, "yyyy-MM-dd")
         : format(today, "yyyy-MM-dd");
 
-      console.log("hi ", chosenDate);
-
       const bookingsQuery = [
         Query.equal("catteryId", catteryId),
         Query.lessThanEqual("checkInDate", date),

@@ -1,5 +1,5 @@
 import CustomBalancedText from "../../../components/custom-balanced-text/custom-balanced-text.component";
-import CustomSpan from "../../../components/custom-span/custom-span.component";
+
 import { ParentDiv } from "../../../styles/div/div.styles";
 import { BlackHr } from "../../../styles/hr/hr.styles";
 
@@ -15,7 +15,6 @@ const SecurityMeasures = () => (
     <CustomBalancedText>
       We use a leading{" "}
       <a
-        className="teal"
         href="https://en.wikipedia.org//wiki/Open_source"
         target="_blank"
         rel="noreferrer"
@@ -32,7 +31,7 @@ const SecurityMeasures = () => (
 
     <CustomBalancedText>
       All data is encrypted both at rest and in transit using industry-standard
-      protocols (TLS for data in transit).
+      protocols ( TLS for data in transit ).
     </CustomBalancedText>
 
     <BlackHr />
@@ -42,8 +41,8 @@ const SecurityMeasures = () => (
     </CustomBalancedText>
 
     <CustomBalancedText>
-      We implement secure authentication methods (e.g., email & password, OAuth)
-      and role-based access control (RBAC) to manage permissions and verify
+      We implement secure authentication methods ( e.g., email & password, OAuth
+      ) and role-based access control ( RBAC ) to manage permissions and verify
       identities.
     </CustomBalancedText>
 
@@ -103,13 +102,14 @@ const SecurityMeasures = () => (
       owners and customers.
     </CustomBalancedText>
 
+    <BlackHr />
     <CustomBalancedText type="h3">For owners:</CustomBalancedText>
 
     <CustomBalancedText>
       We create a dedicated Stripe account for you, giving you full control over
       your finances.
     </CustomBalancedText>
-
+    <BlackHr />
     <CustomBalancedText type="h3">
       For both owners and customers:
     </CustomBalancedText>
@@ -120,7 +120,7 @@ const SecurityMeasures = () => (
       Stripe is a certified PCI Service Provider Level 1, adhering to the
       highest industry standards for payment security.
     </CustomBalancedText>
-
+    <BlackHr />
     <CustomBalancedText>
       Data Encryption: <br />
       All payment data is encrypted using AES-256 encryption at rest and TLS for
@@ -160,21 +160,6 @@ const SecurityMeasures = () => (
     <CustomBalancedText>
       By leveraging these security measures, we ensure your personal information
       remains protected against unauthorised access, use, and disclosure.
-    </CustomBalancedText>
-
-    <CustomBalancedText>
-      If you have any questions or concerns about our data security practices,
-      please contact us at:
-    </CustomBalancedText>
-
-    <CustomBalancedText>
-      <CustomSpan type="lowercase">jonathan@solaris-apps.co.uk</CustomSpan>
-    </CustomBalancedText>
-
-    <CustomBalancedText>or</CustomBalancedText>
-
-    <CustomBalancedText>
-      <CustomSpan type="lowercase">admin@cattery-connect.co.uk</CustomSpan>
     </CustomBalancedText>
   </ParentDiv>
 );

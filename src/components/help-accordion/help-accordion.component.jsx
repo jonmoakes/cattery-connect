@@ -15,14 +15,14 @@ import { StyledLink } from "../../styles/link/link.styles";
 
 import { contactRoute } from "../../strings/routes";
 
-const HelpAccordion = ({ openText, data }) => {
+const HelpAccordion = ({ className, openText, data }) => {
   const { role } = useGetCurrentUserSelectors();
 
   const [showHelp, setShowHelp] = useState(false);
 
   return (
     <>
-      <Accordion {...{ showHelp }}>
+      <Accordion {...{ showHelp }} className={className ? className : ""}>
         <>
           <AccordionTitle
             {...{ showHelp }}

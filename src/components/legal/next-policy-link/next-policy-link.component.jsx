@@ -1,8 +1,9 @@
 import { useLocation } from "react-router-dom";
-import useHamburgerHandlerNavigate from "../../hooks/use-hamburger-handler-navigate";
 
-import { ParentDiv } from "../../styles/div/div.styles";
-import { Button } from "../../styles/button/button.styles";
+import useHamburgerHandlerNavigate from "../../../hooks/use-hamburger-handler-navigate";
+
+import { ParentDiv } from "../../../styles/div/div.styles";
+import { Button } from "../../../styles/button/button.styles";
 
 import { nextPolicyData } from "./next-policy-data";
 

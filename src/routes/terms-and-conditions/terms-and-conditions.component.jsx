@@ -1,7 +1,8 @@
 import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
 
 import Introduction from "./sections/introduction.component";
-import LegalDefinitions from "../../components/legal-definitions/legal-definitions.component";
+import PolicyLastUpdated from "../../components/legal/policy-last-updated/policy-last-updated.component";
+import LegalDefinitions from "../../components/legal/legal-definitions/legal-definitions.component";
 import GeographicRestrictions from "./sections/geographic-restrictions.component";
 import UserAccounts from "./sections/user-accounts.component";
 import UserConduct from "./sections/user-conduct.component";
@@ -12,8 +13,9 @@ import IntellectualProperty from "./sections/intellectual-property.component";
 import Disclaimers from "./sections/disclaimers.component";
 import Termination from "./sections/termination.component";
 import GoverningLaw from "./sections/governing-law.component";
-import PolicyContactInfo from "../../components/policy-contact-info/policy-contact-info.component";
-import NextPolicyLink from "../../components/next-policy-link/next-policy-link.component";
+import ChangesToPolicy from "../../components/legal/changes-to-policy/changes-to-policy.component";
+import PolicyContactInfo from "../../components/legal//policy-contact-info/policy-contact-info.component";
+import NextPolicyLink from "../../components/legal/next-policy-link/next-policy-link.component";
 
 import { Container } from "../../styles/container/container.styles";
 import { ParentDiv } from "../../styles/div/div.styles";
@@ -25,6 +27,7 @@ const TermsAndConditions = () => (
     </ParentDiv>
 
     <Introduction />
+    <PolicyLastUpdated date="11th March 2025" />
     <LegalDefinitions />
     <GeographicRestrictions />
     <UserAccounts />
@@ -36,6 +39,7 @@ const TermsAndConditions = () => (
     <Disclaimers />
     <Termination />
     <GoverningLaw />
+    <ChangesToPolicy />
     <PolicyContactInfo />
     <NextPolicyLink />
   </Container>

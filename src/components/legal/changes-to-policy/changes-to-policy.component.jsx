@@ -1,4 +1,4 @@
-import CustomBalancedText from "../../../components/custom-balanced-text/custom-balanced-text.component";
+import CustomBalancedText from "../../custom-balanced-text/custom-balanced-text.component";
 import { ParentDiv } from "../../../styles/div/div.styles";
 
 const ChangesToPolicy = () => (
@@ -7,7 +7,7 @@ const ChangesToPolicy = () => (
 
     <CustomBalancedText>
       We may update this Privacy Policy periodically. Any changes will be posted
-      on this page with an updated eff ective date.
+      on this page with an updated effective date at the top of the page.
     </CustomBalancedText>
     <CustomBalancedText>
       If the changes are significant, we will provide a prominent notice or, if

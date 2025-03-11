@@ -1,5 +1,4 @@
 import CustomBalancedText from "../../../components/custom-balanced-text/custom-balanced-text.component";
-import CustomSpan from "../../../components/custom-span/custom-span.component";
 
 import { ParentDiv } from "../../../styles/div/div.styles";
 
@@ -18,12 +17,6 @@ const RefundsPolicyTitleAndIntro = () => (
       <CustomBalancedText>
         This policy outlines the conditions and procedures for requesting a
         refund for any services provided through my app.
-      </CustomBalancedText>
-    </ParentDiv>
-    <ParentDiv>
-      <CustomBalancedText>
-        this policy was last updated on{" "}
-        <CustomSpan className="red">10th March 2025.</CustomSpan>
       </CustomBalancedText>
     </ParentDiv>
   </>
