@@ -1,4 +1,7 @@
-import { getDailyBookingsDataAsync } from "./daily-schedule.thunks";
+import {
+  getDailyBookingsDataAsync,
+  updateHasCheckedInOrOutInDbAsync,
+} from "./daily-schedule.thunks";
 
 export const extraReducers = (builder) => {
   builder
@@ -16,5 +19,19 @@ export const extraReducers = (builder) => {
       state.dailyBookingsDataResult = "rejected";
       state.dailyBookingsData = [];
       state.dailyBookingsDataError = action.payload;
+    });
+  builder
+    .addCase(updateHasCheckedInOrOutInDbAsync.pending, (state) => {
+      state.updateCheckInOutStatusIsLoading = true;
+    })
+    .addCase(updateHasCheckedInOrOutInDbAsync.fulfilled, (state) => {
+      state.updateCheckInOutStatusIsLoading = false;
+      state.updateCheckInOutStatusResult = "fulfilled";
+      state.updateCheckInOutStatusError = null;
+    })
+    .addCase(updateHasCheckedInOrOutInDbAsync.rejected, (state, action) => {
+      state.updateCheckInOutStatusIsLoading = false;
+      state.updateCheckInOutStatusResult = "rejected";
+      state.updateCheckInOutStatusError = action.payload;
     });
 };

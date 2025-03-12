@@ -12,6 +12,12 @@ export const dailyScheduleSlice = createSlice({
     resetDailyBookingsDataError(state) {
       state.dailyBookingsDataError = null;
     },
+    resetUpdateCheckInOutStatusResult(state) {
+      state.updateCheckInOutStatusResult = "";
+    },
+    resetUpdateCheckInOutStatusError(state) {
+      state.updateCheckInOutStatusError = null;
+    },
     resetDailyScheduleState: () => {
       return INITIAL_STATE;
     },
@@ -22,6 +28,8 @@ export const dailyScheduleSlice = createSlice({
 export const {
   resetDailyBookingsDataResult,
   resetDailyBookingsDataError,
+  resetUpdateCheckInOutStatusResult,
+  resetUpdateCheckInOutStatusError,
   resetDailyScheduleState,
 } = dailyScheduleSlice.actions;
 

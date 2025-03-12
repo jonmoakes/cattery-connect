@@ -32,6 +32,7 @@ const DailyScheduleTitle = () => {
               ? format(dateForShownData, "EEE dd MMMM yyyy")
               : ""}
           </CustomBalancedText>
+
           <HelpAccordion
             className="daily-schedule"
             openText="schedule help"

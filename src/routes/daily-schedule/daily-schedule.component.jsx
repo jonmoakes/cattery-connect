@@ -1,4 +1,6 @@
-import useGetTodaysDataThunkUseEffect from "./daily-schedule-hooks/use-get-todays-data-thunk-use-effect";
+import useGetDailyScheduleSelectors from "../../hooks/selectors/use-get-daily-schedule-selectors";
+
+import useGetTodaysDataThunkUseEffect from "./daily-schedule-hooks/use-effects/use-get-todays-data-thunk-use-effect";
 
 import DailyScheduleLoader from "./daily-schedule-loader.component";
 import DailyScheduleTitle from "./daily-schedule-title.component";
@@ -8,10 +10,10 @@ import DailyScheduleTable from "./daily-schedule-table.component";
 
 import { Container } from "../../styles/container/container.styles";
 import { ParentDiv } from "../../styles/div/div.styles";
-import useGetDailyScheduleSelectors from "../../hooks/selectors/use-get-daily-schedule-selectors";
 
 const DailySchedule = () => {
   const { dailyBookingsDataError } = useGetDailyScheduleSelectors();
+
   useGetTodaysDataThunkUseEffect();
 
   return (

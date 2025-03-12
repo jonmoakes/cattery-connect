@@ -7,5 +7,9 @@ export const selectDailyScheduleSelectors = createSelector(
     dailyBookingsData: dailySchedule.dailyBookingsData,
     dailyBookingsDataResult: dailySchedule.dailyBookingsDataResult,
     dailyBookingsDataError: dailySchedule.dailyBookingsDataError,
+    updateCheckInOutStatusIsLoading:
+      dailySchedule.updateCheckInOutStatusIsLoading,
+    updateCheckInOutStatusResult: dailySchedule.updateCheckInOutStatusResult,
+    updateCheckInOutStatusError: dailySchedule.updateCheckInOutStatusError,
   })
 );

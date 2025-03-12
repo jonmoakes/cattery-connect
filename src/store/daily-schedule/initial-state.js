@@ -3,4 +3,7 @@ export const INITIAL_STATE = {
   dailyBookingsData: [],
   dailyBookingsDataResult: "",
   dailyBookingsDataError: null,
+  updateCheckInOutStatusIsLoading: false,
+  updateCheckInOutStatusResult: "",
+  updateCheckInOutStatusError: null,
 };

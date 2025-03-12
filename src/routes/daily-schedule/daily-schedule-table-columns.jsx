@@ -1,9 +1,13 @@
+import DailyScheduleCheckInOutStatusCell from "../../components/tables/daily-schedule-check-in-out-status-cell/daily-schedule-check-in-out-status-cell.component";
 import DailyScheduleCatsDetailCell from "../../components/tables/daily-schedule-cat-details-cell.component";
 
 const DAILY_SCHEDULE_TABLE_COLUMNS = [
   {
     Header: "status",
     accessor: "status",
+    Cell: ({ row, value }) => {
+      return <DailyScheduleCheckInOutStatusCell {...{ row, value }} />;
+    },
   },
   {
     Header: "cat details",

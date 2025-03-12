@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import useGetCurrentUserSelectors from "../../../hooks/selectors/use-get-current-user-selectors";
-import useGetDailyScheduleSelectors from "../../../hooks/selectors/use-get-daily-schedule-selectors";
-import { getDailyBookingsDataAsync } from "../../../store/daily-schedule/daily-schedule.thunks";
+import useGetCurrentUserSelectors from "../../../../hooks/selectors/use-get-current-user-selectors";
+import useGetDailyScheduleSelectors from "../../../../hooks/selectors/use-get-daily-schedule-selectors";
+import { getDailyBookingsDataAsync } from "../../../../store/daily-schedule/daily-schedule.thunks";
 
 const useGetTodaysDataThunkUseEffect = () => {
   const { currentUser, catteryId } = useGetCurrentUserSelectors();

@@ -8,6 +8,9 @@ const useGetDailyScheduleSelectors = () => {
     dailyBookingsData,
     dailyBookingsDataResult,
     dailyBookingsDataError,
+    updateCheckInOutStatusIsLoading,
+    updateCheckInOutStatusResult,
+    updateCheckInOutStatusError,
   } = useSelector(selectDailyScheduleSelectors);
 
   const { chosenDaysData, dateForShownData, passedChosenDate } =
@@ -20,6 +23,9 @@ const useGetDailyScheduleSelectors = () => {
     dateForShownData,
     dailyBookingsDataResult,
     dailyBookingsDataError,
+    updateCheckInOutStatusIsLoading,
+    updateCheckInOutStatusResult,
+    updateCheckInOutStatusError,
     passedChosenDate,
   };
 };

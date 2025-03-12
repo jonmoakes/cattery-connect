@@ -29,7 +29,8 @@ const TitleAndAddBookingLink = () => {
           </MinimalButton>
 
           <HelpAccordion
-            openText="table help"
+            className="bookings"
+            openText="bookings help"
             data={bookingsTableAccordionData}
           />
         </>

@@ -3,12 +3,19 @@ import useGetDailyScheduleSelectors from "../../hooks/selectors/use-get-daily-sc
 import SkeletonBox from "../../components/skeleton-box/skeleton-box.component";
 
 const DailyScheduleLoader = () => {
-  const { dailyScheduleIsLoading } = useGetDailyScheduleSelectors();
+  const { dailyScheduleIsLoading, updateCheckInOutStatusIsLoading } =
+    useGetDailyScheduleSelectors();
 
   return (
     <>
-      {dailyScheduleIsLoading ? (
-        <SkeletonBox loadingText="fetching data..." />
+      {dailyScheduleIsLoading || updateCheckInOutStatusIsLoading ? (
+        <SkeletonBox
+          loadingText={
+            dailyScheduleIsLoading
+              ? "fetching data..."
+              : updateCheckInOutStatusIsLoading && "updating status..."
+          }
+        />
       ) : null}
     </>
   );

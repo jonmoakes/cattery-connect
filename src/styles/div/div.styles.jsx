@@ -400,6 +400,14 @@ export const Accordion = styled.div.withConfig({
     }
   }
 
+  &.bookings {
+    margin: 30px auto 20px auto;
+
+    @media screen and (max-width: 600px) {
+      margin: 20px auto 10px auto;
+    }
+  }
+
   @media screen and (max-width: 1366px) {
     width: ${({ showHelp }) => (showHelp ? "90%" : "50%")};
   }

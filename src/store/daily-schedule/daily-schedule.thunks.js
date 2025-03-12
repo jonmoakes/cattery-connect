@@ -8,6 +8,7 @@ import {
 } from "../../constants/constants";
 import { Query } from "appwrite";
 import { databases } from "../../utils/appwrite/appwrite-config";
+import { manageDatabaseDocument } from "../../utils/appwrite/appwrite-functions";
 
 export const getDailyBookingsDataAsync = createAsyncThunk(
   "getDailyBookingsData",
@@ -44,9 +45,12 @@ export const getDailyBookingsDataAsync = createAsyncThunk(
       );
 
       const bookingsWithStatus = todayBookings.map((booking) => ({
+        documentId: booking.$id,
         bookingId: booking.bookingId,
         customerId: booking.customerId,
         customerName: booking.customerName,
+        checkedInStatus: booking.checkedInStatus,
+        checkedOutStatus: booking.checkedOutStatus,
         status:
           booking.checkInDate === date && booking.checkOutDate === date
             ? `Checking In 
@@ -129,6 +133,55 @@ export const getDailyBookingsDataAsync = createAsyncThunk(
         chosenDaysData: combinedData,
         dateForShownData: date,
       };
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateHasCheckedInOrOutInDbAsync = createAsyncThunk(
+  "updateHasCheckedInOrOutInDb",
+  async ({ documentId, attributeToUpdate }, thunkAPI) => {
+    try {
+      const booking = await manageDatabaseDocument(
+        "get",
+        databaseId,
+        bookingsCollectionId,
+        documentId
+      );
+
+      const { checkedInStatus, checkedOutStatus } = booking;
+
+      const newCheckedInValue =
+        attributeToUpdate === "checkedInStatus" && !checkedInStatus
+          ? "checked in!"
+          : attributeToUpdate === "checkedInStatus" &&
+            checkedInStatus === "checked in!" &&
+            null;
+
+      const newCheckedOutValue =
+        attributeToUpdate === "checkedOutStatus" && !checkedOutStatus
+          ? "checked out!"
+          : attributeToUpdate === "checkedOutStatus" &&
+            checkedOutStatus === "checked out!" &&
+            null;
+
+      const newValue =
+        attributeToUpdate === "checkedInStatus"
+          ? newCheckedInValue
+          : newCheckedOutValue;
+
+      const dataToUpdate = {
+        [attributeToUpdate]: newValue,
+      };
+
+      await manageDatabaseDocument(
+        "update",
+        databaseId,
+        bookingsCollectionId,
+        documentId,
+        dataToUpdate
+      );
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
