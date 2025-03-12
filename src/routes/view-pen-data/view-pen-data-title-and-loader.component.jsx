@@ -9,7 +9,8 @@ import { ParentDiv } from "../../styles/div/div.styles";
 import { viewPenDataAccordionData } from "./view-pen-data-accordion-data";
 
 const ViewPenDataTitleAndLoader = () => {
-  const { chosenDatePenDataIsLoading } = useGetViewPenDataSelectors();
+  const { chosenDatePenDataIsLoading, chosenDatePenDataError } =
+    useGetViewPenDataSelectors();
 
   return (
     <>
@@ -20,11 +21,13 @@ const ViewPenDataTitleAndLoader = () => {
       <ParentDiv>
         <CustomBalancedText type="h1">pen data</CustomBalancedText>
 
-        <HelpAccordion
-          className="neg-margin-top"
-          openText="view pen data help"
-          data={viewPenDataAccordionData}
-        />
+        {!chosenDatePenDataError ? (
+          <HelpAccordion
+            className="neg-margin-top"
+            openText="view pen data help"
+            data={viewPenDataAccordionData}
+          />
+        ) : null}
       </ParentDiv>
     </>
   );

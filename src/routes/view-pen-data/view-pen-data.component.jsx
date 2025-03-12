@@ -8,6 +8,7 @@ import PenDataSection from "./pen-availability-section.component";
 
 import { Container } from "../../styles/container/container.styles";
 import { ParentDiv } from "../../styles/div/div.styles";
+import useGetTodaysPenDataThunkUseEffect from "./view-pen-data-hooks/use-get-todays-pen-data-thunk-use-effect";
 
 const ViewPenData = () => {
   const {
@@ -17,6 +18,8 @@ const ViewPenData = () => {
     parsedMorningPens,
     parsedAfternoonPens,
   } = useGetViewPenDataSelectors();
+
+  useGetTodaysPenDataThunkUseEffect();
 
   return (
     <Container>

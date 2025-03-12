@@ -5,9 +5,11 @@ import useGetViewPenDataSelectors from "../../../hooks/selectors/use-get-view-pe
 import { fetchChosenDaysPenDataAsync } from "../../../store/view-pen-data/view-pen-data.thunks";
 
 import usePastDateDataNotAvailableSwal from "./use-past-date-data-not-available-swal";
+import useGetCurrentUserSelectors from "../../../hooks/selectors/use-get-current-user-selectors";
 
 const useHandlePenDataDateChange = () => {
   const { returnedChosenDate } = useGetViewPenDataSelectors();
+  const { catteryId } = useGetCurrentUserSelectors();
   const { pastDateDataNotAvailableSwal } = usePastDateDataNotAvailableSwal();
 
   const dispatch = useDispatch();
@@ -32,6 +34,7 @@ const useHandlePenDataDateChange = () => {
     }
     dispatch(
       fetchChosenDaysPenDataAsync({
+        catteryId,
         chosenDate: returnedChosenDateAsDateObject,
       })
     );

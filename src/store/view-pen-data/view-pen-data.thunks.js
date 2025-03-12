@@ -1,44 +1,51 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { listDocumentsByQueryOrSearch } from "../../utils/appwrite/appwrite-functions";
 
 import {
   databaseId,
   availablilityCollectionId,
-  smallRateLimit,
 } from "../../constants/constants";
 import { format } from "date-fns";
+import { Query } from "appwrite";
+import { databases } from "../../utils/appwrite/appwrite-config";
 
 export const fetchChosenDaysPenDataAsync = createAsyncThunk(
   "fetchChosenDaysPenData",
-  async ({ chosenDate }, thunkAPI) => {
+  async ({ catteryId, chosenDate }, thunkAPI) => {
     try {
-      const formattedChosenDate = format(chosenDate, "yyyy-MM-dd");
+      if (!catteryId) {
+        throw new Error("No cattery ID provided");
+      }
 
-      const queryIndex = "date";
-      const queryValue = formattedChosenDate;
+      const today = new Date();
 
-      const penData = await listDocumentsByQueryOrSearch(
+      const date = chosenDate
+        ? format(chosenDate, "yyyy-MM-dd")
+        : format(today, "yyyy-MM-dd");
+
+      const availabilityQuery = [
+        Query.equal("catteryId", catteryId),
+        Query.equal("date", date),
+      ];
+
+      const availabilityResponse = await databases.listDocuments(
         databaseId,
         availablilityCollectionId,
-        queryIndex,
-        queryValue,
-        false,
-        smallRateLimit
+        availabilityQuery
       );
 
-      const { documents } = penData;
+      const penData = availabilityResponse.documents;
 
-      if (!documents.length) {
+      if (!penData.length) {
         return [];
       }
 
-      const { morningPensData, afternoonPensData } = documents[0];
+      const { morningPensData, afternoonPensData } = penData[0];
 
       const parsedMorningPens = JSON.parse(morningPensData);
       const parsedAfternoonPens = JSON.parse(afternoonPensData);
 
       return {
-        returnedChosenDate: formattedChosenDate,
+        returnedChosenDate: date,
         parsedMorningPens,
         parsedAfternoonPens,
       };

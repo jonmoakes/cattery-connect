@@ -17,7 +17,10 @@ const EmptySchedule = () => {
       <CustomBalancedText type="h2" className="teal">
         looks like a quiet day on
         <br />
-        {format(passedChosenDate, "EEE dd MMMM yyyy")}!
+        {passedChosenDate
+          ? format(passedChosenDate, "EEE dd MMMM yyyy")
+          : format(new Date(), "EEE dd MMMM yyyy")}
+        !
       </CustomBalancedText>
       <CustomBalancedText>
         there are No check in / check outs or 🐾 furry guests 🐾 today.
