@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { INITIAL_STATE } from "./initial-state";
-import { extraReducers } from "../update-pens-data/extra-reducers";
+import { extraReducers } from "./extra-reducers";
 
 export const uploadDatesAndPensDataSlice = createSlice({
   name: "uploadDatesAndPensData",
