@@ -21,12 +21,12 @@ const useDailyStatusLogic = (row, value) => {
 
   const checkingInBeforeButtonText =
     checkedInStatus === "checked in!"
-      ? "cats have been checked in 😸"
+      ? "checked in! 😸"
       : !checkedInStatus && "";
 
   const checkingOutBeforeButtonText =
     checkedOutStatus === "checked out!"
-      ? "cats have been checked out 😸"
+      ? "checked out! 😸"
       : !checkedOutStatus && "";
 
   const shouldShowBeforeButtonText =

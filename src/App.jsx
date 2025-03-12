@@ -257,7 +257,6 @@ const App = () => {
           </Routes>
         </Suspense>
       </ErrorBoundary>
-
       <Footer />
     </>
   );

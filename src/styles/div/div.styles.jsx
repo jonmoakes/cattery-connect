@@ -685,13 +685,9 @@ export const NextAndPreviousDateButtonContainer = styled.div`
 
 //compensates for container padding
 export const FooterContainer = styled.div`
-  width: 75%;
+  width: 100%;
   margin: -75px auto 0px auto;
   padding-bottom: 100px;
-
-  @media screen and (max-width: 600px) {
-    width: 90%;
-  }
 `;
 
 export const FooterLinksDiv = styled.div`

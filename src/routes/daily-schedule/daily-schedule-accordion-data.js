@@ -19,4 +19,16 @@ export const dailyScheduleAccordionData = [
     id: 5,
     content: `use the '<' and '>' buttons to choose the previous and next dates from the currently shown date.`,
   },
+  {
+    id: 6,
+    content: `if you are viewing the current day and have cats either checking in or checking out, you will see a button in the 'status' column.`,
+  },
+  {
+    id: 7,
+    content: `when the cats arrive or leave, you can tap the button to mark them as checked in / out.`,
+  },
+  {
+    id: 8,
+    content: `if you make a mistake ( ie checking in the wrong booking ), simply tap the 'undo' button to reset it.`,
+  },
 ];
