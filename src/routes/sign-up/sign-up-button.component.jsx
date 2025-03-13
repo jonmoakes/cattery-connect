@@ -3,15 +3,13 @@ import useIsOnline from "../../hooks/use-is-online";
 import NetworkError from "../../components/errors/network-error.component";
 
 import { Button } from "../../styles/button/button.styles";
-import { ForgotPasswordDiv, AuthButtonDiv } from "../../styles/div/div.styles";
-
-import { forgotPasswordRequestRoute, signUpRoute } from "../../strings/routes";
 import { BlackHr } from "../../styles/hr/hr.styles";
-import CustomSpan from "../../components/custom-span/custom-span.component";
+import { AuthButtonDiv } from "../../styles/div/div.styles";
 import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
 import useHamburgerHandlerNavigate from "../../hooks/use-hamburger-handler-navigate";
+import { signInRoute } from "../../strings/routes";
 
-const SignInButtons = () => {
+const SignUpButton = () => {
   const { isOnline } = useIsOnline();
   const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
 
@@ -19,26 +17,17 @@ const SignInButtons = () => {
     <>
       {isOnline ? (
         <AuthButtonDiv>
-          <Button type="submit">Sign In</Button>
           <BlackHr />
-          <CustomBalancedText>don't have an account?</CustomBalancedText>
+          <Button type="submit">Sign up</Button>
+          <BlackHr />
+          <CustomBalancedText>already have an account?</CustomBalancedText>
           <Button
-            onClick={() => hamburgerHandlerNavigate(signUpRoute)}
+            onClick={() => hamburgerHandlerNavigate(signInRoute)}
             type="button"
           >
-            Sign up!
+            Sign In!
           </Button>
           <BlackHr />
-
-          <ForgotPasswordDiv>
-            <CustomSpan
-              type="link"
-              className="white"
-              to={forgotPasswordRequestRoute}
-            >
-              forgot password?
-            </CustomSpan>
-          </ForgotPasswordDiv>
         </AuthButtonDiv>
       ) : (
         <NetworkError />
@@ -47,4 +36,4 @@ const SignInButtons = () => {
   );
 };
 
-export default SignInButtons;
+export default SignUpButton;

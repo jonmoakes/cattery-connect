@@ -21,6 +21,7 @@ import {
   addCustomerRoute,
   allCustomersRoute,
   signInRoute,
+  signUpRoute,
   forgotPasswordRequestRoute,
   chooseNewPasswordRoute,
   uploadDatesAndPensDataRoute,
@@ -51,6 +52,7 @@ const Navigation = lazy(() =>
 );
 const Home = lazy(() => import("./routes/home/home.component"));
 const SignIn = lazy(() => import("./routes/sign-in/sign-in.component"));
+const SignUp = lazy(() => import("./routes/sign-up/sign-up.component"));
 const Contact = lazy(() => import("./routes/contact/contact.component"));
 const ForgotPasswordRequest = lazy(() =>
   import("./routes/forgot-password-request/forgot-password-request.component")
@@ -134,6 +136,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path={signInRoute} element={<SignIn />} />
+            <Route path={signUpRoute} element={<SignUp />} />
             <Route path={contactRoute} element={<Contact />} />
             <Route
               path={forgotPasswordRequestRoute}

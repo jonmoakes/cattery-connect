@@ -12,6 +12,19 @@ export const passwordIsVisibleSlice = createSlice({
     hideSignInPasswordIsVisible(state) {
       state.signInPasswordIsVisible = false;
     },
+    toggleSignUpPasswordIsVisible(state) {
+      state.signUpPasswordIsVisible = !state.signUpPasswordIsVisible;
+    },
+    toggleSignUpConfirmPasswordIsVisible(state) {
+      state.signUpConfirmPasswordIsVisible =
+        !state.signUpConfirmPasswordIsVisible;
+    },
+    hideSignUpPasswordIsVisible(state) {
+      state.signUpPasswordIsVisible = false;
+    },
+    hideSignUpConfirmPasswordIsVisible(state) {
+      state.signUpConfirmPasswordIsVisible = false;
+    },
     toggleResetPasswordIsVisible(state) {
       state.resetPasswordIsVisible = !state.resetPasswordIsVisible;
     },
@@ -40,6 +53,10 @@ export const passwordIsVisibleSlice = createSlice({
 export const {
   toggleSignInPasswordIsVisible,
   hideSignInPasswordIsVisible,
+  toggleSignUpPasswordIsVisible,
+  toggleSignUpConfirmPasswordIsVisible,
+  hideSignUpPasswordIsVisible,
+  hideSignUpConfirmPasswordIsVisible,
   toggleResetPasswordIsVisible,
   toggleResetPasswordConfirmPasswordIsVisible,
   hideResetPasswordIsVisible,

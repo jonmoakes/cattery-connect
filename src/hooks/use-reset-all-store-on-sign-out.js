@@ -19,6 +19,7 @@ import { resetCancelBookingState } from "../store/cancel-booking/cancel-booking.
 import { resetIndividualCustomersCatsState } from "../store/get-individual-customers-cats/get-individual-customers-cats.slice";
 import { resetDailyScheduleState } from "../store/daily-schedule/daily-schedule.slice";
 import { resetViewPenDataState } from "../store/view-pen-data/view-pen-data.slice";
+import { resetSignUpFormState } from "../store/sign-up-form/sign-up-form.slice";
 
 const useResetAllStoreOnSignOut = () => {
   const { resetAddBookingState } = useResetAddBookingState();
@@ -26,6 +27,7 @@ const useResetAllStoreOnSignOut = () => {
 
   const resetAllStoreOnSignOut = () => {
     dispatch(resetSignInFormState());
+    dispatch(resetSignUpFormState());
     dispatch(resetGenerateNewPasswordRequestState());
     dispatch(resetChooseNewPasswordState());
     dispatch(resetUploadDatesAndPensDataState());

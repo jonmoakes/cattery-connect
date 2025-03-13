@@ -5,6 +5,8 @@ import { selectPasswordIsVisibleSelectors } from "../../store/password-is-visibl
 const useGetPasswordIsVisibleSelectors = () => {
   const {
     signInPasswordIsVisible,
+    signUpPasswordIsVisible,
+    signUpConfirmPasswordIsVisible,
     resetPasswordIsVisible,
     resetPasswordConfirmPasswordIsVisible,
     updateEmailPasswordIsVisible,
@@ -12,6 +14,8 @@ const useGetPasswordIsVisibleSelectors = () => {
 
   return {
     signInPasswordIsVisible,
+    signUpPasswordIsVisible,
+    signUpConfirmPasswordIsVisible,
     resetPasswordIsVisible,
     resetPasswordConfirmPasswordIsVisible,
     updateEmailPasswordIsVisible,

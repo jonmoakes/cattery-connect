@@ -6,7 +6,7 @@ import {
 } from "../../utils/appwrite/appwrite-functions";
 import {
   catsCollectionId,
-  customersCollectionId,
+  usersCollectionId,
   databaseId,
   smallRateLimit,
 } from "../../constants/constants";
@@ -17,12 +17,13 @@ import { generateShortId } from "../../functions/generate-short-id";
 
 export const addCustomerAsync = createAsyncThunk(
   "addCustomer",
-  async ({ customerDetails, catteryId }, thunkAPI) => {
+  async ({ customerObject, catteryId }, thunkAPI) => {
     try {
-      const lowercasedCustomer = lowercaseObjectValues(customerDetails);
+      const lowercasedCustomer = lowercaseObjectValues(customerObject);
 
       const data = {
         customerId: generateShortId(lowercasedCustomer.name),
+        role: "customer",
         catteryId,
         ...lowercasedCustomer,
       };
@@ -30,7 +31,7 @@ export const addCustomerAsync = createAsyncThunk(
       await manageDatabaseDocument(
         "create",
         databaseId,
-        customersCollectionId,
+        usersCollectionId,
         ID.unique(),
         data
       );
@@ -42,9 +43,9 @@ export const addCustomerAsync = createAsyncThunk(
 
 export const editCustomerAsync = createAsyncThunk(
   "editCustomer",
-  async ({ customerDetails }, thunkAPI) => {
+  async ({ customerObject }, thunkAPI) => {
     try {
-      const { $id, ...rest } = customerDetails;
+      const { $id, ...rest } = customerObject;
 
       const {
         address,
@@ -71,7 +72,7 @@ export const editCustomerAsync = createAsyncThunk(
       await manageDatabaseDocument(
         "update",
         databaseId,
-        customersCollectionId,
+        usersCollectionId,
         $id,
         data
       );
@@ -126,7 +127,7 @@ export const deleteCustomerAsync = createAsyncThunk(
       await manageDatabaseDocument(
         "delete",
         databaseId,
-        customersCollectionId,
+        usersCollectionId,
         $id
       );
     } catch (error) {

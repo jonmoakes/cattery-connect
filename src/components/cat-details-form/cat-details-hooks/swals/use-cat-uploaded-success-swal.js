@@ -32,10 +32,14 @@ const useCatUploadedSuccessSwal = () => {
       ).then((isConfirmed) => {
         if (isConfirmed) {
           dispatch(resetCatDetailsManagementState());
-          if ([viewCustomersCatsRoute, allCustomersRoute].includes(fromRoute)) {
+          if (
+            fromRoute === viewCustomersCatsRoute ||
+            fromRoute === allCustomersRoute
+          ) {
             hamburgerHandlerNavigate(allCustomersRoute);
           } else if (
-            [addCatChooseOwnerRoute, allCatsRoute].includes(fromRoute)
+            fromRoute === addCatChooseOwnerRoute ||
+            fromRoute === allCatsRoute
           ) {
             hamburgerHandlerNavigate(allCatsRoute);
           }

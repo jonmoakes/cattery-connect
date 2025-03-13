@@ -1,4 +1,9 @@
-import { getUserOnLoadAsync, signInAsync, signOutAsync } from "./user.thunks";
+import {
+  getUserOnLoadAsync,
+  signInAsync,
+  signUpAsync,
+  signOutAsync,
+} from "./user.thunks";
 
 export const extraReducers = (builder) => {
   builder
@@ -24,6 +29,19 @@ export const extraReducers = (builder) => {
       state.currentUserError = null;
     })
     .addCase(signInAsync.rejected, (state, action) => {
+      state.currentUserIsLoading = false;
+      state.currentUser = null;
+      state.currentUserError = action.payload;
+    })
+    .addCase(signUpAsync.pending, (state) => {
+      state.currentUserIsLoading = true;
+    })
+    .addCase(signUpAsync.fulfilled, (state, action) => {
+      state.currentUserIsLoading = false;
+      state.currentUser = action.payload;
+      state.currentUserError = null;
+    })
+    .addCase(signUpAsync.rejected, (state, action) => {
       state.currentUserIsLoading = false;
       state.currentUser = null;
       state.currentUserError = action.payload;

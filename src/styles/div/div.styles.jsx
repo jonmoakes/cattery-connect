@@ -162,15 +162,11 @@ export const RelativePositionDiv = styled.div`
 export const AuthButtonDiv = styled.div`
   width: 100%;
   height: auto;
-  margin: 0px auto 20px auto;
+  margin: 20px auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  &.new-password {
-    margin: 20px auto;
-  }
 `;
 
 export const ErrorDiv = styled.div`

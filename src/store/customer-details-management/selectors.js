@@ -4,7 +4,8 @@ export const selectCustomerDetailsManagementSelectors = createSelector(
   (state) => state.customerDetailsManagement,
   (customerDetailsManagement) => ({
     customerDetails: customerDetailsManagement.customerDetails,
-    customerDetailsForFormComparison: customerDetailsManagement.customerDetails,
+    customerDetailsForFormComparison:
+      customerDetailsManagement.customerDetailsForFormComparison,
     customerDetailsManagementIsLoading:
       customerDetailsManagement.customerDetailsManagementIsLoading,
     addCustomerResult: customerDetailsManagement.addCustomerResult,

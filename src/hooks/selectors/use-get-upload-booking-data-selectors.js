@@ -16,6 +16,8 @@ const useGetUploadBookingDataSelectors = () => {
 
   const {
     customerDocumentId,
+    customerId,
+
     bookingId,
     customerName,
     customerEmail,
@@ -54,6 +56,7 @@ const useGetUploadBookingDataSelectors = () => {
     uploadBookingDataError,
     customerDocumentId,
     bookingId,
+    customerId,
     customerName,
     customerEmail,
     catDetails,

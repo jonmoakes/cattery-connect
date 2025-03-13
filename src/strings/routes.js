@@ -1,4 +1,5 @@
 export const signInRoute = "/sign-in";
+export const signUpRoute = "/sign-up";
 export const aboutRoute = "/about";
 export const contactRoute = "/contact";
 export const accountRoute = "/account";

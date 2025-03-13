@@ -30,7 +30,7 @@ const useSubmitCustomer = () => {
     name,
     email,
     phoneNumber,
-    customerDetails,
+    customerDetails: customerObject,
     catteryId: currentCatteryId,
     customerDetailsForFormComparison,
   } = useGetCustomerDetailsManagementSelectors();
@@ -51,10 +51,10 @@ const useSubmitCustomer = () => {
     const confirmResult = () => {
       if (currentCatteryId === undefined) {
         // creating a customer
-        dispatch(addCustomerAsync({ customerDetails, catteryId }));
+        dispatch(addCustomerAsync({ customerObject, catteryId }));
       } else {
         //updating a customer
-        dispatch(editCustomerAsync({ customerDetails }));
+        dispatch(editCustomerAsync({ customerObject }));
       }
     };
 
@@ -86,7 +86,7 @@ const useSubmitCustomer = () => {
     if (path === editCustomerRoute) {
       if (
         formFieldsHaveNotChanged(
-          customerDetails,
+          customerObject,
           customerDetailsForFormComparison
         )
       ) {

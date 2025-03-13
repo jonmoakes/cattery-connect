@@ -23,9 +23,11 @@ export const fetchAllUsersDocumentsAsync = createAsyncThunk(
         return [];
       }
 
-      const usersMinusAdmin = documents.filter((user) => user.role !== "admin");
+      const usersMinusAdminAndCustomerRole = documents.filter(
+        (user) => user.role !== "admin" && user.role !== "customer"
+      );
 
-      return usersMinusAdmin;
+      return usersMinusAdminAndCustomerRole;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -48,7 +50,9 @@ export const fetchCatteryIdsAndOwnerNameArrayAsync = createAsyncThunk(
         return [];
       }
 
-      const usersMinusAdmin = documents.filter((user) => user.role !== "admin");
+      const usersMinusAdmin = documents.filter(
+        (user) => user.role !== "admin" && user.role !== "customer"
+      );
 
       const catterysIdAndOwnerNameArray = usersMinusAdmin.map((user) => ({
         catteryId: user.catteryId,

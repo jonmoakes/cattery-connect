@@ -19,7 +19,7 @@ const ResetPasswordButton = () => {
         newPassword.length &&
         confirmNewPassword &&
         confirmNewPassword.length ? (
-        <AuthButtonDiv className="new-password">
+        <AuthButtonDiv>
           <Button type="submit">update password</Button>
         </AuthButtonDiv>
       ) : null}

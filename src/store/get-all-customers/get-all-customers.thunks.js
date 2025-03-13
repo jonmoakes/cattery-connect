@@ -3,7 +3,7 @@ import { listDocumentsByQueryOrSearch } from "../../utils/appwrite/appwrite-func
 
 import {
   databaseId,
-  customersCollectionId,
+  usersCollectionId,
   standardRateLimit,
 } from "../../constants/constants";
 
@@ -16,7 +16,7 @@ export const getAllOwnersCustomersAsync = createAsyncThunk(
 
       const usersCustomers = await listDocumentsByQueryOrSearch(
         databaseId,
-        customersCollectionId,
+        usersCollectionId,
         queryIndex,
         queryValue,
         false,
@@ -29,7 +29,11 @@ export const getAllOwnersCustomersAsync = createAsyncThunk(
         return [];
       }
 
-      return documents;
+      const usersWithCustomerRole = documents.filter(
+        (user) => user.role === "customer"
+      );
+
+      return usersWithCustomerRole;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

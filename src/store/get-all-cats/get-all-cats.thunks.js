@@ -3,7 +3,7 @@ import { listDocumentsByQueryOrSearch } from "../../utils/appwrite/appwrite-func
 
 import {
   databaseId,
-  customersCollectionId,
+  usersCollectionId,
   catsCollectionId,
   highRateLimit,
   smallRateLimit,
@@ -46,7 +46,7 @@ export const fetchCatsOwnerDetailsAsync = createAsyncThunk(
 
       const usersCustomers = await listDocumentsByQueryOrSearch(
         databaseId,
-        customersCollectionId,
+        usersCollectionId,
         queryIndex,
         queryValue,
         false,
