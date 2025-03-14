@@ -20,6 +20,7 @@ const useCatUploadedSuccessSwal = () => {
 
   const catUploadedSuccessSwal = useCallback(
     (catsName, action, fromRoute) => {
+      console.log(fromRoute);
       fireSwal(
         "success",
         `${catsName} ${action}!`,
@@ -33,15 +34,16 @@ const useCatUploadedSuccessSwal = () => {
         if (isConfirmed) {
           dispatch(resetCatDetailsManagementState());
           if (
-            fromRoute === viewCustomersCatsRoute ||
-            fromRoute === allCustomersRoute
-          ) {
-            hamburgerHandlerNavigate(allCustomersRoute);
-          } else if (
+            fromRoute === undefined ||
             fromRoute === addCatChooseOwnerRoute ||
             fromRoute === allCatsRoute
           ) {
             hamburgerHandlerNavigate(allCatsRoute);
+          } else if (
+            fromRoute === viewCustomersCatsRoute ||
+            fromRoute === allCustomersRoute
+          ) {
+            hamburgerHandlerNavigate(allCustomersRoute);
           }
         }
       });

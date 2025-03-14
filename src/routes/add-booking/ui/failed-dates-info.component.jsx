@@ -9,19 +9,18 @@ import CustomSpan from "../../../components/custom-span/custom-span.component";
 import { BookingWrapper, DataDiv } from "../../../styles/div/div.styles";
 import { BlackHr } from "../../../styles/hr/hr.styles";
 import { MinimalButton } from "../../../styles/button/button.styles";
-import useGetIsBookingAvailableSelectors from "../../../hooks/selectors/use-get-is-booking-available-selectors";
 
-const FailedDatesInfo = () => {
-  const { availabilityStatus, failingDates, showIneligibleDates } =
-    useGetIsBookingAvailableSelectors();
-
+const FailedDatesInfo = ({
+  bookingNotAvailableAndHasFailingDates,
+  showIneligibleDates,
+  failingDates,
+  bookingNotAvailableAndNoFailingDates,
+}) => {
   const dispatch = useDispatch();
 
   return (
     <>
-      {availabilityStatus === "bookingNotAvailable" &&
-      failingDates &&
-      failingDates.length ? (
+      {bookingNotAvailableAndHasFailingDates ? (
         <BookingWrapper className="unavailable">
           {!showIneligibleDates ? (
             <>
@@ -82,7 +81,7 @@ const FailedDatesInfo = () => {
             below again, otherwise this booking can't be made 😿
           </CustomBalancedText>
         </BookingWrapper>
-      ) : availabilityStatus === "bookingNotAvailable" && !failingDates ? (
+      ) : bookingNotAvailableAndNoFailingDates ? (
         <DataDiv className="error">
           <CustomBalancedText className="white">
             sorry, there was an error showing which dates are unavailable..

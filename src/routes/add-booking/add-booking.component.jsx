@@ -1,9 +1,3 @@
-import useGetRequiredCatteryDataForBookingSelectors from "../../hooks/selectors/use-get-required-cattery-data-for-booking-selectors";
-import useGetAllCustomerSelectors from "../../hooks/selectors/use-get-all-customers-selectors";
-import useGetIndividualCustomersCatsSelectors from "../../hooks/selectors/use-get-individual-customers-cats-selectors";
-import useGetUploadBookingDataSelectors from "../../hooks/selectors/use-get-upload-booking-data-selectors";
-import useGetIsBookingAvailableSelectors from "../../hooks/selectors/use-get-is-booking-available-selectors";
-
 import useHandleCustomerSelectChange from "../../components/customer-select-drop-down/customer-select-dropdown-hooks/use-handle-customer-select-change";
 import useAddBookingVariables from "./add-booking-hooks/use-add-booking-variables";
 import useCheckBookingAvailability from "./add-booking-hooks/use-check-booking-availability";
@@ -14,49 +8,48 @@ import useCompleteBookingResultSwalUseEffect from "./add-booking-hooks/use-effec
 import useSendEmailResultSwalUseEffect from "./add-booking-hooks/use-effects/use-send-email-result-swal-use-effect";
 
 import ShowFetchErrors from "../../components/errors/show-fetch-errors.component";
+import NoCustomersFound from "../../components/no-customers-found/no-customers-found.component";
 import AddBookingTitleAndLoader from "./ui/add-booking-title-and-loader.component";
-import CustomerSelectDropdown from "../../components/customer-select-drop-down/customer-select-dropdown.component";
-import ChooseCatsInput from "./inputs/choose-cats-input/choose-cats-input.component";
-import MoreCatsSelectedThanSinglePenCapacity from "./ui/more-cats-selected-than-single-pen-capacity.component";
-import CheckInAndOutDateInput from "./inputs/check-in-and-out-date-input/check-in-and-out-date-input.component";
-import CheckInAndOutTimeSlotSelectInput from "./inputs/check-in-out-and-time-slot-input/check-in-and-out-time-slot.component";
-import PaymentStatusSelectInput from "./inputs/payment-status-select-input.component";
-import ShowBookingData from "../../components/show-booking-data/show-booking-data.component";
-import FailedDatesInfo from "./ui/failed-dates-info.component";
-import CheckAvailabilityButton from "./ui/check-availability-button.component";
-import BookingIsAvailableInfoAndPlaceBookingButton from "./ui/booking-is-available-info-and-place-booking-button.component";
-
 import { Container } from "../../styles/container/container.styles";
 import { ParentDiv } from "../../styles/div/div.styles";
 import { Form } from "../../styles/form/form.styles";
 
+import BookingFormSection from "./ui/booking-form-section.component";
+import FormButtonsAndAvailabilityInfoSection from "./ui/form-buttons-and-availability-info-section.component";
+import useConfirmPlaceBooking from "./add-booking-hooks/use-confirm-place-booking";
+import useHandleChangeDetailsRequest from "./add-booking-hooks/use-handle-change-details-request";
+
 const AddBooking = () => {
-  const { requiredCatteryDataError } =
-    useGetRequiredCatteryDataForBookingSelectors();
-  const { getAllCustomersError } = useGetAllCustomerSelectors();
-  const { individualCustomersCatsError } =
-    useGetIndividualCustomersCatsSelectors();
   const {
+    hasErrors,
+    atLeastOneCustomerExists,
+    availabilityStatus,
+    numberOfCatsInBooking,
+    maximumCatsInSinglePen,
+    moreCatsInBookingThanCapacityInOnePen,
+    atLeastOneCatHasBeenSelected,
     checkInDate,
     checkInSlot,
     checkOutDate,
     checkOutSlot,
     paymentStatus,
-  } = useGetUploadBookingDataSelectors();
-  const { availabilityStatus } = useGetIsBookingAvailableSelectors();
-
-  const { handleCustomerSelectChange } = useHandleCustomerSelectChange();
-  const { checkBookingAvailability } = useCheckBookingAvailability();
-  const {
-    moreCatsInBookingThanCapacityInOnePen,
-    atLeastOneCatHasBeenSelected,
-    bookingDataToShow,
     shouldShowFormSubmissionButtons,
+    bookingDataToShow,
+    bookingNotAvailableAndHasFailingDates,
+    showIneligibleDates,
+    failingDates,
+    bookingNotAvailableAndNoFailingDates,
   } = useAddBookingVariables();
+  const { checkBookingAvailability } = useCheckBookingAvailability();
+  const { handleCustomerSelectChange } = useHandleCustomerSelectChange();
+  const { confirmPlaceBooking } = useConfirmPlaceBooking();
+  const { handleChangeDetailsRequest } = useHandleChangeDetailsRequest();
 
   useGetRequiredCatteryDataAndCustomersThunkUseEffect();
   useCheckInAndOutDateValidityUseEffect();
   useCheckBookingAvailableResultSwalUseEffect();
+  const { noAvailabilityRef, bookingIsAvailableRef } =
+    useCheckBookingAvailableResultSwalUseEffect();
   useCompleteBookingResultSwalUseEffect();
   useSendEmailResultSwalUseEffect();
 
@@ -64,65 +57,45 @@ const AddBooking = () => {
     <Container>
       <AddBookingTitleAndLoader />
 
-      {requiredCatteryDataError ||
-      getAllCustomersError ||
-      individualCustomersCatsError ? (
+      {hasErrors ? (
         <ShowFetchErrors />
+      ) : !atLeastOneCustomerExists ? (
+        <NoCustomersFound />
       ) : (
         <ParentDiv>
           <Form onSubmit={checkBookingAvailability}>
-            {availabilityStatus ===
-            "bookingAvailable" ? null : moreCatsInBookingThanCapacityInOnePen ? (
-              <>
-                <CustomerSelectDropdown {...{ handleCustomerSelectChange }} />
-                <ChooseCatsInput />
-                <MoreCatsSelectedThanSinglePenCapacity />
-              </>
-            ) : (
-              <>
-                <CustomerSelectDropdown {...{ handleCustomerSelectChange }} />
-                <ChooseCatsInput />
-
-                <CheckInAndOutDateInput
-                  dateType="checkInDate"
-                  condition={atLeastOneCatHasBeenSelected}
-                  selectedDate={checkInDate}
-                />
-
-                <CheckInAndOutTimeSlotSelectInput
-                  slotType="checkInSlot"
-                  checkInSlot={checkInSlot}
-                  checkOutSlot={checkOutSlot}
-                  condition={checkInDate}
-                  showHr={checkInDate}
-                />
-                <CheckInAndOutDateInput
-                  dateType="checkOutDate"
-                  condition={atLeastOneCatHasBeenSelected && checkInSlot}
-                  selectedDate={checkOutDate}
-                />
-                <CheckInAndOutTimeSlotSelectInput
-                  slotType="checkOutSlot"
-                  checkInSlot={checkInSlot}
-                  checkOutSlot={checkOutSlot}
-                  condition={checkOutDate}
-                  showHr={checkOutDate}
-                />
-
-                <PaymentStatusSelectInput
-                  condition={checkOutSlot}
-                  paymentStatus={paymentStatus}
-                />
-              </>
+            {availabilityStatus === "bookingAvailable" ? null : (
+              <BookingFormSection
+                {...{
+                  handleCustomerSelectChange,
+                  numberOfCatsInBooking,
+                  maximumCatsInSinglePen,
+                  moreCatsInBookingThanCapacityInOnePen,
+                  atLeastOneCatHasBeenSelected,
+                  checkInDate,
+                  checkInSlot,
+                  checkOutDate,
+                  checkOutSlot,
+                  paymentStatus,
+                }}
+              />
             )}
 
             {shouldShowFormSubmissionButtons ? (
-              <>
-                <ShowBookingData {...{ bookingDataToShow }} />
-                <FailedDatesInfo />
-                <CheckAvailabilityButton />
-                <BookingIsAvailableInfoAndPlaceBookingButton />
-              </>
+              <FormButtonsAndAvailabilityInfoSection
+                {...{
+                  bookingDataToShow,
+                  noAvailabilityRef,
+                  bookingNotAvailableAndHasFailingDates,
+                  showIneligibleDates,
+                  failingDates,
+                  bookingNotAvailableAndNoFailingDates,
+                  availabilityStatus,
+                  bookingIsAvailableRef,
+                  confirmPlaceBooking,
+                  handleChangeDetailsRequest,
+                }}
+              />
             ) : null}
           </Form>
         </ParentDiv>

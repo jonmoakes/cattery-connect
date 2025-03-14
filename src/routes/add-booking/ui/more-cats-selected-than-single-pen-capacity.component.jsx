@@ -1,16 +1,12 @@
-import useGetRequiredCatteryDataForBookingSelectors from "../../../hooks/selectors/use-get-required-cattery-data-for-booking-selectors";
-import useAddBookingVariables from "../add-booking-hooks/use-add-booking-variables";
-
 import CustomBalancedText from "../../../components/custom-balanced-text/custom-balanced-text.component";
 import CustomSpan from "../../../components/custom-span/custom-span.component";
 
 import { ErrorDiv } from "../../../styles/div/div.styles";
 
-const MoreCatsSelectedThanSinglePenCapacity = () => {
-  const { maximumCatsInSinglePen } =
-    useGetRequiredCatteryDataForBookingSelectors();
-  const { numberOfCatsInBooking } = useAddBookingVariables();
-
+const MoreCatsSelectedThanSinglePenCapacity = ({
+  numberOfCatsInBooking,
+  maximumCatsInSinglePen,
+}) => {
   return (
     <ErrorDiv className="red">
       <CustomBalancedText className="white">

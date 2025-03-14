@@ -4,12 +4,12 @@ import useGetIsBookingAvailableSelectors from "../../../hooks/selectors/use-get-
 import useGetUpdatePensDataSelectors from "../../../hooks/selectors/use-get-update-pens-data-selectors";
 import useGetUploadBookingDataSelectors from "../../../hooks/selectors/use-get-upload-booking-data-selectors";
 import useGetSendEmailSelectors from "../../../hooks/selectors/use-get-send-email-selectors";
+import useGetIndividualCustomersCatsSelectors from "../../../hooks/selectors/use-get-individual-customers-cats-selectors";
 
 import CustomBalancedText from "../../../components/custom-balanced-text/custom-balanced-text.component";
 import SkeletonBox from "../../../components/skeleton-box/skeleton-box.component";
 
 import { ParentDiv } from "../../../styles/div/div.styles";
-import useGetIndividualCustomersCatsSelectors from "../../../hooks/selectors/use-get-individual-customers-cats-selectors";
 
 const AddBookingTitleAndLoader = () => {
   const { getAllCustomersIsLoading } = useGetAllCustomerSelectors();

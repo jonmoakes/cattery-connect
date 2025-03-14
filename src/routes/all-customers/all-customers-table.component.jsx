@@ -3,7 +3,7 @@ import useAllCustomersTableVariables from "./all-customers-hooks/use-all-custome
 import useIsOnline from "../../hooks/use-is-online";
 
 import ShowFetchErrors from "../../components/errors/show-fetch-errors.component";
-import NoCustomersFound from "./no-customers-found.component";
+import NoCustomersFound from "../../components/no-customers-found/no-customers-found.component";
 import RenderTable from "../../components/tables/render-table.component";
 import NetworkError from "../../components/errors/network-error.component";
 import TablePagination from "../../components/tables/table-pagination.component";
