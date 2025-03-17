@@ -15,7 +15,8 @@ import SignUpButton from "./sign-up-button.component";
 import { Container } from "../../styles/container/container.styles";
 import { ParentDiv } from "../../styles/div/div.styles";
 import { Form } from "../../styles/form/form.styles";
-import { signUpAccordionData } from "./sign-up-accordion-data";
+
+import { passwordAccordionData } from "./password-accodion-data";
 
 const SignUp = () => {
   useHandleSignUpFormErrorUseEffect();
@@ -28,14 +29,14 @@ const SignUp = () => {
       <AuthNavAndLoader />
       <ParentDiv>
         <CustomBalancedText type="h1">sign up</CustomBalancedText>
-        <HelpAccordion
-          className="neg-margin-top"
-          openText="why should i sign up?"
-          data={signUpAccordionData}
-        />
       </ParentDiv>
 
       <ParentDiv>
+        <HelpAccordion
+          className="password-security"
+          openText="password advice"
+          data={passwordAccordionData}
+        />
         <Form onSubmit={signUpFormSubmit}>
           <SignUpCustomerId {...{ handleSignUpFormChange }} />
           <SignUpPasswords {...{ handleSignUpFormChange }} />

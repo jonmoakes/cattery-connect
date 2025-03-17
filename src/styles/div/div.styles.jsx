@@ -388,6 +388,10 @@ export const Accordion = styled.div.withConfig({
     margin: -10px auto 20px auto;
   }
 
+  &.password-security {
+    margin: 30px auto -20px auto;
+  }
+
   &.daily-schedule {
     margin: -10px auto 40px auto;
 
