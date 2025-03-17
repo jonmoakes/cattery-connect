@@ -52,7 +52,10 @@ const TitleAndIntro = () => (
       <CustomBalancedText>
         let's take a look at some of what you can do!
       </CustomBalancedText>
-      <CustomBalancedText>( tap images to view full size )</CustomBalancedText>
+      <CustomBalancedText>
+        you can tap on images on to view them full size ( you can also pinch to
+        zoom on mobiles ).
+      </CustomBalancedText>
     </ParentDiv>
   </>
 );
