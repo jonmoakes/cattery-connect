@@ -5,18 +5,21 @@ import useGetViewPenDataSelectors from "../../hooks/selectors/use-get-view-pen-d
 import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
 
 const ChosenDateWhenNoData = ({ date }) => {
-  const { chosenDatePenData } = useGetViewPenDataSelectors();
+  const { returnedChosenDate, chosenDatePenData } =
+    useGetViewPenDataSelectors();
+
   return (
     <>
-      {!Object.keys(chosenDatePenData).length && date ? (
+      {returnedChosenDate ? null : !Object.keys(chosenDatePenData).length &&
+        date ? (
         <CustomBalancedText>
           chosen date - {format(date, "dd MMMM yyyy")}
         </CustomBalancedText>
-      ) : !chosenDatePenData.length ? (
+      ) : (
         <CustomBalancedText>
           {format(new Date(), "dd MMMM yyyy")}
         </CustomBalancedText>
-      ) : null}
+      )}
     </>
   );
 };

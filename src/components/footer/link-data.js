@@ -1,7 +1,7 @@
 import {
   cookiesRoute,
   dataProtectionPolicyRoute,
-  imageCreditsRoute,
+  creditsRoute,
   privacyPolicyRoute,
   refundsPolicyRoute,
   securityPolicyRoute,
@@ -15,5 +15,5 @@ export const links = [
   { id: 4, text: "security policy", route: securityPolicyRoute },
   { id: 5, text: "refunds policy", route: refundsPolicyRoute },
   { id: 6, text: "Data protection", route: dataProtectionPolicyRoute },
-  { id: 7, text: "image credits", route: imageCreditsRoute },
+  { id: 7, text: "credits", route: creditsRoute },
 ];

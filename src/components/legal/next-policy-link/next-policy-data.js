@@ -1,7 +1,7 @@
 import {
   cookiesRoute,
   dataProtectionPolicyRoute,
-  imageCreditsRoute,
+  creditsRoute,
   privacyPolicyRoute,
   refundsPolicyRoute,
   securityPolicyRoute,
@@ -30,10 +30,10 @@ export const nextPolicyData = {
     buttonText: "data protection",
   },
   [dataProtectionPolicyRoute]: {
-    nextRoute: imageCreditsRoute,
-    buttonText: "image credits",
+    nextRoute: creditsRoute,
+    buttonText: "credits",
   },
-  [imageCreditsRoute]: {
+  [creditsRoute]: {
     nextRoute: termsRoute,
     buttonText: "view T & C's",
   },

@@ -27,4 +27,4 @@ export const cookiesRoute = "/cookies-policy";
 export const securityPolicyRoute = "/security-policy";
 export const refundsPolicyRoute = "/refunds-policy";
 export const dataProtectionPolicyRoute = "/data-protection-policy";
-export const imageCreditsRoute = "/image-credits";
+export const creditsRoute = "/credits";

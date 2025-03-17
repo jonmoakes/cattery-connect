@@ -23,16 +23,26 @@ export const ResponsiveImage = styled.img`
   border-radius: 5px;
   box-shadow: 15px 15px 15px ${softBlack};
 
-  @media screen and (min-width: 481px) and (max-width: 768px) {
-    max-width: 90%;
+  &.no-border {
+    border: none;
+    border-radius: unset;
+    box-shadow: none;
   }
 
-  @media screen and (min-width: 769px) and (max-width: 1024px) {
-    max-width: 75%;
-  }
+  &.imac {
+    margin: -100px auto;
 
-  @media screen and (min-width: 1025px) {
-    max-width: 50%;
+    @media screen and (max-width: 1366px) {
+      margin: -50px auto;
+    }
+
+    @media screen and (max-width: 600px) {
+      margin: -50px auto 30px auto;
+    }
+
+    @media screen and (max-width: 450px) {
+      margin: -50px auto 20px auto;
+    }
   }
 
   @media screen and (max-width: 1366px) {

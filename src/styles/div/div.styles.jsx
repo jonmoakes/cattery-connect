@@ -693,3 +693,29 @@ export const FooterLinksDiv = styled.div`
     width: 100%;
   }
 `;
+
+export const ImageWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+  margin: 0 auto;
+
+  @media screen and (min-width: 1200px) {
+    max-width: 1000px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    max-width: 600px;
+  }
+
+  @media screen and (max-width: 768px) {
+    max-width: 400px;
+  }
+
+  @media screen and (max-width: 480px) {
+    max-width: 300px;
+  }
+`;

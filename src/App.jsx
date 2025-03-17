@@ -43,7 +43,8 @@ import {
   securityPolicyRoute,
   refundsPolicyRoute,
   dataProtectionPolicyRoute,
-  imageCreditsRoute,
+  creditsRoute,
+  aboutRoute,
 } from "./strings/routes";
 import Footer from "./components/footer/footer.component";
 
@@ -51,6 +52,7 @@ const Navigation = lazy(() =>
   import("./routes/navigation/navigation.component")
 );
 const Home = lazy(() => import("./routes/home/home.component"));
+const About = lazy(() => import("./routes/about/about.component"));
 const SignIn = lazy(() => import("./routes/sign-in/sign-in.component"));
 const SignUp = lazy(() => import("./routes/sign-up/sign-up.component"));
 const Contact = lazy(() => import("./routes/contact/contact.component"));
@@ -116,9 +118,7 @@ const RefundsPolicy = lazy(() =>
 const DataProtection = lazy(() =>
   import("./routes/data-protection/data-protection.component")
 );
-const ImageCredits = lazy(() =>
-  import("./routes/image-credits/image-credits.component")
-);
+const Credits = lazy(() => import("./routes/credits/credits.component"));
 
 const App = () => {
   const { currentUser, role } = useGetCurrentUserSelectors();
@@ -135,6 +135,7 @@ const App = () => {
         <Suspense fallback={<SkeletonBox loadingText="please wait..." />}>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path={aboutRoute} element={<About />} />
             <Route path={signInRoute} element={<SignIn />} />
             <Route path={signUpRoute} element={<SignUp />} />
             <Route path={contactRoute} element={<Contact />} />
@@ -155,7 +156,7 @@ const App = () => {
               path={dataProtectionPolicyRoute}
               element={<DataProtection />}
             />
-            <Route path={imageCreditsRoute} element={<ImageCredits />} />
+            <Route path={creditsRoute} element={<Credits />} />
 
             <Route element={<PrivateRoutes />}>
               <Route path={accountRoute} element={<Account />} />

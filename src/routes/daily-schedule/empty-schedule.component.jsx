@@ -26,7 +26,7 @@ const EmptySchedule = () => {
         there are No check in / check outs or 🐾 furry guests 🐾 today.
       </CustomBalancedText>
 
-      <ProgressiveImage {...{ image, altText: "empty cat pen" }} />
+      <ProgressiveImage {...{ srcList: image, altText: "empty cat pen" }} />
     </ParentDiv>
   );
 };

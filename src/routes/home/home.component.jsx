@@ -6,40 +6,38 @@ import { ParentDiv } from "../../styles/div/div.styles";
 
 import image from "../../assets/cat-in-cat-room.webp";
 
-const Home = () => {
-  const altText = "a cat in a cattery";
+const Home = () => (
+  <Container>
+    <ParentDiv>
+      <CustomBalancedText type="h1">
+        Effortlessly Manage Your Cattery!
+      </CustomBalancedText>
+    </ParentDiv>
+    <ParentDiv>
+      <CustomBalancedText>Welcome to Cattery Connect!</CustomBalancedText>
+      <CustomBalancedText>
+        your comprehensive solution for efficient cattery management.
+      </CustomBalancedText>
+      <CustomBalancedText>
+        Our platform streamlines your operations, allowing you to focus more on
+        providing exceptional care to your feline guests.
+      </CustomBalancedText>
 
-  return (
-    <Container>
-      <ParentDiv>
-        <CustomBalancedText type="h1">
-          Effortlessly Manage Your Cattery!
-        </CustomBalancedText>
-      </ParentDiv>
-      <ParentDiv>
-        <CustomBalancedText>Welcome to Cattery Connect!</CustomBalancedText>
-        <CustomBalancedText>
-          your comprehensive solution for efficient cattery management.
-        </CustomBalancedText>
-        <CustomBalancedText>
-          Our platform streamlines your operations, allowing you to focus more
-          on providing exceptional care to your feline guests.
-        </CustomBalancedText>
+      <ProgressiveImage
+        {...{ srcList: image, altText: "a cat in a cattery" }}
+      />
 
-        <ProgressiveImage {...{ image, altText }} />
+      <CustomBalancedText>
+        With user-friendly booking management and seamless communication tools,
+        managing your cattery has never been easier.
+      </CustomBalancedText>
 
-        <CustomBalancedText>
-          With user-friendly booking management and seamless communication
-          tools, managing your cattery has never been easier.
-        </CustomBalancedText>
-
-        <CustomBalancedText>
-          Say goodbye to manual scheduling and administrative hassles, and
-          embrace a more organised, efficient approach to running your cattery.
-        </CustomBalancedText>
-      </ParentDiv>
-    </Container>
-  );
-};
+      <CustomBalancedText>
+        Say goodbye to manual scheduling and administrative hassles, and embrace
+        a more organised, efficient approach to running your cattery.
+      </CustomBalancedText>
+    </ParentDiv>
+  </Container>
+);
 
 export default Home;
