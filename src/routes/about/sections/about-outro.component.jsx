@@ -24,8 +24,8 @@ const AboutOutro = () => (
 
     <ParentDiv>
       <CustomBalancedText>
-        If you have any questions or need further assistance, feel free to{" "}
-        <StyledLink to={contactRoute}>contact me</StyledLink>.
+        If you have any questions or need further assistance, please don't
+        hesitate to <StyledLink to={contactRoute}>contact me</StyledLink>!
       </CustomBalancedText>
     </ParentDiv>
   </>

@@ -14,7 +14,7 @@ export const LogoImage = styled.img`
 `;
 
 export const ResponsiveImage = styled.img`
-  width: 100%;
+  width: 80%;
   height: auto;
   display: block;
   transition: opacity 0.3s ease-in-out;
@@ -29,19 +29,20 @@ export const ResponsiveImage = styled.img`
     box-shadow: none;
   }
 
+  &.error-fallback {
+    width: 50%;
+    height: auto;
+
+    @media screen and (max-width: 1366px) {
+      width: 100%;
+    }
+  }
+
   &.imac {
-    margin: -100px auto;
+    margin: -75px auto;
 
     @media screen and (max-width: 1366px) {
       margin: -50px auto;
-    }
-
-    @media screen and (max-width: 600px) {
-      margin: -50px auto 30px auto;
-    }
-
-    @media screen and (max-width: 450px) {
-      margin: -50px auto 20px auto;
     }
   }
 

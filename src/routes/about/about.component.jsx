@@ -18,7 +18,7 @@ const About = () => (
     <BookingsTableInfo />
     <DailyScheduleInfo />
     <PenDataInfo />
-    <AboutOutro />å
+    <AboutOutro />
   </Container>
 );
 

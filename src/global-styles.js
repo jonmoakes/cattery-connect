@@ -155,6 +155,7 @@ const GlobalStyles = createGlobalStyle`
 
   a {
       color: ${teal};
+      text-decoration: none;
   }
 `;
 

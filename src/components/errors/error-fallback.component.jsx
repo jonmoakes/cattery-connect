@@ -17,7 +17,11 @@ const ErrorFallback = () => (
       </CustomBalancedText>
       <ErrorFallbackImageDiv>
         <ProgressiveImage
-          {...{ srcList: image, altText: "sad cat", className: "no-border" }}
+          {...{
+            srcList: image,
+            altText: "sad cat",
+            className: "error-fallback",
+          }}
         />
       </ErrorFallbackImageDiv>
 

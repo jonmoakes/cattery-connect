@@ -19,7 +19,7 @@ const Contact = () => {
       ) : null}
 
       <ParentDiv>
-        <CustomBalancedText type="h1">contact us</CustomBalancedText>
+        <CustomBalancedText type="h1">contact me</CustomBalancedText>
       </ParentDiv>
 
       <ContactForm />
