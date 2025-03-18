@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",
+    "@stripe/react-stripe-js": "^3.5.0",
+    "@stripe/stripe-js": "^6.1.0",
     "appwrite": "^16.1.0",
     "axios": "^1.7.9",
     "date-fns": "^4.1.0",
@@ -32,6 +34,7 @@
     "redux-logger": "^3.0.6",
     "redux-remember": "^5.2.0",
     "regenerator-runtime": "^0.14.1",
+    "stripe": "^17.7.0",
     "styled-components": "^6.1.14",
     "sweetalert2": "^11.15.10",
     "sweetalert2-react-content": "^5.1.0",

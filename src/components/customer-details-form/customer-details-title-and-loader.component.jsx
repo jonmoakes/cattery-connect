@@ -34,7 +34,7 @@ const CustomerDetailsTitleAndLoader = () => {
               : "Add Customer"
             : name
             ? `Edit ${name}`
-            : "Edit Customer"}
+            : "Edit Details"}
         </CustomBalancedText>
       </ParentDiv>
     </>

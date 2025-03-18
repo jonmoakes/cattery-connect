@@ -44,9 +44,10 @@ const NameAndEmail = ({ handleContactFormDetailsChange }) => {
       ) : (
         <>
           <CustomBalancedText>
-            as you are already, signed in, we will use your email address from
-            when your account was created ({" "}
-            <CustomSpan type="lowercase">{email}</CustomSpan> ) to reply to.
+            as you are already signed in, we will use your email address from
+            when your account was created
+            <br />( <CustomSpan type="lowercase">{email}</CustomSpan> )<br />
+            to reply to.
           </CustomBalancedText>
           <CustomBalancedText>
             if you want the response to be sent to a different email address,

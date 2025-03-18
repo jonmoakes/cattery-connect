@@ -18,6 +18,13 @@ import {
   SEND_EMAIL_CATTERY_CONNECT_CONTACT_FORM_MESSAGE_ENDPOINT,
 } from "../../../netlify/api-endpoints/api-endpoints";
 import { formatCancelBookingReceipt } from "./functions/format-cancel-booking-receipt";
+import {
+  adminEmail,
+  catteryInfoCollectionId,
+  databaseId,
+  smallRateLimit,
+} from "../../constants/constants";
+import { listDocumentsByQueryOrSearch } from "../../utils/appwrite/appwrite-functions";
 
 export const sendEmailCatteryConnectUpdatePensRollbackErrorAsync =
   createAsyncThunk(
@@ -207,11 +214,16 @@ export const sendCustomerCancellationEmailAsync = createAsyncThunk(
 
 export const sendEmailContactFormMessageAsync = createAsyncThunk(
   "sendEmailContactFormMessage",
-  async ({ senderName, senderEmail, senderMessage }, thunkAPI) => {
+  async (
+    { catteryEmail, senderName, senderEmail, senderMessage },
+    thunkAPI
+  ) => {
     try {
+      const sendTo = catteryEmail ? catteryEmail : adminEmail;
       const response = await axios.post(
         SEND_EMAIL_CATTERY_CONNECT_CONTACT_FORM_MESSAGE_ENDPOINT,
         {
+          sendTo,
           senderName,
           senderEmail: senderEmail.toLowerCase(),
           senderMessage,
@@ -224,6 +236,38 @@ export const sendEmailContactFormMessageAsync = createAsyncThunk(
       const errorMessage = error.response?.data?.message || error.message;
       console.error("Error sending email:", errorMessage);
       return thunkAPI.rejectWithValue(errorMessage);
+    }
+  }
+);
+
+export const getCatteryEmailAsync = createAsyncThunk(
+  "getCatteryEmail",
+  async ({ catteryId }, thunkAPI) => {
+    try {
+      const queryIndex = "catteryId";
+      const queryValue = catteryId;
+
+      const catteryCats = await listDocumentsByQueryOrSearch(
+        databaseId,
+        catteryInfoCollectionId,
+        queryIndex,
+        queryValue,
+        false,
+        smallRateLimit
+      );
+
+      const { documents } = catteryCats;
+
+      if (!documents.length) {
+        throw new Error("couldn't get cattery data");
+      }
+
+      const catteryData = documents[0];
+
+      const { email } = catteryData;
+      return email;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

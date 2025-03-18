@@ -5,7 +5,9 @@ import { sendEmailContactFormMessageAsync } from "../../../store/send-email/send
 import useConfirmSwal from "../../../hooks/use-confirm-swal";
 
 const useConfirmSendContactFormMessage = () => {
-  const { senderName, senderEmail, senderMessage } = useGetSendEmailSelectors();
+  const { senderName, senderEmail, senderMessage, catteryEmail } =
+    useGetSendEmailSelectors();
+
   const { confirmSwal } = useConfirmSwal();
 
   const dispatch = useDispatch();
@@ -20,6 +22,7 @@ const useConfirmSendContactFormMessage = () => {
       () =>
         dispatch(
           sendEmailContactFormMessageAsync({
+            catteryEmail,
             senderName,
             senderEmail,
             senderMessage,

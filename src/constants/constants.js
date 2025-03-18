@@ -6,6 +6,7 @@ export const availablilityCollectionId = import.meta.env
   .VITE_AVAILABILTY_COLLECTION_ID;
 export const bookingsCollectionId = import.meta.env.VITE_BOOKINGS_COLLECTION_ID;
 export const catsCollectionId = import.meta.env.VITE_CATS_COLLECTION_ID;
+export const adminEmail = import.meta.env.VITE_APP_ADMIN_EMAIL;
 
 export const standardRateLimit = 500;
 export const highRateLimit = 1000;

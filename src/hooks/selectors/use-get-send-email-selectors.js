@@ -7,6 +7,10 @@ const useGetSendEmailSelectors = () => {
     sendEmailStatusCode,
     sendEmailError,
     contactFormDetails,
+    getCatteryEmailIsLoading,
+    catteryEmail,
+    getCatteryEmailResult,
+    getCatteryEmailError,
   } = useSelector(selectSendEmailSelectors);
 
   const { senderName, senderEmail, senderMessage } = contactFormDetails ?? {};
@@ -19,6 +23,10 @@ const useGetSendEmailSelectors = () => {
     senderName,
     senderEmail,
     senderMessage,
+    getCatteryEmailIsLoading,
+    catteryEmail,
+    getCatteryEmailResult,
+    getCatteryEmailError,
   };
 };
 

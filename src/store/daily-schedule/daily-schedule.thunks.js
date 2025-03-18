@@ -77,12 +77,21 @@ export const getDailyBookingsDataAsync = createAsyncThunk(
         ...booking,
         cats: catsInToday
           .filter((cat) => cat.customerId === booking.customerId)
-          .map(({ catsId, catsName, catsFeedingInfo, catsMedicalInfo }) => ({
-            catsId,
-            catsName,
-            catsFeedingInfo,
-            catsMedicalInfo,
-          })),
+          .map(
+            ({
+              catsId,
+              catsName,
+              catsFeedingInfo,
+              catsMedicalInfo,
+              catsBehaviourInfo,
+            }) => ({
+              catsId,
+              catsName,
+              catsFeedingInfo,
+              catsMedicalInfo,
+              catsBehaviourInfo,
+            })
+          ),
       }));
 
       combinedData.sort((a, b) => {

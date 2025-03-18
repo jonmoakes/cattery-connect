@@ -7,5 +7,9 @@ export const selectSendEmailSelectors = createSelector(
     sendEmailStatusCode: sendEmail.sendEmailStatusCode,
     sendEmailError: sendEmail.sendEmailError,
     contactFormDetails: sendEmail.contactFormDetails,
+    getCatteryEmailIsLoading: sendEmail.getCatteryEmailIsLoading,
+    catteryEmail: sendEmail.catteryEmail,
+    getCatteryEmailResult: sendEmail.getCatteryEmailResult,
+    getCatteryEmailError: sendEmail.getCatteryEmailError,
   })
 );

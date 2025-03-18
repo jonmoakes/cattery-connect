@@ -20,7 +20,6 @@ const useCatUploadedSuccessSwal = () => {
 
   const catUploadedSuccessSwal = useCallback(
     (catsName, action, fromRoute) => {
-      console.log(fromRoute);
       fireSwal(
         "success",
         `${catsName} ${action}!`,

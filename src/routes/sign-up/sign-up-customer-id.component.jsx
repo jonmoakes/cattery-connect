@@ -11,8 +11,8 @@ const SignUpCustomerId = ({ handleSignUpFormChange }) => {
   return (
     <>
       <HelpAccordion
-        className="neg-margin-top"
-        openText="what is this customer ID?"
+        className="customer-id"
+        openText="what is the customer ID for?"
         data={signUpAccordionData}
       />
 

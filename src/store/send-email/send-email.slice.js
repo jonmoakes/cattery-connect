@@ -13,6 +13,9 @@ export const sendEmailSlice = createSlice({
     resetContactFormDetails(state) {
       state.contactFormDetails = {};
     },
+    resetGetCatteryEmailError(state) {
+      state.getCatteryEmailError = null;
+    },
     resetSendEmailState: () => {
       return INITIAL_STATE;
     },
@@ -23,6 +26,7 @@ export const sendEmailSlice = createSlice({
 export const {
   setContactFormDetails,
   resetContactFormDetails,
+  resetGetCatteryEmailError,
   resetSendEmailState,
 } = sendEmailSlice.actions;
 

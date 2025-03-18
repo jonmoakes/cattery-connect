@@ -1,7 +1,7 @@
 export const getCatteryName = (catteryId) => {
   switch (catteryId) {
-    case "ftfw":
-      return "Furry Tails Cattery";
+    case "ffrt":
+      return "Furry Friends Retreat";
     default:
       "Your Cattery";
   }

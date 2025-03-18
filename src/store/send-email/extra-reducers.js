@@ -1,4 +1,5 @@
 import {
+  getCatteryEmailAsync,
   sendCustomerCancellationEmailAsync,
   sendEmailCatteryConnectDeleteBookingDataFailedAsync,
   sendEmailCatteryConnectPensUpdatedBookingDataFailedAsync,
@@ -43,4 +44,20 @@ export const extraReducers = (builder) => {
   );
   handleAsyncAction(builder, sendCustomerCancellationEmailAsync);
   handleAsyncAction(builder, sendEmailContactFormMessageAsync);
+  builder
+    .addCase(getCatteryEmailAsync.pending, (state) => {
+      state.getCatteryEmailIsLoading = true;
+    })
+    .addCase(getCatteryEmailAsync.fulfilled, (state, action) => {
+      state.getCatteryEmailIsLoading = false;
+      state.getCatteryEmailResult = "fulfilled";
+      state.catteryEmail = action.payload;
+      state.getCatteryEmailError = null;
+    })
+    .addCase(getCatteryEmailAsync.rejected, (state, action) => {
+      state.getCatteryEmailIsLoading = false;
+      state.getCatteryEmailResult = "rejected";
+      state.catteryEmail = "";
+      state.getCatteryEmailError = action.payload;
+    });
 };

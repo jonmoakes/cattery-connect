@@ -28,3 +28,7 @@ export const securityPolicyRoute = "/security-policy";
 export const refundsPolicyRoute = "/refunds-policy";
 export const dataProtectionPolicyRoute = "/data-protection-policy";
 export const creditsRoute = "/credits";
+export const signedInCustomersDetailsRoute = "/your-details";
+export const signedInCustomersBookingsRoute = "/your-bookings";
+export const signedInCustomersCatsRoute = "/your-cats";
+export const updateEmailRoute = "/update-email";

@@ -1,28 +1,24 @@
 import useGetSendEmailSelectors from "../../hooks/selectors/use-get-send-email-selectors";
+
+import useGetEmailAddressForCustomerThunkUseEffect from "./contact-form-hooks/use-get-email-address-for-customer-thunk-use-effect";
 import useSendContactFormMessageResultSwal from "./contact-form-hooks/use-send-contact-form-message-result-swal";
 
-import SkeletonBox from "../../components/skeleton-box/skeleton-box.component";
-import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
+import TitleAndLoader from "./sections/title-and-loader.component";
+import ShowFetchErrors from "../../components/errors/show-fetch-errors.component";
 import ContactForm from "./sections/contact-form.component";
 
 import { Container } from "../../styles/container/container.styles";
-import { ParentDiv } from "../../styles/div/div.styles";
 
 const Contact = () => {
-  const { sendEmailIsLoading } = useGetSendEmailSelectors();
+  const { getCatteryEmailError } = useGetSendEmailSelectors();
+  useGetEmailAddressForCustomerThunkUseEffect();
   useSendContactFormMessageResultSwal();
 
   return (
     <Container>
-      {sendEmailIsLoading ? (
-        <SkeletonBox loadingText="Sending Message..." />
-      ) : null}
+      <TitleAndLoader />
 
-      <ParentDiv>
-        <CustomBalancedText type="h1">contact me</CustomBalancedText>
-      </ParentDiv>
-
-      <ContactForm />
+      {getCatteryEmailError ? <ShowFetchErrors /> : <ContactForm />}
     </Container>
   );
 };

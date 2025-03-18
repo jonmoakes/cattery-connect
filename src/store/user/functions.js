@@ -30,7 +30,7 @@ export const getRetrievedUserFromDocument = async () => {
 the users document may have been deleted.`);
   }
 
-  const { name, email, role, catteryId } = documents[0];
+  const { name, email, role, catteryId, customerId } = documents[0];
 
   return {
     id,
@@ -38,5 +38,6 @@ the users document may have been deleted.`);
     email,
     role,
     catteryId,
+    customerId,
   };
 };

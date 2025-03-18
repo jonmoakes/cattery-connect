@@ -6,7 +6,11 @@ import useNavLogic from "./nav-hooks/use-nav-logic";
 import { NavLink } from "../../styles/p/p.styles";
 import { BorderLink } from "../../styles/span/span.styles";
 
-import { adminSignedInRoutes, signedInRoutes } from "./routes";
+import {
+  adminSignedInRoutes,
+  customerSignedInRoutes,
+  signedInRoutes,
+} from "./routes";
 
 const NavUserSignedIn = () => {
   const { currentUser, role } = useGetCurrentUserSelectors();
@@ -16,9 +20,19 @@ const NavUserSignedIn = () => {
 
   return (
     <>
-      {currentUser && role !== "admin" ? (
+      {currentUser && role === "owner" ? (
         <>
           {signedInRoutes.map((route) => {
+            return route !== location.pathname ? (
+              <NavLink key={route} onClick={() => handleNavigate(route)}>
+                <BorderLink>{formattedLink(route)}</BorderLink>
+              </NavLink>
+            ) : null;
+          })}
+        </>
+      ) : currentUser && role === "customer" ? (
+        <>
+          {customerSignedInRoutes.map((route) => {
             return route !== location.pathname ? (
               <NavLink key={route} onClick={() => handleNavigate(route)}>
                 <BorderLink>{formattedLink(route)}</BorderLink>

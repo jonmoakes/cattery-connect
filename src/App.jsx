@@ -45,6 +45,7 @@ import {
   dataProtectionPolicyRoute,
   creditsRoute,
   aboutRoute,
+  signedInCustomersDetailsRoute,
 } from "./strings/routes";
 import Footer from "./components/footer/footer.component";
 
@@ -119,6 +120,11 @@ const DataProtection = lazy(() =>
   import("./routes/data-protection/data-protection.component")
 );
 const Credits = lazy(() => import("./routes/credits/credits.component"));
+const SignedInCustomersDetails = lazy(() =>
+  import(
+    "./routes/signed-in-customers-details/signed-in-customers-details.component"
+  )
+);
 
 const App = () => {
   const { currentUser, role } = useGetCurrentUserSelectors();
@@ -221,7 +227,10 @@ const App = () => {
               <Route
                 path={editCustomerRoute}
                 element={
-                  currentUser && role === "owner" ? <EditCustomer /> : null
+                  (currentUser && role === "owner") ||
+                  (currentUser && role === "customer") ? (
+                    <EditCustomer />
+                  ) : null
                 }
               />
 
@@ -255,6 +264,15 @@ const App = () => {
                 path={penDataRoute}
                 element={
                   currentUser && role === "owner" ? <ViewPenData /> : null
+                }
+              />
+
+              <Route
+                path={signedInCustomersDetailsRoute}
+                element={
+                  currentUser && role === "customer" ? (
+                    <SignedInCustomersDetails />
+                  ) : null
                 }
               />
             </Route>

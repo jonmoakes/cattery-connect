@@ -9,9 +9,11 @@ import { RadialTealButton } from "../../styles/button/button.styles";
 import { StyledLink } from "../../styles/link/link.styles";
 
 import { contactRoute } from "../../strings/routes";
+import useGetSendEmailSelectors from "../../hooks/selectors/use-get-send-email-selectors";
 
 const ShowFetchErrors = () => {
   const { role } = useGetCurrentUserSelectors();
+  const { getCatteryEmailError } = useGetSendEmailSelectors();
   const { showErrorHeading, errorToDisplay } = useHandleShowError();
 
   return (
@@ -32,7 +34,7 @@ const ShowFetchErrors = () => {
           </ErrorDiv>
 
           <CustomBalancedText>
-            press the 'reload page' button and then try again.
+            press the 'reload' button and then try again.
           </CustomBalancedText>
 
           {role !== "admin" ? (
@@ -40,11 +42,18 @@ const ShowFetchErrors = () => {
               <CustomBalancedText>
                 please don't use the browsers back button.
               </CustomBalancedText>
-              <CustomBalancedText>
-                if you continue to see this error, please{" "}
-                <StyledLink to={contactRoute}>contact us</StyledLink> and quote
-                the error in green box above.
-              </CustomBalancedText>
+              {!getCatteryEmailError ? (
+                <CustomBalancedText>
+                  if you continue to see this error, please{" "}
+                  <StyledLink to={contactRoute}>contact us</StyledLink> and
+                  quote the error in green box above.
+                </CustomBalancedText>
+              ) : (
+                <CustomBalancedText>
+                  if you continue to see this error, please contact us by phone
+                  or by visiting.
+                </CustomBalancedText>
+              )}
               <CustomBalancedText>
                 we apologise for the inconvenience!
               </CustomBalancedText>

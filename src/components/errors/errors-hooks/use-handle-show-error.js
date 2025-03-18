@@ -7,6 +7,8 @@ import useGetRequiredCatteryDataForBookingSelectors from "../../../hooks/selecto
 import useGetIndividualCustomersCatsSelectors from "../../../hooks/selectors/use-get-individual-customers-cats-selectors";
 import useGetDailyScheduleSelectors from "../../../hooks/selectors/use-get-daily-schedule-selectors";
 import useGetViewPenDataSelectors from "../../../hooks/selectors/use-get-view-pen-data-selectors";
+import useGetSignedInCustomersDetailsSelectors from "../../../hooks/selectors/use-get-signed-in-customers-details-selectors";
+import useGetSendEmailSelectors from "../../../hooks/selectors/use-get-send-email-selectors";
 
 const useHandleShowError = () => {
   const { getAllCustomersError } = useGetAllCustomerSelectors();
@@ -22,6 +24,9 @@ const useHandleShowError = () => {
     useGetIndividualCustomersCatsSelectors();
   const { dailyBookingsDataError } = useGetDailyScheduleSelectors();
   const { chosenDatePenDataError } = useGetViewPenDataSelectors();
+  const { signedInCustomersDetailsError } =
+    useGetSignedInCustomersDetailsSelectors();
+  const { getCatteryEmailError } = useGetSendEmailSelectors();
 
   const showErrorHeading = () => {
     if (getAllCustomersError) return "failed to fetch your customers.";
@@ -39,6 +44,9 @@ const useHandleShowError = () => {
     if (individualCustomersCatsError) return "failed to fetch customers cats.";
     if (dailyBookingsDataError) return "fetch daily bookings thunk error";
     if (chosenDatePenDataError) return "failed to fetch pen data.";
+    if (signedInCustomersDetailsError) return "failed to fetch your details.";
+    if (getCatteryEmailError)
+      return "failed to fetch your catteries email address.";
   };
 
   const errorToDisplay = () => {
@@ -54,6 +62,8 @@ const useHandleShowError = () => {
       individualCustomersCatsError,
       dailyBookingsDataError,
       chosenDatePenDataError,
+      signedInCustomersDetailsError,
+      getCatteryEmailError,
     ];
     return errors.find((error) => error !== null);
   };

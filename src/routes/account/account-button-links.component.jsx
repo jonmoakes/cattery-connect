@@ -8,8 +8,12 @@ import { ParentDiv } from "../../styles/div/div.styles";
 
 const AccountButtonLinks = () => {
   const { role } = useGetCurrentUserSelectors();
-  const { adminButtons, catteryOwnerButtons, catteryOwnerCustomerDataButtons } =
-    useNavigateToRoute();
+  const {
+    adminButtons,
+    catteryOwnerButtons,
+    catteryOwnerCustomerDataButtons,
+    customerDetailsButtons,
+  } = useNavigateToRoute();
 
   return (
     <>
@@ -33,9 +37,7 @@ const AccountButtonLinks = () => {
         </>
       ) : (
         <ParentDiv>
-          <CustomBalancedText>
-            customer account buttons go here.
-          </CustomBalancedText>
+          <RenderButtonsList {...{ buttons: customerDetailsButtons }} />
         </ParentDiv>
       )}
     </>

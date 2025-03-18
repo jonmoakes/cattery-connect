@@ -9,6 +9,9 @@ import {
   bookingsRoute,
   dailyScheduleRoute,
   signUpRoute,
+  signedInCustomersBookingsRoute,
+  signedInCustomersDetailsRoute,
+  signedInCustomersCatsRoute,
 } from "../../strings/routes";
 
 export const signedInRoutes = [
@@ -21,6 +24,13 @@ export const signedInRoutes = [
 ];
 
 export const adminSignedInRoutes = [allUsersRoute, accountRoute];
+export const customerSignedInRoutes = [
+  signedInCustomersBookingsRoute,
+  signedInCustomersDetailsRoute,
+  signedInCustomersCatsRoute,
+  accountRoute,
+  contactRoute,
+];
 
 export const signedOutRoutes = [
   signInRoute,

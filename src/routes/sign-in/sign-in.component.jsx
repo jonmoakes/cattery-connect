@@ -4,7 +4,7 @@ import useHandleSignInFormChange from "./sign-in-form-hooks/use-handle-sign-in-f
 import useSignInPasswordIsVisibleUseEffect from "./sign-in-form-hooks/use-sign-in-password-is-visible-use-effect";
 
 import AuthNavAndLoader from "../../components/auth-nav-and-loader/auth-nav-and-loader.component";
-import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
+import TitleAndSignUpLink from "./title-and-sign-up-link.component";
 import SignInEmail from "./sign-in-email.component";
 import SignInPassword from "./sign-in-password.component";
 import SignInButtons from "./sign-in-buttons.component";
@@ -22,9 +22,7 @@ const SignIn = () => {
   return (
     <Container>
       <AuthNavAndLoader />
-      <ParentDiv>
-        <CustomBalancedText type="h1">sign in</CustomBalancedText>
-      </ParentDiv>
+      <TitleAndSignUpLink />
 
       <ParentDiv>
         <Form onSubmit={signInFormSubmit}>

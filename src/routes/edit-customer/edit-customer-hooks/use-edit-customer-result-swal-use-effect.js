@@ -12,7 +12,11 @@ import useFireSwal from "../../../hooks/use-fire-swal";
 import useHamburgerHandlerNavigate from "../../../hooks/use-hamburger-handler-navigate";
 
 import { errorReceivedMessage } from "../../../strings/errors";
-import { allCustomersRoute } from "../../../strings/routes";
+import {
+  allCustomersRoute,
+  signedInCustomersDetailsRoute,
+} from "../../../strings/routes";
+import { useLocation } from "react-router-dom";
 
 const useEditCustomerResultSwalUseEffect = () => {
   const { editCustomerResult, editCustomerError, name } =
@@ -21,6 +25,8 @@ const useEditCustomerResultSwalUseEffect = () => {
   const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
   const dispatch = useDispatch();
   const { fireSwal } = useFireSwal();
+  const location = useLocation();
+  const fromRoute = location.state?.fromRoute;
 
   useEffect(() => {
     if (!editCustomerResult && !editCustomerError) return;
@@ -30,7 +36,11 @@ const useEditCustomerResultSwalUseEffect = () => {
         (isConfirmed) => {
           if (isConfirmed) {
             dispatch(resetCustomerDetailsManagementState());
-            hamburgerHandlerNavigate(allCustomersRoute);
+            if (!fromRoute) {
+              hamburgerHandlerNavigate(allCustomersRoute);
+            } else if (fromRoute === signedInCustomersDetailsRoute) {
+              hamburgerHandlerNavigate(signedInCustomersDetailsRoute);
+            }
           }
         }
       );
@@ -59,6 +69,7 @@ const useEditCustomerResultSwalUseEffect = () => {
     dispatch,
     hamburgerHandlerNavigate,
     name,
+    fromRoute,
   ]);
 };
 

@@ -4,15 +4,24 @@ import CustomBalancedText from "../../components/custom-balanced-text/custom-bal
 import AccountButtonLinks from "./account-button-links.component";
 
 import { Container } from "../../styles/container/container.styles";
-import { ParentDiv } from "../../styles/div/div.styles";
+import { ParentDiv, UnderTitleContainer } from "../../styles/div/div.styles";
+import useGetCurrentUserSelectors from "../../hooks/selectors/use-get-current-user-selectors";
+import { getFirstNameFromString } from "../../functions/get-first-name-from-string";
 
 const Account = () => {
+  const { name } = useGetCurrentUserSelectors();
   useCheckForAndClearFormDetails();
 
   return (
     <Container>
       <ParentDiv>
         <CustomBalancedText type="h1">account</CustomBalancedText>
+        <UnderTitleContainer>
+          <CustomBalancedText>
+            welcome {getFirstNameFromString(name)}!<br />
+            what would you like to do?
+          </CustomBalancedText>
+        </UnderTitleContainer>
       </ParentDiv>
 
       <AccountButtonLinks />

@@ -11,6 +11,10 @@ import {
   bookingsRoute,
   dailyScheduleRoute,
   penDataRoute,
+  signedInCustomersDetailsRoute,
+  signedInCustomersCatsRoute,
+  signedInCustomersBookingsRoute,
+  contactRoute,
 } from "../../../strings/routes";
 
 const useNavigateToRoute = () => {
@@ -75,10 +79,34 @@ const useNavigateToRoute = () => {
     },
   ];
 
+  const customerDetailsButtons = [
+    {
+      id: 11,
+      text: "view bookings",
+      onClick: () => hamburgerHandlerNavigate(signedInCustomersBookingsRoute),
+    },
+    {
+      id: 12,
+      text: "view your data",
+      onClick: () => hamburgerHandlerNavigate(signedInCustomersDetailsRoute),
+    },
+    {
+      id: 13,
+      text: "view your cats",
+      onClick: () => hamburgerHandlerNavigate(signedInCustomersCatsRoute),
+    },
+    {
+      id: 14,
+      text: "contact cattery",
+      onClick: () => hamburgerHandlerNavigate(contactRoute),
+    },
+  ];
+
   return {
     adminButtons,
     catteryOwnerButtons,
     catteryOwnerCustomerDataButtons,
+    customerDetailsButtons,
   };
 };
 

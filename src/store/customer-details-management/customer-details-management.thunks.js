@@ -49,7 +49,6 @@ export const editCustomerAsync = createAsyncThunk(
 
       const {
         address,
-        catDetails,
         catteryId,
         customerId,
         email,
@@ -60,7 +59,6 @@ export const editCustomerAsync = createAsyncThunk(
 
       const data = lowercaseObjectValues({
         address,
-        catDetails,
         catteryId,
         customerId,
         email,

@@ -23,6 +23,7 @@ import { cancelBookingReducer } from "./cancel-booking/cancel-booking.slice";
 import { dailyScheduleReducer } from "./daily-schedule/daily-schedule.slice";
 import { individualCustomersCatsReducer } from "./get-individual-customers-cats/get-individual-customers-cats.slice";
 import { viewPenDataReducer } from "./view-pen-data/view-pen-data.slice";
+import { signedInCustomersDetailsReducer } from "./signed-in-customers-details/signed-in-customer-details.slice";
 
 export const rootReducer = combineReducers({
   hamburgerMenu: hamburgerMenuReducer,
@@ -48,4 +49,5 @@ export const rootReducer = combineReducers({
   dailySchedule: dailyScheduleReducer,
   individualCustomersCats: individualCustomersCatsReducer,
   viewPenData: viewPenDataReducer,
+  signedInCustomersDetails: signedInCustomersDetailsReducer,
 });

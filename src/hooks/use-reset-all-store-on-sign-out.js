@@ -20,6 +20,7 @@ import { resetIndividualCustomersCatsState } from "../store/get-individual-custo
 import { resetDailyScheduleState } from "../store/daily-schedule/daily-schedule.slice";
 import { resetViewPenDataState } from "../store/view-pen-data/view-pen-data.slice";
 import { resetSignUpFormState } from "../store/sign-up-form/sign-up-form.slice";
+import { resetSignedInCustomersDetailsState } from "../store/signed-in-customers-details/signed-in-customer-details.slice";
 
 const useResetAllStoreOnSignOut = () => {
   const { resetAddBookingState } = useResetAddBookingState();
@@ -44,6 +45,7 @@ const useResetAllStoreOnSignOut = () => {
     dispatch(resetIndividualCustomersCatsState());
     dispatch(resetDailyScheduleState());
     dispatch(resetViewPenDataState());
+    dispatch(resetSignedInCustomersDetailsState());
     localStorage.clear();
   };
 

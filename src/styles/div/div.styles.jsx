@@ -392,6 +392,10 @@ export const Accordion = styled.div.withConfig({
     margin: 30px auto -20px auto;
   }
 
+  &.customer-id {
+    margin: 20px auto;
+  }
+
   &.daily-schedule {
     margin: -10px auto 40px auto;
 
@@ -413,7 +417,7 @@ export const Accordion = styled.div.withConfig({
   }
 
   @media screen and (max-width: 450px) {
-    width: ${({ showHelp }) => (showHelp ? "90%" : "70%")};
+    width: 90%;
   }
 `;
 
@@ -428,6 +432,10 @@ export const AccordionTitle = styled.div.withConfig({
   color: ${({ showHelp }) => (showHelp ? "whitesmoke" : softBlack)};
   font-size: 16px;
   padding: 5px;
+  border-top-left-radius: ${({ showHelp }) => (showHelp ? "3px" : "3px")};
+  border-top-right-radius: ${({ showHelp }) => (showHelp ? "3px" : "3px")};
+  border-bottom-left-radius: ${({ showHelp }) => (showHelp ? "0px" : "3px")};
+  border-bottom-right-radius: ${({ showHelp }) => (showHelp ? "0px" : "3px")};
   border-bottom: ${({ showHelp }) =>
     showHelp ? `2px solid ${softBlack}` : "none"};
 
@@ -722,4 +730,13 @@ export const ImageWrapper = styled.div`
   @media screen and (max-width: 480px) {
     max-width: 300px;
   }
+`;
+
+export const UnderTitleContainer = styled.div`
+  margin: -20px auto 20px auto;
+`;
+
+export const SignedInCustomersDetailsDiv = styled.div`
+  white-space: pre-wrap;
+  padding: 10px 0px 20px 0px;
 `;

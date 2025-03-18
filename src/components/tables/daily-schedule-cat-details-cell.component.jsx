@@ -6,7 +6,13 @@ import { BlackHr } from "../../styles/hr/hr.styles";
 const DailyScheduleCatsDetailCell = ({ value }) => (
   <>
     {value.map((cat, index) => {
-      const { catsId, catsName, catsFeedingInfo, catsMedicalInfo } = cat;
+      const {
+        catsId,
+        catsName,
+        catsFeedingInfo,
+        catsMedicalInfo,
+        catsBehaviourInfo,
+      } = cat;
       return (
         <div key={catsId}>
           {index === 0 && <BlackHr />}
@@ -33,6 +39,17 @@ const DailyScheduleCatsDetailCell = ({ value }) => (
               <CustomSpan>{catsMedicalInfo}</CustomSpan>
             ) : (
               "no medical info given"
+            )}
+          </CustomBalancedText>
+
+          <CustomBalancedText>
+            <CustomSpan type="underline">behaviour info:</CustomSpan>
+
+            <br />
+            {catsBehaviourInfo ? (
+              <CustomSpan>{catsBehaviourInfo}</CustomSpan>
+            ) : (
+              "no behaviour info given"
             )}
           </CustomBalancedText>
 
