@@ -15,6 +15,7 @@ import {
   signedInCustomersCatsRoute,
   signedInCustomersBookingsRoute,
   contactRoute,
+  customersCatteryDetailsRoute,
 } from "../../../strings/routes";
 
 const useNavigateToRoute = () => {
@@ -82,21 +83,26 @@ const useNavigateToRoute = () => {
   const customerDetailsButtons = [
     {
       id: 11,
-      text: "view bookings",
+      text: "your bookings",
       onClick: () => hamburgerHandlerNavigate(signedInCustomersBookingsRoute),
     },
     {
       id: 12,
-      text: "view your data",
+      text: "your details",
       onClick: () => hamburgerHandlerNavigate(signedInCustomersDetailsRoute),
     },
     {
       id: 13,
-      text: "view your cats",
+      text: "your cats",
       onClick: () => hamburgerHandlerNavigate(signedInCustomersCatsRoute),
     },
     {
       id: 14,
+      text: "your cattery details",
+      onClick: () => hamburgerHandlerNavigate(customersCatteryDetailsRoute),
+    },
+    {
+      id: 15,
       text: "contact cattery",
       onClick: () => hamburgerHandlerNavigate(contactRoute),
     },

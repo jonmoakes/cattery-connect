@@ -19,32 +19,27 @@ const CustomerDetailsMap = () => {
     useSignedInCustomersDetailsFunctions();
 
   return (
-    <>
-      <ParentDiv>
-        <SignedInCustomersDetailsDiv>
-          {Object.entries(customerDetailsFoUi).map(([label, value]) => (
-            <Fragment key={label}>
-              <CustomBalancedText>
-                <CustomSpan className="red">{getLabel(label)}:</CustomSpan>
-                <br />
-                {label === "email" ? (
-                  <CustomSpan type="lowercase">{value}</CustomSpan>
-                ) : (
-                  value
-                )}
-              </CustomBalancedText>
-              <BlackHr />
-            </Fragment>
-          ))}
-        </SignedInCustomersDetailsDiv>
-      </ParentDiv>
-
-      <ParentDiv>
-        <Button className="teal" onClick={handleEditDetailsNavigation}>
-          edit details
-        </Button>
-      </ParentDiv>
-    </>
+    <ParentDiv>
+      <SignedInCustomersDetailsDiv>
+        {Object.entries(customerDetailsFoUi).map(([label, value]) => (
+          <Fragment key={label}>
+            <CustomBalancedText>
+              <CustomSpan className="red">{getLabel(label)}:</CustomSpan>
+              <br />
+              {label === "email" ? (
+                <CustomSpan type="lowercase">{value}</CustomSpan>
+              ) : (
+                value
+              )}
+            </CustomBalancedText>
+            <BlackHr />
+          </Fragment>
+        ))}
+      </SignedInCustomersDetailsDiv>
+      <Button className="teal" onClick={handleEditDetailsNavigation}>
+        edit details
+      </Button>
+    </ParentDiv>
   );
 };
 

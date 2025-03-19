@@ -734,6 +734,12 @@ export const ImageWrapper = styled.div`
 
 export const UnderTitleContainer = styled.div`
   margin: -20px auto 20px auto;
+
+  &.account {
+    @media screen and (max-width: 450px) {
+      margin: -20px auto 0px auto;
+    }
+  }
 `;
 
 export const SignedInCustomersDetailsDiv = styled.div`

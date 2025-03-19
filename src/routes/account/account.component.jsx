@@ -16,10 +16,10 @@ const Account = () => {
     <Container>
       <ParentDiv>
         <CustomBalancedText type="h1">account</CustomBalancedText>
-        <UnderTitleContainer>
+        <UnderTitleContainer className="account">
           <CustomBalancedText>
             welcome {getFirstNameFromString(name)}!<br />
-            what would you like to do?
+            choose from the options below.
           </CustomBalancedText>
         </UnderTitleContainer>
       </ParentDiv>
