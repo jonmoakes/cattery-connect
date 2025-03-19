@@ -9,6 +9,7 @@ import useGetDailyScheduleSelectors from "../../../hooks/selectors/use-get-daily
 import useGetViewPenDataSelectors from "../../../hooks/selectors/use-get-view-pen-data-selectors";
 import useGetSignedInCustomersDetailsSelectors from "../../../hooks/selectors/use-get-signed-in-customers-details-selectors";
 import useGetSendEmailSelectors from "../../../hooks/selectors/use-get-send-email-selectors";
+import useGetCatteryDetailsSelectors from "../../../hooks/selectors/use-get-cattery-details-selectors";
 
 const useHandleShowError = () => {
   const { getAllCustomersError } = useGetAllCustomerSelectors();
@@ -27,6 +28,7 @@ const useHandleShowError = () => {
   const { signedInCustomersDetailsError } =
     useGetSignedInCustomersDetailsSelectors();
   const { getCatteryEmailError } = useGetSendEmailSelectors();
+  const { catteryDetailsError } = useGetCatteryDetailsSelectors();
 
   const showErrorHeading = () => {
     if (getAllCustomersError) return "failed to fetch your customers.";
@@ -47,6 +49,7 @@ const useHandleShowError = () => {
     if (signedInCustomersDetailsError) return "failed to fetch your details.";
     if (getCatteryEmailError)
       return "failed to fetch your catteries email address.";
+    if (catteryDetailsError) return "failed to fetch cattery details.";
   };
 
   const errorToDisplay = () => {
@@ -64,6 +67,7 @@ const useHandleShowError = () => {
       chosenDatePenDataError,
       signedInCustomersDetailsError,
       getCatteryEmailError,
+      catteryDetailsError,
     ];
     return errors.find((error) => error !== null);
   };

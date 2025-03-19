@@ -15,7 +15,7 @@ import {
   signedInCustomersCatsRoute,
   signedInCustomersBookingsRoute,
   contactRoute,
-  customersCatteryDetailsRoute,
+  catteryDetailsRoute,
 } from "../../../strings/routes";
 
 const useNavigateToRoute = () => {
@@ -99,7 +99,7 @@ const useNavigateToRoute = () => {
     {
       id: 14,
       text: "your cattery details",
-      onClick: () => hamburgerHandlerNavigate(customersCatteryDetailsRoute),
+      onClick: () => hamburgerHandlerNavigate(catteryDetailsRoute),
     },
     {
       id: 15,

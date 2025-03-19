@@ -69,6 +69,10 @@ export const Button = styled.button`
     text-shadow: 1px 1px 1px ${softBlack};
   }
 
+  &.email {
+    text-transform: lowercase;
+  }
+
   &.cancel {
     margin-top: 40px;
   }

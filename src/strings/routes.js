@@ -31,5 +31,5 @@ export const creditsRoute = "/credits";
 export const signedInCustomersDetailsRoute = "/your-details";
 export const signedInCustomersBookingsRoute = "/your-bookings";
 export const signedInCustomersCatsRoute = "/your-cats";
-export const customersCatteryDetailsRoute = "/cattery-details";
+export const catteryDetailsRoute = "/cattery-details";
 export const updateEmailRoute = "/update-email";

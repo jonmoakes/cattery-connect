@@ -41,6 +41,7 @@ import {
   penDataRoute,
   signUpRoute,
   signedInCustomersDetailsRoute,
+  catteryDetailsRoute,
 } from "../strings/routes";
 import useResetAddBookingState from "./use-reset-add-booking-state";
 import { resetBookingsState } from "../store/bookings/bookings.slice";
@@ -60,6 +61,7 @@ import { resetDailyScheduleState } from "../store/daily-schedule/daily-schedule.
 import { resetViewPenDataState } from "../store/view-pen-data/view-pen-data.slice";
 import { resetSignUpFormState } from "../store/sign-up-form/sign-up-form.slice";
 import { resetSignedInCustomersDetailsState } from "../store/signed-in-customers-details/signed-in-customer-details.slice";
+import { resetCatteryDetailsState } from "../store/cattery-details/cattery-details-slice";
 
 const useResetStoreOnRouteChangeUseEffect = () => {
   const { allUsersCatteryIdsAndOwnerNameError } = useGetAllUsersSelectors();
@@ -142,6 +144,9 @@ const useResetStoreOnRouteChangeUseEffect = () => {
           break;
         case signedInCustomersDetailsRoute:
           dispatch(resetSignedInCustomersDetailsState());
+          break;
+        case catteryDetailsRoute:
+          dispatch(resetCatteryDetailsState());
           break;
         default:
           break;
