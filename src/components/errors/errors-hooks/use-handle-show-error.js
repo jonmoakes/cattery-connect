@@ -43,7 +43,7 @@ const useHandleShowError = () => {
     if (fetchAvailabilityDocsToUpdateError)
       return `failed to pen data. 
 ( fetch Availability Docs )`;
-    if (individualCustomersCatsError) return "failed to fetch customers cats.";
+    if (individualCustomersCatsError) return "failed to fetch the cat details.";
     if (dailyBookingsDataError) return "fetch daily bookings thunk error";
     if (chosenDatePenDataError) return "failed to fetch pen data.";
     if (signedInCustomersDetailsError) return "failed to fetch your details.";

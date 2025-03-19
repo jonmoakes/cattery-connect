@@ -9,7 +9,7 @@ const useGetCurrentUserSelectors = () => {
     signOutIsLoading,
   } = useSelector(selectCurrentUserSelectors);
 
-  const { email, id, name, role, catteryId } = currentUser ?? {};
+  const { email, id, name, role, catteryId, customerId } = currentUser ?? {};
 
   return {
     currentUser,
@@ -20,6 +20,7 @@ const useGetCurrentUserSelectors = () => {
     name,
     role,
     catteryId,
+    customerId,
     signOutIsLoading,
   };
 };

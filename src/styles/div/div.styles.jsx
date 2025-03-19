@@ -745,4 +745,25 @@ export const UnderTitleContainer = styled.div`
 export const DataDetailsDiv = styled.div`
   white-space: pre-wrap;
   padding: 10px 0px 20px 0px;
+
+  &.cats {
+    background: ${radialBeige};
+    border: 1px solid ${softBlack};
+    border-radius: 5px;
+    width: 50%;
+    margin: 0px auto 50px auto;
+    box-shadow: 6px 6px 15px ${softBlack};
+
+    @media screen and (max-width: 1366px) {
+      box-shadow: none;
+    }
+
+    @media screen and (max-width: 850px) {
+      width: 75%;
+    }
+
+    @media screen and (max-width: 600px) {
+      width: 90%;
+    }
+  }
 `;

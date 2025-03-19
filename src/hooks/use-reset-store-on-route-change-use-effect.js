@@ -42,6 +42,7 @@ import {
   signUpRoute,
   signedInCustomersDetailsRoute,
   catteryDetailsRoute,
+  signedInCustomersCatsRoute,
 } from "../strings/routes";
 import useResetAddBookingState from "./use-reset-add-booking-state";
 import { resetBookingsState } from "../store/bookings/bookings.slice";
@@ -109,6 +110,7 @@ const useResetStoreOnRouteChangeUseEffect = () => {
           dispatch(resetGetAllCatsState());
           break;
         case viewCustomersCatsRoute:
+        case signedInCustomersCatsRoute:
           dispatch(resetIndividualCustomersCatsState());
           break;
         case addCatChooseOwnerRoute:

@@ -47,6 +47,7 @@ import {
   aboutRoute,
   signedInCustomersDetailsRoute,
   catteryDetailsRoute,
+  signedInCustomersCatsRoute,
 } from "./strings/routes";
 import Footer from "./components/footer/footer.component";
 
@@ -128,6 +129,9 @@ const SignedInCustomersDetails = lazy(() =>
 );
 const CatteryDetails = lazy(() =>
   import("./routes/cattery-details/cattery-details.component")
+);
+const SignedInCustomersCats = lazy(() =>
+  import("./routes/signed-in-customers-cats/signed-in-customers-cats.component")
 );
 
 const App = () => {
@@ -284,6 +288,14 @@ const App = () => {
                 path={catteryDetailsRoute}
                 element={
                   currentUser && role === "customer" ? <CatteryDetails /> : null
+                }
+              />
+              <Route
+                path={signedInCustomersCatsRoute}
+                element={
+                  currentUser && role === "customer" ? (
+                    <SignedInCustomersCats />
+                  ) : null
                 }
               />
             </Route>
