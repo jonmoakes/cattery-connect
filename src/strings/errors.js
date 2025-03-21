@@ -59,3 +59,6 @@ export const phoneNumberIncludesSpaceErrorMessage =
   "please don't include a space in the phone number.";
 export const couldntFindDocIdMessage =
   "couldn't find details needed for deletion. pleasd reload the page and try again.";
+export const paymentDeclinedMessage = (message) => {
+  return `<span style="font-size:20px";>sorry, there was an error making the payment.<br/><br/>Your card has<br/>not been charged.<br/><br/> the error received was:<br/><br/> <span style="color:${customYellow}";>'${message}'</span><br/><br/>please tap the ok button below and then try again.</span>`;
+};

@@ -10,7 +10,11 @@ import {
 import useHandleClickTableCheckbox from "./use-handle-click-table-checkbox";
 
 import TableCheckBox from "../table-checkbox";
-import { allUsersRoute, dailyScheduleRoute } from "../../../strings/routes";
+import {
+  allUsersRoute,
+  dailyScheduleRoute,
+  signedInCustomersBookingsRoute,
+} from "../../../strings/routes";
 import { useLocation } from "react-router-dom";
 
 const useTableWithCustomColumns = ({
@@ -58,7 +62,8 @@ const useTableWithCustomColumns = ({
         if (
           hasCatsOwnerDetails ||
           path === allUsersRoute ||
-          path === dailyScheduleRoute
+          path === dailyScheduleRoute ||
+          path === signedInCustomersBookingsRoute
         ) {
           return [...columns];
         } else {

@@ -22,21 +22,6 @@ const useConfirmUpdateCheckInOutStatus = () => {
       );
     };
 
-    //     const message =
-    //       isCheckingInToday && !checkedInStatus
-    //         ? `do you want to
-    // <span style="color:${customYellow};">check in the cat(s)</span>?`
-    //         : isCheckingInToday && checkedInStatus
-    //         ? `do you want to set the cat(s) to be
-    // <span style="color:${customYellow};">NOT checked in</span>?`
-    //         : isCheckingOutToday && !checkedOutStatus
-    //         ? `do you want to
-    // <span style="color:${customYellow};">check out the cat(s)</span>?`
-    //         : isCheckingOutToday && checkedOutStatus
-    //         ? `do you want to set the cat(s) to be
-    // <span style="color:${customYellow};">NOT checked out</span> ?`
-    //         : "update status";
-
     confirmSwal(
       confirmUpdateStatusMessage,
       "",

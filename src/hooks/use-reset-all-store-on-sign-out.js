@@ -22,6 +22,8 @@ import { resetViewPenDataState } from "../store/view-pen-data/view-pen-data.slic
 import { resetSignUpFormState } from "../store/sign-up-form/sign-up-form.slice";
 import { resetSignedInCustomersDetailsState } from "../store/signed-in-customers-details/signed-in-customer-details.slice";
 import { resetCatteryDetailsState } from "../store/cattery-details/cattery-details-slice";
+import { resetCardInputState } from "../store/card-input/card-input.slice";
+import { resetHandlePaymentState } from "../store/handle-payment/handle-payment-slice";
 
 const useResetAllStoreOnSignOut = () => {
   const { resetAddBookingState } = useResetAddBookingState();
@@ -48,6 +50,8 @@ const useResetAllStoreOnSignOut = () => {
     dispatch(resetViewPenDataState());
     dispatch(resetSignedInCustomersDetailsState());
     dispatch(resetCatteryDetailsState());
+    dispatch(resetCardInputState());
+    dispatch(resetHandlePaymentState());
     localStorage.clear();
   };
 

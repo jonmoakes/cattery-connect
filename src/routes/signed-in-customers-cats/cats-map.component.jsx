@@ -15,7 +15,7 @@ const CatsMap = () => {
   return (
     <>
       {filteredCatData.map((item) => (
-        <DataDetailsDiv key={item.catsId} className="cats">
+        <DataDetailsDiv key={item.catsId} className="with-background">
           {orderedKeys.map(
             (key) =>
               item[key] && ( // Only display the key if it exists in the item

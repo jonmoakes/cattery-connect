@@ -69,6 +69,11 @@ export const Button = styled.button`
     text-shadow: 1px 1px 1px ${softBlack};
   }
 
+  &.confirm-payment {
+    margin: 20px auto 50px auto;
+    animation: 1s ${zoomInLeftAnimation};
+  }
+
   &.email {
     text-transform: lowercase;
   }
@@ -147,6 +152,10 @@ export const MinimalButton = styled.button`
   &.payment-status {
     margin: 10px auto 0px auto;
     background: ${radialGrey};
+  }
+
+  &.settle-payment {
+    margin: 10px auto 0px auto;
   }
 
   &.animate {

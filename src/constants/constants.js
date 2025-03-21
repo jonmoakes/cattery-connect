@@ -8,6 +8,13 @@ export const bookingsCollectionId = import.meta.env.VITE_BOOKINGS_COLLECTION_ID;
 export const catsCollectionId = import.meta.env.VITE_CATS_COLLECTION_ID;
 export const adminEmail = import.meta.env.VITE_APP_ADMIN_EMAIL;
 
+//stripe cattery publishableKeys
+export const furryFriendsRetreatStripePublishableKey = import.meta.env
+  .VITE_FURRY_FRIENDS_RETREAT_STRIPE_PUBLISHABLE_KEY;
+
+//cattery ids
+export const furryFriendsRetreatCatteryId = "ffrt";
+
 export const standardRateLimit = 500;
 export const highRateLimit = 1000;
 export const defaultRateLimit = 25;

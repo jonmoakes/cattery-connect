@@ -9,10 +9,12 @@ import NavSignOut from "./nav-sign-out.component";
 import NavUserSignedIn from "./nav-user-signed-in.component";
 
 import { Nav, Menu } from "../../styles/div/div.styles";
+import useNavLogic from "./nav-hooks/use-nav-logic";
 
 const Navigation = () => {
   const { signOutIsLoading } = useGetCurrentUserSelectors();
   const { showHamburgerMenu } = useGetHamburgerMenuSelectors();
+  const { isRouteWithHeader } = useNavLogic();
 
   return (
     <>
@@ -20,15 +22,19 @@ const Navigation = () => {
         <SkeletonBox loadingText="signing you out..." />
       ) : null}
 
-      <Nav>
-        <NavLogo />
-        <NavHamburger />
-        <Menu {...{ showHamburgerMenu }}>
-          <NavNoUser />
-          <NavUserSignedIn />
-          <NavSignOut />
-        </Menu>
-      </Nav>
+      {isRouteWithHeader ? (
+        <>
+          <Nav>
+            <NavLogo />
+            <NavHamburger />
+            <Menu {...{ showHamburgerMenu }}>
+              <NavNoUser />
+              <NavUserSignedIn />
+              <NavSignOut />
+            </Menu>
+          </Nav>
+        </>
+      ) : null}
     </>
   );
 };

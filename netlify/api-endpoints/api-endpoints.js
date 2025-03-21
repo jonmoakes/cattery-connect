@@ -10,3 +10,5 @@ export const SEND_EMAIL_CATTERY_CONNECT_CANCEL_BOOKING_RECEIPT_ENDPOINT =
   "/.netlify/functions/send-email-cattery-connect-cancel-booking-receipt";
 export const SEND_EMAIL_CATTERY_CONNECT_CONTACT_FORM_MESSAGE_ENDPOINT =
   "/.netlify/functions/send-email-cattery-connect-contact-form-message";
+export const CREATE_PAYMENT_INTENT_ENDPOINT =
+  "/.netlify/functions/create-payment-intent";

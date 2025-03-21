@@ -10,6 +10,7 @@ import useGetViewPenDataSelectors from "../../../hooks/selectors/use-get-view-pe
 import useGetSignedInCustomersDetailsSelectors from "../../../hooks/selectors/use-get-signed-in-customers-details-selectors";
 import useGetSendEmailSelectors from "../../../hooks/selectors/use-get-send-email-selectors";
 import useGetCatteryDetailsSelectors from "../../../hooks/selectors/use-get-cattery-details-selectors";
+import useGetSignedInCustomersBookingsSelectors from "../../../hooks/selectors/use-get-signed-in-customers-bookings-selectors";
 
 const useHandleShowError = () => {
   const { getAllCustomersError } = useGetAllCustomerSelectors();
@@ -29,6 +30,8 @@ const useHandleShowError = () => {
     useGetSignedInCustomersDetailsSelectors();
   const { getCatteryEmailError } = useGetSendEmailSelectors();
   const { catteryDetailsError } = useGetCatteryDetailsSelectors();
+  const { signedInCustomersBookingsError } =
+    useGetSignedInCustomersBookingsSelectors();
 
   const showErrorHeading = () => {
     if (getAllCustomersError) return "failed to fetch your customers.";
@@ -50,6 +53,7 @@ const useHandleShowError = () => {
     if (getCatteryEmailError)
       return "failed to fetch your catteries email address.";
     if (catteryDetailsError) return "failed to fetch cattery details.";
+    if (signedInCustomersBookingsError) return "failed to fetch your bookings.";
   };
 
   const errorToDisplay = () => {
@@ -68,6 +72,7 @@ const useHandleShowError = () => {
       signedInCustomersDetailsError,
       getCatteryEmailError,
       catteryDetailsError,
+      signedInCustomersBookingsError,
     ];
     return errors.find((error) => error !== null);
   };

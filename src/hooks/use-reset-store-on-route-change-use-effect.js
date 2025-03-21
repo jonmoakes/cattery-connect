@@ -43,6 +43,8 @@ import {
   signedInCustomersDetailsRoute,
   catteryDetailsRoute,
   signedInCustomersCatsRoute,
+  settleBookingPaymentRoute,
+  paymentResultRoute,
 } from "../strings/routes";
 import useResetAddBookingState from "./use-reset-add-booking-state";
 import { resetBookingsState } from "../store/bookings/bookings.slice";
@@ -63,6 +65,9 @@ import { resetViewPenDataState } from "../store/view-pen-data/view-pen-data.slic
 import { resetSignUpFormState } from "../store/sign-up-form/sign-up-form.slice";
 import { resetSignedInCustomersDetailsState } from "../store/signed-in-customers-details/signed-in-customer-details.slice";
 import { resetCatteryDetailsState } from "../store/cattery-details/cattery-details-slice";
+import { setBookingConfirmationDetailsInfo } from "../store/signed-in-customers-bookings/signed-in-customers-bookings.slice";
+import { resetCardInputState } from "../store/card-input/card-input.slice";
+import { resetHandlePaymentState } from "../store/handle-payment/handle-payment-slice";
 
 const useResetStoreOnRouteChangeUseEffect = () => {
   const { allUsersCatteryIdsAndOwnerNameError } = useGetAllUsersSelectors();
@@ -149,6 +154,13 @@ const useResetStoreOnRouteChangeUseEffect = () => {
           break;
         case catteryDetailsRoute:
           dispatch(resetCatteryDetailsState());
+          break;
+        case settleBookingPaymentRoute:
+          dispatch(setBookingConfirmationDetailsInfo({}));
+          dispatch(resetCardInputState());
+          break;
+        case paymentResultRoute:
+          dispatch(resetHandlePaymentState());
           break;
         default:
           break;

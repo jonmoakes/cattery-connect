@@ -48,6 +48,9 @@ import {
   signedInCustomersDetailsRoute,
   catteryDetailsRoute,
   signedInCustomersCatsRoute,
+  signedInCustomersBookingsRoute,
+  settleBookingPaymentRoute,
+  paymentResultRoute,
 } from "./strings/routes";
 import Footer from "./components/footer/footer.component";
 
@@ -132,6 +135,17 @@ const CatteryDetails = lazy(() =>
 );
 const SignedInCustomersCats = lazy(() =>
   import("./routes/signed-in-customers-cats/signed-in-customers-cats.component")
+);
+const SignedInCustomersBookings = lazy(() =>
+  import(
+    "./routes/signed-customers-bookings/signed-in-customers-bookings.component"
+  )
+);
+const SettleBookingPayment = lazy(() =>
+  import("./routes/settle-booking-payment/settle-booking-payment.component")
+);
+const PaymentResult = lazy(() =>
+  import("./routes/payment-result/payment-result.component")
 );
 
 const App = () => {
@@ -296,6 +310,31 @@ const App = () => {
                   currentUser && role === "customer" ? (
                     <SignedInCustomersCats />
                   ) : null
+                }
+              />
+
+              <Route
+                path={signedInCustomersBookingsRoute}
+                element={
+                  currentUser && role === "customer" ? (
+                    <SignedInCustomersBookings />
+                  ) : null
+                }
+              />
+
+              <Route
+                path={settleBookingPaymentRoute}
+                element={
+                  currentUser && role === "customer" ? (
+                    <SettleBookingPayment />
+                  ) : null
+                }
+              />
+
+              <Route
+                path={paymentResultRoute}
+                element={
+                  currentUser && role === "customer" ? <PaymentResult /> : null
                 }
               />
             </Route>

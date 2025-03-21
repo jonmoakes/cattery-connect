@@ -91,11 +91,17 @@ const GlobalStyles = createGlobalStyle`
       color: ${customYellow};
       text-shadow: 1px 1px 1px ${softBlack};
     }
+
+    &.red {
+      color: ${rustRed};
+      text-shadow: 0.5px 0.5px 0.5px  ${softBlack};
+    }
   }
 
   span {
     &.red {
       color: ${rustRed};
+      text-shadow: 0.5px 0.5px 0.5px  ${softBlack};
     }
 
     &.bright-red {
@@ -126,6 +132,14 @@ const GlobalStyles = createGlobalStyle`
     &.black {
       color: ${softBlack};
       text-shadow:none;
+    }
+
+    &.total-cost {
+      background-color: ${customGreen};
+      padding: 20px 30px;
+      border: 1px solid ${softBlack};
+      border-radius: 5px;
+      color:${softBlack};
     }
 
     &.clickable {

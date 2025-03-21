@@ -31,3 +31,7 @@ export const sureResetPasswordMessage =
   "are you sure you wish to reset your password?";
 
 export const bookingCompletedSendEmailQuestionMessage = `<span style="font-size:20px";> booking completed!<br/><br/>would you like to send the customer an email confirmation?</span>`;
+
+export const confirmMakePaymentMessage = (priceForUi, catteryName) => {
+  return `<span style="font-size:20px;">are you sure you want to make this payment of<br/><span style="color:${customYellow};">£${priceForUi}</span><br/>to<br/><span style="color:${customYellow};">${catteryName}</span> ?</span>`;
+};

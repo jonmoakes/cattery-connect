@@ -33,3 +33,5 @@ export const signedInCustomersBookingsRoute = "/your-bookings";
 export const signedInCustomersCatsRoute = "/your-cats";
 export const catteryDetailsRoute = "/cattery-details";
 export const updateEmailRoute = "/update-email";
+export const settleBookingPaymentRoute = "/settle-booking-payment";
+export const paymentResultRoute = "/payment-result";

@@ -1,6 +1,7 @@
 import styled, { css, keyframes } from "styled-components";
 import {
   customGreen,
+  gentleGrey,
   radialBeige,
   radialDustyBlue,
   radialGreen,
@@ -746,7 +747,7 @@ export const DataDetailsDiv = styled.div`
   white-space: pre-wrap;
   padding: 10px 0px 20px 0px;
 
-  &.cats {
+  &.with-background {
     background: ${radialBeige};
     border: 1px solid ${softBlack};
     border-radius: 5px;
@@ -766,4 +767,53 @@ export const DataDetailsDiv = styled.div`
       width: 90%;
     }
   }
+`;
+
+export const CardInputDiv = styled.div`
+  background-color: ${gentleGrey};
+  height: 60px;
+  width: 50%;
+  margin: 10px auto 40px auto;
+  padding: 20px 20px 30px 20px;
+  border-radius: 5px;
+  border: 2px solid ${softBlack};
+
+  @media screen and (max-width: 1366px) {
+    width: 80%;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 90%;
+  }
+`;
+
+export const WarningDiv = styled(ErrorDiv)`
+  width: 50%;
+  margin: 30px auto 30px;
+  background: ${radialGreen};
+  box-shadow: 12px 12px 12px ${softBlack};
+  padding: 0px 10px;
+
+  @media screen and (max-width: 1366px) {
+    width: 70%;
+    box-shadow: none;
+  }
+
+  @media screen and (max-width: 450px) {
+    width: 85%;
+  }
+`;
+
+export const PaymentErrorDiv = styled(WarningDiv)`
+  background: ${radialRustRed};
+`;
+
+export const TotalCostDiv = styled.div`
+  margin: 20px auto;
+`;
+
+export const StripeLogoDiv = styled.div`
+  margin: 0px auto;
+  width: 100%;
+  animation: 3s ${rollInAnimation};
 `;
