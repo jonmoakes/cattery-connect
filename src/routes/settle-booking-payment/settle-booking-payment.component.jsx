@@ -28,7 +28,7 @@ const SettleBookingPayment = () => {
     <Container>
       <TitleAndLoader />
 
-      {!hasBookingDetails ? (
+      {!stripePromise ? null : !hasBookingDetails ? (
         <NoBookingInfoFound />
       ) : (
         <>

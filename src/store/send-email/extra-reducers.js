@@ -6,6 +6,7 @@ import {
   sendEmailCatteryConnectSendCustomerEmailReceiptAsync,
   sendEmailCatteryConnectUpdatePensRollbackErrorAsync,
   sendEmailContactFormMessageAsync,
+  sendEmailFailedStatusUpdateAfterSuccessfulPaymentAsync,
 } from "./send-email.thunks";
 
 const handleAsyncAction = (builder, asyncAction) => {
@@ -44,6 +45,10 @@ export const extraReducers = (builder) => {
   );
   handleAsyncAction(builder, sendCustomerCancellationEmailAsync);
   handleAsyncAction(builder, sendEmailContactFormMessageAsync);
+  handleAsyncAction(
+    builder,
+    sendEmailFailedStatusUpdateAfterSuccessfulPaymentAsync
+  );
   builder
     .addCase(getCatteryEmailAsync.pending, (state) => {
       state.getCatteryEmailIsLoading = true;

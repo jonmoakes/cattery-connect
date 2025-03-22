@@ -7,7 +7,7 @@ import useErrorMakingPaymentSwal from "./swals/use-error-making-payment-swal";
 import usePaymentSuccessfulSwal from "./swals/use-payment-successful-swal";
 
 const useGetPaymentResultUseEffect = () => {
-  const { noPaymentStatusAndError, errorObject, documentIdOfBooking } =
+  const { noPaymentStatusAndError, errorObject } =
     useGetHandlePaymentSelectors();
   const { errorMakingPaymentSwal } = useErrorMakingPaymentSwal();
   const { paymentSuccessfulSwal } = usePaymentSuccessfulSwal();
@@ -24,7 +24,6 @@ const useGetPaymentResultUseEffect = () => {
   }, [
     paymentSuccessfulSwal,
     dispatch,
-    documentIdOfBooking,
     noPaymentStatusAndError,
     errorObject,
     errorMakingPaymentSwal,

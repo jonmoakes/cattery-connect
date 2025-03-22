@@ -23,3 +23,8 @@ export const pensUpdatedUploadBookingDataFailedEmailSentMessage = `<span style="
 export const pensUpdatedDeleteBookingDataFailedEmailSentMessage = `<span style="font-size:20px";> email sent!<br/><br/>jonathan will diagnose the error and then manually update the database.<br/><br/>he will contact you as soon as it has been done and you will also see the booking disappear in your bookings table as soon as it has been manually deleted.<br/><br/>we apologise for the inconvenience!</span>`;
 export const emailResponseTimeMessage =
   "Your Message Has Been Sent! We aim to respond to your email within 24hrs.";
+
+export const paymentSuccessfulMessage = "payment successful!";
+
+export const paymentSuccessfulButStatusNotUpdatedMessage = `<span style="font-size:20px";>payment successful!<br/><br/><span style="color:${customYellow}";>important - please read!</span><br/><br/>although the payment was successful, we had an error updating the payment status in our database.<br/><br/>please tap the 'report error' button below which will notify the app admin of the error so that it can be fixed.<br/><br/>please <span style="color:${customYellow}";>DO NOT</span> attempt to make the payment again as we can confirm that it has been successful and your card has been charged.<br/><br/>we apologise for the inconvenience!</span>`;
+export const emailSentAfterPaymentStatusUpdateMessage = `<span style="font-size:20px";>email sent!<br/><br/>if you do not see the payment status of your booking updated within 24hrs, please contact your cattery.<br/><br/>as a reminder, please DO NOT attempt to make the payment for this booking again as it has been successful.</span>`;

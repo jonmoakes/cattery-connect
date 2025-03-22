@@ -16,6 +16,7 @@ import {
   SEND_EMAIL_CATTERY_CONNECT_DELETE_BOOKING_DATA_FAILED_ENDPOINT,
   SEND_EMAIL_CATTERY_CONNECT_CANCEL_BOOKING_RECEIPT_ENDPOINT,
   SEND_EMAIL_CATTERY_CONNECT_CONTACT_FORM_MESSAGE_ENDPOINT,
+  SEND_EMAIL_FAILED_STATUS_UPDATE_AFTER_SUCCESSFUL_PAYMENT_ENDPOINT,
 } from "../../../netlify/api-endpoints/api-endpoints";
 import { formatCancelBookingReceipt } from "./functions/format-cancel-booking-receipt";
 import {
@@ -271,3 +272,25 @@ export const getCatteryEmailAsync = createAsyncThunk(
     }
   }
 );
+
+export const sendEmailFailedStatusUpdateAfterSuccessfulPaymentAsync =
+  createAsyncThunk(
+    "sendEmailFailedStatusUpdateAfterSuccessfulPayment",
+    async ({ documentIdOfBooking }, thunkAPI) => {
+      try {
+        const response = await axios.post(
+          SEND_EMAIL_FAILED_STATUS_UPDATE_AFTER_SUCCESSFUL_PAYMENT_ENDPOINT,
+          {
+            documentIdOfBooking,
+          }
+        );
+
+        const statusCode = response.status;
+        return statusCode;
+      } catch (error) {
+        const errorMessage = error.response?.data?.message || error.message;
+        console.error("Error sending email:", errorMessage);
+        return thunkAPI.rejectWithValue(errorMessage);
+      }
+    }
+  );

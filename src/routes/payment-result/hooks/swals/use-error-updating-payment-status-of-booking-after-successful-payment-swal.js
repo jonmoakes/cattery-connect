@@ -1,32 +1,42 @@
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { sendEmailFailedStatusUpdateAfterSuccessfulPaymentAsync } from "../../../../store/send-email/send-email.thunks";
+
 import useFireSwal from "../../../../hooks/use-fire-swal";
-import useHamburgerHandlerNavigate from "../../../../hooks/use-hamburger-handler-navigate";
-import { signedInCustomersBookingsRoute } from "../../../../strings/routes";
+
+import { paymentSuccessfulButStatusNotUpdatedMessage } from "../../../../strings/info";
 
 const useErrorUpdatingPaymentStatusOfBookingAfterSuccessfulPaymentSwal = () => {
   const { fireSwal } = useFireSwal();
-  const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
+  const dispatch = useDispatch();
+  const [swalConfirmed, setSwalConfirmed] = useState(false);
 
   const errorUpdatingPaymentStatusOfBookingAfterSuccessfulPaymentSwal =
     useCallback(
       (documentIdOfBooking) => {
+        if (swalConfirmed) return;
         fireSwal(
           "info",
-          "payment successful!",
-          "however, there was an error updating the payment status of your booking. when you tap ok, we will send an email to the cattery owner to update this manually. please DO NOT attempt to make this payment again as it has already been successful!",
-          0,
+          paymentSuccessfulButStatusNotUpdatedMessage,
           "",
+          0,
+          "report error",
           false,
           "",
           false
         ).then((isConfirmed) => {
           if (isConfirmed) {
-            console.log(documentIdOfBooking);
-            hamburgerHandlerNavigate(signedInCustomersBookingsRoute);
+            setSwalConfirmed(true);
+            dispatch(
+              sendEmailFailedStatusUpdateAfterSuccessfulPaymentAsync({
+                documentIdOfBooking,
+              })
+            );
           }
         });
       },
-      [fireSwal, hamburgerHandlerNavigate]
+      [fireSwal, dispatch, swalConfirmed]
     );
 
   return { errorUpdatingPaymentStatusOfBookingAfterSuccessfulPaymentSwal };

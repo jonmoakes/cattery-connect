@@ -62,3 +62,5 @@ export const couldntFindDocIdMessage =
 export const paymentDeclinedMessage = (message) => {
   return `<span style="font-size:20px";>sorry, there was an error making the payment.<br/><br/>Your card has<br/>not been charged.<br/><br/> the error received was:<br/><br/> <span style="color:${customYellow}";>'${message}'</span><br/><br/>please tap the ok button below and then try again.</span>`;
 };
+export const noStripePublicKeyFoundMessage = `<span style="font-size:20px";>no stripe public key found for this cattery.<br/><br/>please contact your cattery for assistance.</span>`;
+export const emailFailedToSendMessage = `<span style="font-size:20px";>sorry, the email failed to send..<br/><br/>please contact your cattery as soon as possible and inform them of the error.</span>`;

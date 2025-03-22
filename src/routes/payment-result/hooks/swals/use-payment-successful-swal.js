@@ -13,22 +13,10 @@ const usePaymentSuccessfulSwal = () => {
 
   const paymentSuccessfulSwal = useCallback(() => {
     if (swalConfirmed) return;
-    fireSwal(
-      "success",
-      "payment successful! please make sure to tap ok below as this will update the payment status of your booking to be completed.",
-      "",
-      0,
-      "",
-      false,
-      "",
-      false
-    ).then((isConfirmed) => {
-      if (isConfirmed) {
-        setSwalConfirmed(true);
-        const documentId = documentIdOfBooking;
-        dispatch(updateBookingPaymentStatusAsync({ documentId }));
-      }
-    });
+    fireSwal("success", "payment successful!", "", 3000, "", false, "", false);
+    const documentId = documentIdOfBooking;
+    dispatch(updateBookingPaymentStatusAsync({ documentId }));
+    setSwalConfirmed(true);
   }, [fireSwal, dispatch, documentIdOfBooking, swalConfirmed]);
 
   return { paymentSuccessfulSwal };
