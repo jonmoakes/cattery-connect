@@ -789,7 +789,7 @@ export const CardInputDiv = styled.div`
 
 export const WarningDiv = styled(ErrorDiv)`
   width: 50%;
-  margin: 30px auto 30px;
+  margin: 10px auto 30px auto;
   background: ${radialGreen};
   box-shadow: 12px 12px 12px ${softBlack};
   padding: 0px 10px;

@@ -16,6 +16,7 @@ import StripeLogo from "./stripe-logo.component";
 import { CardInputDiv } from "../../styles/div/div.styles";
 import { options } from "./card-input-styles";
 import { Button } from "../../styles/button/button.styles";
+import { BlackHr } from "../../styles/hr/hr.styles";
 
 const CardInput = ({ totalCost }) => {
   const { showConfirmButton } = useGetCardInputSelectors();
@@ -31,7 +32,6 @@ const CardInput = ({ totalCost }) => {
         <NetworkError />
       ) : totalCost ? (
         <>
-          <CardInputErrors />
           <Instructions {...{ totalCost }} />
 
           <CardInputDiv>
@@ -48,6 +48,9 @@ const CardInput = ({ totalCost }) => {
               settle payment
             </Button>
           ) : null}
+
+          <CardInputErrors />
+          <BlackHr />
           <StripeLogo />
         </>
       ) : null}
