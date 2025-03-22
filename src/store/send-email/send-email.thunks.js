@@ -10,12 +10,12 @@ import { formatReceiptBookingDetails } from "./functions/format-receipt-booking-
 import { getFirstNameFromString } from "../../functions/get-first-name-from-string";
 
 import {
-  SEND_EMAIL_CATTERY_CONNECT_UPDATE_PENS_ROLLBACK_ERROR_ENDPOINT,
-  SEND_EMAIL_CATTERY_CONNECT_PENS_UPDATED_BOOKING_DATA_FAILED_ENDPOINT,
-  SEND_EMAIL_CATTERY_CONNECT_SEND_CUSTOMER_EMAIL_RECEIPT_ENDPOINT,
-  SEND_EMAIL_CATTERY_CONNECT_DELETE_BOOKING_DATA_FAILED_ENDPOINT,
-  SEND_EMAIL_CATTERY_CONNECT_CANCEL_BOOKING_RECEIPT_ENDPOINT,
-  SEND_EMAIL_CATTERY_CONNECT_CONTACT_FORM_MESSAGE_ENDPOINT,
+  SEND_EMAIL_UPDATE_PENS_ROLLBACK_ERROR_ENDPOINT,
+  SEND_EMAIL_PENS_UPDATED_BOOKING_DATA_FAILED_ENDPOINT,
+  SEND_EMAIL_SEND_CUSTOMER_EMAIL_RECEIPT_ENDPOINT,
+  SEND_EMAIL_DELETE_BOOKING_DATA_FAILED_ENDPOINT,
+  SEND_EMAIL_CANCEL_BOOKING_RECEIPT_ENDPOINT,
+  SEND_EMAIL_CONTACT_FORM_MESSAGE_ENDPOINT,
   SEND_EMAIL_FAILED_STATUS_UPDATE_AFTER_SUCCESSFUL_PAYMENT_ENDPOINT,
 } from "../../../netlify/api-endpoints/api-endpoints";
 import { formatCancelBookingReceipt } from "./functions/format-cancel-booking-receipt";
@@ -27,159 +27,156 @@ import {
 } from "../../constants/constants";
 import { listDocumentsByQueryOrSearch } from "../../utils/appwrite/appwrite-functions";
 
-export const sendEmailCatteryConnectUpdatePensRollbackErrorAsync =
-  createAsyncThunk(
-    "sendEmailCatteryConnectUpdatePensRollbackError",
-    async (
-      {
-        dataForEmail,
-        rollbackFailures,
-        originalAvailabilityData,
-        catteryId,
-        operation,
-      },
-      thunkAPI
-    ) => {
-      try {
-        const formattedBookingDetails =
-          formatBookingDetailsForUpdatePenDataError(dataForEmail);
+export const sendEmailUpdatePensRollbackErrorAsync = createAsyncThunk(
+  "sendEmailUpdatePensRollbackError",
+  async (
+    {
+      dataForEmail,
+      rollbackFailures,
+      originalAvailabilityData,
+      catteryId,
+      operation,
+    },
+    thunkAPI
+  ) => {
+    try {
+      const formattedBookingDetails =
+        formatBookingDetailsForUpdatePenDataError(dataForEmail);
 
-        const formattedRollbackFailures =
-          rollbackFailures && rollbackFailures.length > 0
-            ? rollbackFailures.join("\n\n")
-            : "No Doc IDs Found";
+      const formattedRollbackFailures =
+        rollbackFailures && rollbackFailures.length > 0
+          ? rollbackFailures.join("\n\n")
+          : "No Doc IDs Found";
 
-        const filteredAvailabilityData = originalAvailabilityData.filter(
-          (day) => rollbackFailures.includes(day.documentId)
-        );
-        const formattedOriginalAvailabilityData =
-          formatOriginalAvailabilityData(filteredAvailabilityData);
+      const filteredAvailabilityData = originalAvailabilityData.filter((day) =>
+        rollbackFailures.includes(day.documentId)
+      );
+      const formattedOriginalAvailabilityData = formatOriginalAvailabilityData(
+        filteredAvailabilityData
+      );
 
-        const response = await axios.post(
-          SEND_EMAIL_CATTERY_CONNECT_UPDATE_PENS_ROLLBACK_ERROR_ENDPOINT,
-          {
-            catteryId,
-            operation,
-            formattedBookingDetails,
-            formattedRollbackFailures,
-            formattedOriginalAvailabilityData,
-          }
-        );
+      const response = await axios.post(
+        SEND_EMAIL_UPDATE_PENS_ROLLBACK_ERROR_ENDPOINT,
+        {
+          catteryId,
+          operation,
+          formattedBookingDetails,
+          formattedRollbackFailures,
+          formattedOriginalAvailabilityData,
+        }
+      );
 
-        const statusCode = response.status;
-        return statusCode;
-      } catch (error) {
-        // Check if the error has a response and contains data.message
-        const errorMessage = error.response?.data?.message || error.message;
-        console.error("Error sending email:", errorMessage);
-        return thunkAPI.rejectWithValue(errorMessage);
-      }
+      const statusCode = response.status;
+      return statusCode;
+    } catch (error) {
+      // Check if the error has a response and contains data.message
+      const errorMessage = error.response?.data?.message || error.message;
+      console.error("Error sending email:", errorMessage);
+      return thunkAPI.rejectWithValue(errorMessage);
     }
-  );
+  }
+);
 
-export const sendEmailCatteryConnectPensUpdatedBookingDataFailedAsync =
-  createAsyncThunk(
-    "sendEmailPensUpdatedUploadBookingDataFailed",
-    async (
-      { uploadBookingData, catteryId, uploadBookingDataError },
-      thunkAPI
-    ) => {
-      try {
-        const formattedFullBookingDetails =
-          formatFullBookingDetails(uploadBookingData);
+export const sendEmailPensUpdatedBookingDataFailedAsync = createAsyncThunk(
+  "sendEmailPensUpdatedUploadBookingDataFailed",
+  async (
+    { uploadBookingData, catteryId, uploadBookingDataError },
+    thunkAPI
+  ) => {
+    try {
+      const formattedFullBookingDetails =
+        formatFullBookingDetails(uploadBookingData);
 
-        const response = await axios.post(
-          SEND_EMAIL_CATTERY_CONNECT_PENS_UPDATED_BOOKING_DATA_FAILED_ENDPOINT,
-          {
-            catteryId,
-            uploadBookingDataError,
-            formattedFullBookingDetails,
-          }
-        );
+      const response = await axios.post(
+        SEND_EMAIL_PENS_UPDATED_BOOKING_DATA_FAILED_ENDPOINT,
+        {
+          catteryId,
+          uploadBookingDataError,
+          formattedFullBookingDetails,
+        }
+      );
 
-        const statusCode = response.status;
-        return statusCode;
-      } catch (error) {
-        const errorMessage = error.response?.data?.message || error.message;
-        console.error("Error sending email:", errorMessage);
-        return thunkAPI.rejectWithValue(errorMessage);
-      }
+      const statusCode = response.status;
+      return statusCode;
+    } catch (error) {
+      const errorMessage = error.response?.data?.message || error.message;
+      console.error("Error sending email:", errorMessage);
+      return thunkAPI.rejectWithValue(errorMessage);
     }
-  );
+  }
+);
 
-export const sendEmailCatteryConnectSendCustomerEmailReceiptAsync =
-  createAsyncThunk(
-    "sendEmailCatteryConnectSendCustomerEmailReceipt",
-    async (
-      { uploadBookingData, pricePerNight, name, phone, catteryEmail },
-      thunkAPI
-    ) => {
-      try {
-        const formattedFullBookingDetails =
-          formatReceiptBookingDetails(uploadBookingData);
+export const sendEmailSendCustomerEmailReceiptAsync = createAsyncThunk(
+  "sendEmailSendCustomerEmailReceipt",
+  async (
+    { uploadBookingData, pricePerNight, name, phone, catteryEmail },
+    thunkAPI
+  ) => {
+    try {
+      const formattedFullBookingDetails =
+        formatReceiptBookingDetails(uploadBookingData);
 
-        const {
-          catsInBooking,
-          checkOutDate,
-          checkInDate,
+      const {
+        catsInBooking,
+        checkOutDate,
+        checkInDate,
+        customerEmail,
+        customerName,
+      } = uploadBookingData;
+
+      const numberOfCats = catsInBooking.length;
+      const lengthOfStay = differenceInDays(checkOutDate, checkInDate);
+
+      const costOfStayPounds =
+        lengthOfStay === 0
+          ? (pricePerNight / 100).toFixed(2)
+          : ((numberOfCats * lengthOfStay * pricePerNight) / 100).toFixed(2);
+
+      const response = await axios.post(
+        SEND_EMAIL_SEND_CUSTOMER_EMAIL_RECEIPT_ENDPOINT,
+        {
           customerEmail,
-          customerName,
-        } = uploadBookingData;
+          customerName: getFirstNameFromString(customerName),
+          name,
+          formattedFullBookingDetails,
+          costOfStayPounds,
+          phone,
+          catteryEmail,
+        }
+      );
 
-        const numberOfCats = catsInBooking.length;
-        const lengthOfStay = differenceInDays(checkOutDate, checkInDate);
-
-        const costOfStayPounds =
-          lengthOfStay === 0
-            ? (pricePerNight / 100).toFixed(2)
-            : ((numberOfCats * lengthOfStay * pricePerNight) / 100).toFixed(2);
-
-        const response = await axios.post(
-          SEND_EMAIL_CATTERY_CONNECT_SEND_CUSTOMER_EMAIL_RECEIPT_ENDPOINT,
-          {
-            customerEmail,
-            customerName: getFirstNameFromString(customerName),
-            name,
-            formattedFullBookingDetails,
-            costOfStayPounds,
-            phone,
-            catteryEmail,
-          }
-        );
-
-        const statusCode = response.status;
-        return statusCode;
-      } catch (error) {
-        const errorMessage = error.response?.data?.message || error.message;
-        console.error("Error sending email:", errorMessage);
-        return thunkAPI.rejectWithValue(errorMessage);
-      }
+      const statusCode = response.status;
+      return statusCode;
+    } catch (error) {
+      const errorMessage = error.response?.data?.message || error.message;
+      console.error("Error sending email:", errorMessage);
+      return thunkAPI.rejectWithValue(errorMessage);
     }
-  );
+  }
+);
 
-export const sendEmailCatteryConnectDeleteBookingDataFailedAsync =
-  createAsyncThunk(
-    "sendEmailCatteryConnectDeleteBookingDataFailed",
-    async ({ catteryId, $id, deleteBookingDataError }, thunkAPI) => {
-      try {
-        const response = await axios.post(
-          SEND_EMAIL_CATTERY_CONNECT_DELETE_BOOKING_DATA_FAILED_ENDPOINT,
-          {
-            catteryId,
-            documentId: $id,
-            deleteBookingDataError,
-          }
-        );
+export const sendEmailDeleteBookingDataFailedAsync = createAsyncThunk(
+  "sendEmailDeleteBookingDataFailed",
+  async ({ catteryId, $id, deleteBookingDataError }, thunkAPI) => {
+    try {
+      const response = await axios.post(
+        SEND_EMAIL_DELETE_BOOKING_DATA_FAILED_ENDPOINT,
+        {
+          catteryId,
+          documentId: $id,
+          deleteBookingDataError,
+        }
+      );
 
-        const statusCode = response.status;
-        return statusCode;
-      } catch (error) {
-        const errorMessage = error.response?.data?.message || error.message;
-        console.error("Error sending email:", errorMessage);
-        return thunkAPI.rejectWithValue(errorMessage);
-      }
+      const statusCode = response.status;
+      return statusCode;
+    } catch (error) {
+      const errorMessage = error.response?.data?.message || error.message;
+      console.error("Error sending email:", errorMessage);
+      return thunkAPI.rejectWithValue(errorMessage);
     }
-  );
+  }
+);
 
 export const sendCustomerCancellationEmailAsync = createAsyncThunk(
   "sendCustomerCancellationEmail",
@@ -191,7 +188,7 @@ export const sendCustomerCancellationEmailAsync = createAsyncThunk(
         formatCancelBookingReceipt(dataFromBooking);
 
       const response = await axios.post(
-        SEND_EMAIL_CATTERY_CONNECT_CANCEL_BOOKING_RECEIPT_ENDPOINT,
+        SEND_EMAIL_CANCEL_BOOKING_RECEIPT_ENDPOINT,
         {
           customerEmail,
           customerName: getFirstNameFromString(customerName),
@@ -222,7 +219,7 @@ export const sendEmailContactFormMessageAsync = createAsyncThunk(
     try {
       const sendTo = catteryEmail ? catteryEmail : adminEmail;
       const response = await axios.post(
-        SEND_EMAIL_CATTERY_CONNECT_CONTACT_FORM_MESSAGE_ENDPOINT,
+        SEND_EMAIL_CONTACT_FORM_MESSAGE_ENDPOINT,
         {
           sendTo,
           senderName,

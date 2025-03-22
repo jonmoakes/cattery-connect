@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import useGetUploadBookingDataSelectors from "../../../../hooks/selectors/use-get-upload-booking-data-selectors";
 import useGetCurrentUserSelectors from "../../../../hooks/selectors/use-get-current-user-selectors";
 
-import { sendEmailCatteryConnectPensUpdatedBookingDataFailedAsync } from "../../../../store/send-email/send-email.thunks";
+import { sendEmailPensUpdatedBookingDataFailedAsync } from "../../../../store/send-email/send-email.thunks";
 
 import useFireSwal from "../../../../hooks/use-fire-swal";
 
@@ -33,7 +33,7 @@ const usePensUpdatedBookingDataFailedSwal = () => {
         if (isConfirmed) {
           setSwalConfirmed(true);
           dispatch(
-            sendEmailCatteryConnectPensUpdatedBookingDataFailedAsync({
+            sendEmailPensUpdatedBookingDataFailedAsync({
               uploadBookingData,
               catteryId,
               uploadBookingDataError,

@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import useConfirmSwal from "../../../../hooks/use-confirm-swal";
 import { bookingCompletedSendEmailQuestionMessage } from "../../../../strings/confirms";
 import { useDispatch } from "react-redux";
-import { sendEmailCatteryConnectSendCustomerEmailReceiptAsync } from "../../../../store/send-email/send-email.thunks";
+import { sendEmailSendCustomerEmailReceiptAsync } from "../../../../store/send-email/send-email.thunks";
 import useHamburgerHandlerNavigate from "../../../../hooks/use-hamburger-handler-navigate";
 import { accountRoute } from "../../../../strings/routes";
 
@@ -15,7 +15,7 @@ const useBookingSuccessHasEmailSwal = () => {
     (uploadBookingData, pricePerNight, name, phone, catteryEmail) => {
       const confirmResult = () => {
         dispatch(
-          sendEmailCatteryConnectSendCustomerEmailReceiptAsync({
+          sendEmailSendCustomerEmailReceiptAsync({
             uploadBookingData,
             pricePerNight,
             name,

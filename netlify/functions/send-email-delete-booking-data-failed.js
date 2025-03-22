@@ -1,22 +1,23 @@
 import postmark from "postmark";
+
 const client = new postmark.ServerClient(process.env.VITE_POSTMARK_API_KEY);
 
 export const handler = async (event) => {
-  const { sendTo, senderName, senderEmail, senderMessage } = JSON.parse(
+  const { catteryId, documentId, deleteBookingDataError } = JSON.parse(
     event.body
   );
 
   try {
     await client.sendEmailWithTemplate({
       From: process.env.VITE_APP_ADMIN_EMAIL,
-      To: sendTo,
-      TemplateAlias: "send-email-cattery-connect-contact-form-message",
+      To: process.env.VITE_APP_ADMIN_EMAIL,
+      TemplateAlias: "send-email-delete-booking-data-failed",
       TemplateModel: {
         product_url: "https://www.cattery-connect.co.uk",
         product_name: "Cattery Connect",
-        senderName,
-        senderEmail,
-        senderMessage,
+        catteryId,
+        documentId,
+        deleteBookingDataError,
       },
     });
 

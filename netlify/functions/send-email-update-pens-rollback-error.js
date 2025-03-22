@@ -4,30 +4,26 @@ const client = new postmark.ServerClient(process.env.VITE_POSTMARK_API_KEY);
 
 export const handler = async (event) => {
   const {
-    customerEmail,
-    customerName,
-    catteryName,
-    bookingId,
-    formattedCancelledBookingDetails,
-    phone,
-    catteryEmail,
+    catteryId,
+    operation,
+    formattedBookingDetails,
+    formattedRollbackFailures,
+    formattedOriginalAvailabilityData,
   } = JSON.parse(event.body);
 
   try {
     await client.sendEmailWithTemplate({
       From: process.env.VITE_APP_ADMIN_EMAIL,
-      To: customerEmail,
-      TemplateAlias: "send-email-cattery-connect-cancel-booking-receipt",
+      To: process.env.VITE_APP_ADMIN_EMAIL,
+      TemplateAlias: "send-email-update-pens-rollback-error",
       TemplateModel: {
         product_url: "https://www.cattery-connect.co.uk",
         product_name: "Cattery Connect",
-        customerEmail,
-        customerName,
-        catteryName,
-        bookingId,
-        formattedCancelledBookingDetails,
-        phone,
-        catteryEmail,
+        catteryId,
+        operation,
+        formattedBookingDetails,
+        formattedRollbackFailures,
+        formattedOriginalAvailabilityData,
       },
     });
 

@@ -204,6 +204,12 @@ export const ErrorDiv = styled.div`
     }
   }
 
+  &.cancel-booking {
+    background: ${radialRustRed};
+    margin: 0px auto 50px auto;
+    animation: 1s ${slideInLeftAnimation};
+  }
+
   @media screen and (max-width: 1366px) {
     box-shadow: none;
   }

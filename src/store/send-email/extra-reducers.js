@@ -1,10 +1,10 @@
 import {
   getCatteryEmailAsync,
   sendCustomerCancellationEmailAsync,
-  sendEmailCatteryConnectDeleteBookingDataFailedAsync,
-  sendEmailCatteryConnectPensUpdatedBookingDataFailedAsync,
-  sendEmailCatteryConnectSendCustomerEmailReceiptAsync,
-  sendEmailCatteryConnectUpdatePensRollbackErrorAsync,
+  sendEmailDeleteBookingDataFailedAsync,
+  sendEmailPensUpdatedBookingDataFailedAsync,
+  sendEmailSendCustomerEmailReceiptAsync,
+  sendEmailUpdatePensRollbackErrorAsync,
   sendEmailContactFormMessageAsync,
   sendEmailFailedStatusUpdateAfterSuccessfulPaymentAsync,
 } from "./send-email.thunks";
@@ -27,22 +27,10 @@ const handleAsyncAction = (builder, asyncAction) => {
 };
 
 export const extraReducers = (builder) => {
-  handleAsyncAction(
-    builder,
-    sendEmailCatteryConnectUpdatePensRollbackErrorAsync
-  );
-  handleAsyncAction(
-    builder,
-    sendEmailCatteryConnectPensUpdatedBookingDataFailedAsync
-  );
-  handleAsyncAction(
-    builder,
-    sendEmailCatteryConnectSendCustomerEmailReceiptAsync
-  );
-  handleAsyncAction(
-    builder,
-    sendEmailCatteryConnectDeleteBookingDataFailedAsync
-  );
+  handleAsyncAction(builder, sendEmailUpdatePensRollbackErrorAsync);
+  handleAsyncAction(builder, sendEmailPensUpdatedBookingDataFailedAsync);
+  handleAsyncAction(builder, sendEmailSendCustomerEmailReceiptAsync);
+  handleAsyncAction(builder, sendEmailDeleteBookingDataFailedAsync);
   handleAsyncAction(builder, sendCustomerCancellationEmailAsync);
   handleAsyncAction(builder, sendEmailContactFormMessageAsync);
   handleAsyncAction(
