@@ -3,8 +3,9 @@ import stripe from "stripe";
 exports.handler = async (event) => {
   const { catteryId, amount, email } = JSON.parse(event.body); // Accept email from request
 
-  // Retrieve the secret key dynamically (implement this securely)
-  const secretKey = getSecretKeyForCattery(catteryId);
+  const getSecretKeyFromEnv = `STRIPE_SECRET_KEY_${catteryId.toUpperCase()}`;
+
+  const secretKey = process.env[getSecretKeyFromEnv];
 
   if (!secretKey) {
     return {
@@ -18,7 +19,7 @@ exports.handler = async (event) => {
     const paymentIntent = await stripeInstance.paymentIntents.create({
       amount,
       currency: "gbp",
-      receipt_email: email, // Pass customer's email for receipt
+      receipt_email: email,
     });
 
     return {
@@ -31,11 +32,4 @@ exports.handler = async (event) => {
       body: JSON.stringify({ error: error.message }),
     };
   }
-};
-
-const getSecretKeyForCattery = (catteryId) => {
-  const keys = {
-    ffrt: process.env.STRIPE_SECRET_KEY_FFRT,
-  };
-  return keys[catteryId];
 };

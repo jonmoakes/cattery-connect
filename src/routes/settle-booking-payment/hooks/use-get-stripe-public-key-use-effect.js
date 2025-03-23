@@ -1,26 +1,25 @@
 import { useEffect, useState } from "react";
-
 import { loadStripe } from "@stripe/stripe-js";
 
 import useGetCurrentUserSelectors from "../../../hooks/selectors/use-get-current-user-selectors";
 
-import useGetStripePublicKey from "./use-get-stripe-public-key";
 import useFireSwal from "../../../hooks/use-fire-swal";
+import useHamburgerHandlerNavigate from "../../../hooks/use-hamburger-handler-navigate";
 
 import { noStripePublicKeyFoundMessage } from "../../../strings/errors";
-import useHamburgerHandlerNavigate from "../../../hooks/use-hamburger-handler-navigate";
 import { signedInCustomersBookingsRoute } from "../../../strings/routes";
 
 const useGetStripePublicKeyUseEffect = () => {
   const { catteryId } = useGetCurrentUserSelectors();
   const [stripePromise, setStripePromise] = useState(null);
-  const { getStripePublicKey } = useGetStripePublicKey();
   const { fireSwal } = useFireSwal();
   const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
 
   useEffect(() => {
     if (stripePromise !== null) return;
-    const publicKey = getStripePublicKey(catteryId);
+
+    const publishableKeyEnvVar = `VITE_STRIPE_PUBLISHABLE_KEY_${catteryId.toUpperCase()}`;
+    const publicKey = import.meta.env[publishableKeyEnvVar];
 
     if (publicKey) {
       setStripePromise(loadStripe(publicKey));
@@ -40,13 +39,7 @@ const useGetStripePublicKeyUseEffect = () => {
         }
       });
     }
-  }, [
-    catteryId,
-    getStripePublicKey,
-    fireSwal,
-    stripePromise,
-    hamburgerHandlerNavigate,
-  ]);
+  }, [catteryId, fireSwal, stripePromise, hamburgerHandlerNavigate]);
 
   return { stripePromise };
 };
