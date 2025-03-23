@@ -14,7 +14,7 @@ export const attemptPaymentAsync = createAsyncThunk(
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ catteryId, amount }),
+        body: JSON.stringify({ catteryId, amount, email }),
       });
 
       if (!response.ok) {

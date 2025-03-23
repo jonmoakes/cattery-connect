@@ -129,7 +129,7 @@ export const sendEmailSendCustomerEmailReceiptAsync = createAsyncThunk(
 
       const costOfStayPounds =
         lengthOfStay === 0
-          ? (pricePerNight / 100).toFixed(2)
+          ? "0.00"
           : ((numberOfCats * lengthOfStay * pricePerNight) / 100).toFixed(2);
 
       const response = await axios.post(

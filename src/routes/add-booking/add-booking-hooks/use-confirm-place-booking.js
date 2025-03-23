@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import useGetIsBookingAvailableSelectors from "../../../hooks/selectors/use-get-is-booking-available-selectors";
 import useGetUploadBookingDataSelectors from "../../../hooks/selectors/use-get-upload-booking-data-selectors";
 import useGetCurrentUserSelectors from "../../../hooks/selectors/use-get-current-user-selectors";
+import useGetRequiredCatteryDataForBookingSelectors from "../../../hooks/selectors/use-get-required-cattery-data-for-booking-selectors";
 
 import { updatePensDataInDbAsync } from "../../../store/update-pens-data/update-pens-data.thunks";
 import { uploadBookingDataToDbAsync } from "../../../store/upload-booking-data/upload-booking-data.thunks";
@@ -15,6 +16,7 @@ const useConfirmPlaceBooking = () => {
   const { uploadBookingData } = useGetUploadBookingDataSelectors();
   const { parsedAvailabilityData } = useGetIsBookingAvailableSelectors();
   const { catteryId } = useGetCurrentUserSelectors();
+  const { pricePerNight } = useGetRequiredCatteryDataForBookingSelectors();
 
   const dispatch = useDispatch();
   const { confirmSwal } = useConfirmSwal();
@@ -34,6 +36,7 @@ const useConfirmPlaceBooking = () => {
           dispatch(
             uploadBookingDataToDbAsync({
               uploadBookingData,
+              pricePerNight,
               catteryId,
             })
           );

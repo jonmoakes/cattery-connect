@@ -1,7 +1,7 @@
 import stripe from "stripe";
 
 exports.handler = async (event) => {
-  const { catteryId, amount } = JSON.parse(event.body);
+  const { catteryId, amount, email } = JSON.parse(event.body); // Accept email from request
 
   // Retrieve the secret key dynamically (implement this securely)
   const secretKey = getSecretKeyForCattery(catteryId);
@@ -18,6 +18,7 @@ exports.handler = async (event) => {
     const paymentIntent = await stripeInstance.paymentIntents.create({
       amount,
       currency: "gbp",
+      receipt_email: email, // Pass customer's email for receipt
     });
 
     return {

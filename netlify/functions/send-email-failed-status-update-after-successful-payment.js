@@ -7,7 +7,7 @@ export const handler = async (event) => {
 
   try {
     await client.sendEmailWithTemplate({
-      From: process.env.VITE_APP_ADMIN_EMAIL,
+      From: `"Cattery Connect" <${process.env.VITE_APP_ADMIN_EMAIL}>`,
       To: process.env.VITE_APP_ADMIN_EMAIL,
       TemplateAlias: "send-email-failed-status-update-after-successful-payment",
       TemplateModel: {

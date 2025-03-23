@@ -1,6 +1,8 @@
 import useHandleCustomerSelectChange from "../../components/customer-select-drop-down/customer-select-dropdown-hooks/use-handle-customer-select-change";
 import useAddBookingVariables from "./add-booking-hooks/use-add-booking-variables";
 import useCheckBookingAvailability from "./add-booking-hooks/use-check-booking-availability";
+import useConfirmPlaceBooking from "./add-booking-hooks/use-confirm-place-booking";
+import useHandleChangeDetailsRequest from "./add-booking-hooks/use-handle-change-details-request";
 import useCheckInAndOutDateValidityUseEffect from "./add-booking-hooks/use-effects/use-check-in-and-out-date-validity-use-effect";
 import useCheckBookingAvailableResultSwalUseEffect from "./add-booking-hooks/use-effects/use-check-booking-available-result-swal-use-effect";
 import useGetRequiredCatteryDataAndCustomersThunkUseEffect from "./add-booking-hooks/use-effects/use-get-required-cattery-data-and-customers-thunk-use-effect";
@@ -16,8 +18,6 @@ import { Form } from "../../styles/form/form.styles";
 
 import BookingFormSection from "./ui/booking-form-section.component";
 import FormButtonsAndAvailabilityInfoSection from "./ui/form-buttons-and-availability-info-section.component";
-import useConfirmPlaceBooking from "./add-booking-hooks/use-confirm-place-booking";
-import useHandleChangeDetailsRequest from "./add-booking-hooks/use-handle-change-details-request";
 
 const AddBooking = () => {
   const {

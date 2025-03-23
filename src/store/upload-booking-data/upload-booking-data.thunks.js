@@ -4,10 +4,11 @@ import { ID } from "appwrite";
 import { bookingsCollectionId, databaseId } from "../../constants/constants";
 
 import { manageDatabaseDocument } from "../../utils/appwrite/appwrite-functions";
+import { differenceInDays } from "date-fns";
 
 export const uploadBookingDataToDbAsync = createAsyncThunk(
   "uploadBookingDataToDb",
-  async ({ uploadBookingData, catteryId }, thunkAPI) => {
+  async ({ uploadBookingData, pricePerNight, catteryId }, thunkAPI) => {
     try {
       const {
         bookingId,
@@ -22,6 +23,12 @@ export const uploadBookingDataToDbAsync = createAsyncThunk(
         catsInBooking,
       } = uploadBookingData;
 
+      const numberOfCats = catsInBooking.length;
+      const lengthOfStay = differenceInDays(checkOutDate, checkInDate);
+
+      const totalCost =
+        lengthOfStay === 0 ? 0 : numberOfCats * lengthOfStay * pricePerNight;
+
       const data = {
         bookingId,
         customerName,
@@ -34,6 +41,7 @@ export const uploadBookingDataToDbAsync = createAsyncThunk(
         paymentStatus,
         catsInBooking: catsInBooking.join(", "),
         catteryId,
+        totalCost,
       };
 
       await manageDatabaseDocument(

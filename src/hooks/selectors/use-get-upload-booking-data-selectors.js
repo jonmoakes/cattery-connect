@@ -17,7 +17,6 @@ const useGetUploadBookingDataSelectors = () => {
   const {
     customerDocumentId,
     customerId,
-
     bookingId,
     customerName,
     customerEmail,

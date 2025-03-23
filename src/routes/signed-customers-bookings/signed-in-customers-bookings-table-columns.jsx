@@ -7,13 +7,7 @@ const SIGNED_IN_CUSTOMERS_BOOKINGS_TABLE_COLUMNS = [
     Header: "booking ID",
     accessor: "bookingId",
   },
-  {
-    Header: "payment status",
-    accesor: "paymentStatus",
-    Cell: ({ row }) => {
-      return <SettlePaymentCell {...{ row }} />;
-    },
-  },
+
   {
     Header: "cats in booking",
     accessor: "catsInBooking",
@@ -44,6 +38,22 @@ const SIGNED_IN_CUSTOMERS_BOOKINGS_TABLE_COLUMNS = [
     accessor: "checkOutSlot",
     Cell: ({ value }) => {
       return <CustomBalancedText>{value.toUpperCase()}</CustomBalancedText>;
+    },
+  },
+  {
+    Header: "cost of booking",
+    accessor: "totalCost",
+    Cell: ({ value }) => {
+      return (
+        <CustomBalancedText>£{(value / 100).toFixed(2)}</CustomBalancedText>
+      );
+    },
+  },
+  {
+    Header: "payment status",
+    accesor: "paymentStatus",
+    Cell: ({ row }) => {
+      return <SettlePaymentCell {...{ row }} />;
     },
   },
 ];

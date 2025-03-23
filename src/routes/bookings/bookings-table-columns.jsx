@@ -1,3 +1,4 @@
+import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
 import FormattedDateCell from "../../components/tables/formatted-date-cell.component";
 import UpdatePaymentStatusCell from "../../components/tables/update-payment-status-cell.component";
 
@@ -44,6 +45,15 @@ const BOOKINGS_TABLE_COLUMNS = [
     Cell: ({ row, value }) => {
       const documentId = row.original.$id;
       return <UpdatePaymentStatusCell {...{ value, documentId }} />;
+    },
+  },
+  {
+    Header: "cost of booking",
+    accessor: "totalCost",
+    Cell: ({ value }) => {
+      return (
+        <CustomBalancedText>£{(value / 100).toFixed(2)}</CustomBalancedText>
+      );
     },
   },
   {

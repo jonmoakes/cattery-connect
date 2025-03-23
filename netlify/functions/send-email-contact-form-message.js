@@ -8,7 +8,7 @@ export const handler = async (event) => {
 
   try {
     await client.sendEmailWithTemplate({
-      From: process.env.VITE_APP_ADMIN_EMAIL,
+      From: `"Cattery Connect" <${process.env.VITE_APP_ADMIN_EMAIL}>`,
       To: sendTo,
       TemplateAlias: "send-email-contact-form-message",
       TemplateModel: {
