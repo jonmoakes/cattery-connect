@@ -1,6 +1,7 @@
 export const signInRoute = "/sign-in";
 export const signUpRoute = "/sign-up";
 export const aboutRoute = "/about";
+export const pricingRoute = "/pricing";
 export const contactRoute = "/contact";
 export const accountRoute = "/account";
 export const uploadDatesAndPensDataRoute = "/upload-dates-and-pens-data";
@@ -20,14 +21,6 @@ export const bookingsRoute = "/bookings";
 export const cancelBookingRoute = "/cancel-booking";
 export const dailyScheduleRoute = "/daily-schedule";
 export const penDataRoute = "/pen-data";
-//legal
-export const termsRoute = "/terms-and-conditions";
-export const privacyPolicyRoute = "/privacy-policy";
-export const cookiesRoute = "/cookies-policy";
-export const securityPolicyRoute = "/security-policy";
-export const refundsPolicyRoute = "/refunds-policy";
-export const dataProtectionPolicyRoute = "/data-protection-policy";
-export const creditsRoute = "/credits";
 export const signedInCustomersDetailsRoute = "/your-details";
 export const signedInCustomersBookingsRoute = "/your-bookings";
 export const signedInCustomersCatsRoute = "/your-cats";
@@ -35,3 +28,12 @@ export const catteryDetailsRoute = "/cattery-details";
 export const updateEmailRoute = "/update-email";
 export const settleBookingPaymentRoute = "/settle-booking-payment";
 export const paymentResultRoute = "/payment-result";
+//legal
+export const termsRoute = "/terms-and-conditions";
+export const privacyPolicyRoute = "/privacy-policy";
+export const cookiesRoute = "/cookies-policy";
+export const securityPolicyRoute = "/security-policy";
+export const paymentTermsRoute = "/payment-terms";
+export const refundsPolicyRoute = "/refunds-policy";
+export const dataProtectionPolicyRoute = "/data-protection-policy";
+export const creditsRoute = "/credits";

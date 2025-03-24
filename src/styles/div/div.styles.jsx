@@ -823,3 +823,8 @@ export const StripeLogoDiv = styled.div`
   width: 100%;
   animation: 3s ${rollInAnimation};
 `;
+
+export const CentredDiv = styled.div`
+  width: 100%;
+  margin: 20px auto;
+`;

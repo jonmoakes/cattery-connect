@@ -13,6 +13,7 @@ import {
   signedInCustomersDetailsRoute,
   signedInCustomersCatsRoute,
   catteryDetailsRoute,
+  pricingRoute,
 } from "../../strings/routes";
 
 export const signedInRoutes = [
@@ -38,5 +39,6 @@ export const signedOutRoutes = [
   signInRoute,
   signUpRoute,
   aboutRoute,
+  pricingRoute,
   contactRoute,
 ];

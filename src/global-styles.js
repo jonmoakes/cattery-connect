@@ -2,6 +2,7 @@ import { createGlobalStyle } from "styled-components";
 import {
   customGreen,
   customYellow,
+  radialDustyBlue,
   rustRed,
   softBlack,
   teal,
@@ -132,6 +133,14 @@ const GlobalStyles = createGlobalStyle`
     &.black {
       color: ${softBlack};
       text-shadow:none;
+    }
+
+    &.pricing {
+      background: ${radialDustyBlue};
+      padding: 10px 20px;
+      border: 1px solid ${softBlack};
+      border-radius: 5px;
+      color:${softBlack};
     }
 
     &.total-cost {

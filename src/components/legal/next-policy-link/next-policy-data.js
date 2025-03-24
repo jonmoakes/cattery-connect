@@ -6,6 +6,7 @@ import {
   refundsPolicyRoute,
   securityPolicyRoute,
   termsRoute,
+  paymentTermsRoute,
 } from "../../../strings/routes";
 
 export const nextPolicyData = {
@@ -22,6 +23,10 @@ export const nextPolicyData = {
     buttonText: "security policy",
   },
   [securityPolicyRoute]: {
+    nextRoute: paymentTermsRoute,
+    buttonText: "payment terms",
+  },
+  [paymentTermsRoute]: {
     nextRoute: refundsPolicyRoute,
     buttonText: "refunds policy",
   },

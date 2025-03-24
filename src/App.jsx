@@ -51,6 +51,8 @@ import {
   signedInCustomersBookingsRoute,
   settleBookingPaymentRoute,
   paymentResultRoute,
+  pricingRoute,
+  paymentTermsRoute,
 } from "./strings/routes";
 import Footer from "./components/footer/footer.component";
 
@@ -118,6 +120,9 @@ const CookiePolicy = lazy(() =>
 const SecurityPolicy = lazy(() =>
   import("./routes/security-policy/security-policy.component")
 );
+const PaymentTerms = lazy(() =>
+  import("./routes/payment-terms/payment-terms.component")
+);
 const RefundsPolicy = lazy(() =>
   import("./routes/refunds-policy/refunds-policy.component")
 );
@@ -147,6 +152,7 @@ const SettleBookingPayment = lazy(() =>
 const PaymentResult = lazy(() =>
   import("./routes/payment-result/payment-result.component")
 );
+const Pricing = lazy(() => import("./routes/pricing/pricing.component"));
 
 const App = () => {
   const { currentUser, role } = useGetCurrentUserSelectors();
@@ -164,6 +170,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path={aboutRoute} element={<About />} />
+            <Route path={pricingRoute} element={<Pricing />} />
             <Route path={signInRoute} element={<SignIn />} />
             <Route path={signUpRoute} element={<SignUp />} />
             <Route path={contactRoute} element={<Contact />} />
@@ -179,6 +186,7 @@ const App = () => {
             <Route path={privacyPolicyRoute} element={<PrivacyPolicy />} />
             <Route path={cookiesRoute} element={<CookiePolicy />} />
             <Route path={securityPolicyRoute} element={<SecurityPolicy />} />
+            <Route path={paymentTermsRoute} element={<PaymentTerms />} />
             <Route path={refundsPolicyRoute} element={<RefundsPolicy />} />
             <Route
               path={dataProtectionPolicyRoute}
