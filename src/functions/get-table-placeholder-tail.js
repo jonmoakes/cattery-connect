@@ -4,6 +4,7 @@ import {
   allCatsRoute,
   bookingsRoute,
   dailyScheduleRoute,
+  incomeRoute,
 } from "../strings/routes";
 
 export const getTablePlaceholderTail = (path) => {
@@ -17,6 +18,8 @@ export const getTablePlaceholderTail = (path) => {
       return "Bookings";
     case dailyScheduleRoute:
       return "Schedule";
+    case incomeRoute:
+      return "Income";
     default:
       return "";
   }

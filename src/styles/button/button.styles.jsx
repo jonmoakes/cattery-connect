@@ -165,6 +165,10 @@ export const MinimalButton = styled.button`
   &.selected {
     background: ${radialDustyBlue};
   }
+
+  &.clear-week {
+    margin: 0px auto 10px auto;
+  }
 `;
 
 export const RadialTealButton = styled(Button)`
@@ -361,7 +365,7 @@ export const BackButton = styled.button`
   }
 `;
 
-export const NextAndPreviousDateButton = styled.button`
+export const NextAndPreviousButton = styled.button`
   font-family: inherit;
   font-size: 16px;
   text-transform: capitalize;

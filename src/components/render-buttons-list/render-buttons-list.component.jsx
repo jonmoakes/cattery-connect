@@ -4,17 +4,17 @@ import { BlackHr } from "../../styles/hr/hr.styles";
 
 const RenderButtonsList = ({ buttons }) => (
   <>
-    <BlackHr />
-    {buttons.map((button) => {
+    {buttons.map((button, index) => {
       const { id, text, onClick } = button;
 
       return (
         <ColumnDiv key={id}>
+          {index === 0 ? <BlackHr /> : null}
           <RadialTealButton onClick={onClick}>{text}</RadialTealButton>
+          <BlackHr />
         </ColumnDiv>
       );
     })}
-    <BlackHr />
   </>
 );
 

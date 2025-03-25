@@ -153,6 +153,30 @@ export const ParentDiv = styled.div`
   @media screen and (max-width: 600px) {
     width: 90%;
   }
+
+  &.clear-week {
+    margin: 0px auto 30px auto;
+  }
+
+  &.bounce {
+    animation: 1s ${bounceInDownAnimation};
+  }
+
+  &.amount {
+    margin: -20px auto 30px auto;
+    padding: 0px 10px;
+    display: inline-block;
+    width: 50%;
+    animation: 1s ${rollInAnimation};
+
+    @media screen and (max-width: 1366px) {
+      width: 75%;
+    }
+
+    @media screen and (max-width: 600px) {
+      width: 90%;
+    }
+  }
 `;
 
 export const RelativePositionDiv = styled.div`
@@ -393,6 +417,14 @@ export const Accordion = styled.div.withConfig({
 
   &.neg-margin-top {
     margin: -10px auto 20px auto;
+  }
+
+  &.no-margin-top {
+    margin: 0px auto 20px auto;
+  }
+
+  &.income {
+    margin: 20px auto 20px auto;
   }
 
   &.password-security {
@@ -680,10 +712,14 @@ export const BounceInDiv = styled.div`
   animation: 2s ${bounceInAnimation};
 `;
 
-export const NextAndPreviousDateButtonContainer = styled.div`
+export const NextAndPreviousButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   margin: 20px auto 10px auto;
+
+  &.income {
+    margin: 10px auto 20px auto;
+  }
 
   &.margin {
     margin: 0px auto 25px auto;
@@ -743,7 +779,9 @@ export const UnderTitleContainer = styled.div`
   margin: -20px auto 20px auto;
 
   &.account {
-    @media screen and (max-width: 450px) {
+    margin: -40px auto 0px auto;
+
+    @media screen and (max-width: 600px) {
       margin: -20px auto 0px auto;
     }
   }
@@ -827,4 +865,19 @@ export const StripeLogoDiv = styled.div`
 export const CentredDiv = styled.div`
   width: 100%;
   margin: 20px auto;
+`;
+
+export const AmountButtonDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+
+  @media screen and (max-width: 1366px) {
+    margin-top: 20px;
+  }
+
+  @media screen and (max-width: 850px) {
+    margin-top: 50px;
+  }
 `;

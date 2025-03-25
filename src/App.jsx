@@ -14,6 +14,7 @@ import ErrorFallback from "./components/errors/error-fallback.component";
 import FloatingBackButton from "./components/floating-back-button/floating-back-button.component";
 import SkeletonBox from "./components/skeleton-box/skeleton-box.component";
 import PrivateRoutes from "./components/private-routes/private-routes.component";
+import RouteNotFound from "./components/route-not-found/route-not-found.component";
 
 import {
   accountRoute,
@@ -53,6 +54,7 @@ import {
   paymentResultRoute,
   pricingRoute,
   paymentTermsRoute,
+  incomeRoute,
 } from "./strings/routes";
 import Footer from "./components/footer/footer.component";
 
@@ -153,7 +155,7 @@ const PaymentResult = lazy(() =>
   import("./routes/payment-result/payment-result.component")
 );
 const Pricing = lazy(() => import("./routes/pricing/pricing.component"));
-
+const Income = lazy(() => import("./routes/income/income.component"));
 const App = () => {
   const { currentUser, role } = useGetCurrentUserSelectors();
   useGetUserOnLoadThunkUseEffect();
@@ -345,7 +347,13 @@ const App = () => {
                   currentUser && role === "customer" ? <PaymentResult /> : null
                 }
               />
+
+              <Route
+                path={incomeRoute}
+                element={currentUser && role === "owner" ? <Income /> : null}
+              />
             </Route>
+            <Route path="*" element={<RouteNotFound />} />
           </Routes>
         </Suspense>
       </ErrorBoundary>

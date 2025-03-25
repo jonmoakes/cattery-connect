@@ -14,3 +14,5 @@ export const CREATE_PAYMENT_INTENT_ENDPOINT =
   "/.netlify/functions/create-payment-intent";
 export const SEND_EMAIL_FAILED_STATUS_UPDATE_AFTER_SUCCESSFUL_PAYMENT_ENDPOINT =
   "/.netlify/functions/send-email-failed-status-update-after-successful-payment";
+export const GET_RECEIVED_PAYMENTS_ENDPOINT =
+  "/.netlify/functions/get-received-payments";

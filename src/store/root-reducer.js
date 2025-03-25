@@ -28,6 +28,7 @@ import { catteryDetailsReducer } from "./cattery-details/cattery-details-slice";
 import { signedInCustomersBookingsReducer } from "./signed-in-customers-bookings/signed-in-customers-bookings.slice";
 import { cardInputReducer } from "./card-input/card-input.slice";
 import { handlePaymentReducer } from "./handle-payment/handle-payment-slice";
+import { incomeReducer } from "./income/income.slice";
 
 export const rootReducer = combineReducers({
   hamburgerMenu: hamburgerMenuReducer,
@@ -58,4 +59,5 @@ export const rootReducer = combineReducers({
   signedInCustomersBookings: signedInCustomersBookingsReducer,
   cardInput: cardInputReducer,
   handlePayment: handlePaymentReducer,
+  income: incomeReducer,
 });
