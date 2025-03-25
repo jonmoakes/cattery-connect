@@ -26,8 +26,14 @@ export const getRequiredCatteryDataForBookingAsync = createAsyncThunk(
         throw new Error("Couldn't Find Cattery Document");
       }
 
-      const { maximumCatsInSinglePen, pricePerNight, name, phone, email } =
-        catteryDoc;
+      const {
+        maximumCatsInSinglePen,
+        pricePerNight,
+        name,
+        phone,
+        email,
+        managesOwnPens,
+      } = catteryDoc;
 
       return {
         maximumCatsInSinglePen,
@@ -35,6 +41,7 @@ export const getRequiredCatteryDataForBookingAsync = createAsyncThunk(
         name,
         phone,
         email,
+        managesOwnPens,
       };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

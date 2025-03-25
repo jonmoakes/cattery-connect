@@ -1,10 +1,11 @@
 import ShowBookingData from "../../../components/show-booking-data/show-booking-data.component";
 import FailedDatesInfo from "./failed-dates-info.component";
-import CheckAvailabilityButton from "./check-availability-button.component";
 import BookingIsAvailableInfoAndPlaceBookingButton from "./booking-is-available-info-and-place-booking-button.component";
+import CheckAvailabilityOrConfirmBookingButton from "./check-availability-or-confirm-booking-button.component";
 
 const FormButtonsAndAvailabilityInfoSection = ({
   bookingDataToShow,
+  managesOwnPens,
   noAvailabilityRef,
   bookingNotAvailableAndHasFailingDates,
   showIneligibleDates,
@@ -16,7 +17,8 @@ const FormButtonsAndAvailabilityInfoSection = ({
   handleChangeDetailsRequest,
 }) => (
   <>
-    <ShowBookingData {...{ bookingDataToShow }} />
+    <ShowBookingData {...{ bookingDataToShow, managesOwnPens }} />
+
     <div ref={noAvailabilityRef}>
       <FailedDatesInfo
         {...{
@@ -27,7 +29,11 @@ const FormButtonsAndAvailabilityInfoSection = ({
         }}
       />
     </div>
-    <CheckAvailabilityButton {...{ availabilityStatus }} />
+
+    <CheckAvailabilityOrConfirmBookingButton
+      {...{ managesOwnPens, availabilityStatus, confirmPlaceBooking }}
+    />
+
     <div ref={bookingIsAvailableRef}>
       <BookingIsAvailableInfoAndPlaceBookingButton
         {...{

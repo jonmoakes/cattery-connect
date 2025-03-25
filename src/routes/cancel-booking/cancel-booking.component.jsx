@@ -1,7 +1,7 @@
 import useGetCancelBookingSelectors from "../../hooks/selectors/use-get-cancel-booking-selectors";
 import useGetRequiredCatteryDataForBookingSelectors from "../../hooks/selectors/use-get-required-cattery-data-for-booking-selectors";
 
-import useFetchAvailabilityDocsToUpdateThunkUseEffect from "./cancel-booking-hooks/use-effects/use-fetch-availability-docs-to-update-thunk-use-effect";
+import useFetchCatteryDetailsAvailabilityDocsToUpdateThunkUseEffect from "./cancel-booking-hooks/use-effects/use-fetch-cattery-details-and-availability-docs-to-update-thunk-use-effect";
 import useCancelBookingResultSwalUseEffect from "./cancel-booking-hooks/use-effects/use-cancel-booking-result-swal-use-effect";
 import useCancelBookingSendEmailResultSwalUseEffect from "./cancel-booking-hooks/use-effects/use-cancel-booking-send-email-result-swal-use-effect";
 
@@ -25,7 +25,7 @@ const CancelBooking = () => {
     useGetRequiredCatteryDataForBookingSelectors();
   const { confirmCancelBooking } = useConfirmCancelBooking();
 
-  useFetchAvailabilityDocsToUpdateThunkUseEffect();
+  useFetchCatteryDetailsAvailabilityDocsToUpdateThunkUseEffect();
   useCancelBookingResultSwalUseEffect();
   useCancelBookingSendEmailResultSwalUseEffect();
 

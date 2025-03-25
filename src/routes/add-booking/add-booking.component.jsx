@@ -35,6 +35,7 @@ const AddBooking = () => {
     paymentStatus,
     shouldShowFormSubmissionButtons,
     bookingDataToShow,
+    managesOwnPens,
     bookingNotAvailableAndHasFailingDates,
     showIneligibleDates,
     failingDates,
@@ -85,6 +86,7 @@ const AddBooking = () => {
               <FormButtonsAndAvailabilityInfoSection
                 {...{
                   bookingDataToShow,
+                  managesOwnPens,
                   noAvailabilityRef,
                   bookingNotAvailableAndHasFailingDates,
                   showIneligibleDates,

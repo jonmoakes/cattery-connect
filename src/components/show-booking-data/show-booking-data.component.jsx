@@ -6,7 +6,7 @@ import CustomSpan from "../custom-span/custom-span.component";
 import { useLocation } from "react-router-dom";
 import { addBookingRoute, cancelBookingRoute } from "../../strings/routes";
 
-const ShowBookingData = ({ bookingDataToShow }) => {
+const ShowBookingData = ({ bookingDataToShow, managesOwnPens }) => {
   const {
     bookingId,
     customerName,
@@ -100,14 +100,29 @@ const ShowBookingData = ({ bookingDataToShow }) => {
 
         {path === addBookingRoute ? (
           <>
-            <CustomBalancedText>
-              if you are happy with these details, tap the 'check availability'
-              button below.
-            </CustomBalancedText>
-            <CustomBalancedText>
-              if availability is confirmed, you will have chance to confirm
-              again before making the booking.
-            </CustomBalancedText>
+            {managesOwnPens ? (
+              <>
+                <CustomBalancedText>
+                  if you are happy with these details, tap the 'complete
+                  booking' button below.
+                </CustomBalancedText>
+                <CustomBalancedText>
+                  otherwise, change any data in the form above and then come
+                  back to this point.
+                </CustomBalancedText>
+              </>
+            ) : (
+              <>
+                <CustomBalancedText>
+                  if you are happy with these details, tap the 'check
+                  availability' button below.
+                </CustomBalancedText>
+                <CustomBalancedText>
+                  if availability is confirmed, you will have chance to confirm
+                  again before making the booking.
+                </CustomBalancedText>
+              </>
+            )}
           </>
         ) : (
           path === cancelBookingRoute && (

@@ -3,6 +3,7 @@ import CustomBalancedText from "../../../components/custom-balanced-text/custom-
 import { Button } from "../../../styles/button/button.styles";
 import { BlackHr } from "../../../styles/hr/hr.styles";
 import { BookingWrapper } from "../../../styles/div/div.styles";
+import ConfirmPlaceBookingButton from "./confirm-place-booking-button.component";
 
 const BookingIsAvailableInfoAndPlaceBookingButton = ({
   availabilityStatus,
@@ -23,9 +24,7 @@ const BookingIsAvailableInfoAndPlaceBookingButton = ({
             please tap the button below to confirm!
           </CustomBalancedText>
 
-          <Button type="button" onClick={confirmPlaceBooking}>
-            complete booking
-          </Button>
+          <ConfirmPlaceBookingButton {...{ confirmPlaceBooking }} />
         </BookingWrapper>
 
         <BlackHr />

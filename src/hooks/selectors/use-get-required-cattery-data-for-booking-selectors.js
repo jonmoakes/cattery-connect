@@ -16,6 +16,7 @@ const useGetRequiredCatteryDataForBookingSelectors = () => {
     name,
     phone,
     email: catteryEmail,
+    managesOwnPens,
   } = requiredCatteryData ?? {};
 
   return {
@@ -28,6 +29,7 @@ const useGetRequiredCatteryDataForBookingSelectors = () => {
     name,
     phone,
     catteryEmail,
+    managesOwnPens,
   };
 };
 

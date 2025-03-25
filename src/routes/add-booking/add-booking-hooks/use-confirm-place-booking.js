@@ -16,7 +16,8 @@ const useConfirmPlaceBooking = () => {
   const { uploadBookingData } = useGetUploadBookingDataSelectors();
   const { parsedAvailabilityData } = useGetIsBookingAvailableSelectors();
   const { catteryId } = useGetCurrentUserSelectors();
-  const { pricePerNight } = useGetRequiredCatteryDataForBookingSelectors();
+  const { pricePerNight, managesOwnPens } =
+    useGetRequiredCatteryDataForBookingSelectors();
 
   const dispatch = useDispatch();
   const { confirmSwal } = useConfirmSwal();
@@ -25,23 +26,33 @@ const useConfirmPlaceBooking = () => {
     const operation = "deduct";
 
     const confirmResult = () => {
-      dispatch(
-        updatePensDataInDbAsync({
-          parsedAvailabilityData,
-          uploadBookingData,
-          operation,
-        })
-      ).then((resultAction) => {
-        if (updatePensDataInDbAsync.fulfilled.match(resultAction)) {
-          dispatch(
-            uploadBookingDataToDbAsync({
-              uploadBookingData,
-              pricePerNight,
-              catteryId,
-            })
-          );
-        }
-      });
+      if (!managesOwnPens) {
+        dispatch(
+          updatePensDataInDbAsync({
+            parsedAvailabilityData,
+            uploadBookingData,
+            operation,
+          })
+        ).then((resultAction) => {
+          if (updatePensDataInDbAsync.fulfilled.match(resultAction)) {
+            dispatch(
+              uploadBookingDataToDbAsync({
+                uploadBookingData,
+                pricePerNight,
+                catteryId,
+              })
+            );
+          }
+        });
+      } else {
+        dispatch(
+          uploadBookingDataToDbAsync({
+            uploadBookingData,
+            pricePerNight,
+            catteryId,
+          })
+        );
+      }
     };
 
     confirmSwal(

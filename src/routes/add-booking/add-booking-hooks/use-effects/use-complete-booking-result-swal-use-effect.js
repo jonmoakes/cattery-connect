@@ -8,12 +8,14 @@ import usePenDataRollbackErrorSwal from "../../../../hooks/use-pen-data-rollback
 import useUpdatePensErrorSwal from "../../../../hooks/use-update-pens-error-swal";
 import usePensUpdatedBookingDataFailedSwal from "../swals/use-pens-updated-booking-data-failed-swal";
 import { pensRollbackFailureErrorCode } from "../../../../constants/constants";
+import useGetRequiredCatteryDataForBookingSelectors from "../../../../hooks/selectors/use-get-required-cattery-data-for-booking-selectors";
 
 const useCompleteBookingResultSwalUseEffect = () => {
   const { updatePensDataResult, updatePensDataError } =
     useGetUpdatePensDataSelectors();
   const { uploadBookingDataResult, uploadBookingDataError } =
     useGetUploadBookingDataSelectors();
+  const { managesOwnPens } = useGetRequiredCatteryDataForBookingSelectors();
 
   const { bookingCompleteSwal } = useBookingCompleteSwal();
   const { penDataRollbackErrorSwal } = usePenDataRollbackErrorSwal();
@@ -34,8 +36,10 @@ const useCompleteBookingResultSwalUseEffect = () => {
       return;
 
     if (
-      updatePensDataResult === "fulfilled" &&
-      uploadBookingDataResult === "fulfilled"
+      (managesOwnPens && uploadBookingDataResult === "fulfilled") ||
+      (!managesOwnPens &&
+        updatePensDataResult === "fulfilled" &&
+        uploadBookingDataResult === "fulfilled")
     ) {
       bookingCompleteSwal(setSwalConfirmed);
     } else if (updatePensDataResult === "rejected") {
@@ -65,6 +69,7 @@ const useCompleteBookingResultSwalUseEffect = () => {
     updatePensDataError,
     updatePensDataResult,
     updatePensErrorSwal,
+    managesOwnPens,
   ]);
 };
 

@@ -5,7 +5,7 @@ import useGetAllCustomerSelectors from "../../../hooks/selectors/use-get-all-cus
 import useGetIsBookingAvailableSelectors from "../../../hooks/selectors/use-get-is-booking-available-selectors";
 
 const useAddBookingVariables = () => {
-  const { requiredCatteryDataError } =
+  const { requiredCatteryDataError, managesOwnPens } =
     useGetRequiredCatteryDataForBookingSelectors();
   const { getAllCustomersError, atLeastOneCustomerExists } =
     useGetAllCustomerSelectors();
@@ -97,6 +97,7 @@ const useAddBookingVariables = () => {
     paymentStatus,
     shouldShowFormSubmissionButtons,
     bookingDataToShow,
+    managesOwnPens,
     bookingNotAvailableAndHasFailingDates,
     showIneligibleDates,
     failingDates,
