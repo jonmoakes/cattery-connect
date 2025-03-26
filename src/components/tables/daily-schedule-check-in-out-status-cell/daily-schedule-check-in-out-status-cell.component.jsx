@@ -34,7 +34,7 @@ const DailyScheduleCheckInOutStatusCell = ({ row, value }) => {
 
           <MinimalButton
             type="button"
-            className="payment-status"
+            className="update"
             onClick={() =>
               confirmUpdateCheckInOutStatus(
                 documentId,

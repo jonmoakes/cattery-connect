@@ -1,33 +1,23 @@
-import { useState } from "react";
-
 import useConfirmUpdatePaymentStatus from "./table-hooks/use-confirm-update-payment-status";
 
-import { MinimalButton, PlainButton } from "../../styles/button/button.styles";
+import CustomBalancedText from "../custom-balanced-text/custom-balanced-text.component";
+
+import { MinimalButton } from "../../styles/button/button.styles";
 
 const UpdatePaymentStatusCell = ({ value, documentId }) => {
   const { confirmUpdatePaymentStatus } = useConfirmUpdatePaymentStatus();
-  const [showButton, setShowButton] = useState(false);
-
-  const handleClick = () => {
-    setShowButton(!showButton);
-  };
 
   return (
     <>
-      <PlainButton
-        onClick={handleClick}
-        className={value === "incomplete" ? "red" : ""}
-      >
+      <CustomBalancedText className={value === "incomplete" ? "red" : ""}>
         {value}
-      </PlainButton>
+      </CustomBalancedText>
 
-      {value === "incomplete" || showButton ? (
+      {value === "incomplete" ? (
         <MinimalButton
           type="button"
-          className="payment-status"
-          onClick={() =>
-            confirmUpdatePaymentStatus(value, documentId, setShowButton)
-          }
+          className="update"
+          onClick={() => confirmUpdatePaymentStatus(value, documentId)}
         >
           update status
         </MinimalButton>

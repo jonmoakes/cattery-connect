@@ -1,20 +1,19 @@
 import { useDispatch } from "react-redux";
+
 import useConfirmSwal from "../../../hooks/use-confirm-swal";
 import { updateBookingPaymentStatusAsync } from "../../../store/bookings/bookings.thunks";
+
 import { confirmUpdatePaymentStatusMessage } from "../../../strings/confirms";
 
 const useConfirmUpdatePaymentStatus = () => {
   const dispatch = useDispatch();
   const { confirmSwal } = useConfirmSwal();
 
-  const confirmUpdatePaymentStatus = (value, documentId, setShowButton) => {
+  const confirmUpdatePaymentStatus = (value, documentId) => {
     const valueToUpdateTo = value === "complete" ? "incomplete" : "complete";
 
     const confirmResult = () => {
       dispatch(updateBookingPaymentStatusAsync({ documentId }));
-      if (value === "complete") {
-        setShowButton(false);
-      }
     };
 
     confirmSwal(

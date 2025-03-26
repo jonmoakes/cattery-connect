@@ -149,7 +149,7 @@ export const MinimalButton = styled.button`
     margin: 20px auto;
   }
 
-  &.payment-status {
+  &.update {
     margin: 10px auto 0px auto;
     background: ${radialGrey};
   }

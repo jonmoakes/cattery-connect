@@ -19,6 +19,7 @@ import {
   catteryDetailsRoute,
   incomeRoute,
   updatePasswordRoute,
+  updateEmailRoute,
 } from "../../../strings/routes";
 
 const useNavigateToRoute = () => {
@@ -101,36 +102,46 @@ const useNavigateToRoute = () => {
       text: "update password",
       onClick: () => hamburgerHandlerNavigate(updatePasswordRoute),
     },
+    {
+      id: 13,
+      text: "update email",
+      onClick: () => hamburgerHandlerNavigate(updateEmailRoute),
+    },
   ];
 
   const customerDetailsButtons = [
     {
-      id: 13,
+      id: 14,
       text: "your bookings",
       onClick: () => hamburgerHandlerNavigate(signedInCustomersBookingsRoute),
     },
     {
-      id: 14,
+      id: 15,
       text: "your details",
       onClick: () => hamburgerHandlerNavigate(signedInCustomersDetailsRoute),
     },
     {
-      id: 15,
+      id: 16,
       text: "your cats",
       onClick: () => hamburgerHandlerNavigate(signedInCustomersCatsRoute),
     },
     {
-      id: 16,
+      id: 17,
       text: "your cattery details",
       onClick: () => hamburgerHandlerNavigate(catteryDetailsRoute),
     },
     {
-      id: 17,
+      id: 18,
       text: "update password",
       onClick: () => hamburgerHandlerNavigate(updatePasswordRoute),
     },
     {
-      id: 18,
+      id: 19,
+      text: "update email",
+      onClick: () => hamburgerHandlerNavigate(updateEmailRoute),
+    },
+    {
+      id: 20,
       text: "contact cattery",
       onClick: () => hamburgerHandlerNavigate(contactRoute),
     },

@@ -35,3 +35,7 @@ export const bookingCompletedSendEmailQuestionMessage = `<span style="font-size:
 export const confirmMakePaymentMessage = (priceForUi, catteryName) => {
   return `<span style="font-size:20px;">are you sure you want to make this payment of<br/><span style="color:${customYellow};">£${priceForUi}</span><br/>to<br/><span style="color:${customYellow};">${catteryName}</span> ?</span>`;
 };
+
+export const confirmUpdateEmailMessage = (newEmail) => {
+  return `are you sure you wish to update your email to be <span style="text-transform: lowercase;  color: hsl(60, 100%, 50%);">${newEmail}</span>?`;
+};

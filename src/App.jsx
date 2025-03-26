@@ -56,6 +56,7 @@ import {
   paymentTermsRoute,
   incomeRoute,
   updatePasswordRoute,
+  updateEmailRoute,
 } from "./strings/routes";
 import Footer from "./components/footer/footer.component";
 
@@ -159,6 +160,9 @@ const Pricing = lazy(() => import("./routes/pricing/pricing.component"));
 const Income = lazy(() => import("./routes/income/income.component"));
 const UpdatePassword = lazy(() =>
   import("./routes/update-password/update-password.component")
+);
+const UpdateEmail = lazy(() =>
+  import("./routes/update-email/update-email.component")
 );
 
 const App = () => {
@@ -362,6 +366,12 @@ const App = () => {
                 path={updatePasswordRoute}
                 element={
                   currentUser && role !== "admin" ? <UpdatePassword /> : null
+                }
+              />
+              <Route
+                path={updateEmailRoute}
+                element={
+                  currentUser && role !== "admin" ? <UpdateEmail /> : null
                 }
               />
             </Route>

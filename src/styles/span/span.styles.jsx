@@ -121,6 +121,13 @@ export const ToggleResetPasswordConfirmPassword = styled(
     `url(${props.resetPasswordConfirmPasswordIsVisible ? "25px" : "30px"})`};
 `;
 
+export const ToggleUpdateEmailPassword = styled(SignInPasswordEye).withConfig({
+  shouldForwardProp: (prop) => prop !== "updateEmailPasswordIsVisible",
+})`
+  background-image: ${(props) =>
+    `url(${props.updateEmailPasswordIsVisible ? eyeIconHide : eyeIcon})`};
+`;
+
 export const ClearButtonExampleSpan = styled.span`
   background-color: tomato;
   color: ${softBlack};

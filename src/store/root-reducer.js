@@ -29,6 +29,7 @@ import { signedInCustomersBookingsReducer } from "./signed-in-customers-bookings
 import { cardInputReducer } from "./card-input/card-input.slice";
 import { handlePaymentReducer } from "./handle-payment/handle-payment-slice";
 import { incomeReducer } from "./income/income.slice";
+import { updateEmailReducer } from "./update-email/update-email.slice";
 
 export const rootReducer = combineReducers({
   hamburgerMenu: hamburgerMenuReducer,
@@ -60,4 +61,5 @@ export const rootReducer = combineReducers({
   cardInput: cardInputReducer,
   handlePayment: handlePaymentReducer,
   income: incomeReducer,
+  updateEmail: updateEmailReducer,
 });

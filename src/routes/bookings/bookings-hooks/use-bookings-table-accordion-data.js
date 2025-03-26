@@ -37,13 +37,31 @@ you don't need to type the 'th' ie the 20th as this will not show up any results
       },
       {
         id: 5,
-        content: `in the 'payment status' column, if a payment hasn't been made yet, there is a button where you can change its status to 'completed' when you have received the payment.
-    
-    if a payment has been marked as complete when you made the booking, this button shall not appear by default.
-    
-    however, you can make it appear ( if you have made a mistake by saying a payment was completed when it wasn't for example ), by tapping on the text that says 'complete'.
-    
-    this will then show the button which when clicked, allows you to change the status to incomplete.`,
+        content: `THE PAYMENT STATUS CELL
+
+Before payment:
+
+If a payment hasn’t been made yet, the status will be marked as 'incomplete'.
+
+when you receive payment, you can change the status to “completed” by clicking the button.
+
+_______________________
+
+Payments Made At The Time Of The Booking:
+
+For bookings paid at the time of booking, the “update status” button won’t appear.
+
+The status will be automatically set to "complete".
+_______________________
+
+After Marking as Complete:
+Once a payment is marked as complete 
+
+( or the customer makes a payment via the app ), 
+
+ the status will change to "complete" and the option to cancel is disabled to maintain accurate records and prevent accidental or fraudulent changes. 
+ 
+ If you need to undo this status, please contact Jonathan using the link below.`,
       },
     ],
   };
