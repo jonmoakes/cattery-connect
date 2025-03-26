@@ -7,6 +7,7 @@ import {
   addCatRoute,
   addCustomerRoute,
   cancelBookingRoute,
+  chooseNewPasswordRoute,
   editCatRoute,
   editCustomerRoute,
   signInRoute,
@@ -25,7 +26,8 @@ const useIsRouteWithNavWarning = () => {
       path === addCatRoute ||
       path === editCatRoute ||
       path === addBookingRoute ||
-      path === cancelBookingRoute
+      path === cancelBookingRoute ||
+      path === chooseNewPasswordRoute
     );
   };
 

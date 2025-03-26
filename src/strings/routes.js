@@ -29,6 +29,7 @@ export const updateEmailRoute = "/update-email";
 export const settleBookingPaymentRoute = "/settle-booking-payment";
 export const paymentResultRoute = "/payment-result";
 export const incomeRoute = "/income";
+export const updatePasswordRoute = "/update-password";
 //legal
 export const termsRoute = "/terms-and-conditions";
 export const privacyPolicyRoute = "/privacy-policy";

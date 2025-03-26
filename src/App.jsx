@@ -55,6 +55,7 @@ import {
   pricingRoute,
   paymentTermsRoute,
   incomeRoute,
+  updatePasswordRoute,
 } from "./strings/routes";
 import Footer from "./components/footer/footer.component";
 
@@ -156,6 +157,10 @@ const PaymentResult = lazy(() =>
 );
 const Pricing = lazy(() => import("./routes/pricing/pricing.component"));
 const Income = lazy(() => import("./routes/income/income.component"));
+const UpdatePassword = lazy(() =>
+  import("./routes/update-password/update-password.component")
+);
+
 const App = () => {
   const { currentUser, role } = useGetCurrentUserSelectors();
   useGetUserOnLoadThunkUseEffect();
@@ -351,6 +356,13 @@ const App = () => {
               <Route
                 path={incomeRoute}
                 element={currentUser && role === "owner" ? <Income /> : null}
+              />
+
+              <Route
+                path={updatePasswordRoute}
+                element={
+                  currentUser && role !== "admin" ? <UpdatePassword /> : null
+                }
               />
             </Route>
             <Route path="*" element={<RouteNotFound />} />

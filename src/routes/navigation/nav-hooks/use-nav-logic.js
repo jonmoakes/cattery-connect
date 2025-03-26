@@ -1,10 +1,12 @@
+import { useLocation } from "react-router-dom";
+
 import useHamburgerHandlerNavigate from "../../../hooks/use-hamburger-handler-navigate";
 import useIsRouteWithNavWarning from "../../../hooks/is-route-with-nav-warning/use-is-route-with-nav-warning";
 import useConfirmSwal from "../../../hooks/use-confirm-swal";
 
 import { confirmSureMessage, imSureMessage } from "../../../strings/confirms";
 import { loseAllDataMessage } from "../../../strings/info";
-import { useLocation } from "react-router-dom";
+
 import { paymentResultRoute } from "../../../strings/routes";
 
 const useNavLogic = () => {
