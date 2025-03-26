@@ -11,7 +11,7 @@ const useCheckForAndClearFormDetails = () => {
 
   const checkFormDetails = useCallback(
     (formDetails, resetAction) => {
-      if (Object.values(formDetails).every((value) => value !== "")) {
+      if (Object.keys(formDetails).length > 0) {
         dispatch(resetAction());
       }
     },

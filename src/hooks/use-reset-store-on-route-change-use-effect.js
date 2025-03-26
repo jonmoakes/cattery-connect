@@ -18,6 +18,28 @@ import {
   resetContactFormDetails,
   resetSendEmailState,
 } from "../store/send-email/send-email.slice";
+import useResetAddBookingState from "./use-reset-add-booking-state";
+import { resetBookingsState } from "../store/bookings/bookings.slice";
+import { resetCancelBookingState } from "../store/cancel-booking/cancel-booking.slice";
+import { resetRequiredCatteryDataForBookingState } from "../store/required-cattery-data/required-cattery-data-for-booking.slice";
+import { resetIndividualCustomersCatsState } from "../store/get-individual-customers-cats/get-individual-customers-cats.slice";
+import {
+  resetCatDetails,
+  resetCatDetailsManagementState,
+} from "../store/cat-details-management/cat-details-management.slice";
+import {
+  resetCustomerDetails,
+  resetCustomerDetailsManagementState,
+} from "../store/customer-details-management/customer-details-management.slice";
+import { resetUpdatePensDataState } from "../store/update-pens-data/update-pens-data.slice";
+import { resetDailyScheduleState } from "../store/daily-schedule/daily-schedule.slice";
+import { resetViewPenDataState } from "../store/view-pen-data/view-pen-data.slice";
+import { resetSignUpFormState } from "../store/sign-up-form/sign-up-form.slice";
+import { resetSignedInCustomersDetailsState } from "../store/signed-in-customers-details/signed-in-customer-details.slice";
+import { resetCatteryDetailsState } from "../store/cattery-details/cattery-details-slice";
+import { setBookingConfirmationDetailsInfo } from "../store/signed-in-customers-bookings/signed-in-customers-bookings.slice";
+import { resetCardInputState } from "../store/card-input/card-input.slice";
+import { resetHandlePaymentState } from "../store/handle-payment/handle-payment-slice";
 
 import {
   addCatChooseOwnerRoute,
@@ -45,32 +67,13 @@ import {
   signedInCustomersCatsRoute,
   settleBookingPaymentRoute,
   paymentResultRoute,
+  accountRoute,
 } from "../strings/routes";
-import useResetAddBookingState from "./use-reset-add-booking-state";
-import { resetBookingsState } from "../store/bookings/bookings.slice";
-import { resetCancelBookingState } from "../store/cancel-booking/cancel-booking.slice";
-import { resetRequiredCatteryDataForBookingState } from "../store/required-cattery-data/required-cattery-data-for-booking.slice";
-import { resetIndividualCustomersCatsState } from "../store/get-individual-customers-cats/get-individual-customers-cats.slice";
-import {
-  resetCatDetails,
-  resetCatDetailsManagementState,
-} from "../store/cat-details-management/cat-details-management.slice";
-import {
-  resetCustomerDetails,
-  resetCustomerDetailsManagementState,
-} from "../store/customer-details-management/customer-details-management.slice";
-import { resetUpdatePensDataState } from "../store/update-pens-data/update-pens-data.slice";
-import { resetDailyScheduleState } from "../store/daily-schedule/daily-schedule.slice";
-import { resetViewPenDataState } from "../store/view-pen-data/view-pen-data.slice";
-import { resetSignUpFormState } from "../store/sign-up-form/sign-up-form.slice";
-import { resetSignedInCustomersDetailsState } from "../store/signed-in-customers-details/signed-in-customer-details.slice";
-import { resetCatteryDetailsState } from "../store/cattery-details/cattery-details-slice";
-import { setBookingConfirmationDetailsInfo } from "../store/signed-in-customers-bookings/signed-in-customers-bookings.slice";
-import { resetCardInputState } from "../store/card-input/card-input.slice";
-import { resetHandlePaymentState } from "../store/handle-payment/handle-payment-slice";
+import useGetCurrentUserSelectors from "./selectors/use-get-current-user-selectors";
 
 const useResetStoreOnRouteChangeUseEffect = () => {
   const { allUsersCatteryIdsAndOwnerNameError } = useGetAllUsersSelectors();
+  const { role } = useGetCurrentUserSelectors();
 
   const { resetAddBookingState } = useResetAddBookingState();
   const location = useLocation();
@@ -85,6 +88,11 @@ const useResetStoreOnRouteChangeUseEffect = () => {
           break;
         case signUpRoute:
           dispatch(resetSignUpFormState());
+          break;
+        case accountRoute:
+          if (role === "owner") {
+            dispatch(resetCatteryDetailsState());
+          }
           break;
         case forgotPasswordRequestRoute:
           dispatch(resetGenerateNewPasswordRequestState());
@@ -173,6 +181,7 @@ const useResetStoreOnRouteChangeUseEffect = () => {
     dispatch,
     allUsersCatteryIdsAndOwnerNameError,
     resetAddBookingState,
+    role,
   ]);
 };
 

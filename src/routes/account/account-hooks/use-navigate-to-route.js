@@ -1,3 +1,4 @@
+import useGetCatteryDetailsSelectors from "../../../hooks/selectors/use-get-cattery-details-selectors";
 import useHamburgerHandlerNavigate from "../../../hooks/use-hamburger-handler-navigate";
 
 import {
@@ -20,6 +21,8 @@ import {
 } from "../../../strings/routes";
 
 const useNavigateToRoute = () => {
+  const { catteryDetailsError, managesOwnPens, allowsOnlinePayments } =
+    useGetCatteryDetailsSelectors();
   const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
 
   const adminButtons = [
@@ -56,16 +59,24 @@ const useNavigateToRoute = () => {
       text: "cats",
       onClick: () => hamburgerHandlerNavigate(allCatsRoute),
     },
-    {
-      id: 7,
-      text: "pen data",
-      onClick: () => hamburgerHandlerNavigate(penDataRoute),
-    },
-    {
-      id: 8,
-      text: "income",
-      onClick: () => hamburgerHandlerNavigate(incomeRoute),
-    },
+    ...(managesOwnPens || catteryDetailsError
+      ? []
+      : [
+          {
+            id: 7,
+            text: "pen data",
+            onClick: () => hamburgerHandlerNavigate(penDataRoute),
+          },
+        ]),
+    ...(!allowsOnlinePayments || catteryDetailsError
+      ? []
+      : [
+          {
+            id: 8,
+            text: "income",
+            onClick: () => hamburgerHandlerNavigate(incomeRoute),
+          },
+        ]),
   ];
 
   const catteryOwnerCustomerDataButtons = [

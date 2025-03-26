@@ -1,16 +1,19 @@
+import useGetCurrentUserSelectors from "../../hooks/selectors/use-get-current-user-selectors";
 import useCheckForAndClearFormDetails from "./account-hooks/use-check-for-and-clear-form-details";
+import useGetManagesOwnPensAndAllowsOnlinePaymentsValuesThunkUseEffect from "./account-hooks/use-get-manages-own-pens-and-allows-online-payments-values-thunk-use-effect";
 
 import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
 import AccountButtonLinks from "./account-button-links.component";
 
 import { Container } from "../../styles/container/container.styles";
 import { ParentDiv, UnderTitleContainer } from "../../styles/div/div.styles";
-import useGetCurrentUserSelectors from "../../hooks/selectors/use-get-current-user-selectors";
+
 import { getFirstNameFromString } from "../../functions/get-first-name-from-string";
 
 const Account = () => {
   const { name } = useGetCurrentUserSelectors();
   useCheckForAndClearFormDetails();
+  useGetManagesOwnPensAndAllowsOnlinePaymentsValuesThunkUseEffect();
 
   return (
     <Container>

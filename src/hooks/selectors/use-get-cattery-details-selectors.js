@@ -9,8 +9,16 @@ const useGetCatteryDetailsSelectors = () => {
     catteryDetailsError,
   } = useSelector(selectCatteryDetailsSelectors);
 
-  const { name, address, phone, email, website, pricePerNight } =
-    catteryDetails ?? {};
+  const {
+    name,
+    address,
+    phone,
+    email,
+    website,
+    pricePerNight,
+    managesOwnPens,
+    allowsOnlinePayments,
+  } = catteryDetails ?? {};
 
   const catteryDetailsFoUi = {
     name,
@@ -26,6 +34,8 @@ const useGetCatteryDetailsSelectors = () => {
     catteryDetailsResult,
     catteryDetailsError,
     catteryDetailsFoUi,
+    managesOwnPens,
+    allowsOnlinePayments,
   };
 };
 
