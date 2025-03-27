@@ -14,7 +14,6 @@ import { catDetailsManagementReducer } from "./cat-details-management/cat-detail
 import { getAllCatsReducer } from "./get-all-cats/get-all-cats.slice";
 import { getAllUsersReducer } from "./get-all-users/get-all-users.slice";
 import { sendEmailReducer } from "./send-email/send-email.slice";
-import { requiredDataForCatteryBookingReducer } from "./required-cattery-data/required-cattery-data-for-booking.slice";
 import { isBookingAvailableReducer } from "./is-booking-available/is-booking-available.slice";
 import { updatePensDataReducer } from "./update-pens-data/update-pens-data.slice";
 import { uploadBookingDataReducer } from "./upload-booking-data/upload-booking-data.slice";
@@ -46,7 +45,6 @@ export const rootReducer = combineReducers({
   getAllCats: getAllCatsReducer,
   getAllUsers: getAllUsersReducer,
   sendEmail: sendEmailReducer,
-  requiredCatteryDataForBooking: requiredDataForCatteryBookingReducer,
   isBookingAvailable: isBookingAvailableReducer,
   updatePensData: updatePensDataReducer,
   uploadBookingData: uploadBookingDataReducer,

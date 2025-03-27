@@ -1,10 +1,10 @@
 import useGetAllCustomerSelectors from "../../../hooks/selectors/use-get-all-customers-selectors";
-import useGetRequiredCatteryDataForBookingSelectors from "../../../hooks/selectors/use-get-required-cattery-data-for-booking-selectors";
 import useGetIsBookingAvailableSelectors from "../../../hooks/selectors/use-get-is-booking-available-selectors";
 import useGetUpdatePensDataSelectors from "../../../hooks/selectors/use-get-update-pens-data-selectors";
 import useGetUploadBookingDataSelectors from "../../../hooks/selectors/use-get-upload-booking-data-selectors";
 import useGetSendEmailSelectors from "../../../hooks/selectors/use-get-send-email-selectors";
 import useGetIndividualCustomersCatsSelectors from "../../../hooks/selectors/use-get-individual-customers-cats-selectors";
+import useGetCatteryDetailsSelectors from "../../../hooks/selectors/use-get-cattery-details-selectors";
 
 import CustomBalancedText from "../../../components/custom-balanced-text/custom-balanced-text.component";
 import SkeletonBox from "../../../components/skeleton-box/skeleton-box.component";
@@ -16,8 +16,7 @@ const AddBookingTitleAndLoader = () => {
   const { updatePensDataIsLoading } = useGetUpdatePensDataSelectors();
   const { uploadBookingDataIsLoading } = useGetUploadBookingDataSelectors();
   const { sendEmailIsLoading } = useGetSendEmailSelectors();
-  const { requiredCatteryDataIsLoading } =
-    useGetRequiredCatteryDataForBookingSelectors();
+  const { catteryDetailsIsLoading } = useGetCatteryDetailsSelectors();
   const { isBookingAvailableIsLoading } = useGetIsBookingAvailableSelectors();
   const { individualCustomersCatsIsLoading } =
     useGetIndividualCustomersCatsSelectors();
@@ -29,7 +28,7 @@ const AddBookingTitleAndLoader = () => {
       </ParentDiv>
 
       {getAllCustomersIsLoading ||
-      requiredCatteryDataIsLoading ||
+      catteryDetailsIsLoading ||
       isBookingAvailableIsLoading ||
       updatePensDataIsLoading ||
       uploadBookingDataIsLoading ||
@@ -39,7 +38,7 @@ const AddBookingTitleAndLoader = () => {
           loadingText={
             getAllCustomersIsLoading
               ? "Fetching Customers..."
-              : requiredCatteryDataIsLoading
+              : catteryDetailsIsLoading
               ? "fetching required cattery data..."
               : isBookingAvailableIsLoading
               ? "Checking booking  Availability..."

@@ -3,7 +3,6 @@ import useGetAllCustomerSelectors from "../../../hooks/selectors/use-get-all-cus
 import useGetAllUsersSelectors from "../../../hooks/selectors/use-get-all-users-selectors";
 import useGetBookingsSelectors from "../../../hooks/selectors/use-get-bookings-selectors";
 import useGetCancelBookingSelectors from "../../../hooks/selectors/use-get-cancel-booking-selectors";
-import useGetRequiredCatteryDataForBookingSelectors from "../../../hooks/selectors/use-get-required-cattery-data-for-booking-selectors";
 import useGetIndividualCustomersCatsSelectors from "../../../hooks/selectors/use-get-individual-customers-cats-selectors";
 import useGetDailyScheduleSelectors from "../../../hooks/selectors/use-get-daily-schedule-selectors";
 import useGetViewPenDataSelectors from "../../../hooks/selectors/use-get-view-pen-data-selectors";
@@ -18,8 +17,6 @@ const useHandleShowError = () => {
   const { getAllCatsError, getCatsOwnerDetailsError } =
     useGetAllCatsSelectors();
   const { allUsersCatteryIdsAndOwnerNameError } = useGetAllUsersSelectors();
-  const { requiredCatteryDataError } =
-    useGetRequiredCatteryDataForBookingSelectors();
   const { allUsersError } = useGetAllUsersSelectors();
   const { fetchOwnerBookingsError } = useGetBookingsSelectors();
   const { fetchAvailabilityDocsToUpdateError } = useGetCancelBookingSelectors();
@@ -42,7 +39,6 @@ const useHandleShowError = () => {
       return "failed to fetch the cat owner's details.";
     if (allUsersCatteryIdsAndOwnerNameError)
       return "failed to fetch user cattery ids.";
-    if (requiredCatteryDataError) return `fetch cattery data thunk Error.`;
     if (allUsersError) return "failed to fetch your users list.";
     if (fetchOwnerBookingsError) return "failed to fetch your bookings.";
     if (fetchAvailabilityDocsToUpdateError)
@@ -65,7 +61,6 @@ const useHandleShowError = () => {
       getAllCatsError,
       getCatsOwnerDetailsError,
       allUsersCatteryIdsAndOwnerNameError,
-      requiredCatteryDataError,
       allUsersError,
       fetchOwnerBookingsError,
       fetchAvailabilityDocsToUpdateError,

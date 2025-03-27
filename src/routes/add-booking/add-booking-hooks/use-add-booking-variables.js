@@ -1,12 +1,12 @@
-import useGetRequiredCatteryDataForBookingSelectors from "../../../hooks/selectors/use-get-required-cattery-data-for-booking-selectors";
 import useGetUploadBookingDataSelectors from "../../../hooks/selectors/use-get-upload-booking-data-selectors";
 import useGetIndividualCustomersCatsSelectors from "../../../hooks/selectors/use-get-individual-customers-cats-selectors";
 import useGetAllCustomerSelectors from "../../../hooks/selectors/use-get-all-customers-selectors";
 import useGetIsBookingAvailableSelectors from "../../../hooks/selectors/use-get-is-booking-available-selectors";
+import useGetCatteryDetailsSelectors from "../../../hooks/selectors/use-get-cattery-details-selectors";
 
 const useAddBookingVariables = () => {
-  const { requiredCatteryDataError, managesOwnPens } =
-    useGetRequiredCatteryDataForBookingSelectors();
+  const { catteryDetailsError, managesOwnPens, maximumCatsInSinglePen } =
+    useGetCatteryDetailsSelectors();
   const { getAllCustomersError, atLeastOneCustomerExists } =
     useGetAllCustomerSelectors();
   const { individualCustomersCatsError, individualCustomersCats } =
@@ -21,15 +21,11 @@ const useAddBookingVariables = () => {
     checkOutSlot,
     paymentStatus,
   } = useGetUploadBookingDataSelectors();
-  const { maximumCatsInSinglePen } =
-    useGetRequiredCatteryDataForBookingSelectors();
   const { availabilityStatus, failingDates, showIneligibleDates } =
     useGetIsBookingAvailableSelectors();
 
   const hasErrors =
-    requiredCatteryDataError ||
-    getAllCustomersError ||
-    individualCustomersCatsError;
+    catteryDetailsError || getAllCustomersError || individualCustomersCatsError;
 
   const customersCats = individualCustomersCats
     ? individualCustomersCats.map((cat) => ({

@@ -5,7 +5,7 @@ import useConfirmPlaceBooking from "./add-booking-hooks/use-confirm-place-bookin
 import useHandleChangeDetailsRequest from "./add-booking-hooks/use-handle-change-details-request";
 import useCheckInAndOutDateValidityUseEffect from "./add-booking-hooks/use-effects/use-check-in-and-out-date-validity-use-effect";
 import useCheckBookingAvailableResultSwalUseEffect from "./add-booking-hooks/use-effects/use-check-booking-available-result-swal-use-effect";
-import useGetRequiredCatteryDataAndCustomersThunkUseEffect from "./add-booking-hooks/use-effects/use-get-required-cattery-data-and-customers-thunk-use-effect";
+import useGetCatteryDataAndCustomersThunkUseEffect from "./add-booking-hooks/use-effects/use-get-cattery-data-and-customers-thunk-use-effect";
 import useCompleteBookingResultSwalUseEffect from "./add-booking-hooks/use-effects/use-complete-booking-result-swal-use-effect";
 import useSendEmailResultSwalUseEffect from "./add-booking-hooks/use-effects/use-send-email-result-swal-use-effect";
 
@@ -46,7 +46,7 @@ const AddBooking = () => {
   const { confirmPlaceBooking } = useConfirmPlaceBooking();
   const { handleChangeDetailsRequest } = useHandleChangeDetailsRequest();
 
-  useGetRequiredCatteryDataAndCustomersThunkUseEffect();
+  useGetCatteryDataAndCustomersThunkUseEffect();
   useCheckInAndOutDateValidityUseEffect();
   useCheckBookingAvailableResultSwalUseEffect();
   const { noAvailabilityRef, bookingIsAvailableRef } =

@@ -1,16 +1,18 @@
-import { useDispatch } from "react-redux";
-import useConfirmSwal from "../../../../hooks/use-confirm-swal";
-import { sendCustomerCancellationEmailAsync } from "../../../../store/send-email/send-email.thunks";
-import useGetCancelBookingSelectors from "../../../../hooks/selectors/use-get-cancel-booking-selectors";
-import useGetRequiredCatteryDataForBookingSelectors from "../../../../hooks/selectors/use-get-required-cattery-data-for-booking-selectors";
-import useHamburgerHandlerNavigate from "../../../../hooks/use-hamburger-handler-navigate";
-import { bookingsRoute } from "../../../../strings/routes";
 import { useCallback } from "react";
+import { useDispatch } from "react-redux";
+
+import useGetCancelBookingSelectors from "../../../../hooks/selectors/use-get-cancel-booking-selectors";
+import useGetCatteryDetailsSelectors from "../../../../hooks/selectors/use-get-cattery-details-selectors";
+import { sendCustomerCancellationEmailAsync } from "../../../../store/send-email/send-email.thunks";
+
+import useConfirmSwal from "../../../../hooks/use-confirm-swal";
+import useHamburgerHandlerNavigate from "../../../../hooks/use-hamburger-handler-navigate";
+
+import { bookingsRoute } from "../../../../strings/routes";
 
 const useHasEmailSuccessSwal = () => {
   const { dataFromBooking } = useGetCancelBookingSelectors();
-  const { name, phone, catteryEmail } =
-    useGetRequiredCatteryDataForBookingSelectors();
+  const { name, phone, catteryEmail } = useGetCatteryDetailsSelectors();
   const { confirmSwal } = useConfirmSwal();
   const dispatch = useDispatch();
   const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();

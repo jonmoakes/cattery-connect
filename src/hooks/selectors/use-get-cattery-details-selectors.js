@@ -34,6 +34,12 @@ const useGetCatteryDetailsSelectors = () => {
     catteryDetailsResult,
     catteryDetailsError,
     catteryDetailsFoUi,
+    name,
+    address,
+    phone,
+    email,
+    website,
+    pricePerNight,
     managesOwnPens,
     allowsOnlinePayments,
   };

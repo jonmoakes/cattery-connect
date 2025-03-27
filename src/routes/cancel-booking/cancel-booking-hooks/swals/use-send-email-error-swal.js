@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 
 import { resetCancelBookingState } from "../../../../store/cancel-booking/cancel-booking.slice";
-import { resetRequiredCatteryDataForBookingState } from "../../../../store/required-cattery-data/required-cattery-data-for-booking.slice";
+import { resetCatteryDetailsState } from "../../../../store/cattery-details/cattery-details-slice";
 import { resetSendEmailState } from "../../../../store/send-email/send-email.slice";
 import { resetUpdatePensDataState } from "../../../../store/update-pens-data/update-pens-data.slice";
 
@@ -32,7 +32,7 @@ const useSendEmailErrorSwal = () => {
       ).then((isConfirmed) => {
         if (isConfirmed) {
           dispatch(resetCancelBookingState());
-          dispatch(resetRequiredCatteryDataForBookingState());
+          dispatch(resetCatteryDetailsState());
           dispatch(resetSendEmailState());
           dispatch(resetUpdatePensDataState());
           setTimeout(() => {

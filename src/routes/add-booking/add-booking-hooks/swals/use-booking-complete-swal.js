@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 
 import useGetUploadBookingDataSelectors from "../../../../hooks/selectors/use-get-upload-booking-data-selectors";
-import useGetRequiredCatteryDataForBookingSelectors from "../../../../hooks/selectors/use-get-required-cattery-data-for-booking-selectors";
+import useGetCatteryDetailsSelectors from "../../../../hooks/selectors/use-get-cattery-details-selectors";
 
 import useBookingSuccessNoEmailSwal from "./use-booking-success-no-email-swal";
 import useBookingSuccessHasEmailSwal from "./use-booking-success-has-email-swal";
@@ -10,7 +10,7 @@ const useBookingCompleteSwal = () => {
   const { uploadBookingData, customerEmail } =
     useGetUploadBookingDataSelectors();
   const { name, phone, catteryEmail, pricePerNight } =
-    useGetRequiredCatteryDataForBookingSelectors();
+    useGetCatteryDetailsSelectors();
 
   const { bookingSuccessNoEmailSwal } = useBookingSuccessNoEmailSwal();
   const { bookingSuccessHasEmailSwal } = useBookingSuccessHasEmailSwal();

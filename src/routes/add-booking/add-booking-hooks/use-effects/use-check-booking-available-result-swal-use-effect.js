@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import useGetIsBookingAvailableSelectors from "../../../../hooks/selectors/use-get-is-booking-available-selectors";
 import useCatteryNotAvailableOnChosenDatesSwal from "../swals/use-cattery-not-available-on-chosen-dates-swal";
-import useGetRequiredCatteryDataForBookingSelectors from "../../../../hooks/selectors/use-get-required-cattery-data-for-booking-selectors";
+import useGetCatteryDetailsSelectors from "../../../../hooks/selectors/use-get-cattery-details-selectors";
 
 const SCROLL_OFFSET = 0.25; // 25% from the top of the viewport
 
@@ -11,7 +11,7 @@ const useCheckBookingAvailableResultSwalUseEffect = () => {
     isBookingAvailableError,
     availabilityStatus,
   } = useGetIsBookingAvailableSelectors();
-  const { managesOwnPens } = useGetRequiredCatteryDataForBookingSelectors();
+  const { managesOwnPens } = useGetCatteryDetailsSelectors();
   const { catteryNotAvailableOnChosenDatesSwal } =
     useCatteryNotAvailableOnChosenDatesSwal();
 

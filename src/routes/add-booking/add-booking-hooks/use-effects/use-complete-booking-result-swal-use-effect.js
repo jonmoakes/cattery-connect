@@ -8,14 +8,14 @@ import usePenDataRollbackErrorSwal from "../../../../hooks/use-pen-data-rollback
 import useUpdatePensErrorSwal from "../../../../hooks/use-update-pens-error-swal";
 import usePensUpdatedBookingDataFailedSwal from "../swals/use-pens-updated-booking-data-failed-swal";
 import { pensRollbackFailureErrorCode } from "../../../../constants/constants";
-import useGetRequiredCatteryDataForBookingSelectors from "../../../../hooks/selectors/use-get-required-cattery-data-for-booking-selectors";
+import useGetCatteryDetailsSelectors from "../../../../hooks/selectors/use-get-cattery-details-selectors";
 
 const useCompleteBookingResultSwalUseEffect = () => {
   const { updatePensDataResult, updatePensDataError } =
     useGetUpdatePensDataSelectors();
   const { uploadBookingDataResult, uploadBookingDataError } =
     useGetUploadBookingDataSelectors();
-  const { managesOwnPens } = useGetRequiredCatteryDataForBookingSelectors();
+  const { managesOwnPens } = useGetCatteryDetailsSelectors();
 
   const { bookingCompleteSwal } = useBookingCompleteSwal();
   const { penDataRollbackErrorSwal } = usePenDataRollbackErrorSwal();
