@@ -10,6 +10,8 @@ import useUpdatePensErrorSwal from "../../../../hooks/use-update-pens-error-swal
 import usePensUpdatedDeleteBookingDataFailedSwal from "../swals/use-pens-updated-delete-booking-data-failed-swal";
 
 import { pensRollbackFailureErrorCode } from "../../../../constants/constants";
+import useGetCatteryDetailsSelectors from "../../../../hooks/selectors/use-get-cattery-details-selectors";
+import useManagesOwnPensAndDeleteBookingDataFailedSwal from "../swals/use-manages-own-pens-and-delete-booking-data-failed-swal";
 
 const useCancelBookingResultSwalUseEffect = () => {
   const {
@@ -20,11 +22,14 @@ const useCancelBookingResultSwalUseEffect = () => {
   } = useGetCancelBookingSelectors();
   const { updatePensDataResult, updatePensDataError } =
     useGetUpdatePensDataSelectors();
+  const { managesOwnPens } = useGetCatteryDetailsSelectors();
   const { bookingCancelledSuccessSwal } = useBookingCancelledSuccessSwal();
   const { penDataRollbackErrorSwal } = usePenDataRollbackErrorSwal();
   const { updatePensErrorSwal } = useUpdatePensErrorSwal();
   const { pensUpdatedDeleteBookingDataFailedSwal } =
     usePensUpdatedDeleteBookingDataFailedSwal();
+  const { managesOwnPensAndDeleteBookingDataFailedSwal } =
+    useManagesOwnPensAndDeleteBookingDataFailedSwal();
   const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
 
   const [swalConfirmed, setSwalConfirmed] = useState(false);
@@ -42,10 +47,14 @@ const useCancelBookingResultSwalUseEffect = () => {
       return;
 
     if (
-      updatePensDataResult === "fulfilled" &&
-      deleteBookingDataResult === "fulfilled"
+      (managesOwnPens && deleteBookingDataResult === "fulfilled") ||
+      (!managesOwnPens &&
+        updatePensDataResult === "fulfilled" &&
+        deleteBookingDataResult === "fulfilled")
     ) {
       bookingCancelledSuccessSwal(setSwalConfirmed);
+    } else if (managesOwnPens && deleteBookingDataResult === "rejected") {
+      managesOwnPensAndDeleteBookingDataFailedSwal();
     } else if (updatePensDataResult === "rejected") {
       if (
         updatePensDataError.message &&
@@ -76,6 +85,8 @@ const useCancelBookingResultSwalUseEffect = () => {
     penDataRollbackErrorSwal,
     updatePensErrorSwal,
     pensUpdatedDeleteBookingDataFailedSwal,
+    managesOwnPensAndDeleteBookingDataFailedSwal,
+    managesOwnPens,
   ]);
 };
 

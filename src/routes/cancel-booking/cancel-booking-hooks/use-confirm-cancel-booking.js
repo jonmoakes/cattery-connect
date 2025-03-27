@@ -8,6 +8,7 @@ import { deleteBookingDataAsync } from "../../../store/cancel-booking/cancel-boo
 import useConfirmSwal from "../../../hooks/use-confirm-swal";
 
 import { imSureMessage } from "../../../strings/confirms";
+import useGetCatteryDetailsSelectors from "../../../hooks/selectors/use-get-cattery-details-selectors";
 
 // matching the data format to be the same as when adding a booking
 // regarding catsInBooking which was a string and needs to be an array,
@@ -16,6 +17,7 @@ import { imSureMessage } from "../../../strings/confirms";
 const useConfirmCancelBooking = () => {
   const { dataFromBooking, availabilityDocsToUpdate, $id } =
     useGetCancelBookingSelectors();
+  const { managesOwnPens } = useGetCatteryDetailsSelectors();
 
   const dispatch = useDispatch();
   const { confirmSwal } = useConfirmSwal();
@@ -31,18 +33,22 @@ const useConfirmCancelBooking = () => {
     };
 
     const confirmResult = () => {
-      const operation = "add";
-      dispatch(
-        updatePensDataInDbAsync({
-          parsedAvailabilityData: availabilityDocsToUpdate,
-          uploadBookingData,
-          operation,
-        })
-      ).then((resultAction) => {
-        if (updatePensDataInDbAsync.fulfilled.match(resultAction)) {
-          dispatch(deleteBookingDataAsync({ $id }));
-        }
-      });
+      if (managesOwnPens) {
+        dispatch(deleteBookingDataAsync({ $id }));
+      } else {
+        const operation = "add";
+        dispatch(
+          updatePensDataInDbAsync({
+            parsedAvailabilityData: availabilityDocsToUpdate,
+            uploadBookingData,
+            operation,
+          })
+        ).then((resultAction) => {
+          if (updatePensDataInDbAsync.fulfilled.match(resultAction)) {
+            dispatch(deleteBookingDataAsync({ $id }));
+          }
+        });
+      }
     };
 
     confirmSwal(

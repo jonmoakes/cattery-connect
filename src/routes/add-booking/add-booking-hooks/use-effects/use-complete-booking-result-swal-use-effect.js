@@ -9,6 +9,7 @@ import useUpdatePensErrorSwal from "../../../../hooks/use-update-pens-error-swal
 import usePensUpdatedBookingDataFailedSwal from "../swals/use-pens-updated-booking-data-failed-swal";
 import { pensRollbackFailureErrorCode } from "../../../../constants/constants";
 import useGetCatteryDetailsSelectors from "../../../../hooks/selectors/use-get-cattery-details-selectors";
+import useManagesOwnPensAndBookingDataFailedSwal from "../swals/use-manages-own-pens-and-booking-data-failed-swal";
 
 const useCompleteBookingResultSwalUseEffect = () => {
   const { updatePensDataResult, updatePensDataError } =
@@ -22,6 +23,8 @@ const useCompleteBookingResultSwalUseEffect = () => {
   const { updatePensErrorSwal } = useUpdatePensErrorSwal();
   const { pensUpdatedBookingDataFailedSwal } =
     usePensUpdatedBookingDataFailedSwal();
+  const { managesOwnPensAndBookingDataFailedSwal } =
+    useManagesOwnPensAndBookingDataFailedSwal();
 
   const [swalConfirmed, setSwalConfirmed] = useState(false);
 
@@ -42,6 +45,8 @@ const useCompleteBookingResultSwalUseEffect = () => {
         uploadBookingDataResult === "fulfilled")
     ) {
       bookingCompleteSwal(setSwalConfirmed);
+    } else if (managesOwnPens && uploadBookingDataResult === "rejected") {
+      managesOwnPensAndBookingDataFailedSwal();
     } else if (updatePensDataResult === "rejected") {
       if (
         updatePensDataError.message &&
@@ -70,6 +75,7 @@ const useCompleteBookingResultSwalUseEffect = () => {
     updatePensDataResult,
     updatePensErrorSwal,
     managesOwnPens,
+    managesOwnPensAndBookingDataFailedSwal,
   ]);
 };
 

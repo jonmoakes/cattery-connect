@@ -42,8 +42,8 @@ const useHandleShowError = () => {
     if (allUsersError) return "failed to fetch your users list.";
     if (fetchOwnerBookingsError) return "failed to fetch your bookings.";
     if (fetchAvailabilityDocsToUpdateError)
-      return `failed to pen data. 
-( fetch Availability Docs )`;
+      return `failed to fetch pen data. 
+( cancel booking thunk )`;
     if (individualCustomersCatsError) return "failed to fetch the cat details.";
     if (dailyBookingsDataError) return "fetch daily bookings thunk error";
     if (chosenDatePenDataError) return "failed to fetch pen data.";
