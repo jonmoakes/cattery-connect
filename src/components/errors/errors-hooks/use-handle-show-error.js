@@ -45,7 +45,7 @@ const useHandleShowError = () => {
       return `failed to fetch pen data. 
 ( cancel booking thunk )`;
     if (individualCustomersCatsError) return "failed to fetch the cat details.";
-    if (dailyBookingsDataError) return "fetch daily bookings thunk error";
+    if (dailyBookingsDataError) return "getDailyBookingsData thunk";
     if (chosenDatePenDataError) return "failed to fetch pen data.";
     if (signedInCustomersDetailsError) return "failed to fetch your details.";
     if (getCatteryEmailError)

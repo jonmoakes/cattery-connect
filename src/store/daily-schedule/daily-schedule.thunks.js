@@ -38,6 +38,7 @@ export const getDailyBookingsDataAsync = createAsyncThunk(
 
       const todayBookings = bookingsResponse.documents;
 
+      //use chosenDate in the UI
       if (!todayBookings.length) return { passedChosenDate: chosenDate };
 
       const customerIdsArray = todayBookings.map(
@@ -72,6 +73,10 @@ export const getDailyBookingsDataAsync = createAsyncThunk(
       );
 
       const catsInToday = catsResponse.documents || [];
+
+      if (!catsInToday.length) {
+        throw new Error("cat data missing");
+      }
 
       const combinedData = bookingsWithStatus.map((booking) => ({
         ...booking,
