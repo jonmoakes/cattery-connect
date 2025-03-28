@@ -21,8 +21,7 @@ const ShowFetchErrors = () => {
       {errorToDisplay() ? (
         <ParentDiv>
           <CustomBalancedText>
-            sorry, there was an error fetching data on our end. please see the
-            details below:
+            sorry, there was an error on our end. please see the details below:
           </CustomBalancedText>
           <ErrorDiv className="fetch-error">
             <CustomBalancedText>{showErrorHeading()}</CustomBalancedText>

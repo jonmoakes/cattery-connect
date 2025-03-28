@@ -1,11 +1,13 @@
 import { Elements } from "@stripe/react-stripe-js";
 
 import useGetSignedInCustomersBookingsSelectors from "../../hooks/selectors/use-get-signed-in-customers-bookings-selectors";
-
 import useGetCardInputSelectors from "../../hooks/selectors/use-get-card-input-selectors";
+import useGetHandlePaymentSelectors from "../../hooks/selectors/use-get-handle-payment-selectors";
+
 import useGetStripePublicKeyUseEffect from "./hooks/use-get-stripe-public-key-use-effect";
 import useWaitForPaymentStatusResultUseEffect from "./hooks/use-wait-for-payment-status-result-use-effect";
 
+import ShowFetchErrors from "../../components/errors/show-fetch-errors.component";
 import TitleAndLoader from "./title-and-loader.component";
 import NoBookingInfoFound from "./no-booking-info-found.component";
 import InfoOfBookingToSettle from "./info-of-booking-to-settle.component";
@@ -19,6 +21,7 @@ const SettleBookingPayment = () => {
   const { hasBookingDetails, totalCost } =
     useGetSignedInCustomersBookingsSelectors();
   const { showPaymentForm } = useGetCardInputSelectors();
+  const { paymentError } = useGetHandlePaymentSelectors();
 
   useGetStripePublicKeyUseEffect();
   const { stripePromise } = useGetStripePublicKeyUseEffect();
@@ -28,7 +31,9 @@ const SettleBookingPayment = () => {
     <Container>
       <TitleAndLoader />
 
-      {!stripePromise ? null : !hasBookingDetails ? (
+      {!stripePromise ? null : paymentError ? (
+        <ShowFetchErrors />
+      ) : !hasBookingDetails ? (
         <NoBookingInfoFound />
       ) : (
         <>

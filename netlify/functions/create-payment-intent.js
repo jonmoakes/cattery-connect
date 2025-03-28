@@ -1,7 +1,7 @@
 import stripe from "stripe";
 
 exports.handler = async (event) => {
-  const { catteryId, amount, email } = JSON.parse(event.body); // Accept email from request
+  const { catteryId, amount, email } = JSON.parse(event.body);
 
   const getSecretKeyFromEnv = `STRIPE_SECRET_KEY_${catteryId.toUpperCase()}`;
 

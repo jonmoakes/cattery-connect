@@ -7,8 +7,9 @@ export const attemptPaymentAsync = createAsyncThunk(
   async ({ stripe, elements, catteryId, amount, name, email }, thunkAPI) => {
     try {
       if (!stripe || !elements) {
-        throw new Error("Stripe has not loaded yet.");
+        throw new Error("Missing Required Stripe Elements");
       }
+
       const response = await fetch(CREATE_PAYMENT_INTENT_ENDPOINT, {
         method: "POST",
         headers: {
@@ -18,10 +19,9 @@ export const attemptPaymentAsync = createAsyncThunk(
       });
 
       if (!response.ok) {
-        throw new Error(
-          `Failed to create payment intent. 
-        Error Received: ${response.statusText}`
-        );
+        throw new Error(`Failed to create payment intent. 
+
+Error Received: ${response.statusText}`);
       }
 
       const { clientSecret } = await response.json();
