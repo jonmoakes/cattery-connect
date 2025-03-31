@@ -1,7 +1,5 @@
 import useFooterHooks from "./footer-hooks/use-footer-hooks";
 
-import CustomBalancedText from "../custom-balanced-text/custom-balanced-text.component";
-
 import { FooterLinkButton } from "../../styles/button/button.styles";
 import { FooterLinksDiv } from "../../styles/div/div.styles";
 import { BlackHr } from "../../styles/hr/hr.styles";
@@ -13,8 +11,6 @@ const LinksMap = () => {
 
   return (
     <>
-      <CustomBalancedText type="h3">legal</CustomBalancedText>
-
       {links.map((link) => {
         const { id, text, route } = link;
         return (

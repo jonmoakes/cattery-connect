@@ -400,19 +400,17 @@ export const FooterLinkButton = styled.button`
   font-family: inherit;
   font-size: 16px;
   text-transform: capitalize;
-
   min-width: 200px;
   height: 35px;
   margin: 20px auto;
   padding: 0px 10px;
-  background: ${radialGreen};
+  background: ${radialDustyBlue};
   border: 1px solid ${softBlack};
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   outline: none;
-  color: whitesmoke;
-  text-shadow: 1px 1px 1px ${softBlack};
+  color: ${softBlack};
 
   &:hover {
     transform: scale(1.05);

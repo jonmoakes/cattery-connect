@@ -10,7 +10,7 @@ import {
 } from "../../strings/routes";
 
 export const links = [
-  { id: 1, text: "terms & condintions", route: termsRoute },
+  { id: 1, text: "terms & conditions", route: termsRoute },
   { id: 2, text: "privacy policy", route: privacyPolicyRoute },
   { id: 3, text: "cookies policy", route: cookiesRoute },
   { id: 4, text: "security policy", route: securityPolicyRoute },
