@@ -57,6 +57,7 @@ import {
   incomeRoute,
   updatePasswordRoute,
   updateEmailRoute,
+  moveCustomerToNewCatteryRoute,
 } from "./strings/routes";
 import Footer from "./components/footer/footer.component";
 
@@ -164,6 +165,11 @@ const UpdatePassword = lazy(() =>
 const UpdateEmail = lazy(() =>
   import("./routes/update-email/update-email.component")
 );
+const MoveCustomerToNewCattery = lazy(() =>
+  import(
+    "./routes/move-customer-to-new-cattery/move-customer-to-new-cattery.component"
+  )
+);
 
 const App = () => {
   const { currentUser, role } = useGetCurrentUserSelectors();
@@ -218,6 +224,15 @@ const App = () => {
                 element={
                   currentUser && role === "admin" ? (
                     <UploadDatesAndPensData />
+                  ) : null
+                }
+              />
+
+              <Route
+                path={moveCustomerToNewCatteryRoute}
+                element={
+                  currentUser && role === "admin" ? (
+                    <MoveCustomerToNewCattery />
                   ) : null
                 }
               />

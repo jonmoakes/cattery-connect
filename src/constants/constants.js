@@ -14,6 +14,7 @@ export const furryFriendsRetreatStripePublishableKey = import.meta.env
 
 //cattery ids
 export const furryFriendsRetreatCatteryId = "ffrt";
+export const careForKittiesCatteryId = "cfks";
 
 export const standardRateLimit = 500;
 export const highRateLimit = 1000;

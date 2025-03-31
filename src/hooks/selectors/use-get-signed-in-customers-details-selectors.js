@@ -22,6 +22,7 @@ const useGetSignedInCustomersDetailsSelectors = () => {
   } = signedInCustomersDetails ?? {};
 
   const customerDetailsFoUi = {
+    customerId,
     name,
     email,
     address,

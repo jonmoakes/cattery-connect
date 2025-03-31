@@ -64,3 +64,4 @@ export const paymentDeclinedMessage = (message) => {
 };
 export const noStripePublicKeyFoundMessage = `<span style="font-size:20px";>no stripe public key found for this cattery.<br/><br/>please contact your cattery for assistance.</span>`;
 export const emailFailedToSendMessage = `<span style="font-size:20px";>sorry, the email failed to send..<br/><br/>please contact your cattery as soon as possible and inform them of the error.</span>`;
+export const errorUpdatingCatsCatteryIdsMessage = `<span style="font-size:20px";>There was an error updating the cats' cattery IDs Update the DB manually</span>`;

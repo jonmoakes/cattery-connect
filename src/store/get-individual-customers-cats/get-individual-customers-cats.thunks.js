@@ -14,7 +14,7 @@ export const fetchIndividualCustomersCatsAsync = createAsyncThunk(
       const queryIndex = "customerId";
       const queryValue = customerId;
 
-      const usersCustomers = await listDocumentsByQueryOrSearch(
+      const usersCustomersCats = await listDocumentsByQueryOrSearch(
         databaseId,
         catsCollectionId,
         queryIndex,
@@ -23,7 +23,7 @@ export const fetchIndividualCustomersCatsAsync = createAsyncThunk(
         smallRateLimit
       );
 
-      const { documents } = usersCustomers;
+      const { documents } = usersCustomersCats;
 
       if (!documents.length) {
         return [];

@@ -9,7 +9,7 @@ export const individualCustomersCatsSlice = createSlice({
     setIndividualCustomersCats(state, action) {
       state.individualCustomersCats = action.payload;
     },
-    resetindividualCustomersCatsError(state) {
+    resetIndividualCustomersCatsError(state) {
       state.individualCustomersCatsError = null;
     },
     resetIndividualCustomersCatsState: () => {
@@ -21,7 +21,7 @@ export const individualCustomersCatsSlice = createSlice({
 
 export const {
   setIndividualCustomersCats,
-  resetindividualCustomersCatsError,
+  resetIndividualCustomersCatsError,
   resetIndividualCustomersCatsState,
 } = individualCustomersCatsSlice.actions;
 

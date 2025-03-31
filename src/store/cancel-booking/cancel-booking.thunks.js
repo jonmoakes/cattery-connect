@@ -33,7 +33,7 @@ export const fetchAvailabilityDocsToUpdateAsync = createAsyncThunk(
 
       if (!documents.length) {
         throw new Error("couldn't find any documents to update.");
-      } else if (documentsToUpdate.length !== lengthOfStay) {
+      } else if (documents.length !== lengthOfStay + 1) {
         throw new Error(
           `the number of documents fetched does not equal the length of the length Of the Stay.
 
@@ -48,7 +48,6 @@ please contact jonathan quoting this error.`
         afternoonPens: JSON.parse(day.afternoonPensData),
       }));
 
-      console.log(documents);
       return parsedAvailabilityData;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

@@ -12,20 +12,29 @@ const useBookingSuccessNoEmailSwal = () => {
   const { confirmSwal } = useConfirmSwal();
 
   const bookingSuccessNoEmailSwal = useCallback(() => {
-    fireSwal("success", "booking completed!", "", 0, "", false, "", false).then(
-      (isConfirmed) => {
-        if (isConfirmed) {
-          confirmSwal(
-            "would you like to make another booking?",
-            "",
-            `yes`,
-            "no",
-            () => window.location.reload(),
-            () => hamburgerHandlerNavigate(accountRoute)
-          );
-        }
+    fireSwal(
+      "success",
+      `booking completed!
+
+ as the customer has no email address on file, we cannot send an email receipt.`,
+      "",
+      0,
+      "",
+      false,
+      "",
+      false
+    ).then((isConfirmed) => {
+      if (isConfirmed) {
+        confirmSwal(
+          "would you like to make another booking?",
+          "",
+          `yes`,
+          "no",
+          () => window.location.reload(),
+          () => hamburgerHandlerNavigate(accountRoute)
+        );
       }
-    );
+    });
   }, [confirmSwal, fireSwal, hamburgerHandlerNavigate]);
 
   return { bookingSuccessNoEmailSwal };

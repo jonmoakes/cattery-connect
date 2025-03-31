@@ -1,6 +1,9 @@
 import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
+import CustomSpan from "../../components/custom-span/custom-span.component";
+import { signedInCustomersDetailsRoute } from "../../strings/routes";
 
 import { ParentDiv } from "../../styles/div/div.styles";
+import { StyledLink } from "../../styles/link/link.styles";
 
 const CatteryDetailsIntro = () => (
   <ParentDiv>
@@ -13,9 +16,19 @@ const CatteryDetailsIntro = () => (
     </CustomBalancedText>
     <CustomBalancedText>
       if you ever want to pay for a stay for your cats in another cattery that
-      uses cattery connect, please contact the owner of the new cattery, who
-      will be able to update your details so that payment goes to the correct
-      cattery.
+      uses cattery connect, please contact the owner of the new cattery and make
+      sure that they have updated you to have their{" "}
+      <CustomSpan className="red">Cattery code</CustomSpan>, so that payment
+      goes to the correct cattery.
+    </CustomBalancedText>
+    <CustomBalancedText>
+      you will need to give your new cattery your{" "}
+      <CustomSpan className="red">customer Id</CustomSpan> which you can find{" "}
+      <StyledLink to={signedInCustomersDetailsRoute}>here</StyledLink>
+    </CustomBalancedText>
+    <CustomBalancedText>
+      please make sure that you have settled any payments with your current
+      cattery before you do this however.
     </CustomBalancedText>
   </ParentDiv>
 );

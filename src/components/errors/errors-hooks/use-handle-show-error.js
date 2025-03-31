@@ -12,6 +12,7 @@ import useGetCatteryDetailsSelectors from "../../../hooks/selectors/use-get-catt
 import useGetSignedInCustomersBookingsSelectors from "../../../hooks/selectors/use-get-signed-in-customers-bookings-selectors";
 import useGetIncomeSelectors from "../../../hooks/selectors/use-get-income-selectors";
 import useGetHandlePaymentSelectors from "../../../hooks/selectors/use-get-handle-payment-selectors";
+import useGetMoveCustomerToNewCatterySelectors from "../../../hooks/selectors/use-get-move-customer-to-new-cattery-selectors";
 
 const useHandleShowError = () => {
   const { getAllCustomersError } = useGetAllCustomerSelectors();
@@ -33,6 +34,8 @@ const useHandleShowError = () => {
     useGetSignedInCustomersBookingsSelectors();
   const { incomeDataError } = useGetIncomeSelectors();
   const { paymentError } = useGetHandlePaymentSelectors();
+  const { checkCustomerCanBeMovedError } =
+    useGetMoveCustomerToNewCatterySelectors();
 
   const showErrorHeading = () => {
     if (getAllCustomersError) return "failed to fetch your customers.";
@@ -56,6 +59,8 @@ const useHandleShowError = () => {
     if (signedInCustomersBookingsError) return "failed to fetch your bookings.";
     if (incomeDataError) return "failed to fetch your income data.";
     if (paymentError) return "error making payment.";
+    if (checkCustomerCanBeMovedError)
+      return "check for outstanding payments failed.";
   };
 
   const errorToDisplay = () => {
@@ -76,6 +81,7 @@ const useHandleShowError = () => {
       signedInCustomersBookingsError,
       incomeDataError,
       paymentError,
+      checkCustomerCanBeMovedError,
     ];
     return errors.find((error) => error !== null);
   };

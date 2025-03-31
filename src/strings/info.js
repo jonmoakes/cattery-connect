@@ -31,3 +31,7 @@ export const emailSentAfterPaymentStatusUpdateMessage = `<span style="font-size:
 export const paymentCompleteMessage = `<span style="font-size:20px";>thank you - payment successful!<br/><br/>you will shortly receive an email confirmation of your payment.</span>`;
 export const signInWithNewEmailMessage =
   "for security reasons, we will now sign you out of all sessions. you will then be able to sign in with your new email address.";
+
+export const updateCatsCatteryIdsMessage = `<span style="font-size:20px";>the customer's cattery ID was updated!<br/><br/>now tap continue to update the customer's cats cattery IDs.</span>`;
+export const catsCatteryIdsUpdatedMessage = `<span style="font-size:20px";>customers cats cattery IDs updated!</span>`;
+export const noCatsToUpdateMessage = `<span style="font-size:20px";>this customer so nothing was updated.</span>`;

@@ -856,10 +856,10 @@ export const TotalCostDiv = styled.div`
   margin: 20px auto;
 `;
 
-export const StripeLogoDiv = styled.div`
+export const AnimatedDiv = styled.div`
   margin: 0px auto;
   width: 100%;
-  animation: 3s ${rollInAnimation};
+  animation: 1.5s ${rollInAnimation};
 `;
 
 export const CentredDiv = styled.div`

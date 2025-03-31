@@ -39,6 +39,7 @@ import { resetCatteryDetailsState } from "../store/cattery-details/cattery-detai
 import { setBookingConfirmationDetailsInfo } from "../store/signed-in-customers-bookings/signed-in-customers-bookings.slice";
 import { resetCardInputState } from "../store/card-input/card-input.slice";
 import { resetHandlePaymentState } from "../store/handle-payment/handle-payment-slice";
+import { resetMoveCustomerToNewCatteryState } from "../store/move-customer-to-new-cattery/move-customer-to-new-cattery-slice";
 
 import {
   addCatChooseOwnerRoute,
@@ -67,6 +68,7 @@ import {
   settleBookingPaymentRoute,
   paymentResultRoute,
   accountRoute,
+  moveCustomerToNewCatteryRoute,
 } from "../strings/routes";
 import useGetCurrentUserSelectors from "./selectors/use-get-current-user-selectors";
 
@@ -168,6 +170,9 @@ const useResetStoreOnRouteChangeUseEffect = () => {
           break;
         case paymentResultRoute:
           dispatch(resetHandlePaymentState());
+          break;
+        case moveCustomerToNewCatteryRoute:
+          dispatch(resetMoveCustomerToNewCatteryState());
           break;
         default:
           break;

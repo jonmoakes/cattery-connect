@@ -39,3 +39,7 @@ export const confirmMakePaymentMessage = (priceForUi, catteryName) => {
 export const confirmUpdateEmailMessage = (newEmail) => {
   return `are you sure you wish to update your email to be <span style="text-transform: lowercase;  color: hsl(60, 100%, 50%);">${newEmail}</span>?`;
 };
+
+export const updateCustomersCatteryIdMessage = (newCatteryId) => {
+  return `you will be updating this customer's cattery ID to be<br/><br/><span style="text-transform: lowercase;  color: hsl(60, 100%, 50%);">${newCatteryId}</span><br/><br/>is this ok?`;
+};

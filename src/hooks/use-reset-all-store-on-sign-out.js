@@ -24,6 +24,7 @@ import { resetSignedInCustomersDetailsState } from "../store/signed-in-customers
 import { resetCatteryDetailsState } from "../store/cattery-details/cattery-details-slice";
 import { resetCardInputState } from "../store/card-input/card-input.slice";
 import { resetHandlePaymentState } from "../store/handle-payment/handle-payment-slice";
+import { resetMoveCustomerToNewCatteryState } from "../store/move-customer-to-new-cattery/move-customer-to-new-cattery-slice";
 
 const useResetAllStoreOnSignOut = () => {
   const { resetAddBookingState } = useResetAddBookingState();
@@ -52,6 +53,7 @@ const useResetAllStoreOnSignOut = () => {
     dispatch(resetCatteryDetailsState());
     dispatch(resetCardInputState());
     dispatch(resetHandlePaymentState());
+    dispatch(resetMoveCustomerToNewCatteryState());
     localStorage.clear();
   };
 

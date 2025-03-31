@@ -18,6 +18,8 @@ const useSignedInCustomersDetailsFunctions = () => {
 
   const getLabel = (label) => {
     switch (label) {
+      case "customerId":
+        return "customer ID";
       case "emergencyContactDetails":
         return "emergency contact details";
       case "phoneNumber":
