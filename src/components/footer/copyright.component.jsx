@@ -1,4 +1,5 @@
 import CustomBalancedText from "../custom-balanced-text/custom-balanced-text.component";
+import CustomSpan from "../custom-span/custom-span.component";
 
 const Copyright = () => (
   <>
@@ -9,7 +10,9 @@ const Copyright = () => (
       </a>{" "}
       2025
     </CustomBalancedText>
-    <CustomBalancedText>V 1.0.0</CustomBalancedText>
+    <CustomBalancedText>
+      <CustomSpan type="lowercase">v</CustomSpan>1.0.0
+    </CustomBalancedText>
   </>
 );
 

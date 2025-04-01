@@ -1,0 +1,9 @@
+User-agent: *  
+Disallow: /sign-in  
+Disallow: /sign-up  
+
+# Allow everything else
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.cattery-connect.co.uk/sitemap.xml

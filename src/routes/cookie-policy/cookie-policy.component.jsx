@@ -13,7 +13,7 @@ import { Container } from "../../styles/container/container.styles";
 const CookiePolicy = () => (
   <Container>
     <CookiesTitleAndIntro />
-    <PolicyLastUpdated date="11th March 2025" />
+    <PolicyLastUpdated date="1st April 2025" />
     <WhatAreCookiesAndLocalStorage />
     <TypesOfCookiesWeUse />
     <ManagingCookies />

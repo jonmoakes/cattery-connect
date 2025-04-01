@@ -16,7 +16,7 @@ const DataProtection = () => (
       <CustomBalancedText type="h1">Data Protection</CustomBalancedText>
     </ParentDiv>
 
-    <PolicyLastUpdated date="11th March 2025" />
+    <PolicyLastUpdated date="1st April 2025" />
 
     <ParentDiv>
       <CustomBalancedText>
