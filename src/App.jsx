@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
 import "react-loading-skeleton/dist/skeleton.css";
 
@@ -190,7 +190,16 @@ const App = () => {
             <Route path={pricingRoute} element={<Pricing />} />
             <Route path={signInRoute} element={<SignIn />} />
             <Route path={signUpRoute} element={<SignUp />} />
-            <Route path={contactRoute} element={<Contact />} />
+            <Route
+              path={contactRoute}
+              element={
+                currentUser && role === "admin" ? (
+                  <Navigate to="/" replace />
+                ) : (
+                  <Contact />
+                )
+              }
+            />
             <Route
               path={forgotPasswordRequestRoute}
               element={<ForgotPasswordRequest />}
