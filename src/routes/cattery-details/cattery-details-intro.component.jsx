@@ -24,7 +24,7 @@ const CatteryDetailsIntro = () => (
     <CustomBalancedText>
       you will need to give your new cattery your{" "}
       <CustomSpan className="red">customer Id</CustomSpan> which you can find{" "}
-      <StyledLink to={signedInCustomersDetailsRoute}>here</StyledLink>
+      <StyledLink to={signedInCustomersDetailsRoute}>here</StyledLink>.
     </CustomBalancedText>
     <CustomBalancedText>
       please make sure that you have settled any payments with your current

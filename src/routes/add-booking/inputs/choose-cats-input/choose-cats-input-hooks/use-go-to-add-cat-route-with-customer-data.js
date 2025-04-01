@@ -8,8 +8,7 @@ import useHamburgerHandlerNavigate from "../../../../../hooks/use-hamburger-hand
 import { addCatRoute } from "../../../../../strings/routes";
 
 const useGoToAddCatRouteWithCustomerData = () => {
-  const { customerName, customerDocumentId } =
-    useGetUploadBookingDataSelectors();
+  const { customerName, customerId } = useGetUploadBookingDataSelectors();
 
   const dispatch = useDispatch();
   const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
@@ -17,7 +16,7 @@ const useGoToAddCatRouteWithCustomerData = () => {
   const goToAddCatRouteWithCustomerData = () => {
     dispatch(
       setDetailsRequiredForCatManagement({
-        customerDocumentId,
+        customerId,
         customerName,
       })
     );

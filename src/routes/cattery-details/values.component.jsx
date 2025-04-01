@@ -11,14 +11,10 @@ const Values = ({ label, value }) => {
     <>
       {label === "email" ? (
         <>
-          <CustomSpan>( tap the button to email )</CustomSpan>
+          <CustomSpan type="lowercase">{value}</CustomSpan>
           <br />
-          <Button
-            className="teal email"
-            type="button"
-            onClick={sendEmailToCattery}
-          >
-            {value}
+          <Button className="teal" type="button" onClick={sendEmailToCattery}>
+            Tap to email
           </Button>
         </>
       ) : label === "phone" ? (
