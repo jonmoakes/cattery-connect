@@ -1,5 +1,6 @@
 import useGetCatDetailsManagementSelectors from "../../hooks/selectors/use-get-cat-details-management-selectors";
 
+import Metadata from "../../components/metadata/metadata.component";
 import EditCatTitleAndLoader from "./edit-cat-title-and-loader.component";
 import NoCustomerIdFound from "../../components/no-customer-id-found/no-customer-id-found.component";
 import CatDetailsForm from "../../components/cat-details-form/cat-details-form.component";
@@ -15,6 +16,11 @@ const EditCat = () => {
 
   return (
     <Container>
+      <Metadata
+        title="Cattery Connect - Edit Cat"
+        description="Update the details of an existing cat in your cattery. Edit information like name, feeding instructions, and medical needs."
+      />
+
       <EditCatTitleAndLoader />
 
       {!customerId ? (

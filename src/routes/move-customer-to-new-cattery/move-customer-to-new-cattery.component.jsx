@@ -3,6 +3,7 @@ import useGetMoveCustomerToNewCatterySelectors from "../../hooks/selectors/use-g
 import useUpdateCustomerCatteryIdResultSwalUseEffect from "./hooks/use-effects/use-update-customer-cattery-id-result-swal-use-effect";
 import useUpdateCustomersCatsCatteryIdsResultSwalUseEffect from "./hooks/use-effects/use-update-customers-cats-cattery-ids-result-swal-use-effect";
 
+import Metadata from "../../components/metadata/metadata.component";
 import TitleAndLoader from "./title-and-loader.component";
 import ShowFetchErrors from "../../components/errors/show-fetch-errors.component";
 import Intro from "./intro.component";
@@ -22,6 +23,10 @@ const MoveCustomerToNewCattery = () => {
 
   return (
     <Container>
+      <Metadata
+        title="Cattery Connect - Move Customer To A New Cattery."
+        description="Update a customers cattery ID so future payments go to a new cattery."
+      />
       <TitleAndLoader />
 
       {checkCustomerCanBeMovedError ? (

@@ -11,6 +11,7 @@ import { ParentDiv } from "../../styles/div/div.styles";
 import { StyledLink } from "../../styles/link/link.styles";
 
 import { contactRoute } from "../../strings/routes";
+import Metadata from "../../components/metadata/metadata.component";
 
 const UpdateEmail = () => {
   const { role } = useGetCurrentUserSelectors();
@@ -18,6 +19,10 @@ const UpdateEmail = () => {
 
   return (
     <Container>
+      <Metadata
+        title="Cattery Connect - Update Your Email Address"
+        description="Update the email address that you use to sign into the app with and receive correspondance to."
+      />
       <TitleAndLoader />
 
       <ParentDiv>

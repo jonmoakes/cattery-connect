@@ -1,4 +1,7 @@
+import Metadata from "../../components/metadata/metadata.component";
 import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
+import PolicyLastUpdated from "../../components/legal/policy-last-updated/policy-last-updated.component";
+import ChangesToPolicy from "../../components/legal/changes-to-policy/changes-to-policy.component";
 import PolicyContactInfo from "../../components/legal/policy-contact-info/policy-contact-info.component";
 import NextPolicyLink from "../../components/legal/next-policy-link/next-policy-link.component";
 
@@ -7,11 +10,15 @@ import { ParentDiv } from "../../styles/div/div.styles";
 import { StyledLink } from "../../styles/link/link.styles";
 
 import { privacyPolicyRoute } from "../../strings/routes";
-import PolicyLastUpdated from "../../components/legal/policy-last-updated/policy-last-updated.component";
-import ChangesToPolicy from "../../components/legal/changes-to-policy/changes-to-policy.component";
 
 const DataProtection = () => (
   <Container>
+    <Metadata
+      title="Cattery Connect - Data Protection"
+      description="Learn how Cattery Connect handles and protects your personal data in compliance with data protection laws."
+      ogTitle="Cattery Connect - Data Protection"
+      ogDescription="Cattery Connect is committed to data privacy and protection. Read about how we manage and safeguard your information."
+    />
     <ParentDiv>
       <CustomBalancedText type="h1">Data Protection</CustomBalancedText>
     </ParentDiv>

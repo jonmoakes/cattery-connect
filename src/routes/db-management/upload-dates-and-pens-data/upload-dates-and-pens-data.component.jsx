@@ -5,6 +5,7 @@ import useUploadDatesAndPensDataResultSwalUseEffect from "./upload-dates-hooks/u
 import useSubmitUploadDatesAndPensData from "./upload-dates-hooks/use-submit-upload-dates-and-pens-data";
 import useHandleDatesAndPensChange from "./upload-dates-hooks/use-handle-data-and-pens-change";
 
+import Metadata from "../../../components/metadata/metadata.component";
 import UploadDatesAndPensDataLoaderAndTitle from "./upload-dates-and-pens-data-loader-and-title.component";
 import ShowFetchErrors from "../../../components/errors/show-fetch-errors.component";
 import HelpAccordion from "../../../components/help-accordion/help-accordion.component";
@@ -42,6 +43,10 @@ const UploadDatesAndPensData = () => {
 
   return (
     <Container>
+      <Metadata
+        title="Cattery Connect - Upload Dates And Pens Data"
+        description="Choose Dates to upload to the database and the number of pens available."
+      />
       <UploadDatesAndPensDataLoaderAndTitle />
 
       {allUsersCatteryIdsAndOwnerNameError ? (

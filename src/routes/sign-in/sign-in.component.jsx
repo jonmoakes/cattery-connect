@@ -3,6 +3,7 @@ import useSignInFormSubmit from "./sign-in-form-hooks/use-sign-in-form-submit";
 import useHandleSignInFormChange from "./sign-in-form-hooks/use-handle-sign-in-form-change";
 import useSignInPasswordIsVisibleUseEffect from "./sign-in-form-hooks/use-sign-in-password-is-visible-use-effect";
 
+import Metadata from "../../components/metadata/metadata.component";
 import AuthNavAndLoader from "../../components/auth-nav-and-loader/auth-nav-and-loader.component";
 import TitleAndSignUpLink from "./title-and-sign-up-link.component";
 import SignInEmail from "./sign-in-email.component";
@@ -21,6 +22,10 @@ const SignIn = () => {
 
   return (
     <Container>
+      <Metadata
+        title="Cattery Connect - Sign In"
+        description="Sign in to your Cattery Connect account to manage your cattery bookings, customers, and more."
+      />
       <AuthNavAndLoader />
       <TitleAndSignUpLink />
 

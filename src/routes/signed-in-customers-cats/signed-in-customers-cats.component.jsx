@@ -2,6 +2,7 @@ import useGetIndividualCustomersCatsSelectors from "../../hooks/selectors/use-ge
 
 import useGetCustomersCatsThunkUseEffect from "./hooks/use-get-customers-cats-thunk-use-effect";
 
+import Metadata from "../../components/metadata/metadata.component";
 import TitleAndLoader from "./title-and-loader.component";
 import ShowFetchErrors from "../../components/errors/show-fetch-errors.component";
 import Intro from "./intro.component";
@@ -16,6 +17,10 @@ const SignedInCustomersCats = () => {
 
   return (
     <Container>
+      <Metadata
+        title="Cattery Connect - Your Cats"
+        description="View the details we hold of your cats for their safe management."
+      />
       <TitleAndLoader />
 
       {individualCustomersCatsError ? (

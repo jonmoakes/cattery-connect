@@ -3,6 +3,7 @@ import useGetGenerateNewPasswordRequestSelectors from "../../hooks/selectors/use
 import useCheckForValidEmailAndSendRequest from "./forgot-password-request-hooks/use-check-for-valid-email-and-send-request";
 import useForgotPasswordRequestFunctions from "./forgot-password-request-hooks/use-forgot-password-request-functions";
 
+import Metadata from "../../components/metadata/metadata.component";
 import SkeletonBox from "../../components/skeleton-box/skeleton-box.component";
 import HelpAccordion from "../../components/help-accordion/help-accordion.component";
 import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
@@ -26,6 +27,11 @@ const ForgotPasswordRequest = () => {
 
   return (
     <Container>
+      <Metadata
+        title="Cattery Connect - Forgot Password"
+        description="Request a password reset link to recover access to your Cattery Connect account."
+      />
+
       {generateNewPasswordRequestIsLoading ? (
         <SkeletonBox loadingText="Please Wait" />
       ) : null}

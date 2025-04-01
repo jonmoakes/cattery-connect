@@ -1,6 +1,7 @@
 import useGetSignedInCustomersDetailsSelectors from "../../hooks/selectors/use-get-signed-in-customers-details-selectors";
 import useGetSignedInCustomersDetailsThunkUseEffect from "./hooks/use-get-signed-in-customers-details-thunk-use-effect";
 
+import Metadata from "../../components/metadata/metadata.component";
 import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
 import ShowFetchErrors from "../../components/errors/show-fetch-errors.component";
 import SkeletonBox from "../../components/skeleton-box/skeleton-box.component";
@@ -19,6 +20,10 @@ const SignedInCustomersDetails = () => {
 
   return (
     <Container>
+      <Metadata
+        title="Cattery Connect - Your Details"
+        description="View the details we hold about you in order to provide safe care for your cats."
+      />
       <ParentDiv>
         <CustomBalancedText type="h1">your Details</CustomBalancedText>
         <HelpAccordion

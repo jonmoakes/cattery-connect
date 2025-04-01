@@ -3,6 +3,7 @@ import useGetAllCustomersThunkUseEffect from "../../hooks/use-get-all-customers-
 import useHandleCustomerSelectChange from "../../components/customer-select-drop-down/customer-select-dropdown-hooks/use-handle-customer-select-change";
 import useDropdownLogic from "../../components/customer-select-drop-down/customer-select-dropdown-hooks/use-dropdown-logic";
 
+import Metadata from "../../components/metadata/metadata.component";
 import AllCatsNoCatsFound from "../all-cats/all-cats-no-cats-found.component";
 import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
 import ShowFetchErrors from "../../components/errors/show-fetch-errors.component";
@@ -23,6 +24,10 @@ const AddCatChooseOwner = () => {
 
   return (
     <Container>
+      <Metadata
+        title="Cattery Connect - Choose Owner"
+        description="Select an owner from the list before adding a new cat to their profile in Cattery Connect."
+      />
       <ParentDiv>
         <CustomBalancedText type="h1">choose cat owner</CustomBalancedText>
       </ParentDiv>

@@ -1,3 +1,4 @@
+import Metadata from "../../components/metadata/metadata.component";
 import RefundsPolicyTitleAndIntro from "./sections/refunds-policy-title-and-intro.component";
 import PolicyLastUpdated from "../../components/legal/policy-last-updated/policy-last-updated.component";
 import LegalDefinitions from "../../components/legal/legal-definitions/legal-definitions.component";
@@ -15,6 +16,12 @@ import { Container } from "../../styles/container/container.styles";
 
 const RefundsPolicy = () => (
   <Container>
+    <Metadata
+      title="Cattery Connect - Refund Policy"
+      description="Review the refund policy for Cattery Connect to understand eligibility for refunds and the process for requesting one."
+      ogTitle="Cattery Connect - Refund Policy"
+      ogDescription="Learn about Cattery Connect's refund policy, including conditions for refunds and how to request one."
+    />
     <RefundsPolicyTitleAndIntro />
     <PolicyLastUpdated date="1st April 2025" />
     <LegalDefinitions />

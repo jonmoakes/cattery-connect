@@ -1,6 +1,7 @@
 import useGetHamburgerMenuSelectors from "../../hooks/selectors/use-get-hamburger-menu-selectors";
 import useGetCurrentUserSelectors from "../../hooks/selectors/use-get-current-user-selectors";
 
+import useNavLogic from "./nav-hooks/use-nav-logic";
 import SkeletonBox from "../../components/skeleton-box/skeleton-box.component";
 import NavLogo from "./nav-logo.component";
 import NavHamburger from "./nav-hamburger.component";
@@ -9,7 +10,6 @@ import NavSignOut from "./nav-sign-out.component";
 import NavUserSignedIn from "./nav-user-signed-in.component";
 
 import { Nav, Menu } from "../../styles/div/div.styles";
-import useNavLogic from "./nav-hooks/use-nav-logic";
 
 const Navigation = () => {
   const { signOutIsLoading } = useGetCurrentUserSelectors();

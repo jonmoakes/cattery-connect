@@ -1,19 +1,29 @@
+import useHamburgerHandlerNavigate from "../../hooks/use-hamburger-handler-navigate";
+
+import Metadata from "../../components/metadata/metadata.component";
 import ProgressiveImage from "../../components/progressive-image/progressive-image.component";
 import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
 
 import { Container } from "../../styles/container/container.styles";
 import { ParentDiv } from "../../styles/div/div.styles";
+import { Button } from "../../styles/button/button.styles";
 
 import image from "../../assets/cat-in-cat-room.webp";
-import { Button } from "../../styles/button/button.styles";
+
 import { aboutRoute } from "../../strings/routes";
-import useHamburgerHandlerNavigate from "../../hooks/use-hamburger-handler-navigate";
 
 const Home = () => {
   const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
 
   return (
     <Container>
+      <Metadata
+        title="Cattery Connect - Home"
+        description="Welcome to Cattery Connect, your comprehensive solution for efficient cattery management. Streamline operations and focus on exceptional feline care."
+        ogTitle="Cattery Connect - Home"
+        ogDescription="Manage your cattery effortlessly with Cattery Connect. Streamlined booking, communication, and more."
+      />
+
       <ParentDiv>
         <CustomBalancedText type="h1">
           Effortlessly Manage Your Cattery!

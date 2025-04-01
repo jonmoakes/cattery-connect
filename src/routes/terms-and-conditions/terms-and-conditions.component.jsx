@@ -1,5 +1,6 @@
 import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
 
+import Metadata from "../../components/metadata/metadata.component";
 import Introduction from "./sections/introduction.component";
 import PolicyLastUpdated from "../../components/legal/policy-last-updated/policy-last-updated.component";
 import LegalDefinitions from "../../components/legal/legal-definitions/legal-definitions.component";
@@ -22,6 +23,12 @@ import { ParentDiv } from "../../styles/div/div.styles";
 
 const TermsAndConditions = () => (
   <Container>
+    <Metadata
+      title="Cattery Connect - Terms and Conditions"
+      description="Review the terms and conditions for using Cattery Connect. Understand your rights and responsibilities when managing your cattery with our platform."
+      ogTitle="Cattery Connect - Terms and Conditions"
+      ogDescription="Read the terms and conditions for Cattery Connect to ensure compliance and a smooth experience managing your cattery."
+    />
     <ParentDiv>
       <CustomBalancedText type="h1">Terms And Conditions</CustomBalancedText>
     </ParentDiv>

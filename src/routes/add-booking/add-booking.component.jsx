@@ -9,15 +9,16 @@ import useGetCatteryDataAndCustomersThunkUseEffect from "./add-booking-hooks/use
 import useCompleteBookingResultSwalUseEffect from "./add-booking-hooks/use-effects/use-complete-booking-result-swal-use-effect";
 import useSendEmailResultSwalUseEffect from "./add-booking-hooks/use-effects/use-send-email-result-swal-use-effect";
 
+import Metadata from "../../components/metadata/metadata.component";
 import ShowFetchErrors from "../../components/errors/show-fetch-errors.component";
 import NoCustomersFound from "../../components/no-customers-found/no-customers-found.component";
 import AddBookingTitleAndLoader from "./ui/add-booking-title-and-loader.component";
+import BookingFormSection from "./ui/booking-form-section.component";
+import FormButtonsAndAvailabilityInfoSection from "./ui/form-buttons-and-availability-info-section.component";
+
 import { Container } from "../../styles/container/container.styles";
 import { ParentDiv } from "../../styles/div/div.styles";
 import { Form } from "../../styles/form/form.styles";
-
-import BookingFormSection from "./ui/booking-form-section.component";
-import FormButtonsAndAvailabilityInfoSection from "./ui/form-buttons-and-availability-info-section.component";
 
 const AddBooking = () => {
   const {
@@ -56,6 +57,10 @@ const AddBooking = () => {
 
   return (
     <Container>
+      <Metadata
+        title="Cattery Connect - Add Booking"
+        description="Create a new booking for your cattery. Easily add customer details, cat information, and reservation dates."
+      />
       <AddBookingTitleAndLoader />
 
       {hasErrors ? (

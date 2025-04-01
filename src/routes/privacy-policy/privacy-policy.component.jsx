@@ -1,3 +1,4 @@
+import Metadata from "../../components/metadata/metadata.component";
 import TitleAndIntro from "./sections/title-and-intro.component";
 import PolicyLastUpdated from "../../components/legal/policy-last-updated/policy-last-updated.component";
 import LegalDefinitions from "../../components/legal/legal-definitions/legal-definitions.component";
@@ -16,6 +17,12 @@ import { Container } from "../../styles/container/container.styles";
 
 const PrivacyPolicy = () => (
   <Container>
+    <Metadata
+      title="Cattery Connect - Privacy Policy"
+      description="Learn how Cattery Connect collects, uses, and protects your data. Your privacy is important to us."
+      ogTitle="Cattery Connect - Privacy Policy"
+      ogDescription="Read Cattery Connect's Privacy Policy to understand how we handle your personal data securely and responsibly."
+    />
     <TitleAndIntro />
     <PolicyLastUpdated date="1st April 2025" />
     <LegalDefinitions />

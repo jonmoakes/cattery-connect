@@ -16,6 +16,7 @@ import CardInput from "./card-input.component";
 
 import { Container } from "../../styles/container/container.styles";
 import { ParentDiv } from "../../styles/div/div.styles";
+import Metadata from "../../components/metadata/metadata.component";
 
 const SettleBookingPayment = () => {
   const { hasBookingDetails, totalCost } =
@@ -29,6 +30,10 @@ const SettleBookingPayment = () => {
 
   return (
     <Container>
+      <Metadata
+        title="Cattery Connect - Settle Payment"
+        description="Securely pay online for your cats stay direct to your cattery."
+      />
       <TitleAndLoader />
 
       {!stripePromise ? null : paymentError ? (

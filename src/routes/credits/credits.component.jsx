@@ -9,9 +9,14 @@ import { ParentDiv } from "../../styles/div/div.styles";
 import { StyledLink } from "../../styles/link/link.styles";
 
 import { contactRoute } from "../../strings/routes";
+import Metadata from "../../components/metadata/metadata.component";
 
 const Credits = () => (
   <Container>
+    <Metadata
+      title="Cattery Connect - Credits"
+      description="Find out where cattery connect uses any 3rd party images / applications to help the apps functionality and presentation."
+    />
     <ParentDiv>
       <CustomBalancedText type="h1">credits</CustomBalancedText>
     </ParentDiv>
