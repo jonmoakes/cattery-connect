@@ -1,10 +1,9 @@
 import stripe from "stripe";
 
-exports.handler = async (event) => {
+export const handler = async (event) => {
   const { catteryId, amount, email } = JSON.parse(event.body);
 
   const getSecretKeyFromEnv = `STRIPE_SECRET_KEY_${catteryId.toUpperCase()}`;
-
   const secretKey = process.env[getSecretKeyFromEnv];
 
   if (!secretKey) {
