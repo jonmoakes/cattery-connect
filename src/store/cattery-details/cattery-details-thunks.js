@@ -3,8 +3,8 @@ import { listDocumentsByQueryOrSearch } from "../../utils/appwrite/appwrite-func
 import {
   catteryInfoCollectionId,
   databaseId,
-  smallRateLimit,
-} from "../../constants/constants";
+} from "../../constants/appwrite-constants";
+import { smallRateLimit } from "../../constants/api-request-constants";
 
 export const getCatteryDetailsAsync = createAsyncThunk(
   "getCatteryDetails",

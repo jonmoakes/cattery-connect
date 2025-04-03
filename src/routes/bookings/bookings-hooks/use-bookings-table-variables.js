@@ -2,7 +2,7 @@ import { useMemo } from "react";
 
 import useGetBookingsSelectors from "../../../hooks/selectors/use-get-bookings-selectors";
 
-import { defaultTableSize } from "../../../constants/constants";
+import { defaultTableSize } from "../../../constants/ui-constants";
 import BOOKINGS_TABLE_COLUMNS from "../bookings-table-columns";
 
 const useBookingsTableVariables = () => {

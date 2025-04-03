@@ -1,6 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { manageDatabaseDocument } from "../../utils/appwrite/appwrite-functions";
-import { databaseId, usersCollectionId } from "../../constants/constants";
+import {
+  databaseId,
+  usersCollectionId,
+} from "../../constants/appwrite-constants";
 
 export const getSignedInCustomersDetailsAsync = createAsyncThunk(
   "getSignedInCustomersDetails",

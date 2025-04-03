@@ -58,6 +58,7 @@ import {
   updatePasswordRoute,
   updateEmailRoute,
   moveCustomerToNewCatteryRoute,
+  customerPortalRoute,
 } from "./strings/routes";
 import Footer from "./components/footer/footer.component";
 
@@ -170,6 +171,9 @@ const MoveCustomerToNewCattery = lazy(() =>
     "./routes/move-customer-to-new-cattery/move-customer-to-new-cattery.component"
   )
 );
+const CustomerPortal = lazy(() =>
+  import("./routes/customer-portal/customer-portal.component")
+);
 
 const App = () => {
   const { currentUser, role } = useGetCurrentUserSelectors();
@@ -190,6 +194,7 @@ const App = () => {
             <Route path={pricingRoute} element={<Pricing />} />
             <Route path={signInRoute} element={<SignIn />} />
             <Route path={signUpRoute} element={<SignUp />} />
+
             <Route
               path={contactRoute}
               element={
@@ -396,6 +401,12 @@ const App = () => {
                 path={updateEmailRoute}
                 element={
                   currentUser && role !== "admin" ? <UpdateEmail /> : null
+                }
+              />
+              <Route
+                path={customerPortalRoute}
+                element={
+                  currentUser && role === "owner" ? <CustomerPortal /> : null
                 }
               />
             </Route>

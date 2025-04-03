@@ -9,7 +9,7 @@ import {
   availablilityCollectionId,
   catteryInfoCollectionId,
   databaseId,
-} from "../../constants/constants";
+} from "../../constants/appwrite-constants";
 
 import { generateCatteryAvailabilityForDate } from "./generate-cattery-availability-for-date";
 

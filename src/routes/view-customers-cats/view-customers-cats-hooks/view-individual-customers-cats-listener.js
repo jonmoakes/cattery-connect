@@ -6,7 +6,10 @@ import useGetCurrentUserSelectors from "../../../hooks/selectors/use-get-current
 import useGetIndividualCustomersCatsSelectors from "../../../hooks/selectors/use-get-individual-customers-cats-selectors";
 import { setIndividualCustomersCats } from "../../../store/get-individual-customers-cats/get-individual-customers-cats.slice";
 
-import { databaseId, catsCollectionId } from "../../../constants/constants";
+import {
+  databaseId,
+  catsCollectionId,
+} from "../../../constants/appwrite-constants";
 
 const useViewIndividualCustomersCatsListener = () => {
   const { individualCustomersCats } = useGetIndividualCustomersCatsSelectors();

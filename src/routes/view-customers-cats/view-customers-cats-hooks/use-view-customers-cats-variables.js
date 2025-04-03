@@ -1,11 +1,11 @@
 import { useMemo } from "react";
 
 import useGetCatDetailsManagementSelectors from "../../../hooks/selectors/use-get-cat-details-management-selectors";
+import useGetIndividualCustomersCatsSelectors from "../../../hooks/selectors/use-get-individual-customers-cats-selectors";
 
 import VIEW_CUSTOMERS_CATS_TABLE_COLUMNS from "../view-customers-cats-table-columns";
 
-import { defaultTableSize } from "../../../constants/constants";
-import useGetIndividualCustomersCatsSelectors from "../../../hooks/selectors/use-get-individual-customers-cats-selectors";
+import { defaultTableSize } from "../../../constants/ui-constants";
 
 const useViewCustomersCatsVariables = () => {
   const { detailsRequiredForCatManagement, catDetailManagementIsLoading } =

@@ -1,12 +1,12 @@
 import { useMemo } from "react";
 
 import useGetAllCatsSelectors from "../../../hooks/selectors/use-get-all-cats-selectors";
-
-import { defaultTableSize } from "../../../constants/constants";
-import ALL_CATS_TABLE_COLUMNS from "../all-cats-columns/all-cats-table-columns";
-import CAT_OWNER_TABLE_COLUMNS from "../all-cats-columns/cat-owner-table-columns";
 import useGetCatDetailsManagementSelectors from "../../../hooks/selectors/use-get-cat-details-management-selectors";
 import useGetAllCustomerSelectors from "../../../hooks/selectors/use-get-all-customers-selectors";
+
+import { defaultTableSize } from "../../../constants/ui-constants";
+import ALL_CATS_TABLE_COLUMNS from "../all-cats-columns/all-cats-table-columns";
+import CAT_OWNER_TABLE_COLUMNS from "../all-cats-columns/cat-owner-table-columns";
 
 const useAllCatsTableVariables = () => {
   const {

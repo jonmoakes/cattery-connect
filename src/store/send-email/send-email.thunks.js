@@ -2,12 +2,21 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { differenceInDays } from "date-fns";
 
+import { listDocumentsByQueryOrSearch } from "../../utils/appwrite/appwrite-functions";
+
 import { formatBookingDetailsForUpdatePenDataError } from "./functions/format-booking-details-for-update-pen-data-error";
 import { formatOriginalAvailabilityData } from "./functions/format-original-availability-data";
 import { formatFullBookingDetails } from "./functions/format-full-booking-details";
-
 import { formatReceiptBookingDetails } from "./functions/format-receipt-booking-details";
 import { getFirstNameFromString } from "../../functions/get-first-name-from-string";
+import { formatCancelBookingReceipt } from "./functions/format-cancel-booking-receipt";
+
+import {
+  catteryInfoCollectionId,
+  databaseId,
+  adminEmail,
+} from "../../constants/appwrite-constants";
+import { smallRateLimit } from "../../constants/api-request-constants";
 
 import {
   SEND_EMAIL_UPDATE_PENS_ROLLBACK_ERROR_ENDPOINT,
@@ -18,14 +27,6 @@ import {
   SEND_EMAIL_CONTACT_FORM_MESSAGE_ENDPOINT,
   SEND_EMAIL_FAILED_STATUS_UPDATE_AFTER_SUCCESSFUL_PAYMENT_ENDPOINT,
 } from "../../../netlify/api-endpoints/api-endpoints";
-import { formatCancelBookingReceipt } from "./functions/format-cancel-booking-receipt";
-import {
-  adminEmail,
-  catteryInfoCollectionId,
-  databaseId,
-  smallRateLimit,
-} from "../../constants/constants";
-import { listDocumentsByQueryOrSearch } from "../../utils/appwrite/appwrite-functions";
 
 export const sendEmailUpdatePensRollbackErrorAsync = createAsyncThunk(
   "sendEmailUpdatePensRollbackError",

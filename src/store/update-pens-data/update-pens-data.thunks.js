@@ -1,12 +1,14 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getSlotsToUpdate } from "./functions/get-slots-to-update";
-import { updateSlot } from "./functions/update-slot";
+
 import { manageDatabaseDocument } from "../../utils/appwrite/appwrite-functions";
 import {
   availablilityCollectionId,
   databaseId,
-  pensRollbackFailureErrorCode,
-} from "../../constants/constants";
+} from "../../constants/appwrite-constants";
+import { pensRollbackFailureErrorCode } from "../../constants/error-constants";
+
+import { getSlotsToUpdate } from "./functions/get-slots-to-update";
+import { updateSlot } from "./functions/update-slot";
 
 export const updatePensDataInDbAsync = createAsyncThunk(
   "updatePensDataInDb",

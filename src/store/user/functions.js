@@ -1,8 +1,9 @@
 import { account } from "../../utils/appwrite/appwrite-config";
-import { listDocumentsByQueryOrSearch } from "../../utils/appwrite/appwrite-functions/";
-
-const databaseId = import.meta.env.VITE_DATABASE_ID;
-const usersCollectionId = import.meta.env.VITE_USERS_COLLECTION_ID;
+import { listDocumentsByQueryOrSearch } from "../../utils/appwrite/appwrite-functions";
+import {
+  databaseId,
+  usersCollectionId,
+} from "../../constants/appwrite-constants";
 
 export const getRetrievedUserFromDocument = async () => {
   const user = await account.get();

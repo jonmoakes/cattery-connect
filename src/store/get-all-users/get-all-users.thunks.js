@@ -4,8 +4,8 @@ import { listDocumentsInACollection } from "../../utils/appwrite/appwrite-functi
 import {
   databaseId,
   usersCollectionId,
-  highRateLimit,
-} from "../../constants/constants";
+} from "../../constants/appwrite-constants";
+import { highRateLimit } from "../../constants/api-request-constants";
 
 export const fetchAllUsersDocumentsAsync = createAsyncThunk(
   "fetchAllUsersDocuments",

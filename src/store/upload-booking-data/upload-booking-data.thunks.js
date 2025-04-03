@@ -1,10 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-
-import { ID } from "appwrite";
-import { bookingsCollectionId, databaseId } from "../../constants/constants";
-
-import { manageDatabaseDocument } from "../../utils/appwrite/appwrite-functions";
 import { differenceInDays } from "date-fns";
+import { ID } from "appwrite";
+import { manageDatabaseDocument } from "../../utils/appwrite/appwrite-functions";
+
+import {
+  bookingsCollectionId,
+  databaseId,
+} from "../../constants/appwrite-constants";
 
 export const uploadBookingDataToDbAsync = createAsyncThunk(
   "uploadBookingDataToDb",

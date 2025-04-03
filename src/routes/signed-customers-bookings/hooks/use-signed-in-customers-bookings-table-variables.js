@@ -1,10 +1,11 @@
 import { useMemo } from "react";
 
 import useGetSignedInCustomersBookingsSelectors from "../../../hooks/selectors/use-get-signed-in-customers-bookings-selectors";
-
-import { defaultTableSize } from "../../../constants/constants";
-import SIGNED_IN_CUSTOMERS_BOOKINGS_TABLE_COLUMNS from "../signed-in-customers-bookings-table-columns";
 import useGetCatteryDetailsSelectors from "../../../hooks/selectors/use-get-cattery-details-selectors";
+
+import SIGNED_IN_CUSTOMERS_BOOKINGS_TABLE_COLUMNS from "../signed-in-customers-bookings-table-columns";
+
+import { defaultTableSize } from "../../../constants/ui-constants";
 
 const useSignedInCustomersBookingsTableVariables = () => {
   const {

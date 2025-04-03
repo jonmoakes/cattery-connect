@@ -1,7 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { account } from "../../utils/appwrite/appwrite-config";
 import { manageDatabaseDocument } from "../../utils/appwrite/appwrite-functions";
-import { databaseId, usersCollectionId } from "../../constants/constants";
+import {
+  databaseId,
+  usersCollectionId,
+} from "../../constants/appwrite-constants";
 
 export const updateEmailAsync = createAsyncThunk(
   "updateEmail",

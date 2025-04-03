@@ -2,7 +2,7 @@ import { useMemo } from "react";
 
 import useGetDailyScheduleSelectors from "../../../hooks/selectors/use-get-daily-schedule-selectors";
 
-import { defaultTableSize } from "../../../constants/constants";
+import { defaultTableSize } from "../../../constants/ui-constants";
 import TODAYS_SCHEDULE_TABLE_COLUMNS from "../daily-schedule-table-columns";
 
 const useDailyScheduleTableVariables = () => {

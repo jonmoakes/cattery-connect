@@ -23,6 +23,16 @@ const AvailabilityInfo = () => (
       </CustomBalancedText>
     </ParentDiv>
 
+    <ParentDiv>
+      <CustomBalancedText type="h3">
+        prefer to manage your own pen availability?
+      </CustomBalancedText>
+      <CustomBalancedText>
+        no problem! the app simply skips this step and allows you to decide if
+        you have enough space for a booking.
+      </CustomBalancedText>
+    </ParentDiv>
+
     <ProgressiveImage
       {...{
         srcList: bookingAvailableAboutPageImage,

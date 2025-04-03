@@ -1,12 +1,14 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { eachDayOfInterval, format } from "date-fns";
 import { Query } from "appwrite";
 import { databases } from "../../utils/appwrite/appwrite-config";
+
 import {
   availablilityCollectionId,
-  catteryNotAvailableOnThisDateString,
   databaseId,
-} from "../../constants/constants";
-import { eachDayOfInterval, format } from "date-fns";
+} from "../../constants/appwrite-constants";
+import { catteryNotAvailableOnThisDateString } from "../../constants/error-constants";
+
 import {
   specialCheckSameDay,
   checkFirstDayAvailability,

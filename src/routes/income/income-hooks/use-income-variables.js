@@ -1,11 +1,11 @@
 import { useMemo } from "react";
+import { addMonths, format } from "date-fns";
 
 import useGetIncomeSelectors from "../../../hooks/selectors/use-get-income-selectors";
 
 import INCOME_TABLE_COLUMNS from "../income-table-columns";
 
-import { defaultTableSize } from "../../../constants/constants";
-import { addMonths, format } from "date-fns";
+import { defaultTableSize } from "../../../constants/ui-constants";
 
 const useIncomeVariables = () => {
   const {

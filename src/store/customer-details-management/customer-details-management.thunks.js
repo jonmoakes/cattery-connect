@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-
+import { ID } from "appwrite";
 import {
   listDocumentsByQueryOrSearch,
   manageDatabaseDocument,
@@ -8,9 +8,8 @@ import {
   catsCollectionId,
   usersCollectionId,
   databaseId,
-  smallRateLimit,
-} from "../../constants/constants";
-import { ID } from "appwrite";
+} from "../../constants/appwrite-constants";
+import { smallRateLimit } from "../../constants/api-request-constants";
 
 import { lowercaseObjectValues } from "../../functions/lowercase-object-vaules";
 import { generateShortId } from "../../functions/generate-short-id";

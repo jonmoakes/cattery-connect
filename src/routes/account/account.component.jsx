@@ -10,9 +10,10 @@ import { Container } from "../../styles/container/container.styles";
 import { ParentDiv, UnderTitleContainer } from "../../styles/div/div.styles";
 
 import { getFirstNameFromString } from "../../functions/get-first-name-from-string";
+import { BlackHr } from "../../styles/hr/hr.styles";
 
 const Account = () => {
-  const { name } = useGetCurrentUserSelectors();
+  const { name, role } = useGetCurrentUserSelectors();
   useCheckForAndClearFormDetails();
   useGetManagesOwnPensAndAllowsOnlinePaymentsValuesThunkUseEffect();
 
@@ -24,11 +25,20 @@ const Account = () => {
       />
       <ParentDiv>
         <CustomBalancedText type="h1">account</CustomBalancedText>
+        <BlackHr />
         <UnderTitleContainer className="account">
           <CustomBalancedText>
-            welcome {getFirstNameFromString(name)}!<br />
+            welcome {getFirstNameFromString(name)}!
+          </CustomBalancedText>
+          <CustomBalancedText>
             choose from the options below.
           </CustomBalancedText>
+          {role === "owner" ? (
+            <CustomBalancedText>
+              to manage your subscription, scroll down to the 'customer portal'
+              button.
+            </CustomBalancedText>
+          ) : null}
         </UnderTitleContainer>
       </ParentDiv>
 

@@ -12,7 +12,7 @@ import SendMessageButton from "./send-message-button.component";
 import { Form, StyledTextArea, Label } from "../../../styles/form/form.styles";
 import { ParentDiv } from "../../../styles/div/div.styles";
 
-import { maxTextAreaCharacterLength } from "../../../constants/constants";
+import { maxTextAreaCharacterLength } from "../../../constants/ui-constants";
 
 const ContactForm = () => {
   const { senderMessage } = useGetSendEmailSelectors();

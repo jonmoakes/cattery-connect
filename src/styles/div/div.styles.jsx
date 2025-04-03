@@ -779,11 +779,7 @@ export const UnderTitleContainer = styled.div`
   margin: -20px auto 20px auto;
 
   &.account {
-    margin: -40px auto 0px auto;
-
-    @media screen and (max-width: 600px) {
-      margin: -20px auto 0px auto;
-    }
+    margin: -10px auto 0px auto;
   }
 `;
 

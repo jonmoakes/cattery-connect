@@ -5,9 +5,11 @@ import {
   databaseId,
   usersCollectionId,
   catsCollectionId,
+} from "../../constants/appwrite-constants";
+import {
   highRateLimit,
   smallRateLimit,
-} from "../../constants/constants";
+} from "../../constants/api-request-constants";
 
 export const fetchAllCatsAsync = createAsyncThunk(
   "fetchAllCats",

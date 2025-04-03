@@ -8,18 +8,17 @@ import useHamburgerHandlerNavigate from "../../../hooks/use-hamburger-handler-na
 
 import { noStripePublicKeyFoundMessage } from "../../../strings/errors";
 import { signedInCustomersBookingsRoute } from "../../../strings/routes";
+import { getPublishableKey } from "../../../functions/get-publishable-key";
 
 const useGetStripePublicKeyUseEffect = () => {
   const { catteryId } = useGetCurrentUserSelectors();
   const [stripePromise, setStripePromise] = useState(null);
   const { fireSwal } = useFireSwal();
   const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
+  const publicKey = getPublishableKey(catteryId);
 
   useEffect(() => {
     if (stripePromise !== null) return;
-
-    const publishableKeyEnvVar = `VITE_STRIPE_PUBLISHABLE_KEY_${catteryId.toUpperCase()}`;
-    const publicKey = import.meta.env[publishableKeyEnvVar];
 
     if (publicKey) {
       setStripePromise(loadStripe(publicKey));
@@ -39,7 +38,7 @@ const useGetStripePublicKeyUseEffect = () => {
         }
       });
     }
-  }, [catteryId, fireSwal, stripePromise, hamburgerHandlerNavigate]);
+  }, [catteryId, fireSwal, stripePromise, hamburgerHandlerNavigate, publicKey]);
 
   return { stripePromise };
 };

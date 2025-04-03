@@ -4,8 +4,8 @@ import { listDocumentsByQueryOrSearch } from "../../utils/appwrite/appwrite-func
 import {
   databaseId,
   catsCollectionId,
-  smallRateLimit,
-} from "../../constants/constants";
+} from "../../constants/appwrite-constants";
+import { smallRateLimit } from "../../constants/api-request-constants";
 
 export const fetchIndividualCustomersCatsAsync = createAsyncThunk(
   "fetchIndividualCustomersCats",

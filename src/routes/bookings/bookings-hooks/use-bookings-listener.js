@@ -6,7 +6,10 @@ import useGetCurrentUserSelectors from "../../../hooks/selectors/use-get-current
 import useGetBookingsSelectors from "../../../hooks/selectors/use-get-bookings-selectors";
 import { setOwnerBookings } from "../../../store/bookings/bookings.slice";
 
-import { databaseId, bookingsCollectionId } from "../../../constants/constants";
+import {
+  databaseId,
+  bookingsCollectionId,
+} from "../../../constants/appwrite-constants";
 
 const useBookingsListener = () => {
   const { ownerBookings } = useGetBookingsSelectors();

@@ -23,6 +23,16 @@ const PenDataInfo = () => (
       </CustomBalancedText>
     </ParentDiv>
 
+    <ParentDiv>
+      <CustomBalancedText type="h3">
+        prefer to manage your own pen availability?
+      </CustomBalancedText>
+      <CustomBalancedText>
+        no problem! This feature is hidden if you choose to manage your own paen
+        availability.
+      </CustomBalancedText>
+    </ParentDiv>
+
     <ProgressiveImage
       {...{
         srcList: penAvailabilityAboutPageImage,

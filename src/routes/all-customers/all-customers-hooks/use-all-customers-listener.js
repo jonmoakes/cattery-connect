@@ -6,7 +6,10 @@ import useGetCurrentUserSelectors from "../../../hooks/selectors/use-get-current
 import useGetAllCustomersSelectors from "../../../hooks/selectors/use-get-all-customers-selectors";
 import { setAllCustomers } from "../../../store/get-all-customers/get-all-customers.slice";
 
-import { databaseId, usersCollectionId } from "../../../constants/constants";
+import {
+  databaseId,
+  usersCollectionId,
+} from "../../../constants/appwrite-constants";
 
 const useAllCustomersListener = () => {
   const { allCustomers } = useGetAllCustomersSelectors();

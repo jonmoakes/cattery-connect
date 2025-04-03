@@ -1,10 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-
+import { ID } from "appwrite";
 import { manageDatabaseDocument } from "../../utils/appwrite/appwrite-functions";
-import { databaseId, catsCollectionId } from "../../constants/constants";
+import {
+  databaseId,
+  catsCollectionId,
+} from "../../constants/appwrite-constants";
+
 import { lowercaseObjectValues } from "../../functions/lowercase-object-vaules";
 import { generateShortId } from "../../functions/generate-short-id";
-import { ID } from "appwrite";
 
 export const addCatAsync = createAsyncThunk(
   "addCat",

@@ -3,8 +3,8 @@ import { listDocumentsByQueryOrSearch } from "../../utils/appwrite/appwrite-func
 import {
   bookingsCollectionId,
   databaseId,
-  highRateLimit,
-} from "../../constants/constants";
+} from "../../constants/appwrite-constants";
+import { highRateLimit } from "../../constants/api-request-constants";
 
 export const fetchSignedInCustomersBookingsAsync = createAsyncThunk(
   "fetchSignedInCustomersBookings",

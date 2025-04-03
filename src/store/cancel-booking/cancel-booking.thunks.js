@@ -1,14 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-
+import { differenceInDays } from "date-fns";
+import { Query } from "appwrite";
+import { databases } from "../../utils/appwrite/appwrite-config";
+import { manageDatabaseDocument } from "../../utils/appwrite/appwrite-functions";
 import {
   availablilityCollectionId,
   bookingsCollectionId,
   databaseId,
-} from "../../constants/constants";
-import { Query } from "appwrite";
-import { databases } from "../../utils/appwrite/appwrite-config";
-import { manageDatabaseDocument } from "../../utils/appwrite/appwrite-functions";
-import { differenceInDays } from "date-fns";
+} from "../../constants/appwrite-constants";
 
 export const fetchAvailabilityDocsToUpdateAsync = createAsyncThunk(
   "fetchAvailabilityDocsToUpdate",

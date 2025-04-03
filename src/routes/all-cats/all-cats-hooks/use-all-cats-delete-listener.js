@@ -6,7 +6,10 @@ import useGetCurrentUserSelectors from "../../../hooks/selectors/use-get-current
 import useGetAllCatsSelectors from "../../../hooks/selectors/use-get-all-cats-selectors";
 import { setAllCats } from "../../../store/get-all-cats/get-all-cats.slice";
 
-import { databaseId, catsCollectionId } from "../../../constants/constants";
+import {
+  databaseId,
+  catsCollectionId,
+} from "../../../constants/appwrite-constants";
 
 const useAllCatsDeleteListener = () => {
   const { allCats } = useGetAllCatsSelectors();

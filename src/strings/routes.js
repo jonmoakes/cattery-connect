@@ -31,6 +31,7 @@ export const paymentResultRoute = "/payment-result";
 export const incomeRoute = "/income";
 export const updatePasswordRoute = "/update-password";
 export const moveCustomerToNewCatteryRoute = "/move-customer-to-new-cattery";
+export const customerPortalRoute = "/customer-portal";
 
 //legal
 export const termsRoute = "/terms-and-conditions";

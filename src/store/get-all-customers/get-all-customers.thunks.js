@@ -4,8 +4,8 @@ import { listDocumentsByQueryOrSearch } from "../../utils/appwrite/appwrite-func
 import {
   databaseId,
   usersCollectionId,
-  standardRateLimit,
-} from "../../constants/constants";
+} from "../../constants/appwrite-constants";
+import { standardRateLimit } from "../../constants/api-request-constants";
 
 export const getAllOwnersCustomersAsync = createAsyncThunk(
   "getAllOwnersCustomers",

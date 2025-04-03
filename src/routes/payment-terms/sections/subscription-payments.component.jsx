@@ -2,7 +2,7 @@ import CustomBalancedText from "../../../components/custom-balanced-text/custom-
 import { ParentDiv } from "../../../styles/div/div.styles";
 import { BlackHr } from "../../../styles/hr/hr.styles";
 
-import { foundersRate, standardRate } from "../../../constants/constants";
+import { foundersRate, standardRate } from "../../../constants/ui-constants";
 
 const SubscriptionPayments = () => (
   <>

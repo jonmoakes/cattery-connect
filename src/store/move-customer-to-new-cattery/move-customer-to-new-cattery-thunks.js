@@ -8,9 +8,9 @@ import {
   bookingsCollectionId,
   catsCollectionId,
   databaseId,
-  smallRateLimit,
   usersCollectionId,
-} from "../../constants/constants";
+} from "../../constants/appwrite-constants";
+import { smallRateLimit } from "../../constants/api-request-constants";
 
 export const checkCustomerCanBeMovedAsync = createAsyncThunk(
   "checkCustomerCanBeMoved",

@@ -40,8 +40,16 @@ const BookingsTableInfo = () => (
       </CustomBalancedText>
       <CustomBalancedText>
         Should you wish, you can also allow customers to make the payment for
-        their booking directly within the app (small payment fees apply, which
-        you can choose to pass on to the customer or not).
+        their booking directly within the app ( small payment fees apply, which
+        you can choose to pass on to the customer or not - view the latest fees{" "}
+        <a
+          href="https://stripe.com/gb/pricing"
+          target="_blank"
+          rel="noreferrer"
+        >
+          here
+        </a>{" "}
+        ).
       </CustomBalancedText>
       <CustomBalancedText>
         The data in the table will be automatically updated when the payment is
@@ -56,12 +64,13 @@ const BookingsTableInfo = () => (
       </CustomBalancedText>
       <CustomBalancedText>
         This will take you to a page where you can review the booking details
-        and cancel it (sending an email confirmation if you wish) with just one
-        click.
+        and cancel it ( sending an email confirmation if you wish ) with just
+        one click.
       </CustomBalancedText>
       <CustomBalancedText>
-        Once cancelled, the pen availability will be updated in the database and
-        the booking removed from your table.
+        Once cancelled, the pen availability will be updated in the database (
+        if you have the app manage your availability ) and the booking removed
+        from your table.
       </CustomBalancedText>
       <CustomBalancedText>
         Please note that any refunds are handled between you and your customer –

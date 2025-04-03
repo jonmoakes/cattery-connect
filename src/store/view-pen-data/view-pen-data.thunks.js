@@ -1,12 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-
-import {
-  databaseId,
-  availablilityCollectionId,
-} from "../../constants/constants";
 import { format } from "date-fns";
 import { Query } from "appwrite";
 import { databases } from "../../utils/appwrite/appwrite-config";
+import {
+  databaseId,
+  availablilityCollectionId,
+} from "../../constants/appwrite-constants";
 
 export const fetchChosenDaysPenDataAsync = createAsyncThunk(
   "fetchChosenDaysPenData",

@@ -9,7 +9,7 @@ import usePenDataRollbackErrorSwal from "../../../../hooks/use-pen-data-rollback
 import useUpdatePensErrorSwal from "../../../../hooks/use-update-pens-error-swal";
 import usePensUpdatedDeleteBookingDataFailedSwal from "../swals/use-pens-updated-delete-booking-data-failed-swal";
 
-import { pensRollbackFailureErrorCode } from "../../../../constants/constants";
+import { pensRollbackFailureErrorCode } from "../../../../constants/error-constants";
 import useGetCatteryDetailsSelectors from "../../../../hooks/selectors/use-get-cattery-details-selectors";
 import useManagesOwnPensAndDeleteBookingDataFailedSwal from "../swals/use-manages-own-pens-and-delete-booking-data-failed-swal";
 

@@ -1,13 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { account } from "../../utils/appwrite/appwrite-config";
-
-import { getRetrievedUserFromDocument } from "./functions";
 import { listDocumentsByQueryOrSearch } from "../../utils/appwrite/appwrite-functions";
+
 import {
   usersCollectionId,
   databaseId,
-  smallRateLimit,
-} from "../../constants/constants";
+} from "../../constants/appwrite-constants";
+import { smallRateLimit } from "../../constants/api-request-constants";
+import { getRetrievedUserFromDocument } from "./functions";
 
 export const getUserOnLoadAsync = createAsyncThunk(
   "user/getUserOnLoad",

@@ -9,7 +9,7 @@ import {
 import useFireSwal from "../../../../hooks/use-fire-swal";
 
 import { errorReceivedMessage } from "../../../../strings/errors";
-import { catteryNotAvailableOnThisDateString } from "../../../../constants/constants";
+import { catteryNotAvailableOnThisDateString } from "../../../../constants/error-constants";
 
 const useCatteryNotAvailableOnChosenDatesSwal = () => {
   const { fireSwal } = useFireSwal();

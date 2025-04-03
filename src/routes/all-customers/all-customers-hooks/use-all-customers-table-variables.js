@@ -2,7 +2,7 @@ import { useMemo } from "react";
 
 import useGetAllCustomersSelectors from "../../../hooks/selectors/use-get-all-customers-selectors";
 
-import { defaultTableSize } from "../../../constants/constants";
+import { defaultTableSize } from "../../../constants/ui-constants";
 import ALL_CUSTOMERS_TABLE_COLUMNS from "../all-customers-table-columns";
 
 const useAllCustomersTableVariables = () => {

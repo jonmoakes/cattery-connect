@@ -10,7 +10,7 @@ import {
   PaginationSelect,
 } from "../../styles/form/form.styles";
 
-import { defaultTableSize } from "../../constants/constants";
+import { defaultTableSize } from "../../constants/ui-constants";
 import {
   allCatsRoute,
   allCustomersRoute,
