@@ -37,9 +37,15 @@ export const confirmMakePaymentMessage = (priceForUi, catteryName) => {
 };
 
 export const confirmUpdateEmailMessage = (newEmail) => {
-  return `are you sure you wish to update your email to be <span style="text-transform: lowercase;  color: hsl(60, 100%, 50%);">${newEmail}</span>?`;
+  return `<span style="font-size:20px;">are you sure you wish to update your email to be <span style="text-transform: lowercase;  color: hsl(60, 100%, 50%);">${newEmail}</span>?</span>`;
 };
 
 export const updateCustomersCatteryIdMessage = (newCatteryId) => {
-  return `you will be updating this customer's cattery ID to be<br/><br/><span style="text-transform: lowercase;  color: hsl(60, 100%, 50%);">${newCatteryId}</span><br/><br/>is this ok?`;
+  return `<span style="font-size:20px;">you will be updating this customer's cattery ID to be<br/><br/><span style="text-transform: lowercase;  color: hsl(60, 100%, 50%);">${newCatteryId}</span><br/><br/>is this ok?</span>`;
+};
+
+export const confirmUpdatePriceMessage = (newPrice) => {
+  return `<span style="font-size:20px;">the new price per night of your bookings will be:<br/><br/><span style="text-transform: lowercase;  color: hsl(60, 100%, 50%);">£${(
+    newPrice / 100
+  ).toFixed(2)}</span><br/><br/>is this correct?</span>`;
 };

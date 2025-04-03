@@ -59,6 +59,7 @@ import {
   updateEmailRoute,
   moveCustomerToNewCatteryRoute,
   customerPortalRoute,
+  updatePriceRoute,
 } from "./strings/routes";
 import Footer from "./components/footer/footer.component";
 
@@ -173,6 +174,9 @@ const MoveCustomerToNewCattery = lazy(() =>
 );
 const CustomerPortal = lazy(() =>
   import("./routes/customer-portal/customer-portal.component")
+);
+const UpdatePrice = lazy(() =>
+  import("./routes/update-price/update-price.component")
 );
 
 const App = () => {
@@ -407,6 +411,12 @@ const App = () => {
                 path={customerPortalRoute}
                 element={
                   currentUser && role === "owner" ? <CustomerPortal /> : null
+                }
+              />
+              <Route
+                path={updatePriceRoute}
+                element={
+                  currentUser && role === "owner" ? <UpdatePrice /> : null
                 }
               />
             </Route>

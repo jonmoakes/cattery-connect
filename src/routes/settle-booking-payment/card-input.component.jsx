@@ -41,7 +41,7 @@ const CardInput = ({ totalCost }) => {
           {showConfirmButton ? (
             <Button
               type="button"
-              className="teal confirm-payment"
+              className="teal animate"
               onClick={() => confirmPayment(catteryId, totalCost, name, email)}
               disabled={attemptPaymentIsLoading ? true : false}
             >

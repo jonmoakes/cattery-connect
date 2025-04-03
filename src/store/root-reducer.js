@@ -30,6 +30,7 @@ import { handlePaymentReducer } from "./handle-payment/handle-payment-slice";
 import { incomeReducer } from "./income/income.slice";
 import { updateEmailReducer } from "./update-email/update-email.slice";
 import { moveCustomerToNewCatteryReducer } from "./move-customer-to-new-cattery/move-customer-to-new-cattery-slice";
+import { updatePriceReducer } from "./update-price/update-price-slice";
 
 export const rootReducer = combineReducers({
   hamburgerMenu: hamburgerMenuReducer,
@@ -62,4 +63,5 @@ export const rootReducer = combineReducers({
   income: incomeReducer,
   updateEmail: updateEmailReducer,
   moveCustomerToNewCattery: moveCustomerToNewCatteryReducer,
+  updatePrice: updatePriceReducer,
 });

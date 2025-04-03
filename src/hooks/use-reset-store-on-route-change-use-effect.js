@@ -3,6 +3,8 @@ import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import useGetAllUsersSelectors from "./selectors/use-get-all-users-selectors";
+import useGetCurrentUserSelectors from "./selectors/use-get-current-user-selectors";
+
 import { resetSignInFormState } from "../store/sign-in-form/sign-in-form.slice";
 import { resetUploadDatesAndPensDataState } from "../store/upload-dates-and-pens-data/upload-dates-and-pens-data.slice";
 import { resetGetAllCustomersState } from "../store/get-all-customers/get-all-customers.slice";
@@ -40,6 +42,7 @@ import { setBookingConfirmationDetailsInfo } from "../store/signed-in-customers-
 import { resetCardInputState } from "../store/card-input/card-input.slice";
 import { resetHandlePaymentState } from "../store/handle-payment/handle-payment-slice";
 import { resetMoveCustomerToNewCatteryState } from "../store/move-customer-to-new-cattery/move-customer-to-new-cattery-slice";
+import { resetUpdatePriceState } from "../store/update-price/update-price-slice";
 
 import {
   addCatChooseOwnerRoute,
@@ -69,8 +72,8 @@ import {
   paymentResultRoute,
   accountRoute,
   moveCustomerToNewCatteryRoute,
+  updatePriceRoute,
 } from "../strings/routes";
-import useGetCurrentUserSelectors from "./selectors/use-get-current-user-selectors";
 
 const useResetStoreOnRouteChangeUseEffect = () => {
   const { allUsersCatteryIdsAndOwnerNameError } = useGetAllUsersSelectors();
@@ -173,6 +176,9 @@ const useResetStoreOnRouteChangeUseEffect = () => {
           break;
         case moveCustomerToNewCatteryRoute:
           dispatch(resetMoveCustomerToNewCatteryState());
+          break;
+        case updatePriceRoute:
+          dispatch(resetUpdatePriceState());
           break;
         default:
           break;

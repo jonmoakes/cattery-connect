@@ -69,7 +69,7 @@ export const Button = styled.button`
     text-shadow: 1px 1px 1px ${softBlack};
   }
 
-  &.confirm-payment {
+  &.animate {
     margin: 20px auto 50px auto;
     animation: 1s ${zoomInLeftAnimation};
   }
