@@ -3,7 +3,7 @@ import { fadeInLeft, fadeInRight } from "react-animations";
 import {
   radialBeige,
   radialDustyBlue,
-  radialSteelBlue,
+  radialGrey,
   softBlack,
 } from "../colours";
 
@@ -59,7 +59,7 @@ export const TableWithStyle = styled.table`
     animation: 0.5s ${fadeInRightAnimation};
 
     &:nth-child(even) {
-      background: ${radialSteelBlue};
+      background: ${radialGrey};
       color: ${softBlack};
       animation: 0.5s ${fadeInLeftAnimation};
     }
