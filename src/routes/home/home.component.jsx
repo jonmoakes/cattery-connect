@@ -8,7 +8,7 @@ import { Container } from "../../styles/container/container.styles";
 import { ParentDiv } from "../../styles/div/div.styles";
 import { Button } from "../../styles/button/button.styles";
 
-import image from "../../assets/cat-in-cat-room.webp";
+import Image from "../../assets/cat-in-cat-room.webp";
 
 import { aboutRoute } from "../../strings/routes";
 
@@ -40,7 +40,7 @@ const Home = () => {
         </CustomBalancedText>
 
         <ProgressiveImage
-          {...{ srcList: image, altText: "a cat in a cattery" }}
+          {...{ srcList: Image, altText: "a cat in a cattery" }}
         />
 
         <CustomBalancedText>
