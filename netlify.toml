@@ -12,5 +12,5 @@
     Access-Control-Allow-Origin = "*"
 
 [[scheduled_functions]]
-  function = "send-email-delete-dates-reminder"
-  schedule = "0 0 1 * *"
+  function = "/.netlify/functions/send-email-delete-dates-reminder"
+  schedule = "*/5 * * * *"
