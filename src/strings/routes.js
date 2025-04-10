@@ -33,6 +33,7 @@ export const updatePasswordRoute = "/update-password";
 export const moveCustomerToNewCatteryRoute = "/move-customer-to-new-cattery";
 export const customerPortalRoute = "/customer-portal";
 export const updatePriceRoute = "/update-price";
+export const deleteDatesRoute = "/delete-dates";
 
 //legal
 export const termsRoute = "/terms-and-conditions";

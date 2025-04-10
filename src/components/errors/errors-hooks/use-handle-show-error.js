@@ -13,6 +13,7 @@ import useGetSignedInCustomersBookingsSelectors from "../../../hooks/selectors/u
 import useGetIncomeSelectors from "../../../hooks/selectors/use-get-income-selectors";
 import useGetHandlePaymentSelectors from "../../../hooks/selectors/use-get-handle-payment-selectors";
 import useGetMoveCustomerToNewCatterySelectors from "../../../hooks/selectors/use-get-move-customer-to-new-cattery-selectors";
+import useGetDeleteDatesSelectors from "../../../hooks/selectors/use-get-delete-dates-selectors";
 
 const useHandleShowError = () => {
   const { getAllCustomersError } = useGetAllCustomerSelectors();
@@ -36,6 +37,7 @@ const useHandleShowError = () => {
   const { paymentError } = useGetHandlePaymentSelectors();
   const { checkCustomerCanBeMovedError } =
     useGetMoveCustomerToNewCatterySelectors();
+  const { getDateDocumentsToDeleteError } = useGetDeleteDatesSelectors();
 
   const showErrorHeading = () => {
     if (getAllCustomersError) return "failed to fetch your customers.";
@@ -61,6 +63,9 @@ const useHandleShowError = () => {
     if (paymentError) return "error making payment.";
     if (checkCustomerCanBeMovedError)
       return "check for outstanding payments failed.";
+    if (getDateDocumentsToDeleteError)
+      return `failed for fetch date documents.
+(getDateDocumentsToDelete thunk)`;
   };
 
   const errorToDisplay = () => {
@@ -82,6 +87,7 @@ const useHandleShowError = () => {
       incomeDataError,
       paymentError,
       checkCustomerCanBeMovedError,
+      getDateDocumentsToDeleteError,
     ];
     return errors.find((error) => error !== null);
   };

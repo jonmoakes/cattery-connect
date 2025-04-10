@@ -23,6 +23,7 @@ import {
   moveCustomerToNewCatteryRoute,
   customerPortalRoute,
   updatePriceRoute,
+  deleteDatesRoute,
 } from "../../../strings/routes";
 
 const useNavigateToRoute = () => {
@@ -46,26 +47,31 @@ const useNavigateToRoute = () => {
       text: "move customer",
       onClick: () => hamburgerHandlerNavigate(moveCustomerToNewCatteryRoute),
     },
+    {
+      id: 4,
+      text: "delete dates",
+      onClick: () => hamburgerHandlerNavigate(deleteDatesRoute),
+    },
   ];
 
   const catteryOwnerButtons = [
     {
-      id: 4,
+      id: 5,
       text: "daily schedule",
       onClick: () => hamburgerHandlerNavigate(dailyScheduleRoute),
     },
     {
-      id: 5,
+      id: 6,
       text: "bookings",
       onClick: () => hamburgerHandlerNavigate(bookingsRoute),
     },
     {
-      id: 6,
+      id: 7,
       text: "customers",
       onClick: () => hamburgerHandlerNavigate(allCustomersRoute),
     },
     {
-      id: 7,
+      id: 8,
       text: "cats",
       onClick: () => hamburgerHandlerNavigate(allCatsRoute),
     },
@@ -73,7 +79,7 @@ const useNavigateToRoute = () => {
       ? []
       : [
           {
-            id: 8,
+            id: 9,
             text: "pen data",
             onClick: () => hamburgerHandlerNavigate(penDataRoute),
           },
@@ -82,7 +88,7 @@ const useNavigateToRoute = () => {
       ? []
       : [
           {
-            id: 9,
+            id: 10,
             text: "income",
             onClick: () => hamburgerHandlerNavigate(incomeRoute),
           },
@@ -91,37 +97,37 @@ const useNavigateToRoute = () => {
 
   const catteryOwnerCustomerDataButtons = [
     {
-      id: 10,
+      id: 11,
       text: "add booking",
       onClick: () => hamburgerHandlerNavigate(addBookingRoute),
     },
     {
-      id: 11,
+      id: 12,
       text: "add a customer",
       onClick: () => hamburgerHandlerNavigate(addCustomerRoute),
     },
     {
-      id: 12,
+      id: 13,
       text: "add a cat",
       onClick: () => hamburgerHandlerNavigate(addCatChooseOwnerRoute),
     },
     {
-      id: 13,
+      id: 14,
       text: "customer portal",
       onClick: () => hamburgerHandlerNavigate(customerPortalRoute),
     },
     {
-      id: 14,
+      id: 15,
       text: "update prices",
       onClick: () => hamburgerHandlerNavigate(updatePriceRoute),
     },
     {
-      id: 15,
+      id: 16,
       text: "update password",
       onClick: () => hamburgerHandlerNavigate(updatePasswordRoute),
     },
     {
-      id: 16,
+      id: 17,
       text: "update email",
       onClick: () => hamburgerHandlerNavigate(updateEmailRoute),
     },
@@ -129,37 +135,37 @@ const useNavigateToRoute = () => {
 
   const customerDetailsButtons = [
     {
-      id: 17,
+      id: 18,
       text: "your bookings",
       onClick: () => hamburgerHandlerNavigate(signedInCustomersBookingsRoute),
     },
     {
-      id: 18,
+      id: 19,
       text: "your details",
       onClick: () => hamburgerHandlerNavigate(signedInCustomersDetailsRoute),
     },
     {
-      id: 19,
+      id: 20,
       text: "your cats",
       onClick: () => hamburgerHandlerNavigate(signedInCustomersCatsRoute),
     },
     {
-      id: 20,
+      id: 21,
       text: "your cattery details",
       onClick: () => hamburgerHandlerNavigate(catteryDetailsRoute),
     },
     {
-      id: 21,
+      id: 22,
       text: "update password",
       onClick: () => hamburgerHandlerNavigate(updatePasswordRoute),
     },
     {
-      id: 22,
+      id: 23,
       text: "update email",
       onClick: () => hamburgerHandlerNavigate(updateEmailRoute),
     },
     {
-      id: 23,
+      id: 24,
       text: "contact cattery",
       onClick: () => hamburgerHandlerNavigate(contactRoute),
     },

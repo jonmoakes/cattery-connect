@@ -43,6 +43,7 @@ import { resetCardInputState } from "../store/card-input/card-input.slice";
 import { resetHandlePaymentState } from "../store/handle-payment/handle-payment-slice";
 import { resetMoveCustomerToNewCatteryState } from "../store/move-customer-to-new-cattery/move-customer-to-new-cattery-slice";
 import { resetUpdatePriceState } from "../store/update-price/update-price-slice";
+import { resetDeletePastDatesState } from "../store/delete-dates/delete-dates-slice";
 
 import {
   addCatChooseOwnerRoute,
@@ -73,6 +74,7 @@ import {
   accountRoute,
   moveCustomerToNewCatteryRoute,
   updatePriceRoute,
+  deleteDatesRoute,
 } from "../strings/routes";
 
 const useResetStoreOnRouteChangeUseEffect = () => {
@@ -179,6 +181,9 @@ const useResetStoreOnRouteChangeUseEffect = () => {
           break;
         case updatePriceRoute:
           dispatch(resetUpdatePriceState());
+          break;
+        case deleteDatesRoute:
+          dispatch(resetDeletePastDatesState());
           break;
         default:
           break;

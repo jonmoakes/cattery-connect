@@ -1,6 +1,6 @@
 import useGetAllUsersSelectors from "../../../hooks/selectors/use-get-all-users-selectors";
 import useGetUploadDatesAndPensDataSelectors from "../../../hooks/selectors/use-get-upload-dates-and-pens-data-selectors";
-import useGetAllCatteryIdsAndOwnerNameArrayThunkUseEffect from "./upload-dates-hooks/use-get-all-cattery-ids-and-owner-name-array-thunk-use-effect";
+import useGetAllCatteryIdsAndOwnerNameArrayThunkUseEffect from "../../../hooks/use-get-all-cattery-ids-and-owner-name-array-thunk-use-effect";
 import useUploadDatesAndPensDataResultSwalUseEffect from "./upload-dates-hooks/use-upload-dates-and-pens-data-result-swal-use-effect";
 import useSubmitUploadDatesAndPensData from "./upload-dates-hooks/use-submit-upload-dates-and-pens-data";
 import useHandleDatesAndPensChange from "./upload-dates-hooks/use-handle-data-and-pens-change";

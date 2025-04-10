@@ -82,6 +82,10 @@
     <loc>https://www.cattery-connect.co.uk/move-customer-to-new-cattery</loc>
     <priority>0.7</priority>
   </url>
+     <url>
+    <loc>https://www.cattery-connect.co.uk/delete-dates</loc>
+    <priority>0.7</priority>
+  </url>
   <url>
     <loc>https://www.cattery-connect.co.uk/daily-schedule</loc>
     <priority>0.7</priority>
@@ -170,4 +174,5 @@
     <loc>https://www.cattery-connect.co.uk/update-email</loc>
     <priority>0.7</priority>
   </url>
+
 </urlset>

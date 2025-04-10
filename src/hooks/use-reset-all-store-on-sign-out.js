@@ -26,6 +26,7 @@ import { resetCardInputState } from "../store/card-input/card-input.slice";
 import { resetHandlePaymentState } from "../store/handle-payment/handle-payment-slice";
 import { resetMoveCustomerToNewCatteryState } from "../store/move-customer-to-new-cattery/move-customer-to-new-cattery-slice";
 import { resetUpdatePriceState } from "../store/update-price/update-price-slice";
+import { resetDeletePastDatesState } from "../store/delete-dates/delete-dates-slice";
 
 const useResetAllStoreOnSignOut = () => {
   const { resetAddBookingState } = useResetAddBookingState();
@@ -56,6 +57,7 @@ const useResetAllStoreOnSignOut = () => {
     dispatch(resetHandlePaymentState());
     dispatch(resetMoveCustomerToNewCatteryState());
     dispatch(resetUpdatePriceState());
+    dispatch(resetDeletePastDatesState());
     localStorage.clear();
   };
 

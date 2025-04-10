@@ -4,14 +4,22 @@ import { Query } from "appwrite";
 export const listDocumentsByQueryOrSearch = async (
   databaseId,
   collectionId,
-  index,
-  value,
-  isSearch,
-  limit
+  indexOrQueryArray,
+  value = null,
+  isSearch = false,
+  limit = null
 ) => {
-  const query = isSearch
-    ? [Query.search(index, value)]
-    : [Query.equal(index, value)];
+  let query = [];
+
+  // If indexOrQueryArray is an array, treat it as a custom query array
+  if (Array.isArray(indexOrQueryArray)) {
+    query = [...indexOrQueryArray];
+  } else {
+    // Otherwise, fall back to your simple search/equality logic
+    query = isSearch
+      ? [Query.search(indexOrQueryArray, value)]
+      : [Query.equal(indexOrQueryArray, value)];
+  }
 
   if (limit) {
     query.push(Query.limit(limit));

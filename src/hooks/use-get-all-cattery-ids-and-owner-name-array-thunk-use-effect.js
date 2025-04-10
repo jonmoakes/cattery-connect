@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import useGetCurrentUserSelectors from "../../../../hooks/selectors/use-get-current-user-selectors";
-import { fetchCatteryIdsAndOwnerNameArrayAsync } from "../../../../store/get-all-users/get-all-users.thunks";
+import useGetCurrentUserSelectors from "./selectors/use-get-current-user-selectors";
+
+import { fetchCatteryIdsAndOwnerNameArrayAsync } from "../store/get-all-users/get-all-users.thunks";
 
 const useGetAllCatteryIdsAndOwnerNameArrayThunkUseEffect = () => {
   const { currentUser, role } = useGetCurrentUserSelectors();

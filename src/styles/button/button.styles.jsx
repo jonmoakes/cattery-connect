@@ -151,7 +151,6 @@ export const MinimalButton = styled.button`
 
   &.update {
     margin: 10px auto 0px auto;
-    /* background: ${radialGrey}; */
   }
 
   &.settle-payment {
