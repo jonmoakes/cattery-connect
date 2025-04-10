@@ -13,4 +13,4 @@
 
 [[scheduled_functions]]
   function = "send-email-delete-dates-reminder"
-  schedule = "* * * * *"  # every minute
+  schedule = "0 0 1 * *"
