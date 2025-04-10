@@ -10,3 +10,7 @@
   for = "/*"
     [headers.values]
     Access-Control-Allow-Origin = "*"
+
+[[scheduled_functions]]
+  function = "send-email-delete-dates-reminder"
+  schedule = "*/5 * * * *"
