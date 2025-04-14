@@ -3,10 +3,16 @@ import useGetIndividualCustomersCatsSelectors from "../../../hooks/selectors/use
 import useGetAllCustomerSelectors from "../../../hooks/selectors/use-get-all-customers-selectors";
 import useGetIsBookingAvailableSelectors from "../../../hooks/selectors/use-get-is-booking-available-selectors";
 import useGetCatteryDetailsSelectors from "../../../hooks/selectors/use-get-cattery-details-selectors";
+import { calculatePrice } from "../../../functions/calculate-cost-of-stay";
+import { differenceInDays } from "date-fns";
 
 const useAddBookingVariables = () => {
-  const { catteryDetailsError, managesOwnPens, maximumCatsInSinglePen } =
-    useGetCatteryDetailsSelectors();
+  const {
+    catteryDetailsError,
+    managesOwnPens,
+    maximumCatsInSinglePen,
+    pricingArray,
+  } = useGetCatteryDetailsSelectors();
   const { getAllCustomersError, atLeastOneCustomerExists } =
     useGetAllCustomerSelectors();
   const { individualCustomersCatsError, individualCustomersCats } =
@@ -44,6 +50,12 @@ const useAddBookingVariables = () => {
       catsInBooking.length > 0);
 
   const numberOfCatsInBooking = catsInBooking ? catsInBooking.length : 0;
+  const lengthOfStay = differenceInDays(checkOutDate, checkInDate);
+  const totalCost = calculatePrice(
+    pricingArray,
+    numberOfCatsInBooking,
+    lengthOfStay
+  );
 
   const moreCatsInBookingThanCapacityInOnePen =
     numberOfCatsInBooking > maximumCatsInSinglePen;
@@ -67,6 +79,7 @@ const useAddBookingVariables = () => {
     checkInSlot,
     checkOutDate,
     checkOutSlot,
+    totalCost,
     paymentStatus,
   };
 
@@ -78,6 +91,7 @@ const useAddBookingVariables = () => {
   const bookingNotAvailableAndNoFailingDates =
     availabilityStatus === "bookingNotAvailable" && !failingDates;
 
+  console.log(totalCost);
   return {
     hasErrors,
     atLeastOneCustomerExists,
@@ -101,6 +115,7 @@ const useAddBookingVariables = () => {
     customerHasOneCat,
     customersCats,
     customerHasMoreThanOneCat,
+    totalCost,
   };
 };
 

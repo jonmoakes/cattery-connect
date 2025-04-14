@@ -15,6 +15,7 @@ const ShowBookingData = ({ bookingDataToShow, managesOwnPens }) => {
     checkInSlot,
     checkOutDate,
     checkOutSlot,
+    totalCost,
     paymentStatus,
   } = bookingDataToShow;
 
@@ -90,12 +91,29 @@ const ShowBookingData = ({ bookingDataToShow, managesOwnPens }) => {
           </li>
           <BlackHr />
 
-          <li>
-            payment status:
-            <br />
-            <CustomSpan className="yellow">{paymentStatus}</CustomSpan>
-          </li>
-          <BlackHr />
+          {path === addBookingRoute ? (
+            <>
+              <li>
+                cost of booking:
+                <br />{" "}
+                <CustomSpan className="yellow">
+                  £{(totalCost / 100).toFixed(2)}
+                </CustomSpan>
+              </li>
+              <BlackHr />
+            </>
+          ) : null}
+
+          {path === addBookingRoute ? (
+            <>
+              <li>
+                payment status:
+                <br />
+                <CustomSpan className="yellow">{paymentStatus}</CustomSpan>
+              </li>
+              <BlackHr />
+            </>
+          ) : null}
         </ul>
 
         {path === addBookingRoute ? (

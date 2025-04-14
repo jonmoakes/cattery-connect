@@ -11,7 +11,7 @@ import { ParentDiv, DataDetailsDiv } from "../../styles/div/div.styles";
 import { BlackHr } from "../../styles/hr/hr.styles";
 
 const CatteryDetailsMap = () => {
-  const { catteryDetailsFoUi } = useGetCatteryDetailsSelectors();
+  const { catteryDetailsFoUi, pricingArray } = useGetCatteryDetailsSelectors();
   const { getLabel } = useCatteryDetailsFunctions();
 
   return (
@@ -27,6 +27,27 @@ const CatteryDetailsMap = () => {
             <BlackHr />
           </Fragment>
         ))}
+        <CustomBalancedText>
+          <CustomSpan className="red">current prices</CustomSpan> <br />( when
+          page was loaded ).
+        </CustomBalancedText>
+
+        {pricingArray
+          ? pricingArray.map((pricingDetails) => {
+              const { numberOfCats, price } = pricingDetails;
+
+              return (
+                <div key={numberOfCats}>
+                  <p>
+                    price per night for {numberOfCats}{" "}
+                    {numberOfCats === 1 ? "cat" : "cats"}:
+                  </p>
+                  <p>£{(price / 100).toFixed(2)}</p>
+                  <BlackHr />
+                </div>
+              );
+            })
+          : null}
       </DataDetailsDiv>
     </ParentDiv>
   );

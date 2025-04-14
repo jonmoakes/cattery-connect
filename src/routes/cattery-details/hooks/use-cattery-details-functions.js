@@ -1,8 +1,6 @@
 const useCatteryDetailsFunctions = () => {
   const getLabel = (label) => {
     switch (label) {
-      case "pricePerNight":
-        return "current price per night";
       case "name":
         return "cattery name";
       case "email":

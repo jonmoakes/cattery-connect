@@ -785,6 +785,7 @@ export const UnderTitleContainer = styled.div`
 
 export const DataDetailsDiv = styled.div`
   white-space: pre-wrap;
+  word-break: break-word;
   padding: 10px 0px 20px 0px;
 
   &.with-background {

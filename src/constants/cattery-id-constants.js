@@ -1,1 +1,1 @@
-export const furryFriendsRetreatCatteryId = "ffrt";
+export const tittesworthFarmCatteryId = "twfc";

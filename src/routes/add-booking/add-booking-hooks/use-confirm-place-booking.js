@@ -11,12 +11,14 @@ import useConfirmSwal from "../../../hooks/use-confirm-swal";
 
 import { imSureMessage } from "../../../strings/confirms";
 import useGetCatteryDetailsSelectors from "../../../hooks/selectors/use-get-cattery-details-selectors";
+import useAddBookingVariables from "./use-add-booking-variables";
 
 const useConfirmPlaceBooking = () => {
   const { uploadBookingData } = useGetUploadBookingDataSelectors();
   const { parsedAvailabilityData } = useGetIsBookingAvailableSelectors();
   const { catteryId } = useGetCurrentUserSelectors();
-  const { pricePerNight, managesOwnPens } = useGetCatteryDetailsSelectors();
+  const { managesOwnPens } = useGetCatteryDetailsSelectors();
+  const { totalCost } = useAddBookingVariables();
 
   const dispatch = useDispatch();
   const { confirmSwal } = useConfirmSwal();
@@ -37,7 +39,7 @@ const useConfirmPlaceBooking = () => {
             dispatch(
               uploadBookingDataToDbAsync({
                 uploadBookingData,
-                pricePerNight,
+                totalCost,
                 catteryId,
               })
             );
@@ -47,7 +49,7 @@ const useConfirmPlaceBooking = () => {
         dispatch(
           uploadBookingDataToDbAsync({
             uploadBookingData,
-            pricePerNight,
+            totalCost,
             catteryId,
           })
         );

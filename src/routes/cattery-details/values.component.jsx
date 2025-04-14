@@ -27,14 +27,6 @@ const Values = ({ label, value }) => {
           </a>
           <br />
         </>
-      ) : label === "pricePerNight" ? (
-        <>
-          <CustomSpan>( at time of page load )</CustomSpan>
-          <br />
-          <br />
-          <CustomSpan>£{(value / 100).toFixed(2)}</CustomSpan>
-          <br />
-        </>
       ) : label === "website" && value === null ? (
         "no website found"
       ) : label === "website" && value !== null ? (

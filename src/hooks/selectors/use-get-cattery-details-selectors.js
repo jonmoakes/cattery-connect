@@ -15,9 +15,10 @@ const useGetCatteryDetailsSelectors = () => {
     phone,
     email,
     website,
-    pricePerNight,
     managesOwnPens,
     allowsOnlinePayments,
+    pricesPerNight,
+    maximumCatsInSinglePen,
   } = catteryDetails ?? {};
 
   const catteryDetailsFoUi = {
@@ -26,8 +27,11 @@ const useGetCatteryDetailsSelectors = () => {
     phone,
     email,
     website,
-    pricePerNight,
   };
+
+  const pricingArray = pricesPerNight
+    ? JSON.parse(pricesPerNight)
+    : pricesPerNight;
 
   return {
     catteryDetailsIsLoading,
@@ -39,9 +43,10 @@ const useGetCatteryDetailsSelectors = () => {
     phone,
     email,
     website,
-    pricePerNight,
     managesOwnPens,
     allowsOnlinePayments,
+    pricingArray,
+    maximumCatsInSinglePen,
   };
 };
 

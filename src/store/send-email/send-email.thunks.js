@@ -110,28 +110,20 @@ export const sendEmailPensUpdatedBookingDataFailedAsync = createAsyncThunk(
 export const sendEmailSendCustomerEmailReceiptAsync = createAsyncThunk(
   "sendEmailSendCustomerEmailReceipt",
   async (
-    { uploadBookingData, pricePerNight, name, phone, catteryEmail },
+    { uploadBookingData, totalCost, name, phone, catteryEmail },
     thunkAPI
   ) => {
     try {
       const formattedFullBookingDetails =
         formatReceiptBookingDetails(uploadBookingData);
 
-      const {
-        catsInBooking,
-        checkOutDate,
-        checkInDate,
-        customerEmail,
-        customerName,
-      } = uploadBookingData;
+      const { checkOutDate, checkInDate, customerEmail, customerName } =
+        uploadBookingData;
 
-      const numberOfCats = catsInBooking.length;
       const lengthOfStay = differenceInDays(checkOutDate, checkInDate);
 
       const costOfStayPounds =
-        lengthOfStay === 0
-          ? "0.00"
-          : ((numberOfCats * lengthOfStay * pricePerNight) / 100).toFixed(2);
+        lengthOfStay === 0 ? "0.00" : (totalCost / 100).toFixed(2);
 
       const response = await axios.post(
         SEND_EMAIL_SEND_CUSTOMER_EMAIL_RECEIPT_ENDPOINT,

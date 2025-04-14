@@ -5,12 +5,13 @@ import useGetCatteryDetailsSelectors from "../../../../hooks/selectors/use-get-c
 
 import useBookingSuccessNoEmailSwal from "./use-booking-success-no-email-swal";
 import useBookingSuccessHasEmailSwal from "./use-booking-success-has-email-swal";
+import useAddBookingVariables from "../use-add-booking-variables";
 
 const useBookingCompleteSwal = () => {
   const { uploadBookingData, customerEmail } =
     useGetUploadBookingDataSelectors();
-  const { name, phone, catteryEmail, pricePerNight } =
-    useGetCatteryDetailsSelectors();
+  const { name, phone, catteryEmail } = useGetCatteryDetailsSelectors();
+  const { totalCost } = useAddBookingVariables();
 
   const { bookingSuccessNoEmailSwal } = useBookingSuccessNoEmailSwal();
   const { bookingSuccessHasEmailSwal } = useBookingSuccessHasEmailSwal();
@@ -24,7 +25,7 @@ const useBookingCompleteSwal = () => {
         setSwalConfirmed(true);
         bookingSuccessHasEmailSwal(
           uploadBookingData,
-          pricePerNight,
+          totalCost,
           name,
           phone,
           catteryEmail
@@ -35,7 +36,7 @@ const useBookingCompleteSwal = () => {
       bookingSuccessNoEmailSwal,
       bookingSuccessHasEmailSwal,
       uploadBookingData,
-      pricePerNight,
+      totalCost,
       name,
       phone,
       catteryEmail,

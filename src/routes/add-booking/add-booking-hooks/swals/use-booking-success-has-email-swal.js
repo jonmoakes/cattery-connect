@@ -12,12 +12,12 @@ const useBookingSuccessHasEmailSwal = () => {
   const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
 
   const bookingSuccessHasEmailSwal = useCallback(
-    (uploadBookingData, pricePerNight, name, phone, catteryEmail) => {
+    (uploadBookingData, totalCost, name, phone, catteryEmail) => {
       const confirmResult = () => {
         dispatch(
           sendEmailSendCustomerEmailReceiptAsync({
             uploadBookingData,
-            pricePerNight,
+            totalCost,
             name,
             phone,
             catteryEmail,

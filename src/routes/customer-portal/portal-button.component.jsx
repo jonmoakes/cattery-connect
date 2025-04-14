@@ -1,19 +1,10 @@
-import useGetCurrentUserSelectors from "../../hooks/selectors/use-get-current-user-selectors";
-
 import { Button } from "../../styles/button/button.styles";
 
-import { furryFriendsRetreatCatteryId } from "../../constants/cattery-id-constants";
-import {
-  customerPortalLink,
-  testCatteryCustomerPortalLink,
-} from "../../constants/stripe-constants";
+import { customerPortalLinkTwfc } from "../../constants/stripe-constants";
 
+//will run a function based on catteryID here once more than one cattery.
 const PortalButton = () => {
-  const { catteryId } = useGetCurrentUserSelectors();
-  const portalLink =
-    catteryId === furryFriendsRetreatCatteryId
-      ? testCatteryCustomerPortalLink
-      : customerPortalLink;
+  const portalLink = customerPortalLinkTwfc;
 
   return (
     <>

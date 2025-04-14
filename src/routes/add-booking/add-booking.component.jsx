@@ -34,6 +34,7 @@ const AddBooking = () => {
     checkOutDate,
     checkOutSlot,
     paymentStatus,
+    totalCost,
     shouldShowFormSubmissionButtons,
     bookingDataToShow,
     managesOwnPens,
@@ -90,6 +91,7 @@ const AddBooking = () => {
             {shouldShowFormSubmissionButtons ? (
               <FormButtonsAndAvailabilityInfoSection
                 {...{
+                  totalCost,
                   bookingDataToShow,
                   managesOwnPens,
                   noAvailabilityRef,

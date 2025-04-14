@@ -1,9 +1,9 @@
-import { furryFriendsRetreatCatteryId } from "../constants/cattery-id-constants";
+import { tittesworthFarmCatteryId } from "../constants/cattery-id-constants";
 
 export const getCatteryName = (catteryId) => {
   switch (catteryId) {
-    case furryFriendsRetreatCatteryId:
-      return "Furry Friends Retreat";
+    case tittesworthFarmCatteryId:
+      return "Tittesworth Farm Cattery";
     default:
       "Your Cattery";
   }
