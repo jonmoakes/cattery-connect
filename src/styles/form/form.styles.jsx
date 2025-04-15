@@ -69,6 +69,18 @@ export const Form = styled.form`
   &.small-margin-bottom {
     margin: 50px auto 30px auto;
   }
+
+  &.update-prices {
+    margin: 50px auto 30px auto;
+
+    @media screen and (max-width: 850px) {
+      margin: 20px auto;
+    }
+
+    @media screen and (max-width: 450px) {
+      margin: 0px auto;
+    }
+  }
 `;
 
 export const DropdownList = styled.ul`

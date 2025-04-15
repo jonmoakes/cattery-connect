@@ -22,7 +22,7 @@ const Prices = () => {
 
             return (
               <CentredDiv key={numberOfCats}>
-                <Form className="small-margin-bottom">
+                <Form className="update-prices">
                   <Label>
                     price per night for {numberOfCats}{" "}
                     {getCatsTailString(numberOfCats)} ( pence )
