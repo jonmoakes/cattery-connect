@@ -8,6 +8,7 @@ export const extraReducers = (builder) => {
     .addCase(updatePricePerNightAsync.fulfilled, (state) => {
       state.updatePriceIsLoading = false;
       state.updatePriceResult = "fulfilled";
+      state.newPricingArray = [];
       state.updatePriceError = null;
     })
     .addCase(updatePricePerNightAsync.rejected, (state, action) => {

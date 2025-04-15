@@ -1,13 +1,16 @@
 import { useDispatch } from "react-redux";
-import { updatePricePerNightAsync } from "../../../store/update-price/update-price-thunks";
-import useGetUpdatePriceSelectors from "../../../hooks/selectors/use-get-update-price-selectors";
-import useConfirmSwal from "../../../hooks/use-confirm-swal";
-import { confirmUpdatePriceMessage } from "../../../strings/confirms";
+
 import useGetCurrentUserSelectors from "../../../hooks/selectors/use-get-current-user-selectors";
+import useGetUpdatePriceSelectors from "../../../hooks/selectors/use-get-update-price-selectors";
+
+import { updatePricePerNightAsync } from "../../../store/update-price/update-price-thunks";
+
+import useConfirmSwal from "../../../hooks/use-confirm-swal";
 
 const useConfirmUpdatePrice = () => {
   const { catteryId } = useGetCurrentUserSelectors();
-  const { newPrice } = useGetUpdatePriceSelectors();
+  const { newPricingArray } = useGetUpdatePriceSelectors();
+
   const dispatch = useDispatch();
   const { confirmSwal } = useConfirmSwal();
 
@@ -16,15 +19,15 @@ const useConfirmUpdatePrice = () => {
       dispatch(
         updatePricePerNightAsync({
           catteryId,
-          newPrice,
+          newPricingArray,
         })
       );
     };
 
     confirmSwal(
-      confirmUpdatePriceMessage(newPrice),
-      "",
-      "yes, set new price!",
+      "are you sure you want to update your prices?",
+      "by clicking 'yes, set new prices!', this declares that you have double checked your new prices.",
+      "yes, set new prices!",
       "",
       confirmResult,
       null

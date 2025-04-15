@@ -6,6 +6,6 @@ export const selectUpdatePriceSelectors = createSelector(
     updatePriceIsLoading: updatePrice.updatePriceIsLoading,
     updatePriceResult: updatePrice.updatePriceResult,
     updatePriceError: updatePrice.updatePriceError,
-    newPrice: updatePrice.newPrice,
+    newPricingArray: updatePrice.newPricingArray,
   })
 );

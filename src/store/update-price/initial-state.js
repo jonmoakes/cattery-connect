@@ -1,3 +1,6 @@
 export const INITIAL_STATE = {
-  newPrice: null,
+  updatePriceIsLoading: false,
+  updatePriceResult: "",
+  updatePriceError: null,
+  newPricingArray: [],
 };

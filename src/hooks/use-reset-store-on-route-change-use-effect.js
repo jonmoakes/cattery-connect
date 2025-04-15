@@ -181,6 +181,7 @@ const useResetStoreOnRouteChangeUseEffect = () => {
           break;
         case updatePriceRoute:
           dispatch(resetUpdatePriceState());
+          dispatch(resetCatteryDetailsState());
           break;
         case deleteDatesRoute:
           dispatch(resetDeletePastDatesState());

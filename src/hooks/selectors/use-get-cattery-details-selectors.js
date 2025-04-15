@@ -45,6 +45,7 @@ const useGetCatteryDetailsSelectors = () => {
     website,
     managesOwnPens,
     allowsOnlinePayments,
+    pricesPerNight,
     pricingArray,
     maximumCatsInSinglePen,
   };

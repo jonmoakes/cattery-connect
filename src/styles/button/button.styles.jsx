@@ -2,6 +2,7 @@ import styled, { keyframes } from "styled-components";
 import { bounceInDown, pulse, zoomInLeft, zoomInRight } from "react-animations";
 
 import {
+  customYellow,
   radialBeige,
   radialDustyBlue,
   radialGreen,
@@ -55,6 +56,11 @@ export const Button = styled.button`
 
   &.margin {
     margin: 50px auto 30px auto;
+  }
+
+  &.update-prices {
+    background: ${radialDustyBlue};
+    margin: 20px auto 50px auto;
   }
 
   &.red {

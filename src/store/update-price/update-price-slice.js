@@ -6,8 +6,8 @@ export const updatePriceSlice = createSlice({
   name: "updatePrice",
   initialState: INITIAL_STATE,
   reducers: {
-    setNewPrice(state, action) {
-      state.newPrice = action.payload;
+    setNewPricingArray(state, action) {
+      state.newPricingArray = action.payload;
     },
     resetUpdatePriceResult(state) {
       state.updatePriceResult = "";
@@ -23,7 +23,7 @@ export const updatePriceSlice = createSlice({
 });
 
 export const {
-  setNewPrice,
+  setNewPricingArray,
   resetUpdatePriceResult,
   resetUpdatePriceError,
   resetUpdatePriceState,

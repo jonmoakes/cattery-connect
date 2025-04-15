@@ -43,9 +43,3 @@ export const confirmUpdateEmailMessage = (newEmail) => {
 export const updateCustomersCatteryIdMessage = (newCatteryId) => {
   return `<span style="font-size:20px;">you will be updating this customer's cattery ID to be<br/><br/><span style="text-transform: lowercase;  color: hsl(60, 100%, 50%);">${newCatteryId}</span><br/><br/>is this ok?</span>`;
 };
-
-export const confirmUpdatePriceMessage = (newPrice) => {
-  return `<span style="font-size:20px;">the new price per night of your bookings will be:<br/><br/><span style="text-transform: lowercase;  color: hsl(60, 100%, 50%);">£${(
-    newPrice / 100
-  ).toFixed(2)}</span><br/><br/>is this correct?</span>`;
-};

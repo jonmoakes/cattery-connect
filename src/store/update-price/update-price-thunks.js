@@ -13,7 +13,7 @@ import { smallRateLimit } from "../../constants/api-request-constants";
 
 export const updatePricePerNightAsync = createAsyncThunk(
   "updatePricePerNight",
-  async ({ catteryId, newPrice }, thunkAPI) => {
+  async ({ catteryId, newPricingArray }, thunkAPI) => {
     try {
       const queryIndex = "catteryId";
       const queryValue = catteryId;
@@ -35,7 +35,7 @@ export const updatePricePerNightAsync = createAsyncThunk(
 
       const { $id } = documents[0];
 
-      const dataToUpdate = { pricePerNight: Number(newPrice) };
+      const dataToUpdate = { pricesPerNight: JSON.stringify(newPricingArray) };
 
       await manageDatabaseDocument(
         "update",

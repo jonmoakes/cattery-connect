@@ -7,14 +7,14 @@ const useGetUpdatePriceSelectors = () => {
     updatePriceIsLoading,
     updatePriceResult,
     updatePriceError,
-    newPrice,
+    newPricingArray,
   } = useSelector(selectUpdatePriceSelectors);
 
   return {
     updatePriceIsLoading,
     updatePriceResult,
     updatePriceError,
-    newPrice,
+    newPricingArray,
   };
 };
 

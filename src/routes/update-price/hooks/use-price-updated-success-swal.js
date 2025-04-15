@@ -10,7 +10,7 @@ const usePriceUpdatedSuccessSwal = () => {
   const { hamburgerHandlerNavigate } = useHamburgerHandlerNavigate();
 
   const priceUpdatedSuccessSwal = useCallback(() => {
-    fireSwal("success", "price updated!", "", 0, "", false, "", false).then(
+    fireSwal("success", "prices updated!", "", 0, "", false, "", false).then(
       (isConfirmed) => {
         if (isConfirmed) {
           hamburgerHandlerNavigate(accountRoute);
