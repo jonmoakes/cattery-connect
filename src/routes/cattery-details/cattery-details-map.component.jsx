@@ -10,6 +10,8 @@ import Values from "./values.component";
 import { ParentDiv, DataDetailsDiv } from "../../styles/div/div.styles";
 import { BlackHr } from "../../styles/hr/hr.styles";
 
+import { getCatsTailString } from "../../functions/get-cats-tail-string";
+
 const CatteryDetailsMap = () => {
   const { catteryDetailsFoUi, pricingArray } = useGetCatteryDetailsSelectors();
   const { getLabel } = useCatteryDetailsFunctions();
@@ -28,8 +30,8 @@ const CatteryDetailsMap = () => {
           </Fragment>
         ))}
         <CustomBalancedText>
-          <CustomSpan className="red">current prices</CustomSpan> <br />( when
-          page was loaded ).
+          <CustomSpan className="red">current prices</CustomSpan> <br />( at
+          time of page load ).
         </CustomBalancedText>
 
         {pricingArray
@@ -40,7 +42,7 @@ const CatteryDetailsMap = () => {
                 <div key={numberOfCats}>
                   <p>
                     price per night for {numberOfCats}{" "}
-                    {numberOfCats === 1 ? "cat" : "cats"}:
+                    {getCatsTailString(numberOfCats)}
                   </p>
                   <p>£{(price / 100).toFixed(2)}</p>
                   <BlackHr />

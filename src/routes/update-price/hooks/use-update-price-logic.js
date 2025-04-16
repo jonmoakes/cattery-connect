@@ -5,16 +5,12 @@ const useUpdatePriceLogic = () => {
   const { pricingArray } = useGetCatteryDetailsSelectors();
   const { newPricingArray } = useGetUpdatePriceSelectors();
 
-  const getCatsTailString = (numberOfCats) => {
-    return numberOfCats === 1 ? "cat" : "cats";
-  };
-
   const pricesHaventChanged =
     JSON.stringify(pricingArray) === JSON.stringify(newPricingArray);
 
   const newPricingArrayExists = newPricingArray && newPricingArray.length;
 
-  return { getCatsTailString, pricesHaventChanged, newPricingArrayExists };
+  return { pricesHaventChanged, newPricingArrayExists };
 };
 
 export default useUpdatePriceLogic;

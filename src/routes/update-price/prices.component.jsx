@@ -9,8 +9,10 @@ import { CentredDiv } from "../../styles/div/div.styles";
 import { Form, Label, StyledInput } from "../../styles/form/form.styles";
 import { BlackHr } from "../../styles/hr/hr.styles";
 
+import { getCatsTailString } from "../../functions/get-cats-tail-string";
+
 const Prices = () => {
-  const { newPricingArrayExists, getCatsTailString } = useUpdatePriceLogic();
+  const { newPricingArrayExists } = useUpdatePriceLogic();
   const { newPricingArray } = useGetUpdatePriceSelectors();
   const { handleNewPriceChange } = useHandleNewPriceChange();
 
