@@ -1,9 +1,9 @@
-import { tittesworthFarmCatteryId } from "../constants/cattery-id-constants";
+import { twfFarmCatteryId } from "../constants/cattery-id-constants";
 
 export const getCatteryName = (catteryId) => {
   switch (catteryId) {
-    case tittesworthFarmCatteryId:
-      return "Tittesworth Farm Cattery";
+    case twfFarmCatteryId:
+      return "TWF Cattery";
     default:
       "Your Cattery";
   }

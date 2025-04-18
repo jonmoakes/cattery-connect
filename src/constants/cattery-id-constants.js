@@ -1,1 +1,1 @@
-export const tittesworthFarmCatteryId = "twfc";
+export const twfFarmCatteryId = "twfc";
