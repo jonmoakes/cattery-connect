@@ -91,7 +91,6 @@ const useAddBookingVariables = () => {
   const bookingNotAvailableAndNoFailingDates =
     availabilityStatus === "bookingNotAvailable" && !failingDates;
 
-  console.log(totalCost);
   return {
     hasErrors,
     atLeastOneCustomerExists,

@@ -128,9 +128,9 @@ export const sendEmailSendCustomerEmailReceiptAsync = createAsyncThunk(
       const response = await axios.post(
         SEND_EMAIL_SEND_CUSTOMER_EMAIL_RECEIPT_ENDPOINT,
         {
+          name,
           customerEmail,
           customerName: getFirstNameFromString(customerName),
-          name,
           formattedFullBookingDetails,
           costOfStayPounds,
           phone,
@@ -183,9 +183,9 @@ export const sendCustomerCancellationEmailAsync = createAsyncThunk(
       const response = await axios.post(
         SEND_EMAIL_CANCEL_BOOKING_RECEIPT_ENDPOINT,
         {
+          catteryName,
           customerEmail,
           customerName: getFirstNameFromString(customerName),
-          catteryName,
           bookingId,
           formattedCancelledBookingDetails,
           phone,

@@ -4,9 +4,9 @@ const client = new postmark.ServerClient(process.env.VITE_POSTMARK_API_KEY);
 
 export const handler = async (event) => {
   const {
+    name,
     customerEmail,
     customerName,
-    name,
     formattedFullBookingDetails,
     costOfStayPounds,
     phone,
@@ -15,7 +15,7 @@ export const handler = async (event) => {
 
   try {
     await client.sendEmailWithTemplate({
-      From: `"Cattery Connect" <${process.env.VITE_APP_ADMIN_EMAIL}>`,
+      From: `"${name}" <${process.env.VITE_APP_ADMIN_EMAIL}>`,
       To: customerEmail,
       TemplateAlias: "send-email-send-customer-email-receipt",
       TemplateModel: {
