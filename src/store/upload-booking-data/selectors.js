@@ -7,5 +7,6 @@ export const selectUploadBookingDataSelectors = createSelector(
     uploadBookingDataResult: uploadBookingData.uploadBookingDataResult,
     uploadBookingDataError: uploadBookingData.uploadBookingDataError,
     uploadBookingData: uploadBookingData.uploadBookingData,
+    additionalCosts: uploadBookingData.additionalCosts,
   })
 );

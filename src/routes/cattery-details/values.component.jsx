@@ -7,6 +7,7 @@ import { Button } from "../../styles/button/button.styles";
 const Values = ({ label, value }) => {
   const { sendEmailToCattery } = useSendEmailToCattery(value);
   const callNumber = `tel:${value}`;
+
   return (
     <>
       {label === "email" ? (
@@ -27,9 +28,9 @@ const Values = ({ label, value }) => {
           </a>
           <br />
         </>
-      ) : label === "website" && value === null ? (
+      ) : label === "website" && !value ? (
         "no website found"
-      ) : label === "website" && value !== null ? (
+      ) : label === "website" && value ? (
         <>
           <CustomSpan>( tap link to visit page )</CustomSpan>
           <br />

@@ -9,6 +9,7 @@ const useGetUploadBookingDataSelectors = () => {
     uploadBookingDataIsLoading,
     uploadBookingDataResult,
     uploadBookingDataError,
+    additionalCosts,
   } = useSelector(selectUploadBookingDataSelectors);
   const { individualCustomersCats } = useSelector(
     selectIndividualCustomersCatsSelectors
@@ -65,6 +66,7 @@ const useGetUploadBookingDataSelectors = () => {
     checkOutDate,
     checkOutSlot,
     paymentStatus,
+    additionalCosts,
   };
 };
 

@@ -1,6 +1,7 @@
 export const calculatePrice = (
   pricingArray,
   numberOfCatsInBooking,
+  additionalCosts,
   lengthOfStay
 ) => {
   if (pricingArray === undefined) return null;
@@ -10,7 +11,10 @@ export const calculatePrice = (
   );
 
   if (priceInfo) {
-    const totalPrice = priceInfo.price * lengthOfStay;
+    const totalPrice = additionalCosts
+      ? priceInfo.price * lengthOfStay + additionalCosts
+      : priceInfo.price * lengthOfStay;
+
     return totalPrice;
   } else {
     return "missing data";

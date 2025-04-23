@@ -10,6 +10,8 @@ import { contactRoute } from "../../../strings/routes";
 const FormButtonsAndAvailabilityInfoSection = ({
   totalCost,
   bookingDataToShow,
+  hasAdditionalCosts,
+  additionalCosts,
   managesOwnPens,
   noAvailabilityRef,
   bookingNotAvailableAndHasFailingDates,
@@ -40,7 +42,14 @@ const FormButtonsAndAvailabilityInfoSection = ({
       </ErrorDiv>
     ) : (
       <>
-        <ShowBookingData {...{ bookingDataToShow, managesOwnPens }} />
+        <ShowBookingData
+          {...{
+            bookingDataToShow,
+            hasAdditionalCosts,
+            additionalCosts,
+            managesOwnPens,
+          }}
+        />
 
         <div ref={noAvailabilityRef}>
           <FailedDatesInfo

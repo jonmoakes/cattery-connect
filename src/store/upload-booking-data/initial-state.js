@@ -3,4 +3,5 @@ export const INITIAL_STATE = {
   uploadBookingDataIsLoading: false,
   uploadBookingDataResult: "",
   uploadBookingDataError: null,
+  additionalCosts: "",
 };

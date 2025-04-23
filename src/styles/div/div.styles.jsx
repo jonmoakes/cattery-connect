@@ -878,3 +878,12 @@ export const AmountButtonDiv = styled.div`
     margin-top: 50px;
   }
 `;
+
+export const AdditionalCostsDiv = styled.div`
+  width: 100%;
+  background: lightpink;
+  border: 1px solid ${softBlack};
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+`;

@@ -2,7 +2,6 @@ import styled, { keyframes } from "styled-components";
 import { bounceInDown, pulse, zoomInLeft, zoomInRight } from "react-animations";
 
 import {
-  customYellow,
   radialBeige,
   radialDustyBlue,
   radialGreen,
@@ -173,6 +172,14 @@ export const MinimalButton = styled.button`
 
   &.clear-week {
     margin: 0px auto 10px auto;
+  }
+
+  &.additional-costs {
+    margin-bottom: 20px;
+  }
+
+  &.cancel-additional-costs {
+    margin: 20px auto;
   }
 `;
 

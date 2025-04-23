@@ -9,6 +9,7 @@ import { differenceInDays } from "date-fns";
 const useAddBookingVariables = () => {
   const {
     catteryDetailsError,
+    hasAdditionalCosts,
     managesOwnPens,
     maximumCatsInSinglePen,
     pricingArray,
@@ -26,6 +27,7 @@ const useAddBookingVariables = () => {
     checkOutDate,
     checkOutSlot,
     paymentStatus,
+    additionalCosts,
   } = useGetUploadBookingDataSelectors();
   const { availabilityStatus, failingDates, showIneligibleDates } =
     useGetIsBookingAvailableSelectors();
@@ -54,6 +56,7 @@ const useAddBookingVariables = () => {
   const totalCost = calculatePrice(
     pricingArray,
     numberOfCatsInBooking,
+    Number(additionalCosts),
     lengthOfStay
   );
 
@@ -107,6 +110,7 @@ const useAddBookingVariables = () => {
     shouldShowFormSubmissionButtons,
     bookingDataToShow,
     managesOwnPens,
+    hasAdditionalCosts,
     bookingNotAvailableAndHasFailingDates,
     showIneligibleDates,
     failingDates,
@@ -115,6 +119,7 @@ const useAddBookingVariables = () => {
     customersCats,
     customerHasMoreThanOneCat,
     totalCost,
+    additionalCosts,
   };
 };
 

@@ -9,6 +9,9 @@ export const uploadBookingDataSlice = createSlice({
     setUploadBookingData(state, action) {
       state.uploadBookingData = action.payload;
     },
+    setAdditionalCosts(state, action) {
+      state.additionalCosts = action.payload;
+    },
     resetUploadBookingDataResult(state) {
       state.uploadBookingDataResult = "";
     },
@@ -24,6 +27,7 @@ export const uploadBookingDataSlice = createSlice({
 
 export const {
   setUploadBookingData,
+  setAdditionalCosts,
   resetUploadBookingDataResult,
   resetUploadBookingDataError,
   resetUploadBookingDataState,

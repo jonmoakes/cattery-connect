@@ -37,6 +37,8 @@ const AddBooking = () => {
     totalCost,
     shouldShowFormSubmissionButtons,
     bookingDataToShow,
+    hasAdditionalCosts,
+    additionalCosts,
     managesOwnPens,
     bookingNotAvailableAndHasFailingDates,
     showIneligibleDates,
@@ -93,6 +95,8 @@ const AddBooking = () => {
                 {...{
                   totalCost,
                   bookingDataToShow,
+                  hasAdditionalCosts,
+                  additionalCosts,
                   managesOwnPens,
                   noAvailabilityRef,
                   bookingNotAvailableAndHasFailingDates,
