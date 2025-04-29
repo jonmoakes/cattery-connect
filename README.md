@@ -1,8 +1,18 @@
-# React + Vite
+# Cattery Connect 🐱
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, user-friendly web app designed for UK-based catteries to manage bookings, payments, and client relationships.
 
-Currently, two official plugins are available:
+## Who It's For
+Small pet boarding businesses looking to digitise and simplify their day-to-day operations.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+- Role-based dashboards for admins and cat owners
+- Secure online booking & payments via Stripe
+- Vaccination and care notes for each pet
+- Email notifications for booking confirmations
+- Pet profiles with medical and dietary info
+
+## Tech Stack
+React • Redux Toolkit • Appwrite • Netlify • Stripe
+
+[Live Demo](https://cattery-connect.co.uk)
