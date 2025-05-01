@@ -46,6 +46,10 @@ export const ResponsiveImage = styled.img`
     }
   }
 
+  &.landscape {
+    width: 100%;
+  }
+
   @media screen and (max-width: 1366px) {
     box-shadow: none;
   }
