@@ -19,7 +19,7 @@ const PaymentTerms = () => (
       ogDescription="Read the payment terms for Cattery Connect, including details on billing cycles, accepted payment methods, and fees."
     />
     <Title />
-    <PolicyLastUpdated date="1st April 2025" />
+    <PolicyLastUpdated date="1st May 2025" />
     <LegalDefinitions />
     <Intro />
     <SubscriptionPayments />

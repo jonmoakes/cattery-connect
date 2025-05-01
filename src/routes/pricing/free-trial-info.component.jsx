@@ -20,8 +20,8 @@ const FreeTrialInfo = () => (
     <BlackHr />
     <CustomBalancedText type="h3">Founder’s Rate Guarantee </CustomBalancedText>
     <CustomBalancedText>
-      Start your free trial before 30th April 2025, and you’ll lock in the
-      founders rate ( see section below ) - even if your trial runs into May!
+      Start your free trial before 31st May 2025, and you’ll lock in the
+      founders rate ( see section below ) - even if your trial runs into June!
     </CustomBalancedText>
   </ParentDiv>
 );

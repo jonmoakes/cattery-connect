@@ -23,7 +23,7 @@ const RefundsPolicy = () => (
       ogDescription="Learn about Cattery Connect's refund policy, including conditions for refunds and how to request one."
     />
     <RefundsPolicyTitleAndIntro />
-    <PolicyLastUpdated date="1st April 2025" />
+    <PolicyLastUpdated date="31st May 2025" />
     <LegalDefinitions />
     <Eligibility />
     <Timeframes />

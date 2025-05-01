@@ -24,7 +24,7 @@ const PrivacyPolicy = () => (
       ogDescription="Read Cattery Connect's Privacy Policy to understand how we handle your personal data securely and responsibly."
     />
     <TitleAndIntro />
-    <PolicyLastUpdated date="1st April 2025" />
+    <PolicyLastUpdated date="31st May 2025" />
     <LegalDefinitions />
     <InformationCollection />
     <LegalBasis />

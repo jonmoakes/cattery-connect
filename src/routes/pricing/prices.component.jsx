@@ -12,7 +12,7 @@ const Prices = () => (
       </CustomBalancedText>
 
       <CustomBalancedText>
-        Sign up <CustomSpan className="red">before 30th April 2025</CustomSpan>{" "}
+        Sign up <CustomSpan className="red">before 31st May 2025</CustomSpan>{" "}
         and lock in your special rate:
       </CustomBalancedText>
 
@@ -37,7 +37,7 @@ const Prices = () => (
 
     <ParentDiv>
       <CustomBalancedText>
-        <CustomSpan className="red">🔹 after 30th April 2025</CustomSpan>, the
+        <CustomSpan className="red">🔹 after 31st May 2025</CustomSpan>, the
         price will be:
       </CustomBalancedText>
 

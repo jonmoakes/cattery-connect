@@ -34,7 +34,7 @@ const TermsAndConditions = () => (
     </ParentDiv>
 
     <Introduction />
-    <PolicyLastUpdated date="1st April 2025" />
+    <PolicyLastUpdated date="31st May 2025" />
     <LegalDefinitions />
     <GeographicRestrictions />
     <UserAccounts />

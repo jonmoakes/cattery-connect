@@ -22,9 +22,9 @@ const SubscriptionPayments = () => (
       </CustomBalancedText>
 
       <CustomBalancedText>
-        if you Start your free trial before 30th April 2025 and then subscribe,
+        if you Start your free trial before 31st May 2025 and then subscribe,
         you will receive founders rate ( see below ) - even if your trial runs
-        into May.
+        into June.
       </CustomBalancedText>
 
       <BlackHr />
@@ -35,7 +35,7 @@ const SubscriptionPayments = () => (
 
       <CustomBalancedText>
         After your free trial, your subscription will cost £{foundersRate} per
-        month if you sign up before 30th April 2025.
+        month if you sign up before 31st May 2025.
       </CustomBalancedText>
 
       <CustomBalancedText>this is called the founders rate.</CustomBalancedText>
@@ -47,7 +47,7 @@ const SubscriptionPayments = () => (
       </CustomBalancedText>
 
       <CustomBalancedText>
-        if you sign up after 30th April 2025, the price is £{standardRate} per
+        if you sign up after 31st May 2025, the price is £{standardRate} per
         month.
       </CustomBalancedText>
 

@@ -20,7 +20,7 @@ const CookiePolicy = () => (
       ogDescription="Learn about the cookies we use at Cattery Connect and how they help improve your browsing experience."
     />
     <CookiesTitleAndIntro />
-    <PolicyLastUpdated date="1st April 2025" />
+    <PolicyLastUpdated date="1st May 2025" />
     <WhatAreCookiesAndLocalStorage />
     <TypesOfCookiesWeUse />
     <ManagingCookies />
