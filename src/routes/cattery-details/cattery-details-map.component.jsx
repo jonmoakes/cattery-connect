@@ -13,7 +13,8 @@ import { BlackHr } from "../../styles/hr/hr.styles";
 import { getCatsTailString } from "../../functions/get-cats-tail-string";
 
 const CatteryDetailsMap = () => {
-  const { catteryDetailsFoUi, pricingArray } = useGetCatteryDetailsSelectors();
+  const { catteryDetailsFoUi, pricingArray, chargesByDay } =
+    useGetCatteryDetailsSelectors();
   const { getLabel } = useCatteryDetailsFunctions();
 
   return (
@@ -41,8 +42,8 @@ const CatteryDetailsMap = () => {
               return (
                 <div key={numberOfCats}>
                   <p>
-                    price per night for {numberOfCats}{" "}
-                    {getCatsTailString(numberOfCats)}
+                    price per {chargesByDay ? "day" : "night"} for{" "}
+                    {numberOfCats} {getCatsTailString(numberOfCats)}
                   </p>
                   <p>£{(price / 100).toFixed(2)}</p>
                   <BlackHr />

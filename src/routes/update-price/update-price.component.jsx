@@ -14,10 +14,12 @@ import { ParentDiv } from "../../styles/div/div.styles";
 import useGetCatteryDetailsSelectors from "../../hooks/selectors/use-get-cattery-details-selectors";
 
 const UpdatePrice = () => {
-  const { catteryDetailsError } = useGetCatteryDetailsSelectors();
+  const { catteryDetailsError, chargesByDay } = useGetCatteryDetailsSelectors();
   useGetCurrentPricesThunkUseEffect();
   useSetNewPriceArrayUseEffect();
   useGetUpdatePriceResultSwalUseEffect();
+
+  const chargesBy = chargesByDay ? "day" : "night";
 
   return (
     <Container>
@@ -30,8 +32,8 @@ const UpdatePrice = () => {
           <Intro />
 
           <ParentDiv>
-            <Instructions />
-            <Prices />
+            <Instructions {...{ chargesBy }} />
+            <Prices {...{ chargesBy }} />
             <UpdatePriceButton />
           </ParentDiv>
         </>

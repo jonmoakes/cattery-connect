@@ -13,6 +13,7 @@ const useAddBookingVariables = () => {
     managesOwnPens,
     maximumCatsInSinglePen,
     pricingArray,
+    chargesByDay,
   } = useGetCatteryDetailsSelectors();
   const { getAllCustomersError, atLeastOneCustomerExists } =
     useGetAllCustomerSelectors();
@@ -56,8 +57,9 @@ const useAddBookingVariables = () => {
   const totalCost = calculatePrice(
     pricingArray,
     numberOfCatsInBooking,
-    Number(additionalCosts),
-    lengthOfStay
+    chargesByDay,
+    lengthOfStay,
+    Number(additionalCosts)
   );
 
   const moreCatsInBookingThanCapacityInOnePen =

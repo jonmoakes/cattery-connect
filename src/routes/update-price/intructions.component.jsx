@@ -1,13 +1,13 @@
 import CustomBalancedText from "../../components/custom-balanced-text/custom-balanced-text.component";
 import CustomSpan from "../../components/custom-span/custom-span.component";
 
-const Instructions = () => (
+const Instructions = ({ chargesBy }) => (
   <>
     <CustomBalancedText>below are your current prices.</CustomBalancedText>
     <CustomBalancedText>
       <CustomSpan className="red">Important:</CustomSpan> Please enter all new
-      prices in PENCE (e.g., 1000 for £10 per night). This is due to how pricing
-      is handled in our database.
+      prices in PENCE (e.g., 1000 for £10 per {chargesBy}
+      ). This is due to how pricing is handled in our database.
     </CustomBalancedText>
 
     <CustomBalancedText>

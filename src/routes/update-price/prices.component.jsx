@@ -11,7 +11,7 @@ import { BlackHr } from "../../styles/hr/hr.styles";
 
 import { getCatsTailString } from "../../functions/get-cats-tail-string";
 
-const Prices = () => {
+const Prices = ({ chargesBy }) => {
   const { newPricingArrayExists } = useUpdatePriceLogic();
   const { newPricingArray } = useGetUpdatePriceSelectors();
   const { handleNewPriceChange } = useHandleNewPriceChange();
@@ -26,7 +26,7 @@ const Prices = () => {
               <CentredDiv key={numberOfCats}>
                 <Form className="update-prices">
                   <Label>
-                    price per night for {numberOfCats}{" "}
+                    price per {chargesBy} for {numberOfCats}{" "}
                     {getCatsTailString(numberOfCats)} ( pence )
                   </Label>
                   <StyledInput

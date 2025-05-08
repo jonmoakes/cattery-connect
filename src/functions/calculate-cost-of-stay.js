@@ -1,8 +1,9 @@
 export const calculatePrice = (
   pricingArray,
   numberOfCatsInBooking,
-  additionalCosts,
-  lengthOfStay
+  chargesByDay,
+  lengthOfStay,
+  additionalCosts
 ) => {
   if (pricingArray === undefined) return null;
 
@@ -11,9 +12,10 @@ export const calculatePrice = (
   );
 
   if (priceInfo) {
+    const adjustedLengthOfStay = chargesByDay ? lengthOfStay + 1 : lengthOfStay;
     const totalPrice = additionalCosts
-      ? priceInfo.price * lengthOfStay + additionalCosts
-      : priceInfo.price * lengthOfStay;
+      ? priceInfo.price * adjustedLengthOfStay + additionalCosts
+      : priceInfo.price * adjustedLengthOfStay;
 
     return totalPrice;
   } else {

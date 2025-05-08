@@ -20,6 +20,7 @@ const useGetCatteryDetailsSelectors = () => {
     allowsOnlinePayments,
     pricesPerNight,
     maximumCatsInSinglePen,
+    chargesByDay,
   } = catteryDetails ?? {};
 
   const catteryDetailsFoUi = {
@@ -50,6 +51,7 @@ const useGetCatteryDetailsSelectors = () => {
     pricesPerNight,
     pricingArray,
     maximumCatsInSinglePen,
+    chargesByDay,
   };
 };
 
